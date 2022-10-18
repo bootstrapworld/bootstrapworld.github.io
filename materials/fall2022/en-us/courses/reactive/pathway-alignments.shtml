@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Alignments</title>
+
+  <link rel="stylesheet" href="../../lib/curriculum.css" />
+    <script src="../../lib/langtable.js"></script>
+    <script src="../../lib/bootstraplesson.js"></script>
+    <script src="../../dependency-graph.js"></script>
+    <script src="../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+</head>
+<body class="narrativepage article">
+<!--#include virtual="/menubar.ssi"-->
+<div id="body">
+<div id="header">
+<h1>Alignments</h1>
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<script>
+function preselect(klass) {
+  const items = document.getElementsByClassName(klass);
+  for (let i = 0; i < items.length; i++) {
+    items[i].style.display = 'none';
+  }
+  if (items.length > 0) {
+    items[0].style.display = 'block';
+  }
+}
+window.onload = function() {
+  preselect('coverageElement');
+}
+function showCoverageAlignment() {
+  const selectTag = document.getElementsByClassName('coverageAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const stdTables = document.getElementsByClassName('coverageElement');
+  for (let i = 0; i < stdTables.length; i++) {
+    const stdTable = stdTables[i];
+    stdTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optStd = opt.value;
+      for (let j = 0; j < stdTables.length; j++) {
+        const stdTable = stdTables[j];
+        if (stdTable.classList.contains(optStd)) {
+          stdTable.style.display = 'block';
+        }
+      }
+    }
+  }
+}
+</script>
+<div class="paragraph">
+<p><div class="standard-menu-container"><div>
+Bootstrap lessons align with several important teaching standards, textbooks, and practices.
+Select from the following menu to see
+which lessons meet those alignments.
+</div><div><select class="coverageAlignmentSelect" onchange="showCoverageAlignment()"><optgroup label="Standards"><option value="standards-CCSS-Math">CCSS-Math</option><option value="standards-CSTA">CSTA</option><option value="standards-K12CS">K12CS</option><option value="standards-Oklahoma">Oklahoma</option><option value="standards-Iowa">Iowa</option></optgroup><optgroup label="Textbooks"><option value="textbook-CMP">CMP</option><option value="textbook-IM_8">IM.8</option><option value="textbook-IM_6">IM.6</option><option value="textbook-IM_7">IM.7</option><option value="textbook-IM_Alg_1">IM.Alg.1</option></optgroup><optgroup label="Practices"><option value="practices-NGSS">NGSS</option><option value="practices-MLR">MLR</option><option value="practices-CC">CC</option><option value="practices-K12CS">K12CS</option><option value="practices-SJ">SJ</option></optgroup></select>
+</div></div></p>
+</div>
+</div>
+</div>
+<div class="sect1 coverageElement standards-CCSS-Math">
+<h2 id="_common_core_math_standards"><a href="http://corestandards.org/Math/">Common Core Math Standards</a></h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.
+[See:  <a href="./../../lessons/function-composition/index.shtml?pathway=reactive">Function Composition</a>; <a href="./../../lessons/defining-values/index.shtml?pathway=reactive">Defining Values</a>; <a href="./../../lessons/functions-dr/index.shtml?pathway=reactive">Solving Word Problems with the Design Recipe</a>.]</p>
+</dd>
+<dt class="hdlist1">6.RP.A</dt>
+<dd>
+<p>Understand ratio concepts and use ratio reasoning to solve problems.
+[See:  <a href="./../../lessons/flags/index.shtml?pathway=reactive">Making Flags</a>.]</p>
+</dd>
+<dt class="hdlist1">6.RP.A.3.D</dt>
+<dd>
+<p>Use ratio reasoning to convert measurement units; manipulate and transform units appropriately when multiplying or dividing quantities.
+[See:  <a href="./../../lessons/flags/index.shtml?pathway=reactive">Making Flags</a>.]</p>
+</dd>
+<dt class="hdlist1">7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.
+[See:  <a href="./../../lessons/functions-dr/index.shtml?pathway=reactive">Solving Word Problems with the Design Recipe</a>.]</p>
+</dd>
+<dt class="hdlist1">7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.
+[See:  <a href="./../../lessons/defining-values/index.shtml?pathway=reactive">Defining Values</a>; <a href="./../../lessons/functions-dr/index.shtml?pathway=reactive">Solving Word Problems with the Design Recipe</a>.]</p>
+</dd>
+<dt class="hdlist1">8.F.A.1</dt>
+<dd>
+<p>Understand that a function is a rule that assigns to each input exactly one output. The graph of a function is the set of ordered pairs consisting of an input and the corresponding output.
+[See:  <a href="./../../lessons/contracts/index.shtml?pathway=reactive">Contracts</a>.]</p>
+</dd>
+<dt class="hdlist1">8.F.B</dt>
+<dd>
+<p>Use functions to model relationships between quantities.
+[See:  <a href="./../../lessons/functions-dr/index.shtml?pathway=reactive">Solving Word Problems with the Design Recipe</a>.]</p>
+</dd>
+<dt class="hdlist1">HSA.SSE.A.1</dt>
+<dd>
+<p>Interpret expressions that represent a quantity in terms of its context.
+[See:  <a href="./../../lessons/defining-values/index.shtml?pathway=reactive">Defining Values</a>.]</p>
+</dd>
+<dt class="hdlist1">HSF.BF.A</dt>
+<dd>
+<p>Build a function that models a relationship between two quantities.
+[See:  <a href="./../../lessons/function-composition/index.shtml?pathway=reactive">Function Composition</a>.]</p>
+</dd>
+<dt class="hdlist1">HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.
+[See:  <a href="./../../lessons/functions-dr/index.shtml?pathway=reactive">Solving Word Problems with the Design Recipe</a>.]</p>
+</dd>
+<dt class="hdlist1">HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.
+[See:  <a href="./../../lessons/function-composition/index.shtml?pathway=reactive">Function Composition</a>.]</p>
+</dd>
+<dt class="hdlist1">HSF.IF.A.1</dt>
+<dd>
+<p>Understand that a function from one set (called the domain) to another set (called the range) assigns to each element of the domain exactly one element of the range. If f is a function and x is an element of its domain, then f(x) denotes the output of f corresponding to the input x. The graph of f is the graph of the equation y = f(x).
+[See:  <a href="./../../lessons/contracts/index.shtml?pathway=reactive">Contracts</a>.]</p>
+</dd>
+<dt class="hdlist1">HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.
+[See:  <a href="./../../lessons/contracts/index.shtml?pathway=reactive">Contracts</a>; <a href="./../../lessons/flags/index.shtml?pathway=reactive">Making Flags</a>.]</p>
+</dd>
+<dt class="hdlist1">HSF.IF.B</dt>
+<dd>
+<p>Interpret functions that arise in applications in terms of the context.
+[See:  <a href="./../../lessons/flags/index.shtml?pathway=reactive">Making Flags</a>.]</p>
+</dd>
+<dt class="hdlist1">HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.
+[See:  <a href="./../../lessons/functions-dr/index.shtml?pathway=reactive">Solving Word Problems with the Design Recipe</a>.]</p>
+</dd>
+<dt class="hdlist1">HSN.Q.A</dt>
+<dd>
+<p>Reason quantitatively and use units to solve problems.
+[See:  <a href="./../../lessons/flags/index.shtml?pathway=reactive">Making Flags</a>.]</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1 coverageElement standards-CSTA">
+<h2 id="_csta_standards"><a href="https://csteachers.org/page/standards">CSTA Standards</a></h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">1B-AP-09</dt>
+<dd>
+<p>Create programs that use variables to store and modify data.
+[See:  <a href="./../../lessons/defining-values/index.shtml?pathway=reactive">Defining Values</a>; <a href="./../../lessons/re-structures-reactors-animations/index.shtml?pathway=reactive">Structures&#x2c; Reactors&#x2c; and Animations</a>; <a href="./../../lessons/re-key-events/index.shtml?pathway=reactive">Key Events</a>; <a href="./../../lessons/re-your-own-drawing-functions/index.shtml?pathway=reactive">Your Own Drawing Functions</a>; <a href="./../../lessons/re-build-your-own-animation/index.shtml?pathway=reactive">Build Your Own Animation</a>; <a href="./../../lessons/re-adding-collisions/index.shtml?pathway=reactive">Adding Collisions</a>.]</p>
+</dd>
+<dt class="hdlist1">1B-AP-10</dt>
+<dd>
+<p>Create programs that include sequences, events, loops, and conditionals.
+[See:  <a href="./../../lessons/re-structures-reactors-animations/index.shtml?pathway=reactive">Structures&#x2c; Reactors&#x2c; and Animations</a>; <a href="./../../lessons/re-key-events/index.shtml?pathway=reactive">Key Events</a>; <a href="./../../lessons/re-adding-collisions/index.shtml?pathway=reactive">Adding Collisions</a>.]</p>
+</dd>
+<dt class="hdlist1">1B-AP-11</dt>
+<dd>
+<p>Decompose (break down) problems into smaller, manageable subproblems to facilitate the program development process.
+[See:  <a href="./../../lessons/re-refactoring/index.shtml?pathway=reactive">Refactoring</a>; <a href="./../../lessons/re-nested-structures/index.shtml?pathway=reactive">Going Deeper: Nested Structures</a>.]</p>
+</dd>
+<dt class="hdlist1">1B-AP-12</dt>
+<dd>
+<p>Modify, remix, or incorporate portions of an existing program into one&#8217;s own work, to develop something new or add more advanced features.
+[See:  <a href="./../../lessons/re-intro-to-data-structures/index.shtml?pathway=reactive">Introduction to Data Structures</a>; <a href="./../../lessons/re-structures-reactors-animations/index.shtml?pathway=reactive">Structures&#x2c; Reactors&#x2c; and Animations</a>; <a href="./../../lessons/re-key-events/index.shtml?pathway=reactive">Key Events</a>; <a href="./../../lessons/re-refactoring/index.shtml?pathway=reactive">Refactoring</a>.]</p>
+</dd>
+<dt class="hdlist1">1B-AP-15</dt>
+<dd>
+<p>Test and debug (identify and fix errors) a program or algorithm to ensure it runs as intended.
+[See:  <a href="./../../lessons/re-refactoring/index.shtml?pathway=reactive">Refactoring</a>.]</p>
+</dd>
+<dt class="hdlist1">1B-AP-17</dt>
+<dd>
+<p>Describe choices made during program development using code comments, presentations, and demonstrations.
+[See:  <a href="./../../lessons/re-intro-to-data-structures/index.shtml?pathway=reactive">Introduction to Data Structures</a>; <a href="./../../lessons/re-functions-that-ask-questions/index.shtml?pathway=reactive">Functions That Ask Questions</a>.]</p>
+</dd>
+<dt class="hdlist1">2-AP-10</dt>
+<dd>
+<p>Use flowcharts and/or pseudocode to address complex problems as algorithms
+[See:  <a href="./../../lessons/re-structures-reactors-animations/index.shtml?pathway=reactive">Structures&#x2c; Reactors&#x2c; and Animations</a>.]</p>
+</dd>
+<dt class="hdlist1">2-AP-11</dt>
+<dd>
+<p>Create clearly named variables that represent different data types and perform operations on their values.
+[See:  <a href="./../../lessons/simple-data-types/index.shtml?pathway=reactive">Simple Data Types</a>; <a href="./../../lessons/function-composition/index.shtml?pathway=reactive">Function Composition</a>; <a href="./../../lessons/defining-values/index.shtml?pathway=reactive">Defining Values</a>; <a href="./../../lessons/re-intro-to-data-structures/index.shtml?pathway=reactive">Introduction to Data Structures</a>; <a href="./../../lessons/re-structures-reactors-animations/index.shtml?pathway=reactive">Structures&#x2c; Reactors&#x2c; and Animations</a>.]</p>
+</dd>
+<dt class="hdlist1">2-AP-12</dt>
+<dd>
+<p>Design and iteratively develop programs that combine control structures, including nested loops and compound conditionals
+[See:  <a href="./../../lessons/re-build-your-own-animation/index.shtml?pathway=reactive">Build Your Own Animation</a>; <a href="./../../lessons/re-adding-levels/index.shtml?pathway=reactive">Adding Levels</a>; <a href="./../../lessons/re-making-pong/index.shtml?pathway=reactive">Making Pong</a>; <a href="./../../lessons/re-nested-structures/index.shtml?pathway=reactive">Going Deeper: Nested Structures</a>.]</p>
+</dd>
+<dt class="hdlist1">2-AP-13</dt>
+<dd>
+<p>Decompose problems and subproblems into parts to facilitate the design, implementation, and review of programs
+[See:  <a href="./../../lessons/re-refactoring/index.shtml?pathway=reactive">Refactoring</a>; <a href="./../../lessons/re-nested-structures/index.shtml?pathway=reactive">Going Deeper: Nested Structures</a>.]</p>
+</dd>
+<dt class="hdlist1">2-AP-14</dt>
+<dd>
+<p>Create procedures with parameters to organize code and make it easier to reuse.
+[See:  <a href="./../../lessons/re-intro-to-data-structures/index.shtml?pathway=reactive">Introduction to Data Structures</a>; <a href="./../../lessons/re-functions-that-ask-questions/index.shtml?pathway=reactive">Functions That Ask Questions</a>; <a href="./../../lessons/re-key-events/index.shtml?pathway=reactive">Key Events</a>; <a href="./../../lessons/re-refactoring/index.shtml?pathway=reactive">Refactoring</a>; <a href="./../../lessons/re-your-own-drawing-functions/index.shtml?pathway=reactive">Your Own Drawing Functions</a>; <a href="./../../lessons/re-scoring/index.shtml?pathway=reactive">Scoring</a>.]</p>
+</dd>
+<dt class="hdlist1">2-AP-17</dt>
+<dd>
+<p>Systematically test and refine programs using a range of test cases
+[See:  <a href="./../../lessons/function-composition/index.shtml?pathway=reactive">Function Composition</a>; <a href="./../../lessons/re-functions-that-ask-questions/index.shtml?pathway=reactive">Functions That Ask Questions</a>; <a href="./../../lessons/re-key-events/index.shtml?pathway=reactive">Key Events</a>; <a href="./../../lessons/re-scoring/index.shtml?pathway=reactive">Scoring</a>; <a href="./../../lessons/re-making-pong/index.shtml?pathway=reactive">Making Pong</a>.]</p>
+</dd>
+<dt class="hdlist1">2-AP-19</dt>
+<dd>
+<p>Document programs in order to make them easier to follow, test, and debug.
+[See:  <a href="./../../lessons/function-composition/index.shtml?pathway=reactive">Function Composition</a>.]</p>
+</dd>
+<dt class="hdlist1">3A-AP-15</dt>
+<dd>
+<p>Justify the selection of specific control structures when tradeoffs involve implementation, readability, and program performance, and explain the benefits and drawbacks of choices made.
+[See:  <a href="./../../lessons/re-refactoring/index.shtml?pathway=reactive">Refactoring</a>; <a href="./../../lessons/re-nested-structures/index.shtml?pathway=reactive">Going Deeper: Nested Structures</a>.]</p>
+</dd>
+<dt class="hdlist1">3A-AP-16</dt>
+<dd>
+<p>Design and iteratively develop computational artifacts for practical intent, personal expression, or to address a societal issue by using events to initiate instructions.
+[See:  <a href="./../../lessons/re-your-own-drawing-functions/index.shtml?pathway=reactive">Your Own Drawing Functions</a>; <a href="./../../lessons/re-build-your-own-animation/index.shtml?pathway=reactive">Build Your Own Animation</a>.]</p>
+</dd>
+<dt class="hdlist1">3A-AP-17</dt>
+<dd>
+<p>Decompose problems into smaller components through systematic analysis, using constructs such as procedures, modules, and/or objects.
+[See:  <a href="./../../lessons/re-refactoring/index.shtml?pathway=reactive">Refactoring</a>; <a href="./../../lessons/re-nested-structures/index.shtml?pathway=reactive">Going Deeper: Nested Structures</a>.]</p>
+</dd>
+<dt class="hdlist1">3A-AP-18</dt>
+<dd>
+<p>Create artifacts by using procedures within a program, combinations of data and procedures, or independent but interrelated programs.
+[See:  <a href="./../../lessons/flags/index.shtml?pathway=reactive">Making Flags</a>; <a href="./../../lessons/re-scoring/index.shtml?pathway=reactive">Scoring</a>; <a href="./../../lessons/re-adding-levels/index.shtml?pathway=reactive">Adding Levels</a>; <a href="./../../lessons/re-timers/index.shtml?pathway=reactive">Feature: Timers</a>.]</p>
+</dd>
+<dt class="hdlist1">3B-AP-13</dt>
+<dd>
+<p>Illustrate the flow of execution of a recursive algorithm
+[See:  <a href="./../../lessons/re-structures-reactors-animations/index.shtml?pathway=reactive">Structures&#x2c; Reactors&#x2c; and Animations</a>.]</p>
+</dd>
+<dt class="hdlist1">3B-AP-14</dt>
+<dd>
+<p>Construct solutions to problems using student-created components, such as procedures, modules and/or objects.
+[See:  <a href="./../../lessons/re-adding-collisions/index.shtml?pathway=reactive">Adding Collisions</a>; <a href="./../../lessons/re-adding-levels/index.shtml?pathway=reactive">Adding Levels</a>; <a href="./../../lessons/re-timers/index.shtml?pathway=reactive">Feature: Timers</a>.]</p>
+</dd>
+<dt class="hdlist1">3B-AP-21</dt>
+<dd>
+<p>Develop and use a series of test cases to verify that a program performs according to its design specifications.
+[See:  <a href="./../../lessons/function-composition/index.shtml?pathway=reactive">Function Composition</a>; <a href="./../../lessons/re-functions-that-ask-questions/index.shtml?pathway=reactive">Functions That Ask Questions</a>.]</p>
+</dd>
+<dt class="hdlist1">3B-AP-22</dt>
+<dd>
+<p>Modify an existing program to add additional functionality and discuss intended and unintended implications (e.g., breaking other functionality).
+[See:  <a href="./../../lessons/re-functions-that-ask-questions/index.shtml?pathway=reactive">Functions That Ask Questions</a>; <a href="./../../lessons/re-scoring/index.shtml?pathway=reactive">Scoring</a>; <a href="./../../lessons/re-timers/index.shtml?pathway=reactive">Feature: Timers</a>.]</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1 coverageElement standards-K12CS">
+<h2 id="_k_12cs_standards"><a href="https://k12cs.org">K-12CS Standards</a></h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">6-8.Algorithms and Programming.Control</dt>
+<dd>
+<p>Programmers select and combine control structures, such as loops, event handlers, and conditionals, to create more complex program behavior.
+[See:  <a href="./../../lessons/re-functions-that-ask-questions/index.shtml?pathway=reactive">Functions That Ask Questions</a>.]</p>
+</dd>
+<dt class="hdlist1">6-8.Algorithms and Programming.Modularity</dt>
+<dd>
+<p>Programs use procedures to organize code, hide implementation details, and make code easier to reuse. Procedures can be repurposed in new programs. Defining parameters for procedures can generalize behavior and increase reusability.
+[See:  <a href="./../../lessons/re-refactoring/index.shtml?pathway=reactive">Refactoring</a>.]</p>
+</dd>
+<dt class="hdlist1">6-8.Algorithms and Programming.Variables</dt>
+<dd>
+<p>Programmers create variables to store data values of selected types. A meaningful identifier is assigned to each variable to access and perform operations on the value by name. Variables enable the flexibility to represent different situations, process different sets of data, and produce varying outputs.
+[See:  <a href="./../../lessons/defining-values/index.shtml?pathway=reactive">Defining Values</a>; <a href="./../../lessons/re-intro-to-data-structures/index.shtml?pathway=reactive">Introduction to Data Structures</a>.]</p>
+</dd>
+<dt class="hdlist1">9-12.Algorithms and Programming.Variables</dt>
+<dd>
+<p>Data structures are used to manage program complexity. Programmers choose data structures based on functionality, storage, and performance tradeoffs.
+[See:  <a href="./../../lessons/re-intro-to-data-structures/index.shtml?pathway=reactive">Introduction to Data Structures</a>.]</p>
+</dd>
+<dt class="hdlist1">9-12.Impacts of Computing.Social Interactions</dt>
+<dd>
+<p>Many aspects of society, especially careers, have been affected by the degree of communication afforded by computing. The increased connectivity between people in different cultures and in different career fields has changed the nature and content of many careers.
+[See:  <a href="./../../lessons/computing-needs-all-voices/index.shtml?pathway=reactive">Computing Needs All Voices</a>.]</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1 coverageElement standards-Oklahoma">
+<h2 id="_oklahoma_standards"><a href="https://sde.ok.gov/oklahoma-academic-standards">Oklahoma Standards</a></h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">OK.3.A.V.01</dt>
+<dd>
+<p>Create programs that use variables to store and modify grade level appropriate data.
+[See:  <a href="./../../lessons/defining-values/index.shtml?pathway=reactive">Defining Values</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.3.AP.A.01</dt>
+<dd>
+<p>Compare multiple algorithms for the same task.
+[See:  <a href="./../../lessons/flags/index.shtml?pathway=reactive">Making Flags</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.3.AP.M.01</dt>
+<dd>
+<p>Decompose the steps needed to solve a problem into a precise sequence of instructions.
+[See:  <a href="./../../lessons/flags/index.shtml?pathway=reactive">Making Flags</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.3.AP.PD.01</dt>
+<dd>
+<p>Use an iterative process to plan the development of a program while solving simple problems.
+[See:  <a href="./../../lessons/functions-dr/index.shtml?pathway=reactive">Solving Word Problems with the Design Recipe</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.3.AP.PD.03</dt>
+<dd>
+<p>Analyze and debug a program that includes sequencing, repetition and variables in a programming language.
+[See:  <a href="./../../lessons/flags/index.shtml?pathway=reactive">Making Flags</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.3.AP.PD.04</dt>
+<dd>
+<p>Communicate and explain your program development using comments, presentations and demonstrations.
+[See:  <a href="./../../lessons/functions-dr/index.shtml?pathway=reactive">Solving Word Problems with the Design Recipe</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.4.AP.A.01</dt>
+<dd>
+<p>Compare and refine multiple algorithms for the same task.
+[See:  <a href="./../../lessons/flags/index.shtml?pathway=reactive">Making Flags</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.4.AP.C.01</dt>
+<dd>
+<p>Create programs using a programming language that utilize sequencing, repetition, conditionals and variables using math operations manipulate values to solve a problem or express ideas both independently and collaboratively.
+[See:  <a href="./../../lessons/flags/index.shtml?pathway=reactive">Making Flags</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.4.AP.PD.04</dt>
+<dd>
+<p>Communicate and explain your program development using comments, presentations and demonstrations.
+[See:  <a href="./../../lessons/functions-dr/index.shtml?pathway=reactive">Solving Word Problems with the Design Recipe</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.4.AP.V.01</dt>
+<dd>
+<p>Create programs that use variables to store and modify grade level appropriate data.
+[See:  <a href="./../../lessons/defining-values/index.shtml?pathway=reactive">Defining Values</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.5.AP.A.01</dt>
+<dd>
+<p>Compare and refine multiple algorithms for the same task and determine which is the most efficient.
+[See:  <a href="./../../lessons/function-composition/index.shtml?pathway=reactive">Function Composition</a>; <a href="./../../lessons/flags/index.shtml?pathway=reactive">Making Flags</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.5.AP.PD.04</dt>
+<dd>
+<p>Communicate and explain your program development using comments, presentations and demonstrations.
+[See:  <a href="./../../lessons/functions-dr/index.shtml?pathway=reactive">Solving Word Problems with the Design Recipe</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.5.AP.V.01</dt>
+<dd>
+<p>Create programs that use variables to store and modify grade level appropriate data.
+[See:  <a href="./../../lessons/defining-values/index.shtml?pathway=reactive">Defining Values</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.5.GM.1.1</dt>
+<dd>
+<p>Describe, classify and construct triangles, including equilateral, right, scalene, and isosceles triangles. Recognize triangles in various contexts.
+[See:  <a href="./../../lessons/contracts/index.shtml?pathway=reactive">Contracts</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.6.A.1.1</dt>
+<dd>
+<p>Plot integer- and rational-valued (limited to halves and fourths) ordered-pairs as coordinates in all four quadrants and recognize the reflective relationships among coordinates that differ only by their signs.
+[See:  <a href="./../../lessons/flags/index.shtml?pathway=reactive">Making Flags</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.6.A.1.3</dt>
+<dd>
+<p>Use and evaluate variables in expressions, equations, and inequalities that arise from various contexts, including determining when or if, for a given value of the variable, an equation or inequality involving a variable is true or false.
+[See:  <a href="./../../lessons/simple-data-types/index.shtml?pathway=reactive">Simple Data Types</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.6.AP.A.01</dt>
+<dd>
+<p>Use an existing algorithm in natural language or pseudocode to solve complex problems.
+[See:  <a href="./../../lessons/functions-dr/index.shtml?pathway=reactive">Solving Word Problems with the Design Recipe</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.6.AP.M.01</dt>
+<dd>
+<p>Decompose problems into parts to facilitate the design, implementation, and review of programs.
+[See:  <a href="./../../lessons/flags/index.shtml?pathway=reactive">Making Flags</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.6.AP.PD.01</dt>
+<dd>
+<p>Seek and incorporate feedback from team members to refine a solution to a problem.
+[See:  <a href="./../../lessons/flags/index.shtml?pathway=reactive">Making Flags</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.6.AP.PD.05</dt>
+<dd>
+<p>Document text-based programs in order to make them easier to follow, test, and debug.
+[See:  <a href="./../../lessons/functions-dr/index.shtml?pathway=reactive">Solving Word Problems with the Design Recipe</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.6.GM.2.2</dt>
+<dd>
+<p>Develop and use the fact that the sum of the interior angles of a triangle is 180° to determine missing angle measures in a triangle.
+[See:  <a href="./../../lessons/contracts/index.shtml?pathway=reactive">Contracts</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.6.IC.C.01</dt>
+<dd>
+<p>Explain how computing impacts people&#8217;s everyday activities.
+[See:  <a href="./../../lessons/computing-needs-all-voices/index.shtml?pathway=reactive">Computing Needs All Voices</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.7.A.3.3</dt>
+<dd>
+<p>Represent real-world or mathematical situations using equations and inequalities involving variables and rational numbers.
+[See:  <a href="./../../lessons/defining-values/index.shtml?pathway=reactive">Defining Values</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.7.AP.A.01</dt>
+<dd>
+<p>Select and modify an existing algorithm in natural language or pseudocode to solve complex problems.
+[See:  <a href="./../../lessons/simple-data-types/index.shtml?pathway=reactive">Simple Data Types</a>; <a href="./../../lessons/functions-dr/index.shtml?pathway=reactive">Solving Word Problems with the Design Recipe</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.7.AP.PD.05</dt>
+<dd>
+<p>Document text-based programs of increasing complexity in order to make them easier to follow, test, and debug.
+[See:  <a href="./../../lessons/functions-dr/index.shtml?pathway=reactive">Solving Word Problems with the Design Recipe</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.7.GM.4.1</dt>
+<dd>
+<p>Describe the properties of similarity, compare geometric figures for similarity, and determine scale factors resulting from dilations.
+[See:  <a href="./../../lessons/flags/index.shtml?pathway=reactive">Making Flags</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.7.GM.4.2</dt>
+<dd>
+<p>Apply proportions, ratios, and scale factors to solve problems involving scale drawings and determine side lengths and areas of similar triangles and rectangles.
+[See:  <a href="./../../lessons/flags/index.shtml?pathway=reactive">Making Flags</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.7.N.1.1</dt>
+<dd>
+<p>Know that every rational number can be written as the ratio of two integers or as a terminating or repeating decimal.
+[See:  <a href="./../../lessons/simple-data-types/index.shtml?pathway=reactive">Simple Data Types</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.7.N.1.2</dt>
+<dd>
+<p>Compare and order rational numbers expressed in various forms using the symbols &lt;, &gt;, and =.
+[See:  <a href="./../../lessons/simple-data-types/index.shtml?pathway=reactive">Simple Data Types</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.7.N.1.3</dt>
+<dd>
+<p>Recognize and generate equivalent representations of rational numbers, including equivalent fractions.
+[See:  <a href="./../../lessons/simple-data-types/index.shtml?pathway=reactive">Simple Data Types</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.8.AP.A.01</dt>
+<dd>
+<p>Design algorithms in natural language, flow and control diagrams, comments within code, and/or pseudocode to solve complex problems.
+[See:  <a href="./../../lessons/flags/index.shtml?pathway=reactive">Making Flags</a>; <a href="./../../lessons/functions-dr/index.shtml?pathway=reactive">Solving Word Problems with the Design Recipe</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.8.AP.C.01</dt>
+<dd>
+<p>Develop programs that utilize combinations of nested repetition, compound conditionals, procedures without parameters, and the manipulation of variables representing different data types.
+[See:  <a href="./../../lessons/simple-data-types/index.shtml?pathway=reactive">Simple Data Types</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.8.AP.PD.04</dt>
+<dd>
+<p>Explain how effective communication between participants is required for successful collaboration when developing computational artifacts.
+[See:  <a href="./../../lessons/functions-dr/index.shtml?pathway=reactive">Solving Word Problems with the Design Recipe</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.8.AP.PD.05</dt>
+<dd>
+<p>Document text-based programs of increasing complexity in order to make them easier to follow, test, and debug.
+[See:  <a href="./../../lessons/functions-dr/index.shtml?pathway=reactive">Solving Word Problems with the Design Recipe</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.A1.F.1.2</dt>
+<dd>
+<p>Identify the dependent and independent variables as well as the domain and range given a function, equation, or graph. Identify restrictions on the domain and range in real-world contexts.
+[See:  <a href="./../../lessons/contracts/index.shtml?pathway=reactive">Contracts</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.A1.F.1.3</dt>
+<dd>
+<p>Write linear functions, using function notation, to model real-world and mathematical situations.
+[See:  <a href="./../../lessons/contracts/index.shtml?pathway=reactive">Contracts</a>; <a href="./../../lessons/function-composition/index.shtml?pathway=reactive">Function Composition</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.A1.F.1.4</dt>
+<dd>
+<p>Given a graph modeling a real-world situation, read and interpret the linear piecewise function (excluding step functions).
+[See:  <a href="./../../lessons/contracts/index.shtml?pathway=reactive">Contracts</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.A1.F.3</dt>
+<dd>
+<p>Represent functions in multiple ways and use the representation to interpret real-world and mathematical problems.
+[See:  <a href="./../../lessons/function-composition/index.shtml?pathway=reactive">Function Composition</a>; <a href="./../../lessons/defining-values/index.shtml?pathway=reactive">Defining Values</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.A1.F.3.1</dt>
+<dd>
+<p>Identify and generate equivalent representations of linear equations, graphs, tables, and real-world situations.
+[See:  <a href="./../../lessons/defining-values/index.shtml?pathway=reactive">Defining Values</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.A1.F.3.2</dt>
+<dd>
+<p>Use function notation; evaluate a function, including nonlinear, at a given point in its domain algebraically and graphically. Interpret the results in terms of real-world and mathematical problems.
+[See:  <a href="./../../lessons/function-composition/index.shtml?pathway=reactive">Function Composition</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.A1.F.3.3</dt>
+<dd>
+<p>Add, subtract, and multiply functions using function notation.
+[See:  <a href="./../../lessons/function-composition/index.shtml?pathway=reactive">Function Composition</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.G.2D.1.8</dt>
+<dd>
+<p>Construct logical arguments to prove triangle congruence (SSS, SAS, ASA, AAS and HL) and triangle similarity (AA, SSS, SAS).
+[See:  <a href="./../../lessons/contracts/index.shtml?pathway=reactive">Contracts</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.L2.AP.PD.05</dt>
+<dd>
+<p>Develop and use a series of test cases to verify that a program performs according to its design specifications.
+[See:  <a href="./../../lessons/functions-dr/index.shtml?pathway=reactive">Solving Word Problems with the Design Recipe</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.MAP.1</dt>
+<dd>
+<p>Develop a deep and flexible conceptual understanding.
+[See:  <a href="./../../lessons/flags/index.shtml?pathway=reactive">Making Flags</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.MAP.4</dt>
+<dd>
+<p>Develop mathematical reasoning.
+[See:  <a href="./../../lessons/flags/index.shtml?pathway=reactive">Making Flags</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.MAP.7</dt>
+<dd>
+<p>Develop the ability to communicate mathematically.
+[See:  <a href="./../../lessons/functions-dr/index.shtml?pathway=reactive">Solving Word Problems with the Design Recipe</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.PA.A.1.1</dt>
+<dd>
+<p>Recognize that a function is a relationship between an independent variable and a dependent variable in which the value of the independent variable determines the value of the dependent variable.
+[See:  <a href="./../../lessons/contracts/index.shtml?pathway=reactive">Contracts</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.PA.A.1.2</dt>
+<dd>
+<p>Use linear functions to represent and explain real-world and mathematical situations.
+[See:  <a href="./../../lessons/functions-dr/index.shtml?pathway=reactive">Solving Word Problems with the Design Recipe</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.PA.A.1.3</dt>
+<dd>
+<p>Identify a function as linear if it can be expressed in the form y = mx + b or if its graph is a straight line.
+[See:  <a href="./../../lessons/functions-dr/index.shtml?pathway=reactive">Solving Word Problems with the Design Recipe</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.PA.A.2</dt>
+<dd>
+<p>Recognize linear functions in real-world and mathematical situations; represent linear functions and other functions with tables, verbal descriptions, symbols, and graphs; solve problems involving linear functions and interpret results in the original context.
+[See:  <a href="./../../lessons/functions-dr/index.shtml?pathway=reactive">Solving Word Problems with the Design Recipe</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.PA.A.2.1</dt>
+<dd>
+<p>Represent linear functions with tables, verbal descriptions, symbols, and graphs; translate from one representation to another.
+[See:  <a href="./../../lessons/functions-dr/index.shtml?pathway=reactive">Solving Word Problems with the Design Recipe</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.PA.A.3.1</dt>
+<dd>
+<p>Use substitution to simplify and evaluate algebraic expressions.
+[See:  <a href="./../../lessons/function-composition/index.shtml?pathway=reactive">Function Composition</a>; <a href="./../../lessons/defining-values/index.shtml?pathway=reactive">Defining Values</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.PA.A.4</dt>
+<dd>
+<p>Represent real-world and mathematical problems using equations and inequalities involving linear expressions. Solve and graph equations and inequalities symbolically and graphically. Interpret solutions in the original context.
+[See:  <a href="./../../lessons/flags/index.shtml?pathway=reactive">Making Flags</a>.]</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1 coverageElement standards-Iowa">
+<h2 id="_iowa_standards"><a href="https://iowacore.gov/standards/iowa-core-standards">Iowa Standards</a></h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">IA.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.
+[See:  <a href="./../../lessons/defining-values/index.shtml?pathway=reactive">Defining Values</a>.]</p>
+</dd>
+<dt class="hdlist1">IA.HSF.BF.A.1.B</dt>
+<dd>
+<p>Combine standard function types using arithmetic operations.
+[See:  <a href="./../../lessons/function-composition/index.shtml?pathway=reactive">Function Composition</a>.]</p>
+</dd>
+<dt class="hdlist1">IA.HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.
+[See:  <a href="./../../lessons/function-composition/index.shtml?pathway=reactive">Function Composition</a>.]</p>
+</dd>
+<dt class="hdlist1">IA.HSF.IF.A.1</dt>
+<dd>
+<p>Understand that a function from one set (called the domain) to another set (called the range) assigns to each element of the domain exactly one element of the range. If f is a function and x is an element of its domain, then f(x) denotes the output of f corresponding to the input x. The graph of f is the graph of the equation y = f(x).
+[See:  <a href="./../../lessons/contracts/index.shtml?pathway=reactive">Contracts</a>.]</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1 coverageElement textbook-CMP">
+<h2 id="_connected_math"><a href="https://connectedmath.msu.edu/">Connected Math</a></h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">CMP.6.6</dt>
+<dd>
+<p>Variables and Patterns: Focus on Algebra. [See:  <a href="./../../lessons/defining-values/index.shtml?pathway=reactive">Defining Values</a>.]</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1 coverageElement textbook-IM_8">
+<h2 id="_im_8_math"><a href="https://illustrativemathematics.org/">IM 8 Math™</a></h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">IM.8.1.1</dt>
+<dd>
+<p>Moving in the Plane. [See:  <a href="./../../lessons/flags/index.shtml?pathway=reactive">Making Flags</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.8.1.2</dt>
+<dd>
+<p>Naming the moves. [See:  <a href="./../../lessons/flags/index.shtml?pathway=reactive">Making Flags</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.8.1.3</dt>
+<dd>
+<p>Grid Moves. [See:  <a href="./../../lessons/flags/index.shtml?pathway=reactive">Making Flags</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.8.2.1</dt>
+<dd>
+<p>Projecting and Scaling. [See:  <a href="./../../lessons/flags/index.shtml?pathway=reactive">Making Flags</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.8.5.1</dt>
+<dd>
+<p>Inputs and Outputs. [See:  <a href="./../../lessons/contracts/index.shtml?pathway=reactive">Contracts</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.8.5.2</dt>
+<dd>
+<p>Introduction to Functions. [See:  <a href="./../../lessons/contracts/index.shtml?pathway=reactive">Contracts</a>.]</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1 coverageElement textbook-IM_6">
+<h2 id="_im_6_math"><a href="https://illustrativemathematics.org/">IM 6 Math™</a></h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">IM.6.1.3</dt>
+<dd>
+<p>Reasoning to Find Area. [See:  <a href="./../../lessons/flags/index.shtml?pathway=reactive">Making Flags</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.6.2.14</dt>
+<dd>
+<p>Solving Equivalent Ratio Problems. [See:  <a href="./../../lessons/flags/index.shtml?pathway=reactive">Making Flags</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.6.7.14</dt>
+<dd>
+<p>Distances on the Coordinate Plane. [See:  <a href="./../../lessons/flags/index.shtml?pathway=reactive">Making Flags</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.6.7.15</dt>
+<dd>
+<p>Shapes on the Coordinate Plane. [See:  <a href="./../../lessons/flags/index.shtml?pathway=reactive">Making Flags</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.6.6.2</dt>
+<dd>
+<p>Truth and Equations. [See:  <a href="./../../lessons/defining-values/index.shtml?pathway=reactive">Defining Values</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.6.6.16</dt>
+<dd>
+<p>Two Related Quantities, Part 1. [See:  <a href="./../../lessons/contracts/index.shtml?pathway=reactive">Contracts</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.6.6.17</dt>
+<dd>
+<p>Two Related Quantities, Part 2. [See:  <a href="./../../lessons/contracts/index.shtml?pathway=reactive">Contracts</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.6.6.18</dt>
+<dd>
+<p>More Relationships. [See:  <a href="./../../lessons/contracts/index.shtml?pathway=reactive">Contracts</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.6.7.9</dt>
+<dd>
+<p>Solutions of Inequalities. [See:  <a href="./../../lessons/simple-data-types/index.shtml?pathway=reactive">Simple Data Types</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.6.7.10</dt>
+<dd>
+<p>Interpreting Inequalities. [See:  <a href="./../../lessons/simple-data-types/index.shtml?pathway=reactive">Simple Data Types</a>.]</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1 coverageElement textbook-IM_7">
+<h2 id="_im_7_math"><a href="https://illustrativemathematics.org/">IM 7 Math™</a></h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">IM.7.1.1</dt>
+<dd>
+<p>What are Scaled Copies?. [See:  <a href="./../../lessons/flags/index.shtml?pathway=reactive">Making Flags</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.7.1.5</dt>
+<dd>
+<p>The Size of the Scale Factor. [See:  <a href="./../../lessons/flags/index.shtml?pathway=reactive">Making Flags</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.7.4.1</dt>
+<dd>
+<p>Lots of Flags. [See:  <a href="./../../lessons/flags/index.shtml?pathway=reactive">Making Flags</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.7.6.11</dt>
+<dd>
+<p>Using Equations to Solve Problems. [See:  <a href="./../../lessons/defining-values/index.shtml?pathway=reactive">Defining Values</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.7.2.4</dt>
+<dd>
+<p>Proportional Relationships and Equations. [See:  <a href="./../../lessons/contracts/index.shtml?pathway=reactive">Contracts</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.7.2.5</dt>
+<dd>
+<p>Two Equations for Each Relationship. [See:  <a href="./../../lessons/contracts/index.shtml?pathway=reactive">Contracts</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.7.2.6</dt>
+<dd>
+<p>Using Equations to Solve Problems. [See:  <a href="./../../lessons/contracts/index.shtml?pathway=reactive">Contracts</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.7.6.13</dt>
+<dd>
+<p>Reintroducing Inequalities. [See:  <a href="./../../lessons/simple-data-types/index.shtml?pathway=reactive">Simple Data Types</a>.]</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1 coverageElement textbook-IM_Alg_1">
+<h2 id="_im_algebra_1"><a href="https://illustrativemathematics.org/">IM Algebra 1</a></h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">IM.Alg1.4.2</dt>
+<dd>
+<p>Function Notation. [See:  <a href="./../../lessons/contracts/index.shtml?pathway=reactive">Contracts</a>; <a href="./../../lessons/defining-values/index.shtml?pathway=reactive">Defining Values</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.Alg1.4.3</dt>
+<dd>
+<p>Interpreting &amp; Using Function Notation. [See:  <a href="./../../lessons/contracts/index.shtml?pathway=reactive">Contracts</a>; <a href="./../../lessons/flags/index.shtml?pathway=reactive">Making Flags</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.Alg1.1.6</dt>
+<dd>
+<p>Mystery Computations. [See:  <a href="./../../lessons/simple-data-types/index.shtml?pathway=reactive">Simple Data Types</a>.]</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1 coverageElement practices-NGSS">
+<h2 id="_science_and_engineering"><a href="https://ngss.nsta.org/practicesfull.aspx">Science and Engineering</a></h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">SEP.7</dt>
+<dd>
+<p>Engaging in Argument from Evidence. [See:  <a href="./../../lessons/defining-values/index.shtml?pathway=reactive">Defining Values</a>.]</p>
+</dd>
+<dt class="hdlist1">SEP.5</dt>
+<dd>
+<p>Using Mathematics and Computational Thinking. [See:  <a href="./../../lessons/function-composition/index.shtml?pathway=reactive">Function Composition</a>; <a href="./../../lessons/flags/index.shtml?pathway=reactive">Making Flags</a>.]</p>
+</dd>
+<dt class="hdlist1">SEP.8</dt>
+<dd>
+<p>Obtaining, Evaluating, and Communicating Information. [See:  <a href="./../../lessons/contracts/index.shtml?pathway=reactive">Contracts</a>.]</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1 coverageElement practices-MLR">
+<h2 id="_math_lang_routines"><a href="https://achievethecore.org/peersandpedagogy/developing-math-language-routines/">Math Lang. Routines</a></h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">MLR.6</dt>
+<dd>
+<p>Three Reads. [See:  <a href="./../../lessons/functions-dr/index.shtml?pathway=reactive">Solving Word Problems with the Design Recipe</a>.]</p>
+</dd>
+<dt class="hdlist1">MLR.5</dt>
+<dd>
+<p>Co-Craft Questions and Problems. [See:  <a href="./../../lessons/defining-values/index.shtml?pathway=reactive">Defining Values</a>.]</p>
+</dd>
+<dt class="hdlist1">MLR.1</dt>
+<dd>
+<p>Stronger and Clearer Each Time. [See:  <a href="./../../lessons/function-composition/index.shtml?pathway=reactive">Function Composition</a>; <a href="./../../lessons/functions-dr/index.shtml?pathway=reactive">Solving Word Problems with the Design Recipe</a>.]</p>
+</dd>
+<dt class="hdlist1">MLR.3</dt>
+<dd>
+<p>Clarify, Critique and Correct. [See:  <a href="./../../lessons/function-composition/index.shtml?pathway=reactive">Function Composition</a>; <a href="./../../lessons/flags/index.shtml?pathway=reactive">Making Flags</a>.]</p>
+</dd>
+<dt class="hdlist1">MLR.7</dt>
+<dd>
+<p>Compare and Connect. [See:  <a href="./../../lessons/function-composition/index.shtml?pathway=reactive">Function Composition</a>; <a href="./../../lessons/defining-values/index.shtml?pathway=reactive">Defining Values</a>; <a href="./../../lessons/flags/index.shtml?pathway=reactive">Making Flags</a>; <a href="./../../lessons/functions-dr/index.shtml?pathway=reactive">Solving Word Problems with the Design Recipe</a>.]</p>
+</dd>
+<dt class="hdlist1">MLR.2</dt>
+<dd>
+<p>Collect and Display. [See:  <a href="./../../lessons/contracts/index.shtml?pathway=reactive">Contracts</a>.]</p>
+</dd>
+<dt class="hdlist1">MLR.8</dt>
+<dd>
+<p>Discussion Supports. [See:  <a href="./../../lessons/contracts/index.shtml?pathway=reactive">Contracts</a>; <a href="./../../lessons/defining-values/index.shtml?pathway=reactive">Defining Values</a>.]</p>
+</dd>
+<dt class="hdlist1">MLR.4</dt>
+<dd>
+<p>Information Gap. [See:  <a href="./../../lessons/simple-data-types/index.shtml?pathway=reactive">Simple Data Types</a>.]</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1 coverageElement practices-CC">
+<h2 id="_math"><a href="http://corestandards.org/Math/">Math</a></h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">MP.3</dt>
+<dd>
+<p>Construct viable arguments and critique the reasoning of others. [See:  <a href="./../../lessons/functions-dr/index.shtml?pathway=reactive">Solving Word Problems with the Design Recipe</a>.]</p>
+</dd>
+<dt class="hdlist1">MP.4</dt>
+<dd>
+<p>Model with mathematics. [See:  <a href="./../../lessons/flags/index.shtml?pathway=reactive">Making Flags</a>; <a href="./../../lessons/functions-dr/index.shtml?pathway=reactive">Solving Word Problems with the Design Recipe</a>.]</p>
+</dd>
+<dt class="hdlist1">MP.2</dt>
+<dd>
+<p>Reason abstractly and quantitatively. [See:  <a href="./../../lessons/defining-values/index.shtml?pathway=reactive">Defining Values</a>; <a href="./../../lessons/flags/index.shtml?pathway=reactive">Making Flags</a>.]</p>
+</dd>
+<dt class="hdlist1">MP.8</dt>
+<dd>
+<p>Look for and express regularity in repeated reasoning. [See:  <a href="./../../lessons/defining-values/index.shtml?pathway=reactive">Defining Values</a>; <a href="./../../lessons/flags/index.shtml?pathway=reactive">Making Flags</a>.]</p>
+</dd>
+<dt class="hdlist1">MP.7</dt>
+<dd>
+<p>Look for and make use of structure. [See:  <a href="./../../lessons/defining-values/index.shtml?pathway=reactive">Defining Values</a>; <a href="./../../lessons/flags/index.shtml?pathway=reactive">Making Flags</a>; <a href="./../../lessons/functions-dr/index.shtml?pathway=reactive">Solving Word Problems with the Design Recipe</a>.]</p>
+</dd>
+<dt class="hdlist1">MP.5</dt>
+<dd>
+<p>Use appropriate tools strategically. [See:  <a href="./../../lessons/function-composition/index.shtml?pathway=reactive">Function Composition</a>.]</p>
+</dd>
+<dt class="hdlist1">MP.1</dt>
+<dd>
+<p>Make sense of problems and persevere in solving them. [See:  <a href="./../../lessons/function-composition/index.shtml?pathway=reactive">Function Composition</a>; <a href="./../../lessons/flags/index.shtml?pathway=reactive">Making Flags</a>; <a href="./../../lessons/functions-dr/index.shtml?pathway=reactive">Solving Word Problems with the Design Recipe</a>.]</p>
+</dd>
+<dt class="hdlist1">MP.6</dt>
+<dd>
+<p>Attend to precision. [See:  <a href="./../../lessons/simple-data-types/index.shtml?pathway=reactive">Simple Data Types</a>; <a href="./../../lessons/flags/index.shtml?pathway=reactive">Making Flags</a>.]</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1 coverageElement practices-K12CS">
+<h2 id="_k12cs"><a href="https://k12cs.org">K12CS</a></h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">P6</dt>
+<dd>
+<p>Testing and Refining Computational Artifacts. [See:  <a href="./../../lessons/re-scoring/index.shtml?pathway=reactive">Scoring</a>; <a href="./../../lessons/re-adding-levels/index.shtml?pathway=reactive">Adding Levels</a>.]</p>
+</dd>
+<dt class="hdlist1">P3</dt>
+<dd>
+<p>Recognizing and Defining Computational Problems. [See:  <a href="./../../lessons/re-refactoring/index.shtml?pathway=reactive">Refactoring</a>; <a href="./../../lessons/re-build-your-own-animation/index.shtml?pathway=reactive">Build Your Own Animation</a>; <a href="./../../lessons/re-adding-collisions/index.shtml?pathway=reactive">Adding Collisions</a>; <a href="./../../lessons/re-adding-levels/index.shtml?pathway=reactive">Adding Levels</a>; <a href="./../../lessons/re-making-pong/index.shtml?pathway=reactive">Making Pong</a>; <a href="./../../lessons/re-nested-structures/index.shtml?pathway=reactive">Going Deeper: Nested Structures</a>; <a href="./../../lessons/re-timers/index.shtml?pathway=reactive">Feature: Timers</a>.]</p>
+</dd>
+<dt class="hdlist1">P4</dt>
+<dd>
+<p>Developing and Using Abstractions. [See:  <a href="./../../lessons/re-refactoring/index.shtml?pathway=reactive">Refactoring</a>; <a href="./../../lessons/re-build-your-own-animation/index.shtml?pathway=reactive">Build Your Own Animation</a>; <a href="./../../lessons/re-adding-collisions/index.shtml?pathway=reactive">Adding Collisions</a>; <a href="./../../lessons/re-scoring/index.shtml?pathway=reactive">Scoring</a>; <a href="./../../lessons/re-making-pong/index.shtml?pathway=reactive">Making Pong</a>; <a href="./../../lessons/re-nested-structures/index.shtml?pathway=reactive">Going Deeper: Nested Structures</a>; <a href="./../../lessons/re-timers/index.shtml?pathway=reactive">Feature: Timers</a>.]</p>
+</dd>
+<dt class="hdlist1">P1</dt>
+<dd>
+<p>Fostering an Inclusive Computing Culture. [See:  <a href="./../../lessons/computing-needs-all-voices/index.shtml?pathway=reactive">Computing Needs All Voices</a>.]</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1 coverageElement practices-SJ">
+<h2 id="_social_justice"><a href="https://www.learningforjustice.org/sites/default/files/2017-06/TT_Social_Justice_Standards_0.pdf">Social Justice</a></h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">SJ.10</dt>
+<dd>
+<p>Students will examine diversity in social, cultural, political and historical contexts rather than in ways that are superficial or oversimplified.. [See:  <a href="./../../lessons/computing-needs-all-voices/index.shtml?pathway=reactive">Computing Needs All Voices</a>.]</p>
+</dd>
+<dt class="hdlist1">SJ.8</dt>
+<dd>
+<p>Students will respectfully express curiosity about the history and lived experiences of others and will exchange ideas and beliefs in an open-minded way. [See:  <a href="./../../lessons/computing-needs-all-voices/index.shtml?pathway=reactive">Computing Needs All Voices</a>.]</p>
+</dd>
+<dt class="hdlist1">SJ.7</dt>
+<dd>
+<p>Students will develop language and knowledge to accurately and respectfully describe how people (including themselves) are both similar to and different from each other and others in their identity groups.. [See:  <a href="./../../lessons/computing-needs-all-voices/index.shtml?pathway=reactive">Computing Needs All Voices</a>.]</p>
+</dd>
+<dt class="hdlist1">SJ.4</dt>
+<dd>
+<p>Students will express pride, confidence and healthy self-esteem without denying the value and dignity of other people.. [See:  <a href="./../../lessons/computing-needs-all-voices/index.shtml?pathway=reactive">Computing Needs All Voices</a>.]</p>
+</dd>
+<dt class="hdlist1">SJ.2</dt>
+<dd>
+<p>Students will develop language and historical and cultural knowledge that affirm and accurately describe their membership in multiple identity groups. [See:  <a href="./../../lessons/computing-needs-all-voices/index.shtml?pathway=reactive">Computing Needs All Voices</a>.]</p>
+</dd>
+<dt class="hdlist1">SJ.1</dt>
+<dd>
+<p>Students will develop positive social identities based on their membership in multiple groups in society. [See:  <a href="./../../lessons/computing-needs-all-voices/index.shtml?pathway=reactive">Computing Needs All Voices</a>.]</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-17 19:42:18 -0400
+</div>
+</div>
+</div>
+</body>
+</html>

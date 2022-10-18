@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Top Down or Bottom Up</title>
+
+  <link rel="stylesheet" href="../../../lib/curriculum.css" />
+      <script src="../../../extlib/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML%2Clocal%2Fmathjaxlocal.js"></script>
+      <script>window.status = "not_ready_to_print";</script>
+    <script src="../../../lib/langtable.js"></script>
+    <script src="../../../lib/bootstraplesson.js"></script>
+    <script src="../../../dependency-graph.js"></script>
+    <script src="../../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"Top Down or Bottom Up",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="workbookpage article wescheme" onload="renderSaveToDrive()">
+<div id="header">
+<h1>Top Down or Bottom Up</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<style>
+.MathJax { display: inline-block; }
+td.tableblock .paragraph { margin-bottom: 3ex; }
+td.tableblock .paragraph:last-child { margin-bottom: 0; }
+.strategy-box { border: solid 2px black !important; }
+.strategy-box .MathJax { margin-bottom: 0; }
+</style>
+<div class="paragraph">
+<p>Jamal’s trip requires him to drive 20mi to the airport, fly 2,300mi, and then take a bus 6mi to his hotel. His average speed driving to the airport is 40mph, the average speed of an airplane is 575mph, and the average speed of his bus is 15mph.</p>
+</div>
+<div class="paragraph">
+<p>Aside from time waiting for the plane or bus, how long is Jamal in transit?</p>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 1ex"></span></p>
+</div>
+<table class="tableblock frame-all grid-all stripes-none stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>Bear&#8217;s Strategy:</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Lion&#8217;s Strategy:</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="gdrive-only">Drive Time = 20 miles &times; 1hour/( 40 miles ) = 0.5 hours</span><script type="math/tex">\displaystyle Drive Time = 20 miles \times \frac{1hour}{40 miles} = 0.5 hours</script></p>
+</div>
+<div class="paragraph">
+<p><span class="gdrive-only">Fly Time = 2300 miles &times; 1hour/( 575 miles ) = 4 hours</span><script type="math/tex">\displaystyle Fly Time = 2300 miles \times \frac{1hour}{575 miles} = 4 hours</script></p>
+</div>
+<div class="paragraph">
+<p><span class="gdrive-only">Bus Time = 6 miles &times; 1hour/( 15 miles ) = 0.4 hours</span><script type="math/tex">\displaystyle Bus Time = 6 miles \times \frac{1hour}{15 miles} = 0.4 hours</script></p>
+</div>
+<div class="paragraph">
+<p><span class="gdrive-only">In Transit Time = Drive Time + Fly Time + Bus Time</span><script type="math/tex">\displaystyle In Transit Time = Drive Time + Fly Time + Bus Time</script></p>
+</div>
+<div class="paragraph">
+<p><span class="gdrive-only">0.5 + 4 + 0.4 = 4.9 hours</span><script type="math/tex">\displaystyle 0.5 + 4 + 0.4 = 4.9 hours</script></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="gdrive-only">In Transit Time = Drive Time + Fly Time + Bus Time</span><script type="math/tex">\displaystyle In Transit Time = Drive Time + Fly Time + Bus Time</script></p>
+</div>
+<div class="paragraph">
+<p><span class="gdrive-only">Drive Time = 20 miles &times; 1hour/( 40 miles ) = 0.5 hours</span><script type="math/tex">\displaystyle Drive Time = 20 miles \times \frac{1hour}{40 miles} = 0.5 hours</script></p>
+</div>
+<div class="paragraph">
+<p><span class="gdrive-only">Fly Time = 2300 miles &times; 1hour/( 575 miles ) = 4 hours</span><script type="math/tex">\displaystyle Fly Time = 2300 miles \times \frac{1hour}{575 miles} = 4 hours</script></p>
+</div>
+<div class="paragraph">
+<p><span class="gdrive-only">Bus Time = 6 miles &times; 1hour/( 15 miles ) = 0.4 hours</span><script type="math/tex">\displaystyle Bus Time = 6 miles \times \frac{1hour}{15 miles} = 0.4 hours</script></p>
+</div>
+<div class="paragraph">
+<p><span class="gdrive-only">0.5 + 4 + 0.4 = 4.9 hours</span><script type="math/tex">\displaystyle 0.5 + 4 + 0.4 = 4.9 hours</script></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><span class="autonum">1</span> Whose Strategy was Top Down? How do you know?</p>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 5ex"></span><span class="gdrive-only"><p>&#xa0;</p></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">2</span> Whose Strategy was Bottom Up? How do you know?</p>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 5ex"></span><span class="gdrive-only"><p>&#xa0;</p></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">3</span> Which way of thinking about the problem makes more sense to you?</p>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 5ex"></span><span class="gdrive-only"><p>&#xa0;</p></span></p>
+</div>
+<table class="tableblock frame-all grid-none stripes-none stretch strategy-box">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="title">What&#8217;s happening with that Math?!</span></p>
+</div>
+<div class="paragraph">
+<p>When calculating Jamal&#8217;s drive time, we multiplied distance by speed. More specifically, we multiplied the starting value (<span class="gdrive-only">20 miles</span><script type="math/tex">\displaystyle 20 miles</script>) by <span class="gdrive-only">( 1 hour )/( 40 miles )</span><script type="math/tex">\displaystyle \frac{1 hour}{40 miles}</script>. Why? Why not reverse it, to use <span class="gdrive-only">( 40 miles )/( 1 hour )</span><script type="math/tex">\displaystyle \frac{40 miles}{1 hour}</script>, as stated in the problem?</p>
+</div>
+<div class="paragraph">
+<p><span class="gdrive-only">Time</span><script type="math/tex">\displaystyle Time</script> is the desired outcome. Looking at the units, we can see that speed must have <span class="gdrive-only">miles</span><script type="math/tex">\displaystyle miles</script> as its denominator to <em>cancel out</em> the <span class="gdrive-only">miles</span><script type="math/tex">\displaystyle miles</script> in the starting value.</p>
+</div>
+<div class="paragraph center">
+<p><span class="gdrive-only">( 20 mi )/1 &times; 1hour/40miles = ( 20\requireenclose/ \enclosehorizontalstrikemiles &times;1hour )( 40 \requireenclose \enclosehorizontalstrikemiles ) = 20/40 hour = 1/2 hour</span><script type="math/tex">\displaystyle \frac{20 mi}{1} \times \frac{1hour}{40miles} = \frac{20\require{enclose} \enclose{horizontalstrike}{miles} \times1hour}{40 \require{enclose} \enclose{horizontalstrike}{miles}} = \frac{20}{40} hour = \frac{1}{2} hour</script></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-18 16:15:43 -0400
+</div>
+</div>
+</body>
+</html>

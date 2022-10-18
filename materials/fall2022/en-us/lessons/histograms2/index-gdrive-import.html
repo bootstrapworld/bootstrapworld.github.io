@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Visualizing the “Shape” of Data</title>
+<style>
+/* Overall document font */
+* {font-family: Lato, Arial, Helvetica, sans-serif;}
+
+/* document headings */
+h1,.lesson-section-1 {color: #75328A;}
+h1{font-size: 32px; font-family: sans-serif;}
+table.section-heading *, .lesson-section-1 h2{font-size: 32px; font-weight: 100;}
+table.section-heading{width: 100%;}
+table.section-heading td:last-child{text-align: right; color: #d9d2e9;}
+
+/* preamble section */
+table.preamble td {padding: 10px;}
+table.preamble td:first-child{background: #b7d893; width: 25%;}
+table.preamble td:first-child p {font-weight: bold; margin: 5px;}
+
+/* content used throughout the body */
+table{ border-collapse: collapse; border: none; }
+table.grid-all.frame-all {border: solid 1px black;}
+table.grid-none.frame-none {border-width: 0px;}
+
+.big {font-size: 30pt;}
+.vocab{font-weight: bold; font-style: italic;}
+.right{text-align: right;}
+.acknowledgment {
+  border-top: solid 1px black; 
+  font-style: italic; 
+  font-size: 8pt;
+}
+.lesson-point {
+  border-top: solid 1px black; 
+  border-bottom: solid 1px black; 
+  color: black;
+  font-weight: bold;
+}
+
+.web-page-only, #footer { display: none; visibility: hidden; }
+
+/* Callout boxes */
+.strategy-box, .notice-box {
+  background: #efefef;
+  border: solid 5px !important;
+  margin: 15px auto;
+  width: 100%;
+}
+.strategy-box { border-color: #1a73b5 !important; }
+.notice-box   { border-color: #7747a5 !important; }
+.strategy-box td, .notice-box td{ padding: 10px; }
+.strategy-box .title, .notice-box .title{
+  width: 100%;
+  display: block;
+  font-weight: bold;
+  font-size: 24px;
+  clear: both;
+  margin: 100px;
+}
+.strategy-box p.tableblock:first-child, .notice-box p.tableblock:first-child{
+  text-align: center;
+  padding-bottom: 15px;
+}
+.strategy-box .title { color: #1a73b5; }
+.notice-box   .title { color: #7747a5; }
+.strategy-box a, .notice-box a { color: blue; text-decoration: underline; }
+
+/* "Tables" of Evaluation */
+.operator{border-bottom: solid 1px black; text-align: center;}
+.operator * {text-align: center;}
+td {padding: 0px 10px; font-size: 14px;}
+table.expression {
+    font-family:"Courier New", Monaco, monospace;
+    border:     solid 1px black;
+    font-size:  1px;
+    max-width:  400px;
+    color:      #666666;
+    display:    inline-block;
+}
+table.args {border: none; text-align: center;}
+
+.wescheme-string,     .cm-scheme-string    {color: green;}
+.wescheme-number,     .cm-scheme-number    {color: blue;}
+.wescheme-boolean,    .cm-scheme-boolean   {color: darkred;}
+.wescheme-character,  .cm-scheme-character {color: orange;}
+.wescheme-symbol,     .cm-scheme-symbol    {color: steelblue;}
+.wescheme-comment,    .cm-scheme-comment   {color: orange; }
+
+.racket, .pyret, .studentAnswerCode, .studentAnswer, .pyretkeyword, .keyword_only {
+    font-family:"Courier New", Monaco, monospace !important; 
+    color: black;
+}
+
+/* Design Recipe */
+.recipe_instructions { font-style: italic; }
+table.recipe_title {
+  color:              white;
+  background:         gray;
+  display:            block;
+  padding:            0px;
+  font-size:          1.1rem;
+  font-weight:        bold;
+}</style>
+
+    <script src="../../lib/langtable.js"></script>
+    <script src="../../dependency-graph.js"></script>
+    <script src="../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:window.location.href,
+    filename:"Visualizing the \"Shape\" of Data",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="article LessonPlan pyret" onload="renderSaveToDrive()">
+<span id="body" onload="renderSaveToDrive()">
+<span id="header">
+<h1>Visualizing the “Shape” of Data</h1>
+
+  <span id="savetodrive-div"></span>
+
+</span>
+<span id="content">
+<span id="preamble_disabled" class="lessonSummary">
+<span class="sectionbody">
+<script>
+function preselect(klass) {
+  const items = document.getElementsByClassName(klass);
+  for (let i = 0; i < items.length; i++) {
+    items[i].style.display = 'none';
+  }
+  if (items.length > 0) {
+    items[0].style.display = 'block';
+  }
+}
+window.onload = function() {
+  preselect('alignedStandards');
+  preselect('alignedTextbooks');
+  preselect('alignedPractices');
+}
+function showStandardsAlignment() {
+  const selectTag = document.getElementsByClassName('standardsAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const stdTables = document.getElementsByClassName('alignedStandards');
+  //const intro = document.getElementsByClassName('alignedStandardsIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < stdTables.length; i++) {
+    const stdTable = stdTables[i];
+    stdTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optStd = opt.value;
+      for (let j = 0; j < stdTables.length; j++) {
+        const stdTable = stdTables[j];
+        if (stdTable.classList.contains(optStd)) {
+          stdTable.style.display = 'block';
+         // introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+function toggleNonPrereqDisplay() {
+  const inputTag = document.getElementsByClassName('sidebarinput')[0];
+  const checkedP = inputTag.checked;
+  const lessonTable = document.getElementsByClassName('sidebarlessons')[0];
+  const lis = lessonTable.getElementsByTagName('li');
+  for (let i = 0; i < lis.length; i++) {
+    const li = lis[i];
+    const lesson = li.getElementsByClassName('prerequisite');
+    if (lesson.length === 0) {
+      li.style.display = checkedP ? 'none' : 'block';
+    }
+  }
+}
+</script>
+<script>
+function showTextbooksAlignment() {
+  const selectTag = document.getElementsByClassName('textbooksAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const textbookTables = document.getElementsByClassName('alignedTextbooks');
+  //const intro = document.getElementsByClassName('alignedTextbooksIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < textbookTables.length; i++) {
+    const textbookTable = textbookTables[i];
+    textbookTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optTextbook = opt.value;
+      for (let j = 0; j < textbookTables.length; j++) {
+        const textbookTable = textbookTables[j];
+        if (textbookTable.classList.contains(optTextbook)) {
+          textbookTable.style.display = 'block';
+          //introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+</script>
+<script>
+function showPracticesAlignment() {
+  const selectTag = document.getElementsByClassName('practicesAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const practiceTables = document.getElementsByClassName('alignedPractices');
+  for (let i = 0; i < practiceTables.length; i++) {
+    const practiceTable = practiceTables[i];
+    practiceTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optPractice = opt.value;
+      for (let j = 0; j < practiceTables.length; j++) {
+        const practiceTable = practiceTables[j];
+        if (practiceTable.classList.contains(optPractice)) {
+          practiceTable.style.display = 'block';
+        }
+      }
+    }
+  }
+}
+</script>
+<span class="paragraph">
+<!-- </p>
+</span>
+--></span><span class="sidebar"><span id="toggle"></span><span class="paragraph"><!--
+<span class="paragraph">
+<p>
+--><span class="sidebarlessons"><strong>Lessons</strong>
+<ul></ul></span>
+</span>
+<table class="tableblock frame-all grid-all stretch sidebarstandards">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p><strong>Standards in this Lesson</strong>
+<select class="standardsAlignmentSelect"  onchange="showStandardsAlignment()"><option selected="selected" value="standards-CCSS-Math">CCSS-Math</option><option value="standards-CSTA">CSTA</option><option value="standards-K12CS">K12CS</option><option value="standards-Oklahoma">Oklahoma</option></select></p>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="dlist standards-CCSS-Math">
+<span class="title"><a href="http://corestandards.org/Math/">Common Core Math Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>6.SP.A</dt>
+<dd>
+<p>Develop understanding of statistical variability.</p>
+</dd>
+<dt class="hdlist1"><br/>6.SP.A.2</dt>
+<dd>
+<p>Understand that a set of data collected to answer a statistical question has a distribution which can be described by its center, spread, and overall shape.</p>
+</dd>
+<dt class="hdlist1"><br/>6.SP.B.4</dt>
+<dd>
+<p>Display numerical data in plots on a number line, including dot plots, histograms, and box plots.</p>
+</dd>
+<dt class="hdlist1"><br/>HSS.ID.A.1</dt>
+<dd>
+<p>Represent data with plots on the real number line (dot plots, histograms, and box plots).</p>
+</dd>
+<dt class="hdlist1"><br/>HSS.ID.A.3</dt>
+<dd>
+<p>Interpret differences in shape, center, and spread in the context of the data sets, accounting for possible effects of extreme data points (outliers).</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-CSTA">
+<span class="title"><a href="https://csteachers.org/page/standards">CSTA Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>1B-DA-06</dt>
+<dd>
+<p>Organize and present collected data visually to highlight relationships and support a claim.</p>
+</dd>
+<dt class="hdlist1"><br/>3A-DA-11</dt>
+<dd>
+<p>Create interactive data visualizations using software tools to help others better understand real-world phenomena.</p>
+</dd>
+<dt class="hdlist1"><br/>3B-AP-14</dt>
+<dd>
+<p>Construct solutions to problems using student-created components, such as procedures, modules and/or objects.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-K12CS">
+<span class="title"><a href="https://k12cs.org">K-12CS Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>9-12.Data and Analysis.Visualization and Transformation</dt>
+<dd>
+<p>Data can be transformed to remove errors, highlight or expose relationships, and/or make it easier for computers to process.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Oklahoma">
+<span class="title"><a href="https://sde.ok.gov/oklahoma-academic-standards">Oklahoma Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>OK.6.D.1.3</dt>
+<dd>
+<p>Create and analyze box and whisker plots observing how each segment contains one quarter of the data.</p>
+</dd>
+<dt class="hdlist1"><br/>OK.7.D.1.2</dt>
+<dd>
+<p>Use reasoning with proportions to display and interpret data in circle graphs (pie charts) and histograms. Choose the appropriate data display and know how to create the display using a spreadsheet or other graphing technology.</p>
+</dd>
+<dt class="hdlist1"><br/>OK.8.DA.S.01</dt>
+<dd>
+<p>Analyze multiple methods of representing data and choose the most appropriate method for representing data.</p>
+</dd>
+<dt class="hdlist1"><br/>OK.A1.D.1.1</dt>
+<dd>
+<p>Describe a data set using data displays, describe and compare data sets using summary statistics, including measures of central tendency, location, and spread. Know how to use calculators, spreadsheets, or other appropriate technology to display data and calculate summary statistics.</p>
+</dd>
+<dt class="hdlist1"><br/>OK.L1.AP.PD.05</dt>
+<dd>
+<p>Evaluate and refine computational artifacts to make them more user-friendly, efficient and/or accessible.</p>
+</dd>
+<dt class="hdlist1"><br/>OK.PA.A.2.2</dt>
+<dd>
+<p>Identify, describe, and analyze linear relationships between two variables.</p>
+</dd>
+<dt class="hdlist1"><br/>OK.PA.D.1.1</dt>
+<dd>
+<p>Describe the impact that inserting or deleting a data point has on the mean and the median of a data set. Know how to create data displays using a spreadsheet and use a calculator to examine this impact.</p>
+</dd>
+</dl>
+</span></span></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch sidebartextbooks">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p><strong>Textbook Alignment</strong>
+<select class="textbooksAlignmentSelect"  onchange="showTextbooksAlignment()"><option selected="selected" value="textbook-IM_8"><a href="https://illustrativemathematics.org/">IM 8 Math™</a></option><option value="textbook-IM_6"><a href="https://illustrativemathematics.org/">IM 6 Math™</a></option></select></p>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="dlist alignedTextbooks textbook-IM_8">
+<span class="title"><a href="https://illustrativemathematics.org/">IM 8 Math™</a></span>
+<dl>
+<dt class="hdlist1"><br/>IM.8.6.1</dt>
+<dd>
+<p>Organizing Data</p>
+</dd>
+</dl>
+</span>
+<span class="dlist alignedTextbooks textbook-IM_6">
+<span class="title"><a href="https://illustrativemathematics.org/">IM 6 Math™</a></span>
+<dl>
+<dt class="hdlist1"><br/>IM.6.8.8</dt>
+<dd>
+<p>Describing Distributions on Histograms</p>
+</dd>
+<dt class="hdlist1"><br/>IM.6.8.7</dt>
+<dd>
+<p>Using Histograms to Answer Statistical Questions</p>
+</dd>
+<dt class="hdlist1"><br/>IM.6.8.6</dt>
+<dd>
+<p>Histograms</p>
+</dd>
+</dl>
+</span></span></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch sidebarpractices">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p><strong>Practices in this Lesson</strong>
+<select class="practicesAlignmentSelect"  onchange="showPracticesAlignment()"><option selected="selected" value="practices-NGSS"><a href="https://ngss.nsta.org/practicesfull.aspx">Science and Engineering</a></option><option value="practices-CC"><a href="http://corestandards.org/Math/">Math</a></option></select></p>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="dlist alignedPractices practices-NGSS">
+<span class="title"><a href="https://ngss.nsta.org/practicesfull.aspx">Science and Engineering</a></span>
+<dl>
+<dt class="hdlist1"><br/>SEP.3</dt>
+<dd>
+<p>Planning and Carrying Out Investigations</p>
+</dd>
+</dl>
+</span>
+<span class="dlist alignedPractices practices-CC">
+<span class="title"><a href="http://corestandards.org/Math/">Math</a></span>
+<dl>
+<dt class="hdlist1"><br/>MP.4</dt>
+<dd>
+<p>Model with mathematics</p>
+</dd>
+</dl>
+</span></span></td>
+</tr>
+</tbody>
+</table>
+<span class="paragraph">
+<!-- </p>
+</span>
+--></span><!--
+<span class="paragraph">
+<p>
+-->
+</span>
+<span class="paragraph description">
+<p>Students explore the concept of "shape", using histograms to determine whether a dataset has skewness, and what the direction of the skewness means. They apply this knowledge to the Animals Dataset, and then to their own.</p>
+</span>
+<table class="tableblock frame-all grid-all stripes-none stretch left-header preamble">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>Lesson Goals</p>
+</span></span></td>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>Students will be able to&#8230;&#8203;</p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p>Create histograms for variables in the Animals Dataset</p>
+</li>
+<li>
+<p>Describe the distribution of quantitative columns of the Animals Dataset, using proper terminology.</p>
+</li>
+</ul>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>Student-facing Lesson Goals</p>
+</span></span></td>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="ulist">
+<ul>
+<li>
+<p>Let&#8217;s investigate what the shape of a histogram can tell us about the data.</p>
+</li>
+</ul>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>Materials</p>
+</span></span></td>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="ulist materials-links">
+<ul>
+<li>
+<p><a href="https://docs.google.com/presentation/d/1OUgPAuPGASjqKtBJDnDJZqqrOF8mB5jbqzlylIgX_i0/" target="_blank" rel="noopener">Lesson Slides</a></p>
+</li>
+<li>
+<p><span class="StarterFile"><a href="https://code.pyret.org/editor#share=1lGjndLCWSEoIrV3ErZMXSn_-xakqGvrK" target="_blank" rel="noopener">Animals Starter File</a></span></p>
+</li>
+<li>
+<p><span class="StarterFile"><a href="https://docs.google.com/document/d/1eBYMjAxrn0rPp0Mqd52cRjmwyXSz51RfBWe67DR93es/copy" target="_blank" rel="noopener">Dataset Exploration</a></span></p>
+</li>
+<li>
+<p><span class="materialSectionPlaceholder"> </span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/histograms2/pages/identifying-shape-histograms.html" target="_blank" rel="noopener">Identifying Shape - Histograms</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/histograms2/pages/shape-of-animals-dataset.html" target="_blank" rel="noopener">Data Cycle: Shape of the Animals Dataset</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/histograms2/pages/outliers-discussion.html" target="_blank" rel="noopener">Outliers: Should they Stay or Should they Go?</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/histograms2/pages/data-cycle-quantitative.html" target="_blank" rel="noopener">Data Cycle: Shape of My Dataset</a></span></p>
+</li>
+<li>
+<p><strong>Classroom visual:</strong> <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/javascript:showLangTable()">Language Table</a></p>
+</li>
+</ul>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>Preparation</p>
+</span></span></td>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="ulist">
+<ul>
+<li>
+<p>All students should log into <a href="https://code.pyret.org/" target="_blank" rel="noopener">code.pyret.org (CPO)</a> and open their saved "Animals Starter File". If they don&#8217;t have the file, they can open a new one from <a href="https://code.pyret.org/editor#share=1lGjndLCWSEoIrV3ErZMXSn_-xakqGvrK" target="_blank" rel="noopener">Animals Starter File</a>.</p>
+</li>
+</ul>
+</span></span></td>
+</tr>
+</tbody>
+</table>
+<span class="dlist glossary">
+<span class="title">Glossary</span>
+<dl>
+<dt class="hdlist1"><br/>average</dt>
+<dd>
+<p>a representation of the center, or 'typical' value in a set of numbers, calculated as the sum of those numbers divided by the number of values.</p>
+</dd>
+<dt class="hdlist1"><br/>distribution</dt>
+<dd>
+<p>a description of the number of times or relative probabilities that different quantities occur in a sample</p>
+</dd>
+<dt class="hdlist1"><br/>histogram</dt>
+<dd>
+<p>a display of quantitative data that uses vertical bars positioned over bins (sub-intervals); each bar’s height reflects the count or percentage of data values in that bin.</p>
+</dd>
+<dt class="hdlist1"><br/>quantitative data</dt>
+<dd>
+<p>number values for which arithmetic makes sense</p>
+</dd>
+<dt class="hdlist1"><br/>shape</dt>
+<dd>
+<p>The aspect of a dataset - visible in a histogram or box plot - that describes which values are more or less common.</p>
+</dd>
+<dt class="hdlist1"><br/>skewed left</dt>
+<dd>
+<p>A distribution is skewed left if there are a few values that are fairly low compared to the others. A histogram of data that is skewed left will have a clump of taller bars on the right, with smaller ones trailing off to the left, like the shape of the toes on a left foot.</p>
+</dd>
+<dt class="hdlist1"><br/>skewed right</dt>
+<dd>
+<p>A distribution is skewed right if there are a few values that are fairly high compared to the bulk of data values. A histogram of data that is skewed right will have a clump of taller bars on the left, with smaller ones trailing off to the right, like the shape of the toes on a right foot.</p>
+</dd>
+<dt class="hdlist1"><br/>symmetric</dt>
+<dd>
+<p>A symmetric distribution has a balanced shape, showing that it&#8217;s just as likely for the variable to take lower values as higher values.</p>
+</dd>
+</dl>
+</span>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<table class="grid-none frame-none section-heading"><tr><td width="65%">Describing Shape </td><td width="35%">30 minutes</td></tr></table>
+<span class="sectionbody">
+<span class="sect2 lesson-section-2">
+<h3 id="_overview">Overview</h3>
+<span class="paragraph">
+<p>This activity focuses on <em>describing shape</em> based on a <span class="vocab">histogram</span>. Students learn about "left skewed", "right skewed", and "symmetric" data, and what those descriptions tell us about a dataset.</p>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_launch">Launch</h3>
+<span class="paragraph">
+<p><span class="vocab">Shape</span> is one way to quickly describe what values are more or less common in a dataset. Some might occur very frequently, while others are rare. This description is a called a <span class="vocab">distribution</span>, because it shows where data points are clustered together or spread thin. Data Scientists spend a lot of time looking at data displays to examine their shape! If all you look at is the numbers, you lose a lot of insight into your dataset.
+ (<a href="https://www.autodesk.com/research/publications/same-stats-different-graphs" target="_blank" rel="noopener">This page from Autodesk</a> is a wonderful example!)</p>
+</span>
+<div class="paragraph lesson-point">
+<p>Histograms create <em>fixed-size</em> bins, which contain varying numbers of data points.</p>
+</div>
+<span class="paragraph">
+<p><span class="right"><span class="image-figure"><span class="image"><img src="images/f3cb2b741a4abcde.png" alt="skew right" width="300" height="A hill-shaped histogram" title="skew right"></span><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/images/f3cb2b741a4abcde.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></p>
+</span>
+<span class="paragraph">
+<p>We can think of the data being "squeezed" into these fixed bins, like globs of pizza dough being pushed into tubes. When there isn&#8217;t much data that fits into a bin, the tube is mostly empty. But when lots of data points fall within a bin, the dough stacks up in the tube. This is why the height of a histogram bar tells us how much data is "squeezed" into that bin!</p>
+</span>
+<span class="paragraph">
+<p>Consider the image on the right: most of the data points are clustered on the left side, and it contains a few unusually high values way off to the right. But how do we describe this shape, and what does it mean?</p>
+</span>
+<span class="paragraph">
+<p><span style="clear: both;display: block"></span>
+Let&#8217;s look at some real-world examples of the most common shapes:</p>
+</span>
+<span class="paragraph">
+<p><strong>1. Symmetric: values are balanced on either side of the middle.</strong></p>
+</span>
+<span class="paragraph">
+<p><span class="right"><span class="image-figure"><span class="image"><img src="images/0d3245663a4983ca.png" alt="A hill-shaped histogram, with both sides sloping away from the peak equally" width="300" title="A hill-shaped histogram, with both sides sloping away from the peak equally"></span><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/images/0d3245663a4983ca.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span>
+In a <span class="vocab">symmetric</span> distribution, it’s just as likely for the variable to take a value a certain distance below the middle as it is to take a value that same distance above the middle. Examples:</p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p>It’s just as likely for a 12yr old to be a certain number of inches below <span class="vocab">average</span> height as it is to be that number of inches above average height.</p>
+</li>
+<li>
+<p>In a standardized test, most students score fairly close to what’s average. Some students score above average, and just as many score below. The shape is symmetric.</p>
+</li>
+</ul>
+</span>
+<span class="paragraph">
+<p><strong>2. Skewed left: low outliers.</strong></p>
+</span>
+<span class="paragraph">
+<p><span class="right"><span class="image-figure"><span class="image"><img src="images/edc8ccabbc42947a.png" alt="A hill-shaped histogram, with a clump of taller bars on the right side, and smaller bars trailing off to the left=" width="300" title="A hill-shaped histogram, with a clump of taller bars on the right side, and smaller bars trailing off to the left="></span><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/images/edc8ccabbc42947a.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></p>
+</span>
+<span class="paragraph">
+<p>In a distribution that is <span class="vocab">skewed left</span>, values are clumped around what’s typical, but they trail off to the left with a few unusually low values. Examples:</p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p>Most adults will have close to a full set of 32 teeth, but a few hockey players might have a very small number of teeth. We won’t get anyone in our dataset who has 10 or 20 <em>extra</em> teeth in their mouths!</p>
+</li>
+<li>
+<p>If the school cafeteria mostly buys canned goods in large commercial sizes, but buys a few items in household sizes, then if we looked at the ounces per can we’d see a shape that has left skewness and/or low outliers.</p>
+</li>
+</ul>
+</span>
+<span class="paragraph">
+<p>A skew-left distibution will look like the toes on your left foot!</p>
+</span>
+<span class="paragraph">
+<p><strong>3. Skewed right, or high outliers.</strong></p>
+</span>
+<span class="paragraph">
+<p><span class="right"><span class="image-figure"><span class="image"><img src="images/b34c0abe9c7f2b16.png" alt="A hill-shaped histogram, with a clump of taller bars on the left side, and smaller bars trailing off to the right side" width="300" title="A hill-shaped histogram, with a clump of taller bars on the left side, and smaller bars trailing off to the right side"></span><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/images/b34c0abe9c7f2b16.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></p>
+</span>
+<span class="paragraph">
+<p>In a distribution that is <span class="vocab">skewed right</span>, values are clumped around what’s typical, but they trail off to the right with a few unusually high values. We see this shape often in the real world, because there are many variables&#8201;&#8212;&#8201;like “income” or “time spent on the phone”&#8201;&#8212;&#8201;for which a few individuals have unusually high values, which aren’t balanced out by unusually low values (things like “income” and “phone time” can’t be less than zero). Examples:</p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p>Age when a woman in the U.S. gives birth would be skewed right or have high outliers. A few women would be much older (40+ years) than the average age of 26 (check the tabloids!), but none of them could be even close to 40 years <em>below</em> average to balance things out!</p>
+</li>
+<li>
+<p>A dataset of earnings almost always shows right skewness or high outliers, because there are usually a few values that are so far above average, they can’t be balanced out by any values that are so far below average. (Earnings can’t be negative.)</p>
+</li>
+</ul>
+</span>
+<span class="paragraph">
+<p>A skew-right distibution will look like the toes on your right foot!</p>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_investigate">Investigate</h3>
+<span class="openblock lesson-instruction">
+<span class="content">
+<span class="ulist">
+<ul>
+<li>
+<p>Make a histogram for the pounds column in the animals table, sorting the animals into 20-pound bins.</p>
+<span class="ulist">
+<ul>
+<li>
+<p><em>Students should enter the code: <code class="pyret">histogram(animals-table, "pounds", 20)</code> </em></p>
+</li>
+</ul>
+</span>
+</li>
+<li>
+<p>Would you describe the shape of your histogram as being skewed left, skewed right, or symmetric?</p>
+<span class="ulist">
+<ul>
+<li>
+<p><em>The histogram is skewed left.</em></p>
+</li>
+</ul>
+</span>
+</li>
+<li>
+<p>Which one of these statements is justified by the histogram’s shape? (1) A few of the animals were unusually light, (2) A few of the animals were unusually heavy, or (3) It was just as likely for an animal to be a certain amount below or above average weight.</p>
+<span class="ulist">
+<ul>
+<li>
+<p><em>The statement "a few of the animals were unusually heavy" is the only one that applies, given the histogram&#8217;s shape.</em></p>
+</li>
+</ul>
+</span>
+</li>
+<li>
+<p>Try bins of 1-pound intervals, then 100-pound intervals. Which of these three histograms best satisfies our rule of thumb?</p>
+<span class="ulist">
+<ul>
+<li>
+<p><em>Our rule of thumb is that a histogram should have between 5–10 bins. The first histogram we made - with 20-pound bins - had a total of ten bins, so it best satisfies our rule.</em></p>
+</li>
+</ul>
+</span>
+</li>
+<li>
+<p>On <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/histograms2/pages/identifying-shape-histograms.html" target="_blank" rel="noopener">Identifying Shape - Histograms</a>, describe the shape of the histograms you see there.</p>
+</li>
+<li>
+<p>On <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/histograms2/pages/shape-of-animals-dataset.html" target="_blank" rel="noopener">Data Cycle: Shape of the Animals Dataset</a>, describe the pounds histogram and another one you make yourself. When writing down what you notice, try to use the language Data Scientists use, discussing both skew and outliers.</p>
+</li>
+</ul>
+</span>
+</span>
+</span>
+<span class="paragraph">
+<p><strong>Outliers&#8230;&#8203; do they stay or do they go?</strong></p>
+</span>
+<span class="paragraph">
+<p><span class="right"><span class="image-figure"><span class="image"><img src="images/dc9bf630388283d3.png" alt="Histogram with a low outlier" width="300" title="Histogram with a low outlier"></span><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/images/dc9bf630388283d3.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></p>
+</span>
+<span class="paragraph">
+<p>Suppose we survey the heights of 12 year olds, and almost all values are clustered between 50-70in. There&#8217;s a very low outlier, however, at 6in. <em>Is there really a 6in tall 12 year old?</em> Probably not! This could very well be a typo (maybe someone meant to type "60" instead of "6"?). "Junk" data is harmful, because it can drastically change your results!</p>
+</span>
+<span class="paragraph">
+<p>Suppose we survey the number of minutes it takes for fans to find their seats at a stadium, and almost all values are clustered between 4-16 minutes.</p>
+</span>
+<span class="paragraph">
+<p><span class="right"><span class="image-figure"><span class="image"><img src="images/17c9a60dc6187bab.png" alt="Histogram with a high outlier" width="300" title="Histogram with a high outlier"></span><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/images/17c9a60dc6187bab.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></p>
+</span>
+<span class="paragraph">
+<p>There&#8217;s a very high outlier, however, at 35 minutes. <em>Did it really take someone 35m to find their seat?</em> Well, that&#8217;s very possible! Maybe it&#8217;s someone who takes a long time getting up stairs, or someone who had to go far out of their way to use the wheelchair ramp!</p>
+</span>
+<span class="paragraph">
+<p>An outlier can be "junk" data that you need to throw away as part of your analysis, or it could be a really important part of your analysis! As a data scientist, <strong>an outlier is a reason to look closer</strong>. And whether you decide to keep or remove it from your dataset, make sure you <strong>explain your reasons</strong> in your write-up!</p>
+</span>
+<span class="paragraph lesson-instruction">
+<p>Turn to <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/histograms2/pages/outliers-discussion.html" target="_blank" rel="noopener">Outliers: Should they Stay or Should they Go?</a>, and reflect on whether an outlier should be preserved or removed for analysis.</p>
+</span>
+<table class="tableblock frame-all grid-none stripes-none stretch strategy-box">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="title">What Shape Makes Sense?</span></p>
+<p class="tableblock">If time allows, here&#8217;s a great way to get students walking around and thinking more deeply about distributions!</p>
+<p class="tableblock">Using flip-chart paper or whiteboard space, designate poster-sized regions around the classroom titled "Symmetric", "Skew Left", and "Skew Right". You may want to have 2-3 of each, depending on the number of students and size of the classroom. Divide the class into teams, such that each group takes a region of the room.</p>
+<p class="tableblock">Each team looks at the region they&#8217;re in front of, and must (a) draw a histogram with that shape and (b) <em>brainstorm a sample that would likely result in that distribution</em>. Once each team has completed the task, the teams rotate to the next poster and brainstorm another sample. They complete this until every team has come up with at least one unique example for symmetric, skew left, and skew right distributions.</p></td>
+</tr>
+</tbody>
+</table>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_synthesize">Synthesize</h3>
+<span class="paragraph">
+<p>Discuss as a class, making sure students agree on the description of the shape.</p>
+</span>
+<span class="paragraph">
+<p>Histograms are a powerful way to display a dataset and see its <span class="vocab">shape</span>. But shape is just one of three key aspects that tell us what’s going on with a <span class="vocab">quantitative</span> column of a dataset. In the next lessons, we’ll explore the other two: center and spread.</p>
+</span>
+</span>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<table class="grid-none frame-none section-heading"><tr><td width="65%">Your Own Analysis </td><td width="35%">flexible</td></tr></table>
+<span class="sectionbody">
+<span class="sect2 lesson-section-2">
+<h3 id="_overview_2">Overview</h3>
+<span class="paragraph">
+<p>Students apply what they&#8217;ve learned to their own dataset.</p>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_launch_2">Launch</h3>
+<span class="paragraph">
+<p>How would you describe the shape of the quantitative columns in <em>your</em> dataset?</p>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_investigate_2">Investigate</h3>
+<span class="ulist lesson-instruction">
+<ul>
+<li>
+<p>How are the quantitative columns in your dataset distributed?</p>
+</li>
+<li>
+<p>Turn to <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/histograms2/pages/data-cycle-quantitative.html" target="_blank" rel="noopener">Data Cycle: Shape of My Dataset</a>, and use the Data Cycle to explore two quantitative columns with histograms.</p>
+</li>
+<li>
+<p>Then add these displays - and your interpretations! - to the "Making Displays" section of your <a href="https://docs.google.com/document/d/1eBYMjAxrn0rPp0Mqd52cRjmwyXSz51RfBWe67DR93es/copy" target="_blank" rel="noopener">Dataset Exploration</a>.</p>
+</li>
+<li>
+<p>Do these displays bring up any interesting questions? If so, add them to the end of the document.</p>
+</li>
+</ul>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_synthesize_2">Synthesize</h3>
+<span class="paragraph">
+<p>Share your findings. Were any of them surprising? What, if any, outliers did you discover when making histograms?</p>
+</span>
+</span>
+</span>
+</span>
+<span class="sect1 acknowledgmentsect">
+<span class="sectionbody">
+<span class="openblock acknowledgment"><hr/>
+<span class="content">
+<span class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</span>
+</span>
+</span>
+</span>
+</span>
+</span>
+<span id="footer">
+<span id="footer-text">
+Last updated 2022-10-17 19:42:15 -0400
+</span>
+</span>
+</span>
+</body>
+</html>

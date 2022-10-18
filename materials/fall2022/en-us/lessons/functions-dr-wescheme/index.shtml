@@ -1,0 +1,2164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Solving Word Problems with the Design Recipe</title>
+
+  <link rel="stylesheet" href="../../lib/curriculum.css" />
+    <link rel="stylesheet" href="../../lib/codemirror.css" />
+    <script src="../../lib/codemirror.js"></script>
+    <script src="../../lib/runmode.js"></script>
+    <script src="../../lib/scheme2.js"></script>
+    <script src="../../lib/pyret-mode.js"></script>
+    <script src="../../lib/langtable.js"></script>
+    <script src="../../lib/bootstraplesson.js"></script>
+    <script src="../../dependency-graph.js"></script>
+    <script src="../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"Solving Word Problems with the Design Recipe",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="article LessonPlan wescheme" onload="renderSaveToDrive()">
+<!--#include virtual="/menubar.ssi"-->
+<div id="body" onload="renderSaveToDrive()">
+<div id="header">
+<h1>Solving Word Problems with the Design Recipe</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<script>
+function preselect(klass) {
+  const items = document.getElementsByClassName(klass);
+  for (let i = 0; i < items.length; i++) {
+    items[i].style.display = 'none';
+  }
+  if (items.length > 0) {
+    items[0].style.display = 'block';
+  }
+}
+window.onload = function() {
+  preselect('alignedStandards');
+  preselect('alignedTextbooks');
+  preselect('alignedPractices');
+}
+function showStandardsAlignment() {
+  const selectTag = document.getElementsByClassName('standardsAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const stdTables = document.getElementsByClassName('alignedStandards');
+  //const intro = document.getElementsByClassName('alignedStandardsIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < stdTables.length; i++) {
+    const stdTable = stdTables[i];
+    stdTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optStd = opt.value;
+      for (let j = 0; j < stdTables.length; j++) {
+        const stdTable = stdTables[j];
+        if (stdTable.classList.contains(optStd)) {
+          stdTable.style.display = 'block';
+         // introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+function toggleNonPrereqDisplay() {
+  const inputTag = document.getElementsByClassName('sidebarinput')[0];
+  const checkedP = inputTag.checked;
+  const lessonTable = document.getElementsByClassName('sidebarlessons')[0];
+  const lis = lessonTable.getElementsByTagName('li');
+  for (let i = 0; i < lis.length; i++) {
+    const li = lis[i];
+    const lesson = li.getElementsByClassName('prerequisite');
+    if (lesson.length === 0) {
+      li.style.display = checkedP ? 'none' : 'block';
+    }
+  }
+}
+</script>
+<script>
+function showTextbooksAlignment() {
+  const selectTag = document.getElementsByClassName('textbooksAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const textbookTables = document.getElementsByClassName('alignedTextbooks');
+  //const intro = document.getElementsByClassName('alignedTextbooksIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < textbookTables.length; i++) {
+    const textbookTable = textbookTables[i];
+    textbookTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optTextbook = opt.value;
+      for (let j = 0; j < textbookTables.length; j++) {
+        const textbookTable = textbookTables[j];
+        if (textbookTable.classList.contains(optTextbook)) {
+          textbookTable.style.display = 'block';
+          //introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+</script>
+<script>
+function showPracticesAlignment() {
+  const selectTag = document.getElementsByClassName('practicesAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const practiceTables = document.getElementsByClassName('alignedPractices');
+  for (let i = 0; i < practiceTables.length; i++) {
+    const practiceTable = practiceTables[i];
+    practiceTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optPractice = opt.value;
+      for (let j = 0; j < practiceTables.length; j++) {
+        const practiceTable = practiceTables[j];
+        if (practiceTable.classList.contains(optPractice)) {
+          practiceTable.style.display = 'block';
+        }
+      }
+    }
+  }
+}
+</script>
+<div class="paragraph">
+<!-- </p>
+</div>
+--></div><div class="sidebar"><div id="toggle"></div><div class="paragraph"><!--
+<div class="paragraph">
+<p>
+--><div class="sidebarlessons"><strong>Lessons</strong>
+<ul></ul></div>
+</div>
+<table class="tableblock frame-all grid-all stretch sidebarstandards">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Standards in this Lesson</strong>
+<select class="standardsAlignmentSelect"  onchange="showStandardsAlignment()"><option selected="selected" value="standards-Alabama">Alabama</option><option value="standards-Arkansas">Arkansas</option><option value="standards-California">California</option><option value="standards-Colorado">Colorado</option><option value="standards-Connecticut">Connecticut</option><option value="standards-Delaware">Delaware</option><option value="standards-Georgia">Georgia</option><option value="standards-Hawaii">Hawaii</option><option value="standards-Idaho">Idaho</option><option value="standards-Illinois">Illinois</option><option value="standards-Iowa">Iowa</option><option value="standards-Kansas">Kansas</option><option value="standards-Kentucky">Kentucky</option><option value="standards-Louisiana">Louisiana</option><option value="standards-Maine">Maine</option><option value="standards-Michigan">Michigan</option><option value="standards-Maryland">Maryland</option><option value="standards-Massachusetts">Massachusetts</option><option value="standards-Mississippi">Mississippi</option><option value="standards-Missouri">Missouri</option><option value="standards-Montana">Montana</option><option value="standards-New Hampshire">New Hampshire</option><option value="standards-Nevada">Nevada</option><option value="standards-New Jersey">New Jersey</option><option value="standards-New Mexico">New Mexico</option><option value="standards-North Carolina">North Carolina</option><option value="standards-North Dakota">North Dakota</option><option value="standards-New York">New York</option><option value="standards-Oklahoma">Oklahoma</option><option value="standards-Ohio">Ohio</option><option value="standards-Oregon">Oregon</option><option value="standards-Pennsylvania">Pennsylvania</option><option value="standards-Rhode Island">Rhode Island</option><option value="standards-South Dakota">South Dakota</option><option value="standards-Tennessee">Tennessee</option><option value="standards-Utah">Utah</option><option value="standards-Vermont">Vermont</option><option value="standards-Washington">Washington</option><option value="standards-West Virginia">West Virginia</option><option value="standards-Wisconsin">Wisconsin</option><option value="standards-Wyoming">Wyoming</option></select></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist alignedStandards standards-Alabama">
+<div class="title"><a href="">Alabama Standards</a></div>
+<dl>
+<dt class="hdlist1">AL.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1">AL.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1">AL.7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.</p>
+</dd>
+<dt class="hdlist1">AL.8.F.B</dt>
+<dd>
+<p>Use functions to model relationships between quantities.</p>
+</dd>
+<dt class="hdlist1">AL.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1">AL.HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Arkansas">
+<div class="title"><a href="">Arkansas Standards</a></div>
+<dl>
+<dt class="hdlist1">AR.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1">AR.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1">AR.7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.</p>
+</dd>
+<dt class="hdlist1">AR.8.F.B</dt>
+<dd>
+<p>Use functions to model relationships between quantities.</p>
+</dd>
+<dt class="hdlist1">AR.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1">AR.HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-California">
+<div class="title"><a href="">California Standards</a></div>
+<dl>
+<dt class="hdlist1">CA.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1">CA.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1">CA.7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.</p>
+</dd>
+<dt class="hdlist1">CA.8.F.B</dt>
+<dd>
+<p>Use functions to model relationships between quantities.</p>
+</dd>
+<dt class="hdlist1">CA.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1">CA.HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Colorado">
+<div class="title"><a href="">Colorado Standards</a></div>
+<dl>
+<dt class="hdlist1">CO.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1">CO.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1">CO.7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.</p>
+</dd>
+<dt class="hdlist1">CO.8.F.B</dt>
+<dd>
+<p>Use functions to model relationships between quantities.</p>
+</dd>
+<dt class="hdlist1">CO.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1">CO.HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Connecticut">
+<div class="title"><a href="">Connecticut Standards</a></div>
+<dl>
+<dt class="hdlist1">CT.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1">CT.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1">CT.7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.</p>
+</dd>
+<dt class="hdlist1">CT.8.F.B</dt>
+<dd>
+<p>Use functions to model relationships between quantities.</p>
+</dd>
+<dt class="hdlist1">CT.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1">CT.HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Delaware">
+<div class="title"><a href="">Delaware Standards</a></div>
+<dl>
+<dt class="hdlist1">DE.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1">DE.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1">DE.7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.</p>
+</dd>
+<dt class="hdlist1">DE.8.F.B</dt>
+<dd>
+<p>Use functions to model relationships between quantities.</p>
+</dd>
+<dt class="hdlist1">DE.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1">DE.HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Georgia">
+<div class="title"><a href="">Delaware Standards</a></div>
+<dl>
+<dt class="hdlist1">GA.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1">GA.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1">GA.7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.</p>
+</dd>
+<dt class="hdlist1">GA.8.F.B</dt>
+<dd>
+<p>Use functions to model relationships between quantities.</p>
+</dd>
+<dt class="hdlist1">GA.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1">GA.HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Hawaii">
+<div class="title"><a href="">Hawaii Standards</a></div>
+<dl>
+<dt class="hdlist1">HI.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1">HI.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1">HI.7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.</p>
+</dd>
+<dt class="hdlist1">HI.8.F.B</dt>
+<dd>
+<p>Use functions to model relationships between quantities.</p>
+</dd>
+<dt class="hdlist1">HI.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1">HI.HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Idaho">
+<div class="title"><a href="">Idaho Standards</a></div>
+<dl>
+<dt class="hdlist1">ID.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1">ID.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1">ID.7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.</p>
+</dd>
+<dt class="hdlist1">ID.8.F.B</dt>
+<dd>
+<p>Use functions to model relationships between quantities.</p>
+</dd>
+<dt class="hdlist1">ID.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1">ID.HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Illinois">
+<div class="title"><a href="">Illinois Standards</a></div>
+<dl>
+<dt class="hdlist1">IL.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1">IL.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1">IL.7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.</p>
+</dd>
+<dt class="hdlist1">IL.8.F.B</dt>
+<dd>
+<p>Use functions to model relationships between quantities.</p>
+</dd>
+<dt class="hdlist1">IL.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1">IL.HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Iowa">
+<div class="title"><a href="https://iowacore.gov/standards/iowa-core-standards">Iowa Standards</a></div>
+<dl>
+<dt class="hdlist1">IA.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1">IA.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1">IA.7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.</p>
+</dd>
+<dt class="hdlist1">IA.8.F.B</dt>
+<dd>
+<p>Use functions to model relationships between quantities.</p>
+</dd>
+<dt class="hdlist1">IA.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1">IA.HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Kansas">
+<div class="title"><a href="">Kansas Standards</a></div>
+<dl>
+<dt class="hdlist1">KS.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1">KS.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1">KS.7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.</p>
+</dd>
+<dt class="hdlist1">KS.8.F.B</dt>
+<dd>
+<p>Use functions to model relationships between quantities.</p>
+</dd>
+<dt class="hdlist1">KS.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1">KS.HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Kentucky">
+<div class="title"><a href="">Kentucky Standards</a></div>
+<dl>
+<dt class="hdlist1">KY.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1">KY.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1">KY.7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.</p>
+</dd>
+<dt class="hdlist1">KY.8.F.B</dt>
+<dd>
+<p>Use functions to model relationships between quantities.</p>
+</dd>
+<dt class="hdlist1">KY.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1">KY.HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Louisiana">
+<div class="title"><a href="">Louisiana Standards</a></div>
+<dl>
+<dt class="hdlist1">LA.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1">LA.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1">LA.7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.</p>
+</dd>
+<dt class="hdlist1">LA.8.F.B</dt>
+<dd>
+<p>Use functions to model relationships between quantities.</p>
+</dd>
+<dt class="hdlist1">LA.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1">LA.HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Maine">
+<div class="title"><a href="">Maine Standards</a></div>
+<dl>
+<dt class="hdlist1">ME.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1">ME.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1">ME.7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.</p>
+</dd>
+<dt class="hdlist1">ME.8.F.B</dt>
+<dd>
+<p>Use functions to model relationships between quantities.</p>
+</dd>
+<dt class="hdlist1">ME.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1">ME.HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Michigan">
+<div class="title"><a href="">Michigan Standards</a></div>
+<dl>
+<dt class="hdlist1">MI.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1">MI.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1">MI.7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.</p>
+</dd>
+<dt class="hdlist1">MI.8.F.B</dt>
+<dd>
+<p>Use functions to model relationships between quantities.</p>
+</dd>
+<dt class="hdlist1">MI.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1">MI.HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Maryland">
+<div class="title"><a href="">Maryland Standards</a></div>
+<dl>
+<dt class="hdlist1">MD.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1">MD.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1">MD.7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.</p>
+</dd>
+<dt class="hdlist1">MD.8.F.B</dt>
+<dd>
+<p>Use functions to model relationships between quantities.</p>
+</dd>
+<dt class="hdlist1">MD.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1">MD.HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Massachusetts">
+<div class="title"><a href="https://www.doe.mass.edu/frameworks/">Massachusetts Standards</a></div>
+<dl>
+<dt class="hdlist1">MA.6-8.CT.a.2</dt>
+<dd>
+<p>Define a simple function that represents a more complex task/problem and can be reused to solve similar tasks/problems.</p>
+</dd>
+<dt class="hdlist1">MA.6-8.CT.b.2</dt>
+<dd>
+<p>Use logical reasoning to predict outputs given varying inputs.</p>
+</dd>
+<dt class="hdlist1">MA.6-8.CT.d.2</dt>
+<dd>
+<p>Use functions to hide the detail in a program.</p>
+</dd>
+<dt class="hdlist1">MA.6-8.CT.d.5</dt>
+<dd>
+<p>Trace programs step-by-step in order to predict their behavior.</p>
+</dd>
+<dt class="hdlist1">MA.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1">MA.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1">MA.7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.</p>
+</dd>
+<dt class="hdlist1">MA.8.F.B</dt>
+<dd>
+<p>Use functions to model relationships between quantities.</p>
+</dd>
+<dt class="hdlist1">MA.9-12.CT.b.2</dt>
+<dd>
+<p>Represent algorithms using structured language, such as pseudocode.</p>
+</dd>
+<dt class="hdlist1">MA.9-12.CT.d.12</dt>
+<dd>
+<p>Demonstrate how to document a program so that others can understand its design and implementation.</p>
+</dd>
+<dt class="hdlist1">MA.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1">MA.HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Mississippi">
+<div class="title"><a href="">Mississippi Standards</a></div>
+<dl>
+<dt class="hdlist1">MS.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1">MS.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1">MS.7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.</p>
+</dd>
+<dt class="hdlist1">MS.8.F.B</dt>
+<dd>
+<p>Use functions to model relationships between quantities.</p>
+</dd>
+<dt class="hdlist1">MS.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1">MS.HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Missouri">
+<div class="title"><a href="">Missouri Standards</a></div>
+<dl>
+<dt class="hdlist1">MO.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1">MO.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1">MO.7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.</p>
+</dd>
+<dt class="hdlist1">MO.8.F.B</dt>
+<dd>
+<p>Use functions to model relationships between quantities.</p>
+</dd>
+<dt class="hdlist1">MO.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1">MO.HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Montana">
+<div class="title"><a href="">Montana Standards</a></div>
+<dl>
+<dt class="hdlist1">MT.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1">MT.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1">MT.7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.</p>
+</dd>
+<dt class="hdlist1">MT.8.F.B</dt>
+<dd>
+<p>Use functions to model relationships between quantities.</p>
+</dd>
+<dt class="hdlist1">MT.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1">MT.HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist .alignedStandards.standards-New Hampshire">
+<div class="title"><a href="">New Hampshire Standards</a></div>
+<dl>
+<dt>NH.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt>NH.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt>NH.7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.</p>
+</dd>
+<dt>NH.8.F.B</dt>
+<dd>
+<p>Use functions to model relationships between quantities.</p>
+</dd>
+<dt>NH.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt>NH.HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Nevada">
+<div class="title"><a href="">Nevada Standards</a></div>
+<dl>
+<dt class="hdlist1">NV.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1">NV.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1">NV.7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.</p>
+</dd>
+<dt class="hdlist1">NV.8.F.B</dt>
+<dd>
+<p>Use functions to model relationships between quantities.</p>
+</dd>
+<dt class="hdlist1">NV.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1">NV.HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist .alignedStandards.standards-New Jersey">
+<div class="title"><a href="">New Jersey Standards</a></div>
+<dl>
+<dt>NJ.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt>NJ.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt>NJ.7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.</p>
+</dd>
+<dt>NJ.8.F.B</dt>
+<dd>
+<p>Use functions to model relationships between quantities.</p>
+</dd>
+<dt>NJ.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt>NJ.HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist .alignedStandards.standards-New Mexico">
+<div class="title"><a href="">New Mexico Standards</a></div>
+<dl>
+<dt>NM.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt>NM.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt>NM.7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.</p>
+</dd>
+<dt>NM.8.F.B</dt>
+<dd>
+<p>Use functions to model relationships between quantities.</p>
+</dd>
+<dt>NM.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt>NM.HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist .alignedStandards.standards-North Carolina">
+<div class="title"><a href="">North Carolina Standards</a></div>
+<dl>
+<dt>NC.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt>NC.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt>NC.7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.</p>
+</dd>
+<dt>NC.8.F.B</dt>
+<dd>
+<p>Use functions to model relationships between quantities.</p>
+</dd>
+<dt>NC.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt>NC.HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist .alignedStandards.standards-North Dakota">
+<div class="title"><a href="">North Dakota Standards</a></div>
+<dl>
+<dt>ND.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt>ND.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt>ND.7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.</p>
+</dd>
+<dt>ND.8.F.B</dt>
+<dd>
+<p>Use functions to model relationships between quantities.</p>
+</dd>
+<dt>ND.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt>ND.HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist .alignedStandards.standards-New York">
+<div class="title"><a href="http://www.nysed.gov/curriculum-instruction/new-york-state-next-generation-mathematics-learning-standards">New York Standards</a></div>
+<dl>
+<dt>NY.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt>NY.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt>NY.7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.</p>
+</dd>
+<dt>NY.8.F.B</dt>
+<dd>
+<p>Use functions to model relationships between quantities.</p>
+</dd>
+<dt>NY.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt>NY.HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Oklahoma">
+<div class="title"><a href="https://sde.ok.gov/oklahoma-academic-standards">Oklahoma Standards</a></div>
+<dl>
+<dt class="hdlist1">OK.3.AP.PD.01</dt>
+<dd>
+<p>Use an iterative process to plan the development of a program while solving simple problems.</p>
+</dd>
+<dt class="hdlist1">OK.3.AP.PD.04</dt>
+<dd>
+<p>Communicate and explain your program development using comments, presentations and demonstrations.</p>
+</dd>
+<dt class="hdlist1">OK.4.AP.PD.04</dt>
+<dd>
+<p>Communicate and explain your program development using comments, presentations and demonstrations.</p>
+</dd>
+<dt class="hdlist1">OK.5.AP.PD.04</dt>
+<dd>
+<p>Communicate and explain your program development using comments, presentations and demonstrations.</p>
+</dd>
+<dt class="hdlist1">OK.6.AP.A.01</dt>
+<dd>
+<p>Use an existing algorithm in natural language or pseudocode to solve complex problems.</p>
+</dd>
+<dt class="hdlist1">OK.6.AP.PD.05</dt>
+<dd>
+<p>Document text-based programs in order to make them easier to follow, test, and debug.</p>
+</dd>
+<dt class="hdlist1">OK.7.AP.A.01</dt>
+<dd>
+<p>Select and modify an existing algorithm in natural language or pseudocode to solve complex problems.</p>
+</dd>
+<dt class="hdlist1">OK.7.AP.PD.05</dt>
+<dd>
+<p>Document text-based programs of increasing complexity in order to make them easier to follow, test, and debug.</p>
+</dd>
+<dt class="hdlist1">OK.8.AP.A.01</dt>
+<dd>
+<p>Design algorithms in natural language, flow and control diagrams, comments within code, and/or pseudocode to solve complex problems.</p>
+</dd>
+<dt class="hdlist1">OK.8.AP.PD.04</dt>
+<dd>
+<p>Explain how effective communication between participants is required for successful collaboration when developing computational artifacts.</p>
+</dd>
+<dt class="hdlist1">OK.8.AP.PD.05</dt>
+<dd>
+<p>Document text-based programs of increasing complexity in order to make them easier to follow, test, and debug.</p>
+</dd>
+<dt class="hdlist1">OK.L2.AP.PD.05</dt>
+<dd>
+<p>Develop and use a series of test cases to verify that a program performs according to its design specifications.</p>
+</dd>
+<dt class="hdlist1">OK.MAP.7</dt>
+<dd>
+<p>Develop the ability to communicate mathematically.</p>
+</dd>
+<dt class="hdlist1">OK.PA.A.1.2</dt>
+<dd>
+<p>Use linear functions to represent and explain real-world and mathematical situations.</p>
+</dd>
+<dt class="hdlist1">OK.PA.A.1.3</dt>
+<dd>
+<p>Identify a function as linear if it can be expressed in the form y = mx + b or if its graph is a straight line.</p>
+</dd>
+<dt class="hdlist1">OK.PA.A.2</dt>
+<dd>
+<p>Recognize linear functions in real-world and mathematical situations; represent linear functions and other functions with tables, verbal descriptions, symbols, and graphs; solve problems involving linear functions and interpret results in the original context.</p>
+</dd>
+<dt class="hdlist1">OK.PA.A.2.1</dt>
+<dd>
+<p>Represent linear functions with tables, verbal descriptions, symbols, and graphs; translate from one representation to another.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Ohio">
+<div class="title"><a href="">Ohio Standards</a></div>
+<dl>
+<dt class="hdlist1">OH.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1">OH.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1">OH.7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.</p>
+</dd>
+<dt class="hdlist1">OH.8.F.B</dt>
+<dd>
+<p>Use functions to model relationships between quantities.</p>
+</dd>
+<dt class="hdlist1">OH.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1">OH.HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Oregon">
+<div class="title"><a href="">Oregon Standards</a></div>
+<dl>
+<dt class="hdlist1">OR.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1">OR.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1">OR.7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.</p>
+</dd>
+<dt class="hdlist1">OR.8.F.B</dt>
+<dd>
+<p>Use functions to model relationships between quantities.</p>
+</dd>
+<dt class="hdlist1">OR.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1">OR.HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Pennsylvania">
+<div class="title"><a href="">Pennsylvania Standards</a></div>
+<dl>
+<dt class="hdlist1">PA.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1">PA.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1">PA.7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.</p>
+</dd>
+<dt class="hdlist1">PA.8.F.B</dt>
+<dd>
+<p>Use functions to model relationships between quantities.</p>
+</dd>
+<dt class="hdlist1">PA.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1">PA.HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist .alignedStandards.standards-Rhode Island">
+<div class="title"><a href="">Rhode Island Standards</a></div>
+<dl>
+<dt>RI.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt>RI.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt>RI.7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.</p>
+</dd>
+<dt>RI.8.F.B</dt>
+<dd>
+<p>Use functions to model relationships between quantities.</p>
+</dd>
+<dt>RI.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt>RI.HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist .alignedStandards.standards-South Dakota">
+<div class="title"><a href="">South Dakota Standards</a></div>
+<dl>
+<dt>SD.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt>SD.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt>SD.7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.</p>
+</dd>
+<dt>SD.8.F.B</dt>
+<dd>
+<p>Use functions to model relationships between quantities.</p>
+</dd>
+<dt>SD.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt>SD.HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Tennessee">
+<div class="title"><a href="">Tennessee Standards</a></div>
+<dl>
+<dt class="hdlist1">TN.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1">TN.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1">TN.7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.</p>
+</dd>
+<dt class="hdlist1">TN.8.F.B</dt>
+<dd>
+<p>Use functions to model relationships between quantities.</p>
+</dd>
+<dt class="hdlist1">TN.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1">TN.HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Utah">
+<div class="title"><a href="">Utah Standards</a></div>
+<dl>
+<dt class="hdlist1">UT.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1">UT.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1">UT.7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.</p>
+</dd>
+<dt class="hdlist1">UT.8.F.B</dt>
+<dd>
+<p>Use functions to model relationships between quantities.</p>
+</dd>
+<dt class="hdlist1">UT.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1">UT.HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Vermont">
+<div class="title"><a href="">Vermont Standards</a></div>
+<dl>
+<dt class="hdlist1">VT.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1">VT.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1">VT.7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.</p>
+</dd>
+<dt class="hdlist1">VT.8.F.B</dt>
+<dd>
+<p>Use functions to model relationships between quantities.</p>
+</dd>
+<dt class="hdlist1">VT.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1">VT.HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Washington">
+<div class="title"><a href="">Washington Standards</a></div>
+<dl>
+<dt class="hdlist1">WA.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1">WA.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1">WA.7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.</p>
+</dd>
+<dt class="hdlist1">WA.8.F.B</dt>
+<dd>
+<p>Use functions to model relationships between quantities.</p>
+</dd>
+<dt class="hdlist1">WA.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1">WA.HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist .alignedStandards.standards-West Virginia">
+<div class="title"><a href="">West Virginia Standards</a></div>
+<dl>
+<dt>WV.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt>WV.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt>WV.7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.</p>
+</dd>
+<dt>WV.8.F.B</dt>
+<dd>
+<p>Use functions to model relationships between quantities.</p>
+</dd>
+<dt>WV.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt>WV.HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Wisconsin">
+<div class="title"><a href="">Wisconsin Standards</a></div>
+<dl>
+<dt class="hdlist1">WI.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1">WI.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1">WI.7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.</p>
+</dd>
+<dt class="hdlist1">WI.8.F.B</dt>
+<dd>
+<p>Use functions to model relationships between quantities.</p>
+</dd>
+<dt class="hdlist1">WI.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1">WI.HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Wyoming">
+<div class="title"><a href="">Wyoming Standards</a></div>
+<dl>
+<dt class="hdlist1">WY.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1">WY.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1">WY.7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.</p>
+</dd>
+<dt class="hdlist1">WY.8.F.B</dt>
+<dd>
+<p>Use functions to model relationships between quantities.</p>
+</dd>
+<dt class="hdlist1">WY.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1">WY.HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch sidebarpractices">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Practices in this Lesson</strong>
+<select class="practicesAlignmentSelect"  onchange="showPracticesAlignment()"><option selected="selected" value="practices-MLR"><a href="https://achievethecore.org/peersandpedagogy/developing-math-language-routines/">Math Lang. Routines</a></option><option value="practices-CC"><a href="http://corestandards.org/Math/">Math</a></option></select></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist alignedPractices practices-MLR">
+<div class="title"><a href="https://achievethecore.org/peersandpedagogy/developing-math-language-routines/">Math Lang. Routines</a></div>
+<dl>
+<dt class="hdlist1">MLR.7</dt>
+<dd>
+<p>Compare and Connect</p>
+</dd>
+<dt class="hdlist1">MLR.6</dt>
+<dd>
+<p>Three Reads</p>
+</dd>
+<dt class="hdlist1">MLR.1</dt>
+<dd>
+<p>Stronger and Clearer Each Time</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedPractices practices-CC">
+<div class="title"><a href="http://corestandards.org/Math/">Math</a></div>
+<dl>
+<dt class="hdlist1">MP.4</dt>
+<dd>
+<p>Model with mathematics</p>
+</dd>
+<dt class="hdlist1">MP.7</dt>
+<dd>
+<p>Look for and make use of structure</p>
+</dd>
+<dt class="hdlist1">MP.1</dt>
+<dd>
+<p>Make sense of problems and persevere in solving them</p>
+</dd>
+<dt class="hdlist1">MP.3</dt>
+<dd>
+<p>Construct viable arguments and critique the reasoning of others</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<!-- </p>
+</div>
+--></div><!--
+<div class="paragraph">
+<p>
+-->
+</div>
+<div class="paragraph">
+<p><span class="other-proglang">(Also available in <a href="../../lessons/functions-dr/index.shtml">Pyret</a>)</span></p>
+</div>
+<div class="paragraph description">
+<p>Students are introduced to the Design Recipe as a scaffold for breaking down word problems into smaller steps. They apply the Design Recipe to fixing a file that launches a rocket!</p>
+</div>
+<table class="tableblock frame-all grid-all stripes-none stretch left-header preamble">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Lesson Goals</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Students will be able to:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Understand how to use the Design Recipe to break down word problems.</p>
+</li>
+<li>
+<p>Create a strong purpose statement that details in their own words what the function should do.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Student-Facing Lesson Goals</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>I can write my own function in WeScheme .</p>
+</li>
+<li>
+<p>I can use the Design Recipe to break down word problems when writing a function.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Materials</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist materials-links">
+<ul>
+<li>
+<p><a href="https://docs.google.com/presentation/d/1w4ewNtxG6Nnv-Bd1a9nZCBAOaYVopv8G1tSbLGLziCw/" target="_blank" rel="noopener">Lesson Slides</a></p>
+</li>
+<li>
+<p><span class="StarterFile"><a href="https://www.wescheme.org/openEditor?publicId=N47mpskeWS" target="_blank" rel="noopener">Rocket Height Starter File</a></span></p>
+</li>
+<li>
+<p><span class="materialSectionPlaceholder"> </span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/functions-dr-wescheme/pages/matching-wp-purpose.html" target="_blank" rel="noopener">Matching Word Problems and Purpose Statements</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/functions-dr-wescheme/pages/create-examples-contracts-purpose-1.html" target="_blank" rel="noopener">Writing Examples from Purpose Statements</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/functions-dr-wescheme/pages/fixing-purpose.html" target="_blank" rel="noopener">Fixing Purpose Statements</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/functions-dr-wescheme/pages/rocket-height.html" target="_blank" rel="noopener">Word Problem: rocket-height</a></span></p>
+</li>
+<li>
+<p><span class="OptProject">[<a href="../../lessons/functions-dr-wescheme/pages/dr-telephone.html" target="_blank" rel="noopener">Design Recipe Telephone</a>] [<a href="../../lessons/functions-dr-wescheme/pages/rubric-dr.html" target="_blank" rel="noopener">rubric</a>]</span></p>
+</li>
+<li>
+<p><span class="StarterFile Optional"><a href="https://www.wescheme.org/openEditor?publicId=SR2kj0Xt6z" target="_blank" rel="noopener">Collaboration Starter File - For use with Design Recipe Telephone Set 1</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="../../lessons/functions-dr-wescheme/pages/create-examples-contracts-purpose-2.html" target="_blank" rel="noopener">Writing Examples from Purpose Statements 2</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="../../lessons/functions-dr-wescheme/pages/rocket-challenges.html" target="_blank" rel="noopener">Rocket Height Challenges</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="../../lessons/functions-dr-wescheme/pages/dr-blank.html" target="_blank" rel="noopener">Blank Design Recipe</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="../../lessons/functions-dr-wescheme/pages/dr-restaurants.html" target="_blank" rel="noopener">The Design Recipe (Restaurants)</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="../../lessons/functions-dr-wescheme/pages/dr-direct-variation.html" target="_blank" rel="noopener">The Design Recipe (Direct Variation)</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="../../lessons/functions-dr-wescheme/pages/dr-slope-intercept-1.html" target="_blank" rel="noopener">The Design Recipe (Slope/Intercept 1)</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="../../lessons/functions-dr-wescheme/pages/dr-neg-slope.html" target="_blank" rel="noopener">The Design Recipe (Negative Slope/Intercept)</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="../../lessons/functions-dr-wescheme/pages/dr-geometry-rectangles.html" target="_blank" rel="noopener">The Design Recipe (Geometry - Rectangles)</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="../../lessons/functions-dr-wescheme/pages/dr-geometry-rect-prism.html" target="_blank" rel="noopener">The Design Recipe (Geometry - Rectangular Prisms)</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="../../lessons/functions-dr-wescheme/pages/dr-geometry-circles.html" target="_blank" rel="noopener">The Design Recipe (Geometry - Circles)</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="../../lessons/functions-dr-wescheme/pages/dr-geometry-cylinder.html" target="_blank" rel="noopener">The Design Recipe (Geometry - Cylinders)</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="../../lessons/functions-dr-wescheme/pages/dr-breaking-even.html" target="_blank" rel="noopener">The Design Recipe (Breaking Even)</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="../../lessons/functions-dr-wescheme/pages/dr-marquee.html" target="_blank" rel="noopener">The Design Recipe (Marquee &amp; Cubing)</a></span></p>
+</li>
+<li>
+<p><strong>Classroom visual:</strong> <a href="javascript:showLangTable()">Language Table</a></p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Supplemental Resources</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a href="https://teacher.desmos.com/activitybuilder/custom/5d991b421172d473178c981b" target="_blank" rel="noopener">Design Recipe Practice - Desmos Activity</a></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Key Points for the Facilitator</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Code should be easy to read! There may be other people looking at your code who could use a hint about what it does, and even the person who wrote the code could benefit from a note here and there. <span class="vocab">Comments</span> are parts of a program that the computer ignores - they are for human eyes only!</p>
+</li>
+<li>
+<p>The <span class="vocab">Purpose Statement</span> is a structured way of restating the problem. In a computer program, it&#8217;s written as a comment in the code - something the computer doesn&#8217;t read.</p>
+</li>
+<li>
+<p>Remind students that the <span class="vocab">Domain</span> and <span class="vocab">Range</span> of a function must be a <em>set</em> of possible inputs and outputs. In math, some of these sets have shorthands like Integers, Rationals, etc. In programming, we have shorthands for <span class="vocab">data types</span> like Number, String, Image, Boolean, etc.</p>
+</li>
+<li>
+<p>If students struggle with creating the examples, use the Circle of Evaluation mapping activity or use role-playing to help students build up their understanding around the concept.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="dlist glossary">
+<div class="title">Glossary</div>
+<dl>
+<dt class="hdlist1">comments</dt>
+<dd>
+<p>messages in the code, generally ignored by the computer, to help people interacting with the code understand what it is doing</p>
+</dd>
+<dt class="hdlist1">data type</dt>
+<dd>
+<p>a way of classifying values, such as: Number, String, Image, Boolean, or any user-defined data structure</p>
+</dd>
+<dt class="hdlist1">domain</dt>
+<dd>
+<p>the type or set of inputs that a function expects</p>
+</dd>
+<dt class="hdlist1">example</dt>
+<dd>
+<p>shows the use of a function on specific inputs and the computation the function should perform on those inputs</p>
+</dd>
+<dt class="hdlist1">function definition</dt>
+<dd>
+<p>code that names a function, lists its variables, and states the expression to compute when the function is used</p>
+</dd>
+<dt class="hdlist1">purpose statement</dt>
+<dd>
+<p>a concise, detailed description of what a function does with its inputs</p>
+</dd>
+<dt class="hdlist1">range</dt>
+<dd>
+<p>the type or set of outputs that a function produces</p>
+</dd>
+<dt class="hdlist1">variable</dt>
+<dd>
+<p>a name or symbol that stands for some value or expression, often a value or expression that changes</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_the_design_recipe_duration_10_minutes_"><span class="section-link"><a href="#_the_design_recipe_duration_10_minutes_"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>The Design Recipe <span class="duration">10 minutes</span></h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_overview">Overview</h3>
+<div class="paragraph">
+<p>In this lesson students build on what they already know about multiple representations of functions (contracts, examples and definitions) to write purpose statements and gain fluency with the Design Recipe.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_launch">Launch</h3>
+<div class="paragraph">
+<p>A word problem is a description of a situation, but seeing the math behind the words can be challenging!</p>
+</div>
+<div class="paragraph">
+<p>In this lesson, students are going to learn a strategy for breaking down word problems, called the <strong>Design Recipe</strong>. They have actually seen most of the steps of the Design Recipe, but they <em>haven&#8217;t</em> seen how to put them together. There&#8217;s also one part of the Design Recipe that they haven&#8217;t seen yet: <em>writing a purpose statement</em>.</p>
+</div>
+<div class="paragraph">
+<p>On its own, a contract is not enough information to generate examples and write a <span class="vocab">function definition</span>. For example, the contract for <code class="racket">circle</code> says it needs a Number and two Strings, but that&#8217;s not the whole story! We can&#8217;t use negative numbers for the radius, we can only use <code class="racket">"solid"</code> or <code class="racket">"outline"</code> for the first String, and the last String has to be a color!</p>
+</div>
+<div class="paragraph">
+<p>Contracts are great, but we need more detail! Programmers and Mathematicians alike find it helpful to restate a problem in their own words. After all, if you can&#8217;t explain a problem to someone else, you probably don&#8217;t understand it yourself!</p>
+</div>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>On <a href="../../lessons/functions-dr-wescheme/pages/matching-wp-purpose.html" target="_blank" rel="noopener">Matching Word Problems and Purpose Statements</a>, we see four word problems and four <span class="vocab">purpose statements</span>.</p>
+</li>
+<li>
+<p>Take 2 minutes to read them and see if you can find any that describe the same thing and should be matched to each other.</p>
+</li>
+<li>
+<p>What pairs did you come up with?</p>
+</li>
+<li>
+<p>What do you Notice about those purpose statements? Do they have anything in common?</p>
+</li>
+</ul>
+</div>
+<div class="paragraph lesson-point">
+<p>Purpose statements should have enough details to allow us to write examples without looking at the word problem!</p>
+</div>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Turn to <a href="../../lessons/functions-dr-wescheme/pages/create-examples-contracts-purpose-1.html" target="_blank" rel="noopener">Writing Examples from Purpose Statements</a>, read the purpose statements, and write examples that satisfy each of the contracts and purpose statements.</p>
+</li>
+<li>
+<p>For more practice, complete <a href="../../lessons/functions-dr-wescheme/pages/create-examples-contracts-purpose-2.html" target="_blank" rel="noopener">Writing Examples from Purpose Statements 2</a>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>A good <span class="vocab">purpose statement</span> must have three things:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>A description of what the function <em>consumes</em></p>
+</li>
+<li>
+<p>A description of what the function <em>produces</em></p>
+</li>
+<li>
+<p>All the <em>relevant information</em> about how to produce that output</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_investigate">Investigate</h3>
+<div class="paragraph">
+<p>Have students turn to <a href="../../lessons/functions-dr-wescheme/pages/fixing-purpose.html" target="_blank" rel="noopener">Fixing Purpose Statements</a> and identify (1) what important information got left out of each of the purpose statements, and (2) what unnecessary information got included!</p>
+</div>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>What important information was missing from each purpose statement that you would need to solve the problem?</p>
+</li>
+<li>
+<p>What extra information was included, that wasn&#8217;t needed to solve the problem?</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_synthesize">Synthesize</h3>
+<div class="paragraph">
+<p>What are the important elements of purpose statements?
+Why are purpose statements useful?</p>
+</div>
+<table class="tableblock frame-all grid-none stripes-none stretch strategy-box">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="title">The Design Recipe in your Classroom</span></p>
+<p class="tableblock">The three steps of the Design Recipe are designed to mirror best practices that you may <em>already be using in your classroom</em>. It&#8217;s merely a collection of those practices, assembled in a structured way with great care taken to connecting each practice with the others.</p>
+<p class="tableblock"><strong>Writing the Contract and Purpose Statement is where students <em>understand</em> the word problem.</strong> If you have your students restate the problem in their own words, draw pictures, or underline the inputs and outputs in the word problem, <em>you&#8217;re already using this practice!</em></p>
+<p class="tableblock"><strong>Writing examples and circling-and-labeling what changes is where students <em>apply</em> their understanding</strong> to concrete inputs. If you have your students work through some concrete examples before jumping straight to variables and formulas, and ask them "what&#8217;s the rule?" or "what&#8217;s the pattern?", <em>you&#8217;re already using this practice!</em>.</p>
+<p class="tableblock"><strong>Writing the definition is where students <em>formalize and abstract</em> this understanding</strong> to work with <em>any input</em>. This is where they identify the structure of the rule or pattern, independently of any specific inputs.</p>
+<p class="tableblock">The order of the recipe is a recommendation based on 20+ years of research about what works for most students, but that doesn&#8217;t mean this order works best for <em>every</em> student! Some may find it easier to work through a concrete example or two before thinking about Domain and Range, and there&#8217;s nothing wrong with that. We encourage you to use the Recipe in your classroom as often as possible, teaching students to be flexible with the tools and representations it includes.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_rocket_height_duration_25_minutes_"><span class="section-link"><a href="#_rocket_height_duration_25_minutes_"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Rocket Height! <span class="duration">25 minutes</span></h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_overview_2">Overview</h3>
+<div class="paragraph">
+<p>Students are given a non-working program, which uses a linear function to determine the height of a rocket after a given length of time. The "broken" code is provided to lower cognitive load, allowing students to focus on comprehension (reading the code) and making use of structure (identifying where it&#8217;s broken).</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_launch_2">Launch</h3>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Open the <a href="https://www.wescheme.org/openEditor?publicId=N47mpskeWS" target="_blank" rel="noopener">Rocket Height Starter File</a> and look at the code.</p>
+</li>
+<li>
+<p>What do you Notice? What do you Wonder?</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Have students click "Run" to see the simulation start running on their computer.</p>
+</div>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>What happens when you press the space bar?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>The seconds change, but the rocket doesn&#8217;t move!</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>What were you expecting to happen?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>The rocket would move!</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>What happens when you press <code class="racket">b</code>?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>The seconds go back down, but the rocket height stays at 0</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Is <code class="racket">rocket-height</code> working?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>No.</em></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Direct students to close the window with the rocket, so that they can see the code.</p>
+</div>
+<div class="paragraph">
+<p>It would be nice to get a warning when a function doesn&#8217;t work right! Let&#8217;s investigate why we weren&#8217;t alerted to the problem when the computer checked the function definition against the examples.</p>
+</div>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Type <span class="obeyspaces"><code class="racket">(rocket-height 0)</code></span> into the Interactions Area.</p>
+</li>
+<li>
+<p>As the program is currently written, what happens when we give the <code class="racket">rocket-height</code> function an input of 0?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>It returns 0.</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Is that what we want it to do?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Yes!</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>As the program is currently written, what happens when we give the <code class="racket">rocket-height</code> function an input of 10?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>It returns 0.</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Is that what we want it to do?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>No!</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Why did the examples pass?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>The programmer only gave one example! We should always provide at least two examples. More complex functions will require us to think about what range of examples will be necessary to test that our function does what we want it to!</em></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph lesson-point">
+<p>We should always test a function definition against at least 2 examples!</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_investigate_2">Investigate</h3>
+<div class="paragraph">
+<p>Let&#8217;s use the Design Recipe to fix <code class="racket">rocket-height</code> and get comfortable with writing <span class="vocab">purpose statements</span>.</p>
+</div>
+<div class="paragraph lesson-instruction">
+<p>Complete <a href="../../lessons/functions-dr-wescheme/pages/rocket-height.html" target="_blank" rel="noopener">Word Problem: rocket-height</a>.</p>
+</div>
+<div class="paragraph">
+<p>As students work, circle the room and make sure that their <span class="vocab">purpose statements</span> are strong enough that they could write <span class="vocab">examples</span> without looking at the original word problem. Encourage students to circle what&#8217;s changing in their examples and label with descriptive <span class="vocab">variables</span>.</p>
+</div>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Once you&#8217;ve completed the Design Recipe page for <code class="racket">rocket-height</code>, type the code into Definitions Area, replacing any missing and incorrect code with your own.</p>
+</li>
+<li>
+<p>When it&#8217;s working correctly, explore the other functions in the file.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>For students needing more specific instructions about exploring the file, try the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Remove the comment from before the <code class="racket">(start rocket-height)</code> and test the program.</p>
+</li>
+<li>
+<p>Put the comment back in front of <code class="racket">(start rocket-height)</code>, remove the comment from <code class="racket">(graph rocket-height)</code>, and test the program.</p>
+</li>
+<li>
+<p>Try out <code class="racket">(space rocket-height)</code></p>
+</li>
+<li>
+<p>Try out <code class="racket">(everything rocket-height)</code></p>
+</li>
+</ul>
+</div>
+<table class="tableblock frame-all grid-none stripes-none stretch strategy-box">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="title">Teacher Tool: "Where&#8217;d You Get That?"</span></p>
+</div>
+<div class="paragraph">
+<p>This is a powerful tool that forces students to explain their thinking, making deeper connections between steps, and helps teachers guide students to find their own mistakes. It requires two people: the Challenger, and the Defender. Most of the time, the teacher is in the role of Challenger.</p>
+</div>
+<div class="paragraph">
+<p>The Challenger starts at the <strong>bottom</strong> of the page, physically pointing to one part of the <em>Definition</em> and asking "Where&#8217;d you get that?" The Defender has to <em>physically point</em> somewhere in the Examples, and explain what they&#8217;re pointing to supports their Definition.</p>
+</div>
+<div class="paragraph">
+<p>Next, the Challenger starts asking about the <em>Examples</em> and the Defender needs to show how their <em>Contract and Purpose</em> support them. This is repeated for every other step in the recipe, as students work their way back to the original word problem:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Challenger</strong> (pointing at the <code class="racket">seconds</code> variable in the Definition): Where&#8217;d you get that?</p>
+</li>
+<li>
+<p><strong>Defender</strong> (pointing at label in the Examples): Well, I circled the parts of the Examples that change, and labeled them as "seconds".</p>
+</li>
+<li>
+<p><strong>Challenger</strong> (pointing at the label): OK, but where did you get that label?</p>
+</li>
+<li>
+<p><strong>Defender</strong> (pointing at Purpose Statement): I used "seconds" in the Purpose Statement.</p>
+</li>
+<li>
+<p><strong>Challenger</strong> (pointing at Purpose Statement): Where&#8217;d you get that term?</p>
+</li>
+<li>
+<p><strong>Defender</strong> (pointing to Word Problem): I got it from reading the Word Problem.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>For teachers who cover quadratic and exponential functions, or have students who need more of a challenge</strong>, checkout the <a href="../../lessons/functions-dr-wescheme/pages/rocket-challenges.html" target="_blank" rel="noopener">Rocket Height Challenges</a>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Changing slope:</strong> Can you make the rocket fly faster? Slower?</p>
+</li>
+<li>
+<p><strong>Changing sign:</strong> Can you make the rocket sink down instead of fly up?</p>
+</li>
+<li>
+<p><strong>Motivating Quadratic Functions:</strong> Can you make the rocket <em>accelerate over time</em>, so that it moves faster the longer it flies?</p>
+</li>
+<li>
+<p><strong>Practicing the Quadratic Formula:</strong> Can you make the rocket blast off <em>and then land again</em>?</p>
+</li>
+<li>
+<p><strong>More practice:</strong> Can you make the rocket blast off, <em>reach a maximum height of exactly 1000 meters</em>, and then land?</p>
+</li>
+<li>
+<p><strong>More practice:</strong> Can you make the rocket blast off, reach a maximum height of exactly 1000 meters, and then land after exactly 100 seconds?</p>
+</li>
+<li>
+<p><strong>Motivating Exponential Functions:</strong> Can you make the rocket fly to the edge of the the universe?</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_synthesize_2">Synthesize</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>What problems did you fix in the starter file?</p>
+</li>
+<li>
+<p>What did the other functions do?</p>
+</li>
+<li>
+<p>Which step in the Design Recipe are you feeling the most confident about? The least? <em>At this stage, it is normal for students to feel most confident about the Contract and Examples, and the least confident about Purpose Statements and Definitions.</em></p>
+</li>
+</ul>
+</div>
+<table class="tableblock frame-all grid-none stripes-none stretch strategy-box">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="title">Project Idea: Design Recipe Telephone</span></p>
+</div>
+<div class="paragraph">
+<p>Most computer programs are written by huge teams! It is critical that each team member records their thinking with enough detail for other team members to be able to pick up where they left off. In <a href="../../lessons/functions-dr-wescheme/pages/dr-telephone.html" target="_blank" rel="noopener">Design Recipe Telephone</a>, students collaborate to complete a series of Design Recipe Problems, with each student being responsible for only one part of each problem in the set.</p>
+</div>
+<div class="paragraph">
+<p>You can use any word problems you like, but we have provided two sets that lend themselves particularly well to the activity. One set can be used to collaboratively update the functions in <a href="https://www.wescheme.org/openEditor?publicId=SR2kj0Xt6z" target="_blank" rel="noopener">Collaboration Starter File - For use with Design Recipe Telephone Set 1</a>, which generates a cool mystery image if all three problems are solved correctly!</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_additional_exercises"><span class="section-link"><a href="#_additional_exercises"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Additional Exercises</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For more practice connecting Examples and Contracts, have students complete <a href="../../lessons/functions-dr-wescheme/pages/create-examples-contracts-purpose-2.html" target="_blank" rel="noopener">Writing Examples from Purpose Statements 2</a>.</p>
+</div>
+<div class="paragraph">
+<p>While most problems in a math book ask students to <em>solve</em> something, the actual challenge is figuring out <em>what the equation is that needs to be solved:</em> setting it up is where the thinking happens, and solving it is just arithmentic. You can use the Design Recipe with any word problem where students need to figure out a functional relationship, and we&#8217;ve provided a <a href="../../lessons/functions-dr-wescheme/pages/dr-blank.html" target="_blank" rel="noopener">Blank Design Recipe</a> that you can use for any problem you like.</p>
+</div>
+<div class="paragraph">
+<p><strong>Optional:</strong> Ask students to create their own appropriately challenging word problem (with a solution) and collect the responses for later use as "Do Now" tasks or formative assessment.</p>
+</div>
+<div class="paragraph">
+<p>To help you apply the Design Recipe to more of your scope and sequence, we&#8217;ve provided a library of Design Recipe worksheets which connect to various curricular goals. We hope that you will be inspired by this library, and begin using the Design Recipe with more of the problems in your book!</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="../../lessons/functions-dr-wescheme/pages/dr-restaurants.html" target="_blank" rel="noopener">The Design Recipe (Restaurants)</a></p>
+</li>
+<li>
+<p><a href="../../lessons/functions-dr-wescheme/pages/dr-direct-variation.html" target="_blank" rel="noopener">The Design Recipe (Direct Variation)</a></p>
+</li>
+<li>
+<p><a href="../../lessons/functions-dr-wescheme/pages/dr-slope-intercept-1.html" target="_blank" rel="noopener">The Design Recipe (Slope/Intercept 1)</a></p>
+</li>
+<li>
+<p><a href="../../lessons/functions-dr-wescheme/pages/dr-neg-slope.html" target="_blank" rel="noopener">The Design Recipe (Negative Slope/Intercept)</a></p>
+</li>
+<li>
+<p><a href="../../lessons/functions-dr-wescheme/pages/dr-geometry-rectangles.html" target="_blank" rel="noopener">The Design Recipe (Geometry - Rectangles)</a></p>
+</li>
+<li>
+<p><a href="../../lessons/functions-dr-wescheme/pages/dr-geometry-rect-prism.html" target="_blank" rel="noopener">The Design Recipe (Geometry - Rectangular Prisms)</a></p>
+</li>
+<li>
+<p><a href="../../lessons/functions-dr-wescheme/pages/dr-geometry-circles.html" target="_blank" rel="noopener">The Design Recipe (Geometry - Circles)</a></p>
+</li>
+<li>
+<p><a href="../../lessons/functions-dr-wescheme/pages/dr-geometry-cylinder.html" target="_blank" rel="noopener">The Design Recipe (Geometry - Cylinders)</a></p>
+</li>
+<li>
+<p><a href="../../lessons/functions-dr-wescheme/pages/dr-breaking-even.html" target="_blank" rel="noopener">The Design Recipe (Breaking Even)</a></p>
+</li>
+<li>
+<p><a href="../../lessons/functions-dr-wescheme/pages/dr-marquee.html" target="_blank" rel="noopener">The Design Recipe (Marquee &amp; Cubing)</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-18 16:15:46 -0400
+</div>
+</div>
+</div>
+</body>
+</html>

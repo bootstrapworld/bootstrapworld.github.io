@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Expressions &amp; Functions in CODAP</title>
+
+  <link rel="stylesheet" href="../../../lib/curriculum.css" />
+    <link rel="stylesheet" href="../../../lib/codemirror.css" />
+    <script src="../../../lib/codemirror.js"></script>
+    <script src="../../../lib/runmode.js"></script>
+    <script src="../../../lib/scheme2.js"></script>
+    <script src="../../../lib/pyret-mode.js"></script>
+      <script src="../../../extlib/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML%2Clocal%2Fmathjaxlocal.js"></script>
+      <script>window.status = "not_ready_to_print";</script>
+    <script src="../../../lib/langtable.js"></script>
+    <script src="../../../lib/bootstraplesson.js"></script>
+    <script src="../../../dependency-graph.js"></script>
+    <script src="../../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"Expressions %INSERTGDRIVELESSONTITLE Functions in CODAP",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="workbookpage article codap" onload="renderSaveToDrive()">
+<div id="header">
+<h1>Expressions &amp; Functions in CODAP</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<style>
+#content > table { height: 100%; }
+#content td, th {padding: 0px !important; text-align: center !important;}
+#content table td p {white-space: pre-wrap; }
+</style>
+<div class="paragraph">
+<p>Complete the tables below.</p>
+</div>
+<table class="tableblock frame-none grid-all stripes-none stretch">
+<colgroup>
+<col style="width: 42.8571%;">
+<col style="width: 14.2857%;">
+<col style="width: 42.8572%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="gdrive-only">y = 3x</span><script type="math/tex">\displaystyle y = 3x</script></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="gdrive-only">y = x + 2</span><script type="math/tex">\displaystyle y = x + 2</script></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">x</th>
+<th class="tableblock halign-left valign-top">y</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>5</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>3.5</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>7.1</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>8.4</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>9.2</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
+</tbody>
+</table></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">x</th>
+<th class="tableblock halign-left valign-top">y</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>3</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>8</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>1</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>6</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>5</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
+</tbody>
+</table></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><span class="vspace" style="height: 1ex"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">1</span> Open your <a href="https://codap.concord.org/app/static/dg/en/cert/index.html#shared=https%3A%2F%2Fcfm-shared.concord.org%2FI6zAvad2EELkQxtS0SZG%2Ffile.json" target="_blank" rel="noopener">Animals Starter File</a>. Edit the <code class="pyret">test</code> column&#8217;s formula to compute <em>triple</em> the weight of all of the animals. What formula will you use? <em>Note: Attribute names that are more than one word need to be entered inside of tick marks.</em></p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"></span></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Compare your results with the first table, above.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="autonum">2</span> Edit the <code class="pyret">test</code> column&#8217;s formula so that 2 weeks are added to the time to adoption for all of the animals. What formula did you use?</p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 1ex"></span></p>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_applying_functions">Applying Functions</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In order to answer each of the questions below, you must first select <code class="pyret">test</code> in <a href="https://codap.concord.org/app/static/dg/en/cert/index.html#shared=https%3A%2F%2Fcfm-shared.concord.org%2FI6zAvad2EELkQxtS0SZG%2Ffile.json" target="_blank" rel="noopener">Animals Starter File</a>, and then choose <code class="pyret">Edit formula</code> from the drop-down menu that appears. You will be typing into the <code class="pyret">Edit Formula</code> box.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Enter <code class="pyret">sqrt(16)</code> into the <code class="pyret">Edit Formula</code> box.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="autonum">3</span> How many arguments does <code class="pyret">sqrt</code> expect? <span class="fitb stretch"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">4</span> What type of argument does the function expect? (Number? String? Boolean?) <span class="fitb stretch"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">5</span> What type of output does <code class="pyret">sqrt</code> produce? <span class="fitb stretch"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">6</span> What did the function evaluate to? <span class="fitb stretch"></span></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Now, enter <code class="pyret">sqrt(Weight)</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="autonum">7</span> What do you observe? <span class="fitb stretch"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">8</span> What happens when you enter <code class="pyret">sqrt(Legs)</code>? <span class="fitb stretch"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">9</span> What about <code class="pyret">sqrt(Name)</code>? <span class="fitb stretch"></span></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Enter <code class="pyret">stringLength(Name)</code> into the <code class="pyret">test</code> column.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="autonum">10</span> What do you observe? <span class="fitb stretch"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">11</span> How many arguments does <code class="pyret">stringLength</code> expect? <span class="fitb stretch"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">12</span> What type of argument does <code class="pyret">stringLength</code> expect? <span class="fitb stretch"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">13</span> Does <code class="pyret">stringLength</code> produce a Number? String? Boolean? <span class="fitb stretch"></span></p>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_putting_it_all_together">Putting it all together</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Create a column called <code class="pyret">age-next-year</code> that uses an expression to add one year to each animal’s age.</p>
+</li>
+<li>
+<p>Create a column called <code class="pyret">rounded-weight</code> that uses a function to give the weight of each animal rounded to the nearest whole number.</p>
+</li>
+<li>
+<p>Create a column called <code class="pyret">old</code> that uses a Boolean to indicate which animals are over 5 years old.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-17 19:41:46 -0400
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Applying Functions</title>
+
+  <link rel="stylesheet" href="../../../lib/curriculum.css" />
+    <link rel="stylesheet" href="../../../lib/codemirror.css" />
+    <script src="../../../lib/codemirror.js"></script>
+    <script src="../../../lib/runmode.js"></script>
+    <script src="../../../lib/scheme2.js"></script>
+    <script src="../../../lib/pyret-mode.js"></script>
+    <script src="../../../lib/langtable.js"></script>
+    <script src="../../../lib/bootstraplesson.js"></script>
+    <script src="../../../dependency-graph.js"></script>
+    <script src="../../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"Applying Functions",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="workbookpage article pyret" onload="renderSaveToDrive()">
+<div id="header">
+<h1>Applying Functions</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<style>
+td { padding: 0 0.25rem !important; }
+.indentedpara p {
+	font-family: "Droid Sans Mono","DejaVu Sans Mono",monospace;
+	min-height: unset !important;
+}
+</style>
+<div class="paragraph">
+<p>Type this line of code into the Interactions Area and hit "Enter":</p>
+</div>
+<div class="paragraph center">
+<p><span class="obeyspaces"><code class="pyret">triangle&#8203;(&#8203;50, "solid", "red"&#8203;)</code></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">1</span> What is the name of this function? <span class="fitb stretch"><span class="solution">triangle</span></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">2</span> What did the expression evaluate to? <span class="fitb stretch"><span class="solution">an image of a red triangle</span></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">3</span> How many arguments does <code class="pyret">triangle</code> expect? <span class="fitb stretch"><span class="solution">3</span></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">4</span> What data type does the <code class="pyret">triangle</code> function produce? <span class="fitb stretch"><span class="solution">image</span></span></p>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_catching_bugs">Catching Bugs</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The following lines of code are all BUGGY! Read the code and the error messages to identify the mistake.</p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">5</span> <code class="pyret">triangle(20, "solid" "red")</code></p>
+</div>
+<div class="openblock indentedpara">
+<div class="content">
+<div class="paragraph">
+<p>Pyret didn&#8217;t understand your program around</p>
+</div>
+<div class="paragraph">
+<p>triangle(20, "solid" <strong>"red"</strong>)</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 3ex"></span></p>
+</div>
+<div class="paragraph">
+<p>Can you spot the mistake?				<span class="fitb stretch"> <em>There is a missing comma after solid.</em></span></p>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 2ex"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">6</span> <code class="pyret">triangle(20, "solid")</code></p>
+</div>
+<div class="openblock indentedpara">
+<div class="content">
+<div class="paragraph">
+<p>This <span class="underline">application expression</span> errored:</p>
+</div>
+<div class="paragraph">
+<p><strong>triangle</strong>(<em>20</em>, <em>"solid"</em>)</p>
+</div>
+<div class="paragraph">
+<p><span class="underline"><em>2 arguments</em></span> were passed to the <span class="underline"><strong>operator</strong></span>.
+The <span class="underline"><strong>operator</strong></span> evaluated to a function accepting 3 parameters.
+An <span class="underline">application expression</span> expects the number of parameters and <span class="underline"><em>arguments</em></span> to be the same.</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 3ex"></span></p>
+</div>
+<div class="paragraph">
+<p>Can you spot the mistake?				<span class="fitb stretch"> <em>The color is undefined.</em></span></p>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 2ex"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">7</span> <code class="pyret">triangle(20, 10, "solid", "red")</code></p>
+</div>
+<div class="openblock indentedpara">
+<div class="content">
+<div class="paragraph">
+<p>This <span class="underline">application expression</span> errored:</p>
+</div>
+<div class="paragraph">
+<p><strong>triangle</strong>(20, 10, "solid", <em>"red"</em>)`</p>
+</div>
+<div class="paragraph">
+<p><span class="underline"><em>4 arguments</em></span> were passed to the <span class="underline"><strong>operator</strong></span>.
+The <span class="underline"><strong>operator</strong></span> evaluated to a function accepting 3 parameters.
+An <span class="underline">application expression</span> expects the number of parameters and <span class="underline"><em>arguments</em></span> to be the same.</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 3ex"></span></p>
+</div>
+<div class="paragraph">
+<p>Can you spot the mistake?				<span class="fitb stretch"> <em>There are too many numbers.</em></span></p>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 2ex"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">8</span> <code class="pyret">triangle (20, "solid", "red")</code></p>
+</div>
+<div class="openblock indentedpara">
+<div class="content">
+<div class="paragraph">
+<p>Pyret thinks this code is probably a function call:</p>
+</div>
+<div class="paragraph">
+<p><strong>triangle</strong> <em>(20, "solid", "red")</em></p>
+</div>
+<div class="paragraph">
+<p>Function calls must not have space between the <span class="underline"><strong>function expression</strong></span> and the <span class="underline"><em>arguments</em></span>.</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 3ex"></span></p>
+</div>
+<div class="paragraph">
+<p>Can you spot the mistake? 				<span class="fitb stretch"> <em>There shouldn&#8217;t be a space between triangle and the parentheses.</em></span></p>
+</div>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-17 19:41:47 -0400
+</div>
+</div>
+</body>
+</html>

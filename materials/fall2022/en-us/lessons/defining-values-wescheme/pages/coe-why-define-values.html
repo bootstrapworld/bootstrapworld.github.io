@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Why Define Values?</title>
+
+  <link rel="stylesheet" href="../../../lib/curriculum.css" />
+    <link rel="stylesheet" href="../../../lib/codemirror.css" />
+    <script src="../../../lib/codemirror.js"></script>
+    <script src="../../../lib/runmode.js"></script>
+    <script src="../../../lib/scheme2.js"></script>
+    <script src="../../../lib/pyret-mode.js"></script>
+    <script src="../../../lib/langtable.js"></script>
+    <script src="../../../lib/bootstraplesson.js"></script>
+    <script src="../../../dependency-graph.js"></script>
+    <script src="../../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"Why Define Values?",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="workbookpage article landscape wescheme" onload="renderSaveToDrive()">
+<div id="header">
+<h1>Why Define Values?</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<div class="paragraph">
+<p><span class="autonum">1</span> Complete the table using the first row as an example.</p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">2</span> Write the code to define the value of <span class="obeyspaces"><code class="racket">sunny</code></span>. <span class="fitb stretch"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 1ex"></span></p>
+</div>
+<table class="tableblock frame-all grid-all stripes-none stretch">
+<colgroup>
+<col style="width: 64.7058%;">
+<col style="width: 5.8823%;">
+<col style="width: 29.4119%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Original Circle of Evaluation &amp; Code</th>
+<th class="tableblock halign-center valign-middle">&rarr;</th>
+<th class="tableblock halign-left valign-top">Use the <em>defined value</em> <span class="obeyspaces"><code class="racket">sunny</code></span> to simplify!</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><table class="gdrive-only expression"><tr><td class="operator"><span class="operator"><span class="value wescheme-symbol">scale</span></span></td></tr><tr><td><table class="args"><tr><td class="arg"><span class="value wescheme-number">3</span></td><td class="arg"><table class="gdrive-only expression"><tr><td class="operator"><span class="operator"><span class="value wescheme-symbol">radial-star</span></span></td></tr><tr><td><table class="args"><tr><td class="arg"><span class="value wescheme-number">30</span></td><td class="arg"><span class="value wescheme-number">20</span></td><td class="arg"><span class="value wescheme-number">50</span></td><td class="arg"><span class="value wescheme-string">"solid"</span></td><td class="arg"><span class="value wescheme-string">"yellow"</span></td></tr></table></td></tr></table></td></tr></table></td></tr></table><div class="circleevalsexp"><span class="expression"><span class="lParen">(</span><span class="operator"><span class="value wescheme-symbol">scale</span></span><span class="hspace">&#160;</span><span class="value wescheme-number">3</span><span class="hspace">&#160;</span><span class="expression"><span class="lParen">(</span><span class="operator"><span class="value wescheme-symbol">radial-star</span></span><span class="hspace">&#160;</span><span class="value wescheme-number">30</span><span class="hspace">&#160;</span><span class="value wescheme-number">20</span><span class="hspace">&#160;</span><span class="value wescheme-number">50</span><span class="hspace">&#160;</span><span class="value wescheme-string">"solid"</span><span class="hspace">&#160;</span><span class="value wescheme-string">"yellow"</span><span class="rParen">)</span></span><span class="rParen">)</span></span></div></p>
+</div></div></td>
+<td class="tableblock halign-center valign-middle"><div class="content"><div class="paragraph">
+<p>&rarr;</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><table class="gdrive-only expression"><tr><td class="operator"><span class="operator"><span class="value wescheme-symbol">scale</span></span></td></tr><tr><td><table class="args"><tr><td class="arg"><span class="value wescheme-number">3</span></td><td class="arg"><span class="value wescheme-symbol">sunny</span></td></tr></table></td></tr></table><div class="circleevalsexp"><span class="expression"><span class="lParen">(</span><span class="operator"><span class="value wescheme-symbol">scale</span></span><span class="hspace">&#160;</span><span class="value wescheme-number">3</span><span class="hspace">&#160;</span><span class="value wescheme-symbol">sunny</span><span class="rParen">)</span></span></div></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Code:<br>
+<span class="obeyspaces"><code class="racket">(scale 3 (radial-star 30 20 50 "solid" "yellow"))</code></span></p>
+</div></div></td>
+<td class="tableblock halign-center valign-middle"><div class="content"><div class="paragraph">
+<p>&rarr;</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Code:<br>
+<span class="obeyspaces"><code class="racket">(scale 3 sunny)</code></span></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><table class="gdrive-only expression"><tr><td class="operator"><span class="operator"><span class="value wescheme-symbol">frame</span></span></td></tr><tr><td><table class="args"><tr><td class="arg"><table class="gdrive-only expression"><tr><td class="operator"><span class="operator"><span class="value wescheme-symbol">radial-star</span></span></td></tr><tr><td><table class="args"><tr><td class="arg"><span class="value wescheme-number">30</span></td><td class="arg"><span class="value wescheme-number">20</span></td><td class="arg"><span class="value wescheme-number">50</span></td><td class="arg"><span class="value wescheme-string">"solid"</span></td><td class="arg"><span class="value wescheme-string">"yellow"</span></td></tr></table></td></tr></table></td></tr></table></td></tr></table><div class="circleevalsexp"><span class="expression"><span class="lParen">(</span><span class="operator"><span class="value wescheme-symbol">frame</span></span><span class="hspace">&#160;</span><span class="expression"><span class="lParen">(</span><span class="operator"><span class="value wescheme-symbol">radial-star</span></span><span class="hspace">&#160;</span><span class="value wescheme-number">30</span><span class="hspace">&#160;</span><span class="value wescheme-number">20</span><span class="hspace">&#160;</span><span class="value wescheme-number">50</span><span class="hspace">&#160;</span><span class="value wescheme-string">"solid"</span><span class="hspace">&#160;</span><span class="value wescheme-string">"yellow"</span><span class="rParen">)</span></span><span class="rParen">)</span></span></div></p>
+</div></div></td>
+<td class="tableblock halign-center valign-middle"><div class="content"><div class="paragraph">
+<p>&rarr;</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Code:<br>
+<span class="obeyspaces"><code class="racket">(frame (radial-star 30 20 50 "solid" "yellow"))</code></span></p>
+</div></div></td>
+<td class="tableblock halign-center valign-middle"><div class="content"><div class="paragraph">
+<p>&rarr;</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Code:<br></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><table class="gdrive-only expression"><tr><td class="operator"><span class="operator"><span class="value wescheme-symbol">overlay</span></span></td></tr><tr><td><table class="args"><tr><td class="arg"><table class="gdrive-only expression"><tr><td class="operator"><span class="operator"><span class="value wescheme-symbol">text</span></span></td></tr><tr><td><table class="args"><tr><td class="arg"><span class="value wescheme-string">"sun"</span></td><td class="arg"><span class="value wescheme-number">30</span></td><td class="arg"><span class="value wescheme-string">"black"</span></td></tr></table></td></tr></table></td><td class="arg"><table class="gdrive-only expression"><tr><td class="operator"><span class="operator"><span class="value wescheme-symbol">radial-star</span></span></td></tr><tr><td><table class="args"><tr><td class="arg"><span class="value wescheme-number">30</span></td><td class="arg"><span class="value wescheme-number">20</span></td><td class="arg"><span class="value wescheme-number">50</span></td><td class="arg"><span class="value wescheme-string">"solid"</span></td><td class="arg"><span class="value wescheme-string">"yellow"</span></td></tr></table></td></tr></table></td></tr></table></td></tr></table><div class="circleevalsexp"><span class="expression"><span class="lParen">(</span><span class="operator"><span class="value wescheme-symbol">overlay</span></span><span class="hspace">&#160;</span><span class="expression"><span class="lParen">(</span><span class="operator"><span class="value wescheme-symbol">text</span></span><span class="hspace">&#160;</span><span class="value wescheme-string">"sun"</span><span class="hspace">&#160;</span><span class="value wescheme-number">30</span><span class="hspace">&#160;</span><span class="value wescheme-string">"black"</span><span class="rParen">)</span></span><span class="hspace">&#160;</span><span class="expression"><span class="lParen">(</span><span class="operator"><span class="value wescheme-symbol">radial-star</span></span><span class="hspace">&#160;</span><span class="value wescheme-number">30</span><span class="hspace">&#160;</span><span class="value wescheme-number">20</span><span class="hspace">&#160;</span><span class="value wescheme-number">50</span><span class="hspace">&#160;</span><span class="value wescheme-string">"solid"</span><span class="hspace">&#160;</span><span class="value wescheme-string">"yellow"</span><span class="rParen">)</span></span><span class="rParen">)</span></span></div></p>
+</div></div></td>
+<td class="tableblock halign-center valign-middle"><div class="content"><div class="paragraph">
+<p>&rarr;</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Code:<br>
+<span class="obeyspaces"><code class="racket">(overlay (text "sun" 30 "black") (radial-star 30 20 50 "solid" "yellow"))</code></span></p>
+</div></div></td>
+<td class="tableblock halign-center valign-middle"><div class="content"><div class="paragraph">
+<p>&rarr;</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Code:<br></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><span class="autonum">3</span> Test your code in the editor and make sure it produces what you would expect it to.</p>
+</div>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-18 16:15:39 -0400
+</div>
+</div>
+</body>
+</html>

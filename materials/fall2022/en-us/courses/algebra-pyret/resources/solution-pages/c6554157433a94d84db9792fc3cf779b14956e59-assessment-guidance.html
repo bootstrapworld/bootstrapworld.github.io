@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Assessment Guidance for Teachers</title>
+
+  <link rel="stylesheet" href="../../../../lib/curriculum.css" />
+    <link rel="stylesheet" href="../../../../lib/codemirror.css" />
+    <script src="../../../../lib/codemirror.js"></script>
+    <script src="../../../../lib/runmode.js"></script>
+    <script src="../../../../lib/scheme2.js"></script>
+    <script src="../../../../lib/pyret-mode.js"></script>
+    <script src="../../../../lib/langtable.js"></script>
+    <script src="../../../../lib/bootstraplesson.js"></script>
+    <script src="../../../../dependency-graph.js"></script>
+    <script src="../../../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"Assessment Guidance for Teachers",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="workbookpage article pyret" onload="renderSaveToDrive()">
+<div id="header">
+<h1>Assessment Guidance for Teachers</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Obviously, programmers care that their programs produce the right answers.  Good programmers, however, care about much more!  They also care that programs are easy to read, understand, and modify.  Sometimes, a programmer has to change their code a few weeks or months later to make it do something different.  Sometimes, a programmer has to change someone else’s code to make it do something different.  A high-quality program is designed to be maintained over time, potentially by people other than the original programmer.</p>
+</div>
+<div class="paragraph">
+<p>The guidelines in the rest of this document target different aspects of creating readable and maintainable code.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_grading_a_design_recipe">Grading a Design Recipe</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The design recipe is not just a method for developing a program: it also provides useful guidelines for grading student work.  When grading a program, consider the following questions:</p>
+</div>
+<div class="sect2">
+<h3 id="_contract_and_purpose">Contract and Purpose</h3>
+<div class="paragraph">
+<p>Every part of a student&#8217;s Contract and Purpose statement comes directly from the original word problem.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Does the contract include all three parts: a <code class="pyret">name</code>, <code class="pyret">domain</code> and <code class="pyret">range</code>?</p>
+</li>
+<li>
+<p>Does the <code class="pyret">name</code> reflect what the function computes?</p>
+<div class="openblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="pyret">Write a function that takes in a topping and returns the value of a pizza with that topping
+- Confusing:	pizza: string -&gt; number
+- Bad:    		c: string -&gt; number
+- Good:    		cost: string -&gt; number</code></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Even though math textbooks often use generic function names like f and g, when writing programs we prefer descriptive names because they will help us remember what the function does when we refer back to it later.</p>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>Are the Domain(s) and Range <code class="pyret">types</code> rather than descriptive words?</p>
+<div class="openblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="pyret">Write a function ‘red-star’ that takes in a radius and draws a solid red star of that size.
+- Bad:     red-star: size -&gt; image
+- Better:  red-star: number -&gt; image</code></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Good contracts are clear about what kind of data can be provided to the function.  Types (e.g. <code class="pyret">number</code>, <code class="pyret">string</code>, <code class="pyret">image</code> and <code class="pyret">Boolean</code>) are unambiguous, whereas descriptive types could be interpreted differently by different people.  <em>The descriptive content belongs in the Purpose Statement.</em></p>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>Does the Purpose Statement contain all of the relevant parts of the original word problem, and nothing else?</p>
+<div class="openblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="pyret">A car is moving at 55mph down a country road. Write a function that describes its distance as a function of time
+Copying: a car goes 55mph. write a function that describes distance as a function of time.
+- Bad:    how long has the car been moving?
+- Bad:    how far did the car go?
+- Weak:   given a time, how far did the car go on a country road?
+- Weak:   given a time, how far did a car moving 55mph go?
+- Weak:   how far did the car go in a given # of hours?
+- Good:   given a # hours, how far did a car moving 55mph go?</code></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Good purpose statements should be a thoughtful restatement of the original problem, in the student’s own words.They should include all of the relevant information from the problem.</p>
+</div>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_examples">Examples</h3>
+<div class="paragraph">
+<p>Every part of a student’s Examples should trace back to the Contract and Purpose Statement. If an example cannot be completely written based on the contract and purpose, check back to the previous section to see what the student is missing.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Do the function’s name and types of input and output match the contract?</p>
+<div class="openblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="pyret">Write a function ‘red-star’ that takes in a radius and draws a solid red star of that size.
+; red-star : Number -&gt; Image
+; given a radius, draw a solid red star of that size
+
+- Bad:    (EXAMPLE (rs 50 “red”)  50))
+- Bad:    (EXAMPLE (rs 126)      (star 126 “solid” “red”))
+- Good:   (EXAMPLE (red-star 65) (star  65 “solid” “red”))</code></code></pre>
+</div>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>Is at least one example easy enough that the student can be sure they have the right answer? It’s always good to have a baseline to start from!</p>
+<div class="openblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="pyret">A car is moving at 55mph. Write a function that describes it’s distance as a function of time.
+; distance : Number -&gt; Number
+; given # hours, how far did a car moving 55mph go?
+
+- Good:   (EXAMPLE (distance 0)(* 0 55))</code></code></pre>
+</div>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>Do the examples use <em>different</em> values for each input?</p>
+<div class="openblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="pyret">Write a function ‘red-star’ that takes in a radius and draws a solid red star of that size.
+; red-star : Number -&gt; Image
+; given a radius, draw a solid red star of that size
+
+ Bad:
+ (EXAMPLE (red-star 50) (star 50 “solid” “red”))
+ (EXAMPLE (red-star 50) (star 50 “solid” “red”))
+
+ Good:
+ (EXAMPLE (red-star 19) (star 19 “solid” “red”))
+ (EXAMPLE (red-star 22) (star 22 “solid” “red”))</code></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Varying the inputs in the examples helps make sure that the function actually uses all of the inputs.  In the example above, the student might accidentally use 50 as the size in their function definition. Since all of the examples also used 50 as the size, the student wouldn’t discover the problem.</p>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>Is there an example for each <em>interesting</em> input?</p>
+<div class="openblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="pyret">Write a function ‘safe-left?’ that takes in an x-coordinate and checks whether if it is greater than 50
+; safe-left? : Number -&gt; Boolean
+; is the given x-coordinate &gt; -50?
+
+Good:
+(EXAMPLE (safe-left?  500)  (&gt; 500 -50))
+(EXAMPLE (safe-left?  -50)  (&gt; -50 -50))</code></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As your students progress in the curriculum, picking good examples is one of the most important skills they can develop.  Think about a function like safe-left?, that detects whether a character is within the screen on the left side.  A good set of examples would cover three situations: one in the middle of the screen, one at the left edge, and one off-screen just beyond the left edge.  Whenever a function should produce different answers around some boundary, a good set of examples will check the inputs that define the boundary, as well inputs on either side of the boundary.</p>
+</div>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>For functions that produce Booleans…</p>
+<div class="ulist">
+<ul>
+<li>
+<p>are there are both examples that would produce true and examples that would produce false?</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>For functions that use cond…</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Is there at least one example that satisfies each of the conditions?</p>
+</li>
+<li>
+<p>Is there an example that covers the ‘else’ condition?</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Are the variables circled, and given names that come from the purpose statement?</p>
+<div class="openblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="pyret">A car is moving at 55mph. Write a function that describes it’s distance as a function of time.
+; distance : Number -&gt; Number
+;  given # hours, how far did a car moving 55mph go?</code></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><span class="center"><span class="image-figure"><span class="image"><img src="variables.png" alt="variables" title="variables"></span><a href="variables.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></p>
+</div>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_definitions">Definitions</h3>
+<div class="paragraph">
+<p>Every part of a student’s definition should be able to be traced back to the Examples and the labeled variables. If the definition cannot be completely written based on the Examples and labels, check back to the previous section to see what the student is missing.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Does the function header match the pattern established in the examples?</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Does the name in the header match the one in the examples?</p>
+</li>
+<li>
+<p>Do the number and name of the variables to the function match the number and names of the variables labeled in the examples?</p>
+<div class="literalblock">
+<div class="content">
+<pre><code class="pyret">Write a function ‘red-star’ that takes in a radius and draws a solid red star of that size.
+; red-star : Number -&gt; Image
+; given a radius, draw a solid red star of that size</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre><code class="pyret"><span class="center"><span class="image-figure">image:red-star.png["red star", , , title="red star"]link:red-star.png[<span class="big">&amp;#x1f5bc;</span>Show image,role="gdrive-only"]</span></span></code></pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Bad:   (define (rs x color)      (star x “solid” color))</p>
+</li>
+<li>
+<p>Bad:   (define (rs x)            (star x “solid” color))</p>
+</li>
+<li>
+<p>Weak:  (define (red-star x)      (star x “solid” “red”))</p>
+</li>
+<li>
+<p>Good:  (define (red-star radius) (star radius “solid” “red”))</p>
+</li>
+<li>
+<p>Does the code have line-breaks and indentation in places that make the code easy to read?
+<span class="center"><span class="image-figure"><span class="image"><img src="line-break.png" alt="line break" title="line break"></span><a href="line-break.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_grading_programs_containing_multiple_functions">Grading Programs Containing Multiple Functions</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>When a program contains multiple functions (such as a completed game), we are interested in whether the functions and their tests are organized well within the file, and whether they share key details appropriately.  Specifically:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Are the examples for each function next to the function in the file (rather than all of the functions in one place and all of the examples in another)?</p>
+<div class="paragraph">
+<p>This organization makes it easy to check what functions are supposed to do (this is easier to appreciate on functions with cond, in which different examples illustrate different clauses).  It also makes it easy to find the examples to update if you want to change the behavior of the function later.</p>
+</div>
+</li>
+<li>
+<p>If two functions share a common piece of data that doesn’t change with the inputs, is that data defined as a constant?</p>
+<div class="paragraph">
+<p>Imagine that two functions reference the width of the screen.  In this case, the program should have a constant (such as WIDTH) that gets used in both functions.  This helps maintain the program: if we want to change the program to work on a different screen size, the constant lets us change the width in one place in the file, rather than have to look for all of the places that depend on the width (we might miss one, which would break our program).</p>
+</div>
+</li>
+<li>
+<p>Do the names of the functions suggest what role each function plays in the overall program?  Names such as update-player and update-target make it clear what role each function plays in the program.  In contrast, names such as update1 and update2 wouldn’t be as useful.  Good names help programmers navigate the code.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_getting_more_advanced">Getting More Advanced</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The above guidelines should be enough to help you grade programs in Bootstrap:Algebra.  As your students start writing more complicated programs, you would also check whether they broke functions down into appropriate-size chunks, whether they shared repeated computations across functions, and some other metrics that help define readable and maintainable code.  For now, focus on these basic program-development skills with your students, and you will set them up to progress to richer programming problems.</p>
+</div>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-17 19:42:18 -0400
+</div>
+</div>
+</body>
+</html>

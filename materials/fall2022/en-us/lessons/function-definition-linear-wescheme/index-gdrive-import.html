@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Defining Linear Functions</title>
+<style>
+/* Overall document font */
+* {font-family: Lato, Arial, Helvetica, sans-serif;}
+
+/* document headings */
+h1,.lesson-section-1 {color: #75328A;}
+h1{font-size: 32px; font-family: sans-serif;}
+table.section-heading *, .lesson-section-1 h2{font-size: 32px; font-weight: 100;}
+table.section-heading{width: 100%;}
+table.section-heading td:last-child{text-align: right; color: #d9d2e9;}
+
+/* preamble section */
+table.preamble td {padding: 10px;}
+table.preamble td:first-child{background: #b7d893; width: 25%;}
+table.preamble td:first-child p {font-weight: bold; margin: 5px;}
+
+/* content used throughout the body */
+table{ border-collapse: collapse; border: none; }
+table.grid-all.frame-all {border: solid 1px black;}
+table.grid-none.frame-none {border-width: 0px;}
+
+.big {font-size: 30pt;}
+.vocab{font-weight: bold; font-style: italic;}
+.right{text-align: right;}
+.acknowledgment {
+  border-top: solid 1px black; 
+  font-style: italic; 
+  font-size: 8pt;
+}
+.lesson-point {
+  border-top: solid 1px black; 
+  border-bottom: solid 1px black; 
+  color: black;
+  font-weight: bold;
+}
+
+.web-page-only, #footer { display: none; visibility: hidden; }
+
+/* Callout boxes */
+.strategy-box, .notice-box {
+  background: #efefef;
+  border: solid 5px !important;
+  margin: 15px auto;
+  width: 100%;
+}
+.strategy-box { border-color: #1a73b5 !important; }
+.notice-box   { border-color: #7747a5 !important; }
+.strategy-box td, .notice-box td{ padding: 10px; }
+.strategy-box .title, .notice-box .title{
+  width: 100%;
+  display: block;
+  font-weight: bold;
+  font-size: 24px;
+  clear: both;
+  margin: 100px;
+}
+.strategy-box p.tableblock:first-child, .notice-box p.tableblock:first-child{
+  text-align: center;
+  padding-bottom: 15px;
+}
+.strategy-box .title { color: #1a73b5; }
+.notice-box   .title { color: #7747a5; }
+.strategy-box a, .notice-box a { color: blue; text-decoration: underline; }
+
+/* "Tables" of Evaluation */
+.operator{border-bottom: solid 1px black; text-align: center;}
+.operator * {text-align: center;}
+td {padding: 0px 10px; font-size: 14px;}
+table.expression {
+    font-family:"Courier New", Monaco, monospace;
+    border:     solid 1px black;
+    font-size:  1px;
+    max-width:  400px;
+    color:      #666666;
+    display:    inline-block;
+}
+table.args {border: none; text-align: center;}
+
+.wescheme-string,     .cm-scheme-string    {color: green;}
+.wescheme-number,     .cm-scheme-number    {color: blue;}
+.wescheme-boolean,    .cm-scheme-boolean   {color: darkred;}
+.wescheme-character,  .cm-scheme-character {color: orange;}
+.wescheme-symbol,     .cm-scheme-symbol    {color: steelblue;}
+.wescheme-comment,    .cm-scheme-comment   {color: orange; }
+
+.racket, .pyret, .studentAnswerCode, .studentAnswer, .pyretkeyword, .keyword_only {
+    font-family:"Courier New", Monaco, monospace !important; 
+    color: black;
+}
+
+/* Design Recipe */
+.recipe_instructions { font-style: italic; }
+table.recipe_title {
+  color:              white;
+  background:         gray;
+  display:            block;
+  padding:            0px;
+  font-size:          1.1rem;
+  font-weight:        bold;
+}</style>
+
+      <script src="../../extlib/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML%2Clocal%2Fmathjaxlocal.js"></script>
+      <script>window.status = "not_ready_to_print";</script>
+    <script src="../../lib/langtable.js"></script>
+    <script src="../../dependency-graph.js"></script>
+    <script src="../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:window.location.href,
+    filename:"Defining Linear Functions",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="article LessonPlan wescheme" onload="renderSaveToDrive()">
+<span id="body" onload="renderSaveToDrive()">
+<span id="header">
+<h1>Defining Linear Functions</h1>
+
+  <span id="savetodrive-div"></span>
+
+</span>
+<span id="content">
+<span id="preamble_disabled" class="lessonSummary">
+<span class="sectionbody">
+<script>
+function preselect(klass) {
+  const items = document.getElementsByClassName(klass);
+  for (let i = 0; i < items.length; i++) {
+    items[i].style.display = 'none';
+  }
+  if (items.length > 0) {
+    items[0].style.display = 'block';
+  }
+}
+window.onload = function() {
+  preselect('alignedStandards');
+  preselect('alignedTextbooks');
+  preselect('alignedPractices');
+}
+function showStandardsAlignment() {
+  const selectTag = document.getElementsByClassName('standardsAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const stdTables = document.getElementsByClassName('alignedStandards');
+  //const intro = document.getElementsByClassName('alignedStandardsIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < stdTables.length; i++) {
+    const stdTable = stdTables[i];
+    stdTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optStd = opt.value;
+      for (let j = 0; j < stdTables.length; j++) {
+        const stdTable = stdTables[j];
+        if (stdTable.classList.contains(optStd)) {
+          stdTable.style.display = 'block';
+         // introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+function toggleNonPrereqDisplay() {
+  const inputTag = document.getElementsByClassName('sidebarinput')[0];
+  const checkedP = inputTag.checked;
+  const lessonTable = document.getElementsByClassName('sidebarlessons')[0];
+  const lis = lessonTable.getElementsByTagName('li');
+  for (let i = 0; i < lis.length; i++) {
+    const li = lis[i];
+    const lesson = li.getElementsByClassName('prerequisite');
+    if (lesson.length === 0) {
+      li.style.display = checkedP ? 'none' : 'block';
+    }
+  }
+}
+</script>
+<script>
+function showTextbooksAlignment() {
+  const selectTag = document.getElementsByClassName('textbooksAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const textbookTables = document.getElementsByClassName('alignedTextbooks');
+  //const intro = document.getElementsByClassName('alignedTextbooksIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < textbookTables.length; i++) {
+    const textbookTable = textbookTables[i];
+    textbookTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optTextbook = opt.value;
+      for (let j = 0; j < textbookTables.length; j++) {
+        const textbookTable = textbookTables[j];
+        if (textbookTable.classList.contains(optTextbook)) {
+          textbookTable.style.display = 'block';
+          //introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+</script>
+<script>
+function showPracticesAlignment() {
+  const selectTag = document.getElementsByClassName('practicesAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const practiceTables = document.getElementsByClassName('alignedPractices');
+  for (let i = 0; i < practiceTables.length; i++) {
+    const practiceTable = practiceTables[i];
+    practiceTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optPractice = opt.value;
+      for (let j = 0; j < practiceTables.length; j++) {
+        const practiceTable = practiceTables[j];
+        if (practiceTable.classList.contains(optPractice)) {
+          practiceTable.style.display = 'block';
+        }
+      }
+    }
+  }
+}
+</script>
+<span class="paragraph">
+<!-- </p>
+</span>
+--></span><span class="sidebar"><span id="toggle"></span><span class="paragraph"><!--
+<span class="paragraph">
+<p>
+--><span class="sidebarlessons"><strong>Lessons</strong>
+<ul></ul></span>
+</span>
+<table class="tableblock frame-all grid-all stretch sidebarstandards">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p><strong>Standards in this Lesson</strong>
+<select class="standardsAlignmentSelect"  onchange="showStandardsAlignment()"><option selected="selected" value="standards-CCSS-Math">CCSS-Math</option><option value="standards-Oklahoma">Oklahoma</option></select></p>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="dlist standards-CCSS-Math">
+<span class="title"><a href="http://corestandards.org/Math/">Common Core Math Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>8.EE.B</dt>
+<dd>
+<p>Understand the connections between proportional relationships, lines, and linear equations.</p>
+</dd>
+<dt class="hdlist1"><br/>8.EE.B.5</dt>
+<dd>
+<p>Graph proportional relationships, interpreting the unit rate as the slope of the graph. Compare two different proportional relationships represented in different ways.</p>
+</dd>
+<dt class="hdlist1"><br/>HSF.IF.A.1</dt>
+<dd>
+<p>Understand that a function from one set (called the domain) to another set (called the range) assigns to each element of the domain exactly one element of the range. If f is a function and x is an element of its domain, then f(x) denotes the output of f corresponding to the input x. The graph of f is the graph of the equation y = f(x).</p>
+</dd>
+<dt class="hdlist1"><br/>HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1"><br/>HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.</p>
+</dd>
+<dt class="hdlist1"><br/>HSF.IF.C.9</dt>
+<dd>
+<p>Compare properties of two functions each represented in a different way (algebraically, graphically, numerically in tables, or by verbal descriptions).</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Oklahoma">
+<span class="title"><a href="https://sde.ok.gov/oklahoma-academic-standards">Oklahoma Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>OK.A1.A.4</dt>
+<dd>
+<p>Analyze mathematical change involving linear equations in real-world and mathematical problems.</p>
+</dd>
+<dt class="hdlist1"><br/>OK.A1.A.4.1</dt>
+<dd>
+<p>Calculate and interpret slope and the x- and y-intercepts of a line using a graph, an equation, two points, or a set of data points to solve realworld and mathematical problems.</p>
+</dd>
+<dt class="hdlist1"><br/>OK.A1.F.2.1</dt>
+<dd>
+<p>Distinguish between linear and nonlinear (including exponential) functions arising from real-world and mathematical situations that are represented in tables, graphs, and equations. Understand that linear functions grow by equal intervals and that exponential functions grow by equal factors over equal intervals.</p>
+</dd>
+<dt class="hdlist1"><br/>OK.A1.F.3</dt>
+<dd>
+<p>Represent functions in multiple ways and use the representation to interpret real-world and mathematical problems.</p>
+</dd>
+<dt class="hdlist1"><br/>OK.A1.F.3.1</dt>
+<dd>
+<p>Identify and generate equivalent representations of linear equations, graphs, tables, and real-world situations.</p>
+</dd>
+<dt class="hdlist1"><br/>OK.PA.A.2.1</dt>
+<dd>
+<p>Represent linear functions with tables, verbal descriptions, symbols, and graphs; translate from one representation to another.</p>
+</dd>
+<dt class="hdlist1"><br/>OK.PA.A.2.2</dt>
+<dd>
+<p>Identify, describe, and analyze linear relationships between two variables.</p>
+</dd>
+<dt class="hdlist1"><br/>OK.PA.A.2.3</dt>
+<dd>
+<p>Identify graphical properties of linear functions including slope and intercepts. Know that the slope equals the rate of change, and that the yintercept is zero when the function represents a proportional relationship.</p>
+</dd>
+<dt class="hdlist1"><br/>OK.PA.A.2.4</dt>
+<dd>
+<p>Predict the effect on the graph of a linear function when the slope or y-intercept changes. Use appropriate tools to examine these effects.</p>
+</dd>
+</dl>
+</span></span></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch sidebarpractices">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p><strong>Practices in this Lesson</strong>
+<select class="practicesAlignmentSelect"  onchange="showPracticesAlignment()"><option selected="selected" value="practices-CC"><a href="http://corestandards.org/Math/">Math</a></option></select></p>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="dlist alignedPractices practices-CC">
+<span class="title"><a href="http://corestandards.org/Math/">Math</a></span>
+<dl>
+<dt class="hdlist1"><br/>MP.7</dt>
+<dd>
+<p>Look for and make use of structure</p>
+</dd>
+<dt class="hdlist1"><br/>MP.1</dt>
+<dd>
+<p>Make sense of problems and persevere in solving them</p>
+</dd>
+<dt class="hdlist1"><br/>MP.3</dt>
+<dd>
+<p>Construct viable arguments and critique the reasoning of others</p>
+</dd>
+<dt class="hdlist1"><br/>MP.2</dt>
+<dd>
+<p>Reason abstractly and quantitatively</p>
+</dd>
+<dt class="hdlist1"><br/>MP.5</dt>
+<dd>
+<p>Use appropriate tools strategically</p>
+</dd>
+</dl>
+</span></span></td>
+</tr>
+</tbody>
+</table>
+<span class="paragraph">
+<!-- </p>
+</span>
+--></span><!--
+<span class="paragraph">
+<p>
+-->
+</span>
+<span class="paragraph">
+<p><span class="other-proglang">(Also available in <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/function-definition-linear/index.shtml">Pyret</a>)</span></p>
+</span>
+<style>
+#content .small-table {max-width: 75%}
+#content .graph-table img {width: 33%;}
+</style>
+<span class="paragraph description">
+<p>Students explore the concept of slope and y-intercept in linear relationships, using function definitions as a third representation (alongside tables and graphs).</p>
+</span>
+<table class="tableblock frame-all grid-all stripes-none stretch left-header preamble">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>Lesson Goals</p>
+</span></span></td>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>Students will be able to&#8230;&#8203;</p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p>define linear functions using slope and y-intercept</p>
+</li>
+<li>
+<p>match different representations of the same linear relationship</p>
+</li>
+</ul>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>Student-facing Lesson Goals</p>
+</span></span></td>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="ulist">
+<ul>
+<li>
+<p>I can define a function to express a linear relationship and identify the slope and y-intercept in a function definition.</p>
+</li>
+<li>
+<p>I can match different representations of the same linear relationship</p>
+</li>
+</ul>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>Materials</p>
+</span></span></td>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="ulist materials-links">
+<ul>
+<li>
+<p><a href="https://docs.google.com/presentation/d/1Xnyzv0GTyPXmT8qK-zrHD_ekHJY4OxaoB0_VQhiacwg/" target="_blank" rel="noopener">Lesson Slides</a></p>
+</li>
+<li>
+<p><span class="materialSectionPlaceholder"> </span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/function-definition-linear-wescheme/pages/slope-and-y-def.html" target="_blank" rel="noopener">Identifying Slope and y-intercept in Definitions</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/function-definition-linear-wescheme/pages/match-definitions-graphs.html" target="_blank" rel="noopener">Matching Graphs to Function Definitions</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/function-definition-linear-wescheme/pages/definitions-from-graphs.html" target="_blank" rel="noopener">Summarizing Graphs with Function Definitions</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/function-definition-linear-wescheme/pages/match-definitions-tables.html" target="_blank" rel="noopener">Matching Tables to Function Definitions</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/function-definition-linear-wescheme/pages/definitions-from-tables.html" target="_blank" rel="noopener">Summarizing Tables with Function Definitions</a></span></p>
+</li>
+<li>
+<p><span class="OnlineExercise"><a href="https://teacher.desmos.com/activitybuilder/custom/5fc24d7d7768970b95efa813" target="_blank" rel="noopener">Matching Tables and Definitions (Desmos)</a></span></p>
+</li>
+<li>
+<p><span class="OnlineExercise"><a href="https://teacher.desmos.com/activitybuilder/custom/5fbe72167f5cee0d57130b96" target="_blank" rel="noopener">Matching Graphs and Definitions of Linear Functions (Desmos)</a></span></p>
+</li>
+<li>
+<p><span class="OnlineExercise"><a href="https://teacher.desmos.com/activitybuilder/custom/5fbe7b4cf278460cdbd34bc8" target="_blank" rel="noopener">Matching Graphs and Definitions of Linear Functions 2 (Desmos)</a></span></p>
+</li>
+<li>
+<p><span class="OnlineExercise"><a href="https://teacher.desmos.com/activitybuilder/custom/5fbe74ac877d890d3e1a49cc?collections=5fbe7484d81cab0ca7a8bcfb" target="_blank" rel="noopener">Matching Function Definitions, Tables and Graphs (Desmos)</a></span></p>
+</li>
+<li>
+<p><span class="OnlineExercise"><a href="https://teacher.desmos.com/activitybuilder/custom/5fbe782a6dcb980d4c87b78d?collections=5fbecc2b40d7aa0d844956f0" target="_blank" rel="noopener">Matching Function Definitions, Tables and Graphs 2 (Desmos)</a></span></p>
+</li>
+<li>
+<p><span class="Optional OnlineExercise"><a href="https://teacher.desmos.com/activitybuilder/custom/5fc263844666f00d51454b58" target="_blank" rel="noopener">Identifying y-intercepts in Tables, Graphs &amp; Definitions of Linear Functions (Desmos)</a></span></p>
+</li>
+<li>
+<p><span class="Optional OnlineExercise"><a href="https://teacher.desmos.com/activitybuilder/custom/5fc264d34666f00d51454b87" target="_blank" rel="noopener">Identifying slope in Tables, Graphs &amp; Definitions of Linear Functions (Desmos)</a></span></p>
+</li>
+<li>
+<p><span class="Optional OnlineExercise"><a href="https://teacher.desmos.com/activitybuilder/custom/5fbecf6ee47d820d0a06ef09" target="_blank" rel="noopener">Matching Graphs &amp; Definitions of Functions (not just linear!) (Desmos)</a></span></p>
+</li>
+<li>
+<p><span class="Optional OnlineExercise"><a href="https://teacher.desmos.com/activitybuilder/custom/5fe38c56f875180d2adb6674" target="_blank" rel="noopener">Identifying y-intercepts in Tables, Graphs &amp; Definitions of Linear Functions (challenge) (Desmos)</a></span></p>
+</li>
+<li>
+<p><span class="Optional OnlineExercise"><a href="https://teacher.desmos.com/activitybuilder/custom/5fc26797b575200bae86929c" target="_blank" rel="noopener">Identifying Linearity in Tables, Graphs &amp; Definitions of Linear Functions (Desmos)</a></span></p>
+</li>
+<li>
+<p><span class="Optional OnlineExercise"><a href="https://teacher.desmos.com/activitybuilder/custom/5fc261b2b575200bae8691fd" target="_blank" rel="noopener">Matching Tables, Graphs, and Definitions of Functions (challenge!) (Desmos)</a></span></p>
+</li>
+<li>
+<p><span class="Optional OnlineExercise"><a href="https://teacher.desmos.com/activitybuilder/custom/5fbe7ce016ed10402e547aa7" target="_blank" rel="noopener">Matching Tables, Graphs, and Definitions of Functions (challenge!) (Desmos)</a></span></p>
+</li>
+<li>
+<p><span class="Optional OnlineExercise"><a href="https://teacher.desmos.com/activitybuilder/custom/5fe38c56f875180d2adb6674?collections=5fbe7484d81cab0ca7a8bcfb" target="_blank" rel="noopener">Identifying y-intercepts in Tables, Graphs &amp; Definitions of Linear Functions (challenge!) (Desmos)</a></span></p>
+</li>
+<li>
+<p><strong>Classroom visual:</strong> <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/javascript:showLangTable()">Language Table</a></p>
+</li>
+</ul>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>Key Points for the Facilitator</p>
+</span></span></td>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="ulist">
+<ul>
+<li>
+<p>Lines are made of points (try to avoid referring to "lines" as much as "collections of points")</p>
+</li>
+<li>
+<p>Linear functions can be represented as straight lines on a graph or as sequences that change at a constant rate in a table.</p>
+</li>
+<li>
+<p>Stress that Graphs, Definitions, and Tables are all <em>different ways of viewing the same function</em>. The misconception to fight against is the idea that <span class="gdrive-only">fx = 3x + 2</span><!--<span class="begin-ignore-for-gdrive"></span><script type="math/tex">\displaystyle f(x) = 3x + 2</script><span class="end-ignore-for-gdrive"></span>--> is somehow the "real" function, with the graph being "the thing the function draws."</p>
+</li>
+</ul>
+</span></span></td>
+</tr>
+</tbody>
+</table>
+<span class="dlist glossary">
+<span class="title">Glossary</span>
+<dl>
+<dt class="hdlist1"><br/>coordinate pair</dt>
+<dd>
+<p>a set of numbers describing an object&#8217;s location on the coordinate plane</p>
+</dd>
+<dt class="hdlist1"><br/>domain</dt>
+<dd>
+<p>the type or set of inputs that a function expects</p>
+</dd>
+<dt class="hdlist1"><br/>range</dt>
+<dd>
+<p>the type or set of outputs that a function produces</p>
+</dd>
+<dt class="hdlist1"><br/>slope</dt>
+<dd>
+<p>the steepness of a straight line on a graph</p>
+</dd>
+<dt class="hdlist1"><br/>y-intercept</dt>
+<dd>
+<p>the point where a line or curve crosses the y-axis of a graph</p>
+</dd>
+</dl>
+</span>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<table class="grid-none frame-none section-heading"><tr><td width="65%">Defining Linear Functions </td><td width="35%">35 minutes</td></tr></table>
+<span class="sectionbody">
+<span class="sect2 lesson-section-2">
+<h3 id="_overview">Overview</h3>
+<span class="paragraph">
+<p>Students explore function definitions as a way of expressing linear relationships, and construct tables and graphs from those definitions.</p>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_launch">Launch</h3>
+<span class="paragraph">
+<p>As you&#8217;ve seen, a <strong>function definition</strong> is a way of summarizing a relationship. You&#8217;ve seen how a linear relationship can be expressed as a table or graph. But what do these kinds of relationships look like as a definition?</p>
+</span>
+<div class="paragraph lesson-point">
+<p>Linear functions are defined by their <span class="vocab">slope</span> and <span class="vocab">y-intercept</span></p>
+</div>
+<span class="paragraph">
+<p>The <strong>slope-intercept form of the line</strong> includes the slope as the coefficient of x and the y-intercept as the numerical term.  You will hear people describe this form as <span class="gdrive-only">y = mx + b</span><!--<span class="begin-ignore-for-gdrive"></span><script type="math/tex">\displaystyle y = mx + b</script><span class="end-ignore-for-gdrive"></span>-->, where <span class="gdrive-only">m</span><!--<span class="begin-ignore-for-gdrive"></span><script type="math/tex">\displaystyle m</script><span class="end-ignore-for-gdrive"></span>--> stands for slope and <span class="gdrive-only">b</span><!--<span class="begin-ignore-for-gdrive"></span><script type="math/tex">\displaystyle b</script><span class="end-ignore-for-gdrive"></span>--> stands for the y-intercept.</p>
+</span>
+<span class="paragraph">
+<p>While it is common to write the x-term first and the y-intercept second, they can be written in any order!</p>
+</span>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th style="width: 100%;" class="tableblock halign-center valign-top">Function Notation</th>
+<th style="width: 100%;" class="tableblock halign-center valign-top">WeScheme Code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><span class="content"><span class="paragraph">
+<p><span class="gdrive-only">fx = 6x - 10</span><!--<span class="begin-ignore-for-gdrive"></span><script type="math/tex">\displaystyle f(x) = 6x - 10</script><span class="end-ignore-for-gdrive"></span>--></p>
+</span></span></td>
+<td class="tableblock halign-center valign-top"><span class="content"><span class="paragraph">
+<p><span class="obeyspaces"><code class="racket">(define (f x) (- (* 6 x) 10))</code></span></p>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><span class="content"><span class="paragraph">
+<p><span class="gdrive-only">fx = -10 + 6x</span><!--<span class="begin-ignore-for-gdrive"></span><script type="math/tex">\displaystyle f(x) = -10 + 6x</script><span class="end-ignore-for-gdrive"></span>--></p>
+</span></span></td>
+<td class="tableblock halign-center valign-top"><span class="content"><span class="paragraph">
+<p><span class="obeyspaces"><code class="racket">(define (f x) (+ -10 (* 6 x)))</code></span></p>
+</span></span></td>
+</tr>
+</tbody>
+</table>
+<span class="paragraph">
+<p>When the slope is zero (and the line is horizontal)&#8230;&#8203; we may choose whether or not to write the slope term.</p>
+</span>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th style="width: 20%;" class="tableblock halign-center valign-top">"Visible" Slope</th>
+<th style="width: 80%;" class="tableblock halign-center valign-top">"Invisible" Slope</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="gdrive-only">fx = 0x + 22</span><!--<span class="begin-ignore-for-gdrive"></span><script type="math/tex">\displaystyle f(x) = 0x + 22</script><span class="end-ignore-for-gdrive"></span>--></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="gdrive-only">fx = 22</span><!--<span class="begin-ignore-for-gdrive"></span><script type="math/tex">\displaystyle f(x) = 22</script><span class="end-ignore-for-gdrive"></span>--></p></td>
+</tr>
+</tbody>
+</table>
+<span class="paragraph">
+<p>When the y-intercept is <span class="gdrive-only">0</span><!--<span class="begin-ignore-for-gdrive"></span><script type="math/tex">\displaystyle 0</script><span class="end-ignore-for-gdrive"></span>--> (and the line crosses the y-axis at the origin)&#8230;&#8203; we may choose whether or not to write the slope term.</p>
+</span>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th style="width: 50%;" class="tableblock halign-center valign-top">"Visible" y-intercept</th>
+<th style="width: 50%;" class="tableblock halign-center valign-top">"Invisible" y-intercept</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="gdrive-only">fx = 3.2x + 0</span><!--<span class="begin-ignore-for-gdrive"></span><script type="math/tex">\displaystyle f(x) = 3.2x + 0</script><span class="end-ignore-for-gdrive"></span>--></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="gdrive-only">fx = 3.2x</span><!--<span class="begin-ignore-for-gdrive"></span><script type="math/tex">\displaystyle f(x) = 3.2x</script><span class="end-ignore-for-gdrive"></span>--></p></td>
+</tr>
+</tbody>
+</table>
+<span class="paragraph">
+<p>To check our work, we can apply the function to the x-value from any <span class="vocab">coordinate pair</span> on our table or graph, and it should produce the y-value!</p>
+</span>
+<span class="paragraph">
+<p>As with tables and graphs, a function definition can also reveal whether or not the function is linear. Functions that are not linear will follow other forms, for example they may include exponents or absolute values.</p>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_investigate">Investigate</h3>
+<span class="openblock lesson-instruction">
+<span class="content">
+<span class="paragraph">
+<p><strong>Let&#8217;s start by identifying the slope and y-intercept from function definitions.</strong></p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/function-definition-linear-wescheme/pages/slope-and-y-def.html" target="_blank" rel="noopener">Identifying Slope and y-intercept in Definitions</a></p>
+</li>
+</ul>
+</span>
+</span>
+</span>
+<span class="openblock indentedpara">
+<span class="content">
+<span class="paragraph">
+<p><em>More practice is available through our Desmos card sort activities:</em></p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p><a href="https://teacher.desmos.com/activitybuilder/custom/5fc263844666f00d51454b58" target="_blank" rel="noopener">Identifying y-intercepts in Tables, Graphs &amp; Definitions of Linear Functions (Desmos)</a></p>
+</li>
+<li>
+<p><a href="https://teacher.desmos.com/activitybuilder/custom/5fc264d34666f00d51454b87" target="_blank" rel="noopener">Identifying slope in Tables, Graphs &amp; Definitions of Linear Functions (Desmos)</a></p>
+</li>
+</ul>
+</span>
+</span>
+</span>
+<span class="openblock lesson-instruction">
+<span class="content">
+<span class="paragraph">
+<p><strong>Let&#8217;s connect definitions to tables and graphs.</strong></p>
+</span>
+<span class="paragraph">
+<p>Writing down the slope and y-intercept beneath each representation will help!</p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/function-definition-linear-wescheme/pages/match-definitions-tables.html" target="_blank" rel="noopener">Matching Tables to Function Definitions</a></p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/function-definition-linear-wescheme/pages/match-definitions-graphs.html" target="_blank" rel="noopener">Matching Graphs to Function Definitions</a></p>
+</li>
+</ul>
+</span>
+</span>
+</span>
+<span class="openblock indentedpara">
+<span class="content">
+<span class="paragraph">
+<p><em>More matching practice is available through our Desmos card sort activities.</em></p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p><a href="https://teacher.desmos.com/activitybuilder/custom/5fc24d7d7768970b95efa813" target="_blank" rel="noopener">Matching Tables and Definitions (Desmos)</a></p>
+</li>
+<li>
+<p><a href="https://teacher.desmos.com/activitybuilder/custom/5fbe72167f5cee0d57130b96" target="_blank" rel="noopener">Matching Graphs and Definitions of Linear Functions (Desmos)</a></p>
+</li>
+<li>
+<p><a href="https://teacher.desmos.com/activitybuilder/custom/5fbe7b4cf278460cdbd34bc8" target="_blank" rel="noopener">Matching Graphs and Definitions of Linear Functions 2 (Desmos)</a></p>
+</li>
+</ul>
+</span>
+</span>
+</span>
+<span class="openblock lesson-instruction">
+<span class="content">
+<span class="paragraph">
+<p><strong>Let&#8217;s write our own definitions from tables and graphs!</strong></p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/function-definition-linear-wescheme/pages/definitions-from-tables.html" target="_blank" rel="noopener">Summarizing Tables with Function Definitions</a></p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/function-definition-linear-wescheme/pages/definitions-from-graphs.html" target="_blank" rel="noopener">Summarizing Graphs with Function Definitions</a></p>
+</li>
+</ul>
+</span>
+<span class="paragraph">
+<p>What strategies did you use?</p>
+</span>
+</span>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_common_misconceptions">Common Misconceptions</h3>
+<span class="paragraph">
+<p>It is common to think of the graph as the "output" of the function, rather than the function itself. Most math textbooks will use language like "matching the graph to the function", suggesting that the graph is somehow not the function! Since this language is pervasive, it&#8217;s important to actively push against it.</p>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_synthesize">Synthesize</h3>
+<span class="paragraph">
+<p>Function definitions are a way of talking about relationships between quantities: milk costs $0.59/gallon, a stone falls at <span class="gdrive-only">9.8m/s^2</span><!--<span class="begin-ignore-for-gdrive"></span><script type="math/tex">\displaystyle 9.8m/s^2</script><span class="end-ignore-for-gdrive"></span>-->, or there are 30 students for every teacher at a school. If we can figure out the relationship between a small sample of data, we can <em>make predictions</em> about what happens next. We can see these relationships as tables, graphs, or symbols in a definition. We can even think about them as a mapping between <span class="vocab">Domain</span> and <span class="vocab">Range</span>!</p>
+</span>
+<span class="paragraph">
+<p>When we talk about functions, it&#8217;s helpful to be able to switch between representations, and see the connections between them.</p>
+</span>
+</span>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<table class="grid-none frame-none section-heading"><tr><td width="65%">Finding the y-intercept from the Slope and a Point </td><td width="35%">20 minutes</td></tr></table>
+<span class="sectionbody">
+<span class="sect2 lesson-section-2">
+<h3 id="_launch_2">Launch</h3>
+<span class="openblock lesson-instruction">
+<span class="content">
+<span class="paragraph">
+<p>Consider the function <span class="gdrive-only">fx = 3x</span><!--<span class="begin-ignore-for-gdrive"></span><script type="math/tex">\displaystyle f(x) = 3x</script><span class="end-ignore-for-gdrive"></span>-->.</p>
+</span>
+<table class="tableblock frame-all grid-all stretch sideways-pyret-table">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">y</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">9</p></td>
+</tr>
+</tbody>
+</table>
+<span class="ulist">
+<ul>
+<li>
+<p>What is the slope?</p>
+<span class="ulist">
+<ul>
+<li>
+<p><em>3</em></p>
+</li>
+</ul>
+</span>
+</li>
+<li>
+<p>What is the y-intercept?</p>
+<span class="ulist">
+<ul>
+<li>
+<p><em>0</em></p>
+</li>
+</ul>
+</span>
+</li>
+<li>
+<p>What is the y-value when x = 2?</p>
+<span class="ulist">
+<ul>
+<li>
+<p><em>6</em></p>
+</li>
+</ul>
+</span>
+</li>
+</ul>
+</span>
+</span>
+</span>
+<div class="paragraph lesson-point">
+<p>Anytime the y-intercept is 0, we can multiply any x-value by the slope to get its corresponding y-value.</p>
+</div>
+<span class="paragraph">
+<p>But if the y-intercept isn&#8217;t zero&#8230;&#8203; there is another step to finding the y-value.</p>
+</span>
+<span class="openblock lesson-instruction">
+<span class="content">
+<span class="paragraph">
+<p>Consider the function <span class="gdrive-only">fx = 3x - 2</span><!--<span class="begin-ignore-for-gdrive"></span><script type="math/tex">\displaystyle f(x) = 3x - 2</script><span class="end-ignore-for-gdrive"></span>-->.</p>
+</span>
+<table class="tableblock frame-all grid-all stretch sideways-pyret-table">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">y</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7</p></td>
+</tr>
+</tbody>
+</table>
+<span class="ulist">
+<ul>
+<li>
+<p>What is the slope?</p>
+<span class="ulist">
+<ul>
+<li>
+<p><em>3. Same as for the previous function.</em></p>
+</li>
+</ul>
+</span>
+</li>
+<li>
+<p>What is the y-intercept?</p>
+<span class="ulist">
+<ul>
+<li>
+<p><em>-2</em></p>
+</li>
+</ul>
+</span>
+</li>
+<li>
+<p>What is the y-value when x = 2?</p>
+<span class="ulist">
+<ul>
+<li>
+<p><em>4. Two less than the y-value for <span class="gdrive-only">x=3</span><!--<span class="begin-ignore-for-gdrive"></span><script type="math/tex">\displaystyle x=3</script><span class="end-ignore-for-gdrive"></span>--> in the previous function, where the y-intercept was 0.</em></p>
+</li>
+</ul>
+</span>
+</li>
+</ul>
+</span>
+</span>
+</span>
+<span class="paragraph">
+<p>The y-intercept always gets added to / subtracted from the product of the slope and the x-value to find the corresponding y-value.</p>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_investigate_2">Investigate</h3>
+<span class="paragraph">
+<p>As discussed above, the relationship between the x-values and the y-values can be described using <span class="gdrive-only">y = mx + b</span><!--<span class="begin-ignore-for-gdrive"></span><script type="math/tex">\displaystyle y = mx + b</script><span class="end-ignore-for-gdrive"></span>-->, where <span class="gdrive-only">m</span><!--<span class="begin-ignore-for-gdrive"></span><script type="math/tex">\displaystyle m</script><span class="end-ignore-for-gdrive"></span>--> stands for <span class="vocab">slope</span> and <span class="gdrive-only">b</span><!--<span class="begin-ignore-for-gdrive"></span><script type="math/tex">\displaystyle b</script><span class="end-ignore-for-gdrive"></span>--> stands for the <span class="vocab">y-intercept</span>.</p>
+</span>
+<span class="paragraph">
+<p>If we solve that for the y-intercept&#8230;&#8203;</p>
+</span>
+<span class="paragraph">
+<p><span class="gdrive-only">b = y - mx</span><!--<span class="begin-ignore-for-gdrive"></span><script type="math/tex">\displaystyle b = y - mx</script><span class="end-ignore-for-gdrive"></span>--></p>
+</span>
+<span class="paragraph">
+<p>In other words, <em>the y-intercept can be calculated by subtracting the product of the slope and any x-value from the corrseponding y-value.</em></p>
+</span>
+<span class="paragraph lesson-instruction">
+<p>Let&#8217;s say the slope is <span class="gdrive-only">3</span><!--<span class="begin-ignore-for-gdrive"></span><script type="math/tex">\displaystyle 3</script><span class="end-ignore-for-gdrive"></span>-->. And we know that the line passes through the point (7,9).</p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p><span class="gdrive-only">b = y - mx</span><!--<span class="begin-ignore-for-gdrive"></span><script type="math/tex">\displaystyle b = y - mx</script><span class="end-ignore-for-gdrive"></span>--></p>
+</li>
+<li>
+<p><span class="gdrive-only">m = 3</span><!--<span class="begin-ignore-for-gdrive"></span><script type="math/tex">\displaystyle m = 3</script><span class="end-ignore-for-gdrive"></span>--></p>
+</li>
+<li>
+<p><span class="gdrive-only">x = 7</span><!--<span class="begin-ignore-for-gdrive"></span><script type="math/tex">\displaystyle x = 7</script><span class="end-ignore-for-gdrive"></span>--></p>
+</li>
+<li>
+<p><span class="gdrive-only">y = 9</span><!--<span class="begin-ignore-for-gdrive"></span><script type="math/tex">\displaystyle y = 9</script><span class="end-ignore-for-gdrive"></span>--></p>
+</li>
+<li>
+<p>so&#8230;&#8203; <span class="gdrive-only">b = 9 - 37</span><!--<span class="begin-ignore-for-gdrive"></span><script type="math/tex">\displaystyle b = 9 - 3(7)</script><span class="end-ignore-for-gdrive"></span>--></p>
+</li>
+</ul>
+</span>
+<span class="paragraph">
+<p>To find the y-intercept, subtract <span class="gdrive-only">9</span><!--<span class="begin-ignore-for-gdrive"></span><script type="math/tex">\displaystyle 9</script><span class="end-ignore-for-gdrive"></span>--> <em>(the y-value of the point)</em> minus <span class="gdrive-only">3 &times; 7</span><!--<span class="begin-ignore-for-gdrive"></span><script type="math/tex">\displaystyle 3 \times 7</script><span class="end-ignore-for-gdrive"></span>--> <em>(the product of the slope and the x-value of the point).</em></p>
+</span>
+<span class="paragraph indentedpara">
+<p><span class="gdrive-only">9 - 21 = -12</span><!--<span class="begin-ignore-for-gdrive"></span><script type="math/tex">\displaystyle 9 - 21 = -12</script><span class="end-ignore-for-gdrive"></span>--></p>
+</span>
+<span class="paragraph">
+<p><em>y-intercept:</em> <span class="gdrive-only">-12</span><!--<span class="begin-ignore-for-gdrive"></span><script type="math/tex">\displaystyle -12</script><span class="end-ignore-for-gdrive"></span>--></p>
+</span>
+<span class="paragraph">
+<p><em>function definition making use of the y-intercept we found:</em> <span class="gdrive-only">fx = 3x - 12</span><!--<span class="begin-ignore-for-gdrive"></span><script type="math/tex">\displaystyle f(x) = 3x - 12</script><span class="end-ignore-for-gdrive"></span>--></p>
+</span>
+<span class="openblock lesson-instruction">
+<span class="content">
+<span class="paragraph">
+<p>Consider the table below.</p>
+</span>
+<table class="tableblock frame-all grid-all stretch sideways-pyret-table">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">80</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">81</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">82</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">83</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">y</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">150</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">155</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">160</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">165</p></td>
+</tr>
+</tbody>
+</table>
+<span class="ulist">
+<ul>
+<li>
+<p>What is the slope?</p>
+<span class="ulist">
+<ul>
+<li>
+<p><em>5</em></p>
+</li>
+</ul>
+</span>
+</li>
+<li>
+<p>Calculate the y-intercept using the first coordinate pair.</p>
+<span class="ulist">
+<ul>
+<li>
+<p><em>-250</em></p>
+</li>
+</ul>
+</span>
+</li>
+<li>
+<p>Do you get the same y-intercept if you use another pair?</p>
+<span class="ulist">
+<ul>
+<li>
+<p><em>Yes.</em></p>
+</li>
+</ul>
+</span>
+</li>
+</ul>
+</span>
+</span>
+</span>
+</span>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<h2 id="_additional_exercises"><span class="section-link"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/#_additional_exercises"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Additional Exercises:</h2>
+<span class="sectionbody">
+<span class="ulist">
+<ul>
+<li>
+<p><a href="https://teacher.desmos.com/activitybuilder/custom/5fbe74ac877d890d3e1a49cc?collections=5fbe7484d81cab0ca7a8bcfb" target="_blank" rel="noopener">Matching Function Definitions, Tables and Graphs (Desmos)</a></p>
+</li>
+<li>
+<p><a href="https://teacher.desmos.com/activitybuilder/custom/5fbe782a6dcb980d4c87b78d?collections=5fbecc2b40d7aa0d844956f0" target="_blank" rel="noopener">Matching Function Definitions, Tables and Graphs 2 (Desmos)</a></p>
+</li>
+<li>
+<p><a href="https://teacher.desmos.com/activitybuilder/custom/5fbecf6ee47d820d0a06ef09" target="_blank" rel="noopener">Matching Graphs &amp; Definitions of Functions (not just linear!) (Desmos)</a></p>
+</li>
+<li>
+<p><a href="https://teacher.desmos.com/activitybuilder/custom/5fe38c56f875180d2adb6674" target="_blank" rel="noopener">Identifying y-intercepts in Tables, Graphs &amp; Definitions of Linear Functions (challenge) (Desmos)</a></p>
+</li>
+<li>
+<p><a href="https://teacher.desmos.com/activitybuilder/custom/5fc26797b575200bae86929c" target="_blank" rel="noopener">Identifying Linearity in Tables, Graphs &amp; Definitions of Linear Functions (Desmos)</a></p>
+</li>
+<li>
+<p><a href="https://teacher.desmos.com/activitybuilder/custom/5fc261b2b575200bae8691fd" target="_blank" rel="noopener">Matching Tables, Graphs, and Definitions of Functions (challenge!) (Desmos)</a></p>
+</li>
+<li>
+<p><a href="https://teacher.desmos.com/activitybuilder/custom/5fbe7ce016ed10402e547aa7" target="_blank" rel="noopener">Matching Tables, Graphs, and Definitions of Functions (challenge!) (Desmos)</a></p>
+</li>
+<li>
+<p><a href="https://teacher.desmos.com/activitybuilder/custom/5fe38c56f875180d2adb6674?collections=5fbe7484d81cab0ca7a8bcfb" target="_blank" rel="noopener">Identifying y-intercepts in Tables, Graphs &amp; Definitions of Linear Functions (challenge!) (Desmos)</a></p>
+</li>
+</ul>
+</span>
+</span>
+</span>
+<span class="sect1 acknowledgmentsect">
+<span class="sectionbody">
+<span class="openblock acknowledgment"><hr/>
+<span class="content">
+<span class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</span>
+</span>
+</span>
+</span>
+</span>
+</span>
+<span id="footer">
+<span id="footer-text">
+Last updated 2022-10-17 19:42:14 -0400
+</span>
+</span>
+</span>
+</body>
+</html>

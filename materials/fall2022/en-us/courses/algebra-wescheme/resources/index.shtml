@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Teacher Resources for Algebra</title>
+
+  <link rel="stylesheet" href="../../../lib/curriculum.css" />
+    <script src="../../../lib/langtable.js"></script>
+    <script src="../../../lib/bootstraplesson.js"></script>
+    <script src="../../../dependency-graph.js"></script>
+    <script src="../../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"Teacher Resources for Algebra",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="TeacherResources article wescheme" onload="renderSaveToDrive()">
+<!--#include virtual="/menubar.ssi"-->
+<div id="body" onload="renderSaveToDrive()">
+<div id="header">
+<h1>Teacher Resources for Algebra</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="../index.shtml">Click here to return to lessons</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_essentials">Essentials</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Online Community (Discourse)</strong> [<a href="https://discourse.bootstrapworld.org" target="_blank" rel="noopener">Discourse</a>] - Talk with other Bootstrap teachers, ask questions, and share out ideas!</p>
+</li>
+<li>
+<p><strong>Collection of Bootstrap:Algebra Desmos Activities</strong> [<a href="https://teacher.desmos.com/collection/5fbecc2b40d7aa0d844956f0" target="_blank" rel="noopener">link</a>]</p>
+</li>
+<li>
+<p><strong>Contracts</strong> [<a href="solution-pages/contracts.pdf" target="_blank" rel="noopener">PDF</a>] - for teachers who want only the contracts reference from the back of the student workbook, without using the entire book.</p>
+</li>
+<li>
+<p><strong>Glossary</strong> [<a href="../pathway-glossary.shtml" target="_blank" rel="noopener">link</a>] - All of the vocabulary words (and their definitions) used in this pathway.</p>
+</li>
+<li>
+<p><strong>Bilingual Glossary of Bootstrap Terms (English-Spanish)</strong> [<a href="../../../lib/bilingual-glossary.html" target="_blank" rel="noopener">PDF</a>] - For teachers with ELL/ESL students, we provide a bilingual glossary for all of the terms used across our curriculum library.</p>
+</li>
+<li>
+<p><strong>Blank Design Recipe Worksheet</strong> [<a href="../back-matter/pages/blank-recipe.html" target="_blank" rel="noopener">PDF</a>] - Use alongside story problems for a function development template.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_links_to_starter_files">Links to Starter Files</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Game Templates</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.wescheme.org/run?publicId=sggzRzgU5T" target="_blank" rel="noopener">Ninja Cat Game</a></p>
+</li>
+<li>
+<p><a href="https://www.wescheme.org/openEditor?publicId=duCnqdg8Re" target="_blank" rel="noopener">Blank Game Starter File</a></p>
+</li>
+<li>
+<p><a href="https://www.wescheme.org/openEditor?publicId=QweXHnMPxg" target="_blank" rel="noopener">Sample Game Starter File</a></p>
+</li>
+<li>
+<p><a href="https://www.wescheme.org/openEditor?publicId=QgT6PtTZ2v" target="_blank" rel="noopener">Sample Game with Distance Lines Made Visible</a></p>
+</li>
+<li>
+<p><a href="https://www.wescheme.org/openEditor?publicId=QweXHnMPxg" target="_blank" rel="noopener">Sample Game with 2D Motion</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Ratio &amp; Proportion, Geometric Transformations, Coordinate Plane Geometry - <em>Flags</em></strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.wescheme.org/openEditor?publicId=jH25JejavW" target="_blank" rel="noopener">Flags Starter File</a></p>
+</li>
+<li>
+<p><a href="https://www.wescheme.org/openEditor?publicId=81WrTGQglP" target="_blank" rel="noopener">Flags of Netherland</a></p>
+</li>
+<li>
+<p><a href="https://www.wescheme.org/openEditor?publicId=ve2gTEY06p" target="_blank" rel="noopener">Alaskan Flag Starter File</a></p>
+</li>
+<li>
+<p><a href="https://www.wescheme.org/openEditor?publicId=x0nJrP1UYp" target="_blank" rel="noopener">Flag of Lebanon Starter File</a></p>
+</li>
+<li>
+<p><a href="https://www.wescheme.org/openEditor?publicId=6TJ0N2CJqU" target="_blank" rel="noopener">Flag of Puerto Rico Starter File</a></p>
+</li>
+<li>
+<p><a href="https://www.wescheme.org/openEditor?publicId=SQRHKcqQvW" target="_blank" rel="noopener">Flag of Trinidad and Tobago Starter File</a></p>
+</li>
+<li>
+<p><a href="https://www.wescheme.org/openEditor?publicId=0Sdq8F2b3q" target="_blank" rel="noopener">Flag of Turkey Starter File</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Inequalities</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.wescheme.org/openEditor?publicId=pEypYaQXjZ" target="_blank" rel="noopener">Simple Inequalities Starter File</a></p>
+</li>
+<li>
+<p><a href="https://www.wescheme.org/openEditor?publicId=yFnDbsSnR7" target="_blank" rel="noopener">Compound Inequalities Starter File</a></p>
+</li>
+<li>
+<p><a href="https://www.wescheme.org/openEditor?publicId=0elP8WrmfM" target="_blank" rel="noopener">Sam the Butterfly Starter File</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Other</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.wescheme.org/openEditor?publicId=Dus6Kaigy6" target="_blank" rel="noopener">Defining Values Starter File</a></p>
+</li>
+<li>
+<p><a href="https://www.wescheme.org/openEditor?publicId=Vl5yocVoU4" target="_blank" rel="noopener">Chinese Flag Starter File</a></p>
+</li>
+<li>
+<p><a href="https://www.wescheme.org/openEditor?publicId=N47mpskeWS" target="_blank" rel="noopener">Rocket Height Starter File</a></p>
+</li>
+<li>
+<p><a href="https://www.wescheme.org/openEditor?publicId=nwVEttw9ZY" target="_blank" rel="noopener">Bug Hunting Starter File</a></p>
+</li>
+<li>
+<p><a href="https://www.wescheme.org/openEditor?publicId=EA6R0E97nV" target="_blank" rel="noopener">Boolean Starter File</a></p>
+</li>
+<li>
+<p><a href="https://www.wescheme.org/openEditor?publicId=vc8K8Xmlin" target="_blank" rel="noopener">Sally&#8217;s Lemonade Starter File</a></p>
+</li>
+<li>
+<p><a href="https://www.wescheme.org/openEditor?publicId=AcThgFgX9z" target="_blank" rel="noopener">Alice&#8217;s Restaurant Starter File</a></p>
+</li>
+<li>
+<p><a href="https://www.wescheme.org/openEditor?publicId=Cyrw5bQa71" target="_blank" rel="noopener">Surface Area of a Rectangular Prism Starter File</a></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_projects_in_bootstrapalgebra">Projects in Bootstrap:Algebra</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Designing an original video game is the (optional) capstone project for Bootstrap Algebra. This project involves all of the various algebra and programming concepts covered in the lessons, providing students with a creative way to demonstrate their mastery of the material.</p>
+</div>
+<div class="paragraph">
+<p>You can find the description of this project (and the grading rubric!) at <a href="../../../lessons/project-video-game-wescheme" target="_blank" rel="noopener">the video game Project Page</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_exercises_and_solutions">Exercises and Solutions</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Most exercises are part of the <strong><a href="../workbook/workbook.pdf">Student Workbook</a></strong>,
+and we provide password-protected <strong><a href="./protected/workbook-sols.pdf.html">Workbook Solutions</a></strong> as well.</p>
+</div>
+<div class="paragraph">
+<p>You can find the 'exercise' and 'solution' versions of all supplemental materials as well, in the lists below.</p>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 1ex"></span></p>
+</div>
+<div class="paragraph">
+<p><strong><a href="../../../lessons/computing-needs-all-voices-wescheme/index.shtml">Computing Needs All Voices
+</a></strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Computing Needs All Voices! [ <a href="../../../lessons/computing-needs-all-voices-wescheme/pages/computing-pioneers.html">exercise</a> : <a href="../../../lessons/computing-needs-all-voices-wescheme/solution-pages/computing-pioneers.html">solution</a> ]</p>
+</li>
+<li>
+<p>Notice and Wonder [ <a href="../../../lessons/computing-needs-all-voices-wescheme/pages/NoticeAndWonder.html">exercise</a> : <a href="../../../lessons/computing-needs-all-voices-wescheme/solution-pages/NoticeAndWonder.html">solution</a> ]</p>
+</li>
+<li>
+<p>Windows and Mirrors [ <a href="../../../lessons/computing-needs-all-voices-wescheme/pages/windows-mirrors.html">exercise</a> : <a href="../../../lessons/computing-needs-all-voices-wescheme/solution-pages/windows-mirrors.html">solution</a> ]</p>
+</li>
+<li>
+<p>Reflection: Problem Solving Advantages of Diverse Teams [ <a href="../../../lessons/computing-needs-all-voices-wescheme/pages/advantages-of-diverse-teams.html">exercise</a> : <a href="../../../lessons/computing-needs-all-voices-wescheme/solution-pages/advantages-of-diverse-teams.html">solution</a> ]</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong><a href="../../../lessons/numbers-inside-video-games-wescheme/index.shtml">The Numbers Inside Video Games
+</a></strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Notice and Wonder [ <a href="../../../lessons/numbers-inside-video-games-wescheme/pages/NoticeAndWonder.html">exercise</a> : <a href="../../../lessons/numbers-inside-video-games-wescheme/solution-pages/NoticeAndWonder.html">solution</a> ]</p>
+</li>
+<li>
+<p>Reverse Engineer a video game [ <a href="../../../lessons/numbers-inside-video-games-wescheme/pages/ReverseEngineerGame.html">exercise</a> : <a href="../../../lessons/numbers-inside-video-games-wescheme/solution-pages/ReverseEngineerGame.html">solution</a> ]</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong><a href="../../../lessons/coordinates-wescheme/index.shtml">Coordinates and Game Design
+</a></strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Estimating Coordinates [ <a href="../../../lessons/coordinates-wescheme/pages/Estimation.html">exercise</a> : <a href="../../../lessons/coordinates-wescheme/solution-pages/Estimation.html">solution</a> ]</p>
+</li>
+<li>
+<p>Brainstorm Your Own Game [ <a href="../../../lessons/coordinates-wescheme/pages/BrainstormGame.html">exercise</a> : <a href="../../../lessons/coordinates-wescheme/solution-pages/BrainstormGame.html">solution</a> ]</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong><a href="../../../lessons/order-of-operations-wescheme/index.shtml">Order of Operations
+</a></strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Translate Arithmetic to Circles of Evaluation &amp; Code (Intro) [ <a href="../../../lessons/order-of-operations-wescheme/pages/translate-arithmetic-to-coe-and-code-1-intro-w-parenth.html">exercise</a> : <a href="../../../lessons/order-of-operations-wescheme/solution-pages/translate-arithmetic-to-coe-and-code-1-intro-w-parenth.html">solution</a> ]</p>
+</li>
+<li>
+<p>Completing Circles of Evaluation from Arithmetic Expressions [ <a href="../../../lessons/order-of-operations-wescheme/pages/complete-coe-from-arith.html">exercise</a> : <a href="../../../lessons/order-of-operations-wescheme/solution-pages/complete-coe-from-arith.html">solution</a> ]</p>
+</li>
+<li>
+<p>Matching Circles of Evaluation and Arithmetic Expressions [ <a href="../../../lessons/order-of-operations-wescheme/pages/match-arith-coe.html">exercise</a> : <a href="../../../lessons/order-of-operations-wescheme/solution-pages/match-arith-coe.html">solution</a> ]</p>
+</li>
+<li>
+<p>Completing Partial Code from Circles of Evaluation [ <a href="../../../lessons/order-of-operations-wescheme/pages/complete-code-from-coe.html">exercise</a> : <a href="../../../lessons/order-of-operations-wescheme/solution-pages/complete-code-from-coe.html">solution</a> ]</p>
+</li>
+<li>
+<p>Matching Circles of Evaluation &amp; Code [ <a href="../../../lessons/order-of-operations-wescheme/pages/match-coe-to-code.html">exercise</a> : <a href="../../../lessons/order-of-operations-wescheme/solution-pages/match-coe-to-code.html">solution</a> ]</p>
+</li>
+<li>
+<p>Translate Arithmetic to Circles of Evaluation &amp; Code 2 [ <a href="../../../lessons/order-of-operations-wescheme/pages/translate-arithmetic-to-coe-and-code-2-outro.html">exercise</a> : <a href="../../../lessons/order-of-operations-wescheme/solution-pages/translate-arithmetic-to-coe-and-code-2-outro.html">solution</a> ]</p>
+</li>
+<li>
+<p>Arithmetic Expressions to Circles of Evaluation &amp; Code - Challenge [ <a href="../../../lessons/order-of-operations-wescheme/pages/translate-arithmetic-to-circles-and-code-challenge.html">exercise</a> : <a href="../../../lessons/order-of-operations-wescheme/solution-pages/translate-arithmetic-to-circles-and-code-challenge.html">solution</a> ]</p>
+</li>
+<li>
+<p>Matching Circles of Evaluation &amp; Code [ <a href="../../../lessons/order-of-operations-wescheme/pages/matching-coe-exp.html">exercise</a> : <a href="../../../lessons/order-of-operations-wescheme/solution-pages/matching-coe-exp.html">solution</a> ]</p>
+</li>
+<li>
+<p>Creating Circles of Evaluation from Arithmetic Expressions [ <a href="../../../lessons/order-of-operations-wescheme/pages/arith-to-coe.html">exercise</a> : <a href="../../../lessons/order-of-operations-wescheme/solution-pages/arith-to-coe.html">solution</a> ]</p>
+</li>
+<li>
+<p>Creating Circles of Evaluation from Arithmetic Expressions 2 [ <a href="../../../lessons/order-of-operations-wescheme/pages/arith-to-coe2.html">exercise</a> : <a href="../../../lessons/order-of-operations-wescheme/solution-pages/arith-to-coe2.html">solution</a> ]</p>
+</li>
+<li>
+<p>Creating Circles of Evaluation from Arithmetic Expressions 3 [ <a href="../../../lessons/order-of-operations-wescheme/pages/arith-to-coe3.html">exercise</a> : <a href="../../../lessons/order-of-operations-wescheme/solution-pages/arith-to-coe3.html">solution</a> ]</p>
+</li>
+<li>
+<p>Converting Circles of Evaluation to Arithmetic Expressions [ <a href="../../../lessons/order-of-operations-wescheme/pages/coe-to-arith.html">exercise</a> : <a href="../../../lessons/order-of-operations-wescheme/solution-pages/coe-to-arith.html">solution</a> ]</p>
+</li>
+<li>
+<p>Converting Circles of Evaluation to Arithmetic Expressions 2 [ <a href="../../../lessons/order-of-operations-wescheme/pages/coe-to-arith2.html">exercise</a> : <a href="../../../lessons/order-of-operations-wescheme/solution-pages/coe-to-arith2.html">solution</a> ]</p>
+</li>
+<li>
+<p>Evaluating Circles of Evaluation [ <a href="../../../lessons/order-of-operations-wescheme/pages/evaluate-coe.html">exercise</a> : <a href="../../../lessons/order-of-operations-wescheme/solution-pages/evaluate-coe.html">solution</a> ]</p>
+</li>
+<li>
+<p>Evaluating Circles of Evaluation 2 [ <a href="../../../lessons/order-of-operations-wescheme/pages/evaluate-coe2.html">exercise</a> : <a href="../../../lessons/order-of-operations-wescheme/solution-pages/evaluate-coe2.html">solution</a> ]</p>
+</li>
+<li>
+<p>Converting Circles of Evaluation to Code [ <a href="../../../lessons/order-of-operations-wescheme/pages/coe-to-code.html">exercise</a> : <a href="../../../lessons/order-of-operations-wescheme/solution-pages/coe-to-code.html">solution</a> ]</p>
+</li>
+<li>
+<p>Converting Circles of Evaluation to Code 2 [ <a href="../../../lessons/order-of-operations-wescheme/pages/coe-to-code2.html">exercise</a> : <a href="../../../lessons/order-of-operations-wescheme/solution-pages/coe-to-code2.html">solution</a> ]</p>
+</li>
+<li>
+<p>Translate Arithmetic Expressions to Circles of Evaluation &amp; Code 3 [ <a href="../../../lessons/order-of-operations-wescheme/pages/translate-arithmetic-to-coe-and-code-3.html">exercise</a> : <a href="../../../lessons/order-of-operations-wescheme/solution-pages/translate-arithmetic-to-coe-and-code-3.html">solution</a> ]</p>
+</li>
+<li>
+<p>Translate Arithmetic Expressions to Circles of Evaluation &amp; Code 4 [ <a href="../../../lessons/order-of-operations-wescheme/pages/translate-arithmetic-to-coe-and-code-4.html">exercise</a> : <a href="../../../lessons/order-of-operations-wescheme/solution-pages/translate-arithmetic-to-coe-and-code-4.html">solution</a> ]</p>
+</li>
+<li>
+<p>Translate Arithmetic Expressions to Circles of Evaluation &amp; Code 5 [ <a href="../../../lessons/order-of-operations-wescheme/pages/translate-arithmetic-to-coe-and-code-w-neg-5.html">exercise</a> : <a href="../../../lessons/order-of-operations-wescheme/solution-pages/translate-arithmetic-to-coe-and-code-w-neg-5.html">solution</a> ]</p>
+</li>
+<li>
+<p>Translate Arithmetic Expressions to Circles of Evaluation &amp; Code 6 [ <a href="../../../lessons/order-of-operations-wescheme/pages/translate-arithmetic-to-coe-and-code-w-neg-6.html">exercise</a> : <a href="../../../lessons/order-of-operations-wescheme/solution-pages/translate-arithmetic-to-coe-and-code-w-neg-6.html">solution</a> ]</p>
+</li>
+<li>
+<p>Translating Circles of Evaluation to Code - w/Square Roots [ <a href="../../../lessons/order-of-operations-wescheme/pages/translate-coe-to-code-w-sqrts.html">exercise</a> : <a href="../../../lessons/order-of-operations-wescheme/solution-pages/translate-coe-to-code-w-sqrts.html">solution</a> ]</p>
+</li>
+<li>
+<p>Arithmetic Expressions to Circles of Evaluation &amp; Code - Challenge 2 [ <a href="../../../lessons/order-of-operations-wescheme/pages/translate-arithmetic-to-circles-and-code-challenge-2.html">exercise</a> : <a href="../../../lessons/order-of-operations-wescheme/solution-pages/translate-arithmetic-to-circles-and-code-challenge-2.html">solution</a> ]</p>
+</li>
+<li>
+<p>Arithmetic Expressions to Circles of Evaluation &amp; Code - Challenge 3 [ <a href="../../../lessons/order-of-operations-wescheme/pages/translate-arithmetic-to-circles-and-code-challenge-3.html">exercise</a> : <a href="../../../lessons/order-of-operations-wescheme/solution-pages/translate-arithmetic-to-circles-and-code-challenge-3.html">solution</a> ]</p>
+</li>
+<li>
+<p>Arithmetic Expressions to Circles of Evaluation &amp; Code - Challenge 4 [ <a href="../../../lessons/order-of-operations-wescheme/pages/translate-arithmetic-to-circles-and-code-challenge-4.html">exercise</a> : <a href="../../../lessons/order-of-operations-wescheme/solution-pages/translate-arithmetic-to-circles-and-code-challenge-4.html">solution</a> ]</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong><a href="../../../lessons/simple-data-types-wescheme/index.shtml">Simple Data Types
+</a></strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Numbers and Strings [ <a href="../../../lessons/simple-data-types-wescheme/pages/numbers-n-strings.html">exercise</a> : <a href="../../../lessons/simple-data-types-wescheme/solution-pages/numbers-n-strings.html">solution</a> ]</p>
+</li>
+<li>
+<p>Booleans [ <a href="../../../lessons/simple-data-types-wescheme/pages/booleans.html">exercise</a> : <a href="../../../lessons/simple-data-types-wescheme/solution-pages/booleans.html">solution</a> ]</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong><a href="../../../lessons/contracts-wescheme/index.shtml">Contracts
+</a></strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Applying Functions [ <a href="../../../lessons/contracts-wescheme/pages/applying-functions.html">exercise</a> : <a href="../../../lessons/contracts-wescheme/solution-pages/applying-functions.html">solution</a> ]</p>
+</li>
+<li>
+<p>Domain and Range Frayer model [ <a href="../../../lessons/contracts-wescheme/pages/frayer-model.pdf">exercise</a> : <a href="../../../lessons/contracts-wescheme/solution-pages/frayer-model.pdf">solution</a> ]</p>
+</li>
+<li>
+<p>Function and Variable Frayer model. [ <a href="../../../lessons/contracts-wescheme/pages/frayer-model-2.pdf">exercise</a> : <a href="../../../lessons/contracts-wescheme/solution-pages/frayer-model-2.pdf">solution</a> ]</p>
+</li>
+<li>
+<p>Practicing Contracts: Domain &amp; Range [ <a href="../../../lessons/contracts-wescheme/pages/practicing-contracts.html">exercise</a> : <a href="../../../lessons/contracts-wescheme/solution-pages/practicing-contracts.html">solution</a> ]</p>
+</li>
+<li>
+<p>Matching Expressions and Contracts [ <a href="../../../lessons/contracts-wescheme/pages/matching-expressions.html">exercise</a> : <a href="../../../lessons/contracts-wescheme/solution-pages/matching-expressions.html">solution</a> ]</p>
+</li>
+<li>
+<p>Contracts [ <a href="../../../lessons/contracts-wescheme/pages/image-contracts.html">exercise</a> : <a href="../../../lessons/contracts-wescheme/solution-pages/image-contracts.html">solution</a> ]</p>
+</li>
+<li>
+<p>Using Contracts [ <a href="../../../lessons/contracts-wescheme/pages/using-contracts.html">exercise</a> : <a href="../../../lessons/contracts-wescheme/solution-pages/using-contracts.html">solution</a> ]</p>
+</li>
+<li>
+<p>Using Contracts (continued) [ <a href="../../../lessons/contracts-wescheme/pages/using-contracts-cont.html">exercise</a> : <a href="../../../lessons/contracts-wescheme/solution-pages/using-contracts-cont.html">solution</a> ]</p>
+</li>
+<li>
+<p>Triangle Contracts [ <a href="../../../lessons/contracts-wescheme/pages/triangle-contracts.html">exercise</a> : <a href="../../../lessons/contracts-wescheme/solution-pages/triangle-contracts.html">solution</a> ]</p>
+</li>
+<li>
+<p>Triangle Contracts (SAS &amp; ASA) [ <a href="../../../lessons/contracts-wescheme/pages/triangle-contracts-cont.html">exercise</a> : <a href="../../../lessons/contracts-wescheme/solution-pages/triangle-contracts-cont.html">solution</a> ]</p>
+</li>
+<li>
+<p>Radial Star [ <a href="../../../lessons/contracts-wescheme/pages/radial-star.html">exercise</a> : <a href="../../../lessons/contracts-wescheme/solution-pages/radial-star.html">solution</a> ]</p>
+</li>
+<li>
+<p>Star Polygon [ <a href="../../../lessons/contracts-wescheme/pages/star-polygon.html">exercise</a> : <a href="../../../lessons/contracts-wescheme/solution-pages/star-polygon.html">solution</a> ]</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong><a href="../../../lessons/function-composition-wescheme/index.shtml">Function Composition
+</a></strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Function Cards [ <a href="../../../lessons/function-composition-wescheme/pages/function-cards.html">exercise</a> : <a href="../../../lessons/function-composition-wescheme/solution-pages/function-cards.html">solution</a> ]</p>
+</li>
+<li>
+<p>Diagramming Function Composition [ <a href="../../../lessons/function-composition-wescheme/pages/diagramming-function-composition.html">exercise</a> : <a href="../../../lessons/function-composition-wescheme/solution-pages/diagramming-function-composition.html">solution</a> ]</p>
+</li>
+<li>
+<p>Function Composition&#8201;&#8212;&#8201;Green Star [ <a href="../../../lessons/function-composition-wescheme/pages/function-composition-green-star.html">exercise</a> : <a href="../../../lessons/function-composition-wescheme/solution-pages/function-composition-green-star.html">solution</a> ]</p>
+</li>
+<li>
+<p>Function Composition&#8201;&#8212;&#8201;Your Name [ <a href="../../../lessons/function-composition-wescheme/pages/function-composition-your-name.html">exercise</a> : <a href="../../../lessons/function-composition-wescheme/solution-pages/function-composition-your-name.html">solution</a> ]</p>
+</li>
+<li>
+<p>Function Composition&#8201;&#8212;&#8201;scale-xy [ <a href="../../../lessons/function-composition-wescheme/pages/function-composition-scale-xy.html">exercise</a> : <a href="../../../lessons/function-composition-wescheme/solution-pages/function-composition-scale-xy.html">solution</a> ]</p>
+</li>
+<li>
+<p>More than one way to Compose an Image! [ <a href="../../../lessons/function-composition-wescheme/pages/more-than-one-way.html">exercise</a> : <a href="../../../lessons/function-composition-wescheme/solution-pages/more-than-one-way.html">solution</a> ]</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong><a href="../../../lessons/defining-values-wescheme/index.shtml">Defining Values
+</a></strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Defining Values - Explore [ <a href="../../../lessons/defining-values-wescheme/pages/defining-values-explore.html">exercise</a> : <a href="../../../lessons/defining-values-wescheme/solution-pages/defining-values-explore.html">solution</a> ]</p>
+</li>
+<li>
+<p>Which Value(s) Would it Make Sense to Define? [ <a href="../../../lessons/defining-values-wescheme/pages/which-value-to-define.html">exercise</a> : <a href="../../../lessons/defining-values-wescheme/solution-pages/which-value-to-define.html">solution</a> ]</p>
+</li>
+<li>
+<p>Defining Values - Chinese Flag [ <a href="../../../lessons/defining-values-wescheme/pages/chinese-flag.html">exercise</a> : <a href="../../../lessons/defining-values-wescheme/solution-pages/chinese-flag.html">solution</a> ]</p>
+</li>
+<li>
+<p>Why Define Values? [ <a href="../../../lessons/defining-values-wescheme/pages/coe-why-define-values.html">exercise</a> : <a href="../../../lessons/defining-values-wescheme/solution-pages/coe-why-define-values.html">solution</a> ]</p>
+</li>
+<li>
+<p>Writing Code using Defined Values [ <a href="../../../lessons/defining-values-wescheme/pages/writing-code-using-defined-values.html">exercise</a> : <a href="../../../lessons/defining-values-wescheme/solution-pages/writing-code-using-defined-values.html">solution</a> ]</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong><a href="../../../lessons/flags-wescheme/index.shtml">Making Flags
+</a></strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Estimating Coordinates [ <a href="../../../lessons/flags-wescheme/pages/japan-estimating-coordinates.html">exercise</a> : <a href="../../../lessons/flags-wescheme/solution-pages/japan-estimating-coordinates.html">solution</a> ]</p>
+</li>
+<li>
+<p>Decomposing Flags [ <a href="../../../lessons/flags-wescheme/pages/decomposing-flags.html">exercise</a> : <a href="../../../lessons/flags-wescheme/solution-pages/decomposing-flags.html">solution</a> ]</p>
+</li>
+<li>
+<p>Flags of the World [ <a href="../../../lessons/flags-wescheme/pages/flags-of-the-world-resource.pdf">exercise</a> : <a href="../../../lessons/flags-wescheme/solution-pages/flags-of-the-world-resource.pdf">solution</a> ]</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong><a href="../../../lessons/making-game-images-wescheme/index.shtml">Making Game Images
+</a></strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Notice and Wonder [ <a href="../../../lessons/making-game-images-wescheme/pages/NoticeAndWonder.html">exercise</a> : <a href="../../../lessons/making-game-images-wescheme/solution-pages/NoticeAndWonder.html">solution</a> ]</p>
+</li>
+<li>
+<p>Quick Guide to Saving Images to Drive [ <a href="../../../lessons/making-game-images-wescheme/pages/SavingImagesGuide.pdf">exercise</a> : <a href="../../../lessons/making-game-images-wescheme/solution-pages/SavingImagesGuide.pdf">solution</a> ]</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong><a href="../../../lessons/functions-make-life-easier-wescheme/index.shtml">Functions Make Life Easier!
+</a></strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The Great gt domain debate! [ <a href="../../../lessons/functions-make-life-easier-wescheme/pages/gt-domain-debate.html">exercise</a> : <a href="../../../lessons/functions-make-life-easier-wescheme/solution-pages/gt-domain-debate.html">solution</a> ]</p>
+</li>
+<li>
+<p>Let&#8217;s Define Some New Functions! [ <a href="../../../lessons/functions-make-life-easier-wescheme/pages/rs.html">exercise</a> : <a href="../../../lessons/functions-make-life-easier-wescheme/solution-pages/rs.html">solution</a> ]</p>
+</li>
+<li>
+<p>Let&#8217;s Define Some More New Functions! [ <a href="../../../lessons/functions-make-life-easier-wescheme/pages/sun.html">exercise</a> : <a href="../../../lessons/functions-make-life-easier-wescheme/solution-pages/sun.html">solution</a> ]</p>
+</li>
+<li>
+<p>Describe and Define Your Own Functions! [ <a href="../../../lessons/functions-make-life-easier-wescheme/pages/define-your-own.html">exercise</a> : <a href="../../../lessons/functions-make-life-easier-wescheme/solution-pages/define-your-own.html">solution</a> ]</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong><a href="../../../lessons/functions-vertical-line-test-wescheme/index.shtml">The Vertical Line Test
+</a></strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Identifying Functions from Graphs [ <a href="../../../lessons/functions-vertical-line-test-wescheme/pages/functions-graphs.html">exercise</a> : <a href="../../../lessons/functions-vertical-line-test-wescheme/solution-pages/functions-graphs.html">solution</a> ]</p>
+</li>
+<li>
+<p>Identifying Functions from Graphs (continued) [ <a href="../../../lessons/functions-vertical-line-test-wescheme/pages/functions-graphs-2.html">exercise</a> : <a href="../../../lessons/functions-vertical-line-test-wescheme/solution-pages/functions-graphs-2.html">solution</a> ]</p>
+</li>
+<li>
+<p>Notice and Wonder - Functions [ <a href="../../../lessons/functions-vertical-line-test-wescheme/pages/notice-wonder-functions.html">exercise</a> : <a href="../../../lessons/functions-vertical-line-test-wescheme/solution-pages/notice-wonder-functions.html">solution</a> ]</p>
+</li>
+<li>
+<p>How Tables Fail the Vertical Line Test [ <a href="../../../lessons/functions-vertical-line-test-wescheme/pages/how-tables-fail-vertical-line-test.html">exercise</a> : <a href="../../../lessons/functions-vertical-line-test-wescheme/solution-pages/how-tables-fail-vertical-line-test.html">solution</a> ]</p>
+</li>
+<li>
+<p>Identifying Functions from Tables [ <a href="../../../lessons/functions-vertical-line-test-wescheme/pages/functions-tables.html">exercise</a> : <a href="../../../lessons/functions-vertical-line-test-wescheme/solution-pages/functions-tables.html">solution</a> ]</p>
+</li>
+<li>
+<p>Identifying Functions from Tables &amp; Graphs [ <a href="../../../lessons/functions-vertical-line-test-wescheme/pages/functions-tables-graphs.html">exercise</a> : <a href="../../../lessons/functions-vertical-line-test-wescheme/solution-pages/functions-tables-graphs.html">solution</a> ]</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong><a href="../../../lessons/function-notation-wescheme/index.shtml">Function Notation
+</a></strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Matching Examples and Definitions (Math) [ <a href="../../../lessons/function-notation-wescheme/pages/match-examples-definitions-math.html">exercise</a> : <a href="../../../lessons/function-notation-wescheme/solution-pages/match-examples-definitions-math.html">solution</a> ]</p>
+</li>
+<li>
+<p>Function Notation - Substitution [ <a href="../../../lessons/function-notation-wescheme/pages/function-notation-substitution.html">exercise</a> : <a href="../../../lessons/function-notation-wescheme/solution-pages/function-notation-substitution.html">solution</a> ]</p>
+</li>
+<li>
+<p>Function Notation - Graphs [ <a href="../../../lessons/function-notation-wescheme/pages/function-notation-graphs.html">exercise</a> : <a href="../../../lessons/function-notation-wescheme/solution-pages/function-notation-graphs.html">solution</a> ]</p>
+</li>
+<li>
+<p>Function Notation - Piecewise Graphs [ <a href="../../../lessons/function-notation-wescheme/pages/function-notation-graphs-pw.html">exercise</a> : <a href="../../../lessons/function-notation-wescheme/solution-pages/function-notation-graphs-pw.html">solution</a> ]</p>
+</li>
+<li>
+<p>Function Notation - Tables [ <a href="../../../lessons/function-notation-wescheme/pages/function-notation-tables.html">exercise</a> : <a href="../../../lessons/function-notation-wescheme/solution-pages/function-notation-tables.html">solution</a> ]</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong><a href="../../../lessons/functions-examples-definitions-wescheme/index.shtml">Functions: Contracts&#x2c; Examples &amp; Definitions
+</a></strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Mapping Examples with Circles of Evaluation [ <a href="../../../lessons/functions-examples-definitions-wescheme/pages/MappingExamplesWithCoE.html">exercise</a> : <a href="../../../lessons/functions-examples-definitions-wescheme/solution-pages/MappingExamplesWithCoE.html">solution</a> ]</p>
+</li>
+<li>
+<p>Matching Examples and Contracts [ <a href="../../../lessons/functions-examples-definitions-wescheme/pages/match-examples-contracts.html">exercise</a> : <a href="../../../lessons/functions-examples-definitions-wescheme/solution-pages/match-examples-contracts.html">solution</a> ]</p>
+</li>
+<li>
+<p>Matching Examples and Function Definitions [ <a href="../../../lessons/functions-examples-definitions-wescheme/pages/match-examples-definitions.html">exercise</a> : <a href="../../../lessons/functions-examples-definitions-wescheme/solution-pages/match-examples-definitions.html">solution</a> ]</p>
+</li>
+<li>
+<p>Creating Contracts From Examples [ <a href="../../../lessons/functions-examples-definitions-wescheme/pages/create-contracts-examples.html">exercise</a> : <a href="../../../lessons/functions-examples-definitions-wescheme/solution-pages/create-contracts-examples.html">solution</a> ]</p>
+</li>
+<li>
+<p>Contracts, Examples &amp; Definitions - bc [ <a href="../../../lessons/functions-examples-definitions-wescheme/pages/contracts-examples-definitions.html">exercise</a> : <a href="../../../lessons/functions-examples-definitions-wescheme/solution-pages/contracts-examples-definitions.html">solution</a> ]</p>
+</li>
+<li>
+<p>Contracts, Examples &amp; Definitions - Stars [ <a href="../../../lessons/functions-examples-definitions-wescheme/pages/contracts-examples-definitions-stars.html">exercise</a> : <a href="../../../lessons/functions-examples-definitions-wescheme/solution-pages/contracts-examples-definitions-stars.html">solution</a> ]</p>
+</li>
+<li>
+<p>Contracts, Examples &amp; Definitions - Name [ <a href="../../../lessons/functions-examples-definitions-wescheme/pages/contracts-examples-definitions-name.html">exercise</a> : <a href="../../../lessons/functions-examples-definitions-wescheme/solution-pages/contracts-examples-definitions-name.html">solution</a> ]</p>
+</li>
+<li>
+<p>Do The Examples Have the Same Contracts? [ <a href="../../../lessons/functions-examples-definitions-wescheme/pages/examples-same-contracts1.html">exercise</a> : <a href="../../../lessons/functions-examples-definitions-wescheme/solution-pages/examples-same-contracts1.html">solution</a> ]</p>
+</li>
+<li>
+<p>Do The Examples Have the Same Contracts? (2) [ <a href="../../../lessons/functions-examples-definitions-wescheme/pages/examples-same-contracts2.html">exercise</a> : <a href="../../../lessons/functions-examples-definitions-wescheme/solution-pages/examples-same-contracts2.html">solution</a> ]</p>
+</li>
+<li>
+<p>Matching Contracts and Examples [ <a href="../../../lessons/functions-examples-definitions-wescheme/pages/match-contracts-examples1.html">exercise</a> : <a href="../../../lessons/functions-examples-definitions-wescheme/solution-pages/match-contracts-examples1.html">solution</a> ]</p>
+</li>
+<li>
+<p>Matching Contracts and Examples 2 [ <a href="../../../lessons/functions-examples-definitions-wescheme/pages/match-contracts-examples2.html">exercise</a> : <a href="../../../lessons/functions-examples-definitions-wescheme/solution-pages/match-contracts-examples2.html">solution</a> ]</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong><a href="../../../lessons/functions-can-be-linear-wescheme/index.shtml">Functions Can Be Linear
+</a></strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Notice and Wonder (Linearity) [ <a href="../../../lessons/functions-can-be-linear-wescheme/pages/notice-wonder-linearity.html">exercise</a> : <a href="../../../lessons/functions-can-be-linear-wescheme/solution-pages/notice-wonder-linearity.html">solution</a> ]</p>
+</li>
+<li>
+<p>Matching Tables to Graphs [ <a href="../../../lessons/functions-can-be-linear-wescheme/pages/match-tables-graphs.html">exercise</a> : <a href="../../../lessons/functions-can-be-linear-wescheme/solution-pages/match-tables-graphs.html">solution</a> ]</p>
+</li>
+<li>
+<p>Matching Tables to Graphs (Challenge) [ <a href="../../../lessons/functions-can-be-linear-wescheme/pages/match-tables-graphs2.html">exercise</a> : <a href="../../../lessons/functions-can-be-linear-wescheme/solution-pages/match-tables-graphs2.html">solution</a> ]</p>
+</li>
+<li>
+<p>Are All Graphs Linear? [ <a href="../../../lessons/functions-can-be-linear-wescheme/pages/graphs-all-linear.html">exercise</a> : <a href="../../../lessons/functions-can-be-linear-wescheme/solution-pages/graphs-all-linear.html">solution</a> ]</p>
+</li>
+<li>
+<p>Are All Tables Linear? [ <a href="../../../lessons/functions-can-be-linear-wescheme/pages/tables-all-linear.html">exercise</a> : <a href="../../../lessons/functions-can-be-linear-wescheme/solution-pages/tables-all-linear.html">solution</a> ]</p>
+</li>
+<li>
+<p>Linear, Non-linear, or Bust? [ <a href="../../../lessons/functions-can-be-linear-wescheme/pages/linear-nonlinear-bust.html">exercise</a> : <a href="../../../lessons/functions-can-be-linear-wescheme/solution-pages/linear-nonlinear-bust.html">solution</a> ]</p>
+</li>
+<li>
+<p>Graphs: Linear, Non-linear, or Bust? [ <a href="../../../lessons/functions-can-be-linear-wescheme/pages/linear-nonlinear-bust-graphs.html">exercise</a> : <a href="../../../lessons/functions-can-be-linear-wescheme/solution-pages/linear-nonlinear-bust-graphs.html">solution</a> ]</p>
+</li>
+<li>
+<p>Graphs 2: Linear, Non-linear, or Bust? [ <a href="../../../lessons/functions-can-be-linear-wescheme/pages/linear-nonlinear-bust-graphs-2.html">exercise</a> : <a href="../../../lessons/functions-can-be-linear-wescheme/solution-pages/linear-nonlinear-bust-graphs-2.html">solution</a> ]</p>
+</li>
+<li>
+<p>Slope &amp; y-Intercept from Tables (Intro) [ <a href="../../../lessons/functions-can-be-linear-wescheme/pages/slope-int-tables-intro.html">exercise</a> : <a href="../../../lessons/functions-can-be-linear-wescheme/solution-pages/slope-int-tables-intro.html">solution</a> ]</p>
+</li>
+<li>
+<p>Slope &amp; y-Intercept from Tables (Basic Practice) [ <a href="../../../lessons/functions-can-be-linear-wescheme/pages/slope-int-tables-basic.html">exercise</a> : <a href="../../../lessons/functions-can-be-linear-wescheme/solution-pages/slope-int-tables-basic.html">solution</a> ]</p>
+</li>
+<li>
+<p>Identifying Slope in Tables [ <a href="../../../lessons/functions-can-be-linear-wescheme/pages/slope-and-y-tables.html">exercise</a> : <a href="../../../lessons/functions-can-be-linear-wescheme/solution-pages/slope-and-y-tables.html">solution</a> ]</p>
+</li>
+<li>
+<p>Identifying Slope and y-intercept in Graphs [ <a href="../../../lessons/functions-can-be-linear-wescheme/pages/slope-and-y-graphs.html">exercise</a> : <a href="../../../lessons/functions-can-be-linear-wescheme/solution-pages/slope-and-y-graphs.html">solution</a> ]</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong><a href="../../../lessons/functions-dr-wescheme/index.shtml">Solving Word Problems with the Design Recipe
+</a></strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Matching Word Problems and Purpose Statements [ <a href="../../../lessons/functions-dr-wescheme/pages/matching-wp-purpose.html">exercise</a> : <a href="../../../lessons/functions-dr-wescheme/solution-pages/matching-wp-purpose.html">solution</a> ]</p>
+</li>
+<li>
+<p>Writing Examples from Purpose Statements [ <a href="../../../lessons/functions-dr-wescheme/pages/create-examples-contracts-purpose-1.html">exercise</a> : <a href="../../../lessons/functions-dr-wescheme/solution-pages/create-examples-contracts-purpose-1.html">solution</a> ]</p>
+</li>
+<li>
+<p>Writing Examples from Purpose Statements 2 [ <a href="../../../lessons/functions-dr-wescheme/pages/create-examples-contracts-purpose-2.html">exercise</a> : <a href="../../../lessons/functions-dr-wescheme/solution-pages/create-examples-contracts-purpose-2.html">solution</a> ]</p>
+</li>
+<li>
+<p>Fixing Purpose Statements [ <a href="../../../lessons/functions-dr-wescheme/pages/fixing-purpose.html">exercise</a> : <a href="../../../lessons/functions-dr-wescheme/solution-pages/fixing-purpose.html">solution</a> ]</p>
+</li>
+<li>
+<p>Word Problem: rocket-height [ <a href="../../../lessons/functions-dr-wescheme/pages/rocket-height.html">exercise</a> : <a href="../../../lessons/functions-dr-wescheme/solution-pages/rocket-height.html">solution</a> ]</p>
+</li>
+<li>
+<p>Rocket Height Challenges [ <a href="../../../lessons/functions-dr-wescheme/pages/rocket-challenges.html">exercise</a> : <a href="../../../lessons/functions-dr-wescheme/solution-pages/rocket-challenges.html">solution</a> ]</p>
+</li>
+<li>
+<p>Blank Design Recipe [ <a href="../../../lessons/functions-dr-wescheme/pages/dr-blank.html">exercise</a> : <a href="../../../lessons/functions-dr-wescheme/solution-pages/dr-blank.html">solution</a> ]</p>
+</li>
+<li>
+<p>The Design Recipe (Restaurants) [ <a href="../../../lessons/functions-dr-wescheme/pages/dr-restaurants.html">exercise</a> : <a href="../../../lessons/functions-dr-wescheme/solution-pages/dr-restaurants.html">solution</a> ]</p>
+</li>
+<li>
+<p>The Design Recipe (Direct Variation) [ <a href="../../../lessons/functions-dr-wescheme/pages/dr-direct-variation.html">exercise</a> : <a href="../../../lessons/functions-dr-wescheme/solution-pages/dr-direct-variation.html">solution</a> ]</p>
+</li>
+<li>
+<p>The Design Recipe (Slope/Intercept 1) [ <a href="../../../lessons/functions-dr-wescheme/pages/dr-slope-intercept-1.html">exercise</a> : <a href="../../../lessons/functions-dr-wescheme/solution-pages/dr-slope-intercept-1.html">solution</a> ]</p>
+</li>
+<li>
+<p>The Design Recipe (Negative Slope/Intercept) [ <a href="../../../lessons/functions-dr-wescheme/pages/dr-neg-slope.html">exercise</a> : <a href="../../../lessons/functions-dr-wescheme/solution-pages/dr-neg-slope.html">solution</a> ]</p>
+</li>
+<li>
+<p>The Design Recipe (Geometry - Rectangles) [ <a href="../../../lessons/functions-dr-wescheme/pages/dr-geometry-rectangles.html">exercise</a> : <a href="../../../lessons/functions-dr-wescheme/solution-pages/dr-geometry-rectangles.html">solution</a> ]</p>
+</li>
+<li>
+<p>The Design Recipe (Geometry - Rectangular Prisms) [ <a href="../../../lessons/functions-dr-wescheme/pages/dr-geometry-rect-prism.html">exercise</a> : <a href="../../../lessons/functions-dr-wescheme/solution-pages/dr-geometry-rect-prism.html">solution</a> ]</p>
+</li>
+<li>
+<p>The Design Recipe (Geometry - Circles) [ <a href="../../../lessons/functions-dr-wescheme/pages/dr-geometry-circles.html">exercise</a> : <a href="../../../lessons/functions-dr-wescheme/solution-pages/dr-geometry-circles.html">solution</a> ]</p>
+</li>
+<li>
+<p>The Design Recipe (Geometry - Cylinders) [ <a href="../../../lessons/functions-dr-wescheme/pages/dr-geometry-cylinder.html">exercise</a> : <a href="../../../lessons/functions-dr-wescheme/solution-pages/dr-geometry-cylinder.html">solution</a> ]</p>
+</li>
+<li>
+<p>The Design Recipe (Breaking Even) [ <a href="../../../lessons/functions-dr-wescheme/pages/dr-breaking-even.html">exercise</a> : <a href="../../../lessons/functions-dr-wescheme/solution-pages/dr-breaking-even.html">solution</a> ]</p>
+</li>
+<li>
+<p>The Design Recipe (Marquee &amp; Cubing) [ <a href="../../../lessons/functions-dr-wescheme/pages/dr-marquee.html">exercise</a> : <a href="../../../lessons/functions-dr-wescheme/solution-pages/dr-marquee.html">solution</a> ]</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong><a href="../../../lessons/functions-for-character-animation-wescheme/index.shtml">Functions for Character Animation
+</a></strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Danger and Target Movement [ <a href="../../../lessons/functions-for-character-animation-wescheme/pages/character-animation-dr.html">exercise</a> : <a href="../../../lessons/functions-for-character-animation-wescheme/solution-pages/character-animation-dr.html">solution</a> ]</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong><a href="../../../lessons/surface-area-rect-prism-wescheme/index.shtml">Surface Area of a Rectangular Prism
+</a></strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Surface Area of a Rectangular Prism - Explore [ <a href="../../../lessons/surface-area-rect-prism-wescheme/pages/prism-explore.html">exercise</a> : <a href="../../../lessons/surface-area-rect-prism-wescheme/solution-pages/prism-explore.html">solution</a> ]</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong><a href="../../../lessons/problem-decomposition-wescheme/index.shtml">Problem Decomposition
+</a></strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Word Problems: revenue, cost [ <a href="../../../lessons/problem-decomposition-wescheme/pages/revenue-and-cost.html">exercise</a> : <a href="../../../lessons/problem-decomposition-wescheme/solution-pages/revenue-and-cost.html">solution</a> ]</p>
+</li>
+<li>
+<p>Word Problem: profit [ <a href="../../../lessons/problem-decomposition-wescheme/pages/profit.html">exercise</a> : <a href="../../../lessons/problem-decomposition-wescheme/solution-pages/profit.html">solution</a> ]</p>
+</li>
+<li>
+<p>Sally&#8217;s Bike [ <a href="../../../lessons/problem-decomposition-wescheme/pages/sallys-bike.html">exercise</a> : <a href="../../../lessons/problem-decomposition-wescheme/solution-pages/sallys-bike.html">solution</a> ]</p>
+</li>
+<li>
+<p>Profit - More than one Way! [ <a href="../../../lessons/problem-decomposition-wescheme/pages/profit-discussion.html">exercise</a> : <a href="../../../lessons/problem-decomposition-wescheme/solution-pages/profit-discussion.html">solution</a> ]</p>
+</li>
+<li>
+<p>Top Down or Bottom Up [ <a href="../../../lessons/problem-decomposition-wescheme/pages/topdown-bottomup-discussion.html">exercise</a> : <a href="../../../lessons/problem-decomposition-wescheme/solution-pages/topdown-bottomup-discussion.html">solution</a> ]</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong><a href="../../../lessons/inequalities1-simple-wescheme/index.shtml">Simple Inequalities
+</a></strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Boolean Functions [ <a href="../../../lessons/inequalities1-simple-wescheme/pages/boolean-functions.html">exercise</a> : <a href="../../../lessons/inequalities1-simple-wescheme/solution-pages/boolean-functions.html">solution</a> ]</p>
+</li>
+<li>
+<p>Simple Inequalities [ <a href="../../../lessons/inequalities1-simple-wescheme/pages/simple-inequalities.html">exercise</a> : <a href="../../../lessons/inequalities1-simple-wescheme/solution-pages/simple-inequalities.html">solution</a> ]</p>
+</li>
+<li>
+<p>Word Problem: hot? [ <a href="../../../lessons/inequalities1-simple-wescheme/pages/is-hot.html">exercise</a> : <a href="../../../lessons/inequalities1-simple-wescheme/solution-pages/is-hot.html">solution</a> ]</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong><a href="../../../lessons/inequalities2-compound-wescheme/index.shtml">Compound Inequalities: Solutions &amp; Non-Solutions
+</a></strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Converting Circles of Evaluation to Code [ <a href="../../../lessons/inequalities2-compound-wescheme/pages/boolean-coe-to-code1.html">exercise</a> : <a href="../../../lessons/inequalities2-compound-wescheme/solution-pages/boolean-coe-to-code1.html">solution</a> ]</p>
+</li>
+<li>
+<p>Compound Inequalities&#8201;&#8212;&#8201;Practice [ <a href="../../../lessons/inequalities2-compound-wescheme/pages/and-or.html">exercise</a> : <a href="../../../lessons/inequalities2-compound-wescheme/solution-pages/and-or.html">solution</a> ]</p>
+</li>
+<li>
+<p>Compound Inequality Warmup [ <a href="../../../lessons/inequalities2-compound-wescheme/pages/compound-warmup.html">exercise</a> : <a href="../../../lessons/inequalities2-compound-wescheme/solution-pages/compound-warmup.html">solution</a> ]</p>
+</li>
+<li>
+<p>Exploring Compound Inequality [ <a href="../../../lessons/inequalities2-compound-wescheme/pages/compound-explore.html">exercise</a> : <a href="../../../lessons/inequalities2-compound-wescheme/solution-pages/compound-explore.html">solution</a> ]</p>
+</li>
+<li>
+<p>Compound Inequalities: Solutions &amp; Non-Solutions [ <a href="../../../lessons/inequalities2-compound-wescheme/pages/compound-inequality-solutions.html">exercise</a> : <a href="../../../lessons/inequalities2-compound-wescheme/solution-pages/compound-inequality-solutions.html">solution</a> ]</p>
+</li>
+<li>
+<p>Compound Inequality Functions [ <a href="../../../lessons/inequalities2-compound-wescheme/pages/compound-inequality-functions.html">exercise</a> : <a href="../../../lessons/inequalities2-compound-wescheme/solution-pages/compound-inequality-functions.html">solution</a> ]</p>
+</li>
+<li>
+<p>Converting Circles of Evaluation with Booleans to Code 2 [ <a href="../../../lessons/inequalities2-compound-wescheme/pages/boolean-coe-to-code2.html">exercise</a> : <a href="../../../lessons/inequalities2-compound-wescheme/solution-pages/boolean-coe-to-code2.html">solution</a> ]</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong><a href="../../../lessons/inequalities3-sam-wescheme/index.shtml">Sam the Butterfly - Applying Inequalities
+</a></strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Sam the Butterfly [ <a href="../../../lessons/inequalities3-sam-wescheme/pages/sam-intro.html">exercise</a> : <a href="../../../lessons/inequalities3-sam-wescheme/solution-pages/sam-intro.html">solution</a> ]</p>
+</li>
+<li>
+<p>Left and Right [ <a href="../../../lessons/inequalities3-sam-wescheme/pages/left-and-right.html">exercise</a> : <a href="../../../lessons/inequalities3-sam-wescheme/solution-pages/left-and-right.html">solution</a> ]</p>
+</li>
+<li>
+<p>Word Problem: onscreen? [ <a href="../../../lessons/inequalities3-sam-wescheme/pages/onscreen.html">exercise</a> : <a href="../../../lessons/inequalities3-sam-wescheme/solution-pages/onscreen.html">solution</a> ]</p>
+</li>
+<li>
+<p>Onscreen - More than One Way [ <a href="../../../lessons/inequalities3-sam-wescheme/pages/onscreen-discussion.html">exercise</a> : <a href="../../../lessons/inequalities3-sam-wescheme/solution-pages/onscreen-discussion.html">solution</a> ]</p>
+</li>
+<li>
+<p>Keeping NinjaCat in the Game [ <a href="../../../lessons/inequalities3-sam-wescheme/pages/keeping-ninjacat-in-the-game.html">exercise</a> : <a href="../../../lessons/inequalities3-sam-wescheme/solution-pages/keeping-ninjacat-in-the-game.html">solution</a> ]</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong><a href="../../../lessons/piecewise-functions-conditionals-wescheme/index.shtml">Piecewise Functions and Conditionals
+</a></strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Red Shape - Explore [ <a href="../../../lessons/piecewise-functions-conditionals-wescheme/pages/red-shape-explore.html">exercise</a> : <a href="../../../lessons/piecewise-functions-conditionals-wescheme/solution-pages/red-shape-explore.html">solution</a> ]</p>
+</li>
+<li>
+<p>Word Problem: red-shape [ <a href="../../../lessons/piecewise-functions-conditionals-wescheme/pages/red-shape-dr.html">exercise</a> : <a href="../../../lessons/piecewise-functions-conditionals-wescheme/solution-pages/red-shape-dr.html">solution</a> ]</p>
+</li>
+<li>
+<p>Decide &amp; Defend - Piecewise Onto Functions [ <a href="../../../lessons/piecewise-functions-conditionals-wescheme/pages/decide-defend-onto.html">exercise</a> : <a href="../../../lessons/piecewise-functions-conditionals-wescheme/solution-pages/decide-defend-onto.html">solution</a> ]</p>
+</li>
+<li>
+<p>Mood Generator - Explore [ <a href="../../../lessons/piecewise-functions-conditionals-wescheme/pages/mood-generator-explore.html">exercise</a> : <a href="../../../lessons/piecewise-functions-conditionals-wescheme/solution-pages/mood-generator-explore.html">solution</a> ]</p>
+</li>
+<li>
+<p>Word Problem: Mood Generator [ <a href="../../../lessons/piecewise-functions-conditionals-wescheme/pages/mood-generator-dr.html">exercise</a> : <a href="../../../lessons/piecewise-functions-conditionals-wescheme/solution-pages/mood-generator-dr.html">solution</a> ]</p>
+</li>
+<li>
+<p>Welcome to Alice’s Restaurant! [ <a href="../../../lessons/piecewise-functions-conditionals-wescheme/pages/restaurant-intro.html">exercise</a> : <a href="../../../lessons/piecewise-functions-conditionals-wescheme/solution-pages/restaurant-intro.html">solution</a> ]</p>
+</li>
+<li>
+<p>Alice&#8217;s Restaurant - Explore [ <a href="../../../lessons/piecewise-functions-conditionals-wescheme/pages/restaurant-explore.html">exercise</a> : <a href="../../../lessons/piecewise-functions-conditionals-wescheme/solution-pages/restaurant-explore.html">solution</a> ]</p>
+</li>
+<li>
+<p>Word Problem: Alice&#8217;s Restaurant [ <a href="../../../lessons/piecewise-functions-conditionals-wescheme/pages/restaurant-dr.html">exercise</a> : <a href="../../../lessons/piecewise-functions-conditionals-wescheme/solution-pages/restaurant-dr.html">solution</a> ]</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong><a href="../../../lessons/player-animation-wescheme/index.shtml">Player Animation
+</a></strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Word Problem: update-player [ <a href="../../../lessons/player-animation-wescheme/pages/update-player.html">exercise</a> : <a href="../../../lessons/player-animation-wescheme/solution-pages/update-player.html">solution</a> ]</p>
+</li>
+<li>
+<p>Challenge: Character Movement in Two Dimensions [ <a href="../../../lessons/player-animation-wescheme/pages/2d-character-movement.html">exercise</a> : <a href="../../../lessons/player-animation-wescheme/solution-pages/2d-character-movement.html">solution</a> ]</p>
+</li>
+<li>
+<p>Challenge: Character Movement in Two Dimensions (continued) [ <a href="../../../lessons/player-animation-wescheme/pages/2d-character-movement-cont.html">exercise</a> : <a href="../../../lessons/player-animation-wescheme/solution-pages/2d-character-movement-cont.html">solution</a> ]</p>
+</li>
+<li>
+<p>Challenge: update-player-2 [ <a href="../../../lessons/player-animation-wescheme/pages/update-player-2.html">exercise</a> : <a href="../../../lessons/player-animation-wescheme/solution-pages/update-player-2.html">solution</a> ]</p>
+</li>
+<li>
+<p>Challenges for update-player [ <a href="../../../lessons/player-animation-wescheme/pages/challenges.html">exercise</a> : <a href="../../../lessons/player-animation-wescheme/solution-pages/challenges.html">solution</a> ]</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong><a href="../../../lessons/distance-formula-wescheme/index.shtml">The Distance Formula
+</a></strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Line Length Explore [ <a href="../../../lessons/distance-formula-wescheme/pages/line-length-explore.html">exercise</a> : <a href="../../../lessons/distance-formula-wescheme/solution-pages/line-length-explore.html">solution</a> ]</p>
+</li>
+<li>
+<p>Pythagorean Theorem Practice [ <a href="../../../lessons/distance-formula-wescheme/pages/pythag-practice.pdf">exercise</a> : <a href="../../../lessons/distance-formula-wescheme/solution-pages/pythag-practice.pdf">solution</a> ]</p>
+</li>
+<li>
+<p>Writing Code to Calculate Missing Lengths [ <a href="../../../lessons/distance-formula-wescheme/pages/distance-write-code-from-lengths.html">exercise</a> : <a href="../../../lessons/distance-formula-wescheme/solution-pages/distance-write-code-from-lengths.html">solution</a> ]</p>
+</li>
+<li>
+<p>Distance on the Coordinate Plane [ <a href="../../../lessons/distance-formula-wescheme/pages/distance-on-coordinate-plane.html">exercise</a> : <a href="../../../lessons/distance-formula-wescheme/solution-pages/distance-on-coordinate-plane.html">solution</a> ]</p>
+</li>
+<li>
+<p>Circles of Evaluation: Distance between (0, 2) and (4, 5) [ <a href="../../../lessons/distance-formula-wescheme/pages/distance-coe.html">exercise</a> : <a href="../../../lessons/distance-formula-wescheme/solution-pages/distance-coe.html">solution</a> ]</p>
+</li>
+<li>
+<p>Multiple Representations: Distance between two points [ <a href="../../../lessons/distance-formula-wescheme/pages/Distance-bw-Two-Points-Multiple-Representations.pdf">exercise</a> : <a href="../../../lessons/distance-formula-wescheme/solution-pages/Distance-bw-Two-Points-Multiple-Representations.pdf">solution</a> ]</p>
+</li>
+<li>
+<p>Distance From Game Coordinates [ <a href="../../../lessons/distance-formula-wescheme/pages/distance-from-game-coordinates.html">exercise</a> : <a href="../../../lessons/distance-formula-wescheme/solution-pages/distance-from-game-coordinates.html">solution</a> ]</p>
+</li>
+<li>
+<p>Distance From Game Coordinates 2 [ <a href="../../../lessons/distance-formula-wescheme/pages/distance-from-game-coordinates-2.html">exercise</a> : <a href="../../../lessons/distance-formula-wescheme/solution-pages/distance-from-game-coordinates-2.html">solution</a> ]</p>
+</li>
+<li>
+<p>Distance (px, py) to (cx, cy) [ <a href="../../../lessons/distance-formula-wescheme/pages/distance.html">exercise</a> : <a href="../../../lessons/distance-formula-wescheme/solution-pages/distance.html">solution</a> ]</p>
+</li>
+<li>
+<p>Comparing Code: Finding Missing Distances [ <a href="../../../lessons/distance-formula-wescheme/pages/distance-comparing-code.html">exercise</a> : <a href="../../../lessons/distance-formula-wescheme/solution-pages/distance-comparing-code.html">solution</a> ]</p>
+</li>
+<li>
+<p>Word Problem: line-length [ <a href="../../../lessons/distance-formula-wescheme/pages/line-length.html">exercise</a> : <a href="../../../lessons/distance-formula-wescheme/solution-pages/line-length.html">solution</a> ]</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong><a href="../../../lessons/inequalities-collision-wescheme/index.shtml">Collision Detection - Distance and Inequality
+</a></strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Top Down / Bottom Up [ <a href="../../../lessons/inequalities-collision-wescheme/pages/top-down-bottom-up.html">exercise</a> : <a href="../../../lessons/inequalities-collision-wescheme/solution-pages/top-down-bottom-up.html">solution</a> ]</p>
+</li>
+<li>
+<p>Word Problem: collision? [ <a href="../../../lessons/inequalities-collision-wescheme/pages/collision.html">exercise</a> : <a href="../../../lessons/inequalities-collision-wescheme/solution-pages/collision.html">solution</a> ]</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_all_lesson_notes">All Lesson Notes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The student workbook includes notes for various lessons. You can access all of these notes by clicking the links below:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="../../../lessons/numbers-inside-video-games-wescheme/pages/notes-intro.html">The Math Inside video games</a></p>
+</li>
+<li>
+<p><a href="../../../lessons/order-of-operations-wescheme/pages/notes-order-of-operations.html">Order of Operations</a></p>
+</li>
+<li>
+<p><a href="../../../lessons/simple-data-types-wescheme/pages/notes-intro-to-programming.html">Introduction to Programming</a></p>
+</li>
+<li>
+<p><a href="../../../lessons/defining-values-wescheme/pages/notes-defining-values.html">Defining Values</a></p>
+</li>
+<li>
+<p><a href="../../../lessons/functions-examples-definitions-wescheme/pages/notes-defining-functions.html">Defining Functions</a></p>
+</li>
+<li>
+<p><a href="../../../lessons/functions-can-be-linear-wescheme/pages/notes-tables-graphs-definitions.html">Linear Relationships</a></p>
+</li>
+<li>
+<p><a href="../../../lessons/functions-dr-wescheme/pages/notes-solving-word-problems.html">Solving Word Problems</a></p>
+</li>
+<li>
+<p><a href="../../../lessons/problem-decomposition-wescheme/pages/notes-problem-decomposition.html">Problem Decomposition</a></p>
+</li>
+<li>
+<p><a href="../../../lessons/inequalities1-simple-wescheme/pages/notes-inequalities.html">Inequalities</a></p>
+</li>
+<li>
+<p><a href="../../../lessons/piecewise-functions-conditionals-wescheme/pages/notes-piecewise-functions.html">Piecewise Functions</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_textbook_alignment">Textbook Alignment</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We offer alignment guides for several popular math textbooks, which make it easy to adopt Bootstrap as part of your normal scope and sequence. These guides are available for:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Illustrative Math (Grade 6) - [<a href="pages/IM-grade-6.html" target="_blank" rel="noopener">HTML</a>, <a href="pages/IM-grade-6.pdf" target="_blank" rel="noopener">PDF</a>]</p>
+</li>
+<li>
+<p>Illustrative Math (Grade 7) - [<a href="pages/IM-grade-7.html" target="_blank" rel="noopener">HTML</a>, <a href="pages/IM-grade-7.pdf" target="_blank" rel="noopener">PDF</a>]</p>
+</li>
+<li>
+<p>Illustrative Math (Grade 8) - [<a href="pages/IM-grade-8.html" target="_blank" rel="noopener">HTML</a>, <a href="pages/IM-grade-8.pdf" target="_blank" rel="noopener">PDF</a>]</p>
+</li>
+<li>
+<p>Illustrative Math (HS) - [<a href="pages/IM-HS.html" target="_blank" rel="noopener">HTML</a>, <a href="pages/IM-HS.pdf" target="_blank" rel="noopener">PDF</a>]</p>
+</li>
+<li>
+<p>Connected Mathematics - CMP3 (Grade 6) - [<a href="pages/cmp-grade-6.html" target="_blank" rel="noopener">HTML</a>, <a href="pages/cmp-grade-6.pdf" target="_blank" rel="noopener">PDF</a>]</p>
+</li>
+<li>
+<p>Connected Mathematics - CMP3 (Grade 7) - [<a href="pages/cmp-grade-7.html" target="_blank" rel="noopener">HTML</a>, <a href="pages/cmp-grade-7.pdf" target="_blank" rel="noopener">PDF</a>]</p>
+</li>
+<li>
+<p>Connected Mathematics - CMP3 (Grade 8) - [<a href="pages/cmp-grade-8.html" target="_blank" rel="noopener">HTML</a>, <a href="pages/cmp-grade-8.pdf" target="_blank" rel="noopener">PDF</a>]</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_printables_for_classroom_walls">Printables for Classroom Walls</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="../../../lessons/computing-needs-all-voices/pages/computing-pioneers.html" target="_blank" rel="noopener">Pioneers in Computing and Mathematics Posters</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_videos_for_teachers">Videos for Teachers</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Developed in partnership with <a href="https://www.code.org" target="_blank" rel="noopener">Code.org</a></p>
+</div>
+<table class="tableblock frame-all grid-all stripes-none stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Modeling and Coordinates</strong></p>
+</div>
+<div class="videoblock">
+<div class="content">
+<iframe src="https://www.youtube.com/embed/hy3SKXANmSQ?rel=0" frameborder="0" allowfullscreen></iframe>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Order of Operations</strong></p>
+</div>
+<div class="videoblock">
+<div class="content">
+<iframe src="https://www.youtube.com/embed/ObJ0Aawc9s4?rel=0" frameborder="0" allowfullscreen></iframe>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Domain and Range</strong></p>
+</div>
+<div class="videoblock">
+<div class="content">
+<iframe src="https://www.youtube.com/embed/yW9XLaY5i8A?rel=0" frameborder="0" allowfullscreen></iframe>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Defining Values</strong></p>
+</div>
+<div class="videoblock">
+<div class="content">
+<iframe src="https://www.youtube.com/embed/bOIs2DyMUv8?rel=0" frameborder="0" allowfullscreen></iframe>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Introducing The Design Recipe</strong></p>
+</div>
+<div class="videoblock">
+<div class="content">
+<iframe src="https://www.youtube.com/embed/Yf5w56PpaTw?rel=0" frameborder="0" allowfullscreen></iframe>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Using The Design Recipe</strong></p>
+</div>
+<div class="videoblock">
+<div class="content">
+<iframe src="https://www.youtube.com/embed/e5ORR9LpgkU?rel=0" frameborder="0" allowfullscreen></iframe>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Boolean Logic &amp; Inequalities</strong></p>
+</div>
+<div class="videoblock">
+<div class="content">
+<iframe src="https://www.youtube.com/embed/XjT-PdWmvtE?rel=0" frameborder="0" allowfullscreen></iframe>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Piecewise Functions</strong></p>
+</div>
+<div class="videoblock">
+<div class="content">
+<iframe src="https://www.youtube.com/embed/DYrd_xaTKYU?rel=0" frameborder="0" allowfullscreen></iframe>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>The Pythagorean Theorem</strong></p>
+</div>
+<div class="videoblock">
+<div class="content">
+<iframe src="https://www.youtube.com/embed/35UgYAPkNcc?rel=0" frameborder="0" allowfullscreen></iframe>
+</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_other_facilitation_resources">Other Facilitation Resources</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Assessment Guide</strong> [<a href="https://docs.google.com/document/d/1uJk66awwVCqJPSTiwMy1FKuYd1FipsShJwCUCq0P7Tw/edit?usp=sharing" target="_blank" rel="noopener">Google Doc</a>] - Guidance for teachers on assessing student programs.</p>
+</li>
+<li>
+<p><strong>Grading Rubric</strong> [<a href="https://docs.google.com/document/d/10YYUmMbE77VwC3W24yZykZe1I0ELL_jE2_NQyH473MY/edit#" target="_blank" rel="noopener">Google Doc</a>] - A simple grading rubric for Design Recipes.</p>
+</li>
+<li>
+<p><strong>Sample Homework Submission Form</strong> [<a href="https://docs.google.com/forms/d/1fyf1xHQElboxDoHy_Voq1YNRy3aRpxIS99ofek5ti8c/viewform" target="_blank" rel="noopener">Google Doc</a>]</p>
+</li>
+<li>
+<p><strong>Broadening Participation</strong> [<a href="https://docs.google.com/presentation/d/17uEl-yS2smjSuOdDLJPzMWWffeXTqBsENjAaZe_qkso/view" target="_blank" rel="noopener">Google Slides</a>] - Making computing relevant, accessible and welcoming to all students isn&#8217;t a pipe-dream. Like anything else worth doing, it takes some good practice and a desire to do it right and keep improving. We&#8217;ve put together some pointers based on best-practices from the CS-Education literature, for Bootstrap teachers or anyone looking to broaden participation in Computer Science.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_standalone_hour_of_code_activities_from_bootstrap">Standalone Hour of Code Activities from Bootstrap</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Hour of Data</strong> [<a href="../../../lessons/hoc-data/index.shtml">link</a>] - A self-guided Desmos activity for exploring a real dataset, and using it to make sense of a real-world problem.</p>
+</li>
+<li>
+<p><strong>Snowman Puzzle</strong> [<a href="https://www.wescheme.org/openEditor?publicId=tt8HB7mig9" target="_blank" rel="noopener">link</a>] - This WeScheme Starterfile has all the pieces your students will need to make a snowman by changing the coordinates in the code.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-18 16:15:48 -0400
+</div>
+</div>
+</div>
+</body>
+</html>

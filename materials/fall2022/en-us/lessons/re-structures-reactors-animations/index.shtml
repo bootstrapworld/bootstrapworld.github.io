@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Structures, Reactors, and Animations</title>
+
+  <link rel="stylesheet" href="../../lib/curriculum.css" />
+    <link rel="stylesheet" href="../../lib/codemirror.css" />
+    <script src="../../lib/codemirror.js"></script>
+    <script src="../../lib/runmode.js"></script>
+    <script src="../../lib/scheme2.js"></script>
+    <script src="../../lib/pyret-mode.js"></script>
+    <script src="../../lib/langtable.js"></script>
+    <script src="../../lib/bootstraplesson.js"></script>
+    <script src="../../dependency-graph.js"></script>
+    <script src="../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"Structures, Reactors, and Animations",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="article LessonPlan pyret" onload="renderSaveToDrive()">
+<!--#include virtual="/menubar.ssi"-->
+<div id="body" onload="renderSaveToDrive()">
+<div id="header">
+<h1>Structures, Reactors, and Animations</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<script>
+function preselect(klass) {
+  const items = document.getElementsByClassName(klass);
+  for (let i = 0; i < items.length; i++) {
+    items[i].style.display = 'none';
+  }
+  if (items.length > 0) {
+    items[0].style.display = 'block';
+  }
+}
+window.onload = function() {
+  preselect('alignedStandards');
+  preselect('alignedTextbooks');
+  preselect('alignedPractices');
+}
+function showStandardsAlignment() {
+  const selectTag = document.getElementsByClassName('standardsAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const stdTables = document.getElementsByClassName('alignedStandards');
+  //const intro = document.getElementsByClassName('alignedStandardsIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < stdTables.length; i++) {
+    const stdTable = stdTables[i];
+    stdTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optStd = opt.value;
+      for (let j = 0; j < stdTables.length; j++) {
+        const stdTable = stdTables[j];
+        if (stdTable.classList.contains(optStd)) {
+          stdTable.style.display = 'block';
+         // introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+function toggleNonPrereqDisplay() {
+  const inputTag = document.getElementsByClassName('sidebarinput')[0];
+  const checkedP = inputTag.checked;
+  const lessonTable = document.getElementsByClassName('sidebarlessons')[0];
+  const lis = lessonTable.getElementsByTagName('li');
+  for (let i = 0; i < lis.length; i++) {
+    const li = lis[i];
+    const lesson = li.getElementsByClassName('prerequisite');
+    if (lesson.length === 0) {
+      li.style.display = checkedP ? 'none' : 'block';
+    }
+  }
+}
+</script>
+<script>
+function showTextbooksAlignment() {
+  const selectTag = document.getElementsByClassName('textbooksAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const textbookTables = document.getElementsByClassName('alignedTextbooks');
+  //const intro = document.getElementsByClassName('alignedTextbooksIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < textbookTables.length; i++) {
+    const textbookTable = textbookTables[i];
+    textbookTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optTextbook = opt.value;
+      for (let j = 0; j < textbookTables.length; j++) {
+        const textbookTable = textbookTables[j];
+        if (textbookTable.classList.contains(optTextbook)) {
+          textbookTable.style.display = 'block';
+          //introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+</script>
+<script>
+function showPracticesAlignment() {
+  const selectTag = document.getElementsByClassName('practicesAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const practiceTables = document.getElementsByClassName('alignedPractices');
+  for (let i = 0; i < practiceTables.length; i++) {
+    const practiceTable = practiceTables[i];
+    practiceTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optPractice = opt.value;
+      for (let j = 0; j < practiceTables.length; j++) {
+        const practiceTable = practiceTables[j];
+        if (practiceTable.classList.contains(optPractice)) {
+          practiceTable.style.display = 'block';
+        }
+      }
+    }
+  }
+}
+</script>
+<div class="paragraph">
+<!-- </p>
+</div>
+--></div><div class="sidebar"><div id="toggle"></div><div class="paragraph"><!--
+<div class="paragraph">
+<p>
+--><div class="sidebarlessons"><strong>Lessons</strong>
+<ul></ul></div>
+</div>
+<table class="tableblock frame-all grid-all stretch sidebarstandards">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Standards in this Lesson</strong>
+<select class="standardsAlignmentSelect"  onchange="showStandardsAlignment()"><option selected="selected" value="standards-CSTA">CSTA</option></select></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist alignedStandards standards-CSTA">
+<div class="title"><a href="https://csteachers.org/page/standards">CSTA Standards</a></div>
+<dl>
+<dt class="hdlist1">1B-AP-09</dt>
+<dd>
+<p>Create programs that use variables to store and modify data.</p>
+</dd>
+<dt class="hdlist1">1B-AP-10</dt>
+<dd>
+<p>Create programs that include sequences, events, loops, and conditionals.</p>
+</dd>
+<dt class="hdlist1">1B-AP-12</dt>
+<dd>
+<p>Modify, remix, or incorporate portions of an existing program into one&#8217;s own work, to develop something new or add more advanced features.</p>
+</dd>
+<dt class="hdlist1">2-AP-10</dt>
+<dd>
+<p>Use flowcharts and/or pseudocode to address complex problems as algorithms</p>
+</dd>
+<dt class="hdlist1">2-AP-11</dt>
+<dd>
+<p>Create clearly named variables that represent different data types and perform operations on their values.</p>
+</dd>
+<dt class="hdlist1">3B-AP-13</dt>
+<dd>
+<p>Illustrate the flow of execution of a recursive algorithm</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<div class="sidebarpractices"><strong>Practices in this Lesson</strong>: <em>None</em></div>
+<!-- </p>
+</div>
+--></div><!--
+<div class="paragraph">
+<p>
+-->
+</div>
+<div class="paragraph description">
+<p>Students implement animation using a modified Model-View-Controller paradigm called Reactors. Using a data structure to represent the position of an object, they write <code class="pyret">draw-state</code> functions to draw single frame from instances of that structure and <code class="pyret">next-state-tick</code> functions to generate new instances from previous ones. They learn how to use Reactors to combine their structure and functions into a complete animation.</p>
+</div>
+<table class="tableblock frame-all grid-all stripes-none stretch left-header preamble">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Product Outcomes</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Students create a complete animation of a sunset</p>
+</li>
+<li>
+<p>Students learn to use data structures to model the state of an animation</p>
+</li>
+<li>
+<p>Students develop data structures to capture several pre-defined animations</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Materials</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist materials-links">
+<ul>
+<li>
+<p><a href="https://docs.google.com/presentation/d/Intentionally-left-blank-as-this-lesson-does-not-have-any-slides/" target="_blank" rel="noopener">Lesson Slides</a></p>
+</li>
+<li>
+<p><span class="StarterFile"><a href="https://code.pyret.org/editor#share=13RRDcl13HkfNp0Ue7jQUhBNZIumSNxfP" target="_blank" rel="noopener">Sunset Starter File</a></span></p>
+</li>
+<li>
+<p><span class="materialSectionPlaceholder"> </span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/re-structures-reactors-animations/pages/sunset-animation-worksheet.html" target="_blank" rel="noopener">Identifying Animation Data Worksheet</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/re-structures-reactors-animations/pages/blank-type.html" target="_blank" rel="noopener">Design a Data Structure</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/re-structures-reactors-animations/pages/draw-state.html" target="_blank" rel="noopener">Word Problem: draw-state</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/re-structures-reactors-animations/pages/next-state-tick.html" target="_blank" rel="noopener">Word Problem: next-state-tick</a></span></p>
+</li>
+<li>
+<p><strong>Classroom visual:</strong> <a href="javascript:showLangTable()">Language Table</a></p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="dlist glossary">
+<div class="title">Glossary</div>
+<dl>
+<dt class="hdlist1">data structure</dt>
+<dd>
+<p>a 'container' data type, which has fields that can hold other data (e.g. - a 'coordinate' is a data structure holding number fields x and y)</p>
+</dd>
+<dt class="hdlist1">field</dt>
+<dd>
+<p>a part of a data structure that has a name and holds a single value of a specified data type</p>
+</dd>
+<dt class="hdlist1">function</dt>
+<dd>
+<p>a relation from a set of inputs to a set of possible outputs, where each input is related to exactly one output</p>
+</dd>
+<dt class="hdlist1">handler</dt>
+<dd>
+<p>Connects an event (like a tick or keypress) and a function within a reactor</p>
+</dd>
+<dt class="hdlist1">instance</dt>
+<dd>
+<p>a specific example of a data structure, with specific values for each field (e.g. - (4,5) is an instance of an (x,y) coordinate</p>
+</dd>
+<dt class="hdlist1">reactor</dt>
+<dd>
+<p>a value that contains a current state, and functions for updating, drawing, and interacting with that state</p>
+</dd>
+<dt class="hdlist1">state</dt>
+<dd>
+<p>the value of a changing system at any point in time (i.e. a stoplight can be in the 'red', 'yellow' or 'green' state). In Pyret, the state of a Reactor is it&#8217;s current value.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_animations_in_pyret_duration_55_minutes_"><span class="section-link"><a href="#_animations_in_pyret_duration_55_minutes_"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Animations in Pyret <span class="duration">55 minutes</span></h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_overview">Overview</h3>
+<div class="paragraph">
+<p>Students are introduced to <em>Reactors</em>, Pyret&#8217;s mechanism for created animated time-based simulations or interactive programs. With Reactors serving as the bridge between making images and defining data structures, students begin to create simple animations.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_launch">Launch</h3>
+<div class="paragraph">
+<p>You’ve learned how to create data structures, and how to create images. Now it’s time to put these together to create an animation in Pyret. We’ll even go a step further than what we did in Bootstrap:Algebra, creating an animation with movement in two dimensions.</p>
+</div>
+<div class="paragraph">
+<p>In Bootstrap:Algebra, many decisions about your animation were made for you. We told you how many characters you had and which aspects of them could change during the animation. The danger always moved in the x-axis, the player always moved in the y-axis. In Bootstrap:Reactive, we give you much more control of your game: you decide how many characters you will have, and what aspects of them can change (position, color, size, etc). In order to have this flexibility, we need to do a little more work to set up the animation. Let’s break down an animation to see what we need.</p>
+</div>
+<div class="paragraph">
+<p>Let’s create an animation of a sunset. The sun will start at the top-left corner of the screen and fall diagonally down and right across the sky. Here’s a running version of the animation we are trying to create. Notice that the sun dips below the horizon in the bottom-right corner.</p>
+</div>
+<div class="paragraph">
+<p><span class="centered-image"><span class="image-figure"><span class="image"><img src="images/f0de9c8c90a57310.gif" alt="Sunset 1" width="800" title="Sunset 1"></span><a href="images/f0de9c8c90a57310.gif" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></p>
+</div>
+<div class="paragraph">
+<p>An animation is made of a sequence of images that we flip through quickly. We continue to think of an animation as a sequence of images in Bootstrap:Reactive. For example, here are the first three frames of the sunset animation:</p>
+</div>
+<div class="paragraph">
+<p><span class="centered-image"><span class="image-figure"><span class="image"><img src="images/36e3cc3a73e15ea6.png" alt="Sunset 2" width="800" title="Sunset 2"></span><a href="images/36e3cc3a73e15ea6.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></p>
+</div>
+<div class="paragraph">
+<p>Where will we get this sequence of images? We don’t want to create them all by hand. Instead, we want to write programs that will create them for us. This is the power of computer programming. It can automate tasks (like creating new images) that might otherwise be tedious for people to do. There are four steps to creating animations programs. You’ve actually already done the first three in the first two units, but now we need to show you how to put them together.</p>
+</div>
+<div class="paragraph">
+<p>This is a key point at which to emphasize why functions are important to computer science. Computers are good at repetition, but they need instructions telling them what steps to repeat. Functions capture those instructions.</p>
+</div>
+<div class="paragraph lesson-point">
+<p>Step 1: Define the data structure</p>
+</div>
+<div class="paragraph">
+<p>The first step is to develop a <span class="vocab">data structure</span> for the information that changes across frames. To do this, we need to figure out what <span class="vocab">fields</span> our data structure will need.</p>
+</div>
+<div class="paragraph lesson-instruction">
+<p>Turn to <a href="../../lessons/re-structures-reactors-animations/pages/sunset-animation-worksheet.html" target="_blank" rel="noopener">Identifying Animation Data Worksheet</a> in your workbook. Copy the three sunset images we gave you into the boxes at the top of the worksheet.</p>
+</div>
+<div class="paragraph">
+<p>To identify the fields, we have to figure out what information is needed to create each frame image. Information that changes from frame to frame must be in the data structure.</p>
+</div>
+<div class="paragraph lesson-instruction">
+<p>On your worksheet, fill in the table just below the three images to indicate what information changes across the frames.</p>
+</div>
+<div class="paragraph">
+<p>Hopefully, you identified two pieces of changing information: the x-coordinate of the sun and the y-coordinate of the sun. Each image also contains the horizon (the brown rectangle), but that is the same in every frame. Let’s write down a data structure that captures the two coordinates.</p>
+</div>
+<div class="paragraph lesson-instruction">
+<p>Fill in the second table, giving a name and type for each of the x-coordinate and y-coordinate. Then turn to <a href="../../lessons/re-structures-reactors-animations/pages/blank-type.html" target="_blank" rel="noopener">Design a Data Structure</a> and fill in the <code class="pyret">SunsetState</code> data structure definition at the top of the page. Use <code class="pyret">sunset</code> as the name of the constructor.</p>
+</div>
+<div class="paragraph">
+<p>You should have come up with something like this: a data block with numbers for the two coordinates.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><code class="pyret"># a SunsetState is the x-coordinate of the sun
+# and the y-coordinate of the sun
+data SunsetState:
+ | sunset(
+     xpos :: Number,
+     ypos :: Number)
+end</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Have students open the <a href="https://code.pyret.org/editor#share=13RRDcl13HkfNp0Ue7jQUhBNZIumSNxfP" target="_blank" rel="noopener">Sunset Starter File</a>, and confirm that the data definition in their notes matches the definition in the file.</p>
+</div>
+<div class="paragraph">
+<p>The term "state" is used in computer science to refer to the details of a program at a specific point in time. Here, we use it to refer to the details that are unique to a single frame of the animation.</p>
+</div>
+<div class="paragraph">
+<p>Have students copy the images into the workbook partly to make sure they understand what images they are working with, and partly so that they have a self-contained worksheet page for later reference.</p>
+</div>
+<table class="tableblock frame-all grid-none stripes-none stretch strategy-box">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="title">What&#8217;s in a Name?</span></p>
+<p class="tableblock">We are adopting a convention here, in which we include "State" in the name of the data block, then use the same base name (without "State") for the constructor. By not conflating the names here, students should have an easier time distinguishing between the constructor name and data structure name.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Any time we make a data structure, we should make some sample <span class="vocab">instances</span>: this helps check that we have the right fields and gives us data to use in making examples later.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_investigate">Investigate</h3>
+<div class="paragraph lesson-instruction">
+<p>At the bottom of the worksheet, use the <code class="pyret">sunset</code> constructor to write write down the <code class="pyret">SunsetState</code> instance for the first frame (labeled &#8220;Sketch A&#8221;). It has x-coordinate 10 and y-coordinate 300.</p>
+</div>
+<div class="paragraph lesson-point">
+<p>Step 2: Draw one frame</p>
+</div>
+<div class="paragraph">
+<p>The second step in making an animation is to write a function that consumes an instance of one state and produces the image for that instance. We call this function <code class="pyret">draw-state</code>. For sunset, <code class="pyret">draw-state</code> takes a <code class="pyret">SunsetState</code> instance and produces an image with the sun at that location (dipping behind the horizon when low in the sky).</p>
+</div>
+<div class="paragraph lesson-instruction">
+<p>Go to <a href="../../lessons/re-structures-reactors-animations/pages/draw-state.html" target="_blank" rel="noopener">Word Problem: draw-state</a> in your workbook and develop the <code class="pyret">draw-state</code> function described there. Type in your function and use it (in the interactions window) to draw several individual sunset frames.</p>
+</div>
+<div class="paragraph">
+<p>You may have noticed that we used <code class="pyret">SunsetState</code> instead of <code class="pyret">sunset</code> as the domain name. Remember that <code class="pyret">sunset</code> is just the name of the constructor, while <code class="pyret">SunsetState</code> is the name of the type. We use <code class="pyret">SunsetState</code> whenever we need a type name for the domain or range.</p>
+</div>
+<div class="paragraph">
+<p>We can now draw one frame, but an animation needs many frames. How can we draw multiple frames? Let’s simply the problem a bit: if you have the instance for one frame, how do we compute the instance for the next frame? Note we didn’t ask how to produce the <em>image</em> for the next frame. We only asked how to produce the next <code class="pyret">SunsetState</code> instance. Why? We just wrote <code class="pyret">draw-state</code>, which produces the image from a <code class="pyret">SunsetState</code>. So if we can produce the instance for the next frame, we can use <code class="pyret">draw-state</code> to produce the image.</p>
+</div>
+<div class="paragraph lesson-point">
+<p>Step 3: Produce the next frame instance</p>
+</div>
+<div class="paragraph">
+<p>The third step in making an animation is to write a function that consumes an instance of one state and produces the instance for the next state. We call this function <code class="pyret">next-state-tick</code>. For sunset, <code class="pyret">next-state-tick</code> takes a <code class="pyret">SunsetState</code> instance and produces a <code class="pyret">SunsetState</code> instance that is just a little lower in the sky.</p>
+</div>
+<div class="paragraph lesson-instruction">
+<p>Go to <a href="../../lessons/re-structures-reactors-animations/pages/next-state-tick.html" target="_blank" rel="noopener">Word Problem: next-state-tick</a> in your workbook and develop the <code class="pyret">next-state-tick</code> function described there. Use the sample <code class="pyret">SunsetState</code> instances that you developed in step 1 as you make your examples of the function. Then, type in the code you have so far (including the data definition for <code class="pyret">SunsetState</code> into the sunset starter file, and make sure your examples are producing the expected answers.</p>
+</div>
+<div class="paragraph">
+<p>Together, the <code class="pyret">draw-state</code> and <code class="pyret">next-state-tick</code> functions are the building blocks for an animation. To start to see how, let’s first use these two functions to create the first several frames of an animation by hand (then we’ll show you how to make more frames automatically).</p>
+</div>
+<div class="openblock lesson-instruction">
+<div class="content">
+<div class="paragraph">
+<p>Run each of the following expressions in the interactions window in turn. Just copy and paste them, rather than type them by hand each time:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code class="pyret">draw-state(sunset(10,300))</code></p>
+</li>
+<li>
+<p><code class="pyret">next-state-tick(sunset(10,300))</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Now use <code class="pyret">draw-state</code> on the result of <code class="pyret">next-state-tick</code>, then call <code class="pyret">next-state-tick</code> again:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code class="pyret">draw-state(sunset(18,296))</code></p>
+</li>
+<li>
+<p><code class="pyret">next-state-tick(sunset(18,296))</code></p>
+</li>
+<li>
+<p><code class="pyret">draw-state(sunset(26,292))</code></p>
+</li>
+<li>
+<p><code class="pyret">next-state-tick(sunset(26,292))</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Do you see the sun getting lower in the sky from image to image? Do you see how we are creating a &#8220;chain&#8221; of images by alternating calls to <code class="pyret">draw-state</code> and <code class="pyret">next-state-tick</code>? We use <code class="pyret">next-state-tick</code> to create the instance for a new frame, then use <code class="pyret">draw-state</code> to produce the image for that frame.</p>
+</div>
+<div class="openblock lesson-instruction">
+<div class="content">
+<div class="paragraph">
+<p>(Optional) Here’s another way to see the same sequence of expressions. Run each of the following expressions in the interactions window in turn. Just copy and paste them, rather than type them by hand each time:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code class="pyret">draw-state(sunset(10,300))</code></p>
+</li>
+<li>
+<p><code class="pyret">draw-state(next-state-tick(sunset(10,300)))</code></p>
+</li>
+<li>
+<p><code class="pyret">draw-state(next-state-tick(next-state-tick(sunset(10,300))))</code></p>
+</li>
+<li>
+<p><code class="pyret">draw-state(next-state-tick(next-state-tick(next-state-tick(sunset(10,300)))))</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Do you see what this sequence of expressions does? Each one starts with the sun in the upper-left corner, calls <code class="pyret">next-state-tick</code> one or more times to compute a new position for the sun, then draws the state. Notice that this sequence only has us write down one <code class="pyret">SunsetState</code> instance explicitly (the first one). All the others are computed from <code class="pyret">next-state-tick</code>. If we could only get Pyret to keep making these calls for us, and to show us the images quickly one after the next, we’d have an animation!</p>
+</div>
+<div class="paragraph lesson-point">
+<p>Step 4: Define an animation with a reactor</p>
+</div>
+<div class="paragraph">
+<p>The fourth (and final) step in making an animation is to tell
+Pyret to create an animation using an initial <code class="pyret">SunsetState</code>
+instance and our <code class="pyret">draw-state</code> and <code class="pyret">next-state-tick</code> functions. To do
+this, we need a new construct called a <span class="vocab">reactor</span>. A reactor gathers
+up the information needed to create an animation:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>An instance of the data at the start of the animation</p>
+</li>
+<li>
+<p>(Optional) A function that knows how this data should change automatically as time passes</p>
+</li>
+<li>
+<p>(Optional) A function that knows how to take this data and draw one frame of the animation</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>A reactor is designed to &#8220;react&#8221; to different events. When the
+computer’s clock ticks, we’d like to call <code class="pyret">next-state-tick</code> on the
+reactor’s state, and have it update to the next state
+automatically. Reactors have event <span class="vocab">handlers</span>, which connect events
+to functions.</p>
+</div>
+<div class="paragraph">
+<p>Here, we define a reactor named <code class="pyret">sunset-react</code> for the sunset animation:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><code class="pyret">sunset-react = reactor:
+  init: sunset(10, 300),
+  on-tick: next-state-tick,
+  to-draw: draw-state
+end</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code class="pyret">init</code> tells the reactor which instance to use when the program
+starts. In this example, the program will start with a
+<code class="pyret">SunsetState</code> instance with the sun at (10, 30). <code class="pyret">on-tick</code> and
+<code class="pyret">to-draw</code> are event <span class="vocab">handlers</span>, which connect <code class="pyret">tick</code> and <code class="pyret">draw</code> events to
+our <code class="pyret">next-state-tick</code> and <code class="pyret">draw-state</code> functions.</p>
+</div>
+<div class="paragraph lesson-instruction">
+<p>Copy this reactor definition into your sunset animation program.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_common_misconceptions">Common Misconceptions</h3>
+<div class="paragraph">
+<p>Separating the instance from the image of it is key here: when we produce an animation, we actually produce a sequence of instances, and use draw-state to produce each one. Students may need some practice to think of the instance as separate from the image that goes into the animation.</p>
+</div>
+<div class="paragraph">
+<p>If you run your sunset program after adding the reactor, nothing seems to happen. We have set up an animation by defining <code class="pyret">sunset-react</code>, but we haven’t told Pyret to run it. You could define multiple reactors in the same file, so we have to tell
+Pyret explicitly when we want to run one.</p>
+</div>
+<div class="paragraph lesson-instruction">
+<p>Type <code class="pyret">interact(sunset-react)</code> in the interactions window to run your sunset animation.</p>
+</div>
+<div class="paragraph">
+<p>What happens when we call <code class="pyret">interact</code>? The following diagram summarizes what Pyret does to run the animation. It draws the initial instance, then repeatedly calls <code class="pyret">next-state-tick</code> and <code class="pyret">draw-state</code> to create and display successive frames of your animation.</p>
+</div>
+<div class="paragraph">
+<p><span class="centered-image"><span class="image-figure"><span class="image"><img src="images/155c7a98b2d97a16.png" alt="Sunset 3" width="800" title="Sunset 3"></span><a href="images/155c7a98b2d97a16.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></p>
+</div>
+<div class="paragraph">
+<p>These are the same computations you did by hand in the interactions window a little while ago, but Pyret now automates the cycle of generating and drawing instances. By having functions that can generate instances and draw images, we can let the computer do the work of creating the full animation.</p>
+</div>
+<div class="paragraph">
+<p>Functions are essential to creating animations, because each frame comes from a different <code class="pyret">SunsetState</code> instance. The process of drawing each instance is the same, but the instance is different each time. Functions are computations that we want to perform many times. In an animation, we perform the <code class="pyret">draw-state</code> and <code class="pyret">next-state-tick</code> functions once per frame. Animations are an excellent illustration of why functions matter in programming.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_synthesize">Synthesize</h3>
+<div class="paragraph">
+<p>Summarizing what we have seen so far, we have to write four things in order to make an animation:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Create a <span class="vocab">data structure</span> to hold the information that changes across frames. This information is called the <span class="vocab">state</span>.</p>
+</li>
+<li>
+<p>Write a <span class="vocab">function</span> to generate an image of the current state (we’ll call this <code class="pyret">draw-state</code>).</p>
+</li>
+<li>
+<p>Write a <span class="vocab">function</span> to generate a new state from a given state (we’ll call this <code class="pyret">next-state-tick</code>).</p>
+</li>
+<li>
+<p>Define a {reactor} that will use an initial instance of the state and the two functions to create an animation.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>At this point, you could create your own animation from scratch by following these four steps. If you do, you may find it helpful to use one of the animation design worksheets at the back of your workbook: it takes you through sketching out your frames, developing the data structure for your animation state, and writing the functions for the animation. It also gives you a checklist of the four steps above. The checklist mentions a fifth (optional) step, which involves getting your characters to respond when the user presses a key. You’ll learn how to do that in the next unit.</p>
+</div>
+<div class="paragraph">
+<p>The animation-design worksheet is a condensed summary of the steps to creating an animation. If your students still need more scaffolding, follow the sequence of sheets that we used to develop sunset, including explicit worksheets for draw-state and next-state-tick. If your students are doing fine without the scaffolding of the design recipe worksheets, the condensed worksheet should suffice to keep them on track (though they should still write tests and follow the other steps of the design
+recipe as they work).</p>
+</div>
+<div class="paragraph">
+<p>You have just seen the incredible power of functions in programming! Functions let us <em>generate content automatically</em>. In the early days of making cartoons, artists drew every frame by hand. They had to decide at the beginning how many frames to create. Here, we let the computer generate as many frames as we want, by letting it call <code class="pyret">next-state-tick</code> over and over until we stop the animation. If we want to slow down the sunset, we simply change the new coordinates within <code class="pyret">next-state-tick</code>. If we start with a larger screen size, the computer will continue to generate as many images as we need to let the sun drop out of the window. The computer can give us this flexibility as long as <em>we provide a function that tells the computer how to generate another frame</em>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_from_animations_to_structures_duration_55_minutes_"><span class="section-link"><a href="#_from_animations_to_structures_duration_55_minutes_"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>From Animations to Structures <span class="duration">55 minutes</span></h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_overview_2">Overview</h3>
+<div class="paragraph">
+<p>An animation that only changes one number (e.g. - the x-coordinate of a plane flying across the sky, or the y-coordinate of a balloon floating upwards) uses that number as the Reactor state. But what if we wanted to do something more complex, which relied on keeping track of more than one number? This activity uses more complex animation to motivate the need for data structures.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_launch_2">Launch</h3>
+<div class="paragraph">
+<p>You’ve learned the components of an animation in Pyret. The data structure for the state lies at the heart of the animation: each of the initial state, the <code class="pyret">draw-state</code> function and the <code class="pyret">next-state-tick</code> function are based on the data structure you choose. Being able to figure out the data structure you need for an animation is therefore a critical skills in making your own animations. In this lesson, we are going to practice identifying the data and creating the data structures for various animations. We will not write the entire animation. We are just going to practice identifying the data and writing the data structures.</p>
+</div>
+<div class="paragraph">
+<p><span style="clear: both;display: block"></span></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>Figuring out the data structure is actually one of the most creative tasks in programming. More complex problems can be captured through multiple data structures. For example, we might have some information that could be computed from other information, so we have to decide what data to include and what to compute. Or, we might want to combine multiple smaller data structures into a larger one, having a data structure for a coordinate (with both x- and y-positions), and a data structure for a character that has a coordinate and a color. We don’t expect that you can envision all of these possibilities right now. We do want you to be aware that students may come up with different ideas, and that this is appropriate and interesting at this stage. Your students can have some valuable discussions about design once they start brainstorming different ways to organize data for a problem.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_investigate_2">Investigate</h3>
+<div class="paragraph">
+<p><span class="right"><span class="centered-image"><span class="image-figure"><span class="image"><img src="images/7386c69d00d1daf9.gif" alt="Cow jump" width="200" title="Cow jump"></span><a href="images/7386c69d00d1daf9.gif" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></span></p>
+</div>
+<div class="paragraph">
+<p><strong>Exercise: Jumping Cow</strong>&#8201;&#8212;&#8201;Look at this animation of a cow jumping over the moon.</p>
+</div>
+<div class="paragraph lesson-instruction">
+<p>Go to <a href="../../lessons/re-structures-reactors-animations/pages/sunset-animation-worksheet.html" target="_blank" rel="noopener">Identifying Animation Data Worksheet</a> in the workbook. Draw three frames from this animation. Choose ones that highlight differences across the frames. The frames don’t need to be consecutive.</p>
+</div>
+<div class="paragraph">
+<p>When you chose which frames to draw, did you include ones with different images or heights of the cow? Choosing images with some variation will help you think through the data in your animation.</p>
+</div>
+<div class="paragraph lesson-instruction">
+<p>Fill in the table of what information changes across the frames.</p>
+</div>
+<div class="paragraph">
+<p>In this case, the cow’s x-coordinate and y-coordinate are both changing. The image changes too, but the position (coordinates) determines which image to use. The state data structure therefore only needs to store the coordinates.</p>
+</div>
+<div class="paragraph lesson-instruction">
+<p>Fill in the table of what fields you need for each piece of changing information. Write a data structure <code class="pyret">CowState</code> to capture the data in this animation.</p>
+</div>
+<div class="paragraph">
+<p>If students want to include the image in the state, that is fine too. Examples like this are good for raising discussion about what parts of an animation depend on one another. The image doesn’t need to be in the state, but it isn’t wrong to include it
+there either.</p>
+</div>
+<div class="paragraph">
+<p><span class="right"><span class="centered-image"><span class="image-figure"><span class="image"><img src="images/0168ee68e22bab40.gif" alt="Cycling" width="400" title="Cycling"></span><a href="images/0168ee68e22bab40.gif" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></span>
+<strong>Exercise: Bicycle Ride</strong>&#8201;&#8212;&#8201;Look at this animation of a person riding a bicycle along a street.</p>
+</div>
+<div class="paragraph lesson-instruction">
+<p>Go to the next animation worksheet page in the workbook. Draw three frames from this animation. Choose ones that highlight differences across the frames. The frames don’t need to be consecutive. Then, fill in the table of what information changes across the frames.</p>
+</div>
+<div class="paragraph">
+<p><span style="clear: both;display: block"></span></p>
+</div>
+<div class="paragraph">
+<p>In this case, there are two pieces of information: the x-coordinate of the cyclist, and the angle of rotation of the bike tires.</p>
+</div>
+<div class="paragraph lesson-instruction">
+<p>Fill in the table of what fields you need for each piece of changing information. Write a data structure <code class="pyret">BikeState</code> to capture the data in this animation.</p>
+</div>
+<div class="paragraph">
+<p><span class="right"><span class="centered-image"><span class="image-figure"><span class="image"><img src="images/c3e360519a4a7e37.gif" alt="Pulsing star" width="200" title="Pulsing star"></span><a href="images/c3e360519a4a7e37.gif" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></span>
+<strong>Exercise: Pulsing Star</strong>&#8201;&#8212;&#8201;Look at this animation of a star that pulses as it moves across the sky.</p>
+</div>
+<div class="paragraph lesson-instruction">
+<p>Go to next animation worksheet page in the workbook. Draw three frames from this animation. Choose ones that highlight differences across the frames. The frames don’t need to be consecutive.</p>
+</div>
+<div class="paragraph">
+<p>When you chose which frames to draw, did you show the star getting smaller and then getting larger again?</p>
+</div>
+<div class="paragraph">
+<p><span style="clear: both;display: block"></span></p>
+</div>
+<div class="paragraph lesson-instruction">
+<p>Fill in the table of what information changes across the frames.</p>
+</div>
+<div class="paragraph">
+<p>The x- and y-coordinates of the star change, as does the size of the star. These changes are easy to see across two frames. Something else changes too, but you have to look across at least three frames to see it. Imagine you had a single frame with the star at size 25. In the next frame, should the star be larger or smaller? It’s hard to tell, because we don’t know whether the star is currently in a &#8220;growing&#8221; phase or a &#8220;shrinking&#8221; one. This animation actually has a fourth state field: the direction of growth of the star. When the star is getting bigger, the star’s size should increase in the next frame. When the star is getting smaller, the size should decrease in the next frame.</p>
+</div>
+<div class="paragraph lesson-instruction">
+<p>Fill in the table of what fields you need for each piece of changing information. Write a data structure <code class="pyret">StarState</code> to capture the data in this animation.</p>
+</div>
+<div class="paragraph">
+<p>What type did you choose for the field that tracks the direction of growth? You have several choices: a Boolean such as <code class="pyret">is-growing</code>, a string such as <code class="pyret">direction</code> (with values <code class="pyret">"grow"</code> or <code class="pyret">"shrink"</code>), or a number such <code class="pyret">growth-rate</code> which is the amount to add to the size from state to state (a positive value grows the star while a negative value shrinks it). The code for <code class="pyret">next-state-tick</code> will be cleaner if you use the number, but the others make sense before you’ve thought ahead to the code.</p>
+</div>
+<div class="paragraph">
+<p><span class="right"><span class="centered-image"><span class="image-figure"><span class="image"><img src="images/83d4ebd4f0f69697.gif" alt="Dimmer" width="200" title="Dimmer"></span><a href="images/83d4ebd4f0f69697.gif" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></span>
+<strong>Exercise: Light Dimmer</strong>&#8201;&#8212;&#8201;Look at this animation of a slider to control the brightness of a light.</p>
+</div>
+<div class="paragraph lesson-instruction">
+<p>Go to the next animation worksheet in your workbook. Draw three frames from this animation. Choose ones that highlight differences across the frames. The frames don’t need to be consecutive.</p>
+</div>
+<div class="paragraph">
+<p>When you chose which frames to draw, did you include the far left position when the light goes out? It can be useful to think about the extreme cases when picking frames to focus on.</p>
+</div>
+<div class="paragraph lesson-instruction">
+<p>Fill in the table of what information changes across the frames.</p>
+</div>
+<div class="paragraph">
+<p><span style="clear: both;display: block"></span>
+In this case, we see two things changing: the y-coordinate of the slider and the brightness of the light. You could have one field for each of these. Or, you could just have a field for the y-coordinate and compute the brightness from that value (you can control the brightness of a shape by putting a number from 0 to 255 in place of <code class="pyret">"solid"</code> or <code class="pyret">"outline"</code> in the arguments to the shape-image functions).</p>
+</div>
+<div class="paragraph lesson-instruction">
+<p>Fill in the table of what fields you need for each piece of changing information. Write a data structure <code class="pyret">LightState</code> to capture the data in this animation.</p>
+</div>
+<div class="paragraph">
+<p><strong>Exercise: Pong</strong>&#8201;&#8212;&#8201;For a real challenge of your data structure design skills, figure out the world data structure needed for a single-paddle pong game (a ball bouncing off the walls and a single user-controlled paddle). If you want to build an entire
+Pong game, see the optional unit on how to do this.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_closing_duration_5_minutes_"><span class="section-link"><a href="#_closing_duration_5_minutes_"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Closing <span class="duration">5 minutes</span></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You’ve learned how to create an animation in Pyret. You’ve learned how to create a data structure for the state of your animation. You’ve written a function to draw the frame for one instance of your state data. You’ve written another function to produce the state instance for the next frame, and you’ve learned how to write a reactor to create an animation from these pieces. Your state data structures can contain information far beyond the coordinates for players: you can include images, sizes of characters, colors of elements, and so on. Once you control the data structure, you can create much richer animations than you could in Bootstrap:Algebra. Coming up, we will show you how to use keys to control your players. Later, we show you how to add other common game features to your Bootstrap:Reactive programs.</p>
+</div>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-17 19:42:17 -0400
+</div>
+</div>
+</div>
+</body>
+</html>

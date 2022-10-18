@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Git Command Notes for Authors</title>
+<style>
+/* Overall document font */
+* {font-family: Lato, Arial, Helvetica, sans-serif;}
+
+/* document headings */
+h1,.lesson-section-1 {color: #75328A;}
+h1{font-size: 32px; font-family: sans-serif;}
+table.section-heading *, .lesson-section-1 h2{font-size: 32px; font-weight: 100;}
+table.section-heading{width: 100%;}
+table.section-heading td:last-child{text-align: right; color: #d9d2e9;}
+
+/* preamble section */
+table.preamble td {padding: 10px;}
+table.preamble td:first-child{background: #b7d893; width: 25%;}
+table.preamble td:first-child p {font-weight: bold; margin: 5px;}
+
+/* content used throughout the body */
+table{ border-collapse: collapse; border: none; }
+table.grid-all.frame-all {border: solid 1px black;}
+table.grid-none.frame-none {border-width: 0px;}
+
+.big {font-size: 30pt;}
+.vocab{font-weight: bold; font-style: italic;}
+.right{text-align: right;}
+.acknowledgment {
+  border-top: solid 1px black; 
+  font-style: italic; 
+  font-size: 8pt;
+}
+.lesson-point {
+  border-top: solid 1px black; 
+  border-bottom: solid 1px black; 
+  color: black;
+  font-weight: bold;
+}
+
+.web-page-only, #footer { display: none; visibility: hidden; }
+
+/* Callout boxes */
+.strategy-box, .notice-box {
+  background: #efefef;
+  border: solid 5px !important;
+  margin: 15px auto;
+  width: 100%;
+}
+.strategy-box { border-color: #1a73b5 !important; }
+.notice-box   { border-color: #7747a5 !important; }
+.strategy-box td, .notice-box td{ padding: 10px; }
+.strategy-box .title, .notice-box .title{
+  width: 100%;
+  display: block;
+  font-weight: bold;
+  font-size: 24px;
+  clear: both;
+  margin: 100px;
+}
+.strategy-box p.tableblock:first-child, .notice-box p.tableblock:first-child{
+  text-align: center;
+  padding-bottom: 15px;
+}
+.strategy-box .title { color: #1a73b5; }
+.notice-box   .title { color: #7747a5; }
+.strategy-box a, .notice-box a { color: blue; text-decoration: underline; }
+
+/* "Tables" of Evaluation */
+.operator{border-bottom: solid 1px black; text-align: center;}
+.operator * {text-align: center;}
+td {padding: 0px 10px; font-size: 14px;}
+table.expression {
+    font-family:"Courier New", Monaco, monospace;
+    border:     solid 1px black;
+    font-size:  1px;
+    max-width:  400px;
+    color:      #666666;
+    display:    inline-block;
+}
+table.args {border: none; text-align: center;}
+
+.wescheme-string,     .cm-scheme-string    {color: green;}
+.wescheme-number,     .cm-scheme-number    {color: blue;}
+.wescheme-boolean,    .cm-scheme-boolean   {color: darkred;}
+.wescheme-character,  .cm-scheme-character {color: orange;}
+.wescheme-symbol,     .cm-scheme-symbol    {color: steelblue;}
+.wescheme-comment,    .cm-scheme-comment   {color: orange; }
+
+.racket, .pyret, .studentAnswerCode, .studentAnswer, .pyretkeyword, .keyword_only {
+    font-family:"Courier New", Monaco, monospace !important; 
+    color: black;
+}
+
+/* Design Recipe */
+.recipe_instructions { font-style: italic; }
+table.recipe_title {
+  color:              white;
+  background:         gray;
+  display:            block;
+  padding:            0px;
+  font-size:          1.1rem;
+  font-weight:        bold;
+}</style>
+
+    <script src="../../../lib/langtable.js"></script>
+    <script src="../../../dependency-graph.js"></script>
+    <script src="../../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:window.location.href,
+    filename:"Git Command Notes for Authors",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="workbookpage article pyret" onload="renderSaveToDrive()">
+<span id="header">
+<h1>Git Command Notes for Authors</h1>
+
+  <span id="savetodrive-div"></span>
+
+</span>
+<span id="content">
+<span class="sect1 lesson-section-1"><hr/>
+<h2 id="_commits">Commits</h2>
+<span class="sectionbody">
+<span class="paragraph">
+<p><span class="autonum">1</span> <code class="pyret">git add lessons/&#8230;&#8203;/langs/en-us/&#8230;&#8203;/&#8230;&#8203;</code></p>
+</span>
+<span class="paragraph">
+<p><span class="autonum">2</span> <code class="pyret">git commit -m "[DS] briefly describe the commit here (see #xxx)</code></p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p>The brackets at the beginning of the quoted phrase are optional. They tag a branch: <code class="pyret">[math]</code>, <code class="pyret">[DS]</code>, <code class="pyret">[core]</code>, <code class="pyret">[codap]</code> or <code class="pyret">[OK]</code>.</p>
+</li>
+<li>
+<p>The parentheses at the back are optional. They associate the commit with a git issue.</p>
+</li>
+</ul>
+</span>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<h2 id="_to_cancel_a_commit_before_you_push_useful_when_you_forget_to_include_the_git_issue_and_want_the_chance_to_change_the_words_in_the_commit">To cancel a commit before you push - Useful when you forget to include the git issue and want the chance to change the words in the commit.</h2>
+<span class="sectionbody">
+<span class="ulist">
+<ul>
+<li>
+<p><code class="pyret">git reset HEAD~1</code></p>
+</li>
+<li>
+<p>You can unstage multiple commits by repeating <code class="pyret">git reset HEAD~1</code> or using <code class="pyret">git reset HEAD~2</code> or <code class="pyret">git reset HEAD~3</code></p>
+</li>
+<li>
+<p><code class="pyret">git revert e4faa6b555b9f0b4b3d2eaf055f9495cd80f5f72</code> (that long string of text is the full commit ID number) allows you to go back and edit a commit <em>after</em> pushing.</p>
+</li>
+</ul>
+</span>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<h2 id="_renaming_or_moving_files">Renaming or moving files</h2>
+<span class="sectionbody">
+<span class="ulist">
+<ul>
+<li>
+<p><code class="pyret">git mv lessons/contracts/langs/en-us/pages/graphs.adoc lessons/flags/langs/en-us/tables.adoc</code></p>
+</li>
+<li>
+<p>The example code above both moves and renames the file.</p>
+<span class="ulist">
+<ul>
+<li>
+<p>If you just want to rename it, don&#8217;t change the location.</p>
+</li>
+<li>
+<p>If you just want to move it, don&#8217;t change the name of the asciidoc.</p>
+</li>
+</ul>
+</span>
+</li>
+<li>
+<p>If you haven&#8217;t committed the file yet, you can just click on it in sublime or in your finder window and change the name of the file there.</p>
+</li>
+</ul>
+</span>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<h2 id="_making_new_files">Making new files</h2>
+<span class="sectionbody">
+<span class="ulist">
+<ul>
+<li>
+<p><code class="pyret">cp lessons/contracts/langs/en-us/pages/graphs.adoc lessons/flags/langs/en-us/tables.adoc</code></p>
+</li>
+<li>
+<p>This is useful when you want to make a new page with formatting similar to a page from another lesson.</p>
+</li>
+<li>
+<p>To copy an entire lesson, use <code class="pyret">cp -r</code> instead of just <code class="pyret">cp</code></p>
+</li>
+</ul>
+</span>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<h2 id="_building_pathways">Building Pathways</h2>
+<span class="sectionbody">
+<span class="ulist">
+<ul>
+<li>
+<p><code class="pyret">./build-pathway</code> will build all of the pathways</p>
+</li>
+<li>
+<p>You can get <code class="pyret">./build-pathway</code> to appear by typing <code class="pyret">./bu</code> and <code class="pyret">tab</code></p>
+</li>
+<li>
+<p>To specify pathways use:</p>
+<span class="ulist">
+<ul>
+<li>
+<p><code class="pyret">./build-pathway data-science</code></p>
+</li>
+<li>
+<p><code class="pyret">./build-pathway --proglang codap data-science-codap</code></p>
+</li>
+<li>
+<p><code class="pyret">./build-pathway algebra</code></p>
+</li>
+<li>
+<p><code class="pyret">./build-pathway algebra --proglang wescheme</code></p>
+</li>
+<li>
+<p><code class="pyret">./build-pathway algebra --proglang pyret</code></p>
+</li>
+<li>
+<p><code class="pyret">./build-pathway __sample</code></p>
+</li>
+</ul>
+</span>
+</li>
+<li>
+<p>When working intensively with one lesson it is often most efficient to go to <code class="pyret">pathways/langs/en-us/lesson-order.txt</code>, add the lesson to the file and save it, and then <code class="pyret">./build-pathway __sample</code></p>
+</li>
+<li>
+<p>If you want to see the pdf version add <code class="pyret">--book</code></p>
+</li>
+<li>
+<p>If it&#8217;s not building all of your changes:</p>
+<span class="ulist">
+<ul>
+<li>
+<p>delete the lesson from the distribution folder in your directory</p>
+</li>
+<li>
+<p>use <code class="pyret">-f</code> or <code class="pyret">-F</code> to force it rebuild the pathway from scratch. It doesn&#8217;t matter where you put the <code class="pyret">-f</code> or <code class="pyret">-F</code> in the command line.</p>
+</li>
+<li>
+<p>in extreme cases where Dorai has made big changes to the system, delete your entire distribution before building</p>
+</li>
+</ul>
+</span>
+</li>
+</ul>
+</span>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<h2 id="_changing_directories">Changing Directories</h2>
+<span class="sectionbody">
+<span class="ulist">
+<ul>
+<li>
+<p><code class="pyret">cd lessons/&#8230;&#8203;/langs/en-us/&#8230;&#8203;/&#8230;&#8203;</code></p>
+</li>
+<li>
+<p><code class="pyret">cd</code> or <code class="pyret">cd ~</code> goes to your home directory</p>
+</li>
+<li>
+<p><code class="pyret">cd ..</code> goes up a level</p>
+</li>
+<li>
+<p><code class="pyret">cd ../..</code> goes up two levels</p>
+</li>
+</ul>
+</span>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<h2 id="_comparing_directories_for_changes">Comparing directories for changes</h2>
+<span class="sectionbody">
+<span class="ulist">
+<ul>
+<li>
+<p><code class="pyret">git diff --name-status "@{1 month ago}" "@{0 days ago}" | grep '^A'</code></p>
+</li>
+<li>
+<p>You can do something like <code class="pyret">git log --since="September 1, 2020" --name-only | grep adoc</code>   to get all the adoc files modified since that time.  You should also be able to use phrases like <code class="pyret">--since="2 months ago"</code> or <code class="pyret">--until="2 weeks ago"</code></p>
+</li>
+</ul>
+</span>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<h2 id="_switching_branches">Switching Branches</h2>
+<span class="sectionbody">
+<span class="ulist">
+<ul>
+<li>
+<p><code class="pyret">git checkout fall2022</code> will take you to the branch <code class="pyret">fall2022</code> if it already exists</p>
+</li>
+<li>
+<p><code class="pyret">git checkout master</code> will take you back to the main branch.</p>
+</li>
+<li>
+<p>If someone else just made a new branch, use <code class="pyret">git fetch origin</code> to make it known to your computer.</p>
+</li>
+</ul>
+</span>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<h2 id="_making_new_branches">Making new Branches</h2>
+<span class="sectionbody">
+<span class="ulist">
+<ul>
+<li>
+<p>To make a new branch, you’d do <code class="pyret">git checkout -b NewBranch</code></p>
+</li>
+<li>
+<p>For anyone else to be able to see it, you&#8217;ll need to <code class="pyret">git push</code>. The first time you try to push, git Will tell you that you need to specify an upstream equivalent of that branch. <em>It will literally tell you what to type.</em> Type that in and hit enter.</p>
+</li>
+</ul>
+</span>
+</span>
+</span>
+<span class="sect1 acknowledgmentsect">
+<span class="sectionbody">
+<span class="openblock acknowledgment"><hr/>
+<span class="content">
+<span class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</span>
+</span>
+</span>
+</span>
+</span>
+</span>
+<span id="footer">
+<span id="footer-text">
+Last updated 2022-10-16 11:54:55 -0400
+</span>
+</span>
+</body>
+</html>

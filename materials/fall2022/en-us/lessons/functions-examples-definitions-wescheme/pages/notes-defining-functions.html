@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Defining Functions</title>
+
+  <link rel="stylesheet" href="../../../lib/curriculum.css" />
+    <link rel="stylesheet" href="../../../lib/codemirror.css" />
+    <script src="../../../lib/codemirror.js"></script>
+    <script src="../../../lib/runmode.js"></script>
+    <script src="../../../lib/scheme2.js"></script>
+    <script src="../../../lib/pyret-mode.js"></script>
+      <script src="../../../extlib/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML%2Clocal%2Fmathjaxlocal.js"></script>
+      <script>window.status = "not_ready_to_print";</script>
+    <script src="../../../lib/langtable.js"></script>
+    <script src="../../../lib/bootstraplesson.js"></script>
+    <script src="../../../dependency-graph.js"></script>
+    <script src="../../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"Defining Functions",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="LessonNotes workbookpage article wescheme" onload="renderSaveToDrive()">
+<div id="header">
+<h1>Defining Functions</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Functions can be viewed in <em>multiple representations</em>. You already know one of them: <span class="vocab">Contracts</span>, which specify the Name, Domain, and Range of a function. Contracts are a way of thinking of functions as a <em>mapping</em> between one set of data and another. For example, a mapping from Numbers to Strings:</p>
+</div>
+<div class="paragraph">
+<p><code class="racket">f :: Number -&gt; String</code></p>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 1ex"></span></p>
+</div>
+<div class="paragraph">
+<p>Another way to view functions is with <span class="vocab">Examples</span>. Examples are essentially input-output tables, showing what the function would do for a specific input:</p>
+</div>
+<table class="tableblock frame-none grid-none stripes-none stretch">
+</table>
+<div class="paragraph">
+<p><span class="vspace" style="height: 1ex"></span></p>
+</div>
+<div class="paragraph">
+<p>In our programming language, we focus on the last two columns and write them as code:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="racket">(EXAMPLE (f 1) (+ 1 2))
+(EXAMPLE (f 2) (+ 2 2))
+(EXAMPLE (f 3) (+ 3 2))
+(EXAMPLE (f 4) (+ 4 2))</code></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 1ex"></span></p>
+</div>
+<div class="paragraph">
+<p>Finally, we write a formal <strong>function definition</strong> ourselves. The pattern in the Examples becomes <em>abstract</em> (or "general"), replacing the inputs with <span class="vocab">variables</span>. In the example below, the same definition is written in both math and code:</p>
+</div>
+<div class="paragraph">
+<p><span class="gdrive-only">fx = x + 2</span><script type="math/tex">\displaystyle f(x) = x + 2</script></p>
+</div>
+<div class="paragraph">
+<p><span class="obeyspaces"><code class="racket">(define (f x) (+ x 2))</code></span></p>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 1ex"></span></p>
+</div>
+<div class="paragraph">
+<p>Look for connections between these three representations!</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The function name is always the same, whether looking at the Contract, Examples, or Definition.</p>
+</li>
+<li>
+<p>The number of inputs in the Examples is always the same as the number of types in the Domain, which is always the same as the number of variables in the Definition.</p>
+</li>
+<li>
+<p>The "what the function does" pattern in the Examples is almost the same in the Definition, but with specific inputs replaced by variables.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-18 16:15:42 -0400
+</div>
+</div>
+</body>
+</html>

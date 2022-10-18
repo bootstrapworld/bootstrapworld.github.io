@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Tree Diagrams</title>
+
+  <link rel="stylesheet" href="../../../lib/curriculum.css" />
+      <script src="../../../extlib/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML%2Clocal%2Fmathjaxlocal.js"></script>
+      <script>window.status = "not_ready_to_print";</script>
+    <script src="../../../lib/langtable.js"></script>
+    <script src="../../../lib/bootstraplesson.js"></script>
+    <script src="../../../dependency-graph.js"></script>
+    <script src="../../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"Tree Diagrams",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="workbookpage article wescheme" onload="renderSaveToDrive()">
+<div id="header">
+<h1>Tree Diagrams</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<style>
+#content .fitb{ text-align: left; }
+</style>
+<div class="paragraph">
+<p><span class="autonum">1</span> The Lopez family loves to go camping. So, each year Grandma buys Savannah and Rosa new gear. This year they’re getting camping mugs. They are available in 5 colors: green, blue, red, silver and copper. Draw the tree-diagram for all possible mug permutations, if Grandma chooses a mug for one girl and then the other.</p>
+</div>
+<div class="paragraph">
+<p><span class="center"><span class="image-figure"><span class="image"><img src="../images/8956a7c952f7727f.png" alt="tree practice permutation with replacement" title="tree practice permutation with replacement"></span><a href="../images/8956a7c952f7727f.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></p>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 20ex"></span><span class="gdrive-only"><p>&#xa0;</p></span><span class="gdrive-only"><p>&#xa0;</p></span><span class="gdrive-only"><p>&#xa0;</p></span><span class="gdrive-only"><p>&#xa0;</p></span><span class="gdrive-only"><p>&#xa0;</p></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">2</span> How many different permutations (with replacement) are there for these mugs?
+<span class="solution"> <span class="gdrive-only">permute\mbox-w\mbox-replace(5, 2) = 5^2 = 25</span><script type="math/tex">\displaystyle permute\mbox{-}w\mbox{-}replace(5, 2) = 5^2 = 25</script>  </span></p>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 10ex"></span><span class="gdrive-only"><p>&#xa0;</p></span><span class="gdrive-only"><p>&#xa0;</p></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">3</span> Grandma wonders if maybe the mugs should be different colors so that the girls can tell them apart. Draw the tree-diagram for all possible mug permutations, if Grandma chooses a mug for one girl and then the other.</p>
+</div>
+<div class="paragraph">
+<p><span class="center"><span class="image-figure"><span class="image"><img src="../images/285546f7181618d0.png" alt="tree practice permutation without replacement" title="tree practice permutation without replacement"></span><a href="../images/285546f7181618d0.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></p>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 20ex"></span><span class="gdrive-only"><p>&#xa0;</p></span><span class="gdrive-only"><p>&#xa0;</p></span><span class="gdrive-only"><p>&#xa0;</p></span><span class="gdrive-only"><p>&#xa0;</p></span><span class="gdrive-only"><p>&#xa0;</p></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">4</span> How many different permutations (without replacement) are there for these mugs?
+<span class="solution"> <span class="gdrive-only">permute\mbox-no\mbox-replace(5, 2) = 5!/( (5 - 2)! ) = 20</span><script type="math/tex">\displaystyle permute\mbox{-}no\mbox{-}replace(5, 2) = \frac{5!}{(5 - 2)!} = 20</script> </span></p>
+</div>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-17 19:41:46 -0400
+</div>
+</div>
+</body>
+</html>

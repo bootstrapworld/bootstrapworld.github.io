@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Sampling and Inference</title>
+
+  <link rel="stylesheet" href="../../../lib/curriculum.css" />
+    <link rel="stylesheet" href="../../../lib/codemirror.css" />
+    <script src="../../../lib/codemirror.js"></script>
+    <script src="../../../lib/runmode.js"></script>
+    <script src="../../../lib/scheme2.js"></script>
+    <script src="../../../lib/pyret-mode.js"></script>
+    <script src="../../../lib/langtable.js"></script>
+    <script src="../../../lib/bootstraplesson.js"></script>
+    <script src="../../../dependency-graph.js"></script>
+    <script src="../../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"Sampling and Inference",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="workbookpage article pyret" onload="renderSaveToDrive()">
+<div id="header">
+<h1>Sampling and Inference</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<style>
+.ulist p { min-height: 1rem !important; }
+</style>
+<div class="paragraph">
+<p>You&#8217;ll need to open the <a href="https://code.pyret.org/editor#share=1Iu5I9lJt1oCho-l4xk7FucgtLq6cAUVr&v=6788e10" target="_blank" rel="noopener">Expanded Animals Starter File</a>, and save a copy to complete this worksheet.</p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">1</span> Evaluate the <code class="pyret">more-animals</code> table in the Interactions Area. This is the <em>complete</em> population of animals from the shelter! Below is a true statement about that population:</p>
+</div>
+<div class="paragraph lesson-point">
+<p>The population is 47.7% fixed and 52.3% unfixed.</p>
+</div>
+<div class="paragraph">
+<p><strong>Type each of the following lines into the Interactions Area and hit “Enter".</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><code class="pyret">random-rows(more-animals, 10)
+random-rows(more-animals, 40)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><span class="autonum">2</span> What do you get?
+<span class="fitb stretch"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">3</span> What is the contract for <code class="pyret">random-rows</code>?
+<span class="fitb stretch"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">4</span> What does the <code class="pyret">random-rows</code> function do?</p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">5</span> In the Definitions Area, define <code class="pyret">small-sample</code> and <code class="pyret">large-sample</code> to be <code class="pyret">random-rows(more-animals, 10)</code> and <code class="pyret">random-rows(more-animals, 40)</code>, respectively.</p>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 1ex"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">6</span> Make a <code class="pyret">pie-chart</code> for the animals in each sample, showing percentages of fixed and unfixed.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The percentage of fixed animals in the entire population is <span class="fitb stretch"><strong>47.7%</strong></span></p>
+</li>
+<li>
+<p>The percentage of fixed animals in <code class="pyret">small-sample</code> is <span class="fitb stretch"></span></p>
+</li>
+<li>
+<p>The percentage of fixed animals in <code class="pyret">large-sample</code> is <span class="fitb stretch"></span></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 1ex"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">7</span> Make a <code class="pyret">pie-chart</code> for the animals in each sample, showing percentages for each species.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The percentage of tarantulas in the entire population is <span class="fitb stretch"><strong>roughly 5%</strong></span></p>
+</li>
+<li>
+<p>The percentage of tarantulas in <code class="pyret">small-sample</code> is <span class="fitb stretch"></span></p>
+</li>
+<li>
+<p>The percentage of tarantulas in <code class="pyret">large-sample</code> is <span class="fitb stretch"></span></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 1ex"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">8</span> Click "Run" to direct the computer to generate a different set of random samples of these sizes. Make a new <code class="pyret">pie-chart</code> for each sample, showing percentages for each species.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The percentage of tarantulas in the entire population is <span class="fitb stretch"><strong>roughly 5%</strong></span></p>
+</li>
+<li>
+<p>The percentage of tarantulas in <code class="pyret">small-sample</code> is <span class="fitb stretch"></span></p>
+</li>
+<li>
+<p>The percentage of tarantulas in <code class="pyret">large-sample</code> is <span class="fitb stretch"></span></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 1ex"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">9</span> Which sample size gave us a more accurate inference about the whole population? Why?</p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"></span></p>
+</div>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-17 19:42:10 -0400
+</div>
+</div>
+</body>
+</html>

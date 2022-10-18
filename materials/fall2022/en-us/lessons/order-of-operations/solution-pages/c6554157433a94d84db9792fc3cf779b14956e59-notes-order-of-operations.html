@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Order of Operations</title>
+
+  <link rel="stylesheet" href="../../../lib/curriculum.css" />
+    <link rel="stylesheet" href="../../../lib/codemirror.css" />
+    <script src="../../../lib/codemirror.js"></script>
+    <script src="../../../lib/runmode.js"></script>
+    <script src="../../../lib/scheme2.js"></script>
+    <script src="../../../lib/pyret-mode.js"></script>
+      <script src="../../../extlib/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML%2Clocal%2Fmathjaxlocal.js"></script>
+      <script>window.status = "not_ready_to_print";</script>
+    <script src="../../../lib/langtable.js"></script>
+    <script src="../../../lib/bootstraplesson.js"></script>
+    <script src="../../../dependency-graph.js"></script>
+    <script src="../../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"Order of Operations",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="LessonNotes workbookpage article pyret" onload="renderSaveToDrive()">
+<div id="header">
+<h1>Order of Operations</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<style>
+.codetwo { white-space: nowrap; }
+</style>
+<div class="paragraph">
+<p>If you were to write instructions for getting ready for school, it would matter very much which instruction came first: putting on your socks, putting on your shoes, etc.</p>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 1ex"></span></p>
+</div>
+<div class="paragraph">
+<p>Sometimes we need multiple expressions in mathematics, and the order matters there, too! Mathematicians didn’t always agree on the <strong>Order of Operations</strong>, but at some point it became important to develop rules to help them work together.</p>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 1ex"></span></p>
+</div>
+<div class="paragraph">
+<p>To help us organize our math into something we can trust, we can <em>diagram</em> a math expression using the <strong>Circles of Evaluation</strong>. For example, the expression <span class="gdrive-only">( 1 - 4 ) &divide; ( 10 &times; 7 )</span><script type="math/tex">\displaystyle ( 1 - 4 ) \div ( 10 \;\times\; 7 )</script> can be diagrammed as shown below.</p>
+</div>
+<div class="paragraph centered-image">
+<p><table class="gdrive-only expression"><tr><td class="operator"><span class="operator"><span class="value">/</span></span></td></tr><tr><td><table class="args"><tr><td class="arg"><table class="gdrive-only expression"><tr><td class="operator"><span class="operator"><span class="value">&#8203;-</span></span></td></tr><tr><td><table class="args"><tr><td class="arg"><span class="value">1</span></td><td class="arg"><span class="value">4</span></td></tr></table></td></tr></table></td><td class="arg"><table class="gdrive-only expression"><tr><td class="operator"><span class="operator"><span class="value">&#8203;*</span></span></td></tr><tr><td><table class="args"><tr><td class="arg"><span class="value">10</span></td><td class="arg"><span class="value">7</span></td></tr></table></td></tr></table></td></tr></table></td></tr></table><div class="circleevalsexp"><span class="expression"><span class="lParen">(</span><span class="operator"><span class="value">/</span></span><span class="hspace">&#160;</span><span class="expression"><span class="lParen">(</span><span class="operator"><span class="value">&#8203;-</span></span><span class="hspace">&#160;</span><span class="value">1</span><span class="hspace">&#160;</span><span class="value">4</span><span class="rParen">)</span></span><span class="hspace">&#160;</span><span class="expression"><span class="lParen">(</span><span class="operator"><span class="value">&#8203;*</span></span><span class="hspace">&#160;</span><span class="value">10</span><span class="hspace">&#160;</span><span class="value">7</span><span class="rParen">)</span></span><span class="rParen">)</span></span></div>
+<span style="clear: both;display: block"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 2ex"></span></p>
+</div>
+<div class="paragraph">
+<p><strong>Order of Operations</strong> is important when programming, too!</p>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 1ex"></span></p>
+</div>
+<div class="paragraph">
+<p>To convert a <strong>Circle of Evaluation</strong> into code, we walk through the circle from outside-in, moving left-to-right. We type an open parenthesis when we <em>start</em> a circle, and a close parenthesis when we <em>end</em> one. Once we&#8217;re in a circle, we write whatever is on the left of the circle, then the <strong>operation</strong> at the top, and then whatever is on the right. The circle above, for example, would be programmed as <span class="obeyspaces"><code class="pyret">(&#8203;(&#8203;1 - 4&#8203;) / (&#8203;10 * 7&#8203;)&#8203;)</code></span>.</p>
+</div>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-17 19:42:08 -0400
+</div>
+</div>
+</body>
+</html>

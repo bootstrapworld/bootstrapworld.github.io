@@ -1,0 +1,1517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Compound Inequalities: Solutions &amp; Non-Solutions</title>
+
+  <link rel="stylesheet" href="../../lib/curriculum.css" />
+    <link rel="stylesheet" href="../../lib/codemirror.css" />
+    <script src="../../lib/codemirror.js"></script>
+    <script src="../../lib/runmode.js"></script>
+    <script src="../../lib/scheme2.js"></script>
+    <script src="../../lib/pyret-mode.js"></script>
+      <script src="../../extlib/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML%2Clocal%2Fmathjaxlocal.js"></script>
+      <script>window.status = "not_ready_to_print";</script>
+    <script src="../../lib/langtable.js"></script>
+    <script src="../../lib/bootstraplesson.js"></script>
+    <script src="../../dependency-graph.js"></script>
+    <script src="../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"Compound Inequalities: Solutions %INSERTGDRIVELESSONTITLE Non-Solutions",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="article LessonPlan wescheme" onload="renderSaveToDrive()">
+<!--#include virtual="/menubar.ssi"-->
+<div id="body" onload="renderSaveToDrive()">
+<div id="header">
+<h1>Compound Inequalities: Solutions &amp; Non-Solutions</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<script>
+function preselect(klass) {
+  const items = document.getElementsByClassName(klass);
+  for (let i = 0; i < items.length; i++) {
+    items[i].style.display = 'none';
+  }
+  if (items.length > 0) {
+    items[0].style.display = 'block';
+  }
+}
+window.onload = function() {
+  preselect('alignedStandards');
+  preselect('alignedTextbooks');
+  preselect('alignedPractices');
+}
+function showStandardsAlignment() {
+  const selectTag = document.getElementsByClassName('standardsAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const stdTables = document.getElementsByClassName('alignedStandards');
+  //const intro = document.getElementsByClassName('alignedStandardsIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < stdTables.length; i++) {
+    const stdTable = stdTables[i];
+    stdTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optStd = opt.value;
+      for (let j = 0; j < stdTables.length; j++) {
+        const stdTable = stdTables[j];
+        if (stdTable.classList.contains(optStd)) {
+          stdTable.style.display = 'block';
+         // introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+function toggleNonPrereqDisplay() {
+  const inputTag = document.getElementsByClassName('sidebarinput')[0];
+  const checkedP = inputTag.checked;
+  const lessonTable = document.getElementsByClassName('sidebarlessons')[0];
+  const lis = lessonTable.getElementsByTagName('li');
+  for (let i = 0; i < lis.length; i++) {
+    const li = lis[i];
+    const lesson = li.getElementsByClassName('prerequisite');
+    if (lesson.length === 0) {
+      li.style.display = checkedP ? 'none' : 'block';
+    }
+  }
+}
+</script>
+<script>
+function showTextbooksAlignment() {
+  const selectTag = document.getElementsByClassName('textbooksAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const textbookTables = document.getElementsByClassName('alignedTextbooks');
+  //const intro = document.getElementsByClassName('alignedTextbooksIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < textbookTables.length; i++) {
+    const textbookTable = textbookTables[i];
+    textbookTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optTextbook = opt.value;
+      for (let j = 0; j < textbookTables.length; j++) {
+        const textbookTable = textbookTables[j];
+        if (textbookTable.classList.contains(optTextbook)) {
+          textbookTable.style.display = 'block';
+          //introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+</script>
+<script>
+function showPracticesAlignment() {
+  const selectTag = document.getElementsByClassName('practicesAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const practiceTables = document.getElementsByClassName('alignedPractices');
+  for (let i = 0; i < practiceTables.length; i++) {
+    const practiceTable = practiceTables[i];
+    practiceTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optPractice = opt.value;
+      for (let j = 0; j < practiceTables.length; j++) {
+        const practiceTable = practiceTables[j];
+        if (practiceTable.classList.contains(optPractice)) {
+          practiceTable.style.display = 'block';
+        }
+      }
+    }
+  }
+}
+</script>
+<div class="paragraph">
+<!-- </p>
+</div>
+--></div><div class="sidebar"><div id="toggle"></div><div class="paragraph"><!--
+<div class="paragraph">
+<p>
+--><div class="sidebarlessons"><strong>Lessons</strong>
+<ul></ul></div>
+</div>
+<table class="tableblock frame-all grid-all stretch sidebarstandards">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Standards in this Lesson</strong>
+<select class="standardsAlignmentSelect"  onchange="showStandardsAlignment()"><option selected="selected" value="standards-CSTA">CSTA</option><option value="standards-Alabama">Alabama</option><option value="standards-Arkansas">Arkansas</option><option value="standards-California">California</option><option value="standards-Colorado">Colorado</option><option value="standards-Connecticut">Connecticut</option><option value="standards-Delaware">Delaware</option><option value="standards-Georgia">Georgia</option><option value="standards-Hawaii">Hawaii</option><option value="standards-Idaho">Idaho</option><option value="standards-Illinois">Illinois</option><option value="standards-Iowa">Iowa</option><option value="standards-Kansas">Kansas</option><option value="standards-Kentucky">Kentucky</option><option value="standards-Louisiana">Louisiana</option><option value="standards-Maine">Maine</option><option value="standards-Michigan">Michigan</option><option value="standards-Maryland">Maryland</option><option value="standards-Massachusetts">Massachusetts</option><option value="standards-Mississippi">Mississippi</option><option value="standards-Missouri">Missouri</option><option value="standards-Montana">Montana</option><option value="standards-New Hampshire">New Hampshire</option><option value="standards-Nevada">Nevada</option><option value="standards-New Jersey">New Jersey</option><option value="standards-New Mexico">New Mexico</option><option value="standards-North Carolina">North Carolina</option><option value="standards-North Dakota">North Dakota</option><option value="standards-New York">New York</option><option value="standards-Oklahoma">Oklahoma</option><option value="standards-Ohio">Ohio</option><option value="standards-Oregon">Oregon</option><option value="standards-Pennsylvania">Pennsylvania</option><option value="standards-Rhode Island">Rhode Island</option><option value="standards-South Dakota">South Dakota</option><option value="standards-Tennessee">Tennessee</option><option value="standards-Utah">Utah</option><option value="standards-Vermont">Vermont</option><option value="standards-Washington">Washington</option><option value="standards-West Virginia">West Virginia</option><option value="standards-Wisconsin">Wisconsin</option><option value="standards-Wyoming">Wyoming</option></select></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist alignedStandards standards-CSTA">
+<div class="title"><a href="https://csteachers.org/page/standards">CSTA Standards</a></div>
+<dl>
+<dt class="hdlist1">3B-AP-10</dt>
+<dd>
+<p>Use and adapt classic algorithms to solve computational problems.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Alabama">
+<div class="title"><a href="">Alabama Standards</a></div>
+<dl>
+<dt class="hdlist1">AL.7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.</p>
+</dd>
+<dt class="hdlist1">AL.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">AL.HSS.CP.A.1</dt>
+<dd>
+<p>Describe events as subsets of a sample space (the set of outcomes) using characteristics (or categories) of the outcomes, or as unions, intersections, or complements of other events ('or', 'and', 'not').</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Arkansas">
+<div class="title"><a href="">Arkansas Standards</a></div>
+<dl>
+<dt class="hdlist1">AR.7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.</p>
+</dd>
+<dt class="hdlist1">AR.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">AR.HSS.CP.A.1</dt>
+<dd>
+<p>Describe events as subsets of a sample space (the set of outcomes) using characteristics (or categories) of the outcomes, or as unions, intersections, or complements of other events ('or', 'and', 'not').</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-California">
+<div class="title"><a href="">California Standards</a></div>
+<dl>
+<dt class="hdlist1">CA.7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.</p>
+</dd>
+<dt class="hdlist1">CA.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">CA.HSS.CP.A.1</dt>
+<dd>
+<p>Describe events as subsets of a sample space (the set of outcomes) using characteristics (or categories) of the outcomes, or as unions, intersections, or complements of other events ('or', 'and', 'not').</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Colorado">
+<div class="title"><a href="">Colorado Standards</a></div>
+<dl>
+<dt class="hdlist1">CO.7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.</p>
+</dd>
+<dt class="hdlist1">CO.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">CO.HSS.CP.A.1</dt>
+<dd>
+<p>Describe events as subsets of a sample space (the set of outcomes) using characteristics (or categories) of the outcomes, or as unions, intersections, or complements of other events ('or', 'and', 'not').</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Connecticut">
+<div class="title"><a href="">Connecticut Standards</a></div>
+<dl>
+<dt class="hdlist1">CT.7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.</p>
+</dd>
+<dt class="hdlist1">CT.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">CT.HSS.CP.A.1</dt>
+<dd>
+<p>Describe events as subsets of a sample space (the set of outcomes) using characteristics (or categories) of the outcomes, or as unions, intersections, or complements of other events ('or', 'and', 'not').</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Delaware">
+<div class="title"><a href="">Delaware Standards</a></div>
+<dl>
+<dt class="hdlist1">DE.7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.</p>
+</dd>
+<dt class="hdlist1">DE.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">DE.HSS.CP.A.1</dt>
+<dd>
+<p>Describe events as subsets of a sample space (the set of outcomes) using characteristics (or categories) of the outcomes, or as unions, intersections, or complements of other events ('or', 'and', 'not').</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Georgia">
+<div class="title"><a href="">Delaware Standards</a></div>
+<dl>
+<dt class="hdlist1">GA.7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.</p>
+</dd>
+<dt class="hdlist1">GA.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">GA.HSS.CP.A.1</dt>
+<dd>
+<p>Describe events as subsets of a sample space (the set of outcomes) using characteristics (or categories) of the outcomes, or as unions, intersections, or complements of other events ('or', 'and', 'not').</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Hawaii">
+<div class="title"><a href="">Hawaii Standards</a></div>
+<dl>
+<dt class="hdlist1">HI.7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.</p>
+</dd>
+<dt class="hdlist1">HI.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">HI.HSS.CP.A.1</dt>
+<dd>
+<p>Describe events as subsets of a sample space (the set of outcomes) using characteristics (or categories) of the outcomes, or as unions, intersections, or complements of other events ('or', 'and', 'not').</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Idaho">
+<div class="title"><a href="">Idaho Standards</a></div>
+<dl>
+<dt class="hdlist1">ID.7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.</p>
+</dd>
+<dt class="hdlist1">ID.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">ID.HSS.CP.A.1</dt>
+<dd>
+<p>Describe events as subsets of a sample space (the set of outcomes) using characteristics (or categories) of the outcomes, or as unions, intersections, or complements of other events ('or', 'and', 'not').</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Illinois">
+<div class="title"><a href="">Illinois Standards</a></div>
+<dl>
+<dt class="hdlist1">IL.7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.</p>
+</dd>
+<dt class="hdlist1">IL.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">IL.HSS.CP.A.1</dt>
+<dd>
+<p>Describe events as subsets of a sample space (the set of outcomes) using characteristics (or categories) of the outcomes, or as unions, intersections, or complements of other events ('or', 'and', 'not').</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Iowa">
+<div class="title"><a href="https://iowacore.gov/standards/iowa-core-standards">Iowa Standards</a></div>
+<dl>
+<dt class="hdlist1">IA.7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.</p>
+</dd>
+<dt class="hdlist1">IA.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">IA.HSS.CP.A.1</dt>
+<dd>
+<p>Describe events as subsets of a sample space (the set of outcomes) using characteristics (or categories) of the outcomes, or as unions, intersections, or complements of other events ('or', 'and', 'not').</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Kansas">
+<div class="title"><a href="">Kansas Standards</a></div>
+<dl>
+<dt class="hdlist1">KS.7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.</p>
+</dd>
+<dt class="hdlist1">KS.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">KS.HSS.CP.A.1</dt>
+<dd>
+<p>Describe events as subsets of a sample space (the set of outcomes) using characteristics (or categories) of the outcomes, or as unions, intersections, or complements of other events ('or', 'and', 'not').</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Kentucky">
+<div class="title"><a href="">Kentucky Standards</a></div>
+<dl>
+<dt class="hdlist1">KY.7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.</p>
+</dd>
+<dt class="hdlist1">KY.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">KY.HSS.CP.A.1</dt>
+<dd>
+<p>Describe events as subsets of a sample space (the set of outcomes) using characteristics (or categories) of the outcomes, or as unions, intersections, or complements of other events ('or', 'and', 'not').</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Louisiana">
+<div class="title"><a href="">Louisiana Standards</a></div>
+<dl>
+<dt class="hdlist1">LA.7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.</p>
+</dd>
+<dt class="hdlist1">LA.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">LA.HSS.CP.A.1</dt>
+<dd>
+<p>Describe events as subsets of a sample space (the set of outcomes) using characteristics (or categories) of the outcomes, or as unions, intersections, or complements of other events ('or', 'and', 'not').</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Maine">
+<div class="title"><a href="">Maine Standards</a></div>
+<dl>
+<dt class="hdlist1">ME.7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.</p>
+</dd>
+<dt class="hdlist1">ME.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">ME.HSS.CP.A.1</dt>
+<dd>
+<p>Describe events as subsets of a sample space (the set of outcomes) using characteristics (or categories) of the outcomes, or as unions, intersections, or complements of other events ('or', 'and', 'not').</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Michigan">
+<div class="title"><a href="">Michigan Standards</a></div>
+<dl>
+<dt class="hdlist1">MI.7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.</p>
+</dd>
+<dt class="hdlist1">MI.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">MI.HSS.CP.A.1</dt>
+<dd>
+<p>Describe events as subsets of a sample space (the set of outcomes) using characteristics (or categories) of the outcomes, or as unions, intersections, or complements of other events ('or', 'and', 'not').</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Maryland">
+<div class="title"><a href="">Maryland Standards</a></div>
+<dl>
+<dt class="hdlist1">MD.7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.</p>
+</dd>
+<dt class="hdlist1">MD.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">MD.HSS.CP.A.1</dt>
+<dd>
+<p>Describe events as subsets of a sample space (the set of outcomes) using characteristics (or categories) of the outcomes, or as unions, intersections, or complements of other events ('or', 'and', 'not').</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Massachusetts">
+<div class="title"><a href="https://www.doe.mass.edu/frameworks/">Massachusetts Standards</a></div>
+<dl>
+<dt class="hdlist1">MA.6-8.CT.a.2</dt>
+<dd>
+<p>Define a simple function that represents a more complex task/problem and can be reused to solve similar tasks/problems.</p>
+</dd>
+<dt class="hdlist1">MA.6-8.CT.b.2</dt>
+<dd>
+<p>Use logical reasoning to predict outputs given varying inputs.</p>
+</dd>
+<dt class="hdlist1">MA.6-8.CT.d.2</dt>
+<dd>
+<p>Use functions to hide the detail in a program.</p>
+</dd>
+<dt class="hdlist1">MA.6-8.CT.d.5</dt>
+<dd>
+<p>Trace programs step-by-step in order to predict their behavior.</p>
+</dd>
+<dt class="hdlist1">MA.7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.</p>
+</dd>
+<dt class="hdlist1">MA.9-12.CT.b.2</dt>
+<dd>
+<p>Represent algorithms using structured language, such as pseudocode.</p>
+</dd>
+<dt class="hdlist1">MA.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">MA.HSS.CP.A.1</dt>
+<dd>
+<p>Describe events as subsets of a sample space (the set of outcomes) using characteristics (or categories) of the outcomes, or as unions, intersections, or complements of other events ('or', 'and', 'not').</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Mississippi">
+<div class="title"><a href="">Mississippi Standards</a></div>
+<dl>
+<dt class="hdlist1">MS.7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.</p>
+</dd>
+<dt class="hdlist1">MS.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">MS.HSS.CP.A.1</dt>
+<dd>
+<p>Describe events as subsets of a sample space (the set of outcomes) using characteristics (or categories) of the outcomes, or as unions, intersections, or complements of other events ('or', 'and', 'not').</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Missouri">
+<div class="title"><a href="">Missouri Standards</a></div>
+<dl>
+<dt class="hdlist1">MO.7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.</p>
+</dd>
+<dt class="hdlist1">MO.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">MO.HSS.CP.A.1</dt>
+<dd>
+<p>Describe events as subsets of a sample space (the set of outcomes) using characteristics (or categories) of the outcomes, or as unions, intersections, or complements of other events ('or', 'and', 'not').</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Montana">
+<div class="title"><a href="">Montana Standards</a></div>
+<dl>
+<dt class="hdlist1">MT.7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.</p>
+</dd>
+<dt class="hdlist1">MT.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">MT.HSS.CP.A.1</dt>
+<dd>
+<p>Describe events as subsets of a sample space (the set of outcomes) using characteristics (or categories) of the outcomes, or as unions, intersections, or complements of other events ('or', 'and', 'not').</p>
+</dd>
+</dl>
+</div>
+<div class="dlist .alignedStandards.standards-New Hampshire">
+<div class="title"><a href="">New Hampshire Standards</a></div>
+<dl>
+<dt>NH.7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.</p>
+</dd>
+<dt>NH.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt>NH.HSS.CP.A.1</dt>
+<dd>
+<p>Describe events as subsets of a sample space (the set of outcomes) using characteristics (or categories) of the outcomes, or as unions, intersections, or complements of other events ('or', 'and', 'not').</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Nevada">
+<div class="title"><a href="">Nevada Standards</a></div>
+<dl>
+<dt class="hdlist1">NV.7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.</p>
+</dd>
+<dt class="hdlist1">NV.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">NV.HSS.CP.A.1</dt>
+<dd>
+<p>Describe events as subsets of a sample space (the set of outcomes) using characteristics (or categories) of the outcomes, or as unions, intersections, or complements of other events ('or', 'and', 'not').</p>
+</dd>
+</dl>
+</div>
+<div class="dlist .alignedStandards.standards-New Jersey">
+<div class="title"><a href="">New Jersey Standards</a></div>
+<dl>
+<dt>NJ.7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.</p>
+</dd>
+<dt>NJ.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt>NJ.HSS.CP.A.1</dt>
+<dd>
+<p>Describe events as subsets of a sample space (the set of outcomes) using characteristics (or categories) of the outcomes, or as unions, intersections, or complements of other events ('or', 'and', 'not').</p>
+</dd>
+</dl>
+</div>
+<div class="dlist .alignedStandards.standards-New Mexico">
+<div class="title"><a href="">New Mexico Standards</a></div>
+<dl>
+<dt>NM.7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.</p>
+</dd>
+<dt>NM.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt>NM.HSS.CP.A.1</dt>
+<dd>
+<p>Describe events as subsets of a sample space (the set of outcomes) using characteristics (or categories) of the outcomes, or as unions, intersections, or complements of other events ('or', 'and', 'not').</p>
+</dd>
+</dl>
+</div>
+<div class="dlist .alignedStandards.standards-North Carolina">
+<div class="title"><a href="">North Carolina Standards</a></div>
+<dl>
+<dt>NC.7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.</p>
+</dd>
+<dt>NC.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt>NC.HSS.CP.A.1</dt>
+<dd>
+<p>Describe events as subsets of a sample space (the set of outcomes) using characteristics (or categories) of the outcomes, or as unions, intersections, or complements of other events ('or', 'and', 'not').</p>
+</dd>
+</dl>
+</div>
+<div class="dlist .alignedStandards.standards-North Dakota">
+<div class="title"><a href="">North Dakota Standards</a></div>
+<dl>
+<dt>ND.7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.</p>
+</dd>
+<dt>ND.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt>ND.HSS.CP.A.1</dt>
+<dd>
+<p>Describe events as subsets of a sample space (the set of outcomes) using characteristics (or categories) of the outcomes, or as unions, intersections, or complements of other events ('or', 'and', 'not').</p>
+</dd>
+</dl>
+</div>
+<div class="dlist .alignedStandards.standards-New York">
+<div class="title"><a href="http://www.nysed.gov/curriculum-instruction/new-york-state-next-generation-mathematics-learning-standards">New York Standards</a></div>
+<dl>
+<dt>NY.7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.</p>
+</dd>
+<dt>NY.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt>NY.HSS.CP.A.1</dt>
+<dd>
+<p>Describe events as subsets of a sample space (the set of outcomes) using characteristics (or categories) of the outcomes, or as unions, intersections, or complements of other events ('or', 'and', 'not').</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Oklahoma">
+<div class="title"><a href="https://sde.ok.gov/oklahoma-academic-standards">Oklahoma Standards</a></div>
+<dl>
+<dt class="hdlist1">OK.6.A.3.1</dt>
+<dd>
+<p>Represent real-world or mathematical situations using expressions, equations and inequalities involving variables and rational numbers.</p>
+</dd>
+<dt class="hdlist1">OK.7.A.3.3</dt>
+<dd>
+<p>Represent real-world or mathematical situations using equations and inequalities involving variables and rational numbers.</p>
+</dd>
+<dt class="hdlist1">OK.A1.A.2.2</dt>
+<dd>
+<p>Represent relationships in various contexts with compound and absolute value inequalities and solve the resulting inequalities by graphing and interpreting the solutions on a number line.</p>
+</dd>
+<dt class="hdlist1">OK.A1.D.2.2</dt>
+<dd>
+<p>Describe the concepts of intersections, unions, and complements using Venn diagrams to evaluate probabilities. Understand the relationships between these concepts and the words AND, OR, and NOT.</p>
+</dd>
+<dt class="hdlist1">OK.PA.A.4.3</dt>
+<dd>
+<p>Represent real-world situations using equations and inequalities involving one variable.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Ohio">
+<div class="title"><a href="">Ohio Standards</a></div>
+<dl>
+<dt class="hdlist1">OH.7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.</p>
+</dd>
+<dt class="hdlist1">OH.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">OH.HSS.CP.A.1</dt>
+<dd>
+<p>Describe events as subsets of a sample space (the set of outcomes) using characteristics (or categories) of the outcomes, or as unions, intersections, or complements of other events ('or', 'and', 'not').</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Oregon">
+<div class="title"><a href="">Oregon Standards</a></div>
+<dl>
+<dt class="hdlist1">OR.7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.</p>
+</dd>
+<dt class="hdlist1">OR.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">OR.HSS.CP.A.1</dt>
+<dd>
+<p>Describe events as subsets of a sample space (the set of outcomes) using characteristics (or categories) of the outcomes, or as unions, intersections, or complements of other events ('or', 'and', 'not').</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Pennsylvania">
+<div class="title"><a href="">Pennsylvania Standards</a></div>
+<dl>
+<dt class="hdlist1">PA.7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.</p>
+</dd>
+<dt class="hdlist1">PA.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">PA.HSS.CP.A.1</dt>
+<dd>
+<p>Describe events as subsets of a sample space (the set of outcomes) using characteristics (or categories) of the outcomes, or as unions, intersections, or complements of other events ('or', 'and', 'not').</p>
+</dd>
+</dl>
+</div>
+<div class="dlist .alignedStandards.standards-Rhode Island">
+<div class="title"><a href="">Rhode Island Standards</a></div>
+<dl>
+<dt>RI.7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.</p>
+</dd>
+<dt>RI.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt>RI.HSS.CP.A.1</dt>
+<dd>
+<p>Describe events as subsets of a sample space (the set of outcomes) using characteristics (or categories) of the outcomes, or as unions, intersections, or complements of other events ('or', 'and', 'not').</p>
+</dd>
+</dl>
+</div>
+<div class="dlist .alignedStandards.standards-South Dakota">
+<div class="title"><a href="">South Dakota Standards</a></div>
+<dl>
+<dt>SD.7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.</p>
+</dd>
+<dt>SD.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt>SD.HSS.CP.A.1</dt>
+<dd>
+<p>Describe events as subsets of a sample space (the set of outcomes) using characteristics (or categories) of the outcomes, or as unions, intersections, or complements of other events ('or', 'and', 'not').</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Tennessee">
+<div class="title"><a href="">Tennessee Standards</a></div>
+<dl>
+<dt class="hdlist1">TN.7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.</p>
+</dd>
+<dt class="hdlist1">TN.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">TN.HSS.CP.A.1</dt>
+<dd>
+<p>Describe events as subsets of a sample space (the set of outcomes) using characteristics (or categories) of the outcomes, or as unions, intersections, or complements of other events ('or', 'and', 'not').</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Utah">
+<div class="title"><a href="">Utah Standards</a></div>
+<dl>
+<dt class="hdlist1">UT.7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.</p>
+</dd>
+<dt class="hdlist1">UT.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">UT.HSS.CP.A.1</dt>
+<dd>
+<p>Describe events as subsets of a sample space (the set of outcomes) using characteristics (or categories) of the outcomes, or as unions, intersections, or complements of other events ('or', 'and', 'not').</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Vermont">
+<div class="title"><a href="">Vermont Standards</a></div>
+<dl>
+<dt class="hdlist1">VT.7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.</p>
+</dd>
+<dt class="hdlist1">VT.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">VT.HSS.CP.A.1</dt>
+<dd>
+<p>Describe events as subsets of a sample space (the set of outcomes) using characteristics (or categories) of the outcomes, or as unions, intersections, or complements of other events ('or', 'and', 'not').</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Washington">
+<div class="title"><a href="">Washington Standards</a></div>
+<dl>
+<dt class="hdlist1">WA.7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.</p>
+</dd>
+<dt class="hdlist1">WA.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">WA.HSS.CP.A.1</dt>
+<dd>
+<p>Describe events as subsets of a sample space (the set of outcomes) using characteristics (or categories) of the outcomes, or as unions, intersections, or complements of other events ('or', 'and', 'not').</p>
+</dd>
+</dl>
+</div>
+<div class="dlist .alignedStandards.standards-West Virginia">
+<div class="title"><a href="">West Virginia Standards</a></div>
+<dl>
+<dt>WV.7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.</p>
+</dd>
+<dt>WV.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt>WV.HSS.CP.A.1</dt>
+<dd>
+<p>Describe events as subsets of a sample space (the set of outcomes) using characteristics (or categories) of the outcomes, or as unions, intersections, or complements of other events ('or', 'and', 'not').</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Wisconsin">
+<div class="title"><a href="">Wisconsin Standards</a></div>
+<dl>
+<dt class="hdlist1">WI.7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.</p>
+</dd>
+<dt class="hdlist1">WI.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">WI.HSS.CP.A.1</dt>
+<dd>
+<p>Describe events as subsets of a sample space (the set of outcomes) using characteristics (or categories) of the outcomes, or as unions, intersections, or complements of other events ('or', 'and', 'not').</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Wyoming">
+<div class="title"><a href="">Wyoming Standards</a></div>
+<dl>
+<dt class="hdlist1">WY.7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.</p>
+</dd>
+<dt class="hdlist1">WY.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">WY.HSS.CP.A.1</dt>
+<dd>
+<p>Describe events as subsets of a sample space (the set of outcomes) using characteristics (or categories) of the outcomes, or as unions, intersections, or complements of other events ('or', 'and', 'not').</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch sidebartextbooks">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Textbook Alignment</strong>
+<select class="textbooksAlignmentSelect"  onchange="showTextbooksAlignment()"><option selected="selected" value="textbook-IM_Alg_1"><a href="https://illustrativemathematics.org/">IM Algebra 1</a></option></select></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist alignedTextbooks textbook-IM_Alg_1">
+<div class="title"><a href="https://illustrativemathematics.org/">IM Algebra 1</a></div>
+<dl>
+<dt class="hdlist1">IM.Alg1.2.18</dt>
+<dd>
+<p>Representing Situations with Inequalities</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch sidebarpractices">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Practices in this Lesson</strong>
+<select class="practicesAlignmentSelect"  onchange="showPracticesAlignment()"><option selected="selected" value="practices-MLR"><a href="https://achievethecore.org/peersandpedagogy/developing-math-language-routines/">Math Lang. Routines</a></option><option value="practices-CC"><a href="http://corestandards.org/Math/">Math</a></option></select></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist alignedPractices practices-MLR">
+<div class="title"><a href="https://achievethecore.org/peersandpedagogy/developing-math-language-routines/">Math Lang. Routines</a></div>
+<dl>
+<dt class="hdlist1">MLR.5</dt>
+<dd>
+<p>Co-Craft Questions and Problems</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedPractices practices-CC">
+<div class="title"><a href="http://corestandards.org/Math/">Math</a></div>
+<dl>
+<dt class="hdlist1">MP.1</dt>
+<dd>
+<p>Make sense of problems and persevere in solving them</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<!-- </p>
+</div>
+--></div><!--
+<div class="paragraph">
+<p>
+-->
+</div>
+<div class="paragraph">
+<p><span class="other-proglang">(Also available in <a href="../../lessons/inequalities2-compound/index.shtml">Pyret</a>)</span></p>
+</div>
+<div class="paragraph description">
+<p>Students build upon their understanding of Booleans and simple inequalities to compose compound inequalities using the concepts of union and intersection.</p>
+</div>
+<table class="tableblock frame-all grid-all stripes-none stretch left-header preamble">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Lesson Goals</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Students will be able to:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Understand how the conjunctions <code class="racket">and</code> and <code class="racket">or</code> differ</p>
+</li>
+<li>
+<p>Describe how functions can work together</p>
+</li>
+<li>
+<p>Describe the solution set of a <span class="vocab">compound inequality</span></p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Student-Facing Lesson Goals</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>I can explain the difference between how <code class="racket">and</code> and <code class="racket">or</code> are used in programming</p>
+</li>
+<li>
+<p>I can use two or more inequalities together and describe the area they enclose</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Materials</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist materials-links">
+<ul>
+<li>
+<p><a href="https://docs.google.com/presentation/d/1357iJEdwDwysa-Ko4tVw7nyOV2hEoaqnuPl6tbFYYuk/" target="_blank" rel="noopener">Lesson Slides</a></p>
+</li>
+<li>
+<p><span class="StarterFile"><a href="https://www.wescheme.org/openEditor?publicId=yFnDbsSnR7" target="_blank" rel="noopener">Compound Inequalities Starter File</a></span></p>
+</li>
+<li>
+<p><span class="materialSectionPlaceholder"> </span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/inequalities2-compound-wescheme/pages/boolean-coe-to-code1.html" target="_blank" rel="noopener">Converting Circles of Evaluation to Code</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/inequalities2-compound-wescheme/pages/and-or.html" target="_blank" rel="noopener">Compound Inequalities&#8201;&#8212;&#8201;Practice</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/inequalities2-compound-wescheme/pages/compound-inequality-solutions.html" target="_blank" rel="noopener">Compound Inequalities: Solutions &amp; Non-Solutions</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/inequalities2-compound-wescheme/pages/compound-inequality-functions.html" target="_blank" rel="noopener">Compound Inequality Functions</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="../../lessons/inequalities2-compound-wescheme/pages/compound-warmup.html" target="_blank" rel="noopener">Compound Inequality Warmup</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="../../lessons/inequalities2-compound-wescheme/pages/compound-explore.html" target="_blank" rel="noopener">Exploring Compound Inequality</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="../../lessons/inequalities2-compound-wescheme/pages/boolean-coe-to-code2.html" target="_blank" rel="noopener">Converting Circles of Evaluation with Booleans to Code 2</a></span></p>
+</li>
+<li>
+<p><strong>Classroom visual:</strong> <a href="javascript:showLangTable()">Language Table</a></p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="dlist glossary">
+<div class="title">Glossary</div>
+<dl>
+<dt class="hdlist1">compound inequality</dt>
+<dd>
+<p>an inequality that combines two simple inequalities using <em>and</em> or <em>or</em></p>
+</dd>
+<dt class="hdlist1">function</dt>
+<dd>
+<p>a relation from a set of inputs to a set of possible outputs, where each input is related to exactly one output</p>
+</dd>
+<dt class="hdlist1">intersection</dt>
+<dd>
+<p>the set of values that makes both inequalities true</p>
+</dd>
+<dt class="hdlist1">union</dt>
+<dd>
+<p>the set of values that makes either or both of a set of inequalities true</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_introducing_compound_inequalities"><span class="section-link"><a href="#_introducing_compound_inequalities"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Introducing Compound Inequalities</h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_overview">Overview</h3>
+<div class="paragraph">
+<p>Students consider the need to <em>compose</em> inequalities, and think about how to write them.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_launch">Launch</h3>
+<div class="paragraph">
+<p>We use inequalities for lots of things:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Is it hot out? (<span class="gdrive-only">temperature &gt; 80°</span><script type="math/tex">\displaystyle temperature \gt 80°</script>)</p>
+</li>
+<li>
+<p>Did I get paid enough for painting that fence? (<span class="gdrive-only">paid \ge $100</span><script type="math/tex">\displaystyle paid \ge $100</script>)</p>
+</li>
+<li>
+<p>Are the cookies finished baking? (<span class="gdrive-only">timer = 0</span><script type="math/tex">\displaystyle timer = 0</script>)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph lesson-instruction">
+<p>What other examples can you come up with?</p>
+</div>
+<div class="paragraph">
+<p>Many times we need to <em>combine</em> inequalities:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Should I go to the beach? (<span class="gdrive-only">temperature &gt; 80°</span><script type="math/tex">\displaystyle temperature \gt 80°</script> and <span class="gdrive-only">weather = "sunny"</span><script type="math/tex">\displaystyle weather = "sunny"</script>)</p>
+</li>
+<li>
+<p>Was this burrito worth the price? (<span class="gdrive-only">taste = "delicious"</span><script type="math/tex">\displaystyle taste = "delicious"</script> and <span class="gdrive-only">price &le; $15</span><script type="math/tex">\displaystyle price \leq $15</script>)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph lesson-instruction">
+<p>Can you think of examples of when we might want to combine inequalities?</p>
+</div>
+<div class="paragraph">
+<p>Guide students through other examples of <code class="racket">and</code> and <code class="racket">or</code> with various statements, such as:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>"I&#8217;m wearing a red shirt AND I&#8217;m a math teacher, true or false?"</p>
+</li>
+<li>
+<p>"I&#8217;m an NBA basketball star OR I&#8217;m having pizza for lunch, true or false?"</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This can make for a good sit-down, stand-up activity, where students take turns saying compound Boolean statements and everyone stands if that statement is true for them.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_investigate">Investigate</h3>
+<div class="paragraph">
+<p>Both mathematics and programming have ways of combining - or <em>composing</em> - inequalities.</p>
+</div>
+<div class="paragraph lesson-instruction">
+<p>Complete <a href="../../lessons/inequalities2-compound-wescheme/pages/boolean-coe-to-code1.html" target="_blank" rel="noopener">Converting Circles of Evaluation to Code</a> and <a href="../../lessons/inequalities2-compound-wescheme/pages/and-or.html" target="_blank" rel="noopener">Compound Inequalities&#8201;&#8212;&#8201;Practice</a>.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_synthesize">Synthesize</h3>
+<div class="paragraph">
+<p>Be really careful to check for understanding here.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Expressions using <code class="racket">and</code> only produce <code class="racket">true</code> if both of their sub-expressions are <code class="racket">true</code>.</p>
+</li>
+<li>
+<p>Expressions using <code class="racket">or</code> produce <code class="racket">true</code> if <strong>either</strong> of their sub-expressions are <code class="racket">true</code>.</p>
+</li>
+</ul>
+</div>
+<table class="tableblock frame-all grid-none stripes-none stretch strategy-box">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="title">Strategies for English Language Learners</span></p>
+<p class="tableblock">When describing compound inequalities, be careful not to use "English shortcuts". For example, we might say "I am holding a marker <em>and</em> an eraser" instead of "I am holding a marker <em>and</em> I am holding an eraser." These sentences mean the same thing, but the first one obscures the fact that "and" joins two complete phrases. For ELL/ESL students, this is unecessarily adds to cognitive load!</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_solutions_and_non_solutions_of_compound_inequalities"><span class="section-link"><a href="#_solutions_and_non_solutions_of_compound_inequalities"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Solutions and Non-Solutions of Compound Inequalities</h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_launch_2">Launch</h3>
+<div class="paragraph">
+<p><em>The questions below could be printed from <a href="../../lessons/inequalities2-compound-wescheme/pages/compound-warmup.html" target="_blank" rel="noopener">Compound Inequality Warmup</a>.</em></p>
+</div>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>What are 4 solutions for <span class="gdrive-only">x &gt; 5</span><script type="math/tex">\displaystyle x \gt 5</script> ?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Possible answers: 5.001, 1000, 24, 73.26</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>What are 4 non-solutions for <span class="gdrive-only">x &gt; 5</span><script type="math/tex">\displaystyle x \gt 5</script>?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Possible answers: 5, -1000, 4.9, 0</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>What are 4 solutions for <span class="gdrive-only">x \le 15</span><script type="math/tex">\displaystyle x \le 15</script>?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Possible answers: 15, 14.98, -63, 1/2</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>What are 4 non-solutions for <span class="gdrive-only">x \le 15</span><script type="math/tex">\displaystyle x \le 15</script>?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Possible answers: 15.1, 25, 2022, 1000000</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>What numbers are in the solutions set of  <span class="gdrive-only">x &gt; 5</span><script type="math/tex">\displaystyle x \gt 5</script> <code class="racket">and</code> <span class="gdrive-only">x \le 15</span><script type="math/tex">\displaystyle x \le 15</script>, making <em>both</em> of these inequalities true?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Possible answers: 5.001, 10, 12.374, 15</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>How would that be different from the solution set of <span class="gdrive-only">x &gt; 5</span><script type="math/tex">\displaystyle x \gt 5</script> <code class="racket">or</code> <span class="gdrive-only">x \le 15</span><script type="math/tex">\displaystyle x \le 15</script>, making <em>at least one</em> of these inequalities true?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>All real numbers are a part of the solution set for <span class="gdrive-only">x &gt; 5</span><script type="math/tex">\displaystyle x \gt 5</script> <code class="racket">or</code> <span class="gdrive-only">x \le 15</span><script type="math/tex">\displaystyle x \le 15</script> because there aren&#8217;t any numbers that don&#8217;t satisfy at least one of these expressions.</em></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_investigate_2">Investigate</h3>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Open the <a href="https://www.wescheme.org/openEditor?publicId=yFnDbsSnR7" target="_blank" rel="noopener">Compound Inequalities Starter File</a>.</p>
+</li>
+<li>
+<p>Click "Run" to see the graphs you&#8217;ve just considered.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>When students click "Run", four graphs will appear. The top two are the simple inequalities they&#8217;ve just discussed. Encourage students to verify that their solutions and non-solutions are correct. Explain that the bottom two graphs are produced by the special functions <code class="racket">and-intersection</code> and <code class="racket">or-union</code>. Use the discussion questions below as a jumping off point in guiding students' analysis of the starter file. <em>These questions could also be printed from <a href="../../lessons/inequalities2-compound-wescheme/pages/compound-explore.html" target="_blank" rel="noopener">Exploring Compound Inequality</a>.</em></p>
+</div>
+<div class="openblock lesson-instruction">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>What does <code class="racket">and-intersection</code> do?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>It takes in two functions and a list of numbers and produces a graph with the points and the shaded <span class="vocab">intersection</span> of values that make both of the inequalities true.</em></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="centered-image"><span class="image-figure"><span class="image"><img src="images/0f7f1653e4b10b96.png" alt="A compound inequality displayed on a number line, showing that the inequalities intersect between 5 and 15. The dot on 5 is red. The dot on 15 is green." title="A compound inequality displayed on a number line, showing that the inequalities intersect between 5 and 15. The dot on 5 is red. The dot on 15 is green."></span><a href="images/0f7f1653e4b10b96.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Why is the circle on 5 red and the circle on 15 green?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Because 5 is not part of the solution - it&#8217;s not bigger than itself. And 15 is part of the solution - it&#8217;s less than or equal to 15.</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Do you think every graph made with <code class="racket">and-intersection</code> will have different color dots at the ends? Why or why not?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>No. It will depend on whether or not the inequality symbols include an equal sign. Sometimes one will and one won&#8217;t. Sometimes neither will. Sometimes both will.</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>What does <code class="racket">or-union</code> do?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>It takes in two functions and a list of numbers and produces a graph with the points and the shaded <span class="vocab">union</span> of values that make either or both of the inequalities true.</em></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="centered-image"><span class="image-figure"><span class="image"><img src="images/7b516f18d2fb649c.png" alt="A compound inequality displayed on a number line, showing an infinite union" title="A compound inequality displayed on a number line, showing an infinite union"></span><a href="images/7b516f18d2fb649c.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Why did the graph of this <code class="racket">or-union</code> result in the whole number line being shaded blue?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Because in order to make an <code class="racket">or</code> statement true, a number only has to make one of the inequalities true. Every number in the universe is either greater than 5 or less than or equal to 15. There aren&#8217;t any non-solutions!</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Not all graphs of <code class="racket">or-union</code> will look like this. Can you think of a pair of inequalities whose union won&#8217;t shade the whole graph?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Answers will vary! <span class="gdrive-only">x &lt; 1</span><script type="math/tex">\displaystyle x \lt 1</script> or <span class="gdrive-only">x &lt; 3</span><script type="math/tex">\displaystyle x \lt 3</script></em></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Change the function definition on <em>line 8</em> to <span class="gdrive-only">x &lt; 5</span><script type="math/tex">\displaystyle x \lt 5</script> and the definition on <em>line 9</em> to <span class="gdrive-only">x \ge 15</span><script type="math/tex">\displaystyle x \ge 15</script> and, before you click "Run", take a moment to think about what the new graphs of <code class="racket">and-intersection</code> and <code class="racket">or-union</code> will look like. Then click "Run" and take a look.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>What does the new <code class="racket">and-intersection</code> graph look like?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>We see a graph with only red circles, representing non-solutions, as below. None of the graph will be shaded blue, because there aren&#8217;t any numbers that are both smaller than 5 and greater than or equal to 15. A message will tell us that no solutions exist in the provided range.</em>
+<span class="centered-image"><span class="image-figure"><span class="image"><img src="images/96ca45d07d12a7d5.png" alt="A compound inequality displayed on a number line, showing no intersection and therefore no solutions" title="A compound inequality displayed on a number line, showing no intersection and therefore no solutions"></span><a href="images/96ca45d07d12a7d5.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>What does the new <code class="racket">or-union</code> graph look like?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>There&#8217;s an arrow to the left and an arrow to the right with a break in the middle between 5 and 15! The dot for 5 is red because it&#8217;s not part of the solution. The dot for 15 is green because it&#8217;s part of the solution.</em>
+<span class="centered-image"><span class="image-figure"><span class="image"><img src="images/de72a7eed517acae.png" alt="A compound inequality displayed on a number line, shaded when numbers are below 5 or greater than 15. The dot on 5 is red and the dot on 15 is green." title="A compound inequality displayed on a number line, shaded when numbers are below 5 or greater than 15. The dot on 5 is red and the dot on 15 is green."></span><a href="images/de72a7eed517acae.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Why is the dot for 5 red and the dot for 15 green?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>The dot for 5 is red because it&#8217;s not part of the solution. The dot for 15 is green because it&#8217;s part of the solution.</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Which of the 8 numbers from the list are part of the solution set? How do you know?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>-5, -2.1, 0, 15, 20&#8230;&#8203; the circles are green.</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Is 3 part of the solution set? How do you know?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Yes. It&#8217;s in the blue shaded region.</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Is 10 part of the solution set? How do you know?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>No. It&#8217;s in the unshaded area.</em></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Once students are familiar with the starter file, they are ready to use it as they practice identifying solutions and non-solutions for compound inequalities.</p>
+</div>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Turn to <a href="../../lessons/inequalities2-compound-wescheme/pages/compound-inequality-solutions.html" target="_blank" rel="noopener">Compound Inequalities: Solutions &amp; Non-Solutions</a>.</p>
+</li>
+<li>
+<p>Explore the compound inequalities listed using the <a href="https://www.wescheme.org/openEditor?publicId=yFnDbsSnR7" target="_blank" rel="noopener">Compound Inequalities Starter File</a>, identifying solutions and non-solutions for each.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Explain to students that instead of defining two functions as simple inequalities, we can produce an inequality graph by defining one function to be a <span class="vocab">compound inequality</span>! In the following activity, students will analyze inequality graphs and define a <em>single</em> function that produces the graph. Walk students through the completed first example before they attempt to write this code on their own.</p>
+</div>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Turn to <a href="../../lessons/inequalities2-compound-wescheme/pages/compound-inequality-functions.html" target="_blank" rel="noopener">Compound Inequality Functions</a>.</p>
+</li>
+<li>
+<p>Write code to describe the compound inequalities pictured.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_synthesize_2">Synthesize</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>How did the graphs of intersections and unions differ?</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_additional_exercises"><span class="section-link"><a href="#_additional_exercises"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Additional Exercises:</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="../../lessons/inequalities2-compound-wescheme/pages/boolean-coe-to-code2.html" target="_blank" rel="noopener">Converting Circles of Evaluation with Booleans to Code 2</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-18 16:15:46 -0400
+</div>
+</div>
+</div>
+</body>
+</html>

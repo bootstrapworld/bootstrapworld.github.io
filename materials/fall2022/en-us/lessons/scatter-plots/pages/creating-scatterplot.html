@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Creating a Scatter Plot</title>
+
+  <link rel="stylesheet" href="../../../lib/curriculum.css" />
+    <link rel="stylesheet" href="../../../lib/codemirror.css" />
+    <script src="../../../lib/codemirror.js"></script>
+    <script src="../../../lib/runmode.js"></script>
+    <script src="../../../lib/scheme2.js"></script>
+    <script src="../../../lib/pyret-mode.js"></script>
+    <script src="../../../lib/langtable.js"></script>
+    <script src="../../../lib/bootstraplesson.js"></script>
+    <script src="../../../dependency-graph.js"></script>
+    <script src="../../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"Creating a Scatter Plot",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="workbookpage article pyret" onload="renderSaveToDrive()">
+<div id="header">
+<h1>Creating a Scatter Plot</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<style>
+p, .paragraph { width: auto !important; }
+#content .fitb{ line-height: 2; }
+table:first-of-type td.tableblock { padding: 8px !important; text-align: center; }
+td .autonum:after { content: ") "; }
+</style>
+<table class="tableblock frame-none grid-none stripes-none stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-middle"><div class="content"><table class="tableblock frame-all grid-all fit-content">
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">name</th>
+<th class="tableblock halign-left valign-top">species</th>
+<th class="tableblock halign-left valign-top">age</th>
+<th class="tableblock halign-left valign-top">weeks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="pyret">"Sasha"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="pyret">"cat"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="pyret">"Boo-boo"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="pyret">"dog"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="pyret">"Felix"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="pyret">"cat"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">16</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="pyret">"Buddy"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="pyret">"lizard"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">24</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="pyret">"Nori"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="pyret">"dog"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">9</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="pyret">"Wade"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="pyret">"cat"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="pyret">"Nibblet"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="pyret">"rabbit"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">12</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="pyret">"Maple"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="pyret">"dog"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+</tr>
+</tbody>
+</table></div></td>
+<td class="tableblock halign-right valign-middle"><div class="content"><div class="paragraph">
+<p><span class="image-figure"><span class="image"><img src="d1ff77c5e7592cc3.png" alt="scatter plot" width="300" height="An empty scatter plot" title="scatter plot"></span><a href="d1ff77c5e7592cc3.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><span class="autonum">1</span> Choose an animal from the table on the left, and plot their age/weeks values by adding a dot to the scatter plot on the right (be sure to check your axes!). Then write their name next to your dot. Plot the rest of the animals - one at a time. After each one, ask yourself whether or not you see a pattern in the data. After how many animals did you begin to see a pattern? <span class="fitb stretch"></span></p>
+</div>
+<div class="paragraph">
+<p><strong>Use a straight edge to draw a line on the graph that best represents the pattern you see, then circle the cloud of points around that line.</strong></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">2</span> Are the points tightly clustered around the line or loosely scattered?  <span class="fitb stretch"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">3</span> Does this display support the claim that younger animals get adopted faster? Why or why not?</p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"></span></p>
+</div>
+<table class="tableblock frame-none grid-none stripes-none stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p><span class="autonum">4</span> Place points on the graph to create a scatter plot with NO relationship.</p>
+</div></div></td>
+<td class="tableblock halign-right valign-middle"><div class="content"><div class="paragraph">
+<p><span class="notsolution"><span class="image-figure"><span class="image"><img src="d1ff77c5e7592cc3.png" alt="scatter plot" width="250" height="An empty scatter plot" title="scatter plot"></span><a href="d1ff77c5e7592cc3.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-17 19:42:11 -0400
+</div>
+</div>
+</body>
+</html>

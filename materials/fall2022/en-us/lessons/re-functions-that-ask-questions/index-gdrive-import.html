@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Functions That Ask Questions</title>
+<style>
+/* Overall document font */
+* {font-family: Lato, Arial, Helvetica, sans-serif;}
+
+/* document headings */
+h1,.lesson-section-1 {color: #75328A;}
+h1{font-size: 32px; font-family: sans-serif;}
+table.section-heading *, .lesson-section-1 h2{font-size: 32px; font-weight: 100;}
+table.section-heading{width: 100%;}
+table.section-heading td:last-child{text-align: right; color: #d9d2e9;}
+
+/* preamble section */
+table.preamble td {padding: 10px;}
+table.preamble td:first-child{background: #b7d893; width: 25%;}
+table.preamble td:first-child p {font-weight: bold; margin: 5px;}
+
+/* content used throughout the body */
+table{ border-collapse: collapse; border: none; }
+table.grid-all.frame-all {border: solid 1px black;}
+table.grid-none.frame-none {border-width: 0px;}
+
+.big {font-size: 30pt;}
+.vocab{font-weight: bold; font-style: italic;}
+.right{text-align: right;}
+.acknowledgment {
+  border-top: solid 1px black; 
+  font-style: italic; 
+  font-size: 8pt;
+}
+.lesson-point {
+  border-top: solid 1px black; 
+  border-bottom: solid 1px black; 
+  color: black;
+  font-weight: bold;
+}
+
+.web-page-only, #footer { display: none; visibility: hidden; }
+
+/* Callout boxes */
+.strategy-box, .notice-box {
+  background: #efefef;
+  border: solid 5px !important;
+  margin: 15px auto;
+  width: 100%;
+}
+.strategy-box { border-color: #1a73b5 !important; }
+.notice-box   { border-color: #7747a5 !important; }
+.strategy-box td, .notice-box td{ padding: 10px; }
+.strategy-box .title, .notice-box .title{
+  width: 100%;
+  display: block;
+  font-weight: bold;
+  font-size: 24px;
+  clear: both;
+  margin: 100px;
+}
+.strategy-box p.tableblock:first-child, .notice-box p.tableblock:first-child{
+  text-align: center;
+  padding-bottom: 15px;
+}
+.strategy-box .title { color: #1a73b5; }
+.notice-box   .title { color: #7747a5; }
+.strategy-box a, .notice-box a { color: blue; text-decoration: underline; }
+
+/* "Tables" of Evaluation */
+.operator{border-bottom: solid 1px black; text-align: center;}
+.operator * {text-align: center;}
+td {padding: 0px 10px; font-size: 14px;}
+table.expression {
+    font-family:"Courier New", Monaco, monospace;
+    border:     solid 1px black;
+    font-size:  1px;
+    max-width:  400px;
+    color:      #666666;
+    display:    inline-block;
+}
+table.args {border: none; text-align: center;}
+
+.wescheme-string,     .cm-scheme-string    {color: green;}
+.wescheme-number,     .cm-scheme-number    {color: blue;}
+.wescheme-boolean,    .cm-scheme-boolean   {color: darkred;}
+.wescheme-character,  .cm-scheme-character {color: orange;}
+.wescheme-symbol,     .cm-scheme-symbol    {color: steelblue;}
+.wescheme-comment,    .cm-scheme-comment   {color: orange; }
+
+.racket, .pyret, .studentAnswerCode, .studentAnswer, .pyretkeyword, .keyword_only {
+    font-family:"Courier New", Monaco, monospace !important; 
+    color: black;
+}
+
+/* Design Recipe */
+.recipe_instructions { font-style: italic; }
+table.recipe_title {
+  color:              white;
+  background:         gray;
+  display:            block;
+  padding:            0px;
+  font-size:          1.1rem;
+  font-weight:        bold;
+}</style>
+
+    <script src="../../lib/langtable.js"></script>
+    <script src="../../dependency-graph.js"></script>
+    <script src="../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:window.location.href,
+    filename:"Functions That Ask Questions",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="article LessonPlan pyret" onload="renderSaveToDrive()">
+<span id="body" onload="renderSaveToDrive()">
+<span id="header">
+<h1>Functions That Ask Questions</h1>
+
+  <span id="savetodrive-div"></span>
+
+</span>
+<span id="content">
+<span id="preamble_disabled" class="lessonSummary">
+<span class="sectionbody">
+<script>
+function preselect(klass) {
+  const items = document.getElementsByClassName(klass);
+  for (let i = 0; i < items.length; i++) {
+    items[i].style.display = 'none';
+  }
+  if (items.length > 0) {
+    items[0].style.display = 'block';
+  }
+}
+window.onload = function() {
+  preselect('alignedStandards');
+  preselect('alignedTextbooks');
+  preselect('alignedPractices');
+}
+function showStandardsAlignment() {
+  const selectTag = document.getElementsByClassName('standardsAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const stdTables = document.getElementsByClassName('alignedStandards');
+  //const intro = document.getElementsByClassName('alignedStandardsIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < stdTables.length; i++) {
+    const stdTable = stdTables[i];
+    stdTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optStd = opt.value;
+      for (let j = 0; j < stdTables.length; j++) {
+        const stdTable = stdTables[j];
+        if (stdTable.classList.contains(optStd)) {
+          stdTable.style.display = 'block';
+         // introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+function toggleNonPrereqDisplay() {
+  const inputTag = document.getElementsByClassName('sidebarinput')[0];
+  const checkedP = inputTag.checked;
+  const lessonTable = document.getElementsByClassName('sidebarlessons')[0];
+  const lis = lessonTable.getElementsByTagName('li');
+  for (let i = 0; i < lis.length; i++) {
+    const li = lis[i];
+    const lesson = li.getElementsByClassName('prerequisite');
+    if (lesson.length === 0) {
+      li.style.display = checkedP ? 'none' : 'block';
+    }
+  }
+}
+</script>
+<script>
+function showTextbooksAlignment() {
+  const selectTag = document.getElementsByClassName('textbooksAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const textbookTables = document.getElementsByClassName('alignedTextbooks');
+  //const intro = document.getElementsByClassName('alignedTextbooksIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < textbookTables.length; i++) {
+    const textbookTable = textbookTables[i];
+    textbookTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optTextbook = opt.value;
+      for (let j = 0; j < textbookTables.length; j++) {
+        const textbookTable = textbookTables[j];
+        if (textbookTable.classList.contains(optTextbook)) {
+          textbookTable.style.display = 'block';
+          //introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+</script>
+<script>
+function showPracticesAlignment() {
+  const selectTag = document.getElementsByClassName('practicesAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const practiceTables = document.getElementsByClassName('alignedPractices');
+  for (let i = 0; i < practiceTables.length; i++) {
+    const practiceTable = practiceTables[i];
+    practiceTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optPractice = opt.value;
+      for (let j = 0; j < practiceTables.length; j++) {
+        const practiceTable = practiceTables[j];
+        if (practiceTable.classList.contains(optPractice)) {
+          practiceTable.style.display = 'block';
+        }
+      }
+    }
+  }
+}
+</script>
+<span class="paragraph">
+<!-- </p>
+</span>
+--></span><span class="sidebar"><span id="toggle"></span><span class="paragraph"><!--
+<span class="paragraph">
+<p>
+--><span class="sidebarlessons"><strong>Lessons</strong>
+<ul></ul></span>
+</span>
+<table class="tableblock frame-all grid-all stretch sidebarstandards">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p><strong>Standards in this Lesson</strong>
+<select class="standardsAlignmentSelect"  onchange="showStandardsAlignment()"><option selected="selected" value="standards-CSTA">CSTA</option><option value="standards-K12CS">K12CS</option></select></p>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="dlist standards-CSTA">
+<span class="title"><a href="https://csteachers.org/page/standards">CSTA Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>1B-AP-17</dt>
+<dd>
+<p>Describe choices made during program development using code comments, presentations, and demonstrations.</p>
+</dd>
+<dt class="hdlist1"><br/>2-AP-14</dt>
+<dd>
+<p>Create procedures with parameters to organize code and make it easier to reuse.</p>
+</dd>
+<dt class="hdlist1"><br/>2-AP-17</dt>
+<dd>
+<p>Systematically test and refine programs using a range of test cases</p>
+</dd>
+<dt class="hdlist1"><br/>3B-AP-21</dt>
+<dd>
+<p>Develop and use a series of test cases to verify that a program performs according to its design specifications.</p>
+</dd>
+<dt class="hdlist1"><br/>3B-AP-22</dt>
+<dd>
+<p>Modify an existing program to add additional functionality and discuss intended and unintended implications (e.g., breaking other functionality).</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-K12CS">
+<span class="title"><a href="https://k12cs.org">K-12CS Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>6-8.Algorithms and Programming.Control</dt>
+<dd>
+<p>Programmers select and combine control structures, such as loops, event handlers, and conditionals, to create more complex program behavior.</p>
+</dd>
+</dl>
+</span></span></td>
+</tr>
+</tbody>
+</table>
+<span class="paragraph">
+<span class="sidebarpractices"><strong>Practices in this Lesson</strong>: <em>None</em></span>
+<!-- </p>
+</span>
+--></span><!--
+<span class="paragraph">
+<p>
+-->
+</span>
+<span class="paragraph description">
+<p>Students are introduced to if-then-else expressions, writing conditionals that deal with simple types (Numbers, Strings, Booleans, etc) and data structures of their own to implement a more complex animation.</p>
+</span>
+<table class="tableblock frame-all grid-all stripes-none stretch left-header preamble">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>Product Outcomes</p>
+</span></span></td>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>Students learn conditional expressions by writing a simple function</p>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>Materials</p>
+</span></span></td>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="ulist materials-links">
+<ul>
+<li>
+<p><a href="https://docs.google.com/presentation/d/Intentionally-left-blank-as-this-lesson-does-not-have-any-slides/" target="_blank" rel="noopener">Lesson Slides</a></p>
+</li>
+<li>
+<p><span class="StarterFile"><a href="https://code.pyret.org/editor#share=15fUR1QAF-O5HIDq95QnctdsdVNfF1Tde" target="_blank" rel="noopener">What to Wear Starter File</a></span></p>
+</li>
+<li>
+<p><span class="StarterFile"><a href="https://code.pyret.org/editor#share=1RKJNrC2eRxO8apsA0UKbLZAMGD73Xk5D" target="_blank" rel="noopener">Package Delivery Starter File</a></span></p>
+</li>
+<li>
+<p><span class="materialSectionPlaceholder"> </span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/re-functions-that-ask-questions/pages/location.html" target="_blank" rel="noopener">Word Problem: location</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/re-functions-that-ask-questions/pages/bug-hunting.html" target="_blank" rel="noopener">Syntax and Style Bug Hunting: Piecewise Edition</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/re-functions-that-ask-questions/pages/animation-worksheet.html" target="_blank" rel="noopener">Animation Data Worksheet</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/re-functions-that-ask-questions/pages/animation-worksheet-samples.html" class="bare" target="_blank" rel="noopener">../../lessons/re-functions-that-ask-questions/pages/animation-worksheet-samples.html</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/re-functions-that-ask-questions/pages/draw-sun.html" target="_blank" rel="noopener">Word Problem: draw-sun</a></span></p>
+</li>
+<li>
+<p><strong>Classroom visual:</strong> <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/javascript:showLangTable()">Language Table</a></p>
+</li>
+</ul>
+</span></span></td>
+</tr>
+</tbody>
+</table>
+<span class="dlist glossary">
+<span class="title">Glossary</span>
+<dl>
+<dt class="hdlist1"><br/>helper function</dt>
+<dd>
+<p>a small function that handles a specific part of another computation, and gets called from other functions</p>
+</dd>
+<dt class="hdlist1"><br/>piecewise function</dt>
+<dd>
+<p>a function that computes different expressions based on its input</p>
+</dd>
+</dl>
+</span>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<table class="grid-none frame-none section-heading"><tr><td width="65%">What to Wear </td><td width="35%">20 minutes</td></tr></table>
+<span class="sectionbody">
+<span class="sect2 lesson-section-2">
+<h3 id="_overview">Overview</h3>
+<span class="paragraph">
+<p>Students are introduced to Pyret&#8217;s <code class="pyret">if-then-else</code> construct.</p>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_launch">Launch</h3>
+<span class="paragraph">
+<p>Sometimes we want our functions to behave one way for a certain input or condition, but <em>a totally different way</em> for a different input or condition. Piecewise functions in mathematics also have this property (think about absolute value!). So how do we write conditionals in Pyret?</p>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_investigate">Investigate</h3>
+<span class="openblock lesson-instruction">
+<span class="content">
+<span class="paragraph">
+<p>Open the <a href="https://code.pyret.org/editor#share=15fUR1QAF-O5HIDq95QnctdsdVNfF1Tde" target="_blank" rel="noopener">What to Wear Starter File</a>. After reading through the definition for the <code class="pyret">wear</code> function:</p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p>Click "Run", so that you can use <code class="pyret">wear</code> in the Interactions Area.</p>
+</li>
+<li>
+<p>What does <code class="pyret">wear(50)</code> evaluate to?</p>
+</li>
+<li>
+<p>What does <code class="pyret">wear(100)</code> evaluate to?</p>
+</li>
+<li>
+<p>What is the domain and range of the <code class="pyret">wear</code> function?</p>
+</li>
+<li>
+<p>What is the name of the variable in the <code class="pyret">wear</code> function?</p>
+</li>
+<li>
+<p>Change the <code class="pyret">wear</code> function to return the shorts outfit when it’s cold (less than 30 degrees).</p>
+</li>
+</ul>
+</span>
+</span>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_synthesize">Synthesize</h3>
+<span class="paragraph">
+<p>An <code class="pyret">if</code> expression has four parts:</p>
+</span>
+<span class="olist arabic">
+<ol class="arabic">
+<li>
+<p>An <code class="pyret">if</code> clause</p>
+</li>
+<li>
+<p>Any number of <code class="pyret">else if</code> clauses</p>
+</li>
+<li>
+<p>An optional <code class="pyret">else</code> clause</p>
+</li>
+<li>
+<p>An <code class="pyret">end</code> keyword</p>
+</li>
+</ol>
+</span>
+<span class="paragraph">
+<p>The <code class="pyret">if</code> clause has a question, followed by a <code class="pyret">:</code> (a colon), followed by an answer for if the question evaluates to <code class="pyret">true</code>. Each <code class="pyret">else if</code> clause also has a question, followed by a colon, followed by an answer for if the question evaluates to <code class="pyret">true</code>. The <code class="pyret">else:</code> clause runs if none of the questions in the other clauses evaluated to <code class="pyret">true</code>. It catches all the cases that aren’t covered by a specific question in one of the <code class="pyret">if</code> or <code class="pyret">else if</code> clauses.</p>
+</span>
+<span class="paragraph">
+<p>The <code class="pyret">else:</code> clause at the end of an if expression is optional. Typically, it is important to make sure your code will account for all possible conditions, and ending with else: is a useful catchall condition if all of the other conditions return false. However, this is optional in the case that every single possible condition is covered by else if statements.</p>
+</span>
+<span class="paragraph">
+<p>At this point, we need to introduce an extension to the Design Recipe, to allow it to handle conditionals. If we look at the examples for <code class="pyret">wear</code>, and circle everything that changes, both the input (the temperature) and the output (the image) change. However, <code class="pyret">wear</code> only has a single variable according to the domain in its contract. Also, the image is <em>completely dependent</em> on the temperature&#8201;&#8212;&#8201;it isn’t a separate independent variable, so it wouldn’t make sense for it to be another element in the domain of <code class="pyret">wear</code>. The fact that we have <em>more changing things than elements in the domain</em> tells us that <code class="pyret">wear</code> must be a <span class="vocab">piecewise function</span>. This is the same rule as in Bootstrap:Algebra, and just as we could in Racket, we can tell that a function must be piecewise just by looking at its contract and the examples. This helps us identify when a function we are writing in our games needs to use <code class="pyret">if</code>, as long as we follow the Design Recipe when building it. Another way to recognize a piecewise function when looking at your examples is to note whether or not there are elements which <em>completely depend</em> on another. In <code class="pyret">wear</code>, the image depends on the temperature, and does not change independently, or in response to any other changes in the function. Keep an eye out for these dependent variables in your examples as you write them to help identify piecewise functions.</p>
+</span>
+<span class="paragraph">
+<p>This is an important point to review. Conditionals, or Piecewise functions, are a big moment in Bootstrap:Algebra, and the extension of the Design Recipe is key for students to design their own piecewise functions later on. In the next exercise, make sure they use the Recipe steps to remind them of the mechanics of this type of function.</p>
+</span>
+</span>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<table class="grid-none frame-none section-heading"><tr><td width="65%">Where’s my Order? </td><td width="35%">35 minutes</td></tr></table>
+<span class="sectionbody">
+<span class="sect2 lesson-section-2">
+<h3 id="_overview_2">Overview</h3>
+<span class="paragraph">
+<p>Students connect conditional functions with behaviors in games, and write one from scratch.</p>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_launch_2">Launch</h3>
+<span class="paragraph">
+<p>Let’s revisit the <a href="https://code.pyret.org/editor#share=1RKJNrC2eRxO8apsA0UKbLZAMGD73Xk5D" target="_blank" rel="noopener">Package Delivery Starter File</a> drone from earlier. We’re going to write a function that tells us where the package is for a given <code class="pyret">DeliveryState</code>. This is the kind of function you might need to write later on in your game. For example, you may need to know whether a character has reached a portal at a certain part of the screen to advance to the next level, or if they’ve fallen into dangerous lava!</p>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_investigate_2">Investigate</h3>
+<span class="openblock lesson-instruction">
+<span class="content">
+<span class="paragraph">
+<p><span class="right"><span class="image-figure"><span class="image"><img src="images/5c01ec8ee74625f0.png" alt="A background image" width="400" title="A background image"></span><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/images/5c01ec8ee74625f0.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span>
+Open your workbook to <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/re-functions-that-ask-questions/pages/location.html" target="_blank" rel="noopener">Word Problem: location</a>. Use the design recipe to write a function to tell you where the falling box is (either &#8220;road&#8221;, &#8220;house&#8221;, &#8220;delivery zone&#8221;, or &#8220;air&#8221;), based on the <code class="pyret">DeliveryState</code>.</p>
+</span>
+<span class="paragraph">
+<p>Once you’ve completed the problem on paper, open the Where&#8217;s my Order? file. We’ve gotten you started with the contract and purpose statement for <code class="pyret">location</code> in the file.
+<span style="clear: both;display: block"></span></p>
+</span>
+<span class="listingblock">
+<span class="content">
+<pre><code class="pyret"># location :: DeliveryState -&gt; String
+# Consumes a DeliveryState and produces a String
+# representing the location of the box:
+# either "road", "delivery zone", "house", or "air"</code></pre>
+</span>
+</span>
+<span class="paragraph">
+<p>Copy the work you have in your workbook to implement <code class="pyret">location</code> on the computer.</p>
+</span>
+</span>
+</span>
+<span class="paragraph">
+<p>In addition to writing your examples, you can also check that the <code class="pyret">location</code> function’s behavior matches what a drawing of a <code class="pyret">DeliveryState</code> instance shows. For example, if <code class="pyret">location</code> returns <code class="pyret">"road"</code> on some input, when we draw that same input, it ought to look like the package has landed in the road!</p>
+</span>
+<span class="openblock lesson-instruction">
+<span class="content">
+<span class="paragraph">
+<p>Experiment with this function!</p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p>Click "Run" to compile your program, then close the animation window.</p>
+</li>
+<li>
+<p>In the Interactions Area, evaluate <code class="pyret">location(START)</code>. What does it return (hopefully <code class="pyret">"air"</code>)?</p>
+</li>
+<li>
+<p>Evaluate <code class="pyret">draw-state(START)</code>. Does it look like the box is in the air?</p>
+</li>
+<li>
+<p>Do the same for an instance of a DeliveryState where the box is in the road, on the house, and in the delivery zone.</p>
+</li>
+</ul>
+</span>
+</span>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_synthesize_2">Synthesize</h3>
+<span class="paragraph">
+<p>These experiments show an important connection between functions that work with instances of a data structure, and the way we draw those instances. In our design for the animation, we have an understanding of what different regions of the screen mean. Here, we see that the draw-state and location functions both share this understanding to give consistent information about the animation.</p>
+</span>
+</span>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<table class="grid-none frame-none section-heading"><tr><td width="65%">Piecewise Bug Hunting </td><td width="35%">15 minutes</td></tr></table>
+<span class="sectionbody">
+<span class="sect2 lesson-section-2">
+<h3 id="_overview_3">Overview</h3>
+<span class="paragraph">
+<p>Students flex their conditional-function muscles, by looking at buggy conditions and figuring out what went wrong.</p>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_launch_3">Launch</h3>
+
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_investigate_3">Investigate</h3>
+<span class="paragraph">
+<p>Open your workbook to <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/re-functions-that-ask-questions/pages/bug-hunting.html" target="_blank" rel="noopener">Syntax and Style Bug Hunting: Piecewise Edition</a>. In the left column, we’ve given you broken or buggy Pyret code. On the right, we’ve given you space to either write out the correct code, or write an explanation of the problems with the provided code. Work through this workbook page, then check with your partner to confirm you’ve found all the bugs!</p>
+</span>
+</span>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<table class="grid-none frame-none section-heading"><tr><td width="65%">Colorful Sun </td><td width="35%">30 minutes</td></tr></table>
+<span class="sectionbody">
+<span class="sect2 lesson-section-2">
+<h3 id="_overview_4">Overview</h3>
+<span class="paragraph">
+<p>Students return to an animation they&#8217;ve created before, and enhance it by using conditionals.</p>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_launch_4">Launch</h3>
+<span class="paragraph">
+<p>Let’s return to your <a href="https://code.pyret.org/editor#share=0B9rKDmABYlJVSm94cFA4T3R2NTA" target="_blank" rel="noopener">sunset animation</a> from the previous unit. Currently, the sun’s x and y-coordinate change to make it move across the screen and disappear behind the horizon. In this unit, we’ll make the animation a bit more realistic, by changing the color of the sun as it gets lower in the sky. At the top of the screen, the sun should be yellow, then change to orange as it gets to the middle of the screen, and then become red as it reaches the bottom, close to the horizon.</p>
+</span>
+<span class="paragraph">
+<p>In programming, it is fairly common that you will change a program that you’ve already written to do something new or different. Modifying existing code is a valuable skill, and one that we want to practice with this exercise. It is so useful, in fact, that we’ve created a worksheet to help you map out what needs to change in an existing animation to support new behavior.</p>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_investigate_4">Investigate</h3>
+<span class="paragraph lesson-instruction">
+<p>Turn to <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/re-functions-that-ask-questions/pages/animation-worksheet.html" target="_blank" rel="noopener">Animation Data Worksheet</a> and <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/re-functions-that-ask-questions/pages/animation-worksheet-samples.html" class="bare" target="_blank" rel="noopener">../../lessons/re-functions-that-ask-questions/pages/animation-worksheet-samples.html</a>. Fill in the description of the animation change and three sample images at the top of the first page. If you don’t have colored pencils, just make an annotation near each sketch as to what color the sun should be in that sketch.</p>
+</span>
+<span class="paragraph">
+<p>Once you know what new behavior you want, the next task is to build it into your code. The next two tables in the worksheet ask you to think about the NEW features that are changing in your game and how you might capture them.</p>
+</span>
+<span class="paragraph lesson-instruction">
+<p>Talk with your partner about what new information is changing and how you might build that into your program. Does the color change in a predictable way? Is the color a new field that is independent of the fields you already have? Based on your answer, do you think you will need to add something new to your <code class="pyret">SunsetState</code> data structure, or can you change the look of your animation based on what is already there?</p>
+</span>
+<span class="paragraph">
+<p>There are a number of ways students can solve this problem. Once students have brainstormed with their partners, have a classroom discussion to have pairs share their ideas.</p>
+</span>
+<span class="paragraph">
+<p>Since the color of the sun will be changing, we <em>could</em> add a field to the <code class="pyret">SunsetState</code> data structure, such as a String with the current color name. However, the color will not change independently: we want the color to change based on the position of the sun in the sky, and get darker as it gets lower. Let’s figure out how to make the sun color change based only on the fields we already have.</p>
+</span>
+<span class="paragraph lesson-instruction">
+<p>Fill in the table at the bottom of the worksheet assuming we are not changing the data structure: which components (including existing functions) need to change?</p>
+</span>
+<span class="paragraph">
+<p>If we have decided not to add fields, you should have marked that the <code class="pyret">draw-state</code> method changes, but nothing else needs to. We only change <code class="pyret">next-state-tick</code> and <code class="pyret">next-state-key</code> if there has been a change to the data structure.</p>
+</span>
+<span class="paragraph">
+<p>You may need to guide students to realizing that a change in the appearance of the animation can be done entirely through draw-state. This is another point for emphasizing the separation between maintaining instances and drawing instances.</p>
+</span>
+<span class="paragraph">
+<p>How do we change <code class="pyret">draw-state</code>? Our first instinct may be to turn it into a piecewise function, and draw something different when the <code class="pyret">SunsetState</code>’s y-coordinate gets below 225 or below 150. This would yield code along the lines of:</p>
+</span>
+<span class="listingblock">
+<span class="content">
+<pre><code class="pyret">fun draw-state(a-sunset):
+  if a-sunset.y &lt; 150:
+    put-image(
+    rectangle(WIDTH, HORIZON-HEIGHT, "solid", "brown"),
+              200, 50,
+              put-image(circle(25, "solid", "yellow"),
+                        a-sunset.x, a-sunset.y,
+     rectangle(WIDTH, HEIGHT, "solid", "light-blue")))
+  else if a.sunset.y &lt; 225:
+    # same code with "orange" as sun color
+  else:
+    # same code with "red" as sun color
+ end
+end</code></pre>
+</span>
+</span>
+<span class="paragraph">
+<p>Notice that this version contains three very similar calls to <code class="pyret">put-image</code>. The <em>only</em> thing that is different about these three calls is the color we use to draw the sun. Whenever you find yourself writing nearly-identical expressions multiple times, you should create another function that computes the piece that is different. You can then write the overall expression just once, calling the new function to handle the different part. Functions that handle one part of an overall computation are called <span class="vocab">helper functions</span>.</p>
+</span>
+<span class="paragraph">
+<p>Assume for the moment that we had written a helper function called <code class="pyret">draw-sun</code> that takes a <code class="pyret">SunsetState</code> and returns the image to use for the sun. If we had such a function, then our <code class="pyret">draw-state</code> function would look as follows:</p>
+</span>
+<span class="listingblock">
+<span class="content">
+<pre><code class="pyret">fun draw-state(a-sunset):
+  put-image(
+  rectangle(WIDTH, HORIZON-HEIGHT, "solid", "brown"),
+            200, 50,
+            put-image(draw-sun(a-sunset),
+                      a-sunset.x, a-sunset.y,
+        rectangle(WIDTH, HEIGHT, "solid", "light-blue")))
+end</code></pre>
+</span>
+</span>
+<span class="paragraph lesson-instruction">
+<p>Open your workbook to <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/re-functions-that-ask-questions/pages/draw-sun.html" target="_blank" rel="noopener">Word Problem: draw-sun</a>. Here we have directions for writing a function called <code class="pyret">draw-sun</code>, which consumes a <code class="pyret">SunsetState</code> and produces an image of the sun, whose color is either &#8220;yellow&#8221;, &#8220;orange&#8221;, or &#8220;red&#8221; depending on its y-coordinate.</p>
+</span>
+<span class="paragraph">
+<p>The word problem assumes a background scene size of 400x300 pixels. Once students use their draw-sun function in their animation, they may need to change the specific conditions if they have a much larger or smaller scene.</p>
+</span>
+<span class="paragraph">
+<p>Once you’ve completed and typed the <code class="pyret">draw-sun</code> function into your sunset animation program, modify <code class="pyret">draw-state</code> to use it as we showed just above.</p>
+</span>
+<span class="paragraph">
+<p>Now let’s think about having the sunset animation "`start again`"after the sun sets, with the sun reappearing in the upper-left corner.</p>
+</span>
+<span class="paragraph lesson-instruction">
+<p>Assume you edited your animation to restart the sun at the upper left after it sets. What color <em>should</em> the sun be when it appears at the upper-left the second time around? What color <em>will</em> it be based on your code? Will it be yellow again, or will the color have changed somehow to red?</p>
+</span>
+<span class="paragraph">
+<p>To figure this out, think about what controls the color of the sun in your current code.</p>
+</span>
+<span class="paragraph lesson-instruction">
+<p>Edit the sunset animation so that the animation restarts.</p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p>Which of your functions has to be modified to include this change?</p>
+</li>
+<li>
+<p>Is restarting fundamentally about drawing one frame or about generating new instances?</p>
+</li>
+<li>
+<p>Use that question to help yourself figure out which function to modify. You could use the space for examples of functions at the end of your worksheet on extending the animation to write a new example before you modify your code.</p>
+</li>
+</ul>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_synthesize_3">Synthesize</h3>
+<span class="paragraph">
+<p>This question about the color of the sun is an especially good question-and it likely to come up-from students who may have experience programming with variables and updates in other languages, such as Scratch (where the color would have changed to red). In our approach, where we simply determine the sun color from the y-coordinate, the sun should naturally restart as yellow. Of course, if students had maintained the sun color as a separate field in their data structure, they would have to consider this issue, and manually reset the sun color as well as the y-coordinate when restarting the animation.</p>
+</span>
+<span class="paragraph">
+<p><strong>Optional:</strong> In addition to changing the color of the sun, have the background color change as well: it should be light blue when the sun is high in the sky, and get darker as the sun sets.</p>
+</span>
+<span class="paragraph">
+<p>Like changing the color of the sun, there are multiple valid ways of completing this optional activity. If you have students solving the same problem with different code, have them share their code with the class and have a discussion about the merits
+of each version.</p>
+</span>
+</span>
+</span>
+</span>
+<span class="sect1 acknowledgmentsect">
+<span class="sectionbody">
+<span class="openblock acknowledgment"><hr/>
+<span class="content">
+<span class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</span>
+</span>
+</span>
+</span>
+</span>
+</span>
+<span id="footer">
+<span id="footer-text">
+Last updated 2022-10-17 19:42:17 -0400
+</span>
+</span>
+</span>
+</body>
+</html>

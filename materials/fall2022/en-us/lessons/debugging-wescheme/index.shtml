@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Debugging</title>
+
+  <link rel="stylesheet" href="../../lib/curriculum.css" />
+    <link rel="stylesheet" href="../../lib/codemirror.css" />
+    <script src="../../lib/codemirror.js"></script>
+    <script src="../../lib/runmode.js"></script>
+    <script src="../../lib/scheme2.js"></script>
+    <script src="../../lib/pyret-mode.js"></script>
+    <script src="../../lib/langtable.js"></script>
+    <script src="../../lib/bootstraplesson.js"></script>
+    <script src="../../dependency-graph.js"></script>
+    <script src="../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"Debugging",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="article LessonPlan wescheme" onload="renderSaveToDrive()">
+<!--#include virtual="/menubar.ssi"-->
+<div id="body" onload="renderSaveToDrive()">
+<div id="header">
+<h1>Debugging</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<script>
+function preselect(klass) {
+  const items = document.getElementsByClassName(klass);
+  for (let i = 0; i < items.length; i++) {
+    items[i].style.display = 'none';
+  }
+  if (items.length > 0) {
+    items[0].style.display = 'block';
+  }
+}
+window.onload = function() {
+  preselect('alignedStandards');
+  preselect('alignedTextbooks');
+  preselect('alignedPractices');
+}
+function showStandardsAlignment() {
+  const selectTag = document.getElementsByClassName('standardsAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const stdTables = document.getElementsByClassName('alignedStandards');
+  //const intro = document.getElementsByClassName('alignedStandardsIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < stdTables.length; i++) {
+    const stdTable = stdTables[i];
+    stdTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optStd = opt.value;
+      for (let j = 0; j < stdTables.length; j++) {
+        const stdTable = stdTables[j];
+        if (stdTable.classList.contains(optStd)) {
+          stdTable.style.display = 'block';
+         // introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+function toggleNonPrereqDisplay() {
+  const inputTag = document.getElementsByClassName('sidebarinput')[0];
+  const checkedP = inputTag.checked;
+  const lessonTable = document.getElementsByClassName('sidebarlessons')[0];
+  const lis = lessonTable.getElementsByTagName('li');
+  for (let i = 0; i < lis.length; i++) {
+    const li = lis[i];
+    const lesson = li.getElementsByClassName('prerequisite');
+    if (lesson.length === 0) {
+      li.style.display = checkedP ? 'none' : 'block';
+    }
+  }
+}
+</script>
+<script>
+function showTextbooksAlignment() {
+  const selectTag = document.getElementsByClassName('textbooksAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const textbookTables = document.getElementsByClassName('alignedTextbooks');
+  //const intro = document.getElementsByClassName('alignedTextbooksIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < textbookTables.length; i++) {
+    const textbookTable = textbookTables[i];
+    textbookTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optTextbook = opt.value;
+      for (let j = 0; j < textbookTables.length; j++) {
+        const textbookTable = textbookTables[j];
+        if (textbookTable.classList.contains(optTextbook)) {
+          textbookTable.style.display = 'block';
+          //introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+</script>
+<script>
+function showPracticesAlignment() {
+  const selectTag = document.getElementsByClassName('practicesAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const practiceTables = document.getElementsByClassName('alignedPractices');
+  for (let i = 0; i < practiceTables.length; i++) {
+    const practiceTable = practiceTables[i];
+    practiceTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optPractice = opt.value;
+      for (let j = 0; j < practiceTables.length; j++) {
+        const practiceTable = practiceTables[j];
+        if (practiceTable.classList.contains(optPractice)) {
+          practiceTable.style.display = 'block';
+        }
+      }
+    }
+  }
+}
+</script>
+<div class="paragraph">
+<!-- </p>
+</div>
+--></div><div class="sidebar"><div id="toggle"></div><div class="paragraph"><!--
+<div class="paragraph">
+<p>
+--><div class="sidebarlessons"><strong>Lessons</strong>
+<ul></ul></div>
+</div>
+<table class="tableblock frame-all grid-all stretch sidebarstandards">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Standards in this Lesson</strong>
+<select class="standardsAlignmentSelect"  onchange="showStandardsAlignment()"><option selected="selected" value="standards-CSTA">CSTA</option><option value="standards-Oklahoma">Oklahoma</option></select></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist alignedStandards standards-CSTA">
+<div class="title"><a href="https://csteachers.org/page/standards">CSTA Standards</a></div>
+<dl>
+<dt class="hdlist1">1B-AP-15</dt>
+<dd>
+<p>Test and debug (identify and fix errors) a program or algorithm to ensure it runs as intended.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Oklahoma">
+<div class="title"><a href="https://sde.ok.gov/oklahoma-academic-standards">Oklahoma Standards</a></div>
+<dl>
+<dt class="hdlist1">OK.3.AP.PD.03</dt>
+<dd>
+<p>Analyze and debug a program that includes sequencing, repetition and variables in a programming language.</p>
+</dd>
+<dt class="hdlist1">OK.4.AP.PD.03</dt>
+<dd>
+<p>Analyze, create, and debug a program that includes sequencing, repetition, conditionals and variables in a programming language.</p>
+</dd>
+<dt class="hdlist1">OK.5.AP.PD.03</dt>
+<dd>
+<p>Analyze, create, and debug a program that includes sequencing, repetition, conditionals and variables in a programming language.</p>
+</dd>
+<dt class="hdlist1">OK.L1.CS.T.01</dt>
+<dd>
+<p>Develop and apply criteria for systematic discovery of errors and systematic strategies for correction of errors in computing systems.</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch sidebarpractices">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Practices in this Lesson</strong>
+<select class="practicesAlignmentSelect"  onchange="showPracticesAlignment()"><option selected="selected" value="practices-K12CS"><a href="https://k12cs.org">K12CS</a></option><option value="practices-CC"><a href="http://corestandards.org/Math/">Math</a></option></select></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist alignedPractices practices-K12CS">
+<div class="title"><a href="https://k12cs.org">K12CS</a></div>
+<dl>
+<dt class="hdlist1">P2</dt>
+<dd>
+<p>Collaborating Around Computing</p>
+</dd>
+<dt class="hdlist1">P6</dt>
+<dd>
+<p>Testing and Refining Computational Artifacts</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedPractices practices-CC">
+<div class="title"><a href="http://corestandards.org/Math/">Math</a></div>
+<dl>
+<dt class="hdlist1">MP.6</dt>
+<dd>
+<p>Attend to precision</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<!-- </p>
+</div>
+--></div><!--
+<div class="paragraph">
+<p>
+-->
+</div>
+<div class="paragraph">
+<p><span class="other-proglang">(Also available in <a href="../../lessons/debugging/index.shtml">Pyret</a>)</span></p>
+</div>
+<div class="paragraph description">
+<p>Students confront various kinds of bugs and errors, and develop strategies for fixing them!</p>
+</div>
+<table class="tableblock frame-all grid-all stripes-none stretch left-header preamble">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Lesson Goals</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Students will be able to:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Identify and explain the difference between syntax, contract, and logic errors</p>
+</li>
+<li>
+<p>Use strategies to correct each kind of error</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Student-Facing Lesson Goals</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>I know different kinds of coding errors, and can tell which is which</p>
+</li>
+<li>
+<p>I know how to read an error message, and use it to help fix an error</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Key Points for the Facilitator</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Meta-cognition is especially important here. Make sure you give <em>lots</em> of space for students to discuss their bug-fixing strategies</p>
+</li>
+<li>
+<p>Productive struggle is critical in this lesson, to build up students' confidence in their ability to fix their own mistakes</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Materials</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist materials-links">
+<ul>
+<li>
+<p><a href="https://docs.google.com/presentation/d/1GRRwuOCttmvaZXcYyfoS51DZ7u3XR9UnmoEoSohpyew/" target="_blank" rel="noopener">Lesson Slides</a></p>
+</li>
+<li>
+<p><span class="StarterFile"><a href="https://www.wescheme.org/openEditor?publicId=nwVEttw9ZY" target="_blank" rel="noopener">Bug Hunting Starter File</a></span></p>
+</li>
+<li>
+<p><span class="materialSectionPlaceholder"> </span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/debugging-wescheme/pages/syntax-errors.html" target="_blank" rel="noopener">Syntax Errors</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/debugging-wescheme/pages/contract-errors.html" target="_blank" rel="noopener">Contract Errors</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/debugging-wescheme/pages/logic-errors.html" target="_blank" rel="noopener">Logic Errors</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/debugging-wescheme/pages/logic-errors-2.html" target="_blank" rel="noopener">Logic Errors 2</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/debugging-wescheme/pages/logic-errors-3.html" target="_blank" rel="noopener">Logic Errors 3</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/debugging-wescheme/pages/what-kind-of-error.html" target="_blank" rel="noopener">What Kind of Error?</a></span></p>
+</li>
+<li>
+<p><strong>Classroom visual:</strong> <a href="javascript:showLangTable()">Language Table</a></p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="dlist glossary">
+<div class="title">Glossary</div>
+<dl>
+<dt class="hdlist1">contract error</dt>
+<dd>
+<p>errors where the code makes sense, but uses a function with the wrong number or type of arguments</p>
+</dd>
+<dt class="hdlist1">logic error</dt>
+<dd>
+<p>errors in the way a programmer is thinking about a problem</p>
+</dd>
+<dt class="hdlist1">syntax error</dt>
+<dd>
+<p>errors where the computer cannot make sense of the code (e.g. - missing commas, missing parentheses, unclosed strings)</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_syntax_errors_duration_15_min_"><span class="section-link"><a href="#_syntax_errors_duration_15_min_"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Syntax Errors <span class="duration">15 min</span></h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_overview">Overview</h3>
+<div class="paragraph">
+<p>Students are introduced to <em>syntax errors</em>, the error messages they generate, and how to read those errors and fix them.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_launch">Launch</h3>
+<div class="paragraph">
+<p>People often think that computers can&#8217;t make mistakes, because they are "just machines". But who builds those machines? Who programs them? <em>Human beings</em> are always behind the scenes: writing code, designing chips, and even training Artificial Intelligences! <strong>And humans make mistakes!</strong></p>
+</div>
+<div class="paragraph">
+<p><span class="right"><span class="image-figure"><span class="image"><img src="images/e3dd6f179b115c8c.jpg" alt="Grace Hopper" width="200" title="Grace Hopper"></span><a href="images/e3dd6f179b115c8c.jpg" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span> In the 1940s, computers weren&#8217;t made from tiny microprocessors. They were made from large wires, vacuum tubes, gears and dials. In 1946, the legendary programmer Grace Hopper (pictured) had a problem. She was certain that her code was right, but for some reason it wasn&#8217;t running correctly.
+<span style="clear: both;display: block"></span><span class="right"><span class="image-figure"><span class="image"><img src="images/93f371eb06ecfedc.jpg" alt="First Computer Bug" width="200" title="First Computer Bug"></span><a href="images/93f371eb06ecfedc.jpg" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span> She traced the wires and relays, and eventually found a <em>moth</em> that had gotten stuck and electrocuted! By disrupting the parts of the computer, it was causing the program to run incorrectly, and produce unexpected results! She wrote her findings into her notes, and even included the body of the moth. <strong>This moth is the origin of the term "bug" in programming.</strong></p>
+</div>
+<div class="paragraph">
+<p>Knowing how to find and fix bugs is a valuable skill for any programmer, and the kind of logical thinking you gain by fixing errors can help you find mistakes <em>outside</em> of a program as well!</p>
+</div>
+<div class="paragraph">
+<p>When you Run a program, you expect the computer to do three things:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Read the code</p>
+</li>
+<li>
+<p>Run the code</p>
+</li>
+<li>
+<p>Give you the result you expected</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>In this lesson, we&#8217;ll be talking about different kinds of mistakes, which can happen in each of those three phases:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><span class="vocab">Syntax Errors</span> - Invalid code that the computer cannot even <em>read</em>, resulting in an error message. These are often typos, missing characters like a semicolon or parenthesis, or missing keywords like <code class="pyret">define</code> .</p>
+</li>
+<li>
+<p><span class="vocab">Contract Errors</span> - Code that produces a value that breaks a function&#8217;s contract, preventing the computer from <em>running</em> the program any further. For example, <code class="pyret">(circle "hello" "solid" "red")</code> has no syntax errors. However, the contract for circle is <code class="pyret">circle :: Number, String, String -&gt; Image</code> so the  the <code class="pyret">circle</code> function is expecting a Number for it&#8217;s first argument and "hello" is a String! Like syntax errors, contract errors will also result in an error message.</p>
+</li>
+<li>
+<p><span class="vocab">Logic Errors</span> - Logic errors are often the hardest ones to find, because there is no error message! When there&#8217;s a logic error in the code, the computer reads and runs the code just fine&#8230;&#8203;but the result isn&#8217;t what the programmer expected!</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_investigate">Investigate</h3>
+<div class="paragraph">
+<p>Here are a few simple examples of syntax errors - can you find the problem?</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code class="pyret">"hello</code></p>
+</li>
+<li>
+<p><code class="pyret">(+ 1 2</code></p>
+<div class="paragraph lesson-point">
+<p>Syntax Errors prevent the computer from <em>reading</em> code</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>In pairs or small groups, complete <a href="../../lessons/debugging-wescheme/pages/syntax-errors.html" target="_blank" rel="noopener">Syntax Errors</a>. For each piece of code, be sure to discuss as a team before deciding on the mistake.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_synthesize">Synthesize</h3>
+<div class="paragraph">
+<p>Have students share back their findings. Leave time for discussion! The key here is to have students reflect on how useful it is to <em>read the error messages</em> first, even the few errors that may not be as helpful as the others.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Which syntax errors were the easiest to find? The hardest?</p>
+</li>
+<li>
+<p>Which error messages were the most helpful? Least helpful?</p>
+</li>
+<li>
+<p>Which syntax errors do <em>you</em> make the most often?</p>
+</li>
+<li>
+<p>What strategies could we use to avoid making them in the first place?</p>
+</li>
+<li>
+<p>What strategies could we use to fix them faster?</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_contract_errors_duration_15_min_"><span class="section-link"><a href="#_contract_errors_duration_15_min_"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Contract Errors <span class="duration">15 min</span></h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_overview_2">Overview</h3>
+<div class="paragraph">
+<p>Students are introduced to <em>contract errors</em>. They read the error messages they generate, and discuss strategies to fix them.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_launch_2">Launch</h3>
+<div class="paragraph">
+<p>With no syntax errors, the computer can read our code and try to run it. But a running program can still have problems! Here are a few examples of programs that have perfect syntax, but will generate an error when we try to run them. Can you spot the problem?</p>
+</div>
+<div class="paragraph">
+<p><span class="obeyspaces"><code class="racket">(+ 1 "Zari")</code></span></p>
+</div>
+<div class="paragraph">
+<p><span class="obeyspaces"><code class="racket">(triangle "50" "solid" "blue")</code></span></p>
+</div>
+<div class="paragraph">
+<p><span class="obeyspaces"><code class="racket">(or "true" false)</code></span></p>
+</div>
+<div class="paragraph lesson-point">
+<p>Contract Errors prevent the computer from <em>running</em> code</p>
+</div>
+<div class="paragraph">
+<p>A program might be running along just fine, but as soon as a function is given the wrong type of value, the program halts with an error!</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_investigate_2">Investigate</h3>
+<div class="paragraph lesson-instruction">
+<p>In pairs or small groups, complete <a href="../../lessons/debugging-wescheme/pages/contract-errors.html" target="_blank" rel="noopener">Contract Errors</a>. For each piece of code, be sure to discuss as a team before deciding on the mistake.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_synthesize_2">Synthesize</h3>
+<div class="paragraph">
+<p>Have students share back their findings. Leave time for discussion! When facilitating this discussion, drive home the point that reading the error and consulting the Contracts page are critical strategies for fixing these bugs.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Which contract errors were the easiest to find? The hardest?</p>
+</li>
+<li>
+<p>Which error messages were the most helpful? Least helpful?</p>
+</li>
+<li>
+<p>Which contract errors do <em>you</em> make the most often?</p>
+</li>
+<li>
+<p>What strategies could we use to avoid making them in the first place?</p>
+</li>
+<li>
+<p>What strategies could we use to fix them faster?</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_logic_errors_duration_20_min_"><span class="section-link"><a href="#_logic_errors_duration_20_min_"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Logic Errors <span class="duration">20 min</span></h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_overview_3">Overview</h3>
+<div class="paragraph">
+<p>Students are introduced to <em>logic errors</em>, which are quite different from the other two kinds of errors! Logic errors are mistakes in <strong>thinking</strong> rather than <strong>coding</strong>.</p>
+</div>
+<div class="paragraph">
+<p>Key point: This is where good habits like writing thorough examples and good comments are really helpful!</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_launch_3">Launch</h3>
+<div class="paragraph">
+<p>Ho-ming wanted to write a function to produce green triangles, and she went straight to coding the definition:</p>
+</div>
+<div class="paragraph">
+<p><span class="obeyspaces"><code class="racket">(define (gt size) (triangle 100 "solid" "green"))</code></span></p>
+</div>
+<div class="paragraph">
+<p>She clicked "Run" and didn&#8217;t get any syntax errors, so she was feeling really confident. When she typed <span class="obeyspaces"><code class="racket">(gt 100)</code></span> she got a solid green triangle of size 100, and she was thrilled! But when she tried to make triangles of <em>different</em> sizes, her heart broke: all of the triangles were of size 100!</p>
+</div>
+<div class="paragraph">
+<p>Did she have a syntax error? Why or why not?
+Did she have a contract error? Why or why not?</p>
+</div>
+<div class="paragraph">
+<p>Ho-ming&#8217;s mistake was that the function <code class="pyret">gt</code> always made triangles of size 100! It took in <code class="pyret">size</code> as a variable, but then didn&#8217;t use it all. The computer had no trouble reading her code, and she followed the contract for <code class="pyret">triangle</code>. <em>As far as the computer is concerned, there&#8217;s nothing wrong with her code!</em></p>
+</div>
+<div class="paragraph lesson-point">
+<p>Logic Errors don&#8217;t prevent code from running at all!</p>
+</div>
+<div class="paragraph">
+<p>Ho-ming&#8217;s computer had no trouble reading or running her code. The problem is that the code didn&#8217;t work the way she expected. Another way to think of it is that the bug isn&#8217;t in the code at all - <em>it&#8217;s in the way she was thinking when she wrote it.</em></p>
+</div>
+<div class="paragraph lesson-point">
+<p>Logic Errors occur in our brains, not on the computer!</p>
+</div>
+<div class="paragraph">
+<p>The only way to prevent logic errors - or to fix them when they happen! - is to be disciplined about the way we program. By thinking through a problem in multiple ways, we are less likely to make a mistake. What are some other ways Ho-ming could have thought through this function?</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>She could have written the Contract</strong>, which might have put more emphasis on the input.</p>
+</li>
+<li>
+<p><strong>She could have written a Purpose Statement</strong>, which would have forced her to talk about what happens to that input.</p>
+</li>
+<li>
+<p><strong>She could have written Examples</strong>, which would have helped her see how the input is used. And even if she made the exact same mistake, at least her examples would have generated a warning to alert her to the problem!</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_investigate_3">Investigate</h3>
+<div class="paragraph">
+<p>The Design Recipe helps us avoid logic errors, by demanding that we think through a problem in multiple ways. Even if <em>one</em> of our steps is wrong, we can check our work by comparing it to the other steps.</p>
+</div>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>In pairs or small groups, complete <a href="../../lessons/debugging-wescheme/pages/logic-errors.html" target="_blank" rel="noopener">Logic Errors</a>,  <a href="../../lessons/debugging-wescheme/pages/logic-errors-2.html" target="_blank" rel="noopener">Logic Errors 2</a>, and <a href="../../lessons/debugging-wescheme/pages/logic-errors-3.html" target="_blank" rel="noopener">Logic Errors 3</a>.</p>
+</li>
+<li>
+<p>In pairs or small groups, open the <a href="https://www.wescheme.org/openEditor?publicId=nwVEttw9ZY" target="_blank" rel="noopener">Bug Hunting Starter File</a>, and see if you can fix all of the syntax errors in the file by completing <a href="../../lessons/debugging-wescheme/pages/what-kind-of-error.html" target="_blank" rel="noopener">What Kind of Error?</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_synthesize_3">Synthesize</h3>
+<div class="paragraph">
+<p>Have students share back their findings. Leave time for discussion! The main idea for this discussion is that Logic Errors happen in the programmer&#8217;s mind, <em>not</em> in the code. The best way to help prevent them is to think things through completely, and there are many strategies to do this. The Design Recipe, for example, forces students to think through the same solution in multiple representation - and the computer checks that those representations match.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Did you find any logic errors that you&#8217;ve made in the past?</p>
+</li>
+<li>
+<p>What can you do in your own programming, to minimize the chances of logic errors?</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-17 19:42:13 -0400
+</div>
+</div>
+</div>
+</body>
+</html>

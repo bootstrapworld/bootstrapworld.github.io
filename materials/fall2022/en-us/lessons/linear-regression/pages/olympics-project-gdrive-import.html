@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Olympic Records</title>
+<style>
+/* Overall document font */
+* {font-family: Lato, Arial, Helvetica, sans-serif;}
+
+/* document headings */
+h1,.lesson-section-1 {color: #75328A;}
+h1{font-size: 32px; font-family: sans-serif;}
+table.section-heading *, .lesson-section-1 h2{font-size: 32px; font-weight: 100;}
+table.section-heading{width: 100%;}
+table.section-heading td:last-child{text-align: right; color: #d9d2e9;}
+
+/* preamble section */
+table.preamble td {padding: 10px;}
+table.preamble td:first-child{background: #b7d893; width: 25%;}
+table.preamble td:first-child p {font-weight: bold; margin: 5px;}
+
+/* content used throughout the body */
+table{ border-collapse: collapse; border: none; }
+table.grid-all.frame-all {border: solid 1px black;}
+table.grid-none.frame-none {border-width: 0px;}
+
+.big {font-size: 30pt;}
+.vocab{font-weight: bold; font-style: italic;}
+.right{text-align: right;}
+.acknowledgment {
+  border-top: solid 1px black; 
+  font-style: italic; 
+  font-size: 8pt;
+}
+.lesson-point {
+  border-top: solid 1px black; 
+  border-bottom: solid 1px black; 
+  color: black;
+  font-weight: bold;
+}
+
+.web-page-only, #footer { display: none; visibility: hidden; }
+
+/* Callout boxes */
+.strategy-box, .notice-box {
+  background: #efefef;
+  border: solid 5px !important;
+  margin: 15px auto;
+  width: 100%;
+}
+.strategy-box { border-color: #1a73b5 !important; }
+.notice-box   { border-color: #7747a5 !important; }
+.strategy-box td, .notice-box td{ padding: 10px; }
+.strategy-box .title, .notice-box .title{
+  width: 100%;
+  display: block;
+  font-weight: bold;
+  font-size: 24px;
+  clear: both;
+  margin: 100px;
+}
+.strategy-box p.tableblock:first-child, .notice-box p.tableblock:first-child{
+  text-align: center;
+  padding-bottom: 15px;
+}
+.strategy-box .title { color: #1a73b5; }
+.notice-box   .title { color: #7747a5; }
+.strategy-box a, .notice-box a { color: blue; text-decoration: underline; }
+
+/* "Tables" of Evaluation */
+.operator{border-bottom: solid 1px black; text-align: center;}
+.operator * {text-align: center;}
+td {padding: 0px 10px; font-size: 14px;}
+table.expression {
+    font-family:"Courier New", Monaco, monospace;
+    border:     solid 1px black;
+    font-size:  1px;
+    max-width:  400px;
+    color:      #666666;
+    display:    inline-block;
+}
+table.args {border: none; text-align: center;}
+
+.wescheme-string,     .cm-scheme-string    {color: green;}
+.wescheme-number,     .cm-scheme-number    {color: blue;}
+.wescheme-boolean,    .cm-scheme-boolean   {color: darkred;}
+.wescheme-character,  .cm-scheme-character {color: orange;}
+.wescheme-symbol,     .cm-scheme-symbol    {color: steelblue;}
+.wescheme-comment,    .cm-scheme-comment   {color: orange; }
+
+.racket, .pyret, .studentAnswerCode, .studentAnswer, .pyretkeyword, .keyword_only {
+    font-family:"Courier New", Monaco, monospace !important; 
+    color: black;
+}
+
+/* Design Recipe */
+.recipe_instructions { font-style: italic; }
+table.recipe_title {
+  color:              white;
+  background:         gray;
+  display:            block;
+  padding:            0px;
+  font-size:          1.1rem;
+  font-weight:        bold;
+}</style>
+
+    <script src="../../../lib/langtable.js"></script>
+    <script src="../../../dependency-graph.js"></script>
+    <script src="../../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:window.location.href,
+    filename:"Olympic Records",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="workbookpage article pyret" onload="renderSaveToDrive()">
+<span id="header">
+<h1>Olympic Records</h1>
+
+  <span id="savetodrive-div"></span>
+
+</span>
+<span id="content">
+<span id="preamble_disabled" class="lessonSummary">
+<span class="sectionbody">
+<span class="paragraph description">
+<p>Students use scatter plots and linear regression to analyze data about olympic records in running, swimming, or speed skating.</p>
+</span>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<h2 id="_the_issue">The Issue</h2>
+<span class="sectionbody">
+<span class="paragraph">
+<p>Olympians and coaches often look at data from past world record events to inform their training.  Because the physiological attributes required to be a good sprinter, for example, are quite different from those required to be a good long distance runner, there is no simple formula to predict optimal performance. Factors that contribute to athleticism vary widely. As such, it is useful to examine the data to search out patterns and trends to make predictions about what might happen in the future.</p>
+</span>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<h2 id="_objectives">Objectives</h2>
+<span class="sectionbody">
+<span class="paragraph">
+<p>Students will use scatter plots, correlation, and lines of best fit to make predictions about world records data.</p>
+</span>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<h2 id="_phases_of_the_project">Phases of the Project</h2>
+<span class="sectionbody">
+<span class="sect2 lesson-section-2">
+<h3 id="_1_choose_your_dataset">1.Choose your dataset.</h3>
+<span class="paragraph">
+<p>Decide whether you will explore running, swimming, or speed skating. You can check out the data by clicking through the pages on <a href="https://docs.google.com/spreadsheets/d/10aT0EX0jBFKlcH9C3d_GdyPJg1Qs8xWXfZI0TsSzP7k/edit?usp=sharing">this spreadsheet</a>.</p>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_2_compute_average_speeds">2. Compute average speeds.</h3>
+<span class="ulist">
+<ul>
+<li>
+<p>Open the <a href="https://code.pyret.org/editor#share=1hQ9acqsDeWuMKlTVj8EJS3GOnxSxsA2w&v=1904b2c">Olympic Records Starter File</a> in Pyret. Load the men’s table and the women’s table for the dataset you’ve chosen to explore.</p>
+</li>
+<li>
+<p>On each of those two tables, build a column that computes the average speed for each event.</p>
+</li>
+</ul>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_3_create_scatter_plots_with_lines_of_best_fit">3. Create scatter plots with lines of best fit.</h3>
+<span class="ulist">
+<ul>
+<li>
+<p>Use Pyret to create two scatter plots (men’s records, women’s records) that plot the relationship between average speed and distance.</p>
+</li>
+<li>
+<p>Add a line of best fit to each plot.</p>
+</li>
+</ul>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_4_analyze_and_share_your_results_via_slides_or_a_written_report">4. Analyze and share your results via slides or a written report.</h3>
+<span class="paragraph">
+<p>Please include the following data and displays:</p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p>Your three-column tables (including average speeds)</p>
+</li>
+<li>
+<p>Your scatter plots, with lines of best fit and the accompanying equations provided</p>
+</li>
+<li>
+<p>Include a link to your Pyret code that you used to produce the above data and displays</p>
+</li>
+</ul>
+</span>
+<span class="paragraph">
+<p>Provide responses to the following questions about your lines of best fit on each of your two graphs:</p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p>What does the slope represent?</p>
+</li>
+<li>
+<p>What does the y-intercept represent?</p>
+</li>
+<li>
+<p>What does the line of best fit represent?</p>
+</li>
+<li>
+<p>What does the correlation coefficient (r) represent?</p>
+</li>
+</ul>
+</span>
+<span class="paragraph">
+<p>Please also discuss:</p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p>How are the men’s events and the women’s events alike and different? What factors do you think play a role here?</p>
+</li>
+<li>
+<p>What sort of prediction can you make using the lines of best fit? How confident would you be to use this prediction to assist athletes?</p>
+</li>
+</ul>
+</span>
+<table class="tableblock frame-all grid-none stripes-none stretch strategy-box">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p><span class="title">"A Legal Ruling on Their Womanhood"</span>
+At various points since women started competing in the Olympics in 1900, there has been a concern about the possibility of teams cheating by having men compete in women&#8217;s fields. Currently, to prevent any competitor from having an allegedly unfair advantage, female athletes are subjected to testosterone tests. As a result, female athletes with naturally high testosterone levels - who, in most cases, are from Africa and South Asia - face a difficult situation. For instance, Namibian track and field stars <a href="https://www.bbc.com/news/world-africa-57748135">Christine Mboma and Beatrice Masilingi</a> must choose either to take medication to lower their testosterone levels or opt out of the Olympics entirely. Although some commentators feel that a third category is necessary at the Olympics (aside from just “men” and “women”), others believe that testing testosterone levels results in discrimination. Research shows, for instance, that in a group of elite male athletes, all with varying testosterone levels, those with higher levels of testosterone will not necessarily perform better than males with lower levels.</p>
+</span></span></td>
+</tr>
+</tbody>
+</table>
+</span>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<h2 id="_resources">Resources</h2>
+<span class="sectionbody">
+<span class="paragraph">
+<p>Wikipedia World Record progressions for <a href="https://en.wikipedia.org/wiki/Athletics_record_progressions">running</a>
+Wikipedia World Record progressions for <a href="https://en.wikipedia.org/wiki/List_of_world_records_in_swimming">swimming</a>
+Wikipedia World Record progressions for <a href="https://en.wikipedia.org/wiki/List_of_world_records_in_speed_skating">speed skating</a></p>
+</span>
+<span class="paragraph">
+<p>(Based on a project by Joy Straub)</p>
+</span>
+</span>
+</span>
+<span class="sect1 acknowledgmentsect">
+<span class="sectionbody">
+<span class="openblock acknowledgment"><hr/>
+<span class="content">
+<span class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</span>
+</span>
+</span>
+</span>
+</span>
+</span>
+<span id="footer">
+<span id="footer-text">
+Last updated 2022-10-17 19:42:06 -0400
+</span>
+</span>
+</body>
+</html>

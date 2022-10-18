@@ -1,0 +1,1955 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Making Flags</title>
+
+  <link rel="stylesheet" href="../../lib/curriculum.css" />
+    <link rel="stylesheet" href="../../lib/codemirror.css" />
+    <script src="../../lib/codemirror.js"></script>
+    <script src="../../lib/runmode.js"></script>
+    <script src="../../lib/scheme2.js"></script>
+    <script src="../../lib/pyret-mode.js"></script>
+    <script src="../../lib/langtable.js"></script>
+    <script src="../../lib/bootstraplesson.js"></script>
+    <script src="../../dependency-graph.js"></script>
+    <script src="../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"Making Flags",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="article LessonPlan wescheme" onload="renderSaveToDrive()">
+<!--#include virtual="/menubar.ssi"-->
+<div id="body" onload="renderSaveToDrive()">
+<div id="header">
+<h1>Making Flags</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<script>
+function preselect(klass) {
+  const items = document.getElementsByClassName(klass);
+  for (let i = 0; i < items.length; i++) {
+    items[i].style.display = 'none';
+  }
+  if (items.length > 0) {
+    items[0].style.display = 'block';
+  }
+}
+window.onload = function() {
+  preselect('alignedStandards');
+  preselect('alignedTextbooks');
+  preselect('alignedPractices');
+}
+function showStandardsAlignment() {
+  const selectTag = document.getElementsByClassName('standardsAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const stdTables = document.getElementsByClassName('alignedStandards');
+  //const intro = document.getElementsByClassName('alignedStandardsIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < stdTables.length; i++) {
+    const stdTable = stdTables[i];
+    stdTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optStd = opt.value;
+      for (let j = 0; j < stdTables.length; j++) {
+        const stdTable = stdTables[j];
+        if (stdTable.classList.contains(optStd)) {
+          stdTable.style.display = 'block';
+         // introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+function toggleNonPrereqDisplay() {
+  const inputTag = document.getElementsByClassName('sidebarinput')[0];
+  const checkedP = inputTag.checked;
+  const lessonTable = document.getElementsByClassName('sidebarlessons')[0];
+  const lis = lessonTable.getElementsByTagName('li');
+  for (let i = 0; i < lis.length; i++) {
+    const li = lis[i];
+    const lesson = li.getElementsByClassName('prerequisite');
+    if (lesson.length === 0) {
+      li.style.display = checkedP ? 'none' : 'block';
+    }
+  }
+}
+</script>
+<script>
+function showTextbooksAlignment() {
+  const selectTag = document.getElementsByClassName('textbooksAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const textbookTables = document.getElementsByClassName('alignedTextbooks');
+  //const intro = document.getElementsByClassName('alignedTextbooksIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < textbookTables.length; i++) {
+    const textbookTable = textbookTables[i];
+    textbookTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optTextbook = opt.value;
+      for (let j = 0; j < textbookTables.length; j++) {
+        const textbookTable = textbookTables[j];
+        if (textbookTable.classList.contains(optTextbook)) {
+          textbookTable.style.display = 'block';
+          //introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+</script>
+<script>
+function showPracticesAlignment() {
+  const selectTag = document.getElementsByClassName('practicesAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const practiceTables = document.getElementsByClassName('alignedPractices');
+  for (let i = 0; i < practiceTables.length; i++) {
+    const practiceTable = practiceTables[i];
+    practiceTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optPractice = opt.value;
+      for (let j = 0; j < practiceTables.length; j++) {
+        const practiceTable = practiceTables[j];
+        if (practiceTable.classList.contains(optPractice)) {
+          practiceTable.style.display = 'block';
+        }
+      }
+    }
+  }
+}
+</script>
+<div class="paragraph">
+<!-- </p>
+</div>
+--></div><div class="sidebar"><div id="toggle"></div><div class="paragraph"><!--
+<div class="paragraph">
+<p>
+--><div class="sidebarlessons"><strong>Lessons</strong>
+<ul></ul></div>
+</div>
+<table class="tableblock frame-all grid-all stretch sidebarstandards">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Standards in this Lesson</strong>
+<select class="standardsAlignmentSelect"  onchange="showStandardsAlignment()"><option selected="selected" value="standards-CSTA">CSTA</option><option value="standards-Alabama">Alabama</option><option value="standards-Arkansas">Arkansas</option><option value="standards-California">California</option><option value="standards-Colorado">Colorado</option><option value="standards-Connecticut">Connecticut</option><option value="standards-Delaware">Delaware</option><option value="standards-Georgia">Georgia</option><option value="standards-Hawaii">Hawaii</option><option value="standards-Idaho">Idaho</option><option value="standards-Illinois">Illinois</option><option value="standards-Iowa">Iowa</option><option value="standards-Kansas">Kansas</option><option value="standards-Kentucky">Kentucky</option><option value="standards-Louisiana">Louisiana</option><option value="standards-Maine">Maine</option><option value="standards-Michigan">Michigan</option><option value="standards-Maryland">Maryland</option><option value="standards-Massachusetts">Massachusetts</option><option value="standards-Mississippi">Mississippi</option><option value="standards-Missouri">Missouri</option><option value="standards-Montana">Montana</option><option value="standards-New Hampshire">New Hampshire</option><option value="standards-Nevada">Nevada</option><option value="standards-New Jersey">New Jersey</option><option value="standards-New Mexico">New Mexico</option><option value="standards-North Carolina">North Carolina</option><option value="standards-North Dakota">North Dakota</option><option value="standards-New York">New York</option><option value="standards-Oklahoma">Oklahoma</option><option value="standards-Ohio">Ohio</option><option value="standards-Oregon">Oregon</option><option value="standards-Pennsylvania">Pennsylvania</option><option value="standards-Rhode Island">Rhode Island</option><option value="standards-South Dakota">South Dakota</option><option value="standards-Tennessee">Tennessee</option><option value="standards-Utah">Utah</option><option value="standards-Vermont">Vermont</option><option value="standards-Washington">Washington</option><option value="standards-West Virginia">West Virginia</option><option value="standards-Wisconsin">Wisconsin</option><option value="standards-Wyoming">Wyoming</option></select></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist alignedStandards standards-CSTA">
+<div class="title"><a href="https://csteachers.org/page/standards">CSTA Standards</a></div>
+<dl>
+<dt class="hdlist1">3A-AP-18</dt>
+<dd>
+<p>Create artifacts by using procedures within a program, combinations of data and procedures, or independent but interrelated programs.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Alabama">
+<div class="title"><a href="">Alabama Standards</a></div>
+<dl>
+<dt class="hdlist1">AL.6.RP.A</dt>
+<dd>
+<p>Understand ratio concepts and use ratio reasoning to solve problems.</p>
+</dd>
+<dt class="hdlist1">AL.6.RP.A.3.D</dt>
+<dd>
+<p>Use ratio reasoning to convert measurement units; manipulate and transform units appropriately when multiplying or dividing quantities.</p>
+</dd>
+<dt class="hdlist1">AL.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">AL.HSF.IF.B</dt>
+<dd>
+<p>Interpret functions that arise in applications in terms of the context.</p>
+</dd>
+<dt class="hdlist1">AL.HSN.Q.A</dt>
+<dd>
+<p>Reason quantitatively and use units to solve problems.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Arkansas">
+<div class="title"><a href="">Arkansas Standards</a></div>
+<dl>
+<dt class="hdlist1">AR.6.RP.A</dt>
+<dd>
+<p>Understand ratio concepts and use ratio reasoning to solve problems.</p>
+</dd>
+<dt class="hdlist1">AR.6.RP.A.3.D</dt>
+<dd>
+<p>Use ratio reasoning to convert measurement units; manipulate and transform units appropriately when multiplying or dividing quantities.</p>
+</dd>
+<dt class="hdlist1">AR.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">AR.HSF.IF.B</dt>
+<dd>
+<p>Interpret functions that arise in applications in terms of the context.</p>
+</dd>
+<dt class="hdlist1">AR.HSN.Q.A</dt>
+<dd>
+<p>Reason quantitatively and use units to solve problems.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-California">
+<div class="title"><a href="">California Standards</a></div>
+<dl>
+<dt class="hdlist1">CA.6.RP.A</dt>
+<dd>
+<p>Understand ratio concepts and use ratio reasoning to solve problems.</p>
+</dd>
+<dt class="hdlist1">CA.6.RP.A.3.D</dt>
+<dd>
+<p>Use ratio reasoning to convert measurement units; manipulate and transform units appropriately when multiplying or dividing quantities.</p>
+</dd>
+<dt class="hdlist1">CA.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">CA.HSF.IF.B</dt>
+<dd>
+<p>Interpret functions that arise in applications in terms of the context.</p>
+</dd>
+<dt class="hdlist1">CA.HSN.Q.A</dt>
+<dd>
+<p>Reason quantitatively and use units to solve problems.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Colorado">
+<div class="title"><a href="">Colorado Standards</a></div>
+<dl>
+<dt class="hdlist1">CO.6.RP.A</dt>
+<dd>
+<p>Understand ratio concepts and use ratio reasoning to solve problems.</p>
+</dd>
+<dt class="hdlist1">CO.6.RP.A.3.D</dt>
+<dd>
+<p>Use ratio reasoning to convert measurement units; manipulate and transform units appropriately when multiplying or dividing quantities.</p>
+</dd>
+<dt class="hdlist1">CO.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">CO.HSF.IF.B</dt>
+<dd>
+<p>Interpret functions that arise in applications in terms of the context.</p>
+</dd>
+<dt class="hdlist1">CO.HSN.Q.A</dt>
+<dd>
+<p>Reason quantitatively and use units to solve problems.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Connecticut">
+<div class="title"><a href="">Connecticut Standards</a></div>
+<dl>
+<dt class="hdlist1">CT.6.RP.A</dt>
+<dd>
+<p>Understand ratio concepts and use ratio reasoning to solve problems.</p>
+</dd>
+<dt class="hdlist1">CT.6.RP.A.3.D</dt>
+<dd>
+<p>Use ratio reasoning to convert measurement units; manipulate and transform units appropriately when multiplying or dividing quantities.</p>
+</dd>
+<dt class="hdlist1">CT.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">CT.HSF.IF.B</dt>
+<dd>
+<p>Interpret functions that arise in applications in terms of the context.</p>
+</dd>
+<dt class="hdlist1">CT.HSN.Q.A</dt>
+<dd>
+<p>Reason quantitatively and use units to solve problems.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Delaware">
+<div class="title"><a href="">Delaware Standards</a></div>
+<dl>
+<dt class="hdlist1">DE.6.RP.A</dt>
+<dd>
+<p>Understand ratio concepts and use ratio reasoning to solve problems.</p>
+</dd>
+<dt class="hdlist1">DE.6.RP.A.3.D</dt>
+<dd>
+<p>Use ratio reasoning to convert measurement units; manipulate and transform units appropriately when multiplying or dividing quantities.</p>
+</dd>
+<dt class="hdlist1">DE.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">DE.HSF.IF.B</dt>
+<dd>
+<p>Interpret functions that arise in applications in terms of the context.</p>
+</dd>
+<dt class="hdlist1">DE.HSN.Q.A</dt>
+<dd>
+<p>Reason quantitatively and use units to solve problems.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Georgia">
+<div class="title"><a href="">Delaware Standards</a></div>
+<dl>
+<dt class="hdlist1">GA.6.RP.A</dt>
+<dd>
+<p>Understand ratio concepts and use ratio reasoning to solve problems.</p>
+</dd>
+<dt class="hdlist1">GA.6.RP.A.3.D</dt>
+<dd>
+<p>Use ratio reasoning to convert measurement units; manipulate and transform units appropriately when multiplying or dividing quantities.</p>
+</dd>
+<dt class="hdlist1">GA.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">GA.HSF.IF.B</dt>
+<dd>
+<p>Interpret functions that arise in applications in terms of the context.</p>
+</dd>
+<dt class="hdlist1">GA.HSN.Q.A</dt>
+<dd>
+<p>Reason quantitatively and use units to solve problems.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Hawaii">
+<div class="title"><a href="">Hawaii Standards</a></div>
+<dl>
+<dt class="hdlist1">HI.6.RP.A</dt>
+<dd>
+<p>Understand ratio concepts and use ratio reasoning to solve problems.</p>
+</dd>
+<dt class="hdlist1">HI.6.RP.A.3.D</dt>
+<dd>
+<p>Use ratio reasoning to convert measurement units; manipulate and transform units appropriately when multiplying or dividing quantities.</p>
+</dd>
+<dt class="hdlist1">HI.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">HI.HSF.IF.B</dt>
+<dd>
+<p>Interpret functions that arise in applications in terms of the context.</p>
+</dd>
+<dt class="hdlist1">HI.HSN.Q.A</dt>
+<dd>
+<p>Reason quantitatively and use units to solve problems.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Idaho">
+<div class="title"><a href="">Idaho Standards</a></div>
+<dl>
+<dt class="hdlist1">ID.6.RP.A</dt>
+<dd>
+<p>Understand ratio concepts and use ratio reasoning to solve problems.</p>
+</dd>
+<dt class="hdlist1">ID.6.RP.A.3.D</dt>
+<dd>
+<p>Use ratio reasoning to convert measurement units; manipulate and transform units appropriately when multiplying or dividing quantities.</p>
+</dd>
+<dt class="hdlist1">ID.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">ID.HSF.IF.B</dt>
+<dd>
+<p>Interpret functions that arise in applications in terms of the context.</p>
+</dd>
+<dt class="hdlist1">ID.HSN.Q.A</dt>
+<dd>
+<p>Reason quantitatively and use units to solve problems.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Illinois">
+<div class="title"><a href="">Illinois Standards</a></div>
+<dl>
+<dt class="hdlist1">IL.6.RP.A</dt>
+<dd>
+<p>Understand ratio concepts and use ratio reasoning to solve problems.</p>
+</dd>
+<dt class="hdlist1">IL.6.RP.A.3.D</dt>
+<dd>
+<p>Use ratio reasoning to convert measurement units; manipulate and transform units appropriately when multiplying or dividing quantities.</p>
+</dd>
+<dt class="hdlist1">IL.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">IL.HSF.IF.B</dt>
+<dd>
+<p>Interpret functions that arise in applications in terms of the context.</p>
+</dd>
+<dt class="hdlist1">IL.HSN.Q.A</dt>
+<dd>
+<p>Reason quantitatively and use units to solve problems.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Iowa">
+<div class="title"><a href="https://iowacore.gov/standards/iowa-core-standards">Iowa Standards</a></div>
+<dl>
+<dt class="hdlist1">IA.6.RP.A</dt>
+<dd>
+<p>Understand ratio concepts and use ratio reasoning to solve problems.</p>
+</dd>
+<dt class="hdlist1">IA.6.RP.A.3.D</dt>
+<dd>
+<p>Use ratio reasoning to convert measurement units; manipulate and transform units appropriately when multiplying or dividing quantities.</p>
+</dd>
+<dt class="hdlist1">IA.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">IA.HSF.IF.B</dt>
+<dd>
+<p>Interpret functions that arise in applications in terms of the context.</p>
+</dd>
+<dt class="hdlist1">IA.HSN.Q.A</dt>
+<dd>
+<p>Reason quantitatively and use units to solve problems.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Kansas">
+<div class="title"><a href="">Kansas Standards</a></div>
+<dl>
+<dt class="hdlist1">KS.6.RP.A</dt>
+<dd>
+<p>Understand ratio concepts and use ratio reasoning to solve problems.</p>
+</dd>
+<dt class="hdlist1">KS.6.RP.A.3.D</dt>
+<dd>
+<p>Use ratio reasoning to convert measurement units; manipulate and transform units appropriately when multiplying or dividing quantities.</p>
+</dd>
+<dt class="hdlist1">KS.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">KS.HSF.IF.B</dt>
+<dd>
+<p>Interpret functions that arise in applications in terms of the context.</p>
+</dd>
+<dt class="hdlist1">KS.HSN.Q.A</dt>
+<dd>
+<p>Reason quantitatively and use units to solve problems.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Kentucky">
+<div class="title"><a href="">Kentucky Standards</a></div>
+<dl>
+<dt class="hdlist1">KY.6.RP.A</dt>
+<dd>
+<p>Understand ratio concepts and use ratio reasoning to solve problems.</p>
+</dd>
+<dt class="hdlist1">KY.6.RP.A.3.D</dt>
+<dd>
+<p>Use ratio reasoning to convert measurement units; manipulate and transform units appropriately when multiplying or dividing quantities.</p>
+</dd>
+<dt class="hdlist1">KY.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">KY.HSF.IF.B</dt>
+<dd>
+<p>Interpret functions that arise in applications in terms of the context.</p>
+</dd>
+<dt class="hdlist1">KY.HSN.Q.A</dt>
+<dd>
+<p>Reason quantitatively and use units to solve problems.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Louisiana">
+<div class="title"><a href="">Louisiana Standards</a></div>
+<dl>
+<dt class="hdlist1">LA.6.RP.A</dt>
+<dd>
+<p>Understand ratio concepts and use ratio reasoning to solve problems.</p>
+</dd>
+<dt class="hdlist1">LA.6.RP.A.3.D</dt>
+<dd>
+<p>Use ratio reasoning to convert measurement units; manipulate and transform units appropriately when multiplying or dividing quantities.</p>
+</dd>
+<dt class="hdlist1">LA.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">LA.HSF.IF.B</dt>
+<dd>
+<p>Interpret functions that arise in applications in terms of the context.</p>
+</dd>
+<dt class="hdlist1">LA.HSN.Q.A</dt>
+<dd>
+<p>Reason quantitatively and use units to solve problems.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Maine">
+<div class="title"><a href="">Maine Standards</a></div>
+<dl>
+<dt class="hdlist1">ME.6.RP.A</dt>
+<dd>
+<p>Understand ratio concepts and use ratio reasoning to solve problems.</p>
+</dd>
+<dt class="hdlist1">ME.6.RP.A.3.D</dt>
+<dd>
+<p>Use ratio reasoning to convert measurement units; manipulate and transform units appropriately when multiplying or dividing quantities.</p>
+</dd>
+<dt class="hdlist1">ME.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">ME.HSF.IF.B</dt>
+<dd>
+<p>Interpret functions that arise in applications in terms of the context.</p>
+</dd>
+<dt class="hdlist1">ME.HSN.Q.A</dt>
+<dd>
+<p>Reason quantitatively and use units to solve problems.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Michigan">
+<div class="title"><a href="">Michigan Standards</a></div>
+<dl>
+<dt class="hdlist1">MI.6.RP.A</dt>
+<dd>
+<p>Understand ratio concepts and use ratio reasoning to solve problems.</p>
+</dd>
+<dt class="hdlist1">MI.6.RP.A.3.D</dt>
+<dd>
+<p>Use ratio reasoning to convert measurement units; manipulate and transform units appropriately when multiplying or dividing quantities.</p>
+</dd>
+<dt class="hdlist1">MI.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">MI.HSF.IF.B</dt>
+<dd>
+<p>Interpret functions that arise in applications in terms of the context.</p>
+</dd>
+<dt class="hdlist1">MI.HSN.Q.A</dt>
+<dd>
+<p>Reason quantitatively and use units to solve problems.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Maryland">
+<div class="title"><a href="">Maryland Standards</a></div>
+<dl>
+<dt class="hdlist1">MD.6.RP.A</dt>
+<dd>
+<p>Understand ratio concepts and use ratio reasoning to solve problems.</p>
+</dd>
+<dt class="hdlist1">MD.6.RP.A.3.D</dt>
+<dd>
+<p>Use ratio reasoning to convert measurement units; manipulate and transform units appropriately when multiplying or dividing quantities.</p>
+</dd>
+<dt class="hdlist1">MD.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">MD.HSF.IF.B</dt>
+<dd>
+<p>Interpret functions that arise in applications in terms of the context.</p>
+</dd>
+<dt class="hdlist1">MD.HSN.Q.A</dt>
+<dd>
+<p>Reason quantitatively and use units to solve problems.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Massachusetts">
+<div class="title"><a href="https://www.doe.mass.edu/frameworks/">Massachusetts Standards</a></div>
+<dl>
+<dt class="hdlist1">MA.6.RP.A</dt>
+<dd>
+<p>Understand ratio concepts and use ratio reasoning to solve problems.</p>
+</dd>
+<dt class="hdlist1">MA.6.RP.A.3.D</dt>
+<dd>
+<p>Use ratio reasoning to convert measurement units; manipulate and transform units appropriately when multiplying or dividing quantities.</p>
+</dd>
+<dt class="hdlist1">MA.9-12.CT.d.10</dt>
+<dd>
+<p>Use an iterative design process, including learning from making mistakes, to gain a better understanding of the problem domain.</p>
+</dd>
+<dt class="hdlist1">MA.9-12.CT.d.8</dt>
+<dd>
+<p>Use global and local scope appropriately in program design (e.g., for variables).</p>
+</dd>
+<dt class="hdlist1">MA.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">MA.HSF.IF.B</dt>
+<dd>
+<p>Interpret functions that arise in applications in terms of the context.</p>
+</dd>
+<dt class="hdlist1">MA.HSN.Q.A</dt>
+<dd>
+<p>Reason quantitatively and use units to solve problems.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Mississippi">
+<div class="title"><a href="">Mississippi Standards</a></div>
+<dl>
+<dt class="hdlist1">MS.6.RP.A</dt>
+<dd>
+<p>Understand ratio concepts and use ratio reasoning to solve problems.</p>
+</dd>
+<dt class="hdlist1">MS.6.RP.A.3.D</dt>
+<dd>
+<p>Use ratio reasoning to convert measurement units; manipulate and transform units appropriately when multiplying or dividing quantities.</p>
+</dd>
+<dt class="hdlist1">MS.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">MS.HSF.IF.B</dt>
+<dd>
+<p>Interpret functions that arise in applications in terms of the context.</p>
+</dd>
+<dt class="hdlist1">MS.HSN.Q.A</dt>
+<dd>
+<p>Reason quantitatively and use units to solve problems.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Missouri">
+<div class="title"><a href="">Missouri Standards</a></div>
+<dl>
+<dt class="hdlist1">MO.6.RP.A</dt>
+<dd>
+<p>Understand ratio concepts and use ratio reasoning to solve problems.</p>
+</dd>
+<dt class="hdlist1">MO.6.RP.A.3.D</dt>
+<dd>
+<p>Use ratio reasoning to convert measurement units; manipulate and transform units appropriately when multiplying or dividing quantities.</p>
+</dd>
+<dt class="hdlist1">MO.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">MO.HSF.IF.B</dt>
+<dd>
+<p>Interpret functions that arise in applications in terms of the context.</p>
+</dd>
+<dt class="hdlist1">MO.HSN.Q.A</dt>
+<dd>
+<p>Reason quantitatively and use units to solve problems.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Montana">
+<div class="title"><a href="">Montana Standards</a></div>
+<dl>
+<dt class="hdlist1">MT.6.RP.A</dt>
+<dd>
+<p>Understand ratio concepts and use ratio reasoning to solve problems.</p>
+</dd>
+<dt class="hdlist1">MT.6.RP.A.3.D</dt>
+<dd>
+<p>Use ratio reasoning to convert measurement units; manipulate and transform units appropriately when multiplying or dividing quantities.</p>
+</dd>
+<dt class="hdlist1">MT.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">MT.HSF.IF.B</dt>
+<dd>
+<p>Interpret functions that arise in applications in terms of the context.</p>
+</dd>
+<dt class="hdlist1">MT.HSN.Q.A</dt>
+<dd>
+<p>Reason quantitatively and use units to solve problems.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist .alignedStandards.standards-New Hampshire">
+<div class="title"><a href="">New Hampshire Standards</a></div>
+<dl>
+<dt>NH.6.RP.A</dt>
+<dd>
+<p>Understand ratio concepts and use ratio reasoning to solve problems.</p>
+</dd>
+<dt>NH.6.RP.A.3.D</dt>
+<dd>
+<p>Use ratio reasoning to convert measurement units; manipulate and transform units appropriately when multiplying or dividing quantities.</p>
+</dd>
+<dt>NH.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt>NH.HSF.IF.B</dt>
+<dd>
+<p>Interpret functions that arise in applications in terms of the context.</p>
+</dd>
+<dt>NH.HSN.Q.A</dt>
+<dd>
+<p>Reason quantitatively and use units to solve problems.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Nevada">
+<div class="title"><a href="">Nevada Standards</a></div>
+<dl>
+<dt class="hdlist1">NV.6.RP.A</dt>
+<dd>
+<p>Understand ratio concepts and use ratio reasoning to solve problems.</p>
+</dd>
+<dt class="hdlist1">NV.6.RP.A.3.D</dt>
+<dd>
+<p>Use ratio reasoning to convert measurement units; manipulate and transform units appropriately when multiplying or dividing quantities.</p>
+</dd>
+<dt class="hdlist1">NV.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">NV.HSF.IF.B</dt>
+<dd>
+<p>Interpret functions that arise in applications in terms of the context.</p>
+</dd>
+<dt class="hdlist1">NV.HSN.Q.A</dt>
+<dd>
+<p>Reason quantitatively and use units to solve problems.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist .alignedStandards.standards-New Jersey">
+<div class="title"><a href="">New Jersey Standards</a></div>
+<dl>
+<dt>NJ.6.RP.A</dt>
+<dd>
+<p>Understand ratio concepts and use ratio reasoning to solve problems.</p>
+</dd>
+<dt>NJ.6.RP.A.3.D</dt>
+<dd>
+<p>Use ratio reasoning to convert measurement units; manipulate and transform units appropriately when multiplying or dividing quantities.</p>
+</dd>
+<dt>NJ.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt>NJ.HSF.IF.B</dt>
+<dd>
+<p>Interpret functions that arise in applications in terms of the context.</p>
+</dd>
+<dt>NJ.HSN.Q.A</dt>
+<dd>
+<p>Reason quantitatively and use units to solve problems.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist .alignedStandards.standards-New Mexico">
+<div class="title"><a href="">New Mexico Standards</a></div>
+<dl>
+<dt>NM.6.RP.A</dt>
+<dd>
+<p>Understand ratio concepts and use ratio reasoning to solve problems.</p>
+</dd>
+<dt>NM.6.RP.A.3.D</dt>
+<dd>
+<p>Use ratio reasoning to convert measurement units; manipulate and transform units appropriately when multiplying or dividing quantities.</p>
+</dd>
+<dt>NM.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt>NM.HSF.IF.B</dt>
+<dd>
+<p>Interpret functions that arise in applications in terms of the context.</p>
+</dd>
+<dt>NM.HSN.Q.A</dt>
+<dd>
+<p>Reason quantitatively and use units to solve problems.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist .alignedStandards.standards-North Carolina">
+<div class="title"><a href="">North Carolina Standards</a></div>
+<dl>
+<dt>NC.6.RP.A</dt>
+<dd>
+<p>Understand ratio concepts and use ratio reasoning to solve problems.</p>
+</dd>
+<dt>NC.6.RP.A.3.D</dt>
+<dd>
+<p>Use ratio reasoning to convert measurement units; manipulate and transform units appropriately when multiplying or dividing quantities.</p>
+</dd>
+<dt>NC.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt>NC.HSF.IF.B</dt>
+<dd>
+<p>Interpret functions that arise in applications in terms of the context.</p>
+</dd>
+<dt>NC.HSN.Q.A</dt>
+<dd>
+<p>Reason quantitatively and use units to solve problems.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist .alignedStandards.standards-North Dakota">
+<div class="title"><a href="">North Dakota Standards</a></div>
+<dl>
+<dt>ND.6.RP.A</dt>
+<dd>
+<p>Understand ratio concepts and use ratio reasoning to solve problems.</p>
+</dd>
+<dt>ND.6.RP.A.3.D</dt>
+<dd>
+<p>Use ratio reasoning to convert measurement units; manipulate and transform units appropriately when multiplying or dividing quantities.</p>
+</dd>
+<dt>ND.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt>ND.HSF.IF.B</dt>
+<dd>
+<p>Interpret functions that arise in applications in terms of the context.</p>
+</dd>
+<dt>ND.HSN.Q.A</dt>
+<dd>
+<p>Reason quantitatively and use units to solve problems.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist .alignedStandards.standards-New York">
+<div class="title"><a href="http://www.nysed.gov/curriculum-instruction/new-york-state-next-generation-mathematics-learning-standards">New York Standards</a></div>
+<dl>
+<dt>NY.6.RP.A</dt>
+<dd>
+<p>Understand ratio concepts and use ratio reasoning to solve problems.</p>
+</dd>
+<dt>NY.6.RP.A.3.D</dt>
+<dd>
+<p>Use ratio reasoning to convert measurement units; manipulate and transform units appropriately when multiplying or dividing quantities.</p>
+</dd>
+<dt>NY.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt>NY.HSF.IF.B</dt>
+<dd>
+<p>Interpret functions that arise in applications in terms of the context.</p>
+</dd>
+<dt>NY.HSN.Q.A</dt>
+<dd>
+<p>Reason quantitatively and use units to solve problems.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Oklahoma">
+<div class="title"><a href="https://sde.ok.gov/oklahoma-academic-standards">Oklahoma Standards</a></div>
+<dl>
+<dt class="hdlist1">OK.3.AP.A.01</dt>
+<dd>
+<p>Compare multiple algorithms for the same task.</p>
+</dd>
+<dt class="hdlist1">OK.3.AP.M.01</dt>
+<dd>
+<p>Decompose the steps needed to solve a problem into a precise sequence of instructions.</p>
+</dd>
+<dt class="hdlist1">OK.3.AP.PD.03</dt>
+<dd>
+<p>Analyze and debug a program that includes sequencing, repetition and variables in a programming language.</p>
+</dd>
+<dt class="hdlist1">OK.4.AP.A.01</dt>
+<dd>
+<p>Compare and refine multiple algorithms for the same task.</p>
+</dd>
+<dt class="hdlist1">OK.4.AP.C.01</dt>
+<dd>
+<p>Create programs using a programming language that utilize sequencing, repetition, conditionals and variables using math operations manipulate values to solve a problem or express ideas both independently and collaboratively.</p>
+</dd>
+<dt class="hdlist1">OK.5.AP.A.01</dt>
+<dd>
+<p>Compare and refine multiple algorithms for the same task and determine which is the most efficient.</p>
+</dd>
+<dt class="hdlist1">OK.6.A.1.1</dt>
+<dd>
+<p>Plot integer- and rational-valued (limited to halves and fourths) ordered-pairs as coordinates in all four quadrants and recognize the reflective relationships among coordinates that differ only by their signs.</p>
+</dd>
+<dt class="hdlist1">OK.6.AP.M.01</dt>
+<dd>
+<p>Decompose problems into parts to facilitate the design, implementation, and review of programs.</p>
+</dd>
+<dt class="hdlist1">OK.6.AP.PD.01</dt>
+<dd>
+<p>Seek and incorporate feedback from team members to refine a solution to a problem.</p>
+</dd>
+<dt class="hdlist1">OK.7.GM.4.1</dt>
+<dd>
+<p>Describe the properties of similarity, compare geometric figures for similarity, and determine scale factors resulting from dilations.</p>
+</dd>
+<dt class="hdlist1">OK.7.GM.4.2</dt>
+<dd>
+<p>Apply proportions, ratios, and scale factors to solve problems involving scale drawings and determine side lengths and areas of similar triangles and rectangles.</p>
+</dd>
+<dt class="hdlist1">OK.8.AP.A.01</dt>
+<dd>
+<p>Design algorithms in natural language, flow and control diagrams, comments within code, and/or pseudocode to solve complex problems.</p>
+</dd>
+<dt class="hdlist1">OK.MAP.1</dt>
+<dd>
+<p>Develop a deep and flexible conceptual understanding.</p>
+</dd>
+<dt class="hdlist1">OK.MAP.4</dt>
+<dd>
+<p>Develop mathematical reasoning.</p>
+</dd>
+<dt class="hdlist1">OK.PA.A.4</dt>
+<dd>
+<p>Represent real-world and mathematical problems using equations and inequalities involving linear expressions. Solve and graph equations and inequalities symbolically and graphically. Interpret solutions in the original context.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Ohio">
+<div class="title"><a href="">Ohio Standards</a></div>
+<dl>
+<dt class="hdlist1">OH.6.RP.A</dt>
+<dd>
+<p>Understand ratio concepts and use ratio reasoning to solve problems.</p>
+</dd>
+<dt class="hdlist1">OH.6.RP.A.3.D</dt>
+<dd>
+<p>Use ratio reasoning to convert measurement units; manipulate and transform units appropriately when multiplying or dividing quantities.</p>
+</dd>
+<dt class="hdlist1">OH.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">OH.HSF.IF.B</dt>
+<dd>
+<p>Interpret functions that arise in applications in terms of the context.</p>
+</dd>
+<dt class="hdlist1">OH.HSN.Q.A</dt>
+<dd>
+<p>Reason quantitatively and use units to solve problems.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Oregon">
+<div class="title"><a href="">Oregon Standards</a></div>
+<dl>
+<dt class="hdlist1">OR.6.RP.A</dt>
+<dd>
+<p>Understand ratio concepts and use ratio reasoning to solve problems.</p>
+</dd>
+<dt class="hdlist1">OR.6.RP.A.3.D</dt>
+<dd>
+<p>Use ratio reasoning to convert measurement units; manipulate and transform units appropriately when multiplying or dividing quantities.</p>
+</dd>
+<dt class="hdlist1">OR.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">OR.HSF.IF.B</dt>
+<dd>
+<p>Interpret functions that arise in applications in terms of the context.</p>
+</dd>
+<dt class="hdlist1">OR.HSN.Q.A</dt>
+<dd>
+<p>Reason quantitatively and use units to solve problems.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Pennsylvania">
+<div class="title"><a href="">Pennsylvania Standards</a></div>
+<dl>
+<dt class="hdlist1">PA.6.RP.A</dt>
+<dd>
+<p>Understand ratio concepts and use ratio reasoning to solve problems.</p>
+</dd>
+<dt class="hdlist1">PA.6.RP.A.3.D</dt>
+<dd>
+<p>Use ratio reasoning to convert measurement units; manipulate and transform units appropriately when multiplying or dividing quantities.</p>
+</dd>
+<dt class="hdlist1">PA.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">PA.HSF.IF.B</dt>
+<dd>
+<p>Interpret functions that arise in applications in terms of the context.</p>
+</dd>
+<dt class="hdlist1">PA.HSN.Q.A</dt>
+<dd>
+<p>Reason quantitatively and use units to solve problems.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist .alignedStandards.standards-Rhode Island">
+<div class="title"><a href="">Rhode Island Standards</a></div>
+<dl>
+<dt>RI.6.RP.A</dt>
+<dd>
+<p>Understand ratio concepts and use ratio reasoning to solve problems.</p>
+</dd>
+<dt>RI.6.RP.A.3.D</dt>
+<dd>
+<p>Use ratio reasoning to convert measurement units; manipulate and transform units appropriately when multiplying or dividing quantities.</p>
+</dd>
+<dt>RI.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt>RI.HSF.IF.B</dt>
+<dd>
+<p>Interpret functions that arise in applications in terms of the context.</p>
+</dd>
+<dt>RI.HSN.Q.A</dt>
+<dd>
+<p>Reason quantitatively and use units to solve problems.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist .alignedStandards.standards-South Dakota">
+<div class="title"><a href="">South Dakota Standards</a></div>
+<dl>
+<dt>SD.6.RP.A</dt>
+<dd>
+<p>Understand ratio concepts and use ratio reasoning to solve problems.</p>
+</dd>
+<dt>SD.6.RP.A.3.D</dt>
+<dd>
+<p>Use ratio reasoning to convert measurement units; manipulate and transform units appropriately when multiplying or dividing quantities.</p>
+</dd>
+<dt>SD.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt>SD.HSF.IF.B</dt>
+<dd>
+<p>Interpret functions that arise in applications in terms of the context.</p>
+</dd>
+<dt>SD.HSN.Q.A</dt>
+<dd>
+<p>Reason quantitatively and use units to solve problems.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Tennessee">
+<div class="title"><a href="">Tennessee Standards</a></div>
+<dl>
+<dt class="hdlist1">TN.6.RP.A</dt>
+<dd>
+<p>Understand ratio concepts and use ratio reasoning to solve problems.</p>
+</dd>
+<dt class="hdlist1">TN.6.RP.A.3.D</dt>
+<dd>
+<p>Use ratio reasoning to convert measurement units; manipulate and transform units appropriately when multiplying or dividing quantities.</p>
+</dd>
+<dt class="hdlist1">TN.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">TN.HSF.IF.B</dt>
+<dd>
+<p>Interpret functions that arise in applications in terms of the context.</p>
+</dd>
+<dt class="hdlist1">TN.HSN.Q.A</dt>
+<dd>
+<p>Reason quantitatively and use units to solve problems.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Utah">
+<div class="title"><a href="">Utah Standards</a></div>
+<dl>
+<dt class="hdlist1">UT.6.RP.A</dt>
+<dd>
+<p>Understand ratio concepts and use ratio reasoning to solve problems.</p>
+</dd>
+<dt class="hdlist1">UT.6.RP.A.3.D</dt>
+<dd>
+<p>Use ratio reasoning to convert measurement units; manipulate and transform units appropriately when multiplying or dividing quantities.</p>
+</dd>
+<dt class="hdlist1">UT.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">UT.HSF.IF.B</dt>
+<dd>
+<p>Interpret functions that arise in applications in terms of the context.</p>
+</dd>
+<dt class="hdlist1">UT.HSN.Q.A</dt>
+<dd>
+<p>Reason quantitatively and use units to solve problems.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Vermont">
+<div class="title"><a href="">Vermont Standards</a></div>
+<dl>
+<dt class="hdlist1">VT.6.RP.A</dt>
+<dd>
+<p>Understand ratio concepts and use ratio reasoning to solve problems.</p>
+</dd>
+<dt class="hdlist1">VT.6.RP.A.3.D</dt>
+<dd>
+<p>Use ratio reasoning to convert measurement units; manipulate and transform units appropriately when multiplying or dividing quantities.</p>
+</dd>
+<dt class="hdlist1">VT.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">VT.HSF.IF.B</dt>
+<dd>
+<p>Interpret functions that arise in applications in terms of the context.</p>
+</dd>
+<dt class="hdlist1">VT.HSN.Q.A</dt>
+<dd>
+<p>Reason quantitatively and use units to solve problems.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Washington">
+<div class="title"><a href="">Washington Standards</a></div>
+<dl>
+<dt class="hdlist1">WA.6.RP.A</dt>
+<dd>
+<p>Understand ratio concepts and use ratio reasoning to solve problems.</p>
+</dd>
+<dt class="hdlist1">WA.6.RP.A.3.D</dt>
+<dd>
+<p>Use ratio reasoning to convert measurement units; manipulate and transform units appropriately when multiplying or dividing quantities.</p>
+</dd>
+<dt class="hdlist1">WA.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">WA.HSF.IF.B</dt>
+<dd>
+<p>Interpret functions that arise in applications in terms of the context.</p>
+</dd>
+<dt class="hdlist1">WA.HSN.Q.A</dt>
+<dd>
+<p>Reason quantitatively and use units to solve problems.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist .alignedStandards.standards-West Virginia">
+<div class="title"><a href="">West Virginia Standards</a></div>
+<dl>
+<dt>WV.6.RP.A</dt>
+<dd>
+<p>Understand ratio concepts and use ratio reasoning to solve problems.</p>
+</dd>
+<dt>WV.6.RP.A.3.D</dt>
+<dd>
+<p>Use ratio reasoning to convert measurement units; manipulate and transform units appropriately when multiplying or dividing quantities.</p>
+</dd>
+<dt>WV.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt>WV.HSF.IF.B</dt>
+<dd>
+<p>Interpret functions that arise in applications in terms of the context.</p>
+</dd>
+<dt>WV.HSN.Q.A</dt>
+<dd>
+<p>Reason quantitatively and use units to solve problems.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Wisconsin">
+<div class="title"><a href="">Wisconsin Standards</a></div>
+<dl>
+<dt class="hdlist1">WI.6.RP.A</dt>
+<dd>
+<p>Understand ratio concepts and use ratio reasoning to solve problems.</p>
+</dd>
+<dt class="hdlist1">WI.6.RP.A.3.D</dt>
+<dd>
+<p>Use ratio reasoning to convert measurement units; manipulate and transform units appropriately when multiplying or dividing quantities.</p>
+</dd>
+<dt class="hdlist1">WI.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">WI.HSF.IF.B</dt>
+<dd>
+<p>Interpret functions that arise in applications in terms of the context.</p>
+</dd>
+<dt class="hdlist1">WI.HSN.Q.A</dt>
+<dd>
+<p>Reason quantitatively and use units to solve problems.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Wyoming">
+<div class="title"><a href="">Wyoming Standards</a></div>
+<dl>
+<dt class="hdlist1">WY.6.RP.A</dt>
+<dd>
+<p>Understand ratio concepts and use ratio reasoning to solve problems.</p>
+</dd>
+<dt class="hdlist1">WY.6.RP.A.3.D</dt>
+<dd>
+<p>Use ratio reasoning to convert measurement units; manipulate and transform units appropriately when multiplying or dividing quantities.</p>
+</dd>
+<dt class="hdlist1">WY.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">WY.HSF.IF.B</dt>
+<dd>
+<p>Interpret functions that arise in applications in terms of the context.</p>
+</dd>
+<dt class="hdlist1">WY.HSN.Q.A</dt>
+<dd>
+<p>Reason quantitatively and use units to solve problems.</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch sidebartextbooks">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Textbook Alignment</strong>
+<select class="textbooksAlignmentSelect"  onchange="showTextbooksAlignment()"><option selected="selected" value="textbook-IM_7"><a href="https://illustrativemathematics.org/">IM 7 Math™</a></option><option value="textbook-IM_6"><a href="https://illustrativemathematics.org/">IM 6 Math™</a></option><option value="textbook-IM_8"><a href="https://illustrativemathematics.org/">IM 8 Math™</a></option><option value="textbook-IM_Alg_1"><a href="https://illustrativemathematics.org/">IM Algebra 1</a></option></select></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist alignedTextbooks textbook-IM_7">
+<div class="title"><a href="https://illustrativemathematics.org/">IM 7 Math™</a></div>
+<dl>
+<dt class="hdlist1">IM.7.4.1</dt>
+<dd>
+<p>Lots of Flags</p>
+</dd>
+<dt class="hdlist1">IM.7.1.5</dt>
+<dd>
+<p>The Size of the Scale Factor</p>
+</dd>
+<dt class="hdlist1">IM.7.1.1</dt>
+<dd>
+<p>What are Scaled Copies?</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedTextbooks textbook-IM_6">
+<div class="title"><a href="https://illustrativemathematics.org/">IM 6 Math™</a></div>
+<dl>
+<dt class="hdlist1">IM.6.7.15</dt>
+<dd>
+<p>Shapes on the Coordinate Plane</p>
+</dd>
+<dt class="hdlist1">IM.6.7.14</dt>
+<dd>
+<p>Distances on the Coordinate Plane</p>
+</dd>
+<dt class="hdlist1">IM.6.2.14</dt>
+<dd>
+<p>Solving Equivalent Ratio Problems</p>
+</dd>
+<dt class="hdlist1">IM.6.1.3</dt>
+<dd>
+<p>Reasoning to Find Area</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedTextbooks textbook-IM_8">
+<div class="title"><a href="https://illustrativemathematics.org/">IM 8 Math™</a></div>
+<dl>
+<dt class="hdlist1">IM.8.2.1</dt>
+<dd>
+<p>Projecting and Scaling</p>
+</dd>
+<dt class="hdlist1">IM.8.1.3</dt>
+<dd>
+<p>Grid Moves</p>
+</dd>
+<dt class="hdlist1">IM.8.1.2</dt>
+<dd>
+<p>Naming the moves</p>
+</dd>
+<dt class="hdlist1">IM.8.1.1</dt>
+<dd>
+<p>Moving in the Plane</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedTextbooks textbook-IM_Alg_1">
+<div class="title"><a href="https://illustrativemathematics.org/">IM Algebra 1</a></div>
+<dl>
+<dt class="hdlist1">IM.Alg1.4.3</dt>
+<dd>
+<p>Interpreting &amp; Using Function Notation</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch sidebarpractices">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Practices in this Lesson</strong>
+<select class="practicesAlignmentSelect"  onchange="showPracticesAlignment()"><option selected="selected" value="practices-NGSS"><a href="https://ngss.nsta.org/practicesfull.aspx">Science and Engineering</a></option><option value="practices-MLR"><a href="https://achievethecore.org/peersandpedagogy/developing-math-language-routines/">Math Lang. Routines</a></option><option value="practices-CC"><a href="http://corestandards.org/Math/">Math</a></option></select></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist alignedPractices practices-NGSS">
+<div class="title"><a href="https://ngss.nsta.org/practicesfull.aspx">Science and Engineering</a></div>
+<dl>
+<dt class="hdlist1">SEP.5</dt>
+<dd>
+<p>Using Mathematics and Computational Thinking</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedPractices practices-MLR">
+<div class="title"><a href="https://achievethecore.org/peersandpedagogy/developing-math-language-routines/">Math Lang. Routines</a></div>
+<dl>
+<dt class="hdlist1">MLR.7</dt>
+<dd>
+<p>Compare and Connect</p>
+</dd>
+<dt class="hdlist1">MLR.3</dt>
+<dd>
+<p>Clarify, Critique and Correct</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedPractices practices-CC">
+<div class="title"><a href="http://corestandards.org/Math/">Math</a></div>
+<dl>
+<dt class="hdlist1">MP.4</dt>
+<dd>
+<p>Model with mathematics</p>
+</dd>
+<dt class="hdlist1">MP.6</dt>
+<dd>
+<p>Attend to precision</p>
+</dd>
+<dt class="hdlist1">MP.7</dt>
+<dd>
+<p>Look for and make use of structure</p>
+</dd>
+<dt class="hdlist1">MP.8</dt>
+<dd>
+<p>Look for and express regularity in repeated reasoning</p>
+</dd>
+<dt class="hdlist1">MP.1</dt>
+<dd>
+<p>Make sense of problems and persevere in solving them</p>
+</dd>
+<dt class="hdlist1">MP.2</dt>
+<dd>
+<p>Reason abstractly and quantitatively</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<!-- </p>
+</div>
+--></div><!--
+<div class="paragraph">
+<p>
+-->
+</div>
+<div class="paragraph">
+<p><span class="other-proglang">(Also available in <a href="../../lessons/flags/index.shtml">Pyret</a>)</span></p>
+</div>
+<style>
+#content .whiteBG img {background: white;}
+#content .strategy-box .editbox { width: auto; }
+#content .lesson-instruction .editbox {width: auto;}
+</style>
+<div class="paragraph description">
+<p>Students recreate images of flags of varying complexity by transforming and composing image functions and applying their knowledge of ratios and coordinates to scale and position the shapes precisely.</p>
+</div>
+<table class="tableblock frame-all grid-all stripes-none stretch left-header preamble">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Lesson Goals</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Students will be able to:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Put one image on top of another, using the <code class="racket">put-image</code> function.</p>
+</li>
+<li>
+<p>Decompose complex images into parts.</p>
+</li>
+<li>
+<p>Combine and manipulate images to create more complex images.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Student-facing Goals</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>I can put one image on top of another.</p>
+</li>
+<li>
+<p>I can make complex images like flags.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Materials</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist materials-links">
+<ul>
+<li>
+<p><a href="https://docs.google.com/presentation/d/1NN760PLeVKj5n10G-WrlwZ7R_y61kIrJhkeqh0PvKGg/" target="_blank" rel="noopener">Lesson Slides</a></p>
+</li>
+<li>
+<p><span class="StarterFile"><a href="https://www.wescheme.org/openEditor?publicId=jH25JejavW" target="_blank" rel="noopener">Flags Starter File</a></span></p>
+</li>
+<li>
+<p><span class="StarterFile"><a href="https://www.wescheme.org/openEditor?publicId=81WrTGQglP" target="_blank" rel="noopener">Flags of Netherland</a></span></p>
+</li>
+<li>
+<p><span class="materialSectionPlaceholder"> </span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/flags-wescheme/pages/japan-estimating-coordinates.html" target="_blank" rel="noopener">Estimating Coordinates</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/flags-wescheme/pages/decomposing-flags.html" target="_blank" rel="noopener">Decomposing Flags</a></span></p>
+</li>
+<li>
+<p><span class="OnlineExercise"><a href="https://teacher.desmos.com/activitybuilder/custom/5fece28cc64e8d0cca2a2169?collections=5fbecc2b40d7aa0d844956f0" target="_blank" rel="noopener">Scaling Flag Ratios (Desmos)</a></span></p>
+</li>
+<li>
+<p><span class="OnlineExercise"><a href="https://teacher.desmos.com/activitybuilder/custom/5ff46882e3b4660c751f707e?collections=5fbecc2b40d7aa0d844956f0" target="_blank" rel="noopener">Matching Code to Images using overlay and put-image (Desmos)</a></span></p>
+</li>
+<li>
+<p><span class="StarterFile Optional"><a href="https://www.wescheme.org/openEditor?publicId=6TJ0N2CJqU" target="_blank" rel="noopener">Flag of Puerto Rico Starter File</a></span></p>
+</li>
+<li>
+<p><span class="StarterFile Optional"><a href="https://www.wescheme.org/openEditor?publicId=ve2gTEY06p" target="_blank" rel="noopener">Alaskan Flag Starter File</a></span></p>
+</li>
+<li>
+<p><span class="StarterFile Optional"><a href="https://www.wescheme.org/openEditor?publicId=x0nJrP1UYp" target="_blank" rel="noopener">Flag of Lebanon Starter File</a></span></p>
+</li>
+<li>
+<p><span class="StarterFile Optional"><a href="https://www.wescheme.org/openEditor?publicId=SnLx13yt5W" target="_blank" rel="noopener">Flag of Mexico Starter File</a></span></p>
+</li>
+<li>
+<p><span class="StarterFile Optional"><a href="https://www.wescheme.org/openEditor?publicId=SQRHKcqQvW" target="_blank" rel="noopener">Flag of Trinidad and Tobago Starter File</a></span></p>
+</li>
+<li>
+<p><span class="StarterFile Optional"><a href="https://www.wescheme.org/openEditor?publicId=0Sdq8F2b3q" target="_blank" rel="noopener">Flag of Turkey Starter File</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="../../lessons/flags-wescheme/pages/flags-of-the-world-resource.pdf" target="_blank" rel="noopener">Flags of the World</a></span></p>
+</li>
+<li>
+<p><span class="Optional OnlineExercise"><a href="http://www.flagwizard.net/" target="_blank" rel="noopener">Flag Wizard</a></span></p>
+</li>
+<li>
+<p><strong>Classroom visual:</strong> <a href="javascript:showLangTable()">Language Table</a></p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Preparation</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>For some students, the use of graph paper for this activity will make a big difference!</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Key Points For The Facilitator</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>The <code class="racket">put-image</code> function treats the second image as the first quadrant of a cartesian plane. Having students sketch their flag on a sheet of graph paper drives this point home, and makes the programming easier.</p>
+</li>
+<li>
+<p>This is an excellent opportunity to introduce students to <em>indenting code</em>. The difference between poorly-indented flag code and well-indented flag code is extremely noticable.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="dlist glossary">
+<div class="title">Glossary</div>
+<dl>
+<dt class="hdlist1">comments</dt>
+<dd>
+<p>messages in the code, generally ignored by the computer, to help people interacting with the code understand what it is doing</p>
+</dd>
+<dt class="hdlist1">define</dt>
+<dd>
+<p>to associate a descriptive name with a value</p>
+</dd>
+<dt class="hdlist1">origin</dt>
+<dd>
+<p>the point (0,0) where the horizontal and vertical axes intersect</p>
+</dd>
+<dt class="hdlist1">ratio</dt>
+<dd>
+<p>the relative sizes of two or more values</p>
+</dd>
+<dt class="hdlist1">scale</dt>
+<dd>
+<p>resize an image to be larger or smaller while maintaining ratios and proportions</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_putting_images_together_duration_25_minutes_"><span class="section-link"><a href="#_putting_images_together_duration_25_minutes_"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Putting Images Together <span class="duration">25 minutes</span></h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_overview">Overview</h3>
+<div class="paragraph">
+<p>Students learn about the <code class="racket">put-image</code> function.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_launch">Launch</h3>
+<div class="paragraph">
+<p>As you&#8217;ve already seen, <code class="racket">overlay</code> sticks two images together, so that the <em>center</em> of the first image is placed exactly on top of the <em>center</em> of the second image. But what if we want to put the dot somewhere besides the center?</p>
+</div>
+<div class="paragraph">
+<p>The <code class="racket">put-image</code> function works like <code class="racket">overlay</code>, but instead of placing the centers of each image on top of one another, it <em>translates</em> the center of the top image by some distance in the x- and y-direction.</p>
+</div>
+<div class="openblock lesson-point">
+<div class="content">
+<div class="paragraph">
+<p>Think of the background image as a sheet of graph paper with the <span class="vocab">origin</span> (0,0) in the bottom left corner.</p>
+</div>
+<div class="paragraph">
+<p>The numbers in <code class="racket">put-image</code> specify a point on that graph paper, with the center of the top image being placed there.</p>
+</div>
+</div>
+</div>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Take a look at <a href="../../lessons/flags-wescheme/pages/japan-estimating-coordinates.html" target="_blank" rel="noopener">Estimating Coordinates</a>.</p>
+</li>
+<li>
+<p>The code beneath each image is missing the x and y coordinates to place the dot.</p>
+</li>
+<li>
+<p>Estimate the x- and y-coordinate of the dot&#8217;s location for each image to complete the code!</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_investigate">Investigate</h3>
+<div class="paragraph lesson-instruction">
+<p>Open the <a href="https://www.wescheme.org/openEditor?publicId=jH25JejavW" target="_blank" rel="noopener">Flags Starter File</a> and click "Run".</p>
+</div>
+<div class="paragraph">
+<p>There are some special lines in this file called <span class="vocab">comments</span>. The programmer who wrote this code included a series of messages - called comments - that will never be read by the computer.</p>
+</div>
+<div class="paragraph lesson-point">
+<p>Professional programmers use comments <em>all the time</em>.</p>
+</div>
+<div class="paragraph">
+<p>Professional programmers work with teams who need to be able to follow each other&#8217;s thinking in order to collaborate efficiently. Comments are a way for programmers to leave notes for one another, and even for a single programmer to keep track of their thinking when <em>they</em> come back to their code another day.</p>
+</div>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Each language has its own symbol for commenting. In WeScheme, we use the semi colon (<code class="racket">;</code>) to tell the computer to ignore what we&#8217;re typing. What color does the code turn when it has a semicolon in front of it?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Purple!</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Type <code class="racket">japan-flag</code> into the Interactions Area. What do you get back?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>We see Japan&#8217;s flag - a white background with a red dot in the center.</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Type <code class="racket">japan</code> into the Interactions Area and compare the image to <code class="racket">japan-flag</code>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>We see a variant of Japan&#8217;s flag; the dot is in the lower left now.</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code class="racket">japan</code> is composed using <code class="racket">dot</code> and <code class="racket">background</code>. Type each of those variables into the Interactions Area. What do you get back?</p>
+</li>
+<li>
+<p>Take a look at the <code class="racket">japan</code> code and fix it so that it matches the <code class="racket">japan-flag</code> image.</p>
+</li>
+<li>
+<p>What is the Contract for <code class="racket">put-image</code>? (Write it in your Contracts page!)</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code class="racket">put-image :: Image, Number, Number, Image</code></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Next, students will analyze code for the flag of the Netherlands, which uses <code class="racket">put-image</code> twice.</p>
+</div>
+<div class="openblock lesson-instruction">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Open the <a href="https://www.wescheme.org/openEditor?publicId=81WrTGQglP" target="_blank" rel="noopener">Flags of Netherland</a> and click "Run". Look at the code for the flag of the Netherlands. How big is the flag?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>The flag is 200 x 300 pixels.</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>What was the programmer thinking when she coded the height of the red stripe as <span class="obeyspaces"><code class="racket">(/ 200 3)</code></span>?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>The red stripe&#8217;s height is one-third of the total height (200).</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>The center of the blue stripe is placed at (<span class="obeyspaces"><code class="racket">150</code></span>, <span class="obeyspaces"><code class="racket">(/ 200 6)</code></span>). How did the programmer know to use 150 as the x-coordinate?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>150 is half of the rectangle&#8217;s width; that position will horizontally center the blue stripe.</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>What was the programmer thinking when she coded the y-coordinate as <span class="obeyspaces"><code class="racket">(/ 200 6)</code></span>?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Each stripe occupies 1/3 of the flag&#8217;s total height. That means the vertical center of the blue stripe is at 1/6 of the flag&#8217;s height.</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Explain the thinking behind coding the red stripe&#8217;s y-coordinate as <span class="obeyspaces"><code class="racket">(* 5 (/ 200 6))</code></span>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>The red strip&#8217;s vertical center is at 5/6 of the flag&#8217;s total height.</em></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Once you&#8217;ve discussed the code for the flag of the Netherlands with your class, have them keep working with this starter file to write code for the flags of Ireland and Mauritius.  Some students will make it through the challenges. Some students may only complete one flag. All of them will be synthesizing how to apply put-image and locate images on the coordinate grid.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_synthesize">Synthesize</h3>
+<div class="paragraph">
+<p>Could we completely replace <code class="racket">overlay</code> with <code class="racket">put-image</code>? Why or why not?</p>
+</div>
+<table class="tableblock frame-all grid-none stripes-none stretch strategy-box">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="title">Going Deeper</span></p>
+<p class="tableblock">If you have time, we have lots of additional starter files to push student thinking linked in the additional exercises at the end of this lesson and now would be the time to dive into them!</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_making_flags_duration_25_minutes_"><span class="section-link"><a href="#_making_flags_duration_25_minutes_"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Making Flags <span class="duration">25 minutes</span></h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_overview_2">Overview</h3>
+<div class="paragraph">
+<p>Students focus on decomposing complex images into simple ones and using <code class="racket">put-image</code> to combine images.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_launch_2">Launch</h3>
+<div class="paragraph">
+<p>Let&#8217;s dig into the process for how the flags we’ve seen so far were made:</p>
+</div>
+<div class="paragraph">
+<p><strong>1) Decompose the Image</strong></p>
+</div>
+<div class="paragraph">
+<p>We observe that the Japanese flag is made up of two simpler images: a black, outline rectangle and a red dot.</p>
+</div>
+<div class="paragraph">
+<p><strong>2) Define those Parts</strong></p>
+</div>
+<div class="paragraph">
+<p>We define <code class="racket">dot</code> and <code class="racket">background</code>. Once we’ve defined those images, we test them out in the Interactions Area to make sure they look right!</p>
+</div>
+<div class="paragraph">
+<p><strong>3) Find the Coordinates</strong></p>
+</div>
+<div class="paragraph">
+<p>For each image, calculate what the x- and y-coordinates of where the center should be. <em>TIP: this is a lot easier if you have a sheet of graph paper handy!</em></p>
+</div>
+<div class="paragraph">
+<p><strong>4) Build the Image &amp; Check that it Matches the Target Image</strong></p>
+</div>
+<div class="paragraph">
+<p>We stack the parts on top of the bottom image using the coordinates we found.
+<em>TIP: don&#8217;t cram all the code into one line! If you break it up into new lines (for example, hitting "Return" before the x-coordinate and after the y-coordinate), you&#8217;ll notice that the code forms a "staircase" pattern.</em> Be sure to compare the image you get with the target image!</p>
+</div>
+<div class="paragraph">
+<p>If you have time, these matching activities will support student thinking.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://teacher.desmos.com/activitybuilder/custom/5fece28cc64e8d0cca2a2169?collections=5fbecc2b40d7aa0d844956f0" target="_blank" rel="noopener">Scaling Flag Ratios (Desmos)</a></p>
+</li>
+<li>
+<p><a href="https://teacher.desmos.com/activitybuilder/custom/5ff46882e3b4660c751f707e?collections=5fbecc2b40d7aa0d844956f0" target="_blank" rel="noopener">Matching Code to Images using overlay and put-image (Desmos)</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_investigate_2">Investigate</h3>
+<table class="tableblock frame-all grid-none stripes-none stretch strategy-box">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="title">Paper Flag Models to Code</span>
+In this next exercise, students will be decomposing the image of a flag. For a more tactile experience, you could have students construct images of the flags they choose using construction paper. This should happen between the step where they describe the shapes needed to compose the flags image and write the code to build the image.  The act of physically building the flag from layers of paper makes the layering of the coded images visible and helps students to remember that white space is not just "blank".</p></td>
+</tr>
+</tbody>
+</table>
+<div class="openblock lesson-instruction">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Turn to <a href="../../lessons/flags-wescheme/pages/decomposing-flags.html" target="_blank" rel="noopener">Decomposing Flags</a>, and choose ONE flag to focus on. On the blank lines below, describe the parts that make up that flag.</p>
+</li>
+<li>
+<p>Once you&#8217;re done, return to the <a href="https://www.wescheme.org/openEditor?publicId=jH25JejavW" target="_blank" rel="noopener">Flags Starter File</a> and define those parts.</p>
+</li>
+<li>
+<p>Then, compose those parts using <code class="racket">put-image</code>, and make your flag!</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<table class="tableblock frame-all grid-none stripes-none stretch strategy-box">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="title">Around the World in your Classroom</span>
+The opportunity to focus on a flag of their choosing is a big motivator for students. Coding flags also presents a rare opportunity for students to share a piece of their identity in math class. If you have more time to devote, we highly encourage you to give students the opportunity to create the image of a flag they connect with in some way.  Students might choose the flags of countries related to their heritage, a place they’ve visited, a country they’re interested in, or a group they identify with or support.  Encourage students to choose an appropriately challenging flag.  The teacher may introduce parameters if necessary, such as “Flags need at least 5 different shapes”.  This is intended to be a summative project, so encourage students to demonstrate what they’ve learned. Once students have coded their flags, host a tour of the flags of the world in your classroom!</p>
+<p class="tableblock">Be mindful of the fact that not every student will know their family’s geographical history, and
+that immigration can be a sensitive topic for some students.  For this reason, it is important that students have the option to choose a flag based on interest instead of just family history.</p>
+<p class="tableblock">Be prepared that students might choose flags representing groups other than countries.  Indigenous students might choose a flag that represents their indigenous nation or the American Indian Movement. Students might also choose to focus on the pride flag (representing solidarity amongst members of the LGBTQ+ community) or an ethnic flag (representing solidarity amongst members of different ethnic groups, such as the Hispanic flag).  There are also some flags that represent political or activist groups.  It is important for the teacher to be open to different beliefs and ideologies, but it is also up to the teacher’s discretion as to whether or not a flag is appropriate for use in this project. Flags associated with hate groups, or any institution that denies the dignity of other students, are not appropriate.</p>
+<p class="tableblock"><a href="../../lessons/flags-wescheme/pages/flags-of-the-world-resource.pdf" target="_blank" rel="noopener">Flags of the World</a> and <a href="http://www.flagwizard.net/" target="_blank" rel="noopener">Flag Wizard</a> may be useful to students looking for ideas. Flags are listed with their width:length <span class="vocab">ratios</span> in the opposite order of how we define the sides of a flag in code. e.g. 2:3 could be scaled up to a 300 x 200 flag or 8:11 could be scaled up to 330 by 240.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-none stripes-none stretch strategy-box">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="title">Ratio and Proportion</span></p>
+<p class="tableblock">Have students define the <code class="racket">WIDTH</code> and <code class="racket">HEIGHT</code> of their flags as values, and then <em>replace the numbers in each flag</em> with expressions relative to width and height. For example, if the <code class="racket">dot</code> in the Japanese flag is at (150, 100), those numbers would be replaced with <span class="obeyspaces"><code class="racket">(/ WIDTH 2)</code></span> and <span class="obeyspaces"><code class="racket">(/ HEIGHT 2)</code></span>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_synthesize_2">Synthesize</h3>
+<div class="paragraph">
+<p>Which flags were the easiest to make? The hardest?</p>
+</div>
+<div class="paragraph">
+<p>Why is it useful to define each part of the flag first, before stitching the images together?</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_additional_exercises"><span class="section-link"><a href="#_additional_exercises"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Additional Exercises</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.wescheme.org/openEditor?publicId=6TJ0N2CJqU" target="_blank" rel="noopener">Flag of Puerto Rico Starter File</a> - This starter file generates a jumbled pile of shapes. Students work to fix the code by resizing, rotating, and correctly locating the components on the background in order to compose an image that looks like the original flag.</p>
+</li>
+<li>
+<p><a href="https://www.wescheme.org/openEditor?publicId=ve2gTEY06p" target="_blank" rel="noopener">Alaskan Flag Starter File</a> - For a quick dive into why it’s more efficient to <span class="vocab">define</span> shapes before building the image.</p>
+</li>
+<li>
+<p><a href="https://www.wescheme.org/openEditor?publicId=x0nJrP1UYp" target="_blank" rel="noopener">Flag of Lebanon Starter File</a> - For practice <span class="vocab">scaling</span> imported graphics.</p>
+</li>
+<li>
+<p><a href="https://www.wescheme.org/openEditor?publicId=SnLx13yt5W" target="_blank" rel="noopener">Flag of Mexico Starter File</a> - Similar to the Puerto Rico Flag Starter File, but this one involves an imported image.</p>
+</li>
+<li>
+<p><a href="https://www.wescheme.org/openEditor?publicId=SQRHKcqQvW" target="_blank" rel="noopener">Flag of Trinidad and Tobago Starter File</a> - If you’ve already studied Pythagorean Theorem and are ready to apply it.</p>
+</li>
+<li>
+<p><a href="https://www.wescheme.org/openEditor?publicId=0Sdq8F2b3q" target="_blank" rel="noopener">Flag of Turkey Starter File</a> - For a fun function-composition puzzle.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-18 16:15:45 -0400
+</div>
+</div>
+</div>
+</body>
+</html>

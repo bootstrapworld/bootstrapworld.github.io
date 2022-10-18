@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Booleans</title>
+
+  <link rel="stylesheet" href="../../../lib/curriculum.css" />
+    <link rel="stylesheet" href="../../../lib/codemirror.css" />
+    <script src="../../../lib/codemirror.js"></script>
+    <script src="../../../lib/runmode.js"></script>
+    <script src="../../../lib/scheme2.js"></script>
+    <script src="../../../lib/pyret-mode.js"></script>
+    <script src="../../../lib/langtable.js"></script>
+    <script src="../../../lib/bootstraplesson.js"></script>
+    <script src="../../../dependency-graph.js"></script>
+    <script src="../../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"Booleans",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="workbookpage article wescheme" onload="renderSaveToDrive()">
+<div id="header">
+<h1>Booleans</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Boolean-producing expressions are yes-or-no questions and will always evaluate to either <code class="racket">true</code> (“yes”) or <code class="racket">false</code> (“no”).</strong> What will each of the expressions below evaluate to? <em>Write down your prediction in the blanks provided and then type the code into the Interactions Area to see what it returns.</em></p>
+</div>
+<style>
+#content td {padding: 0.6rem 0px !important}
+#content table .autonum::after { content: ')'; }
+#content th { text-align: center !important; }
+</style>
+<table class="tableblock frame-none grid-none stripes-none stretch table1">
+<colgroup>
+<col style="width: 15.3846%;">
+<col style="width: 15.3846%;">
+<col style="width: 15.3846%;">
+<col style="width: 0%;">
+<col style="width: 23.0769%;">
+<col style="width: 15.3846%;">
+<col style="width: 15.3847%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"></th>
+<th class="tableblock halign-left valign-bottom"><strong>Prediction</strong></th>
+<th class="tableblock halign-left valign-bottom"><strong>Result</strong></th>
+<th class="tableblock halign-left valign-top"></th>
+<th class="tableblock halign-left valign-top"></th>
+<th class="tableblock halign-left valign-bottom"><strong>Prediction</strong></th>
+<th class="tableblock halign-left valign-bottom"><strong>Result</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="autonum">1</span> <span class="obeyspaces"><code class="racket">(&lt;= 3 4)</code></span></p></td>
+<td class="tableblock halign-left valign-bottom"><p class="tableblock"><span class="fitb stretch"></span></p></td>
+<td class="tableblock halign-left valign-bottom"><p class="tableblock"><span class="fitb stretch"></span></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="autonum">2</span> <span class="obeyspaces"><code class="racket">(string&gt;? "a" "b")</code></span></p></td>
+<td class="tableblock halign-left valign-bottom"><p class="tableblock"><span class="fitb stretch"></span></p></td>
+<td class="tableblock halign-left valign-bottom"><p class="tableblock"><span class="fitb stretch"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="autonum">3</span> <span class="obeyspaces"><code class="racket">(= 3 2)</code></span></p></td>
+<td class="tableblock halign-left valign-bottom"><p class="tableblock"><span class="fitb stretch"></span></p></td>
+<td class="tableblock halign-left valign-bottom"><p class="tableblock"><span class="fitb stretch"></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="autonum">4</span> <span class="obeyspaces"><code class="racket">(string&lt;? "a" "b")</code></span></p></td>
+<td class="tableblock halign-left valign-bottom"><p class="tableblock"><span class="fitb stretch"></span></p></td>
+<td class="tableblock halign-left valign-bottom"><p class="tableblock"><span class="fitb stretch"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="autonum">5</span> <span class="obeyspaces"><code class="racket">(&lt; 2 4)</code></span></p></td>
+<td class="tableblock halign-left valign-bottom"><p class="tableblock"><span class="fitb stretch"></span></p></td>
+<td class="tableblock halign-left valign-bottom"><p class="tableblock"><span class="fitb stretch"></span></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="autonum">6</span> <span class="obeyspaces"><code class="racket">(string=? "a" "b")</code></span></p></td>
+<td class="tableblock halign-left valign-bottom"><p class="tableblock"><span class="fitb stretch"></span></p></td>
+<td class="tableblock halign-left valign-bottom"><p class="tableblock"><span class="fitb stretch"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="autonum">7</span> <span class="obeyspaces"><code class="racket">(&gt;= 5 5)</code></span></p></td>
+<td class="tableblock halign-left valign-bottom"><p class="tableblock"><span class="fitb stretch"></span></p></td>
+<td class="tableblock halign-left valign-bottom"><p class="tableblock"><span class="fitb stretch"></span></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="autonum">8</span> <span class="obeyspaces"><code class="racket">(string&lt;&gt;? "a" "a")</code></span></p></td>
+<td class="tableblock halign-left valign-bottom"><p class="tableblock"><span class="fitb stretch"></span></p></td>
+<td class="tableblock halign-left valign-bottom"><p class="tableblock"><span class="fitb stretch"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="autonum">9</span> <span class="obeyspaces"><code class="racket">(&gt;= 4 6)</code></span></p></td>
+<td class="tableblock halign-left valign-bottom"><p class="tableblock"><span class="fitb stretch"></span></p></td>
+<td class="tableblock halign-left valign-bottom"><p class="tableblock"><span class="fitb stretch"></span></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="autonum">10</span> <span class="obeyspaces"><code class="racket">(string&gt;=? "a" "a")</code></span></p></td>
+<td class="tableblock halign-left valign-bottom"><p class="tableblock"><span class="fitb stretch"></span></p></td>
+<td class="tableblock halign-left valign-bottom"><p class="tableblock"><span class="fitb stretch"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="autonum">11</span> <span class="obeyspaces"><code class="racket">(&lt;&gt; 3 3)</code></span></p></td>
+<td class="tableblock halign-left valign-bottom"><p class="tableblock"><span class="fitb stretch"></span></p></td>
+<td class="tableblock halign-left valign-bottom"><p class="tableblock"><span class="fitb stretch"></span></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="autonum">12</span> <span class="obeyspaces"><code class="racket">(string&lt;&gt;? "a" "b")</code></span></p></td>
+<td class="tableblock halign-left valign-bottom"><p class="tableblock"><span class="fitb stretch"></span></p></td>
+<td class="tableblock halign-left valign-bottom"><p class="tableblock"><span class="fitb stretch"></span></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><span class="vspace" style="height: 1ex"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">13</span> In your own words, describe what <code class="racket">&lt;</code> does.</p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 1ex"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">14</span> In your own words, describe what <code class="racket">&gt;=</code> does.</p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 1ex"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">15</span> In your own words, describe what <code class="racket">&lt;&gt;</code> does.</p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 1ex"></span></p>
+</div>
+<table class="tableblock frame-none grid-none stripes-none stretch">
+<colgroup>
+<col style="width: 55.5555%;">
+<col style="width: 22.2222%;">
+<col style="width: 22.2223%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"></th>
+<th class="tableblock halign-left valign-bottom"><strong>Prediction:</strong></th>
+<th class="tableblock halign-left valign-bottom"><strong>Result:</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="autonum">16</span> <span class="obeyspaces"><code class="racket">(string=? "a tree" "trees")</code></span></p></td>
+<td class="tableblock halign-left valign-bottom"><p class="tableblock"><span class="fitb stretch"></span></p></td>
+<td class="tableblock halign-left valign-bottom"><p class="tableblock"><span class="fitb stretch"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="autonum">17</span> <span class="obeyspaces"><code class="racket">(string=? "tree" "tree")</code></span></p></td>
+<td class="tableblock halign-left valign-bottom"><p class="tableblock"><span class="fitb stretch"></span></p></td>
+<td class="tableblock halign-left valign-bottom"><p class="tableblock"><span class="fitb stretch"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="autonum">18</span> <span class="obeyspaces"><code class="racket">(string-contains? "catnap" "cat")</code></span></p></td>
+<td class="tableblock halign-left valign-bottom"><p class="tableblock"><span class="fitb stretch"></span></p></td>
+<td class="tableblock halign-left valign-bottom"><p class="tableblock"><span class="fitb stretch"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="autonum">19</span> <span class="obeyspaces"><code class="racket">(string-contains? "cat" "catnap")</code></span></p></td>
+<td class="tableblock halign-left valign-bottom"><p class="tableblock"><span class="fitb stretch"></span></p></td>
+<td class="tableblock halign-left valign-bottom"><p class="tableblock"><span class="fitb stretch"></span></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><span class="vspace" style="height: 1ex"></span></p>
+</div>
+<table class="tableblock frame-none grid-none stripes-none stretch">
+<colgroup>
+<col style="width: 62.5%;">
+<col style="width: 37.5%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-bottom"><p class="tableblock"><span class="autonum">20</span> How many <strong>Numbers</strong> are there in the entire universe?</p></td>
+<td class="tableblock halign-left valign-bottom"><p class="tableblock"><span class="fitb stretch"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-bottom"><p class="tableblock"><span class="autonum">21</span> How many <strong>Strings</strong> are there in the entire universe?</p></td>
+<td class="tableblock halign-left valign-bottom"><p class="tableblock"><span class="fitb stretch"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-bottom"><p class="tableblock"><span class="autonum">22</span> How many <strong>Booleans</strong> are there in the entire universe?</p></td>
+<td class="tableblock halign-left valign-bottom"><p class="tableblock"><span class="fitb stretch"></span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-18 16:15:38 -0400
+</div>
+</div>
+</body>
+</html>

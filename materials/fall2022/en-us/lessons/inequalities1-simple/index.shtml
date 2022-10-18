@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Simple Inequalities</title>
+
+  <link rel="stylesheet" href="../../lib/curriculum.css" />
+    <link rel="stylesheet" href="../../lib/codemirror.css" />
+    <script src="../../lib/codemirror.js"></script>
+    <script src="../../lib/runmode.js"></script>
+    <script src="../../lib/scheme2.js"></script>
+    <script src="../../lib/pyret-mode.js"></script>
+    <script src="../../lib/langtable.js"></script>
+    <script src="../../lib/bootstraplesson.js"></script>
+    <script src="../../dependency-graph.js"></script>
+    <script src="../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"Simple Inequalities",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="article LessonPlan pyret" onload="renderSaveToDrive()">
+<!--#include virtual="/menubar.ssi"-->
+<div id="body" onload="renderSaveToDrive()">
+<div id="header">
+<h1>Simple Inequalities</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<script>
+function preselect(klass) {
+  const items = document.getElementsByClassName(klass);
+  for (let i = 0; i < items.length; i++) {
+    items[i].style.display = 'none';
+  }
+  if (items.length > 0) {
+    items[0].style.display = 'block';
+  }
+}
+window.onload = function() {
+  preselect('alignedStandards');
+  preselect('alignedTextbooks');
+  preselect('alignedPractices');
+}
+function showStandardsAlignment() {
+  const selectTag = document.getElementsByClassName('standardsAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const stdTables = document.getElementsByClassName('alignedStandards');
+  //const intro = document.getElementsByClassName('alignedStandardsIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < stdTables.length; i++) {
+    const stdTable = stdTables[i];
+    stdTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optStd = opt.value;
+      for (let j = 0; j < stdTables.length; j++) {
+        const stdTable = stdTables[j];
+        if (stdTable.classList.contains(optStd)) {
+          stdTable.style.display = 'block';
+         // introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+function toggleNonPrereqDisplay() {
+  const inputTag = document.getElementsByClassName('sidebarinput')[0];
+  const checkedP = inputTag.checked;
+  const lessonTable = document.getElementsByClassName('sidebarlessons')[0];
+  const lis = lessonTable.getElementsByTagName('li');
+  for (let i = 0; i < lis.length; i++) {
+    const li = lis[i];
+    const lesson = li.getElementsByClassName('prerequisite');
+    if (lesson.length === 0) {
+      li.style.display = checkedP ? 'none' : 'block';
+    }
+  }
+}
+</script>
+<script>
+function showTextbooksAlignment() {
+  const selectTag = document.getElementsByClassName('textbooksAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const textbookTables = document.getElementsByClassName('alignedTextbooks');
+  //const intro = document.getElementsByClassName('alignedTextbooksIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < textbookTables.length; i++) {
+    const textbookTable = textbookTables[i];
+    textbookTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optTextbook = opt.value;
+      for (let j = 0; j < textbookTables.length; j++) {
+        const textbookTable = textbookTables[j];
+        if (textbookTable.classList.contains(optTextbook)) {
+          textbookTable.style.display = 'block';
+          //introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+</script>
+<script>
+function showPracticesAlignment() {
+  const selectTag = document.getElementsByClassName('practicesAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const practiceTables = document.getElementsByClassName('alignedPractices');
+  for (let i = 0; i < practiceTables.length; i++) {
+    const practiceTable = practiceTables[i];
+    practiceTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optPractice = opt.value;
+      for (let j = 0; j < practiceTables.length; j++) {
+        const practiceTable = practiceTables[j];
+        if (practiceTable.classList.contains(optPractice)) {
+          practiceTable.style.display = 'block';
+        }
+      }
+    }
+  }
+}
+</script>
+<div class="paragraph">
+<!-- </p>
+</div>
+--></div><div class="sidebar"><div id="toggle"></div><div class="paragraph"><!--
+<div class="paragraph">
+<p>
+--><div class="sidebarlessons"><strong>Lessons</strong>
+<ul></ul></div>
+</div>
+<table class="tableblock frame-all grid-all stretch sidebarstandards">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Standards in this Lesson</strong>
+<select class="standardsAlignmentSelect"  onchange="showStandardsAlignment()"><option selected="selected" value="standards-CCSS-Math">CCSS-Math</option><option value="standards-CSTA">CSTA</option><option value="standards-Oklahoma">Oklahoma</option></select></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist alignedStandards standards-CCSS-Math">
+<div class="title"><a href="http://corestandards.org/Math/">Common Core Math Standards</a></div>
+<dl>
+<dt class="hdlist1">6.EE.B.5</dt>
+<dd>
+<p>Understand solving an equation or inequality as a process of answering a question: which values from a specified set, if any, make the equation or inequality true? Use substitution to determine whether a given number in a specified set makes an equation or inequality true.</p>
+</dd>
+<dt class="hdlist1">6.EE.B.8</dt>
+<dd>
+<p>Write an inequality of the form x &gt; c or x &lt; c to represent a constraint or condition in a real-world or mathematical problem. Recognize that inequalities of the form x &gt; c or x &lt; c have infinitely many solutions; represent solutions of such inequalities on number line diagrams.</p>
+</dd>
+<dt class="hdlist1">7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.</p>
+</dd>
+<dt class="hdlist1">HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-CSTA">
+<div class="title"><a href="https://csteachers.org/page/standards">CSTA Standards</a></div>
+<dl>
+<dt class="hdlist1">3B-AP-10</dt>
+<dd>
+<p>Use and adapt classic algorithms to solve computational problems.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Oklahoma">
+<div class="title"><a href="https://sde.ok.gov/oklahoma-academic-standards">Oklahoma Standards</a></div>
+<dl>
+<dt class="hdlist1">OK.6.A.3.1</dt>
+<dd>
+<p>Represent real-world or mathematical situations using expressions, equations and inequalities involving variables and rational numbers.</p>
+</dd>
+<dt class="hdlist1">OK.7.A.3.3</dt>
+<dd>
+<p>Represent real-world or mathematical situations using equations and inequalities involving variables and rational numbers.</p>
+</dd>
+<dt class="hdlist1">OK.PA.A.4.3</dt>
+<dd>
+<p>Represent real-world situations using equations and inequalities involving one variable.</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch sidebartextbooks">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Textbook Alignment</strong>
+<select class="textbooksAlignmentSelect"  onchange="showTextbooksAlignment()"><option selected="selected" value="textbook-IM_Alg_1"><a href="https://illustrativemathematics.org/">IM Algebra 1</a></option><option value="textbook-IM_6"><a href="https://illustrativemathematics.org/">IM 6 Math™</a></option></select></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist alignedTextbooks textbook-IM_Alg_1">
+<div class="title"><a href="https://illustrativemathematics.org/">IM Algebra 1</a></div>
+<dl>
+<dt class="hdlist1">IM.Alg1.2.18</dt>
+<dd>
+<p>Representing Situations with Inequalities</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedTextbooks textbook-IM_6">
+<div class="title"><a href="https://illustrativemathematics.org/">IM 6 Math™</a></div>
+<dl>
+<dt class="hdlist1">IM.6.7.10</dt>
+<dd>
+<p>Interpreting Inequalities</p>
+</dd>
+<dt class="hdlist1">IM.6.7.9</dt>
+<dd>
+<p>Solutions of Inequalities</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch sidebarpractices">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Practices in this Lesson</strong>
+<select class="practicesAlignmentSelect"  onchange="showPracticesAlignment()"><option selected="selected" value="practices-MLR"><a href="https://achievethecore.org/peersandpedagogy/developing-math-language-routines/">Math Lang. Routines</a></option><option value="practices-CC"><a href="http://corestandards.org/Math/">Math</a></option></select></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist alignedPractices practices-MLR">
+<div class="title"><a href="https://achievethecore.org/peersandpedagogy/developing-math-language-routines/">Math Lang. Routines</a></div>
+<dl>
+<dt class="hdlist1">MLR.5</dt>
+<dd>
+<p>Co-Craft Questions and Problems</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedPractices practices-CC">
+<div class="title"><a href="http://corestandards.org/Math/">Math</a></div>
+<dl>
+<dt class="hdlist1">MP.4</dt>
+<dd>
+<p>Model with mathematics</p>
+</dd>
+<dt class="hdlist1">MP.6</dt>
+<dd>
+<p>Attend to precision</p>
+</dd>
+<dt class="hdlist1">MP.1</dt>
+<dd>
+<p>Make sense of problems and persevere in solving them</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<!-- </p>
+</div>
+--></div><!--
+<div class="paragraph">
+<p>
+-->
+</div>
+<div class="paragraph">
+<p><span class="other-proglang">(Also available in <a href="../../lessons/inequalities1-simple-wescheme/index.shtml">WeScheme</a>)</span></p>
+</div>
+<div class="paragraph description">
+<p>Students identify solutions and non-solutions of inequalities using an interactive starter file. This lesson also reviews the <code class="pyret">Boolean</code> datatype.</p>
+</div>
+<table class="tableblock frame-all grid-all stripes-none stretch left-header preamble">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Lesson Goals</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Students will be able to:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Describe the solution set of a simple inequality</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Student-Facing Lesson Goals</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>I can find solutions and non-solutions to an inequality</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Materials</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist materials-links">
+<ul>
+<li>
+<p><a href="https://docs.google.com/presentation/d/1JDmGYaljvZBaI213rO6YM5M7P4aCR-dFQVVbi-TeviE/" target="_blank" rel="noopener">Lesson Slides</a></p>
+</li>
+<li>
+<p><span class="StarterFile"><a href="https://code.pyret.org/editor#share=1CRRVBQ-D16b00MgOH6RA7I_OWousDUql" target="_blank" rel="noopener">Boolean Starter File</a></span></p>
+</li>
+<li>
+<p><span class="StarterFile"><a href="https://code.pyret.org/editor#share=1Nfd30NVNwPzDu0C02dsCbmKecbMVfcQV" target="_blank" rel="noopener">Simple Inequalities Starter File</a></span></p>
+</li>
+<li>
+<p><span class="materialSectionPlaceholder"> </span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/inequalities1-simple/pages/boolean-functions.html" target="_blank" rel="noopener">Boolean Functions</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/inequalities1-simple/pages/simple-inequalities.html" target="_blank" rel="noopener">Simple Inequalities</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="../../lessons/inequalities1-simple/pages/is-hot.html" target="_blank" rel="noopener">Word Problem: is-hot</a></span></p>
+</li>
+<li>
+<p><strong>Classroom visual:</strong> <a href="javascript:showLangTable()">Language Table</a></p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Supplemental Resources</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p><a href="https://quizizz.com/admin/quiz/5d9919516dbee7001e08a4a0" target="_blank" rel="noopener">Booleans Review</a></p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Key Points for the Facilitator</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>A <span class="vocab">Boolean</span> is just another <span class="vocab">data type</span>, like Numbers or Images.  But unlike those types, there are only <em>two</em> values: <code class="pyret">true</code> and <code class="pyret">false</code>. While simple to explain, this different behavior can be confusing for some students.</p>
+</li>
+<li>
+<p>Boolean-producing functions are essentially yes-or-no questions, so the names of the functions in this lesson read like questions.</p>
+</li>
+<li>
+<p>For example, <span class="obeyspaces"><code class="pyret">is-odd</code></span> and <span class="obeyspaces"><code class="pyret">is-even</code></span> are both functions that ask if a given number is odd or even.
+}</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="dlist glossary">
+<div class="title">Glossary</div>
+<dl>
+<dt class="hdlist1">Boolean</dt>
+<dd>
+<p>a type of data with two values: true and false</p>
+</dd>
+<dt class="hdlist1">data type</dt>
+<dd>
+<p>a way of classifying values, such as: Number, String, Image, Boolean, or any user-defined data structure</p>
+</dd>
+<dt class="hdlist1">equation</dt>
+<dd>
+<p>a mathematical description of the relationship between two variables or quantities, in which they are equal</p>
+</dd>
+<dt class="hdlist1">inequality</dt>
+<dd>
+<p>a mathematical description of the relationship between two variables or quantities, in which they are not necessarily equal</p>
+</dd>
+<dt class="hdlist1">solution set</dt>
+<dd>
+<p>the set of all values or coordinate pairs that will make an equation, inequality, set of equations or set of inequalities true</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_introducing_booleans_duration_20_minutes_"><span class="section-link"><a href="#_introducing_booleans_duration_20_minutes_"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Introducing Booleans <span class="duration">20 minutes</span></h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_launch">Launch</h3>
+<div class="paragraph">
+<p>Students should be logged into <a href="https://code.pyret.org/editor" target="_blank" rel="noopener">code.pyret.org (CPO)</a>.</p>
+</div>
+<div class="paragraph">
+<p>Ask students to evaluate Circles of Evaluation for simple expressions they&#8217;ve seen before, and ask them to convert them into code.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><table class="gdrive-only expression"><tr><td class="operator"><span class="operator"><span class="value">&#43;</span></span></td></tr><tr><td><table class="args"><tr><td class="arg"><span class="value">1</span></td><td class="arg"><span class="value">2</span></td></tr></table></td></tr></table><div class="circleevalsexp"><span class="expression"><span class="lParen">(</span><span class="operator"><span class="value">&#43;</span></span><span class="hspace">&#160;</span><span class="value">1</span><span class="hspace">&#160;</span><span class="value">2</span><span class="rParen">)</span></span></div></p>
+</li>
+<li>
+<p><table class="gdrive-only expression"><tr><td class="operator"><span class="operator"><span class="value">&#8203;-</span></span></td></tr><tr><td><table class="args"><tr><td class="arg"><span class="value">4</span></td><td class="arg"><span class="value">5</span></td></tr></table></td></tr></table><div class="circleevalsexp"><span class="expression"><span class="lParen">(</span><span class="operator"><span class="value">&#8203;-</span></span><span class="hspace">&#160;</span><span class="value">4</span><span class="hspace">&#160;</span><span class="value">5</span><span class="rParen">)</span></span></div></p>
+</li>
+<li>
+<p><table class="gdrive-only expression"><tr><td class="operator"><span class="operator"><span class="value">&#8203;*</span></span></td></tr><tr><td><table class="args"><tr><td class="arg"><span class="value">8</span></td><td class="arg"><span class="value">0</span></td></tr></table></td></tr></table><div class="circleevalsexp"><span class="expression"><span class="lParen">(</span><span class="operator"><span class="value">&#8203;*</span></span><span class="hspace">&#160;</span><span class="value">8</span><span class="hspace">&#160;</span><span class="value">0</span><span class="rParen">)</span></span></div></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Then show them unfamiliar Circles of Evaluation, and ask them to hypothesize what they think they mean, what they will evaluate to, and what the code would look like.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><table class="gdrive-only expression"><tr><td class="operator"><span class="operator"><span class="value">&gt;</span></span></td></tr><tr><td><table class="args"><tr><td class="arg"><span class="value">1</span></td><td class="arg"><span class="value">2</span></td></tr></table></td></tr></table><div class="circleevalsexp"><span class="expression"><span class="lParen">(</span><span class="operator"><span class="value">&gt;</span></span><span class="hspace">&#160;</span><span class="value">1</span><span class="hspace">&#160;</span><span class="value">2</span><span class="rParen">)</span></span></div></p>
+</li>
+<li>
+<p><table class="gdrive-only expression"><tr><td class="operator"><span class="operator"><span class="value">&lt;</span></span></td></tr><tr><td><table class="args"><tr><td class="arg"><span class="value">4</span></td><td class="arg"><span class="value">5</span></td></tr></table></td></tr></table><div class="circleevalsexp"><span class="expression"><span class="lParen">(</span><span class="operator"><span class="value">&lt;</span></span><span class="hspace">&#160;</span><span class="value">4</span><span class="hspace">&#160;</span><span class="value">5</span><span class="rParen">)</span></span></div></p>
+</li>
+<li>
+<p><table class="gdrive-only expression"><tr><td class="operator"><span class="operator"><span class="value">==</span></span></td></tr><tr><td><table class="args"><tr><td class="arg"><span class="value">8</span></td><td class="arg"><span class="value">0</span></td></tr></table></td></tr></table><div class="circleevalsexp"><span class="expression"><span class="lParen">(</span><span class="operator"><span class="value">==</span></span><span class="hspace">&#160;</span><span class="value">8</span><span class="hspace">&#160;</span><span class="value">0</span><span class="rParen">)</span></span></div></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Have students convert these Circles to code and type them in. What did they evaluate to? What do they think the outputs mean?</p>
+</div>
+<div class="paragraph">
+<p>Values like <code class="pyret">true</code> and <code class="pyret">false</code> obviously aren&#8217;t Numbers or Images. But they also aren&#8217;t Strings, or else they would have quotes around them. We&#8217;ve found a <em>new data type</em>, called a <span class="vocab">Boolean</span>.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_investigate">Investigate</h3>
+<div class="paragraph">
+<p>Have students open the <a href="https://code.pyret.org/editor#share=1CRRVBQ-D16b00MgOH6RA7I_OWousDUql" target="_blank" rel="noopener">Boolean Starter File</a>.</p>
+</div>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Explore the five functions in this starter file: <span class="obeyspaces"><code class="pyret">is-odd</code></span>, <span class="obeyspaces"><code class="pyret">is-even</code></span>, <span class="obeyspaces"><code class="pyret">is-less-than-one</code></span>, <span class="obeyspaces"><code class="pyret">is-continent</code></span>, and <span class="obeyspaces"><code class="pyret">is-primary-color</code></span></p>
+</li>
+<li>
+<p>All five functions produce <span class="vocab">Booleans</span>. Through your exploration, see if you can come up with an explanation of what a <span class="vocab">Boolean</span> is.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph lesson-point">
+<p>A <span class="vocab">Boolean</span> is just another <span class="vocab">data type</span>, like Numbers or Images. But unlike the others there are only two values: <code class="pyret">true</code> and <code class="pyret">false</code>.</p>
+</div>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Turn to <a href="../../lessons/inequalities1-simple/pages/boolean-functions.html" target="_blank" rel="noopener">Boolean Functions</a> and use the starter file to complete the questions, identifying inputs that will make each function produce <code class="pyret">true</code>, and inputs that will make each function <code class="pyret">false</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_common_misconceptions">Common Misconceptions</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Many students - especially traditionally high-achieving ones - will be very concerned about writing examples that are "wrong." The misconception here is that an expression that produces <code class="pyret">false</code> is somehow <em>incorrect</em>. You can preempt this by explaining that our Boolean-producing functions <em>should sometimes return false</em>.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_synthesize">Synthesize</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Students will see functions on this page that they&#8217;ve never encountered before! But instead of answering their questions, encourage them to make a <em>guess</em> about what they do, and then type it in to discover for themselves.</p>
+</li>
+<li>
+<p>Explicitly point out that <em>everything they know still works!</em> They can use their reasoning about Circles of Evaluation and Contracts to figure things out.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_introducing_inequalities_duration_20_minutes_"><span class="section-link"><a href="#_introducing_inequalities_duration_20_minutes_"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Introducing Inequalities <span class="duration">20 minutes</span></h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_overview">Overview</h3>
+<div class="paragraph">
+<p>Students discover (or expand their understanding of) inequalities by identifying solutions and non-solutions and connecting expressions to graphic representations.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_launch_2">Launch</h3>
+<div class="paragraph lesson-instruction">
+<p>How are equations different from inequalities?</p>
+</div>
+<div class="paragraph">
+<p><span class="vocab">Equations</span> typically have finite solution sets: there&#8217;s only one answer for an unknown, or perhaps several answers. <span class="vocab">Inequalities</span>, on the other hand, can have <em>infinite</em> solutions.  Inequality expressions divide all of the numbers in the universe into two categories: solutions and non-solutions.</p>
+</div>
+<div class="paragraph">
+<p><em>It is important that students learn to recognize that there are many possible solutions and non-solutions to an inequality and are able to identify whether or not a given number is or isn&#8217;t part of the <span class="vocab">solution set</span>.</em></p>
+</div>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>We are going to practice identifying whether or not a given number is part of the <span class="vocab">solution set</span>.</p>
+</li>
+<li>
+<p>Open the <a href="https://code.pyret.org/editor#share=1Nfd30NVNwPzDu0C02dsCbmKecbMVfcQV" target="_blank" rel="noopener">Simple Inequalities Starter File</a> and click "Run".</p>
+</li>
+<li>
+<p>Analyze the graph that appears (image below), as well as the provided code (lines 10, 18, and 26).
+<span class="image-figure"><span class="image"><img src="images/0830502409fa17be.png" alt="A picture of an inequality displayed on a number line, with four red dots and four green dots" title="A picture of an inequality displayed on a number line, with four red dots and four green dots"></span><a href="images/0830502409fa17be.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></p>
+</li>
+<li>
+<p>What do you Notice? What do you Wonder?</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Students might observe the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>This starter file includes a special <code class="pyret">inequality</code> function that takes in a function <em>(which tests numbers in an inequality)</em> and a list of 8 numbers <em>(to test in the function)</em>.</p>
+</li>
+<li>
+<p>When we click "Run", we see a graph of the inequality on a number line.</p>
+</li>
+<li>
+<p>The solution set is shaded in blue.</p>
+</li>
+<li>
+<p>The 8 numbers provided in the list are shown as dots on the numberline. They will appear:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>green <em>when they&#8217;re part of the solution set</em></p>
+</li>
+<li>
+<p>red <em>when they are non-solutions</em></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Look at line 18. Edit the list of values by deleting <em>one</em> of the <code class="pyret">-</code> symbols.</p>
+</li>
+<li>
+<p>Hit "Run". Examine the graph that appears (sample image below).
+<span class="image-figure"><span class="image"><img src="images/a8133c6826c0215a.png" alt="A picture of an inequality displayed on a number line, with three red dots and five green dots" title="A picture of an inequality displayed on a number line, with three red dots and five green dots"></span><a href="images/a8133c6826c0215a.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></p>
+</li>
+<li>
+<p>How is this graph different from the one you first produced?</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>A successful input in this starter file will include 4 solutions and 4 non-solutions; in other words, the image returned will show 4 green dots and 4 red dots.</p>
+</div>
+<div class="paragraph">
+<p>When students modify the list of numbers, they will see there are now 5 red dots and 4 green dots - along with a message that says, <em>"Challenge yourself: Find 4 true examples and 4 false"</em>.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_investigate_2">Investigate</h3>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Open to the <a href="../../lessons/inequalities1-simple/pages/simple-inequalities.html" target="_blank" rel="noopener">Simple Inequalities</a> and complete it with a partner, identifying solutions and non-solutions to each inequality and testing them in the <a href="https://code.pyret.org/editor#share=1Nfd30NVNwPzDu0C02dsCbmKecbMVfcQV" target="_blank" rel="noopener">Simple Inequalities Starter File</a>.</p>
+</li>
+<li>
+<p>For each inequality, you must find four solutions and four non-solutions.</p>
+</li>
+<li>
+<p>Try using negatives, positives, fractions and decimals as you generate your lists.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_synthesize_2">Synthesize</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>What patterns did you observe in how the inequalities worked?</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_additional_exercises"><span class="section-link"><a href="#_additional_exercises"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Additional Exercises:</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="../../lessons/inequalities1-simple/pages/is-hot.html" target="_blank" rel="noopener">Word Problem: is-hot</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-17 19:42:15 -0400
+</div>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Age vs. Height Explore</title>
+
+  <link rel="stylesheet" href="../../../lib/curriculum.css" />
+    <link rel="stylesheet" href="../../../lib/codemirror.css" />
+    <script src="../../../lib/codemirror.js"></script>
+    <script src="../../../lib/runmode.js"></script>
+    <script src="../../../lib/scheme2.js"></script>
+    <script src="../../../lib/pyret-mode.js"></script>
+    <script src="../../../lib/langtable.js"></script>
+    <script src="../../../lib/bootstraplesson.js"></script>
+    <script src="../../../dependency-graph.js"></script>
+    <script src="../../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"Age vs. Height Explore",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="workbookpage article pyret" onload="renderSaveToDrive()">
+<div id="header">
+<h1>Age vs. Height Explore</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<style>
+td { padding: 0 2ex !important; }
+td p { margin: 0; }
+</style>
+<div class="paragraph">
+<p>Open the <a href="https://code.pyret.org/editor#share=1PUGloc440ZjdGf3jT9grWHQ__VgYrfWI" target="_blank" rel="noopener">Age vs. Height Starter File</a> and click "Run" to interact with data from another sample of students.</p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">1</span> Take a look at the code in the Definitions Area. What do you notice? What do you wonder?</p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"><span class="solution">Answers will vary</span></span></p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">2</span> Build <code class="pyret">image-scatter-plot(h-table, "age", "height", dot)</code>.  Try to visualize the line of best fit for just the blue dots. Then try to visualize the line of best fit for just the red stars. How do you think they would compare? Which line do you think would be steeper?</p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"><span class="solution">Answers will vary</span></span></p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">3</span> Make three linear regression plots comparing <code class="pyret">age</code> and <code class="pyret">height</code>, and record the results for each in the table below:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The whole population: <code class="pyret">lr-plot(h-table, "gender-id", "age", "height")</code></p>
+</li>
+<li>
+<p>Females only: <code class="pyret">lr-plot(h-table.filter(is-f), "gender-id", "age", "height")</code></p>
+</li>
+<li>
+<p>Males only: <code class="pyret">lr-plot(h-table.filter(is-m), "gender-id", "age", "height")</code></p>
+</li>
+</ul>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-middle">Sample</th>
+<th class="tableblock halign-center valign-middle">rate of change</th>
+<th class="tableblock halign-center valign-middle">y-intercept</th>
+<th class="tableblock halign-center valign-middle">R value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">All</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><span class="solution">3.097_</span></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><span class="solution"><em>26.189</em></span></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><span class="solution">_+0.916</span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Females</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><span class="solution">3.642_</span></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><span class="solution"><em>22.250</em></span></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><span class="solution">_+0.948</span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Males</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><span class="solution">2.687_</span></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><span class="solution"><em>29.230</em></span></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><span class="solution">_+0.919</span></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><span class="autonum">4</span> What makes it difficult to compare these plots visually?</p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"> <span class="solution">The axes are labelled differently</span> </span></p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 1ex"></span></p>
+</div>
+<div class="paragraph">
+<p>Rebuild <code class="pyret">lr-plot(h-table.filter(is-f), "gender-id", "age", "height")</code>, adjust the window of the interactive plot so that:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">x-min:</th>
+<th class="tableblock halign-center valign-top">x-max:</th>
+<th class="tableblock halign-center valign-top">y-min:</th>
+<th class="tableblock halign-center valign-top">y-max:</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">6.5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">12.5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">45</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">70</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>and click <code class="pyret">Redraw</code>.  Then, do the same for <code class="pyret">lr-plot(h-table.filter(is-m), "gender-id", "age", "height")</code>.</p>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 1ex"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">5</span> How do the plots compare now that their windows match?</p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"><span class="solution">Answers will vary. The girls seem to be growing faster.</span></span></p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"><span class="solution">The dots stray farther from the predictor line on the plot that includes all students.</span></span></p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 1ex"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">6</span> What happens if you compare the students' height in inches to their height in centimeters by plotting <code class="pyret">lr-plot(h-table, "gender-id", "height-cm", "height")</code>?</p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"><span class="solution">All of the dots fall on the predictor line and the r-value is 1!</span></span></p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"><span class="solution">(This is because someone&#8217;s height in inches correspods exactly to their height in centimeters.)</span></span></p>
+</div>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-17 19:42:06 -0400
+</div>
+</div>
+</body>
+</html>

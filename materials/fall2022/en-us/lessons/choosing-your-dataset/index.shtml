@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Choosing Your Dataset</title>
+
+  <link rel="stylesheet" href="../../lib/curriculum.css" />
+    <link rel="stylesheet" href="../../lib/codemirror.css" />
+    <script src="../../lib/codemirror.js"></script>
+    <script src="../../lib/runmode.js"></script>
+    <script src="../../lib/scheme2.js"></script>
+    <script src="../../lib/pyret-mode.js"></script>
+    <script src="../../lib/langtable.js"></script>
+    <script src="../../lib/bootstraplesson.js"></script>
+    <script src="../../dependency-graph.js"></script>
+    <script src="../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"Choosing Your Dataset",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="article LessonPlan pyret" onload="renderSaveToDrive()">
+<!--#include virtual="/menubar.ssi"-->
+<div id="body" onload="renderSaveToDrive()">
+<div id="header">
+<h1>Choosing Your Dataset</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<script>
+function preselect(klass) {
+  const items = document.getElementsByClassName(klass);
+  for (let i = 0; i < items.length; i++) {
+    items[i].style.display = 'none';
+  }
+  if (items.length > 0) {
+    items[0].style.display = 'block';
+  }
+}
+window.onload = function() {
+  preselect('alignedStandards');
+  preselect('alignedTextbooks');
+  preselect('alignedPractices');
+}
+function showStandardsAlignment() {
+  const selectTag = document.getElementsByClassName('standardsAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const stdTables = document.getElementsByClassName('alignedStandards');
+  //const intro = document.getElementsByClassName('alignedStandardsIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < stdTables.length; i++) {
+    const stdTable = stdTables[i];
+    stdTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optStd = opt.value;
+      for (let j = 0; j < stdTables.length; j++) {
+        const stdTable = stdTables[j];
+        if (stdTable.classList.contains(optStd)) {
+          stdTable.style.display = 'block';
+         // introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+function toggleNonPrereqDisplay() {
+  const inputTag = document.getElementsByClassName('sidebarinput')[0];
+  const checkedP = inputTag.checked;
+  const lessonTable = document.getElementsByClassName('sidebarlessons')[0];
+  const lis = lessonTable.getElementsByTagName('li');
+  for (let i = 0; i < lis.length; i++) {
+    const li = lis[i];
+    const lesson = li.getElementsByClassName('prerequisite');
+    if (lesson.length === 0) {
+      li.style.display = checkedP ? 'none' : 'block';
+    }
+  }
+}
+</script>
+<script>
+function showTextbooksAlignment() {
+  const selectTag = document.getElementsByClassName('textbooksAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const textbookTables = document.getElementsByClassName('alignedTextbooks');
+  //const intro = document.getElementsByClassName('alignedTextbooksIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < textbookTables.length; i++) {
+    const textbookTable = textbookTables[i];
+    textbookTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optTextbook = opt.value;
+      for (let j = 0; j < textbookTables.length; j++) {
+        const textbookTable = textbookTables[j];
+        if (textbookTable.classList.contains(optTextbook)) {
+          textbookTable.style.display = 'block';
+          //introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+</script>
+<script>
+function showPracticesAlignment() {
+  const selectTag = document.getElementsByClassName('practicesAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const practiceTables = document.getElementsByClassName('alignedPractices');
+  for (let i = 0; i < practiceTables.length; i++) {
+    const practiceTable = practiceTables[i];
+    practiceTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optPractice = opt.value;
+      for (let j = 0; j < practiceTables.length; j++) {
+        const practiceTable = practiceTables[j];
+        if (practiceTable.classList.contains(optPractice)) {
+          practiceTable.style.display = 'block';
+        }
+      }
+    }
+  }
+}
+</script>
+<div class="paragraph">
+<!-- </p>
+</div>
+--></div><div class="sidebar"><div id="toggle"></div><div class="paragraph"><!--
+<div class="paragraph">
+<p>
+--><div class="sidebarlessons"><strong>Lessons</strong>
+<ul></ul></div>
+</div>
+<table class="tableblock frame-all grid-all stretch sidebarstandards">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Standards in this Lesson</strong>
+<select class="standardsAlignmentSelect"  onchange="showStandardsAlignment()"><option selected="selected" value="standards-CCSS-Math">CCSS-Math</option><option value="standards-CSTA">CSTA</option><option value="standards-K12CS">K12CS</option><option value="standards-Oklahoma">Oklahoma</option></select></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist alignedStandards standards-CCSS-Math">
+<div class="title"><a href="http://corestandards.org/Math/">Common Core Math Standards</a></div>
+<dl>
+<dt class="hdlist1">6.SP.A.1</dt>
+<dd>
+<p>Recognize a statistical question as one that anticipates variability in the data related to the question and accounts for it in the answers.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-CSTA">
+<div class="title"><a href="https://csteachers.org/page/standards">CSTA Standards</a></div>
+<dl>
+<dt class="hdlist1">1B-AP-11</dt>
+<dd>
+<p>Decompose (break down) problems into smaller, manageable subproblems to facilitate the program development process.</p>
+</dd>
+<dt class="hdlist1">3A-AP-16</dt>
+<dd>
+<p>Design and iteratively develop computational artifacts for practical intent, personal expression, or to address a societal issue by using events to initiate instructions.</p>
+</dd>
+<dt class="hdlist1">3A-AP-17</dt>
+<dd>
+<p>Decompose problems into smaller components through systematic analysis, using constructs such as procedures, modules, and/or objects.</p>
+</dd>
+<dt class="hdlist1">3A-AP-23</dt>
+<dd>
+<p>Document design decisions using text, graphics, presentations, and/or demonstrations in the development of complex programs.</p>
+</dd>
+<dt class="hdlist1">3A-DA-11</dt>
+<dd>
+<p>Create interactive data visualizations using software tools to help others better understand real-world phenomena.</p>
+</dd>
+<dt class="hdlist1">3B-AP-14</dt>
+<dd>
+<p>Construct solutions to problems using student-created components, such as procedures, modules and/or objects.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-K12CS">
+<div class="title"><a href="https://k12cs.org">K-12CS Standards</a></div>
+<dl>
+<dt class="hdlist1">6-8.Data and Analysis.Inference and Models</dt>
+<dd>
+<p>People transform, generalize, simplify, and present large data sets in different ways to influence how other people interpret and understand the underlying information. Examples include visualization, aggregation, rearrangement, and application of mathematical operations.</p>
+</dd>
+<dt class="hdlist1">9-12.Data and Analysis.Visualization and Transformation</dt>
+<dd>
+<p>Data can be transformed to remove errors, highlight or expose relationships, and/or make it easier for computers to process.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Oklahoma">
+<div class="title"><a href="https://sde.ok.gov/oklahoma-academic-standards">Oklahoma Standards</a></div>
+<dl>
+<dt class="hdlist1">OK.6.D.1.3</dt>
+<dd>
+<p>Create and analyze box and whisker plots observing how each segment contains one quarter of the data.</p>
+</dd>
+<dt class="hdlist1">OK.7.D.1.2</dt>
+<dd>
+<p>Use reasoning with proportions to display and interpret data in circle graphs (pie charts) and histograms. Choose the appropriate data display and know how to create the display using a spreadsheet or other graphing technology.</p>
+</dd>
+<dt class="hdlist1">OK.8.DA.S.01</dt>
+<dd>
+<p>Analyze multiple methods of representing data and choose the most appropriate method for representing data.</p>
+</dd>
+<dt class="hdlist1">OK.8.IC.SI.01</dt>
+<dd>
+<p>Communicate and publish key ideas and details individually or collaboratively in a way that informs, persuades, and/or entertains using a variety of digital tools and media-rich resources. Describe and use safe, appropriate, and responsible practices (netiquette) when participating in online communities (e.g., discussion groups, blogs, social networking sites).</p>
+</dd>
+<dt class="hdlist1">OK.A1.D.1.1</dt>
+<dd>
+<p>Describe a data set using data displays, describe and compare data sets using summary statistics, including measures of central tendency, location, and spread. Know how to use calculators, spreadsheets, or other appropriate technology to display data and calculate summary statistics.</p>
+</dd>
+<dt class="hdlist1">OK.L1.DA.CVT.01</dt>
+<dd>
+<p>Use tools and techniques to locate, collect, and create visualizations of small- and largescale data sets (e.g., paper surveys and online data sets).</p>
+</dd>
+<dt class="hdlist1">OK.L1.IC.C.02</dt>
+<dd>
+<p>Test and refine computational artifacts to reduce bias and equity deficits.</p>
+</dd>
+<dt class="hdlist1">OK.PA.A.2.2</dt>
+<dd>
+<p>Identify, describe, and analyze linear relationships between two variables.</p>
+</dd>
+<dt class="hdlist1">OK.PA.D.1</dt>
+<dd>
+<p>Display and interpret data in a variety of ways, including using scatterplots and approximate lines of best fit. Use line of best fit and average rate of change to make predictions and draw conclusions about data.</p>
+</dd>
+<dt class="hdlist1">OK.PA.D.1.1</dt>
+<dd>
+<p>Describe the impact that inserting or deleting a data point has on the mean and the median of a data set. Know how to create data displays using a spreadsheet and use a calculator to examine this impact.</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch sidebartextbooks">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Textbook Alignment</strong>
+<select class="textbooksAlignmentSelect"  onchange="showTextbooksAlignment()"><option selected="selected" value="textbook-IM_Alg_1"><a href="https://illustrativemathematics.org/">IM Algebra 1</a></option></select></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist alignedTextbooks textbook-IM_Alg_1">
+<div class="title"><a href="https://illustrativemathematics.org/">IM Algebra 1</a></div>
+<dl>
+<dt class="hdlist1">IM.Alg1.3.10</dt>
+<dd>
+<p>Fossils and Flags</p>
+</dd>
+<dt class="hdlist1">IM.Alg1.1.9</dt>
+<dd>
+<p>Technological Graphing</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch sidebarpractices">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Practices in this Lesson</strong>
+<select class="practicesAlignmentSelect"  onchange="showPracticesAlignment()"><option selected="selected" value="practices-K12CS"><a href="https://k12cs.org">K12CS</a></option><option value="practices-NGSS"><a href="https://ngss.nsta.org/practicesfull.aspx">Science and Engineering</a></option><option value="practices-CC"><a href="http://corestandards.org/Math/">Math</a></option></select></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist alignedPractices practices-K12CS">
+<div class="title"><a href="https://k12cs.org">K12CS</a></div>
+<dl>
+<dt class="hdlist1">P7</dt>
+<dd>
+<p>Communicating About Computing</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedPractices practices-NGSS">
+<div class="title"><a href="https://ngss.nsta.org/practicesfull.aspx">Science and Engineering</a></div>
+<dl>
+<dt class="hdlist1">SEP.3</dt>
+<dd>
+<p>Planning and Carrying Out Investigations</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedPractices practices-CC">
+<div class="title"><a href="http://corestandards.org/Math/">Math</a></div>
+<dl>
+<dt class="hdlist1">MP.2</dt>
+<dd>
+<p>Reason abstractly and quantitatively</p>
+</dd>
+<dt class="hdlist1">MP.5</dt>
+<dd>
+<p>Use appropriate tools strategically</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<!-- </p>
+</div>
+--></div><!--
+<div class="paragraph">
+<p>
+-->
+</div>
+<div class="paragraph description">
+<p>Students practice making a variety of chart types and then begin to investigate a real world dataset, which they will continue to work with for the remainder of the course.</p>
+</div>
+<table class="tableblock frame-all grid-all stripes-none stretch left-header preamble">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Lesson Goals</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Students will be able to&#8230;&#8203;</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Explain why they chose their dataset</p>
+</li>
+<li>
+<p>Describe their dataset</p>
+</li>
+<li>
+<p>Make subsets from their dataset</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Student-facing Lesson Goals</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Let&#8217;s all choose an interesting dataset to investigate.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Materials</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist materials-links">
+<ul>
+<li>
+<p><a href="https://docs.google.com/presentation/d/1w9EO3mq06hR_X8_splJQxVoX6gRWHygGkXOVYGlCTOc/" target="_blank" rel="noopener">Lesson Slides</a></p>
+</li>
+<li>
+<p><span class="StarterFile"><a href="https://code.pyret.org/editor#share=1lGjndLCWSEoIrV3ErZMXSn_-xakqGvrK" target="_blank" rel="noopener">Animals Starter File</a></span></p>
+</li>
+<li>
+<p><span class="StarterFile"><a href="https://code.pyret.org/editor#share=1hsALf5oOrWqrolayPIgIlYXrqk3i-vD5" target="_blank" rel="noopener">Blank Dataset Starter File for Bootstrap:Data Science</a></span></p>
+</li>
+<li>
+<p><span class="StarterFile"><a href="https://code.pyret.org/editor#share=1XkTWBTssYznSgB8PZ6ky7Cvc6ea-BdBU&v=164e917" target="_blank" rel="noopener">Global Food Supply &amp; Production</a></span></p>
+</li>
+<li>
+<p><span class="StarterFile"><a href="https://docs.google.com/document/d/1eBYMjAxrn0rPp0Mqd52cRjmwyXSz51RfBWe67DR93es/copy" target="_blank" rel="noopener">Dataset Exploration</a></span></p>
+</li>
+<li>
+<p><span class="materialSectionPlaceholder"> </span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/choosing-your-dataset/pages/consider-and-analyze.html" target="_blank" rel="noopener">Consider and Analyze</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/choosing-your-dataset/pages/my-dataset.html" target="_blank" rel="noopener">My Dataset</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/choosing-your-dataset/pages/data-cycle-categorical.html" target="_blank" rel="noopener">Data Cycle: Shape of My Dataset</a></span></p>
+</li>
+<li>
+<p><span class="StarterFile Optional"><a href="https://code.pyret.org/editor#share=1XkTWBTssYznSgB8PZ6ky7Cvc6ea-BdBU&v=164e917" target="_blank" rel="noopener">Global Food Supply &amp; Production</a></span></p>
+</li>
+<li>
+<p><strong>Classroom visual:</strong> <a href="javascript:showLangTable()">Language Table</a></p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Preparation</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Decide how much choice you&#8217;re ready to offer your students before you begin. Research shows that choice increases student engagement! But focusing the whole class on a single dataset is also an option.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Would focusing your students on a single dataset make this doable for you? Because you teach younger students who might need more scaffolding? Or because you are new to teaching data science and managing fewer moving parts would increase your confidence? We recommend focusing on <a href="https://code.pyret.org/editor#share=1XkTWBTssYznSgB8PZ6ky7Cvc6ea-BdBU&v=164e917" target="_blank" rel="noopener">Global Food Supply &amp; Production</a>.</p>
+</li>
+<li>
+<p>Are you ready to jump straight into supporting your students in working on a wide range of topics of their choosing? We have a full dataset library!</p>
+</li>
+<li>
+<p>Want to give students choice from a shorter curated list&#8230;&#8203; to shorten the decision-making process, focus on topics related to curriculur goals, or just to have fewer options to manage during class?  We&#8217;ve assembled <a href="about-datasets/for-teachers-about-datasets.html" target="_blank" rel="noopener">descriptions of individual datasets here</a>. For those looking for a precurated shorter list, we&#8217;ve starred a few of them for you.</p>
+</li>
+<li>
+<p><strong>If you have time</strong>, you may want to complete all of the lessons with everyone getting extra practice analyzing <a href="https://code.pyret.org/editor#share=1XkTWBTssYznSgB8PZ6ky7Cvc6ea-BdBU&v=164e917" target="_blank" rel="noopener">Global Food Supply &amp; Production</a> and then have your students choose a dataset to analyze for their culminating research papers!</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>All students (or pairs) should log into <a href="https://code.pyret.org" target="_blank" rel="noopener">CPO</a> and open the "Animals Starter File" they saved from the prior lesson. If they don&#8217;t have the file, they can open the <a href="https://code.pyret.org/editor#share=1lGjndLCWSEoIrV3ErZMXSn_-xakqGvrK" target="_blank" rel="noopener">Animals Starter File</a>.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="dlist glossary">
+<div class="title">Glossary</div>
+<dl>
+<dt class="hdlist1">categorical data</dt>
+<dd>
+<p>data whose values are qualities that are not subject to the laws of arithmetic</p>
+</dd>
+<dt class="hdlist1">data science</dt>
+<dd>
+<p>the science of collecting, organizing, and drawing general conclusions from data, with the help of computers</p>
+</dd>
+<dt class="hdlist1">dataset</dt>
+<dd>
+<p>a collection of related information that is composed of separate elements, but can be manipulated as a unit by a computer</p>
+</dd>
+<dt class="hdlist1">quantitative data</dt>
+<dd>
+<p>number values for which arithmetic makes sense</p>
+</dd>
+<dt class="hdlist1">random sample</dt>
+<dd>
+<p>a subset of individuals chosen from a larger set, such that each individual has the same probability of being chosen</p>
+</dd>
+<dt class="hdlist1">statistical inference</dt>
+<dd>
+<p>using information from a sample to draw conclusions about the larger population from which the sample was taken</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_review_duration_20_minutes_"><span class="section-link"><a href="#_review_duration_20_minutes_"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Review <span class="duration">20 minutes</span></h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_overview">Overview</h3>
+<div class="paragraph">
+<p>Students practice making lots of chart types, focusing specifically on the "Consider Data" step in the Data Cycle and how it can be used alongside Contracts to help go from questions to code.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_launch">Launch</h3>
+<div class="paragraph">
+<p>Let&#8217;s get some practice isolating the Rows and Columns needed to answer various questions, and use our knowledge of Contracts to help turn those questions into working code!</p>
+</div>
+<div class="paragraph lesson-instruction">
+<p>Complete <a href="../../lessons/choosing-your-dataset/pages/consider-and-analyze.html" target="_blank" rel="noopener">Consider and Analyze</a>.</p>
+</div>
+<div class="paragraph">
+<p>Be sure to review student answers.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_choosing_a_dataset_duration_30_minutes_"><span class="section-link"><a href="#_choosing_a_dataset_duration_30_minutes_"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Choosing a Dataset <span class="duration">30 minutes</span></h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_overview_2">Overview</h3>
+<div class="paragraph">
+<p>Students select a dataset that interests them, and do some thinking about <em>why</em> it interests them, <em>what questions they&#8217;d like to answer</em> and <em>what hypotheses they have</em>. They&#8217;ll be analyzing this data for a long time, so it&#8217;s critical to ensure a high degree of buy-in before signing off on a student&#8217;s choice!</p>
+</div>
+<div class="paragraph">
+<p><strong>If you are opting to focus your whole class on a single dataset, we recommend skipping to the Exploring Your Dataset section of this lesson and using the dataset provided there.</strong> <em>(It focuses on global food supply and production through environmental / geographic / cultural lenses and the variables were carefully selected to make sure it lends itself well for all kinds of data displays and discussions. You can, of course, opt to choose any dataset you&#8217;d like, from our library or otherwise.)</em></p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_launch_2">Launch</h3>
+<div class="paragraph lesson-point">
+<p>Data Science: it&#8217;s all about YOU!</p>
+</div>
+<div class="paragraph">
+<p>What data matters to <strong><em>you?</em></strong> What questions do <strong><em>you</em></strong> care about? We live in a world filled with data, gathered about almost every subject you can imagine.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Climate sensors are gathering data on temperature, humidity, oxygen and more&#8230;&#8203;practically everywhere on the globe.</p>
+</li>
+<li>
+<p>Census data tracks the number of different groups of people, as well as their education, income level, and more.</p>
+</li>
+<li>
+<p>Companies like Facebook, Amazon, and Google gather massive amounts of data on the websites you visit, what you chat about online, what you purchase, etc.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This data is used to set public policy, draw voting districts, approve drugs, calculate school funding, decide which advertisements you see, and more.</p>
+</div>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Where else do you see data being gathered?</p>
+</li>
+<li>
+<p>What are some other ways data is used in the world around you?</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Below is a list of every <span class="vocab">dataset</span> already provided to students, with a corresponding Starter File that instantly imports the (cleaned) data into Pyret.</p>
+</div>
+<div class="paragraph">
+<p><em>Students can also find their own dataset</em>, and use this <a href="https://code.pyret.org/editor#share=1hsALf5oOrWqrolayPIgIlYXrqk3i-vD5" target="_blank" rel="noopener">Blank Dataset Starter File for Bootstrap:Data Science</a>. See this <a href="https://youtu.be/uqm9F_tmIho" target="_blank" rel="noopener">tutorial video</a> for help importing your own data into Pyret.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_investigate">Investigate</h3>
+<div class="paragraph">
+<p>Have students choose a dataset that is interesting to them and save a copy of it in their programs!</p>
+</div>
+<style>
+
+/*
+* Two Column Layout that spans page width, using DT and DD tags
+* Every other row is shaded for readability
+*/
+.TwoColumnDD_DT dl {width: 100%; clear: both; overflow: hidden; padding-left: 1em;}
+.TwoColumnDD_DT dl > * {padding: 0; margin: 0; float: left; width: 50%; clear: left; line-height:1.7rem;}
+.TwoColumnDD_DT dd {float: right; text-align: right; clear: none;}
+.TwoColumnDD_DT dd * {display: inline; }
+.TwoColumnDD_DT dd::before {content: '['; }
+.TwoColumnDD_DT dd::after  {content: ']'; }
+.TwoColumnDD_DT dd a:first-child::after {
+  content:            '  |';
+  white-space:        pre-wrap;
+  display:            inline-block;
+ }
+ .TwoColumnDD_DT dl > *:nth-of-type(odd){ background: #75328912;}
+
+.TwoColumnDD_DT * { font-size: 0.9rem !important; font-weight: normal; }
+.TwoColumnDD_DT strong {
+  font-size: 1rem !important;
+  font-weight: normal;
+}
+</style>
+<div class="paragraph">
+<p><em>Looking for a shorter list? We&#8217;ve starred a few good beginner datasets.</em></p>
+</div>
+<div class="openblock TwoColumnDD_DT">
+<div class="content">
+<div class="paragraph">
+<p><strong>The Environment &amp; Health</strong></p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Global Waste by Country 2019</dt>
+<dd>
+<p><a href="https://docs.google.com/spreadsheets/d/1TOzs9GqIJIF9P6LVsGnt3Q6rueG43CYKQMoJrigJy-c/" target="_blank" rel="noopener">Dataset</a>
+<a href="https://code.pyret.org/editor#share=1KazKZ8hQX4XIvPGrZUs19wVQpiNt_ujH&amp;v=6788e10" target="_blank" rel="noopener">Starter File</a></p>
+</dd>
+<dt class="hdlist1">World Cities' Proximity to the Ocean</dt>
+<dd>
+<p><a href="https://docs.google.com/spreadsheets/d/166F2V0uPtAIiU4BkITu8pDmU2hnPIWJaM3yDoOHyon0/" target="_blank" rel="noopener">Dataset</a>
+<a href="https://code.pyret.org/editor#share=1TEzngZkXM8KF_QhfkoRhJEzjl8bbJ0GC&amp;v=6788e10" target="_blank" rel="noopener">Starter File</a></p>
+</dd>
+<dt class="hdlist1">Earthquakes</dt>
+<dd>
+<p><a href="https://docs.google.com/spreadsheets/d/1ffJpn6BlAzN51XFd9nZ_CcTUmNqkp1DoNMOcn3ebcIk/" target="_blank" rel="noopener">Dataset</a>
+<a href="https://code.pyret.org/editor#share=1bJD0Cl4t4HjXslkF-n6y6fYoUdj19zTy&amp;v=6788e10" target="_blank" rel="noopener">Starter File</a></p>
+</dd>
+<dt class="hdlist1">Air Quality, Pollution Sources &amp; Health in the U.S.</dt>
+<dd>
+<p><a href="https://docs.google.com/spreadsheets/d/1IWfFqS3Lrpj43rH1BwXeUmNm452rlU9_n07bWpxpv9U/" target="_blank" rel="noopener">Dataset</a>
+<a href="https://code.pyret.org/editor#share=1Q053UONH2ZPw-ukipW_fXT3wVJu-Ichx&amp;v=6788e10" target="_blank" rel="noopener">Starter File</a></p>
+</dd>
+<dt class="hdlist1">Health by U.S. County</dt>
+<dd>
+<p><a href="https://docs.google.com/spreadsheets/d/1iMsqeVJz0h28mk79N6rlkcU1BWqaeKDGF6APh4L9sdM/" target="_blank" rel="noopener">Dataset</a>
+<a href="https://code.pyret.org/editor#share=1goLIL79pzjcuS3JuFgeTF73MvY_wPx3B&amp;v=6788e10" target="_blank" rel="noopener">Starter File</a></p>
+</dd>
+<dt class="hdlist1">COVID in the U.S. by County</dt>
+<dd>
+<p><a href="https://docs.google.com/spreadsheets/d/12RKQIJEKl6768IjgccSokrg1sWXOEAHDoP71x4c1294/" target="_blank" rel="noopener">Dataset</a>
+<a href="https://code.pyret.org/editor#share=1t07HbDnN9NruvWX9_6rRUxMqYbcKe5oR&amp;v=6788e10" target="_blank" rel="noopener">Starter File</a></p>
+</dd>
+<dt class="hdlist1">Arctic Sea Ice</dt>
+<dd>
+<p><a href="https://docs.google.com/spreadsheets/d/1gg8qh72MrW-GZ5_vB8scCYlgDRGfGMAqv_9Sofsf9gs/" target="_blank" rel="noopener">Dataset</a>
+<a href="https://code.pyret.org/editor#share=19_l81e1jBjwuLjaVVh8gZZtB9K24ioR8&amp;v=6788e10" target="_blank" rel="noopener">Starter File</a></p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="openblock TwoColumnDD_DT">
+<div class="content">
+<div class="paragraph">
+<p><strong>Politics</strong></p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Countries of the World</dt>
+<dd>
+<p><a href="https://docs.google.com/spreadsheets/d/19VoYxPw0tmuSViN1qFIkyUoepjNSRsuQCe0TZZDmrZs" target="_blank" rel="noopener">Dataset</a>
+<a href="https://code.pyret.org/editor#share=1StX6mmWMYPQOpH8ab1WiAlvPYeMlMEAD&amp;v=6788e10" target="_blank" rel="noopener">Starter File</a></p>
+</dd>
+<dt class="hdlist1">Gerry Mandering</dt>
+<dd>
+<p><a href="https://docs.google.com/spreadsheets/d/1L7hf0llI8dl8okVuat2fa1K4lqD5O301IFPi81vG7fc/" target="_blank" rel="noopener">Dataset</a>
+<a href="https://code.pyret.org/editor#share=14L2FDUqXQuBQuclOkFjPtWwcYHDaNLij&amp;v=6788e10" target="_blank" rel="noopener">Starter File</a></p>
+</dd>
+<dt class="hdlist1">Marijuana Laws &amp; Arrests by State 2018</dt>
+<dd>
+<p><a href="https://docs.google.com/spreadsheets/d/1TB0Lj88IH1bdAAKAxwsFMW-x-B-JtnLate4ArmSWDzk/" target="_blank" rel="noopener">Dataset</a>
+<a href="https://code.pyret.org/editor#share=1W6DWQ1V0Md-HF6gSLbOdo-5oqNFmJEJn&amp;v=6788e10" target="_blank" rel="noopener">Starter File</a></p>
+</dd>
+<dt class="hdlist1">LAPD Arrests 2010-2019</dt>
+<dd>
+<p><a href="https://docs.google.com/spreadsheets/d/1FqfDZAFdK7ZwegotvkTRgRfo30N2S3IqhDb1-WTwOjE/edit?usp=sharing" target="_blank" rel="noopener">Dataset</a>
+<a href="https://code.pyret.org/editor#share=1MunuROtXkaHU5BRm3W29hRH6Dg3JK2HD&amp;v=6788e10" target="_blank" rel="noopener">Starter File</a></p>
+</dd>
+<dt class="hdlist1">NYPD Stop, Search &amp; Frisk 2019</dt>
+<dd>
+<p><a href="https://docs.google.com/spreadsheets/d/1XrJPOeIJCavRjP1nHbWYKcGo79dO-x_XidLplJabGko/" target="_blank" rel="noopener">Dataset</a>
+<a href="https://code.pyret.org/editor#share=1MunuROtXkaHU5BRm3W29hRH6Dg3JK2HD&amp;v=6788e10" target="_blank" rel="noopener">Starter File</a></p>
+</dd>
+<dt class="hdlist1">Refugees 2018</dt>
+<dd>
+<p><a href="https://docs.google.com/spreadsheets/d/1mDSr7CcpSO4aL-iV2oEfYLecssvis2Je6hN3vsomYuc/" target="_blank" rel="noopener">Dataset</a>
+<a href="https://code.pyret.org/editor#share=17ztmud-3pVeZm-OcxAyzoRYmGnAkoEsD&amp;v=6788e10" target="_blank" rel="noopener">Starter File</a></p>
+</dd>
+<dt class="hdlist1">State Demographics</dt>
+<dd>
+<p><a href="https://docs.google.com/spreadsheets/d/14fRmjAiCqGNI5Zr5kGSDjMavln7ILqhSX3N3zGd8CAU" target="_blank" rel="noopener">Dataset</a>
+<a href="https://code.pyret.org/editor#share=1_bWyvw075AbS8ZXXdwpPw5J7t6U9ML-g&amp;v=6788e10" target="_blank" rel="noopener">Starter File</a></p>
+</dd>
+<dt class="hdlist1">U.S. Income</dt>
+<dd>
+<p><a href="https://docs.google.com/spreadsheets/d/1cIxBSQebGejWK7S_Iy6cDFSIpD-60x8oG7IvrfCtHbw" target="_blank" rel="noopener">Dataset</a>
+<a href="https://code.pyret.org/editor#share=1V_6wCSXN1Mb-L5Ts0xz0MwC4BzoXvzsY&amp;v=6788e10" target="_blank" rel="noopener">Starter File</a></p>
+</dd>
+<dt class="hdlist1">U.S. Jobs</dt>
+<dd>
+<p><a href="https://docs.google.com/spreadsheets/d/1fAzyoVgtSMl9ja-JMpou_Y5RRyoTOPh2umR_mkJYQyU/" target="_blank" rel="noopener">Dataset</a>
+<a href="https://code.pyret.org/editor#share=1b_Yt04yYsUB4TkFY2zfOZKYCM16T7nzU&amp;v=6788e10" target="_blank" rel="noopener">Starter File</a></p>
+</dd>
+<dt class="hdlist1">U.S. Voter Turnout 2016</dt>
+<dd>
+<p><a href="https://docs.google.com/spreadsheets/d/1uhnZVz9OFsnI8rNpdIiw5ZcxnstaKMAE8BQ285KZxfQ/" target="_blank" rel="noopener">Dataset</a>
+<a href="https://code.pyret.org/editor#share=1_4c59xjJKPnOBkD257PcVGRrWedSozYW&amp;v=6788e10" target="_blank" rel="noopener">Starter File</a></p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="openblock TwoColumnDD_DT">
+<div class="content">
+<div class="paragraph">
+<p><strong>Sports</strong></p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Esports Earnings</dt>
+<dd>
+<p><a href="https://docs.google.com/spreadsheets/d/1SqK3BP-RKrN9adFQz2XvZUMHCAPsm530XT1hC96L6w0/" target="_blank" rel="noopener">Dataset</a>
+<a href="https://code.pyret.org/editor#share=1Brnu1OjiPSDla3n1ZeDhZLRtWjitECUu&amp;v=31c9aaf" target="_blank" rel="noopener">Starter File</a></p>
+</dd>
+<dt class="hdlist1">MLB Hitting Stats</dt>
+<dd>
+<p><a href="https://docs.google.com/spreadsheets/d/1svCf5aGzV6wdrJBdA30ZGgIxm2jNgLOs72MoukacpBE/" target="_blank" rel="noopener">Dataset</a>
+<a href="https://code.pyret.org/editor#share=1T-0vjJK0BFiwClI-O6hvUCMCAd5CAl9X&amp;v=5f98106" target="_blank" rel="noopener">Starter File</a></p>
+</dd>
+<dt class="hdlist1">NBA Players</dt>
+<dd>
+<p><a href="https://docs.google.com/spreadsheets/d/1NQbLNeV5ezuAJnLNirVOb9ls8Firk4YXLzksG5RaUgA/" target="_blank" rel="noopener">Dataset</a>
+<a href="https://code.pyret.org/editor#share=1oIyXJKONRVIzvsQM4C7j_8dNtZH0A9dt&amp;v=6788e10" target="_blank" rel="noopener">Starter File</a></p>
+</dd>
+<dt class="hdlist1">NFL Passing</dt>
+<dd>
+<p><a href="https://docs.google.com/spreadsheets/d/1tpHZdUZQ0Fzuy1G1qqPPoKS0p6PkG3hb_P_013kcVIo/" target="_blank" rel="noopener">Dataset</a>
+<a href="https://code.pyret.org/editor#share=1g_CRyNroiUZlCUgsCjTV_wFq9MowKwab&amp;v=1904b2c" target="_blank" rel="noopener">Starter File</a></p>
+</dd>
+<dt class="hdlist1">NFL Rushing</dt>
+<dd>
+<p><a href="https://docs.google.com/spreadsheets/d/1o8d0k46L8mkIIIpgYHXtMLxDzjXE6l1epN5tWLHyG6o/" target="_blank" rel="noopener">Dataset</a>
+<a href="https://code.pyret.org/editor#share=1IJAjOHEutLq40OBT788uv-RsWypQ_CHb&amp;v=1904b2c" target="_blank" rel="noopener">Starter File</a></p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="openblock TwoColumnDD_DT">
+<div class="content">
+<div class="paragraph">
+<p><strong>Entertainment</strong></p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">★Movies</dt>
+<dd>
+<p><a href="https://docs.google.com/spreadsheets/d/1xd1Egg6x3ZmqzsqQodNvxfSyhLgVnX2bJtQt8hzVjo0/" target="_blank" rel="noopener">Dataset</a>
+<a href="https://code.pyret.org/editor#share=1CUza8tsxDscC1YUgp3FPM-52nAkLzaPy&amp;v=5f98106" target="_blank" rel="noopener">Starter File</a></p>
+</dd>
+<dt class="hdlist1">IGN video game Reviews</dt>
+<dd>
+<p><a href="https://docs.google.com/spreadsheets/d/1Ss221kjz2WJUsTlxK7TcnsXLPoSbnfUKv-JP8gCiGRw" target="_blank" rel="noopener">Dataset</a>
+<a href="https://code.pyret.org/editor#share=1oZTRU_i34MHv7xXPvPUbCAWq_8U0LWk6&amp;v=6788e10" target="_blank" rel="noopener">Starter File</a></p>
+</dd>
+<dt class="hdlist1">International Exhibition of Modern Art</dt>
+<dd>
+<p><a href="https://docs.google.com/spreadsheets/d/108ZnfCy3V2WkpSmjYpane6gmogM3EtBLL1sD-9h0Acc/" target="_blank" rel="noopener">Dataset</a>
+<a href="https://code.pyret.org/editor#share=1vqfNqaE6IpC3TA11kT-MQZxX_n7fTKCe&amp;v=6788e10" target="_blank" rel="noopener">Starter File</a></p>
+</dd>
+<dt class="hdlist1">North American Pipe Organs</dt>
+<dd>
+<p><a href="https://docs.google.com/spreadsheets/d/1IlR9rvo4gQzcynhj4rjf_6mm2gwt5bl34j-__PgL7L0/" target="_blank" rel="noopener">Dataset</a>
+<a href="https://code.pyret.org/editor#share=1VHihEKm-p5U3jlB2a9FtvGXBWuo5FCyy&amp;v=6788e10" target="_blank" rel="noopener">Starter File</a></p>
+</dd>
+<dt class="hdlist1">Pokemon</dt>
+<dd>
+<p><a href="https://docs.google.com/spreadsheets/d/1S8jf4Qf94TJKGLCcTA-Fqn4YXE7dGf_PIxv5MUeUPVo/edit?usp=sharing" target="_blank" rel="noopener">Dataset</a>
+<a href="https://code.pyret.org/editor#share=1QZXjo9IGbHAh-UX-VVgyfrXpdvioQnv3&amp;v=1904b2c" target="_blank" rel="noopener">Starter File</a></p>
+</dd>
+<dt class="hdlist1">Music</dt>
+<dd>
+<p><a href="https://docs.google.com/spreadsheets/d/13OFoNwVJZiKr1fWjKO912lr2RXxUiCakNJmeZT4JzHE/edit?usp=sharing" target="_blank" rel="noopener">Dataset</a>
+<a href="https://code.pyret.org/editor#share=1QcHM_sXxR6r9lGDvR41MDb5PTp_A4vYE&amp;v=6788e10" target="_blank" rel="noopener">Starter File</a></p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="openblock TwoColumnDD_DT">
+<div class="content">
+<div class="paragraph">
+<p><strong>Education</strong></p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">College Majors</dt>
+<dd>
+<p><a href="https://docs.google.com/spreadsheets/d/1wIpbDIBQMjAwaLGNK-e5snmzui0DuWFdrkoSNVv9m5c/" target="_blank" rel="noopener">Dataset</a>
+<a href="https://code.pyret.org/editor#share=16AVqy-aSJLDGtf7-0IMctjsGuudprYda&amp;v=6788e10" target="_blank" rel="noopener">Starter File</a></p>
+</dd>
+<dt class="hdlist1">U.S. Colleges 2019-2020</dt>
+<dd>
+<p><a href="https://docs.google.com/spreadsheets/d/1_gUN2vm1q3ifckJhah6TKllJuDwsnWcMTwJUcp2SaxA/edit" target="_blank" rel="noopener">Dataset</a>
+<a href="https://code.pyret.org/editor#share=11dmSzZcjB1B_uZwvro9dC1o3VFU75EJf&amp;v=6788e10" target="_blank" rel="noopener">Starter File</a></p>
+</dd>
+<dt class="hdlist1">★R.I. Schools</dt>
+<dd>
+<p><a href="https://docs.google.com/spreadsheets/d/1XeeyAuF_mtpeCw2HVCKjvwW1rreNvztoQ3WeBlEaDl0/" target="_blank" rel="noopener">Dataset</a>
+<a href="https://code.pyret.org/editor#share=1jifBfMXZUMal8UAZI7Fq2WR-jwooxDjB&amp;v=6788e10" target="_blank" rel="noopener">Starter File</a></p>
+</dd>
+<dt class="hdlist1">Evolution of College Admissions in California</dt>
+<dd>
+<p><a href="https://docs.google.com/spreadsheets/d/16U0kPYf8u-bPWOkF805zGRAYpSnCWbMHFTpWxPvXh7Q/" target="_blank" rel="noopener">Dataset</a>
+<a href="https://code.pyret.org/editor#share=1Y9xYNib82QNIGW2Pi30aaBk6RZZ9fYgB&amp;v=6788e10" target="_blank" rel="noopener">Starter File</a></p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="openblock TwoColumnDD_DT">
+<div class="content">
+<div class="paragraph">
+<p><strong>Nutrition</strong></p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Soda, Coffee &amp; Other Drinks</dt>
+<dd>
+<p><a href="https://docs.google.com/spreadsheets/d/1QcPosMRFMrgayav6W3SfRjdtCn5oF_CSvoJPMmA2fJM/" target="_blank" rel="noopener">Dataset</a>
+<a href="https://code.pyret.org/editor#share=11p7Wd9skDeijVnL-9tdKZoRz0mG-hVqm&amp;v=6788e10" target="_blank" rel="noopener">Starter File</a></p>
+</dd>
+<dt class="hdlist1">Fast Food Nutrition</dt>
+<dd>
+<p><a href="https://docs.google.com/spreadsheets/d/12yhGT-p1yMXXig27pvMEkC_E5a3tLRlXA1sXopHgwzI/" target="_blank" rel="noopener">Dataset</a>
+<a href="https://code.pyret.org/editor#share=1j8NR1B22B_l1ocDSsAota7ZyO-HHciBV&amp;v=6788e10" target="_blank" rel="noopener">Starter File</a></p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="../../lessons/choosing-your-dataset/pages/contributing-a-dataset.html">Would you like to contribute a dataset of your own, or is there something you&#8217;d like to change about one of ours?</a></p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_synthesize">Synthesize</h3>
+<div class="paragraph">
+<p>Have students share which datasets they chose, and why they are interesting or important to them. What questions did they come up with?</p>
+</div>
+<div class="paragraph">
+<p>For the rest of this course, you&#8217;ll be learning new programming and <span class="vocab">Data Science</span> skills, practicing them with the Animals Dataset and then applying them to you own data.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_exploring_your_dataset_duration_start_today_continue_in_upcoming_lessons_"><span class="section-link"><a href="#_exploring_your_dataset_duration_start_today_continue_in_upcoming_lessons_"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Exploring Your Dataset <span class="duration">Start Today&#8230;&#8203; continue in Upcoming Lessons</span></h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_overview_3">Overview</h3>
+<div class="paragraph">
+<p>Students apply what they&#8217;ve learned about describing and making subsets from the Animals Dataset to their own dataset. <em>If your students will all be focusing on the same dataset, we recommend using <a href="https://code.pyret.org/editor#share=1XkTWBTssYznSgB8PZ6ky7Cvc6ea-BdBU&v=164e917" target="_blank" rel="noopener">Global Food Supply &amp; Production</a>.</em></p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_launch_3">Launch</h3>
+<div class="paragraph">
+<p>By now you&#8217;ve already learned what to do when you approach a new dataset.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>With the Animals Dataset, you first read the data itself, and wrote down your Notices and Wonders.</p>
+</li>
+<li>
+<p>You described the columns in the Animals Dataset, identifying which were <span class="vocab">categorical</span> and which were <span class="vocab">quantitative</span>, and whether they were Numbers, Strings, Booleans, etc.</p>
+</li>
+<li>
+<p>You took <span class="vocab">random samples</span> of the dataset, to explore <span class="vocab">inference</span> and probability.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Now, you&#8217;re doing to do the same thing <em>with your own dataset.</em></p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_investigate_2">Investigate</h3>
+<div class="openblock lesson-instruction">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Look at the spreadsheet or table for your dataset. What do you <strong>Notice</strong>? What do you <strong>Wonder</strong>?</p>
+</li>
+<li>
+<p>Complete <a href="../../lessons/choosing-your-dataset/pages/my-dataset.html" target="_blank" rel="noopener">My Dataset</a>, making sure to include at least two questions that <em>can</em> be answered by your dataset and one that <em>cannot</em>.</p>
+</li>
+<li>
+<p>Save a copy of your starter file. In the Definitions Area, use <code class="pyret">random-rows</code> to define <strong>at least three</strong> tables of different sizes: <code class="pyret">tiny-sample</code>, <code class="pyret">small-sample</code>, and <code class="pyret">medium-sample</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Today we will begin working on the <a href="https://docs.google.com/document/d/1eBYMjAxrn0rPp0Mqd52cRjmwyXSz51RfBWe67DR93es/copy" target="_blank" rel="noopener">Dataset Exploration</a>, which will prepare students for writing their research papers. We will return to this in upcoming lessons. We are just going to work on the first section for now.</p>
+</div>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Make a copy of <a href="https://docs.google.com/document/d/1eBYMjAxrn0rPp0Mqd52cRjmwyXSz51RfBWe67DR93es/copy" target="_blank" rel="noopener">Dataset Exploration</a>, and open the starter file for your dataset.</p>
+</li>
+<li>
+<p>Complete the first set of questions in the exploration paper.</p>
+</li>
+<li>
+<p>What are the categorical columns in <em>your</em> dataset? How are those values distributed?</p>
+</li>
+<li>
+<p>Turn to Complete <a href="../../lessons/choosing-your-dataset/pages/data-cycle-categorical.html" target="_blank" rel="noopener">Data Cycle: Shape of My Dataset</a>, and use the Data Cycle to generate pie and bar charts.</p>
+</li>
+<li>
+<p>What do these charts tell you? Add the images of these charts - along with your interpretation! - to the "Making Displays" section of the exploration document.</p>
+</li>
+<li>
+<p>Do these displays bring up any interesting questions? If so, add them to the end of the document.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_synthesize_2">Synthesize</h3>
+<div class="paragraph">
+<p>Have students share their findings. Were any of them surprising?</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-17 19:42:12 -0400
+</div>
+</div>
+</div>
+</body>
+</html>

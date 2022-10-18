@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Hour of Code</title>
+<style>
+/* Overall document font */
+* {font-family: Lato, Arial, Helvetica, sans-serif;}
+
+/* document headings */
+h1,.lesson-section-1 {color: #75328A;}
+h1{font-size: 32px; font-family: sans-serif;}
+table.section-heading *, .lesson-section-1 h2{font-size: 32px; font-weight: 100;}
+table.section-heading{width: 100%;}
+table.section-heading td:last-child{text-align: right; color: #d9d2e9;}
+
+/* preamble section */
+table.preamble td {padding: 10px;}
+table.preamble td:first-child{background: #b7d893; width: 25%;}
+table.preamble td:first-child p {font-weight: bold; margin: 5px;}
+
+/* content used throughout the body */
+table{ border-collapse: collapse; border: none; }
+table.grid-all.frame-all {border: solid 1px black;}
+table.grid-none.frame-none {border-width: 0px;}
+
+.big {font-size: 30pt;}
+.vocab{font-weight: bold; font-style: italic;}
+.right{text-align: right;}
+.acknowledgment {
+  border-top: solid 1px black; 
+  font-style: italic; 
+  font-size: 8pt;
+}
+.lesson-point {
+  border-top: solid 1px black; 
+  border-bottom: solid 1px black; 
+  color: black;
+  font-weight: bold;
+}
+
+.web-page-only, #footer { display: none; visibility: hidden; }
+
+/* Callout boxes */
+.strategy-box, .notice-box {
+  background: #efefef;
+  border: solid 5px !important;
+  margin: 15px auto;
+  width: 100%;
+}
+.strategy-box { border-color: #1a73b5 !important; }
+.notice-box   { border-color: #7747a5 !important; }
+.strategy-box td, .notice-box td{ padding: 10px; }
+.strategy-box .title, .notice-box .title{
+  width: 100%;
+  display: block;
+  font-weight: bold;
+  font-size: 24px;
+  clear: both;
+  margin: 100px;
+}
+.strategy-box p.tableblock:first-child, .notice-box p.tableblock:first-child{
+  text-align: center;
+  padding-bottom: 15px;
+}
+.strategy-box .title { color: #1a73b5; }
+.notice-box   .title { color: #7747a5; }
+.strategy-box a, .notice-box a { color: blue; text-decoration: underline; }
+
+/* "Tables" of Evaluation */
+.operator{border-bottom: solid 1px black; text-align: center;}
+.operator * {text-align: center;}
+td {padding: 0px 10px; font-size: 14px;}
+table.expression {
+    font-family:"Courier New", Monaco, monospace;
+    border:     solid 1px black;
+    font-size:  1px;
+    max-width:  400px;
+    color:      #666666;
+    display:    inline-block;
+}
+table.args {border: none; text-align: center;}
+
+.wescheme-string,     .cm-scheme-string    {color: green;}
+.wescheme-number,     .cm-scheme-number    {color: blue;}
+.wescheme-boolean,    .cm-scheme-boolean   {color: darkred;}
+.wescheme-character,  .cm-scheme-character {color: orange;}
+.wescheme-symbol,     .cm-scheme-symbol    {color: steelblue;}
+.wescheme-comment,    .cm-scheme-comment   {color: orange; }
+
+.racket, .pyret, .studentAnswerCode, .studentAnswer, .pyretkeyword, .keyword_only {
+    font-family:"Courier New", Monaco, monospace !important; 
+    color: black;
+}
+
+/* Design Recipe */
+.recipe_instructions { font-style: italic; }
+table.recipe_title {
+  color:              white;
+  background:         gray;
+  display:            block;
+  padding:            0px;
+  font-size:          1.1rem;
+  font-weight:        bold;
+}</style>
+
+    <script src="../../lib/langtable.js"></script>
+    <script src="../../dependency-graph.js"></script>
+    <script src="../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:window.location.href,
+    filename:"Hour of Code",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="narrativepage article narrative pyret" onload="renderSaveToDrive()">
+<span id="body" onload="renderSaveToDrive()">
+<span id="header">
+<h1>Hour of Code</h1>
+
+  <span id="savetodrive-div"></span>
+
+</span>
+<span id="content">
+<span id="preamble_disabled" class="lessonSummary">
+<span class="sectionbody">
+<style>
+	/* Hide the "all the lessons" dd and dt, as well as the "other resources" section */
+	#lesson-list dd:last-child, #lesson-list dt:last-of-type, .sect1 { display: none; }
+	.sect1:nth-child(2), .sect1:nth-child(3), .sect1:nth-child(4) {
+		display: block; clear: both;
+	}
+	img, .image { width: 150px; float: right; margin-left: 10px; }
+</style>
+<span class="paragraph">
+<p>Looking for a gentle, self-paced introduction to Bootstrap? Try the Hours of Code below. No prior programming experience required!
+<span class="blankline"></span></p>
+</span>
+</span>
+</span>
+<span class="sect1">
+<h2 id="_intro_to_graphics">Intro to Graphics</h2>
+<span class="sectionbody">
+<span class="paragraph">
+<p><span class="image-figure"><span class="image"><img src="images/overlay.png" alt="overlay" title="overlay"></span><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/images/overlay.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span>
+<a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/hoc-wescheme-intro/">This Hour of Code lesson</a> is a great, self-paced activity to introduce students to Bootstrap. Students explore simple function composition and order of operations in WeScheme, and then build on that knowledge to create simple computer graphics.</p>
+</span>
+</span>
+</span>
+<span class="sect1">
+<h2 id="_build_a_snowman">Build a Snowman!</h2>
+<span class="sectionbody">
+<span class="paragraph">
+<p><span class="image-figure"><span class="image"><img src="../../lessons/hoc-winter/images/complete-snowman.png" alt="complete snowman" title="complete snowman"></span><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/hoc-winter/images/complete-snowman.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span>
+<a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/hoc-winter/">This Hour of Code lesson</a> has a winter theme, with the option of students modifying code to build a snowman at the end! More rigorous than the first Hour of Code lesson, it includes videos to support students in learning to code at their own pace in WeScheme.</p>
+</span>
+</span>
+</span>
+<span class="sect1">
+<h2 id="_hour_of_data">Hour of Data</h2>
+<span class="sectionbody">
+<span class="paragraph">
+<p><span class="image-figure"><span class="image"><img src="images/moose.png" alt="moose" title="moose"></span><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/images/moose.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span>
+<a href="https://teacher.desmos.com/activitybuilder/custom/61aeb1da79cd49727623544f">This Hour of Data lesson</a> is a self-guided Desmos activity. Students explore data visualization, introductory programming using The Pyret Programming Language, and the application of Data Science to solve real problems. Students will investigate a data set of vehicle-wildlife collisions in Vermont and make recommendations about where to build wildlife overpasses.</p>
+</span>
+<span class="paragraph">
+<p><span class="blankline"></span></p>
+</span>
+</span>
+</span>
+<span class="sect1 acknowledgmentsect">
+<span class="sectionbody">
+<span class="openblock acknowledgment"><hr/>
+<span class="content">
+<span class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</span>
+</span>
+</span>
+</span>
+</span>
+</span>
+<span id="footer">
+<span id="footer-text">
+Last updated 2022-10-17 19:42:18 -0400
+</span>
+</span>
+</span>
+</body>
+</html>

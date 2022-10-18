@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Bar Charts</title>
+<style>
+/* Overall document font */
+* {font-family: Lato, Arial, Helvetica, sans-serif;}
+
+/* document headings */
+h1,.lesson-section-1 {color: #75328A;}
+h1{font-size: 32px; font-family: sans-serif;}
+table.section-heading *, .lesson-section-1 h2{font-size: 32px; font-weight: 100;}
+table.section-heading{width: 100%;}
+table.section-heading td:last-child{text-align: right; color: #d9d2e9;}
+
+/* preamble section */
+table.preamble td {padding: 10px;}
+table.preamble td:first-child{background: #b7d893; width: 25%;}
+table.preamble td:first-child p {font-weight: bold; margin: 5px;}
+
+/* content used throughout the body */
+table{ border-collapse: collapse; border: none; }
+table.grid-all.frame-all {border: solid 1px black;}
+table.grid-none.frame-none {border-width: 0px;}
+
+.big {font-size: 30pt;}
+.vocab{font-weight: bold; font-style: italic;}
+.right{text-align: right;}
+.acknowledgment {
+  border-top: solid 1px black; 
+  font-style: italic; 
+  font-size: 8pt;
+}
+.lesson-point {
+  border-top: solid 1px black; 
+  border-bottom: solid 1px black; 
+  color: black;
+  font-weight: bold;
+}
+
+.web-page-only, #footer { display: none; visibility: hidden; }
+
+/* Callout boxes */
+.strategy-box, .notice-box {
+  background: #efefef;
+  border: solid 5px !important;
+  margin: 15px auto;
+  width: 100%;
+}
+.strategy-box { border-color: #1a73b5 !important; }
+.notice-box   { border-color: #7747a5 !important; }
+.strategy-box td, .notice-box td{ padding: 10px; }
+.strategy-box .title, .notice-box .title{
+  width: 100%;
+  display: block;
+  font-weight: bold;
+  font-size: 24px;
+  clear: both;
+  margin: 100px;
+}
+.strategy-box p.tableblock:first-child, .notice-box p.tableblock:first-child{
+  text-align: center;
+  padding-bottom: 15px;
+}
+.strategy-box .title { color: #1a73b5; }
+.notice-box   .title { color: #7747a5; }
+.strategy-box a, .notice-box a { color: blue; text-decoration: underline; }
+
+/* "Tables" of Evaluation */
+.operator{border-bottom: solid 1px black; text-align: center;}
+.operator * {text-align: center;}
+td {padding: 0px 10px; font-size: 14px;}
+table.expression {
+    font-family:"Courier New", Monaco, monospace;
+    border:     solid 1px black;
+    font-size:  1px;
+    max-width:  400px;
+    color:      #666666;
+    display:    inline-block;
+}
+table.args {border: none; text-align: center;}
+
+.wescheme-string,     .cm-scheme-string    {color: green;}
+.wescheme-number,     .cm-scheme-number    {color: blue;}
+.wescheme-boolean,    .cm-scheme-boolean   {color: darkred;}
+.wescheme-character,  .cm-scheme-character {color: orange;}
+.wescheme-symbol,     .cm-scheme-symbol    {color: steelblue;}
+.wescheme-comment,    .cm-scheme-comment   {color: orange; }
+
+.racket, .pyret, .studentAnswerCode, .studentAnswer, .pyretkeyword, .keyword_only {
+    font-family:"Courier New", Monaco, monospace !important; 
+    color: black;
+}
+
+/* Design Recipe */
+.recipe_instructions { font-style: italic; }
+table.recipe_title {
+  color:              white;
+  background:         gray;
+  display:            block;
+  padding:            0px;
+  font-size:          1.1rem;
+  font-weight:        bold;
+}</style>
+
+    <script src="../../lib/langtable.js"></script>
+    <script src="../../dependency-graph.js"></script>
+    <script src="../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:window.location.href,
+    filename:"Bar Charts",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="article LessonPlan codap" onload="renderSaveToDrive()">
+<span id="body" onload="renderSaveToDrive()">
+<span id="header">
+<h1>Bar Charts</h1>
+
+  <span id="savetodrive-div"></span>
+
+</span>
+<span id="content">
+<span id="preamble_disabled" class="lessonSummary">
+<span class="sectionbody">
+<script>
+function preselect(klass) {
+  const items = document.getElementsByClassName(klass);
+  for (let i = 0; i < items.length; i++) {
+    items[i].style.display = 'none';
+  }
+  if (items.length > 0) {
+    items[0].style.display = 'block';
+  }
+}
+window.onload = function() {
+  preselect('alignedStandards');
+  preselect('alignedTextbooks');
+  preselect('alignedPractices');
+}
+function showStandardsAlignment() {
+  const selectTag = document.getElementsByClassName('standardsAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const stdTables = document.getElementsByClassName('alignedStandards');
+  //const intro = document.getElementsByClassName('alignedStandardsIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < stdTables.length; i++) {
+    const stdTable = stdTables[i];
+    stdTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optStd = opt.value;
+      for (let j = 0; j < stdTables.length; j++) {
+        const stdTable = stdTables[j];
+        if (stdTable.classList.contains(optStd)) {
+          stdTable.style.display = 'block';
+         // introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+function toggleNonPrereqDisplay() {
+  const inputTag = document.getElementsByClassName('sidebarinput')[0];
+  const checkedP = inputTag.checked;
+  const lessonTable = document.getElementsByClassName('sidebarlessons')[0];
+  const lis = lessonTable.getElementsByTagName('li');
+  for (let i = 0; i < lis.length; i++) {
+    const li = lis[i];
+    const lesson = li.getElementsByClassName('prerequisite');
+    if (lesson.length === 0) {
+      li.style.display = checkedP ? 'none' : 'block';
+    }
+  }
+}
+</script>
+<script>
+function showTextbooksAlignment() {
+  const selectTag = document.getElementsByClassName('textbooksAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const textbookTables = document.getElementsByClassName('alignedTextbooks');
+  //const intro = document.getElementsByClassName('alignedTextbooksIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < textbookTables.length; i++) {
+    const textbookTable = textbookTables[i];
+    textbookTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optTextbook = opt.value;
+      for (let j = 0; j < textbookTables.length; j++) {
+        const textbookTable = textbookTables[j];
+        if (textbookTable.classList.contains(optTextbook)) {
+          textbookTable.style.display = 'block';
+          //introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+</script>
+<script>
+function showPracticesAlignment() {
+  const selectTag = document.getElementsByClassName('practicesAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const practiceTables = document.getElementsByClassName('alignedPractices');
+  for (let i = 0; i < practiceTables.length; i++) {
+    const practiceTable = practiceTables[i];
+    practiceTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optPractice = opt.value;
+      for (let j = 0; j < practiceTables.length; j++) {
+        const practiceTable = practiceTables[j];
+        if (practiceTable.classList.contains(optPractice)) {
+          practiceTable.style.display = 'block';
+        }
+      }
+    }
+  }
+}
+</script>
+<span class="paragraph">
+<!-- </p>
+</span>
+--></span><span class="sidebar"><span id="toggle"></span><span class="paragraph"><!--
+<span class="paragraph">
+<p>
+--><span class="sidebarlessons"><strong>Lessons</strong>
+<ul></ul></span>
+<span class="sidebarstandards"><strong>Standards in this Lesson</strong>: <em>None</em></span>
+<span class="sidebarpractices"><strong>Practices in this Lesson</strong>: <em>None</em></span>
+<!-- </p>
+</span>
+--></span><!--
+<span class="paragraph">
+<p>
+-->
+</span>
+<span class="paragraph description">
+<p>Students learn to generate and compare bar charts, explore other plotting &amp; display functions in CODAP, and (optionally) design an infographic.</p>
+</span>
+<table class="tableblock frame-all grid-all stripes-none stretch left-header preamble">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>Lesson Goals</p>
+</span></span></td>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>Students will be able to:</p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p>Read bar charts</p>
+</li>
+<li>
+<p>Generate bar charts (among other data displays) from the Animals Dataset</p>
+</li>
+</ul>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>Student-facing Lesson Goals</p>
+</span></span></td>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="ulist">
+<ul>
+<li>
+<p>Let&#8217;s get to know CODAP by creating bar charts and other data displays from tables.</p>
+</li>
+</ul>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>Materials</p>
+</span></span></td>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="ulist materials-links">
+<ul>
+<li>
+<p><a href="https://docs.google.com/presentation/d/1UGTXnCkejtp6wrzC5jP-aOAZP_9mALrXWY7fPdebkeI/" target="_blank" rel="noopener">Lesson Slides</a></p>
+</li>
+<li>
+<p><span class="StarterFile"><a href="https://codap.concord.org/app/static/dg/en/cert/index.html#shared=https%3A%2F%2Fcfm-shared.concord.org%2FI6zAvad2EELkQxtS0SZG%2Ffile.json" target="_blank" rel="noopener">Animals Starter File</a></span></p>
+</li>
+<li>
+<p><span class="materialSectionPlaceholder"> </span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/codap-bar-charts-codap/pages/codap-displays-intro.html" target="_blank" rel="noopener">Data Displays in CODAP</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/codap-bar-charts-codap/pages/plot-practice.html" target="_blank" rel="noopener">Practice Plotting</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/codap-bar-charts-codap/pages/plot-practice-2.html" target="_blank" rel="noopener">Practice Plotting 2</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/codap-bar-charts-codap/pages/plot-practice-3.html" target="_blank" rel="noopener">Practice Plotting - Challenge</a></span></p>
+</li>
+<li>
+<p><span class="OptProject">[<a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/codap-bar-charts-codap/pages/infographics.html" target="_blank" rel="noopener">Making Infographics</a>] [<a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/codap-bar-charts-codap/pages/infographic-rubric.html" target="_blank" rel="noopener">rubric</a>]</span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/codap-bar-charts-codap/pages/bar-chart-notice.html" target="_blank" rel="noopener">Bar Chart - Notice and Wonder</a></span></p>
+</li>
+</ul>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>Supplemental Resources</p>
+</span></span></td>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p><a href="https://informationisbeautiful.net/" target="_blank" rel="noopener">Information is Beautiful</a></p>
+</span></span></td>
+</tr>
+</tbody>
+</table>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<table class="grid-none frame-none section-heading"><tr><td width="65%">Displaying Categorical Variables </td><td width="35%">10 minutes</td></tr></table>
+<span class="sectionbody">
+<span class="sect2 lesson-section-2">
+<h3 id="_overview">Overview</h3>
+<span class="paragraph">
+<p>Students use the options on CODAP&#8217;s <em>Configuration</em> menu to produce displays and plots of the Animals Dataset.</p>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_launch">Launch</h3>
+<span class="paragraph">
+<p>Where have you seen infographics and graphs used to display data in the real world?</p>
+</span>
+<span class="paragraph">
+<p>Open the <a href="https://codap.concord.org/app/static/dg/en/cert/index.html#shared=https%3A%2F%2Fcfm-shared.concord.org%2FI6zAvad2EELkQxtS0SZG%2Ffile.json" target="_blank" rel="noopener">Animals Starter File</a> in CODAP.</p>
+</span>
+<span class="openblock lesson-instruction">
+<span class="content">
+<span class="ulist">
+<ul>
+<li>
+<p>Click the <code class="pyret">graph</code> icon from the horizontal toolbar in the upper left. (See toolbar, below.) What appears?</p>
+</li>
+</ul>
+</span>
+<span class="paragraph">
+<p><span class="centered-image"><span class="image-figure"><span class="image"><img src="images/9151d05ad5f12060.png" alt="CODAP upper left toolbar" width="300" title="CODAP upper left toolbar"></span><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/images/9151d05ad5f12060.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p>Select a dot with your mouse. What happens?</p>
+</li>
+<li>
+<p>What happens when you select a table row? How about multiple table rows?</p>
+</li>
+<li>
+<p>What happens when you click the "eye" icon (to the right of the graph or the table, depending on which is selected)?</p>
+</li>
+</ul>
+</span>
+</span>
+</span>
+<span class="paragraph">
+<p><span class="right"><span class="image-figure"><span class="image"><img src="images/aefdd400b02d7836.png" alt="An image of the CODAP environment" width="300" title="An image of the CODAP environment"></span><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/images/aefdd400b02d7836.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></p>
+</span>
+<span class="paragraph">
+<p><strong>If students report that a blank graph appears (rather than a scatter plot), prompt them to whitelist CODAP on their ad-blocker. Ad-blockers do seem to inhibit some of the functionality of CODAP (which will fortunately never advertise to users!).</strong></p>
+</span>
+<span class="paragraph">
+<p>Initially, the data points are randomly distributed on the graph. Selecting an orange dot reveals the <code class="pyret">name</code> of that particular animal. Selecting a particular dot causes the table row for that animal to be highlighted in blue. Holding the shift button allows students to select multiple dots in the graphical display, or multiple rows in the table.</p>
+</span>
+<span class="paragraph">
+<p>Students should observe that when they select a table row (or multiple table rows), the corresponding dots change color. When they set aside selected and / or unselected cases (by using the "eye" icon), they can temporarily alter the amount of pets in the dataset (with the option to restore to the original dataset).</p>
+</span>
+<span class="paragraph">
+<p>Students can also resize the window by dragging its borders.</p>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_investigate">Investigate</h3>
+<span class="paragraph">
+<p>Once we have a graph of randomly distributed data points, we can organize the data by selecting attributes from our <em>table</em> that we want to appear on the axes of our graph.</p>
+</span>
+<span class="paragraph lesson-instruction">
+<p>Practice manipulating the data by completing <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/codap-bar-charts-codap/pages/codap-displays-intro.html" target="_blank" rel="noopener">Data Displays in CODAP</a>.</p>
+</span>
+<span class="paragraph">
+<p>Remind students that categorical data is used to classify, rather than to measure. Only when data is being treated categorically will students be invited to fuse data points to create a bar chart. Quantitative (or numeric) data must measure or compare; it is subject to the laws of arithmetic.</p>
+</span>
+<span class="paragraph">
+<p>To dig deeper into bar charts, have students turn to <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/codap-bar-charts-codap/pages/bar-chart-notice.html" target="_blank" rel="noopener">Bar Chart - Notice and Wonder</a>.</p>
+</span>
+<table class="tableblock frame-all grid-none stripes-none stretch strategy-box">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p><span class="title">People aren&#8217;t Hermaphrodite?</span>
+When students make a display of the <code class="pyret">sex</code> of the animals, they will see that some animals are male, some are female and some are hermaphrodites. We use the descriptor <em>sex</em> rather than <em>gender</em> because sex refers to biology, whereas gender refers to identity. Hermaphrodite is the biological term for animals that carry eggs &amp; produce sperm (nearly 1/3 of the non-insect animal species on the planet!). Plants that produce pollen &amp; ovules are also hermaphrodites. While the term was previously used by the medical community to describe intersex people or people who identify as transgender or gender non-binary, it is not biologically accurate. Humans are not able to produce both viable eggs and sperm, so "hermaphrodite" is no longer considered an acceptable term to apply to people.</p>
+</span></span></td>
+</tr>
+</tbody>
+</table>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_common_misconceptions">Common Misconceptions</h3>
+<span class="paragraph">
+<p>Bar charts look a lot like another kind of display - called a "histogram" - which displays <em>quantitative</em> data, not categorical. Histograms and Bar Charts are very different! In CODAP, however, making a histogram and making a bar chart start the same way: by creating a dot plot that will be modified. This may cause students to think the resulting displays are the same, simply because making them <em>starts</em> the same way.</p>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_synthesize">Synthesize</h3>
+<span class="paragraph">
+<p>Bar charts display how much of the sample belongs to each category. If they are based on sample data from a larger population, we use them to <em>infer</em> the proportion of a whole population that might belong to each category.</p>
+</span>
+<div class="paragraph lesson-point">
+<p>Bar charts are mostly used to <em>display categorical columns</em>.</p>
+</div>
+<span class="paragraph">
+<p>While bars in some bar charts should follow some logical order (alphabetical, small-medium-large, etc), they can technically be placed in <em>any</em> order, without changing the meaning of the chart.</p>
+</span>
+<table class="tableblock frame-all grid-none stripes-none stretch strategy-box">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p><span class="title">Mini Project: Making Infographics</span>
+Infographics are a powerful tool for communicating information, especially when made by people who actually understand how to connect visuals to data in meaningful ways. <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/codap-bar-charts-codap/pages/infographics.html" target="_blank" rel="noopener">Making Infographics</a> is an opportunity for students to become more flexible math thinkers while tapping into their creativity. This project can be made on the computer or with pencil and paper. There&#8217;s also an <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/pages/infographic-rubric.html" target="_blank" rel="noopener">Infographics Rubric</a> to highlight for you and your students what an excellent infographic includes.</p>
+</span></span></td>
+</tr>
+</tbody>
+</table>
+</span>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<table class="grid-none frame-none section-heading"><tr><td width="65%">Exploring other Displays </td><td width="35%">30 minutes</td></tr></table>
+<span class="sectionbody">
+<span class="sect2 lesson-section-2">
+<h3 id="_overview_2">Overview</h3>
+<span class="paragraph">
+<p>Students explore the CODAP data display options available to them. In doing so, they experiment with new charts and get comfortable with CODAP as a platform for doing data science.</p>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_launch_2">Launch</h3>
+<span class="paragraph">
+<p>There are <em>lots</em> of different kinds of charts and plots that we can build in CODAP! Explain to students that you are going to give them three minutes to see how many different displays they can produce. Invite them to be playful - to click buttons and select from menu options to see what they can produce. (If students need a bit of encouraging, you might mention that histograms, scatter plots, and linear regressions are possible!)</p>
+</span>
+<span class="paragraph">
+<p>When time is up, invite students to share.</p>
+</span>
+<span class="ulist lesson-instruction">
+<ul>
+<li>
+<p>What did you discover?</p>
+</li>
+<li>
+<p>When did the <code class="pyret">configuration</code> menu appear?</p>
+<span class="ulist">
+<ul>
+<li>
+<p><em>When there is another possible configuration of the data - for instance, when dots can be fused into bars - we see this menu.</em></p>
+</li>
+</ul>
+</span>
+</li>
+<li>
+<p>When did the <code class="pyret">measure</code> menu appear?</p>
+<span class="ulist">
+<ul>
+<li>
+<p><em>This menu appears when there is an opportunity to change what is shown _along with</em> the points - for instance, connecting lines, a regression line, or a count_.</p>
+</li>
+</ul>
+</span>
+</li>
+</ul>
+</span>
+<span class="paragraph">
+<p>Explain that CODAP is designed to be student-friendly and that the interface encourages guesswork&#8230;&#8203; but that we can save some time by being a bit more strategic.</p>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_investigate_2">Investigate</h3>
+<span class="paragraph">
+<p>In this section, students will develop a methodical approach to creating displays. First, demonstrate how to create a bar chart showing the <code class="pyret">sex</code> breakdown of the animals. To do this, model asking yourself three important questions (below) in order to build a bar chart in CODAP.</p>
+</span>
+<span class="ulist lesson-instruction">
+<ul>
+<li>
+<p>We&#8217;re going to complete <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/codap-bar-charts-codap/pages/plot-practice.html" target="_blank" rel="noopener">Practice Plotting</a> together. To make a bar chart showing the sex of animals from the shelter, I will ask myself a series of important questions.</p>
+</li>
+<li>
+<p>Which attributes on which axes?</p>
+<span class="ulist">
+<ul>
+<li>
+<p><em>Sex belongs on the x-axis.</em></p>
+</li>
+</ul>
+</span>
+</li>
+<li>
+<p>What type of data?</p>
+<span class="ulist">
+<ul>
+<li>
+<p><em>Male, female, and hermaphrodite are all categories. The bar chart will display categorical data.</em></p>
+</li>
+</ul>
+</span>
+</li>
+<li>
+<p>What configuration?</p>
+<span class="ulist">
+<ul>
+<li>
+<p><em>CODAP initially creates a dot plot of the data. I will need to fuse the dots into bars.</em></p>
+</li>
+</ul>
+</span>
+</li>
+</ul>
+</span>
+<span class="paragraph">
+<p>Focus on supporting students in learning how to pose productive questions when looking at data. Invite students to repeat the process you just modeled as they create a bar chart showing the species of animals from the shelter.</p>
+</span>
+<span class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Now, with your partner, complete <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/codap-bar-charts-codap/pages/plot-practice-2.html" target="_blank" rel="noopener">Practice Plotting 2</a>.</p>
+</li>
+<li>
+<p>For an extension, try <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/codap-bar-charts-codap/pages/plot-practice-3.html" target="_blank" rel="noopener">Practice Plotting - Challenge</a>.</p>
+</li>
+</ul>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_common_misconceptions_2">Common Misconceptions</h3>
+<span class="paragraph">
+<p>There are <em>many</em> possible misconceptions about displays that students may encounter here. <strong>But that&#8217;s ok!</strong> Understanding all those other plots is <em>not</em> a learning goal for this lesson. Rather, the goal is to have them develop some loose familiarity.</p>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_synthesize_2">Synthesize</h3>
+<span class="paragraph">
+<p>Today you’ve added more data displays to your toolbox. You can create bar charts to visually display categorical data, and you&#8217;ve developed a general approach to guide you as you create other displays.</p>
+</span>
+<span class="paragraph">
+<p>You will have many opportunities to use these concepts in this course, by applying what you&#8217;ve learned to answer data science questions.</p>
+</span>
+</span>
+</span>
+</span>
+<span class="sect1 acknowledgmentsect">
+<span class="sectionbody">
+<span class="openblock acknowledgment"><hr/>
+<span class="content">
+<span class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</span>
+</span>
+</span>
+</span>
+</span>
+</span>
+<span id="footer">
+<span id="footer-text">
+Last updated 2022-10-17 19:42:12 -0400
+</span>
+</span>
+</span>
+</body>
+</html>

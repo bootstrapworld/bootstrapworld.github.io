@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Challenge: Character Movement in Two Dimensions</title>
+
+  <link rel="stylesheet" href="../../../lib/curriculum.css" />
+    <link rel="stylesheet" href="../../../lib/codemirror.css" />
+    <script src="../../../lib/codemirror.js"></script>
+    <script src="../../../lib/runmode.js"></script>
+    <script src="../../../lib/scheme2.js"></script>
+    <script src="../../../lib/pyret-mode.js"></script>
+    <script src="../../../lib/langtable.js"></script>
+    <script src="../../../lib/bootstraplesson.js"></script>
+    <script src="../../../dependency-graph.js"></script>
+    <script src="../../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"Challenge: Character Movement in Two Dimensions",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="workbookpage article wescheme" onload="renderSaveToDrive()">
+<div id="header">
+<h1>Challenge: Character Movement in Two Dimensions</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<div class="paragraph">
+<p><em>If your game is working and&#8230;&#8203;</em></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><em>both the <code class="racket">Danger</code> and <code class="racket">Target</code> return to the screen</em></p>
+</li>
+<li>
+<p><em>your <code class="racket">Player</code> moves up and down with the arrow keys</em></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><em>you have all the tools you need to begin this challenge!</em></p>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 1ex"></span></p>
+</div>
+<div class="paragraph center">
+<p><span class="obeyspaces"><code class="racket">; update-danger :: Number ‑&gt; Number
+; takes in danger&#8217;s x-coordinate and produces the next one</code></span></p>
+</div>
+<div class="paragraph">
+<p>The <code class="racket">update-danger</code> function only moves our <code class="racket">DANGER</code> left or right&#8230;&#8203; because it doesn&#8217;t do anything with the y-coordinate!</p>
+</div>
+<div class="paragraph">
+<p>Suppose we wanted to write a new function, <code class="racket">update-danger-2</code> that moves the <code class="racket">DANGER</code> <em>diagonally</em>&#8230;&#8203;</p>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 1ex"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">1</span> What will have to change about the Domain? <span class="fitb stretch"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">2</span> What, if anything, will have to change about the Range if we want to get our character moving diagonally? <span class="fitb stretch"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 1ex"></span></p>
+</div>
+<div class="paragraph">
+<p>Since an (x, y) coordinate has two Numbers, one idea might be to write the contract this way:</p>
+</div>
+<div class="paragraph center">
+<p><span class="obeyspaces"><code class="racket">; update-danger-2 :: Number Number ‑&gt; Number Number
+; take in danger&#8217;s x- and y-coordinate, and produces the next x- and next y-coordinate</code></span></p>
+</div>
+<div class="paragraph">
+<p>&#8230;&#8203;But that contract breaks an important rule about functions:</p>
+</div>
+<div class="paragraph lesson-point">
+<p>Given an input, all functions must produce one output!</p>
+</div>
+<div class="paragraph">
+<p>We need some way to package two Numbers together into a single value.</p>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 1ex"></span></p>
+</div>
+<div class="paragraph">
+<p>Fortunately, our programming language has another data type, called a Posn, which utilizes two Numbers to describe a single "position"!</p>
+</div>
+<div class="paragraph">
+<p>We can make a Posn to represent the position (100, 200) with the following code: <span class="obeyspaces"><code class="racket">(make-posn 100 200)</code></span></p>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 1ex"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">3</span> What expression will make a Posn representing the origin? <span class="fitb stretch"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">4</span> Write the contract for the <span class="obeyspaces"><code class="racket">make-posn</code></span> function on the line below.</p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"></span></p>
+</div>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-18 16:15:44 -0400
+</div>
+</div>
+</body>
+</html>

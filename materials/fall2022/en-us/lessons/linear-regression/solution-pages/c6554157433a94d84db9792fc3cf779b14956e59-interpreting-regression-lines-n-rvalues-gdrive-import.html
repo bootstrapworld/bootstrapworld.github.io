@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Interpreting Regression Lines &amp; r-Values</title>
+<style>
+/* Overall document font */
+* {font-family: Lato, Arial, Helvetica, sans-serif;}
+
+/* document headings */
+h1,.lesson-section-1 {color: #75328A;}
+h1{font-size: 32px; font-family: sans-serif;}
+table.section-heading *, .lesson-section-1 h2{font-size: 32px; font-weight: 100;}
+table.section-heading{width: 100%;}
+table.section-heading td:last-child{text-align: right; color: #d9d2e9;}
+
+/* preamble section */
+table.preamble td {padding: 10px;}
+table.preamble td:first-child{background: #b7d893; width: 25%;}
+table.preamble td:first-child p {font-weight: bold; margin: 5px;}
+
+/* content used throughout the body */
+table{ border-collapse: collapse; border: none; }
+table.grid-all.frame-all {border: solid 1px black;}
+table.grid-none.frame-none {border-width: 0px;}
+
+.big {font-size: 30pt;}
+.vocab{font-weight: bold; font-style: italic;}
+.right{text-align: right;}
+.acknowledgment {
+  border-top: solid 1px black; 
+  font-style: italic; 
+  font-size: 8pt;
+}
+.lesson-point {
+  border-top: solid 1px black; 
+  border-bottom: solid 1px black; 
+  color: black;
+  font-weight: bold;
+}
+
+.web-page-only, #footer { display: none; visibility: hidden; }
+
+/* Callout boxes */
+.strategy-box, .notice-box {
+  background: #efefef;
+  border: solid 5px !important;
+  margin: 15px auto;
+  width: 100%;
+}
+.strategy-box { border-color: #1a73b5 !important; }
+.notice-box   { border-color: #7747a5 !important; }
+.strategy-box td, .notice-box td{ padding: 10px; }
+.strategy-box .title, .notice-box .title{
+  width: 100%;
+  display: block;
+  font-weight: bold;
+  font-size: 24px;
+  clear: both;
+  margin: 100px;
+}
+.strategy-box p.tableblock:first-child, .notice-box p.tableblock:first-child{
+  text-align: center;
+  padding-bottom: 15px;
+}
+.strategy-box .title { color: #1a73b5; }
+.notice-box   .title { color: #7747a5; }
+.strategy-box a, .notice-box a { color: blue; text-decoration: underline; }
+
+/* "Tables" of Evaluation */
+.operator{border-bottom: solid 1px black; text-align: center;}
+.operator * {text-align: center;}
+td {padding: 0px 10px; font-size: 14px;}
+table.expression {
+    font-family:"Courier New", Monaco, monospace;
+    border:     solid 1px black;
+    font-size:  1px;
+    max-width:  400px;
+    color:      #666666;
+    display:    inline-block;
+}
+table.args {border: none; text-align: center;}
+
+.wescheme-string,     .cm-scheme-string    {color: green;}
+.wescheme-number,     .cm-scheme-number    {color: blue;}
+.wescheme-boolean,    .cm-scheme-boolean   {color: darkred;}
+.wescheme-character,  .cm-scheme-character {color: orange;}
+.wescheme-symbol,     .cm-scheme-symbol    {color: steelblue;}
+.wescheme-comment,    .cm-scheme-comment   {color: orange; }
+
+.racket, .pyret, .studentAnswerCode, .studentAnswer, .pyretkeyword, .keyword_only {
+    font-family:"Courier New", Monaco, monospace !important; 
+    color: black;
+}
+
+/* Design Recipe */
+.recipe_instructions { font-style: italic; }
+table.recipe_title {
+  color:              white;
+  background:         gray;
+  display:            block;
+  padding:            0px;
+  font-size:          1.1rem;
+  font-weight:        bold;
+}</style>
+
+    <script src="../../../lib/langtable.js"></script>
+    <script src="../../../dependency-graph.js"></script>
+    <script src="../../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:window.location.href,
+    filename:"Interpreting Regression Lines %INSERTGDRIVELESSONTITLE r-Values",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="workbookpage article pyret" onload="renderSaveToDrive()">
+<span id="header">
+<h1>Interpreting Regression Lines &amp; r-Values</h1>
+
+  <span id="savetodrive-div"></span>
+
+</span>
+<span id="content">
+<span id="preamble_disabled" class="lessonSummary">
+<span class="sectionbody">
+<span class="paragraph">
+<p>Each description on the left is written about the linear regression findings on the right. Fill in the blanks using the information in the line of best fit and the r-value.</p>
+</span>
+<span class="paragraph">
+<p><span class="vspace" style="height: 5ex"></span><span class="gdrive-only"><p>&#xa0;</p></span></p>
+</span>
+<table class="tableblock frame-none grid-all stretch">
+<colgroup>
+<col style="width: 6.25%;">
+<col style="width: 62.5%;">
+<col style="width: 31.25%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-middle"><span class="content"><span class="paragraph">
+<p><strong>1</strong></p>
+</span></span></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">For every additional Marvel Universe movie released each year, the average person is predicted to consume <span class="fitbruby" style="width: 10ex">3.19<span class="ruby">[amount]</span></span> <span class="fitbruby" style="width: 10ex"><em>fewer</em><span class="ruby">[more / fewer]</span></span> pounds of sugar! This correlation is <span class="fitbruby" style="width: 30ex"><em>practically non-existent</em><span class="ruby">[strong, moderate, weak, practically non-existent]</span></span>.</p></td>
+<td class="tableblock halign-left valign-middle"><span class="content"><span class="listingblock big">
+<span class="content">
+<pre><code class="pyret"> f(x) = −3.19x + 12
+ r = −0.05</code></pre>
+</span>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><span class="content"><span class="paragraph">
+<p><strong>2</strong></p>
+</span></span></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Shoe size and height are <span class="fitbruby" style="width: 30ex"><em>strongly</em><span class="ruby">[strongly, moderately, weakly, not]</span></span>, <span class="fitbruby" style="width: 20ex"><em>positively</em><span class="ruby">[positively / negatively]</span></span> correlated. If person A is one size bigger than person B, we predict that they will be roughly <span class="fitbruby" style="width: 10ex"><em>1.65</em><span class="ruby">[amount]</span></span> inches taller than person B as well.</p></td>
+<td class="tableblock halign-left valign-middle"><span class="content"><span class="listingblock big">
+<span class="content">
+<pre><code class="pyret">f(x) = y=1.65x + 52
+r = 0.89</code></pre>
+</span>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><span class="content"><span class="paragraph">
+<p><strong>3</strong></p>
+</span></span></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">There is <span class="fitbruby" style="width: 30ex"><em>no</em><span class="ruby">[a strong, a moderate, no]</span></span> relationship found between the number of Uber drivers in a city and the number of babies born each year.</p></td>
+<td class="tableblock halign-left valign-middle"><span class="content"><span class="listingblock big">
+<span class="content">
+<pre><code class="pyret">f(x) = 0.012x + 7.8
+r = 0.01</code></pre>
+</span>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><span class="content"><span class="paragraph">
+<p><strong>4</strong></p>
+</span></span></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The correlation between weeks-of-school-missed and SAT score is <span class="fitbruby" style="width: 30ex"><em>moderate</em><span class="ruby">[strong, moderate, weak, practically non-existent]</span></span> and <span class="fitbruby" style="width: 20ex"><em>negative</em><span class="ruby">[positive / negative]</span></span>. For every week a student misses, we predict a <span class="fitbruby" style="width: 10ex"><em>15.3</em><span class="ruby">[amount]</span></span> point <span class="fitbruby" style="width: 10ex">drop<span class="ruby">[gain / drop]</span></span> in their SAT score.</p></td>
+<td class="tableblock halign-left valign-middle"><span class="content"><span class="listingblock big">
+<span class="content">
+<pre><code class="pyret">f(x) = -15.3x + 1150
+r = −0.65</code></pre>
+</span>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><span class="content"><span class="paragraph">
+<p><strong>5</strong></p>
+</span></span></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">There is a <span class="fitbruby" style="width: 30ex"><em>weak</em><span class="ruby">[strong, moderate, weak, practically non-existent]</span></span>, <span class="fitbruby" style="width: 20ex"><em>positive</em><span class="ruby">[positive / negative]</span></span> correlation between the number of streaming video services someone has, and how much they weigh. For each service, we expect them to be roughly <span class="fitbruby" style="width: 10ex"><em>1.6</em><span class="ruby">[amount]</span></span> pounds heavier.</p></td>
+<td class="tableblock halign-left valign-middle"><span class="content"><span class="listingblock big">
+<span class="content">
+<pre><code class="pyret">f(x) = 1.6x + 160
+r = 0.12</code></pre>
+</span>
+</span></span></td>
+</tr>
+</tbody>
+</table>
+</span>
+</span>
+<span class="sect1 acknowledgmentsect">
+<span class="sectionbody">
+<span class="openblock acknowledgment"><hr/>
+<span class="content">
+<span class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</span>
+</span>
+</span>
+</span>
+</span>
+</span>
+<span id="footer">
+<span id="footer-text">
+Last updated 2022-10-17 19:42:07 -0400
+</span>
+</span>
+</body>
+</html>

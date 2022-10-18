@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Going Deeper: Nested Structures</title>
+
+  <link rel="stylesheet" href="../../lib/curriculum.css" />
+    <link rel="stylesheet" href="../../lib/codemirror.css" />
+    <script src="../../lib/codemirror.js"></script>
+    <script src="../../lib/runmode.js"></script>
+    <script src="../../lib/scheme2.js"></script>
+    <script src="../../lib/pyret-mode.js"></script>
+    <script src="../../lib/langtable.js"></script>
+    <script src="../../lib/bootstraplesson.js"></script>
+    <script src="../../dependency-graph.js"></script>
+    <script src="../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"Going Deeper: Nested Structures",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="article LessonPlan pyret" onload="renderSaveToDrive()">
+<!--#include virtual="/menubar.ssi"-->
+<div id="body" onload="renderSaveToDrive()">
+<div id="header">
+<h1>Going Deeper: Nested Structures</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<script>
+function preselect(klass) {
+  const items = document.getElementsByClassName(klass);
+  for (let i = 0; i < items.length; i++) {
+    items[i].style.display = 'none';
+  }
+  if (items.length > 0) {
+    items[0].style.display = 'block';
+  }
+}
+window.onload = function() {
+  preselect('alignedStandards');
+  preselect('alignedTextbooks');
+  preselect('alignedPractices');
+}
+function showStandardsAlignment() {
+  const selectTag = document.getElementsByClassName('standardsAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const stdTables = document.getElementsByClassName('alignedStandards');
+  //const intro = document.getElementsByClassName('alignedStandardsIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < stdTables.length; i++) {
+    const stdTable = stdTables[i];
+    stdTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optStd = opt.value;
+      for (let j = 0; j < stdTables.length; j++) {
+        const stdTable = stdTables[j];
+        if (stdTable.classList.contains(optStd)) {
+          stdTable.style.display = 'block';
+         // introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+function toggleNonPrereqDisplay() {
+  const inputTag = document.getElementsByClassName('sidebarinput')[0];
+  const checkedP = inputTag.checked;
+  const lessonTable = document.getElementsByClassName('sidebarlessons')[0];
+  const lis = lessonTable.getElementsByTagName('li');
+  for (let i = 0; i < lis.length; i++) {
+    const li = lis[i];
+    const lesson = li.getElementsByClassName('prerequisite');
+    if (lesson.length === 0) {
+      li.style.display = checkedP ? 'none' : 'block';
+    }
+  }
+}
+</script>
+<script>
+function showTextbooksAlignment() {
+  const selectTag = document.getElementsByClassName('textbooksAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const textbookTables = document.getElementsByClassName('alignedTextbooks');
+  //const intro = document.getElementsByClassName('alignedTextbooksIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < textbookTables.length; i++) {
+    const textbookTable = textbookTables[i];
+    textbookTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optTextbook = opt.value;
+      for (let j = 0; j < textbookTables.length; j++) {
+        const textbookTable = textbookTables[j];
+        if (textbookTable.classList.contains(optTextbook)) {
+          textbookTable.style.display = 'block';
+          //introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+</script>
+<script>
+function showPracticesAlignment() {
+  const selectTag = document.getElementsByClassName('practicesAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const practiceTables = document.getElementsByClassName('alignedPractices');
+  for (let i = 0; i < practiceTables.length; i++) {
+    const practiceTable = practiceTables[i];
+    practiceTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optPractice = opt.value;
+      for (let j = 0; j < practiceTables.length; j++) {
+        const practiceTable = practiceTables[j];
+        if (practiceTable.classList.contains(optPractice)) {
+          practiceTable.style.display = 'block';
+        }
+      }
+    }
+  }
+}
+</script>
+<div class="paragraph">
+<!-- </p>
+</div>
+--></div><div class="sidebar"><div id="toggle"></div><div class="paragraph"><!--
+<div class="paragraph">
+<p>
+--><div class="sidebarlessons"><strong>Lessons</strong>
+<ul></ul></div>
+</div>
+<table class="tableblock frame-all grid-all stretch sidebarstandards">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Standards in this Lesson</strong>
+<select class="standardsAlignmentSelect"  onchange="showStandardsAlignment()"><option selected="selected" value="standards-CSTA">CSTA</option></select></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist alignedStandards standards-CSTA">
+<div class="title"><a href="https://csteachers.org/page/standards">CSTA Standards</a></div>
+<dl>
+<dt class="hdlist1">1B-AP-11</dt>
+<dd>
+<p>Decompose (break down) problems into smaller, manageable subproblems to facilitate the program development process.</p>
+</dd>
+<dt class="hdlist1">2-AP-12</dt>
+<dd>
+<p>Design and iteratively develop programs that combine control structures, including nested loops and compound conditionals</p>
+</dd>
+<dt class="hdlist1">2-AP-13</dt>
+<dd>
+<p>Decompose problems and subproblems into parts to facilitate the design, implementation, and review of programs</p>
+</dd>
+<dt class="hdlist1">3A-AP-15</dt>
+<dd>
+<p>Justify the selection of specific control structures when tradeoffs involve implementation, readability, and program performance, and explain the benefits and drawbacks of choices made.</p>
+</dd>
+<dt class="hdlist1">3A-AP-17</dt>
+<dd>
+<p>Decompose problems into smaller components through systematic analysis, using constructs such as procedures, modules, and/or objects.</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch sidebarpractices">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Practices in this Lesson</strong>
+<select class="practicesAlignmentSelect"  onchange="showPracticesAlignment()"><option selected="selected" value="practices-K12CS"><a href="https://k12cs.org">K12CS</a></option></select></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist alignedPractices practices-K12CS">
+<div class="title"><a href="https://k12cs.org">K12CS</a></div>
+<dl>
+<dt class="hdlist1">P4</dt>
+<dd>
+<p>Developing and Using Abstractions</p>
+</dd>
+<dt class="hdlist1">P3</dt>
+<dd>
+<p>Recognizing and Defining Computational Problems</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<!-- </p>
+</div>
+--></div><!--
+<div class="paragraph">
+<p>
+-->
+</div>
+<div class="paragraph description">
+<p>Students refactor code from a simple animation to include structures within structures, and see how to use nested structures in their own games and animations to manage complexity.</p>
+</div>
+<table class="tableblock frame-all grid-all stripes-none stretch left-header preamble">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Product Outcomes</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Students will use nested structures to add complexity to their games</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Materials</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist materials-links">
+<ul>
+<li>
+<p><a href="https://docs.google.com/presentation/d/Intentionally-left-blank-as-this-lesson-does-not-have-any-slides/" target="_blank" rel="noopener">Lesson Slides</a></p>
+</li>
+<li>
+<p><span class="materialSectionPlaceholder"> </span></p>
+</li>
+<li>
+<p><strong>Classroom visual:</strong> <a href="javascript:showLangTable()">Language Table</a></p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Preparation</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>The <a href="https://code.pyret.org/editor#share=0B9rKDmABYlJVMjF3OU83dGtaVTQ&amp;v=a49eb01">Pinwheels Starter #1</a> file</p>
+</li>
+<li>
+<p>The <a href="https://code.pyret.org/editor#share=0B9rKDmABYlJVcFFCeDlnTm4zSGM&amp;v=a49eb01">Pinwheels Starter #2</a> file preloaded on students’ machines</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="dlist glossary">
+<div class="title">Glossary</div>
+<dl>
+<dt class="hdlist1">helper function</dt>
+<dd>
+<p>a small function that handles a specific part of another computation, and gets called from other functions</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_nested_structures_managing_complexity_duration_45_minutes_"><span class="section-link"><a href="#_nested_structures_managing_complexity_duration_45_minutes_"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Nested Structures: Managing Complexity  <span class="duration">45 minutes</span></h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_overview">Overview</h3>
+<div class="paragraph">
+<p>Students are introduced to the need for nested data structures, as a way of managing complexity.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_launch">Launch</h3>
+<div class="paragraph">
+<p>Now that you know all about data structures, you’re able to use them to make video games and animations from scratch, including games that are much more complex than those you worked on in Bootstrap:Algebra. However, as you add more things to your game, you quickly end up with a large number of elements in your data structure. (If you have multiple characters in your game, each with their own position, speed, costume, etc. that all change, your structure can become quite long and unwieldy.)</p>
+</div>
+<div class="paragraph">
+<p>Making changes to your structure, or writing functions to alter it, can get extremely complex. One way to manage this complexity is to use <em>nested</em> structures: Just like we can write functions to handle repetitive processes, we can make structures to handle repetitive data. For example, if each of our 4 game characters have their own x and y coordinates, we could make one <code class="pyret">Position</code> structure to use for each character. Then, instead of our game structure containing 8 numbers, it only contains 4 <code class="pyret">Position</code>s.</p>
+</div>
+<div class="paragraph">
+<p>Let’s start out with a small animation to explore the benefits of nested structures. Open the <a href="https://code.pyret.org/editor#share=0B9rKDmABYlJVMjF3OU83dGtaVTQ&amp;v=a49eb01">Pinwheels Starter #1</a> file in Pyret, and click "Run". We see four colorful pinwheels spinning in the breeze. Now, take a look at the code:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><code class="pyret"># A PinwheelState is the angle of rotation for 4 pinwheels
+data PinwheelState:
+  | pinwheel(
+      p1a :: Number,
+      p2a :: Number,
+      p3a :: Number,
+      p4a :: Number)
+end
+
+STARTING-PINWHEELS = pinwheel(60, 3, 25, 70)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The only things that change in this animation are the angles of rotaton for each of the 4 pinwheels, and each of those numbers are included in the <code class="pyret">PinwheelState</code> data structure. As usual, we have a <code class="pyret">next-state-tick</code> function to handle updating the state of the animation, and a <code class="pyret">draw-state</code> function to draw the animation. We also have two <span class="vocab">helper functions</span> to do some of the work for these main functions: <code class="pyret">update-pinwheel</code>, which increases the angle for an individual pinwheel, and draw-pinwheel, which rotates the pinwheel image by the given angle. We’ll talk about <span class="vocab">helper functions</span> in greater detail later, but for now, notice that because we’ve delegated most of the heavy lifting to these helpers, our <code class="pyret">next-state-tick</code> function <em>only</em> needs to make a new <code class="pyret">PinwheelState</code> by calling on <code class="pyret">update-pinwheel</code> to increase the angle of rotation for each number in the structure. Most of the actual work in this function is done by <code class="pyret">update-pinwheel</code>.</p>
+</div>
+<div class="paragraph">
+<p>Suppose we wanted each of the pinwheels to spin at a different speed. We already know that any changeable part of the animation will need to be added to the structure, so we’ll need to add 4 new numbers to the <code class="pyret">PinwheelState</code> structure.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_investigate">Investigate</h3>
+<div class="paragraph lesson-instruction">
+<p>Print out the following link: <a href="images/NonNested-Pinwheels1.png" target="_blank" rel="noopener">code screenshot</a> from the pinwheels file and underline or highlight each spot in the code you would need to change in order to add a speed to each pinwheel. Once you’ve identified which sections of the code will need to change, edit the program on the computer so that each pinwheel spins at a different speed.</p>
+</div>
+<div class="paragraph">
+<p>Now we have a nice animation of pinwheels spinning at different speeds, but what if we had started off by making each individual pinwheel <em>its own structure</em>? As we’ll see shortly, this can help save us some time and headaches down the road, if we want to add to our animation later.</p>
+</div>
+<div class="paragraph lesson-instruction">
+<p>Open the <a href="https://code.pyret.org/editor#share=0B9rKDmABYlJVcFFCeDlnTm4zSGM&amp;v=a49eb01">Pinwheels Starter #2</a> file on your computer and take a look at the code. What differences do you see between this starter file and the first?</p>
+</div>
+<div class="paragraph">
+<p>This animation looks exactly the same, but the data structure and the code is slightly different. This time, the <code class="pyret">PinwheelState</code> data structure contains four <code class="pyret">Pinwheel</code>s, each their own structure, instead of four numbers. The angle of rotation is now contained inside the <code class="pyret">Pinwheel</code> structure:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><code class="pyret"># A Pinwheel is an angle of rotation
+data Pinwheel:
+  | pw(angle :: Number)
+end
+
+# A PinwheelState is 4 Pinwheels
+data PinwheelState:
+  | pinwheels(
+      p1 :: Pinwheel,
+      p2 :: Pinwheel,
+      p3 :: Pinwheel,
+      p4 :: Pinwheel)
+end
+
+STARTING-PINWHEELS = pinwheels(pw(60), pw(3), pw(25), pw(70))</code></pre>
+</div>
+</div>
+<div class="openblock lesson-instruction">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>How would you get <code class="pyret">pw1</code> out of the <code class="pyret">STARTING-PINWHEELS</code> instance?</p>
+</li>
+<li>
+<p>How would you get the angle out of <code class="pyret">pw2</code> in the <code class="pyret">STARTING-PINWHEELS</code> instance?</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>With nested structures, accessing fields in the "child" structure (in this case, Pinwheel requires two dots. So, STARTING-PINWHEELS.pw1 produces pw(60), the first Pinwheel. Whereas STARTING-PINWHEELS.pw2.angle produces 3, the angle of pw2.</p>
+</div>
+<div class="paragraph">
+<p>Another change between the non-nested and nested versions of the code is that in the nested version, our <span class="vocab">helper functions</span> <code class="pyret">update-pinwheel</code> and <code class="pyret">draw-pinwheel</code> now take in a <code class="pyret">Pinwheel</code> data structure, as opposed to just a number. The animation still works and looks the same on the outside, and the code hasn’t changed too drastically.</p>
+</div>
+<div class="paragraph">
+<p>Let’s do the same activity for the nested version of the code, where we make each pinwheel spin at a different speed.</p>
+</div>
+<div class="paragraph lesson-instruction">
+<p>Print out the following code screenshot for the nested <a href="images/Nested-Pinwheels1.png">pinwheels file</a>, and underline or highlight each spot in the code you would need to change in order to change each pinwheel’s speed independently. Once you’ve identified which sections will need to change, edit the nested version of the program on the computer.</p>
+</div>
+<div class="paragraph">
+<p>Point out the differences in underlining between the two code screenshots. Note that when students finish this activity, both of the animations will look the same- but one program will have been much more straightforward to modify! We wrote a bit more code at the beginning to set up the nested structures, but that paid off later by giving us more flexibility to change the behavior of the pinwheels.</p>
+</div>
+<div class="paragraph">
+<p><span class="centered-image"><span class="image-figure"><span class="image"><img src="images/cd72a56ff248d42b.png" alt="Adding speed" width="800" title="Adding speed"></span><a href="images/cd72a56ff248d42b.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></p>
+</div>
+<div class="paragraph">
+<p>Just by looking at the differences on paper, we can see the difference in complexity of changing our animations. In order to make each pinwheel spin at a different speed, much more of the non-nested program will need to change, as opposed to the nested version where only the <code class="pyret">Pinwheel</code> structure, <code class="pyret">STARTING-PINWHEELS</code> instance, and the <code class="pyret">update-pinwheel</code> function need to be edited.</p>
+</div>
+<div class="paragraph">
+<p>What if we wanted to add a breeze to our animation, and make the pinwheels move across the screen to the left? Let’s assume that each pinwheel moves at the same speed, but each of their x-coordinates will need to change.</p>
+</div>
+<div class="openblock lesson-instruction">
+<div class="content">
+<div class="paragraph">
+<p>Go through the same process as before: Starting with the non-nested version of the code, print out these code screenshots:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Non-nested pinwheels</p>
+</li>
+<li>
+<p><a href="images/Nested-Pinwheels2.png">Nested pinwheels</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>and underline or highlight the places in the code you would need to edit in order to change the x-coordinates of each pinwheel. Do this for both the nested and non-nested versions of the animation.</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><span class="centered-image"><span class="image-figure"><span class="image"><img src="images/f61bd51e0a38bd07.png" alt="Adding x-coordinates" width="800" title="Adding x-coordinates"></span><a href="images/f61bd51e0a38bd07.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></p>
+</div>
+<div class="paragraph">
+<p>As before, we end up underlining, and needing to change <em>much</em> more of the code in the non-nested version of the animation. We also may realize something important about the non-nested code: if both a pinwheel’s angle of rotation <em>and</em> its x-coordinate are changing, we’re no longer able to use our <code class="pyret">update-pinwheel</code> <span class="vocab">helper function</span>. Previously, this function consumed an angle and speed, and added these numbers together to produce the new angle. However, since functions can only return one thing at a time, we can’t use this function to produce the updated angle and updated x-coordinate. Instead, the work of decreasing the x-coordinate must be done inside <code class="pyret">next-state-tick</code>. Writing that code is nothing new, but wouldn’t it be nice to leave <code class="pyret">next-state-tick</code> alone, and update each pinwheel individually inside the <span class="vocab">helper function</span>?</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_synthesize">Synthesize</h3>
+<div class="paragraph">
+<p>Compare the updating functions for the non-nested version of the code:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><code class="pyret"># update-pinwheel :: Number, Number -&gt; Number
+fun update-pinwheel(angle, speed):
+  angle + speed
+end
+
+# next-state-tick :: PinwheelState -&gt; PinwheelState
+fun next-state-tick(ps):
+  pinwheel(
+    update-pinwheel(ps.p1a, ps.p1speed),
+    ps.p1speed,
+    ps.p1x - 5,
+    update-pinwheel(ps.p2a, ps.p2speed),
+    ps.p2speed,
+    ps.p2x - 5,
+    update-pinwheel(ps.p3a, ps.p3speed),
+    ps.p3speed,
+    ps.p3x - 5,
+    update-pinwheel(ps.p4a, ps.p4speed),
+    ps.p4speed,
+    ps.p4x - 5)
+end
+
+And the nested version:
+# update-pinwheel :: Pinwheel -&gt; Pinwheel
+fun update-pinwheel(p):
+  pw(p.angle + p.speed, p.speed, p.x - 5)
+end
+
+# next-state-tick :: PinwheelState -&gt; PinwheelState
+fun next-state-tick(ps):
+  pinwheels(
+    update-pinwheel(ps.p1),
+    update-pinwheel(ps.p2),
+    update-pinwheel(ps.p3),
+    update-pinwheel(ps.p4))
+end</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Not only is the version which uses nested structures much shorter, it’s also much more <em>readable</em>. Using a nested structure affords us a unique opportunity for abstraction. If each pinwheel moves the same way, we can use one <span class="vocab">helper function</span> on all of them, each time consuming a pinwheel and producing the updated pinwheel. This way the only function that needs to change is the one which addresses the "child" structure (in this case, <code class="pyret">update-pinwheel</code>, which consumes a <code class="pyret">Pinwheel</code>), and the function <code class="pyret">next-state-tick</code>, which consumes the "parent" structure <code class="pyret">PinwheelState</code>, can stay unchanged. This offers you lots more flexibility when making changes to your code, or adding things to a program.</p>
+</div>
+<div class="paragraph">
+<p>You’ve seen how nested structures work inside a simple animation, but what about a more complex video game? Let’s return to he Ninja Cat game from Bootstrap:Algebra. Here’s the original data block and some sample instances from Ninja Cat:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><code class="pyret"># A GameState is a Player's x and y-coordinate, danger's x and y coordinate and speed, and target's x and y coordinate and speed
+data GameState:
+    game(
+      playerx :: Number,
+      playery :: Number,
+      dangerx :: Number,
+      dangery :: Number,
+      dangerspeed :: Number,
+      targetx :: Number,
+      targety :: Number,
+      targetspeed :: Number,
+      score :: Number)
+end
+
+# Some sample GameStates
+START = game(320, 100, 600, 75, 5, 1500, 250, 10, 0)
+PLAY  = game(320, 100, 600, 75, 5, 300, 250, 20, 0)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>And here’s the same game made with nested structures. To clean up the <code class="pyret">GameState</code> structure, make it easier to read, and allow more flexibility in our code, we defined a new structure to represent a <code class="pyret">Character</code>, which contains a single set of x and y-coordinates:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><code class="pyret"># A Character is an x and y-coordinate
+data Character:
+    char(
+      x :: Number,
+      y :: Number)
+end
+
+data GameState:
+    game(
+      player :: Character,
+      danger :: Character,
+      dangerspeed :: Number,
+      target :: Character,
+      targetspeed :: Number,
+      score :: Number)
+end
+
+# Some sample GameStates
+START = game(char(320, 100), char(600, 75), 5, char(1500, 250), 10, 0)
+PLAY  = game(char(320, 100), char(600, 75), 5, char(300, 250), 20, 0)</code></pre>
+</div>
+</div>
+<div class="openblock lesson-instruction">
+<div class="content">
+<div class="paragraph">
+<p>For the nested structures version of Ninja Cat:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>How would you get the <em>player’s x-coordinate</em> out of START?</p>
+</li>
+<li>
+<p>What about the danger’s y-coordinate?</p>
+</li>
+<li>
+<p>How would you get the target’s speed out of PLAY?</p>
+</li>
+<li>
+<p>Finally, what do you notice about these two versions of the Ninja Cat data? Which do you prefer, and why?</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Have students discuss the pros and cons of writing a game using nested or non-nested structures.</p>
+</div>
+<div class="paragraph">
+<p>Now take a look at YOUR video games. If you were to re-write your program to use nested structures, what would it look like? Do you have multiple characters in your game with their own x, y, and speed? Do you have any opportunities to use <span class="vocab">helper functions</span> to move characters in the same way?</p>
+</div>
+<div class="paragraph lesson-instruction">
+<p>For practice, re-write the data block and sample instances for your video game using nested structures.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-17 19:42:17 -0400
+</div>
+</div>
+</div>
+</body>
+</html>

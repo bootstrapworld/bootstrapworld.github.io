@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Transform</title>
+
+  <link rel="stylesheet" href="../../../lib/curriculum.css" />
+    <link rel="stylesheet" href="../../../lib/codemirror.css" />
+    <script src="../../../lib/codemirror.js"></script>
+    <script src="../../../lib/runmode.js"></script>
+    <script src="../../../lib/scheme2.js"></script>
+    <script src="../../../lib/pyret-mode.js"></script>
+    <script src="../../../lib/langtable.js"></script>
+    <script src="../../../lib/bootstraplesson.js"></script>
+    <script src="../../../dependency-graph.js"></script>
+    <script src="../../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"Transform",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="workbookpage article codap" onload="renderSaveToDrive()">
+<div id="header">
+<h1>Transform</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Make sure you’re logged into CODAP with the Animals Dataset open.</p>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 1ex"></span></p>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_creating_a_transform_transformer">Creating a "Transform" Transformer</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Select <code class="pyret">Transform Attribute</code> in the Transformer plugin.</p>
+</li>
+<li>
+<p>Enter <code class="pyret">transform-is-young</code> as the name. This Transformer will replace all ages less than 5 with the Boolean <code class="pyret">true</code>. In other words, it will <em>transform</em> our "age" column into a column that tells us if an animal is young or not.</p>
+</li>
+<li>
+<p>Select the Animals Dataset.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="autonum">1</span> What would be an appropriate name for our transformed attribute? <span class="fitb stretch">
+<span class="autonum">2</span> Examine the contract for the expresson. A Domain (row) is provided&#8230;&#8203; but not a Range. What type of data do we expect for this expression? <span class="fitb stretch">
+<span class="vspace" style="height: 1ex"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">3</span> Let&#8217;s write a purpose statement. What do you think we want a Transformer called <code class="pyret">transform-is-young</code> to do?</p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 1ex"></span></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Enter <code class="pyret">Age (years) &lt; 5</code> as the expression. (Include tick marks around <code class="pyret">Age (years)</code>.)</p>
+</li>
+<li>
+<p>Apply the Transformer. To define the Transformer for future use, select <code class="pyret">Save</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_more_transforming">More Transforming</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><span class="autonum">4</span> Now, try creating a Transformer called <code class="pyret">weight-in-kg</code>. (Note: To convert pounds to kilograms, divide pounds by 2.205.) How many kilograms is the heaviest animal in the shelter?</p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"></span></p>
+</div>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-17 19:41:46 -0400
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Exploring Image Functions</title>
+
+  <link rel="stylesheet" href="../../../lib/curriculum.css" />
+    <link rel="stylesheet" href="../../../lib/codemirror.css" />
+    <script src="../../../lib/codemirror.js"></script>
+    <script src="../../../lib/runmode.js"></script>
+    <script src="../../../lib/scheme2.js"></script>
+    <script src="../../../lib/pyret-mode.js"></script>
+    <script src="../../../lib/langtable.js"></script>
+    <script src="../../../lib/bootstraplesson.js"></script>
+    <script src="../../../dependency-graph.js"></script>
+    <script src="../../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"Exploring Image Functions",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="workbookpage article wescheme" onload="renderSaveToDrive()">
+<div id="header">
+<h1>Exploring Image Functions</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<style>
+#content .lesson-section-1 { border: 0px !important;	}
+#content .big 			  { font-size: 60pt;		}
+</style>
+<div class="paragraph">
+<p>By now you know how to make triangles in this programming language. Based on what you know about making triangles, can you figure out how to make stars? rectangles? ellipses? What other shapes might we be able to make? When you&#8217;ve discovered code to make a new shape, draw the Circle of Evaluation in the table below, along with a sketch of the shape.</p>
+</div>
+<div class="paragraph">
+<p>Mystery Functions: <code class="racket">text</code>, <code class="racket">regular-polygon</code>, <code class="racket">radial-star</code></p>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 1ex"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">1</span> Use the space below to draw the Circles of Evaluation for the new functions and pictures of what the functions produce.</p>
+</div>
+<table class="tableblock frame-all grid-all stripes-none stretch">
+<colgroup>
+<col style="width: 60%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-middle">Circle of Evaluation</th>
+<th class="tableblock halign-center valign-middle"></th>
+<th class="tableblock halign-center valign-middle">Image</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><table class="gdrive-only expression"><tr><td class="operator"><span class="operator"><span class="value wescheme-symbol">triangle</span></span></td></tr><tr><td><table class="args"><tr><td class="arg"><span class="value wescheme-number">50</span></td><td class="arg"><span class="value wescheme-string">"solid"</span></td><td class="arg"><span class="value wescheme-string">"black"</span></td></tr></table></td></tr></table><div class="circleevalsexp"><span class="expression"><span class="lParen">(</span><span class="operator"><span class="value wescheme-symbol">triangle</span></span><span class="hspace">&#160;</span><span class="value wescheme-number">50</span><span class="hspace">&#160;</span><span class="value wescheme-string">"solid"</span><span class="hspace">&#160;</span><span class="value wescheme-string">"black"</span><span class="rParen">)</span></span></div></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">produces &rarr;</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><span class="big">&#9650;</span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><span class="vspace" style="height: 9ex"></span><span class="gdrive-only"><p>&#xa0;</p></span><span class="gdrive-only"><p>&#xa0;</p></span></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">produces &rarr;</p></td>
+<td class="tableblock halign-center valign-middle"></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><span class="vspace" style="height: 9ex"></span><span class="gdrive-only"><p>&#xa0;</p></span><span class="gdrive-only"><p>&#xa0;</p></span></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">produces &rarr;</p></td>
+<td class="tableblock halign-center valign-middle"></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><span class="vspace" style="height: 9ex"></span><span class="gdrive-only"><p>&#xa0;</p></span><span class="gdrive-only"><p>&#xa0;</p></span></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">produces &rarr;</p></td>
+<td class="tableblock halign-center valign-middle"></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><span class="vspace" style="height: 9ex"></span><span class="gdrive-only"><p>&#xa0;</p></span><span class="gdrive-only"><p>&#xa0;</p></span></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">produces &rarr;</p></td>
+<td class="tableblock halign-center valign-middle"></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><span class="vspace" style="height: 9ex"></span><span class="gdrive-only"><p>&#xa0;</p></span><span class="gdrive-only"><p>&#xa0;</p></span></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">produces &rarr;</p></td>
+<td class="tableblock halign-center valign-middle"></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><span class="vspace" style="height: 9ex"></span><span class="gdrive-only"><p>&#xa0;</p></span><span class="gdrive-only"><p>&#xa0;</p></span></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">produces &rarr;</p></td>
+<td class="tableblock halign-center valign-middle"></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><span class="autonum">2</span> Add the functions you found to your contracts page!</p>
+</div>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-18 16:15:39 -0400
+</div>
+</div>
+</body>
+</html>

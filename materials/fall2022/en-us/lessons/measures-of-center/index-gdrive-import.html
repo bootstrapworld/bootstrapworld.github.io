@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Measures of Center</title>
+<style>
+/* Overall document font */
+* {font-family: Lato, Arial, Helvetica, sans-serif;}
+
+/* document headings */
+h1,.lesson-section-1 {color: #75328A;}
+h1{font-size: 32px; font-family: sans-serif;}
+table.section-heading *, .lesson-section-1 h2{font-size: 32px; font-weight: 100;}
+table.section-heading{width: 100%;}
+table.section-heading td:last-child{text-align: right; color: #d9d2e9;}
+
+/* preamble section */
+table.preamble td {padding: 10px;}
+table.preamble td:first-child{background: #b7d893; width: 25%;}
+table.preamble td:first-child p {font-weight: bold; margin: 5px;}
+
+/* content used throughout the body */
+table{ border-collapse: collapse; border: none; }
+table.grid-all.frame-all {border: solid 1px black;}
+table.grid-none.frame-none {border-width: 0px;}
+
+.big {font-size: 30pt;}
+.vocab{font-weight: bold; font-style: italic;}
+.right{text-align: right;}
+.acknowledgment {
+  border-top: solid 1px black; 
+  font-style: italic; 
+  font-size: 8pt;
+}
+.lesson-point {
+  border-top: solid 1px black; 
+  border-bottom: solid 1px black; 
+  color: black;
+  font-weight: bold;
+}
+
+.web-page-only, #footer { display: none; visibility: hidden; }
+
+/* Callout boxes */
+.strategy-box, .notice-box {
+  background: #efefef;
+  border: solid 5px !important;
+  margin: 15px auto;
+  width: 100%;
+}
+.strategy-box { border-color: #1a73b5 !important; }
+.notice-box   { border-color: #7747a5 !important; }
+.strategy-box td, .notice-box td{ padding: 10px; }
+.strategy-box .title, .notice-box .title{
+  width: 100%;
+  display: block;
+  font-weight: bold;
+  font-size: 24px;
+  clear: both;
+  margin: 100px;
+}
+.strategy-box p.tableblock:first-child, .notice-box p.tableblock:first-child{
+  text-align: center;
+  padding-bottom: 15px;
+}
+.strategy-box .title { color: #1a73b5; }
+.notice-box   .title { color: #7747a5; }
+.strategy-box a, .notice-box a { color: blue; text-decoration: underline; }
+
+/* "Tables" of Evaluation */
+.operator{border-bottom: solid 1px black; text-align: center;}
+.operator * {text-align: center;}
+td {padding: 0px 10px; font-size: 14px;}
+table.expression {
+    font-family:"Courier New", Monaco, monospace;
+    border:     solid 1px black;
+    font-size:  1px;
+    max-width:  400px;
+    color:      #666666;
+    display:    inline-block;
+}
+table.args {border: none; text-align: center;}
+
+.wescheme-string,     .cm-scheme-string    {color: green;}
+.wescheme-number,     .cm-scheme-number    {color: blue;}
+.wescheme-boolean,    .cm-scheme-boolean   {color: darkred;}
+.wescheme-character,  .cm-scheme-character {color: orange;}
+.wescheme-symbol,     .cm-scheme-symbol    {color: steelblue;}
+.wescheme-comment,    .cm-scheme-comment   {color: orange; }
+
+.racket, .pyret, .studentAnswerCode, .studentAnswer, .pyretkeyword, .keyword_only {
+    font-family:"Courier New", Monaco, monospace !important; 
+    color: black;
+}
+
+/* Design Recipe */
+.recipe_instructions { font-style: italic; }
+table.recipe_title {
+  color:              white;
+  background:         gray;
+  display:            block;
+  padding:            0px;
+  font-size:          1.1rem;
+  font-weight:        bold;
+}</style>
+
+    <script src="../../lib/langtable.js"></script>
+    <script src="../../dependency-graph.js"></script>
+    <script src="../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:window.location.href,
+    filename:"Measures of Center",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="article LessonPlan pyret" onload="renderSaveToDrive()">
+<span id="body" onload="renderSaveToDrive()">
+<span id="header">
+<h1>Measures of Center</h1>
+
+  <span id="savetodrive-div"></span>
+
+</span>
+<span id="content">
+<span id="preamble_disabled" class="lessonSummary">
+<span class="sectionbody">
+<script>
+function preselect(klass) {
+  const items = document.getElementsByClassName(klass);
+  for (let i = 0; i < items.length; i++) {
+    items[i].style.display = 'none';
+  }
+  if (items.length > 0) {
+    items[0].style.display = 'block';
+  }
+}
+window.onload = function() {
+  preselect('alignedStandards');
+  preselect('alignedTextbooks');
+  preselect('alignedPractices');
+}
+function showStandardsAlignment() {
+  const selectTag = document.getElementsByClassName('standardsAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const stdTables = document.getElementsByClassName('alignedStandards');
+  //const intro = document.getElementsByClassName('alignedStandardsIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < stdTables.length; i++) {
+    const stdTable = stdTables[i];
+    stdTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optStd = opt.value;
+      for (let j = 0; j < stdTables.length; j++) {
+        const stdTable = stdTables[j];
+        if (stdTable.classList.contains(optStd)) {
+          stdTable.style.display = 'block';
+         // introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+function toggleNonPrereqDisplay() {
+  const inputTag = document.getElementsByClassName('sidebarinput')[0];
+  const checkedP = inputTag.checked;
+  const lessonTable = document.getElementsByClassName('sidebarlessons')[0];
+  const lis = lessonTable.getElementsByTagName('li');
+  for (let i = 0; i < lis.length; i++) {
+    const li = lis[i];
+    const lesson = li.getElementsByClassName('prerequisite');
+    if (lesson.length === 0) {
+      li.style.display = checkedP ? 'none' : 'block';
+    }
+  }
+}
+</script>
+<script>
+function showTextbooksAlignment() {
+  const selectTag = document.getElementsByClassName('textbooksAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const textbookTables = document.getElementsByClassName('alignedTextbooks');
+  //const intro = document.getElementsByClassName('alignedTextbooksIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < textbookTables.length; i++) {
+    const textbookTable = textbookTables[i];
+    textbookTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optTextbook = opt.value;
+      for (let j = 0; j < textbookTables.length; j++) {
+        const textbookTable = textbookTables[j];
+        if (textbookTable.classList.contains(optTextbook)) {
+          textbookTable.style.display = 'block';
+          //introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+</script>
+<script>
+function showPracticesAlignment() {
+  const selectTag = document.getElementsByClassName('practicesAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const practiceTables = document.getElementsByClassName('alignedPractices');
+  for (let i = 0; i < practiceTables.length; i++) {
+    const practiceTable = practiceTables[i];
+    practiceTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optPractice = opt.value;
+      for (let j = 0; j < practiceTables.length; j++) {
+        const practiceTable = practiceTables[j];
+        if (practiceTable.classList.contains(optPractice)) {
+          practiceTable.style.display = 'block';
+        }
+      }
+    }
+  }
+}
+</script>
+<span class="paragraph">
+<!-- </p>
+</span>
+--></span><span class="sidebar"><span id="toggle"></span><span class="paragraph"><!--
+<span class="paragraph">
+<p>
+--><span class="sidebarlessons"><strong>Lessons</strong>
+<ul></ul></span>
+</span>
+<table class="tableblock frame-all grid-all stretch sidebarstandards">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p><strong>Standards in this Lesson</strong>
+<select class="standardsAlignmentSelect"  onchange="showStandardsAlignment()"><option selected="selected" value="standards-CCSS-Math">CCSS-Math</option><option value="standards-K12CS">K12CS</option><option value="standards-Oklahoma">Oklahoma</option></select></p>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="dlist standards-CCSS-Math">
+<span class="title"><a href="http://corestandards.org/Math/">Common Core Math Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>6.SP.A</dt>
+<dd>
+<p>Develop understanding of statistical variability.</p>
+</dd>
+<dt class="hdlist1"><br/>6.SP.A.2</dt>
+<dd>
+<p>Understand that a set of data collected to answer a statistical question has a distribution which can be described by its center, spread, and overall shape.</p>
+</dd>
+<dt class="hdlist1"><br/>6.SP.B.5</dt>
+<dd>
+<p>Summarize numerical data sets in relation to their context.</p>
+</dd>
+<dt class="hdlist1"><br/>6.SP.B.5.C</dt>
+<dd>
+<p>Summarize numerical data sets in relation to their context by giving quantitative measures of center (median and/or mean) and variability (interquartile range and/or mean absolute deviation), as well as describing any overall pattern and any striking deviations from the overall pattern with reference to the context in which the data were gathered.</p>
+</dd>
+<dt class="hdlist1"><br/>6.SP.B.5.D</dt>
+<dd>
+<p>Summarize numerical data sets in relation to their context by relating the choice of measures of center and variability to the shape of the data distribution and the context in which the data were gathered.</p>
+</dd>
+<dt class="hdlist1"><br/>HSS.ID.A.2</dt>
+<dd>
+<p>Use statistics appropriate to the shape of the data distribution to compare center (median, mean) and spread (interquartile range, standard deviation) of two or more different data sets.</p>
+</dd>
+<dt class="hdlist1"><br/>HSS.ID.A.3</dt>
+<dd>
+<p>Interpret differences in shape, center, and spread in the context of the data sets, accounting for possible effects of extreme data points (outliers).</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-K12CS">
+<span class="title"><a href="https://k12cs.org">K-12CS Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>6-8.Data and Analysis.Inference and Models</dt>
+<dd>
+<p>People transform, generalize, simplify, and present large data sets in different ways to influence how other people interpret and understand the underlying information. Examples include visualization, aggregation, rearrangement, and application of mathematical operations.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Oklahoma">
+<span class="title"><a href="https://sde.ok.gov/oklahoma-academic-standards">Oklahoma Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>OK.PA.D.1.2</dt>
+<dd>
+<p>Explain how outliers affect measures of central tendency.</p>
+</dd>
+</dl>
+</span></span></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch sidebartextbooks">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p><strong>Textbook Alignment</strong>
+<select class="textbooksAlignmentSelect"  onchange="showTextbooksAlignment()"><option selected="selected" value="textbook-IM_Alg_1"><a href="https://illustrativemathematics.org/">IM Algebra 1</a></option><option value="textbook-IM_6"><a href="https://illustrativemathematics.org/">IM 6 Math™</a></option><option value="textbook-IM_7"><a href="https://illustrativemathematics.org/">IM 7 Math™</a></option><option value="textbook-CMP"><a href="https://connectedmath.msu.edu/">Connected Math</a></option></select></p>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="dlist alignedTextbooks textbook-IM_Alg_1">
+<span class="title"><a href="https://illustrativemathematics.org/">IM Algebra 1</a></span>
+<dl>
+<dt class="hdlist1"><br/>IM.Alg1.1.11</dt>
+<dd>
+<p>Comparing and Contrasting Data Distributions</p>
+</dd>
+<dt class="hdlist1"><br/>IM.Alg1.1.5</dt>
+<dd>
+<p>Calculating Measures of Center and Variability</p>
+</dd>
+</dl>
+</span>
+<span class="dlist alignedTextbooks textbook-IM_6">
+<span class="title"><a href="https://illustrativemathematics.org/">IM 6 Math™</a></span>
+<dl>
+<dt class="hdlist1"><br/>IM.6.8.14</dt>
+<dd>
+<p>Comparing Mean and Median</p>
+</dd>
+<dt class="hdlist1"><br/>IM.6.8.13</dt>
+<dd>
+<p>The Median of a Data Set</p>
+</dd>
+<dt class="hdlist1"><br/>IM.6.8.10</dt>
+<dd>
+<p>Interpreting the Mean as the Balance Point</p>
+</dd>
+<dt class="hdlist1"><br/>IM.6.8.9</dt>
+<dd>
+<p>Interpreting the Mean as Fair Share</p>
+</dd>
+</dl>
+</span>
+<span class="dlist alignedTextbooks textbook-IM_7">
+<span class="title"><a href="https://illustrativemathematics.org/">IM 7 Math™</a></span>
+<dl>
+<dt class="hdlist1"><br/>IM.7.8.13</dt>
+<dd>
+<p>What Makes a Good Sample?</p>
+</dd>
+<dt class="hdlist1"><br/>IM.7.8.11</dt>
+<dd>
+<p>Comparing Groups</p>
+</dd>
+</dl>
+</span>
+<span class="dlist alignedTextbooks textbook-CMP">
+<span class="title"><a href="https://connectedmath.msu.edu/">Connected Math</a></span>
+<dl>
+<dt class="hdlist1"><br/>CMP.6.7</dt>
+<dd>
+<p>Data About Us: Statistics and Data Analysis</p>
+</dd>
+<dt class="hdlist1"><br/>CMP.8.1</dt>
+<dd>
+<p>Thinking with Mathematical Models: Linear and Inverse Variations</p>
+</dd>
+</dl>
+</span></span></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch sidebarpractices">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p><strong>Practices in this Lesson</strong>
+<select class="practicesAlignmentSelect"  onchange="showPracticesAlignment()"><option selected="selected" value="practices-NGSS"><a href="https://ngss.nsta.org/practicesfull.aspx">Science and Engineering</a></option><option value="practices-CC"><a href="http://corestandards.org/Math/">Math</a></option></select></p>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="dlist alignedPractices practices-NGSS">
+<span class="title"><a href="https://ngss.nsta.org/practicesfull.aspx">Science and Engineering</a></span>
+<dl>
+<dt class="hdlist1"><br/>SEP.3</dt>
+<dd>
+<p>Planning and Carrying Out Investigations</p>
+</dd>
+</dl>
+</span>
+<span class="dlist alignedPractices practices-CC">
+<span class="title"><a href="http://corestandards.org/Math/">Math</a></span>
+<dl>
+<dt class="hdlist1"><br/>MP.3</dt>
+<dd>
+<p>Construct viable arguments and critique the reasoning of others</p>
+</dd>
+</dl>
+</span></span></td>
+</tr>
+</tbody>
+</table>
+<span class="paragraph">
+<!-- </p>
+</span>
+--></span><!--
+<span class="paragraph">
+<p>
+-->
+</span>
+<span class="paragraph description">
+<p>Students are introduced to mean, median and mode(s) and consider which of these measures of center best describes various quantitative data.</p>
+</span>
+<table class="tableblock frame-all grid-all stripes-none stretch left-header preamble">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>Lesson Goals</p>
+</span></span></td>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>Students will be able to&#8230;&#8203;</p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p>Students explore the concept of center of a distribution, learning how to compute the mean, median and mode(s) of a dataset</p>
+</li>
+<li>
+<p>Students find the mean, median and mode(s) of various columns in the Animals table</p>
+</li>
+</ul>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>Student-facing Lesson Goals</p>
+</span></span></td>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="ulist">
+<ul>
+<li>
+<p>Let&#8217;s use mean, median, and mode to describe our data.</p>
+</li>
+</ul>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>Materials</p>
+</span></span></td>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="ulist materials-links">
+<ul>
+<li>
+<p><a href="https://docs.google.com/presentation/d/1RulBWGq88Fu1B5-OT6gEQ-71wee7MGW7_tB9UOikxGM/" target="_blank" rel="noopener">Lesson Slides</a></p>
+</li>
+<li>
+<p><span class="StarterFile"><a href="https://code.pyret.org/editor#share=1lGjndLCWSEoIrV3ErZMXSn_-xakqGvrK" target="_blank" rel="noopener">Animals Starter File</a></span></p>
+</li>
+<li>
+<p><span class="materialSectionPlaceholder"> </span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/measures-of-center/pages/summarizing-columns-in-animals.html" target="_blank" rel="noopener">Summarizing Columns in the Animals Dataset</a></span></p>
+</li>
+<li>
+<p><span class="OnlineExercise"><a href="https://teacher.desmos.com/activitybuilder/custom/5fca8f6a3d4e1f382a33f56e" target="_blank" rel="noopener">Mode(s) (Desmos)</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/measures-of-center/pages/data-cycle-practice.html" target="_blank" rel="noopener">Data Cycle: Measures of Center</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/measures-of-center/pages/critiquing-findings.html" target="_blank" rel="noopener">Critiquing Written Findings</a></span></p>
+</li>
+<li>
+<p><strong>Classroom visual:</strong> <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/javascript:showLangTable()">Language Table</a></p>
+</li>
+</ul>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>Preparation</p>
+</span></span></td>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="ulist">
+<ul>
+<li>
+<p>All students should log into <a href="https://code.pyret.org/" target="_blank" rel="noopener">code.pyret.org (CPO)</a> and open their saved "Animals Starter File". If they don&#8217;t have the file, they can open a new one from <a href="https://code.pyret.org/editor#share=1lGjndLCWSEoIrV3ErZMXSn_-xakqGvrK" target="_blank" rel="noopener">Animals Starter File</a>.</p>
+</li>
+</ul>
+</span></span></td>
+</tr>
+</tbody>
+</table>
+<span class="dlist glossary">
+<span class="title">Glossary</span>
+<dl>
+<dt class="hdlist1"><br/>mean</dt>
+<dd>
+<p>a representation of the center, or 'typical' value in a set of numbers, calculated as the sum of those numbers divided by the number of values.</p>
+</dd>
+<dt class="hdlist1"><br/>median</dt>
+<dd>
+<p>the middle element of a quantitative dataset</p>
+</dd>
+<dt class="hdlist1"><br/>mode</dt>
+<dd>
+<p>the most commonly appearing categorical or quantitative value or values in a dataset</p>
+</dd>
+<dt class="hdlist1"><br/>outlier</dt>
+<dd>
+<p>observations whose values are very different from the other observations in the same dataset, perhaps due to experimental error. Outliers can also be indicative of data belonging to a different population from the rest of the established samples.</p>
+</dd>
+<dt class="hdlist1"><br/>quantitative data</dt>
+<dd>
+<p>number values for which arithmetic makes sense</p>
+</dd>
+<dt class="hdlist1"><br/>skew</dt>
+<dd>
+<p>lack of balance in a dataset’s shape, arising from more values that are unusually low or high. Such values tend to trail off, rather than be separated by a gap (as with outliers).</p>
+</dd>
+</dl>
+</span>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<table class="grid-none frame-none section-heading"><tr><td width="65%">Mean </td><td width="35%">15 minutes</td></tr></table>
+<span class="sectionbody">
+<span class="sect2 lesson-section-2">
+<h3 id="_overview">Overview</h3>
+<span class="paragraph">
+<p>Students learn about <span class="vocab">mean</span> (or "average"), and how it is one way (among others!) to summarize a <span class="vocab">quantitative</span> column.</p>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_launch">Launch</h3>
+<span class="paragraph">
+<p>According to the Animal Shelter Bureau, the average pet weighs almost 41 pounds.</p>
+</span>
+<span class="paragraph">
+<p>Some medicines are dosed by weight: heavier animals need a larger dose that could be dangerous for smaller animals. If someone from the shelter needs to give a dose of medicine to the animals, is the “average” the best estimate we can use?</p>
+</span>
+<span class="paragraph">
+<p>“The average pet weighs 41 pounds” is a statement about the entire dataset, which summarizes a whole column of values with a single number. Summarizing a big dataset means that some information gets lost, so it’s important to pick an appropriate summary. Picking the wrong summary can have serious implications! Here are just a few examples of summary data being used for important things. Do you think these summaries are appropriate or not?</p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p>Students are sometimes summarized by two numbers&#8201;&#8212;&#8201;their GPA and SAT scores&#8201;&#8212;&#8201;which can impact where they go to college or how much financial aid they get.</p>
+</li>
+<li>
+<p>Schools are sometimes summarized by a few numbers&#8201;&#8212;&#8201;student pass rates and attendance, for example&#8201;&#8212;&#8201;which can determine whether or not a school gets shut down.</p>
+</li>
+<li>
+<p>Adults are often summarized by a single number&#8201;&#8212;&#8201;like their credit score&#8201;&#8212;&#8201;which determines their ability to get a job or a home loan.</p>
+</li>
+<li>
+<p>When buying uniforms for a sports team, a coach might look for the most common size that the players wear.</p>
+</li>
+</ul>
+</span>
+<span class="paragraph lesson-instruction">
+<p>Can you think of other examples where someone uses a number or two to summarize something complex?</p>
+</span>
+<span class="paragraph">
+<p>Every kind of summary has situations in which it does a good job of reporting what’s typical, and others where it doesn’t really do justice to the data. In fact, the shape of the data can play a huge role in whether or not one kind of summary is appropriate!</p>
+</span>
+<span class="paragraph">
+<p>One of the ways that Data Scientists summarize quantitative data is by talking about its <em>center</em> - literally asking "what is a typical value in this sample?", in the hopes of inferring something about a larger population.  But there are many different ways to define "center", and each method has strengths and weaknesses. Let’s check the “41 pounds” claim and see if it’s an appropriate measure of center. Later on, you’ll have a chance to apply what you’ve learned to your own dataset, to find the best way to provide an overall summary of the data.</p>
+</span>
+<table class="tableblock frame-all grid-none stripes-none stretch strategy-box">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p><span class="title">Kinesthetic Activity</span></p>
+</span>
+<span class="paragraph">
+<p><em>If you have a set of rulers, divide the class into groups such that every group has a ruler. Give each group 4-8 pennies and make sure every group has at least one pen or pencil.</em></p>
+</span>
+<span class="paragraph">
+<p>The arithmetic mean is the number that "balances" all the other numbers in the sample. So let&#8217;s do some real balancing!</p>
+</span>
+<span class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The ruler represents a number line with values (weight) distributed equally across the line. If there&#8217;s values at every inch from 0 to 12, where should the pencil be placed in order to balance the ruler on top of it?</p>
+</li>
+<li>
+<p>Place a penny at 1 and 11. Where must the pencil be placed to balance those two values? What is the mean of of the values [1, 11]?</p>
+</li>
+<li>
+<p>Place pennies at 1, 9 and 11. Where must the pencil be placed to balance those two values? What is the mean of of the values [1, 9, 11]?</p>
+</li>
+<li>
+<p>Suppose you were to place two pennies at 2, and a third penny at 8. Can you <em>predict</em> where the pencil should be placed?</p>
+</li>
+</ol>
+</span></span></td>
+</tr>
+</tbody>
+</table>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_investigate">Investigate</h3>
+<span class="paragraph">
+<p>Before digging into a discussion of mean, let&#8217;s look at a visual.</p>
+</span>
+<span class="paragraph">
+<p>If we plotted all the animals' weights as points on a number line, it would look something like this:</p>
+</span>
+<span class="paragraph">
+<p><span class="image-figure"><span class="image"><img src="images/efbf3071ecbe897a.png" alt="number line displaying pounds" title="number line displaying pounds"></span><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/images/efbf3071ecbe897a.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></p>
+</span>
+<span class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Do you think there is a midpoint?</p>
+<span class="ulist">
+<ul>
+<li>
+<p><em>There are 32 animals - meaning that there is not one point in the middle.</em></p>
+</li>
+</ul>
+</span>
+</li>
+<li>
+<p>Is there a point that shows up most often?</p>
+<span class="ulist">
+<ul>
+<li>
+<p><em>Since we see that dots are stacked up, it seems likely that there is some repetition in the animals' weights.</em></p>
+</li>
+</ul>
+</span>
+</li>
+<li>
+<p>What do you think the red line represents? How about the blue one? How do you know?</p>
+<span class="ulist">
+<ul>
+<li>
+<p><em>Be sure to solicit students' answers, which may vary. Red is the median, blue is the mean. Uncertainty at this point is okay! The remainder of the lesson is an exploration of these concepts.</em></p>
+</li>
+</ul>
+</span>
+</li>
+</ul>
+</span>
+<span class="paragraph">
+<p>Each of these are different ways of “measuring center”.</p>
+</span>
+<span class="paragraph">
+<p>The Animal Shelter Bureau used one method of summary, called the <span class="vocab">mean</span>, or "average". The mean of a dataset is the sum of values divided by the number of values. To take the average of a column, we add all the numbers in that column and divide by the number of rows.</p>
+</span>
+<span class="paragraph">
+<p>Pyret has a way for us to compute the mean of any <span class="vocab">quantitative</span> column in a Table. It consumes a Table and the name of the column you want to measure, and produces the mean&#8201;&#8212;&#8201;or average&#8201;&#8212;&#8201;of the numbers in that column.</p>
+</span>
+<span class="paragraph">
+<p><span class="obeyspaces"><code class="pyret"># mean :: Table, String ‑&gt; Number</code></span></p>
+</span>
+<span class="ulist lesson-instruction">
+<ul>
+<li>
+<p>What is the function&#8217;s name? Domain? Range?</p>
+<span class="ulist">
+<ul>
+<li>
+<p><em>The function&#8217;s name is <code class="pyret">mean</code>. The function consumes a table and string (domain), and produces a number (range).</em></p>
+</li>
+</ul>
+</span>
+</li>
+</ul>
+</span>
+<span class="paragraph">
+<p>Notice that calculating the mean requires being able to add and divide, so the mean only makes sense for quantitative data. For example, the mean of a list of Presidents doesn’t make sense. Same thing for a list of zip codes: even though we can divide a sum of zip codes, the output doesn’t correspond to some “center” zip code.</p>
+</span>
+<span class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Type <code class="pyret">mean(animals-table, "pounds")</code>. What does this give us?</p>
+<span class="ulist">
+<ul>
+<li>
+<p><em>39.715625.</em></p>
+</li>
+</ul>
+</span>
+</li>
+<li>
+<p>Does this support the Bureau’s claims?</p>
+<span class="ulist">
+<ul>
+<li>
+<p><em>No, the mean is less than 41 pounds.</em></p>
+</li>
+</ul>
+</span>
+</li>
+<li>
+<p>Now, turn to <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/measures-of-center/pages/summarizing-columns-in-animals.html" target="_blank" rel="noopener">Summarizing Columns in the Animals Dataset</a>. In the “measures of center” section, fill in the computed mean.</p>
+</li>
+</ul>
+</span>
+</span>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<table class="grid-none frame-none section-heading"><tr><td width="65%">Median </td><td width="35%">15 minutes</td></tr></table>
+<span class="sectionbody">
+<span class="sect2 lesson-section-2">
+<h3 id="_overview_2">Overview</h3>
+<span class="paragraph">
+<p>Students learn a second measure of center: the <span class="vocab">median</span>. They learn the algorithm and the code to find the median, as well as situations where taking the median is more appropriate than the mean.</p>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_launch_2">Launch</h3>
+<span class="paragraph">
+<p>You computed the mean of that column to be almost exactly 41 pounds. That IS the average, but if we scan the dataset we&#8217;ll quickly see that most of the animals weigh less than 41 pounds! In fact, more than half of the animals weigh less than just 15 pounds. What is throwing off the average so much?</p>
+</span>
+<span class="paragraph">
+<p><em>Kujo and Mr. Peanutbutter!</em></p>
+</span>
+<span class="paragraph">
+<p>In this case, the mean is being thrown off by a few extreme data points. These extreme points are called <span class="vocab">outliers</span>, because they fall far outside of the rest of the dataset. Calculating the mean is great when all the points are fairly balanced on either side of the middle, but it distorts things for datasets with extreme outliers. The mean may also be thrown off by the presence of <span class="vocab">skewness</span>: a lopsided shape due to values trailing off to the left or right.</p>
+</span>
+<span class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Make a <code class="pyret">histogram</code> of the <code class="pyret">pounds</code> column, and try different bin sizes.</p>
+</li>
+<li>
+<p>Can you see the huge number of animals clumped to the left, with Kujo and Mr. Peanutbutter as outliers skewed to the right?</p>
+</li>
+</ul>
+</span>
+<span class="paragraph">
+<p>A different way to measure center is to line up all of the data points&#8201;&#8212;&#8201;in order&#8201;&#8212;&#8201;and find a point in the center where half of the values are smaller and the other half are larger. This is the <span class="vocab">median</span>, or “middle” value of a list.</p>
+</span>
+<span class="paragraph">
+<p>As an example, consider this list of ACT scores:</p>
+</span>
+<span class="paragraph">
+<p><code class="pyret">25, 26, 28, 28, 28, 29, 29, 30, 30, 31, 32</code></p>
+</span>
+<span class="paragraph">
+<p>Here 29 is the <span class="vocab">median</span>, because it separates the "bottom half” (5 values below it) from the top half” (5 values above it).</p>
+</span>
+<span class="paragraph">
+<p>The algorithm for finding the median of a quantitative column is:</p>
+</span>
+<span class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Sort the numbers</p>
+</li>
+<li>
+<p>Cross out the highest and lowest number</p>
+</li>
+<li>
+<p>Repeat until there is only one number left&#8230;&#8203;</p>
+</li>
+<li>
+<p>When there are an even number of numbers in the list, as in the example below, there will be two numbers left at the end. Take the <em>mean</em> of those two numbers.</p>
+</li>
+</ol>
+</span>
+<span class="paragraph">
+<p><code class="pyret">3, 7, 9, 21</code></p>
+</span>
+<span class="paragraph">
+<p>The median of this list is 8, because 8 is the mean of the two middle numbers, 7 and 9. To find their mean, we added 7 and 9 to get 16 and split 16 in half.</p>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_investigate_2">Investigate</h3>
+<span class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Pyret has a function to compute the median of a list as well. Find the contract in your contracts page.</p>
+</li>
+<li>
+<p>Compute the median for the <code class="pyret">pounds</code> column in the Animals Dataset, and add this to <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/measures-of-center/pages/summarizing-columns-in-animals.html" target="_blank" rel="noopener">Summarizing Columns in the Animals Dataset</a>.</p>
+<span class="ulist">
+<ul>
+<li>
+<p><em>The median is 11.3.</em></p>
+</li>
+</ul>
+</span>
+</li>
+<li>
+<p>Is it different than the mean?</p>
+<span class="ulist">
+<ul>
+<li>
+<p><em>Yes, it is very different!</em></p>
+</li>
+</ul>
+</span>
+</li>
+<li>
+<p>What can we conclude when the mean is so much greater than the median?</p>
+<span class="ulist">
+<ul>
+<li>
+<p><em>There are some very heavy animals that are causing the mean to be higher.</em></p>
+</li>
+</ul>
+</span>
+</li>
+<li>
+<p>For practice, compute the mean and median for the weeks and age columns.</p>
+<span class="ulist">
+<ul>
+<li>
+<p><em>Weeks: mean - 5.75; median - 4. Age: mean - 4.359375; median - 3.</em></p>
+</li>
+</ul>
+</span>
+</li>
+</ul>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_synthesize">Synthesize</h3>
+<span class="paragraph">
+<p>By looking at the histogram, we can see that it&#8217;s probably better to use the mean or median.</p>
+</span>
+<span class="paragraph">
+<p>Strong left skewness and/or low outliers can pull the mean down below the median, while right skewness and/or high outliers can pull it up above the median.</p>
+</span>
+<span class="paragraph">
+<p>Mean is generally the best measure of center, because it includes information from every single point. But it&#8217;s inaccurate for highly-skewed datasets, so statisticians fall back to the median.</p>
+</span>
+</span>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<table class="grid-none frame-none section-heading"><tr><td width="65%">Modes </td><td width="35%">25 minutes</td></tr></table>
+<span class="sectionbody">
+<span class="sect2 lesson-section-2">
+<h3 id="_overview_3">Overview</h3>
+<span class="paragraph">
+<p>Students learn about the mode(s) of a dataset, how to compute the mode, and when it is appropriate to use this as a measure of center.</p>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_launch_3">Launch</h3>
+<span class="paragraph">
+<p>The third measure of center is called the <span class="vocab">modes</span> of a dataset. The <span class="vocab">modes</span> of a dataset are the values that appear <em>most often</em>.</p>
+</span>
+<span class="paragraph">
+<p>Median and Mean always produce one number and many datasets are what we call “unimodal”, having just one mode. But sometimes there are exceptions!</p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p>If two or more values are equally common, there can be more than one mode.</p>
+</li>
+<li>
+<p>If all values are equally common, then there is no mode at all!</p>
+</li>
+</ul>
+</span>
+<span class="paragraph">
+<p>Consider the following three datasets:</p>
+</span>
+<span class="literalblock">
+<span class="content">
+<pre><code class="pyret">1, 2, 3, 4
+1, 2, 2, 3, 4
+1, 1, 2, 3, 4, 4</code></pre>
+</span>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p>The first dataset has <em>no mode at all!</em></p>
+</li>
+<li>
+<p>The mode of the second dataset is 2, since 2 appears more than any other number.</p>
+</li>
+<li>
+<p>The modes (plural!) of the last dataset are 1 and 4, because 1 and 4 both appear more often than any other element, and because they appear equally often.</p>
+</li>
+</ul>
+</span>
+<span class="paragraph">
+<p>Mode is rarely used to summarize quantitative data. It is very common as a summary of <em>categorical</em> data, telling us which category occurs most often.</p>
+</span>
+<span class="paragraph">
+<p>In Pyret, the mode(s) are calculated by the modes function, which consumes a Table and the name of the column you want to measure, and produces a <em>List</em> of Numbers.</p>
+</span>
+<span class="paragraph">
+<p><span class="obeyspaces"><code class="pyret"># modes :: Table, String ‑&gt; List&lt;Number&gt;</code></span></p>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_investigate_3">Investigate</h3>
+<span class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Compute the <code class="pyret">modes</code> of the <code class="pyret">pounds</code> column, and add it to <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/measures-of-center/pages/summarizing-columns-in-animals.html" target="_blank" rel="noopener">Summarizing Columns in the Animals Dataset</a>. What did you get?</p>
+<span class="ulist">
+<ul>
+<li>
+<p><em>0.1 and 6.5</em></p>
+</li>
+</ul>
+</span>
+</li>
+</ul>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_synthesize_2">Synthesize</h3>
+<span class="paragraph">
+<p>The most common animal weights are 0.1 and 6.5! That’s well below our mean and even our median, which is further evidence of outliers or skewness.</p>
+</span>
+<span class="paragraph">
+<p>At this point, we have a lot of evidence that suggests the Bureau’s use of “mean” to summarize animal weights isn’t ideal. We have three reasons to suspect that <span class="vocab">mean</span> isn’t the best value to use:</p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p>The median is only 11.3 pounds.</p>
+</li>
+<li>
+<p>The modes of our dataset are 6.5 pounds and 0.1 pounds, which suggests a cluster of animals that weigh less than one-sixth the mean.</p>
+</li>
+<li>
+<p>When viewed as a histogram, we can see the right skewness and high outliers in the dataset. Mean is sensitive to datasets with skewness and/or outliers.</p>
+</li>
+</ul>
+</span>
+<span class="openblock lesson-instruction">
+<span class="content">
+<span class="paragraph">
+<p><em>“In 2003, the average American family earned $43,000 a year&#8201;&#8212;&#8201;well above the poverty line! Therefore very few Americans were living in poverty."</em></p>
+</span>
+<span class="paragraph">
+<p>Do you trust this statement? Why or why not?</p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p><em>Sample response: The mean is sensitive to outliers, and billionaires like Elon Musk, Jeff Bezos, etc. pull the mean is heavily to the right. This makes it appear that the "average" American family earns far more than they actually do. That&#8217;s why the conclusion "very few Americans were living in poverty" cannot be drawn based on the mean.</em></p>
+</li>
+</ul>
+</span>
+</span>
+</span>
+<span class="paragraph">
+<p>Consider how many policies or laws are informed by statistics like this! Knowing about measures of center helps us see through misleading statements.</p>
+</span>
+<span class="paragraph">
+<p>You now have three different ways to measure center in a dataset. But how do you know which one to use? Depending on the shape of the dataset, a measure could be really useful or totally misleading! Here are some guidelines for when to use one measurement over the other:</p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p>If the data doesn’t show much skewness or have outliers, <span class="vocab">mean</span> is the best summary because it incorporates information from every value.</p>
+</li>
+<li>
+<p>If the data has noticeable outliers or skewness, <span class="vocab">median</span> gives a better summary of center than the mean.</p>
+</li>
+<li>
+<p>If there are very few possible values, such as AP Scores (1–5), the <span class="vocab">mode</span> could be a useful way to summarize the dataset.</p>
+</li>
+</ul>
+</span>
+<span class="paragraph">
+<p><strong>NOTE:</strong> We strongly recommend having students practice the Data Cycle with measures of center, using <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/measures-of-center/pages/data-cycle-practice.html" target="_blank" rel="noopener">Data Cycle: Measures of Center</a>. Sometimes what&#8217;s created isn&#8217;t a table <em>or</em> a display, and this activity demonstrates that. It also drives home an important difference between Arithmetic and Statistical Questions.</p>
+</span>
+</span>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<h2 id="_additional_exercises"><span class="section-link"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/#_additional_exercises"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Additional Exercises</h2>
+<span class="sectionbody">
+<span class="ulist">
+<ul>
+<li>
+<p><a href="https://teacher.desmos.com/activitybuilder/custom/5fca8f6a3d4e1f382a33f56e" target="_blank" rel="noopener">Mode(s) (Desmos)</a></p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/measures-of-center/pages/critiquing-findings.html" target="_blank" rel="noopener">Critiquing Written Findings</a></p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/measures-of-center/pages/data-cycle-practice.html" target="_blank" rel="noopener">Data Cycle: Measures of Center</a></p>
+</li>
+</ul>
+</span>
+</span>
+</span>
+<span class="sect1 acknowledgmentsect">
+<span class="sectionbody">
+<span class="openblock acknowledgment"><hr/>
+<span class="content">
+<span class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</span>
+</span>
+</span>
+</span>
+</span>
+</span>
+<span id="footer">
+<span id="footer-text">
+Last updated 2022-10-17 19:42:16 -0400
+</span>
+</span>
+</span>
+</body>
+</html>

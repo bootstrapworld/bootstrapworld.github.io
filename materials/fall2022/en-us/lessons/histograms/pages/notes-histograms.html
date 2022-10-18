@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Histograms</title>
+
+  <link rel="stylesheet" href="../../../lib/curriculum.css" />
+    <script src="../../../lib/langtable.js"></script>
+    <script src="../../../lib/bootstraplesson.js"></script>
+    <script src="../../../dependency-graph.js"></script>
+    <script src="../../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"Histograms",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="LessonNotes workbookpage article pyret" onload="renderSaveToDrive()">
+<div id="header">
+<h1>Histograms</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<style>
+.last-list li {min-height: 80px;}
+</style>
+<div class="paragraph">
+<p>To best understand histograms, it&#8217;s helpful to contrast them first with bar charts.</p>
+</div>
+<div class="paragraph">
+<p><strong>Bar charts</strong> show the number of rows belonging to a given category. The more rows in each category, the taller the bar.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Bar charts provide a visual representation of the frequency of values in a <strong>categorical</strong> column.</em></p>
+</li>
+<li>
+<p>There’s no strict numerical way to order these bars, but <strong>sometimes there’s an order</strong> that makes sense. For example, bars for the sales of different t-shirt sizes might be presented in order of smallest to largest shirt.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 2ex"></span></p>
+</div>
+<div class="paragraph">
+<p><strong>Histograms</strong> show the number of rows that fall within certain intervals, or “bins”, on a horizontal axis. The more rows that fall within a particular “bin”, the taller the bar.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Histograms provide a visual representation of the frequencies (or relative frequencies) of values in a <strong>quantitative</strong> column.</em></p>
+</li>
+<li>
+<p>Quantitative data <strong>can always be ordered</strong>, so the bars of a histogram always progress from smallest (on the left) to largest (on the right).</p>
+</li>
+<li>
+<p>When dealing with histograms, it’s important to select a good <strong>bin size</strong>. If the bins are too small or too large, it is difficult to see the shape of the dataset. Choosing a good bin size can take some trial and error!</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 2ex"></span></p>
+</div>
+<div class="paragraph">
+<p>The <strong>shape</strong> of a dataset tells us which values are more or less common.</p>
+</div>
+<div class="ulist last-list">
+<ul>
+<li>
+<p><span class="right"><span class="image-figure"><span class="image"><img src="2273b7d1bde7c55a.png" alt="a symmetric distribution" width="100" title="a symmetric distribution"></span><a href="2273b7d1bde7c55a.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span>In a <strong>symmetric</strong> dataset, values are just as likely to occur a certain distance above the mean as below the mean. Each side of a symmetric distribution looks almost like a mirror-image of the other.</p>
+</li>
+<li>
+<p>Some extreme values may be far greater or far lower than the other values in a dataset. These extreme values are called <strong>outliers</strong>.</p>
+</li>
+<li>
+<p><span class="right"><span class="image-figure"><span class="image"><img src="eb2053e2e985775f.png" alt="a skew-left distribution" width="100" title="a skew-left distribution"></span><a href="eb2053e2e985775f.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span>A dataset that is <strong>skewed left</strong> has a few values that are unusually low. The histogram for a skewed left dataset has a few data points that are stretched out to the left (lower) end of the x-axis.</p>
+</li>
+<li>
+<p><span class="right"><span class="image-figure"><span class="image"><img src="9ef3e9ae7c5dd77c.png" alt="a skew-right distribution" width="100" title="a skew-right distribution"></span><a href="9ef3e9ae7c5dd77c.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span>A dataset that is <strong>skewed right</strong> has a few values that are unusually high. The histogram for a skewed right dataset has a few data points that are stretched out to the right (higher) end of the x-axis.</p>
+</li>
+<li>
+<p>One way to visualize the difference between a histogram of data that is <strong>skewed left</strong> or <strong>skewed right</strong> is to think about the lengths of our toes on our left and right feet. Much like the bar lengths of a histogram that is "skewed left", our left feet have smaller toes on the left and a bigger toe on the right.  Our right feet have the big toe on the left and smaller toes on the right, more closely resembling the shape of a histogram of "skewed right" data.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-17 19:42:04 -0400
+</div>
+</div>
+</body>
+</html>

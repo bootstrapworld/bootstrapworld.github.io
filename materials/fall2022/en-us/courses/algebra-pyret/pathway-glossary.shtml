@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Glossary</title>
+
+  <link rel="stylesheet" href="../../lib/curriculum.css" />
+    <script src="../../lib/langtable.js"></script>
+    <script src="../../lib/bootstraplesson.js"></script>
+    <script src="../../dependency-graph.js"></script>
+    <script src="../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+</head>
+<body class="narrativepage article">
+<!--#include virtual="/menubar.ssi"-->
+<div id="body">
+<div id="header">
+<h1>Glossary</h1>
+</div>
+<div id="content">
+<div class="dlist glossary">
+<dl>
+<dt class="hdlist1">apply</dt>
+<dd>
+<p>use a given function on some inputs</p>
+</dd>
+<dt class="hdlist1">argument</dt>
+<dd>
+<p>the inputs to a function; the expressions for each argument follow the function name</p>
+</dd>
+<dt class="hdlist1">axis</dt>
+<dd>
+<p>A reference line, used to determine the position of a coordinate</p>
+</dd>
+<dt class="hdlist1">Boolean</dt>
+<dd>
+<p>a type of data with two values: true and false</p>
+</dd>
+<dt class="hdlist1">circle of evaluation</dt>
+<dd>
+<p>a 'sentence diagram' of the structure of a mathematical expression</p>
+</dd>
+<dt class="hdlist1">comments</dt>
+<dd>
+<p>messages in the code, generally ignored by the computer, to help people interacting with the code understand what it is doing</p>
+</dd>
+<dt class="hdlist1">compound inequality</dt>
+<dd>
+<p>an inequality that combines two simple inequalities using <em>and</em> or <em>or</em></p>
+</dd>
+<dt class="hdlist1">conditional</dt>
+<dd>
+<p>a code expression made of questions and answers</p>
+</dd>
+<dt class="hdlist1">contract</dt>
+<dd>
+<p>a statement of the name, domain, and range of a function</p>
+</dd>
+<dt class="hdlist1">contract error</dt>
+<dd>
+<p>errors where the code makes sense, but uses a function with the wrong number or type of arguments</p>
+</dd>
+<dt class="hdlist1">coordinate</dt>
+<dd>
+<p>a number describing an object&#8217;s location</p>
+</dd>
+<dt class="hdlist1">coordinate pair</dt>
+<dd>
+<p>a set of numbers describing an object&#8217;s location on the coordinate plane</p>
+</dd>
+<dt class="hdlist1">coordinate plane</dt>
+<dd>
+<p>a grid formed by a pair of intersecting horizontal and vertical number lines</p>
+</dd>
+<dt class="hdlist1">data row</dt>
+<dd>
+<p>a structured piece of data in a dataset that typically reports all the information gathered about a given individual</p>
+</dd>
+<dt class="hdlist1">data type</dt>
+<dd>
+<p>a way of classifying values, such as: Number, String, Image, Boolean, or any user-defined data structure</p>
+</dd>
+<dt class="hdlist1">debug</dt>
+<dd>
+<p>to find and fix errors in one&#8217;s code</p>
+</dd>
+<dt class="hdlist1">define</dt>
+<dd>
+<p>to associate a descriptive name with a value</p>
+</dd>
+<dt class="hdlist1">definitions area</dt>
+<dd>
+<p>the left-most text box in the Editor where definitions for values and functions are written</p>
+</dd>
+<dt class="hdlist1">design recipe</dt>
+<dd>
+<p>a sequence of steps that helps people document, test, and write functions</p>
+</dd>
+<dt class="hdlist1">dimension</dt>
+<dd>
+<p>a measurement of something in a particular direction, especially height, length, or width. The dimensions of a computer screen, for example, are given as width x height.</p>
+</dd>
+<dt class="hdlist1">domain</dt>
+<dd>
+<p>the type or set of inputs that a function expects</p>
+</dd>
+<dt class="hdlist1">editor</dt>
+<dd>
+<p>software in which code can be written and evaluated</p>
+</dd>
+<dt class="hdlist1">equation</dt>
+<dd>
+<p>a mathematical description of the relationship between two variables or quantities, in which they are equal</p>
+</dd>
+<dt class="hdlist1">error message</dt>
+<dd>
+<p>information from the computer about errors in code</p>
+</dd>
+<dt class="hdlist1">evaluate</dt>
+<dd>
+<p>perform the computation in an expression, producing an answer</p>
+</dd>
+<dt class="hdlist1">example</dt>
+<dd>
+<p>shows the use of a function on specific inputs and the computation the function should perform on those inputs</p>
+</dd>
+<dt class="hdlist1">expression</dt>
+<dd>
+<p>a computation written in the rules of some language (such as arithmetic, code, or a Circle of Evaluation)</p>
+</dd>
+<dt class="hdlist1">face</dt>
+<dd>
+<p>the flat surfaces on the outside of a solid figure</p>
+</dd>
+<dt class="hdlist1">function</dt>
+<dd>
+<p>a relation from a set of inputs to a set of possible outputs, where each input is related to exactly one output</p>
+</dd>
+<dt class="hdlist1">function definition</dt>
+<dd>
+<p>code that names a function, lists its variables, and states the expression to compute when the function is used</p>
+</dd>
+<dt class="hdlist1">function notation</dt>
+<dd>
+<p>a standard way to denote functions, beginning with a function name, such as <em>f</em> or <em>gt</em>, the variable(s) the function takes in, such as <em>x</em> or <em>size</em>, and a definition of what the function does using a formula in terms of the variable. For example, f(x) = x + 1 takes in a number and adds 1.</p>
+</dd>
+<dt class="hdlist1">graph</dt>
+<dd>
+<p>a diagram (such as a series of one or more points, lines, line segments, curves, or areas) that represents the variation of a variable in comparison with that of another variable.</p>
+</dd>
+<dt class="hdlist1">hypotenuse</dt>
+<dd>
+<p>the side opposite the 90-degree angle in a right triangle</p>
+</dd>
+<dt class="hdlist1">image</dt>
+<dd>
+<p>a type of data for pictures</p>
+</dd>
+<dt class="hdlist1">inequality</dt>
+<dd>
+<p>a mathematical description of the relationship between two variables or quantities, in which they are not necessarily equal</p>
+</dd>
+<dt class="hdlist1">interactions area</dt>
+<dd>
+<p>the right-most text box in the Editor, where expressions are entered to be evaluated</p>
+</dd>
+<dt class="hdlist1">intersection</dt>
+<dd>
+<p>the set of values that makes both inequalities true</p>
+</dd>
+<dt class="hdlist1">line</dt>
+<dd>
+<p>an infinite collection of points forming a straight one-dimensional figure having no thickness and extending infinitely in both directions</p>
+</dd>
+<dt class="hdlist1">linear relationship</dt>
+<dd>
+<p>sequences that change at a constant rate, or points forming a straight line on a graph</p>
+</dd>
+<dt class="hdlist1">name</dt>
+<dd>
+<p>how we refer to a function or value defined in a language (examples: +, *, star, circle)</p>
+</dd>
+<dt class="hdlist1">operator</dt>
+<dd>
+<p>a symbol that manipulates two Numbers and produces a result</p>
+</dd>
+<dt class="hdlist1">origin</dt>
+<dd>
+<p>the point (0,0) where the horizontal and vertical axes intersect</p>
+</dd>
+<dt class="hdlist1">piecewise function</dt>
+<dd>
+<p>a function that computes different expressions based on its input</p>
+</dd>
+<dt class="hdlist1">purpose statement</dt>
+<dd>
+<p>a concise, detailed description of what a function does with its inputs</p>
+</dd>
+<dt class="hdlist1">Pythagorean Theorem</dt>
+<dd>
+<p>the relationship between the squares of the sides of a right triangle; can be used to find diagonal distances on the coordinate plane</p>
+</dd>
+<dt class="hdlist1">range</dt>
+<dd>
+<p>the type or set of outputs that a function produces</p>
+</dd>
+<dt class="hdlist1">ratio</dt>
+<dd>
+<p>the relative sizes of two or more values</p>
+</dd>
+<dt class="hdlist1">rectangular prism</dt>
+<dd>
+<p>a solid figure which has 6 faces, all of which are rectangular</p>
+</dd>
+<dt class="hdlist1">scale</dt>
+<dd>
+<p>resize an image to be larger or smaller while maintaining ratios and proportions</p>
+</dd>
+<dt class="hdlist1">slope</dt>
+<dd>
+<p>the steepness of a straight line on a graph</p>
+</dd>
+<dt class="hdlist1">solution set</dt>
+<dd>
+<p>the set of all values or coordinate pairs that will make an equation, inequality, set of equations or set of inequalities true</p>
+</dd>
+<dt class="hdlist1">string</dt>
+<dd>
+<p>a data type for any sequence of characters between quotation marks (examples: "hello", "42", "this is a string!")</p>
+</dd>
+<dt class="hdlist1">substitute</dt>
+<dd>
+<p>replace a variable with a value or expression and evaluate or simplify the resulting expression</p>
+</dd>
+<dt class="hdlist1">surface area</dt>
+<dd>
+<p>the sum of the areas of all of the faces of a solid figure (polyhedron) or the total area that the surface of the object occupies</p>
+</dd>
+<dt class="hdlist1">syntax error</dt>
+<dd>
+<p>errors where the computer cannot make sense of the code (e.g. - missing commas, missing parentheses, unclosed strings)</p>
+</dd>
+<dt class="hdlist1">table</dt>
+<dd>
+<p>a data structure that stores data as rows, with entries in particular columns</p>
+</dd>
+<dt class="hdlist1">union</dt>
+<dd>
+<p>the set of values that makes either or both of a set of inequalities true</p>
+</dd>
+<dt class="hdlist1">value</dt>
+<dd>
+<p>a specific piece of data, like 5 or "hello"</p>
+</dd>
+<dt class="hdlist1">variable</dt>
+<dd>
+<p>a name or symbol that stands for some value or expression, often a value or expression that changes</p>
+</dd>
+<dt class="hdlist1">vertical line test</dt>
+<dd>
+<p>a strategy for determining whether or not a graph represents a function by confirming that no vertical line can be drawn to reveal that an x-value corresponds to more than one y-value</p>
+</dd>
+<dt class="hdlist1">x-axis</dt>
+<dd>
+<p>axis on a coordinate plane that runs from left to right</p>
+</dd>
+<dt class="hdlist1">y-axis</dt>
+<dd>
+<p>number line on a coordinate plane that runs from bottom to top, indicating values in that direction</p>
+</dd>
+<dt class="hdlist1">y-intercept</dt>
+<dd>
+<p>the point where a line or curve crosses the y-axis of a graph</p>
+</dd>
+</dl>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-17 19:42:18 -0400
+</div>
+</div>
+</div>
+</body>
+</html>

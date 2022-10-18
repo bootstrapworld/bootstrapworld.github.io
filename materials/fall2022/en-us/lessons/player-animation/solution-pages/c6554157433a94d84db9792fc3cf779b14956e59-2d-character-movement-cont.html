@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Challenge: Character Movement in Two Dimensions (continued)</title>
+
+  <link rel="stylesheet" href="../../../lib/curriculum.css" />
+    <link rel="stylesheet" href="../../../lib/codemirror.css" />
+    <script src="../../../lib/codemirror.js"></script>
+    <script src="../../../lib/runmode.js"></script>
+    <script src="../../../lib/scheme2.js"></script>
+    <script src="../../../lib/pyret-mode.js"></script>
+    <script src="../../../lib/langtable.js"></script>
+    <script src="../../../lib/bootstraplesson.js"></script>
+    <script src="../../../dependency-graph.js"></script>
+    <script src="../../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"Challenge: Character Movement in Two Dimensions (continued)",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="workbookpage pyret article pyret" onload="renderSaveToDrive()">
+<div id="header">
+<h1>Challenge: Character Movement in Two Dimensions (continued)</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<div class="paragraph recipe_word_problem headless-design-recipe FORpyret">
+<p><strong>Directions</strong>: On the lines below, write the new contract and purpose for <code class="pyret">update-danger-2</code>, so that it produces a Posn instead of a Number. Then complete the Design Recipe.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch recipe_title">
+<colgroup>
+<col style="width: 99.0099%;">
+<col style="width: 0.9901%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Contract and Purpose Statement</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph recipe recipe_instructions">
+<p>Every contract has three parts&#8230;&#8203;</p>
+</div>
+<div class="paragraph recipe recipe_contract">
+<p><span class="studentAnswer studentAnswerCode solution recipe_name">update-danger-2</span>::<span class="studentAnswer studentAnswerCode solution recipe_domain">Number, Number</span>-&gt;<span class="studentAnswer studentAnswerCode solution recipe_range">posn</span></p>
+</div>
+<div class="paragraph recipe recipe_purpose_statement">
+<p><span class="studentAnswer solution recipe_purpose">Consumes an x and y coordinate, adds 50 to each to move the character along a diagonal, and returns a new posn</span></p>
+</div>
+<table class="tableblock frame-all grid-all stretch recipe_title">
+<colgroup>
+<col style="width: 99.0099%;">
+<col style="width: 0.9901%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Examples</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph recipe recipe_instructions">
+<p>Write some examples, then circle and label what changes&#8230;&#8203;</p>
+</div>
+<div class="openblock wrapper recipe recipe_example_line keyword_only">
+<div class="content">
+<div class="paragraph">
+<p><span class="clear"> </span><span class="pyretkeyword">examples:</span></p>
+</div>
+</div>
+</div>
+<div class="openblock wrapper recipe recipe_example_line">
+<div class="content">
+<div class="paragraph">
+<p><span class="clear"> </span><span class="studentAnswerCode blank">&#x5f;&#x5f;</span><span class="studentAnswer studentAnswerCode solution recipe_name">update-danger-2</span> <span class="studentAnswerCode">(</span><span class="studentAnswer studentAnswerCode solution recipe_example_inputs">0, 10</span><span class="studentAnswerCode">)</span><span class="studentAnswerCode blank">&#x5f;&#x5f;</span> <span class="pyretkeyword">is</span> <span class="studentAnswer studentAnswerCode solution recipe_example_body">posn&#8203;(&#8203;0 + 50, 10 + 50&#8203;)</span></p>
+</div>
+</div>
+</div>
+<div class="openblock wrapper recipe recipe_example_line">
+<div class="content">
+<div class="paragraph">
+<p><span class="clear"> </span><span class="studentAnswerCode blank">&#x5f;&#x5f;</span><span class="studentAnswer studentAnswerCode solution recipe_name">update-danger-2</span> <span class="studentAnswerCode">(</span><span class="studentAnswer studentAnswerCode solution recipe_example_inputs">20, 25</span><span class="studentAnswerCode">)</span><span class="studentAnswerCode blank">&#x5f;&#x5f;</span> <span class="pyretkeyword">is</span> <span class="studentAnswer studentAnswerCode solution recipe_example_body">posn&#8203;(&#8203;20 + 50, 25 + 50&#8203;)</span></p>
+</div>
+</div>
+</div>
+<div class="openblock wrapper recipe recipe_example_line keyword_only">
+<div class="content">
+<div class="paragraph">
+<p><span class="clear"> </span><span class="pyretkeyword">end</span></p>
+</div>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch recipe_title">
+<colgroup>
+<col style="width: 99.0099%;">
+<col style="width: 0.9901%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Definition</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph recipe recipe_instructions">
+<p>Write the definition, giving variable names to all your input values&#8230;&#8203;</p>
+</div>
+<div class="openblock wrapper recipe recipe_line">
+<div class="content">
+<div class="paragraph">
+<p><span class="clear"> </span><span class="pyretkeyword">fun</span> <span class="studentAnswer studentAnswerCode solution recipe_name">update-danger-2</span><span class="studentAnswerCode">(</span><span class="studentAnswer studentAnswerCode solution recipe_variables">x, y</span><span class="studentAnswerCode">):</span></p>
+</div>
+</div>
+</div>
+<div class="openblock wrapper recipe recipe_line">
+<div class="content">
+<div class="paragraph">
+<p><span class="clear"> </span><span class="studentAnswerCode blank">&#x5f;&#x5f;</span><span class="studentAnswer studentAnswerCode solution recipe_definition_body">posn&#8203;(&#8203;x + 50, y + 50&#8203;)</span></p>
+</div>
+</div>
+</div>
+<div class="openblock wrapper recipe recipe_line keyword_only">
+<div class="content">
+<div class="paragraph">
+<p><span class="clear"> </span><span class="pyretkeyword">end</span></p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 1ex"></span></p>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_adding_your_new_function_to_your_game_file">Adding Your New Function to Your Game File</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><span class="autonum">1</span> Find <code class="pyret">update-danger</code> in your game file.</p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">2</span> Directly beneath it, add <code class="pyret">update-danger-2</code> (including contract, purpose, examples, and definition) to your game file.</p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">3</span> Scroll down to the very end of your game file and find the following <strong>PROVIDED CODE</strong>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><code class="pyret">g = make-game(TITLE, TITLE-COLOR,
+  BACKGROUND,
+  DANGER, update-danger,
+  TARGET, update-target,
+  PLAYER, update-player,
+  mystery, update-mystery,
+  _distances-color_, line-length, distance,
+  is-collision, is-onscreen)
+play(g)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><span class="autonum">4</span> Change <code class="pyret">update-danger</code> to <code class="pyret">update-danger-2</code> in the list and click "Run" so that your program will use your new function with two-dimensional movement, instead of the old function with one-dimensional movement.</p>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 1ex"></span></p>
+</div>
+<div class="paragraph">
+<p>Note: If, at any point, you would like to use the old function, all you have to do is change this list so that it says <code class="pyret">update-danger</code> instead of <code class="pyret">update-danger-2</code>!</p>
+</div>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-17 19:42:09 -0400
+</div>
+</div>
+</body>
+</html>

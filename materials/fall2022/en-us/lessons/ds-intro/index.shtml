@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Introduction to Data Science</title>
+
+  <link rel="stylesheet" href="../../lib/curriculum.css" />
+    <link rel="stylesheet" href="../../lib/codemirror.css" />
+    <script src="../../lib/codemirror.js"></script>
+    <script src="../../lib/runmode.js"></script>
+    <script src="../../lib/scheme2.js"></script>
+    <script src="../../lib/pyret-mode.js"></script>
+    <script src="../../lib/langtable.js"></script>
+    <script src="../../lib/bootstraplesson.js"></script>
+    <script src="../../dependency-graph.js"></script>
+    <script src="../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"Introduction to Data Science",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="article LessonPlan pyret" onload="renderSaveToDrive()">
+<!--#include virtual="/menubar.ssi"-->
+<div id="body" onload="renderSaveToDrive()">
+<div id="header">
+<h1>Introduction to Data Science</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<script>
+function preselect(klass) {
+  const items = document.getElementsByClassName(klass);
+  for (let i = 0; i < items.length; i++) {
+    items[i].style.display = 'none';
+  }
+  if (items.length > 0) {
+    items[0].style.display = 'block';
+  }
+}
+window.onload = function() {
+  preselect('alignedStandards');
+  preselect('alignedTextbooks');
+  preselect('alignedPractices');
+}
+function showStandardsAlignment() {
+  const selectTag = document.getElementsByClassName('standardsAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const stdTables = document.getElementsByClassName('alignedStandards');
+  //const intro = document.getElementsByClassName('alignedStandardsIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < stdTables.length; i++) {
+    const stdTable = stdTables[i];
+    stdTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optStd = opt.value;
+      for (let j = 0; j < stdTables.length; j++) {
+        const stdTable = stdTables[j];
+        if (stdTable.classList.contains(optStd)) {
+          stdTable.style.display = 'block';
+         // introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+function toggleNonPrereqDisplay() {
+  const inputTag = document.getElementsByClassName('sidebarinput')[0];
+  const checkedP = inputTag.checked;
+  const lessonTable = document.getElementsByClassName('sidebarlessons')[0];
+  const lis = lessonTable.getElementsByTagName('li');
+  for (let i = 0; i < lis.length; i++) {
+    const li = lis[i];
+    const lesson = li.getElementsByClassName('prerequisite');
+    if (lesson.length === 0) {
+      li.style.display = checkedP ? 'none' : 'block';
+    }
+  }
+}
+</script>
+<script>
+function showTextbooksAlignment() {
+  const selectTag = document.getElementsByClassName('textbooksAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const textbookTables = document.getElementsByClassName('alignedTextbooks');
+  //const intro = document.getElementsByClassName('alignedTextbooksIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < textbookTables.length; i++) {
+    const textbookTable = textbookTables[i];
+    textbookTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optTextbook = opt.value;
+      for (let j = 0; j < textbookTables.length; j++) {
+        const textbookTable = textbookTables[j];
+        if (textbookTable.classList.contains(optTextbook)) {
+          textbookTable.style.display = 'block';
+          //introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+</script>
+<script>
+function showPracticesAlignment() {
+  const selectTag = document.getElementsByClassName('practicesAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const practiceTables = document.getElementsByClassName('alignedPractices');
+  for (let i = 0; i < practiceTables.length; i++) {
+    const practiceTable = practiceTables[i];
+    practiceTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optPractice = opt.value;
+      for (let j = 0; j < practiceTables.length; j++) {
+        const practiceTable = practiceTables[j];
+        if (practiceTable.classList.contains(optPractice)) {
+          practiceTable.style.display = 'block';
+        }
+      }
+    }
+  }
+}
+</script>
+<div class="paragraph">
+<!-- </p>
+</div>
+--></div><div class="sidebar"><div id="toggle"></div><div class="paragraph"><!--
+<div class="paragraph">
+<p>
+--><div class="sidebarlessons"><strong>Lessons</strong>
+<ul></ul></div>
+</div>
+<table class="tableblock frame-all grid-all stretch sidebarstandards">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Standards in this Lesson</strong>
+<select class="standardsAlignmentSelect"  onchange="showStandardsAlignment()"><option selected="selected" value="standards-CCSS-Math">CCSS-Math</option><option value="standards-CC-ELA">CC-ELA</option><option value="standards-Oklahoma">Oklahoma</option></select></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist alignedStandards standards-CCSS-Math">
+<div class="title"><a href="http://corestandards.org/Math/">Common Core Math Standards</a></div>
+<dl>
+<dt class="hdlist1">6.SP.A.1</dt>
+<dd>
+<p>Recognize a statistical question as one that anticipates variability in the data related to the question and accounts for it in the answers.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-CC-ELA">
+<div class="title"><a href="http://corestandards.org/ELA-Literacy/">Common Core ELA Standards</a></div>
+<dl>
+<dt class="hdlist1">SL.9-10.1</dt>
+<dd>
+<p>Initiate and participate effectively in a range of collaborative discussions (one-on-one, in groups, and teacher-led) with diverse partners on grades 9-10 topics, texts, and issues, building on others' ideas and expressing their own clearly and persuasively.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Oklahoma">
+<div class="title"><a href="https://sde.ok.gov/oklahoma-academic-standards">Oklahoma Standards</a></div>
+<dl>
+<dt class="hdlist1">OK.5.DA.IM.01</dt>
+<dd>
+<p>Use data to highlight or propose cause and effect relationships, predict outcomes, or communicate an idea.</p>
+</dd>
+<dt class="hdlist1">OK.8.DA.CVT.01</dt>
+<dd>
+<p>Develop, implement, and refine a process that utilizes computational tools to collect and transform data to make it more useful and reliable.</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch sidebartextbooks">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Textbook Alignment</strong>
+<select class="textbooksAlignmentSelect"  onchange="showTextbooksAlignment()"><option selected="selected" value="textbook-IM_6"><a href="https://illustrativemathematics.org/">IM 6 Math™</a></option><option value="textbook-IM_Alg_1"><a href="https://illustrativemathematics.org/">IM Algebra 1</a></option></select></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist alignedTextbooks textbook-IM_6">
+<div class="title"><a href="https://illustrativemathematics.org/">IM 6 Math™</a></div>
+<dl>
+<dt class="hdlist1">IM.6.8.2</dt>
+<dd>
+<p>Statistical Questions</p>
+</dd>
+<dt class="hdlist1">IM.6.8.1</dt>
+<dd>
+<p>Got Data?</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedTextbooks textbook-IM_Alg_1">
+<div class="title"><a href="https://illustrativemathematics.org/">IM Algebra 1</a></div>
+<dl>
+<dt class="hdlist1">IM.Alg1.1.1</dt>
+<dd>
+<p>Getting to Know You</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch sidebarpractices">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Practices in this Lesson</strong>
+<select class="practicesAlignmentSelect"  onchange="showPracticesAlignment()"><option selected="selected" value="practices-K12CS"><a href="https://k12cs.org">K12CS</a></option><option value="practices-CC"><a href="http://corestandards.org/Math/">Math</a></option></select></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist alignedPractices practices-K12CS">
+<div class="title"><a href="https://k12cs.org">K12CS</a></div>
+<dl>
+<dt class="hdlist1">P7</dt>
+<dd>
+<p>Communicating About Computing</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedPractices practices-CC">
+<div class="title"><a href="http://corestandards.org/Math/">Math</a></div>
+<dl>
+<dt class="hdlist1">MP.3</dt>
+<dd>
+<p>Construct viable arguments and critique the reasoning of others</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<!-- </p>
+</div>
+--></div><!--
+<div class="paragraph">
+<p>
+-->
+</div>
+<div class="paragraph">
+<p><span class="other-proglang">(Also available in <a href="../../lessons/ds-intro-codap/index.shtml">CODAP</a>)</span></p>
+</div>
+<div class="paragraph description">
+<p>Students learn about Categorical and Quantitative data, are introduced to Tables by way of the Animals Dataset, and consider what questions can and cannot be answered with available data.</p>
+</div>
+<table class="tableblock frame-all grid-all stripes-none stretch left-header preamble">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Lesson Goals</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Students will be able to&#8230;&#8203;</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Explain the difference between Categorical and Quantitative data</p>
+</li>
+<li>
+<p>Identify whether a variable in a dataset is Categorical or Quantitative</p>
+</li>
+<li>
+<p>Identify the Header Row and Identifier Column of a Table</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Student-facing Lesson Goals</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Let&#8217;s learn about data inside tables.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Materials</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist materials-links">
+<ul>
+<li>
+<p><a href="https://docs.google.com/presentation/d/1O3vJVFo9-pnqVWLkncWUHvTctNtQ-4lapu2c9o8fC9A/" target="_blank" rel="noopener">Lesson Slides</a></p>
+</li>
+<li>
+<p><span class="StarterFile"><a href="https://docs.google.com/spreadsheets/d/1VeR2_bhpLvnRUZslmCAcSRKfZWs_5RNVujtZgEl6umA/" target="_blank" rel="noopener">Animals Spreadsheet</a></span></p>
+</li>
+<li>
+<p><span class="StarterFile"><a href="https://code.pyret.org/editor#share=1lGjndLCWSEoIrV3ErZMXSn_-xakqGvrK" target="_blank" rel="noopener">Animals Starter File</a></span></p>
+</li>
+<li>
+<p><span class="materialSectionPlaceholder"> </span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/ds-intro/pages/animals-dataset.html" target="_blank" rel="noopener">The Animals Dataset</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/ds-intro/pages/categorical-or-quantitative.html" target="_blank" rel="noopener">Categorical or Quantitative?</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/ds-intro/pages/questions-and-column-descriptions.html" target="_blank" rel="noopener">Questions and Column Descriptions</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="../../lessons/ds-intro/pages/OpeningQuestions.html" target="_blank" rel="noopener">Opening Questions</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="../../lessons/ds-intro/pages/what-can-you-answer.html" target="_blank" rel="noopener">What Questions Can You Answer with the Given Data?</a></span></p>
+</li>
+<li>
+<p><strong>Classroom visual:</strong> <a href="javascript:showLangTable()">Language Table</a></p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Preparation</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p><strong>You know your students best!</strong> You can use the sample <a href="../../lessons/ds-intro/pages/OpeningQuestions.html" target="_blank" rel="noopener">Opening Questions</a> we&#8217;ve provided, but we recommend changing or adding your own questions that are <em>appropriate, relevant, and engaging</em> for your students.</p>
+</li>
+<li>
+<p>Decide how the first activity (opening questions) will be run: will questions be printed for each student, group of students, or posted around the room? <strong>Note:</strong> these are just ideas to get you started. Use questions that you know will interest <em>your</em> students!</p>
+</li>
+<li>
+<p>Make sure student computers can access <a href="https://docs.google.com/spreadsheets/d/1VeR2_bhpLvnRUZslmCAcSRKfZWs_5RNVujtZgEl6umA/" target="_blank" rel="noopener">Animals Spreadsheet</a> and the <a href="https://code.pyret.org/editor#share=1lGjndLCWSEoIrV3ErZMXSn_-xakqGvrK" target="_blank" rel="noopener">Animals Starter File</a>.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Supplemental Resources</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a href="https://www.nytimes.com/column/whats-going-on-in-this-graph" target="_blank" rel="noopener">What&#8217;s going on in this Graph?</a></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="dlist glossary">
+<div class="title">Glossary</div>
+<dl>
+<dt class="hdlist1">categorical data</dt>
+<dd>
+<p>data whose values are qualities that are not subject to the laws of arithmetic</p>
+</dd>
+<dt class="hdlist1">comments</dt>
+<dd>
+<p>messages in the code, generally ignored by the computer, to help people interacting with the code understand what it is doing</p>
+</dd>
+<dt class="hdlist1">data row</dt>
+<dd>
+<p>a structured piece of data in a dataset that typically reports all the information gathered about a given individual</p>
+</dd>
+<dt class="hdlist1">data science</dt>
+<dd>
+<p>the science of collecting, organizing, and drawing general conclusions from data, with the help of computers</p>
+</dd>
+<dt class="hdlist1">header</dt>
+<dd>
+<p>the titles of each column of a table, usually shown at the top</p>
+</dd>
+<dt class="hdlist1">identifier column</dt>
+<dd>
+<p>a column of unique values which identify all the individual rows (e.g. - student IDs, SSNs, etc)</p>
+</dd>
+<dt class="hdlist1">programming language</dt>
+<dd>
+<p>a set of rules for writing code that a computer can evaluate</p>
+</dd>
+<dt class="hdlist1">quantitative data</dt>
+<dd>
+<p>number values for which arithmetic makes sense</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_questions_that_matter_duration_20_minutes_"><span class="section-link"><a href="#_questions_that_matter_duration_20_minutes_"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Questions that Matter <span class="duration">20 minutes</span></h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_overview">Overview</h3>
+<div class="paragraph">
+<p>Students look at opening questions, either at their desks or in a walk around the room. They select a question they are personally interested in, and think about the data required to answer that question. This process draws a direct line between answering questions they care about and the basics of data science.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_launch">Launch</h3>
+<div class="openblock lesson-instruction">
+<div class="content">
+<div class="paragraph">
+<p><span class="right"><span class="image-figure"><span class="image"><img src="images/938cb2467af96e9d.png" alt="Thought bubbles with question marks" width="250" title="Thought bubbles with question marks"></span><a href="images/938cb2467af96e9d.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Look at the provided list of <a href="../../lessons/ds-intro/pages/OpeningQuestions.html" target="_blank" rel="noopener">Opening Questions</a>, and take one minute to select a question that grabs your attention. Arrange yourselves into groups based on the question you like, making sure that each group has between 2-5 people.</p>
+</li>
+<li>
+<p>Have each person in the group quickly share their <em>gut reaction</em>: What do you think the answer is?</p>
+</li>
+<li>
+<p>After sharing, have each person share their reasoning.</p>
+</li>
+<li>
+<p>Does everyone in your group agree about the answers to their question?</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Note: Students are VERY likely to try and explain their reasoning when they give their gut answers. This can taint the answers of other students in the group - emphasize that this is about exposing our "gut reaction" or bias.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_investigate">Investigate</h3>
+<div class="paragraph lesson-instruction">
+<p>What information would you collect to answer the question you selected? <em>Take 5 minutes to think about what information you would need to collect, to find the answer.</em></p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_common_misconceptions">Common Misconceptions</h3>
+<div class="paragraph">
+<p>Students may lean towards questions about <em>individuals</em>, instead of questions about what&#8217;s true for a <em>group of individuals</em> who vary from one to another. For example, instead of wondering what movie gets the highest rating, they should ask what&#8217;s the typical rating for movies in a list, or how much those ratings tend to vary.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_synthesize">Synthesize</h3>
+<div class="paragraph">
+<p>For each group&#8230;&#8203;</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>What were your gut reactions?</p>
+</li>
+<li>
+<p>Did the question wind up being too vague? What did you need to do to make it specific?</p>
+</li>
+<li>
+<p>What data would you gather?</p>
+</li>
+<li>
+<p>What, if anything, were you surprised about?</p>
+<div class="ulist">
+<ul>
+<li>
+<p>If we wanted to find out if small schools are better than big schools, for example, we might want to gather data on SAT scores, college acceptance, etc. Each of these is a <strong>variable</strong> in our dataset: any two schools we look at could <em>vary</em> by each of them.</p>
+</li>
+<li>
+<p>We can&#8217;t survey every school in the world (or get data on every movie ever made, or every police action!) but we can analyze a <em>sample</em> of them, and try to infer something about all of them as a whole.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>These questions quickly turn into a discussion about data&#8201;&#8212;&#8201;how you assess it, how you interpret the results, and what you can <em>infer</em> from those results.</p>
+</div>
+<div class="paragraph lesson-point">
+<p>The process of learning from data is called <span class="vocab">Data Science</span>. Data science techniques are used by scientists, business people, politicians, sports analysts, and hundreds of other different fields to ask and answer questions about data.</p>
+</div>
+<div class="paragraph">
+<p>We’ll use a <span class="vocab">programming language</span> to investigate these questions. Just like any human language, programming languages have their own vocabulary and grammar that you will need to learn. The language you’ll be learning for data science is called Pyret.</p>
+</div>
+<table class="tableblock frame-all grid-none stripes-none stretch strategy-box">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="title">Optional: Which Questions <em>can</em> we Answer?</span></p>
+<p class="tableblock">Datasets are useful for answering questions, but they can&#8217;t answer all the questions that we will wonder about for a given topic.  In this activity students will look at a small dataset about a cyclist&#8217;s training rides and think about how they could use the table to answer each question or why a question cannot be answered using the table.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Which of you like to ride bikes? What data might you collect about bike rides?</strong> Open to <a href="../../lessons/ds-intro/pages/what-can-you-answer.html" target="_blank" rel="noopener">What Questions Can You Answer with the Given Data?</a> This page includes a small dataset about a cyclist&#8217;s training rides and a set of questions. The data can be used to answer some, but not all, of the questions. With your partner, read each question. If it can be answered with what we know, explain how you could use the table to answer it. If it can&#8217;t be answered using the table, explain why not.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_meet_the_animals_duration_25_minutes_"><span class="section-link"><a href="#_meet_the_animals_duration_25_minutes_"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Meet the Animals! <span class="duration">25 minutes</span></h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_overview_2">Overview</h3>
+<div class="paragraph">
+<p>Students explore the Animals Dataset, sharing observations and familiarizing themselves with the idiosyncrasies and patterns in the data. In the process, they learn about <span class="vocab">Categorical</span> and <span class="vocab">Quantitative data</span>.</p>
+</div>
+<table class="tableblock frame-all grid-none stripes-none stretch strategy-box">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="title">Notice and Wonder Pedagogy</span></p>
+<p class="tableblock">This pedagogy is a <a href="https://www.nctm.org/noticeandwonder/" target="_blank" rel="noopener">widely-used best practice in Math-Ed</a>, and is used throughout this course. In the "Notice" phase, students are asked to crowd-source their observations. No observation is too small or too silly! Students may notice that the animals table has corners, or that it&#8217;s printed in black ink. But by listening to other students' observations, students may find themselves taking a closer look at the dataset to begin with. The "Wonder" phase involves students raising questions, but they must also explain the context for those questions. Sharon Hessney (moderator for the NYTimes excellent <a href="https://www.nytimes.com/column/whats-going-on-in-this-graph" target="_blank" rel="noopener">What&#8217;s going on in this Graph?</a> activity) sometimes calls this "what do you wonder&#8230;&#8203;and <strong>why</strong>?". Both of these phases should be done in groups or as a whole class, with time given to each.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_launch_2">Launch</h3>
+<div class="paragraph lesson-instruction">
+<p>Open the <a href="https://docs.google.com/spreadsheets/d/1VeR2_bhpLvnRUZslmCAcSRKfZWs_5RNVujtZgEl6umA/" target="_blank" rel="noopener">Animals Spreadsheet</a> in a browser tab, or turn to <a href="../../lessons/ds-intro/pages/animals-dataset.html" target="_blank" rel="noopener">The Animals Dataset</a> in your workbook.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_investigate_2">Investigate</h3>
+<div class="paragraph">
+<p><span class="right"><span class="image-figure"><span class="image"><img src="images/55316242f369393a.png" alt="Eyeglasses and Question Mark" width="200" title="Eyeglasses and Question Mark"></span><a href="images/55316242f369393a.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span>
+This table contains data from an animal shelter, listing animals that have been adopted. We’ll be analyzing this table as an example throughout the course, but you’ll be applying what you learn to <em>a dataset you choose</em> as well.</p>
+</div>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Turn to <a href="../../lessons/ds-intro/pages/questions-and-column-descriptions.html" target="_blank" rel="noopener">Questions and Column Descriptions</a> in your Student Workbook. What do you <em>Notice</em> about this dataset? Write down your observations in the first column.</p>
+</li>
+<li>
+<p>Sometimes, looking at data sparks questions. What do you <em>Wonder</em> about this dataset, and why? Write down your questions in the second column.</p>
+</li>
+<li>
+<p>There’s a third column, called “Answered by Dataset”&#8201;&#8212;&#8201;circle "Yes" if your Wonder can be answered by the dataset or "No" if it can&#8217;t.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Have students share back their noticings (statements) and wonderings (questions), and write them on the board. Ask the class if each Wonder can be answered by the data, making sure that they have a few questions that <em>can</em> be answered, and a few that <em>can&#8217;t</em>.</p>
+</div>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>If you look at the bottom of the <a href="https://docs.google.com/spreadsheets/d/1VeR2_bhpLvnRUZslmCAcSRKfZWs_5RNVujtZgEl6umA/" target="_blank" rel="noopener">Animals Spreadsheet</a>, you’ll see that this document contains multiple sheets. One is called <code class="pyret">"pets"</code> and the other is called <code class="pyret">"README"</code>. Which sheet are we looking at?</p>
+</li>
+<li>
+<p>Each sheet contains a table. For our purposes, we only care about the animals table on the <code class="pyret">"pets"</code> sheet.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Any two animals in our dataset may have different ages, weights, etc. Each of these is called a <strong>variable</strong> in the dataset. Data Scientists work with two broad kinds of data: Categorical Data and Quantitative Data. Sometimes it can be tricky to figure out if data is categorical or quantitative, because it depends on <em>how that data is being used!</em></p>
+</div>
+<div class="paragraph lesson-point">
+<p>We use <span class="vocab">Categorical Data</span> to answer “what kind?”, and <span class="vocab">Quantitative Data</span> to answer "how much?".</p>
+</div>
+<div class="paragraph">
+<p><span class="vocab">Categorical Data</span> is used to <em>classify</em>, not measure. The laws of arithmetic do not make sense when it comes to categorical data.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>“Species” is a categorical variable, because we can ask questions like “which species does Mittens belong to?"</p>
+</li>
+<li>
+<p>We couldn’t ask if “cat is more than lizard” and it doesn’t make sense to "find the average ZIP code” in a list of addresses.</p>
+</li>
+</ul>
+</div>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>What are some other categorical variables you see in this table?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Name, Sex, and Fixed</em></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="vocab">Quantitative Data</span> is used to measure an amount of something, or to compare two pieces of data to see which is <em>less or more</em>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>"Pounds" is a quantitative variable, because we can talk about whether one animal weighs more than another or ask what the average weight of animals in the shelter is.</p>
+</li>
+<li>
+<p>If we want to ask “how much” or “which is most”, we’re talking about Quantitative Data.</p>
+</li>
+</ul>
+</div>
+<div class="openblock lesson-instruction">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>What are some other quantitative variables in this table?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Age, Legs, Weight, and Time to Adoption</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Complete <a href="../../lessons/ds-intro/pages/categorical-or-quantitative.html" target="_blank" rel="noopener">Categorical or Quantitative?</a>. Be sure to discuss your answers with your partner or group!</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_synthesize_2">Synthesize</h3>
+<div class="paragraph">
+<p>Data Science is all about using a <strong>smaller sample of data to make educated guesses about a larger population</strong>. It’s important to remember that tables are only a <em>sample</em> of a larger population: this table describes some animals, but obviously it isn’t every animal in the world! Still, if we took the average age of the animals from this particular shelter, it might tell us something about the average age of animals from other shelters.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_meet_pyret_duration_10_minutes_"><span class="section-link"><a href="#_meet_pyret_duration_10_minutes_"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Meet Pyret! <span class="duration">10 minutes</span></h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_overview_3">Overview</h3>
+<div class="paragraph">
+<p>Students open up the Pyret environment (code.pyret.org, or "CPO") and see the Animals Dataset reflected there.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_launch_3">Launch</h3>
+<div class="paragraph">
+<p><span class="right"><span class="image-figure"><span class="image"><img src="images/e66af7ca216b2f50.png" alt="Pyret Logo" width="100" title="Pyret Logo"></span><a href="images/e66af7ca216b2f50.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span>
+Let&#8217;s take a look at our programming environment, and see what the Animals Dataset looks like there.</p>
+</div>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Open the <a href="https://code.pyret.org/editor#share=1lGjndLCWSEoIrV3ErZMXSn_-xakqGvrK" target="_blank" rel="noopener">Animals Starter File</a> in a new tab. Click “Connect to Google Drive” to sign into your Google account. This will allow you to save Pyret files into your Google Drive.</p>
+</li>
+<li>
+<p>Next, click the "File" menu and select "Save a Copy". This will save a copy of the file into your own account, so that you can make changes and retrieve them later.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_investigate_3">Investigate</h3>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Click "Run" to tell Pyret to read the code on the left-hand side.</p>
+</li>
+<li>
+<p>On the right-hand side, type <code class="pyret">animals-table</code> and hit the "Enter" or "Return" key.</p>
+</li>
+<li>
+<p>What happens?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>A table appears of animals appears on the right-hand side of the screen.</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Look on the left-hand side of the screen. Where is Pyret getting <code class="pyret">animals-table</code> from?</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The first line on the left-hand side of the screen tells Pyret to use a provided file, which contain tools we’ll want to use for this course.</p>
+</div>
+<div class="paragraph">
+<p><code class="pyret">use context shared-gdrive("Bootstrap-DataScience-&#8230;&#8203;")</code></p>
+</div>
+<div class="paragraph">
+<p>After that, we see a line of code that <em>defines</em> <code class="pyret">shelter-sheet</code> to be a spreadsheet.</p>
+</div>
+<div class="paragraph">
+<p><code class="pyret">shelter-sheet = load-spreadsheet("https://docs.google.com&#8230;&#8203;.")</code></p>
+</div>
+<div class="paragraph">
+<p>This table is loaded from Google Drive, so now Pyret can see the same spreadsheet you do. If you look carefully, you&#8217;ll notice that the address listed here is the same address as the spreadsheet we just looked at!</p>
+</div>
+<table class="tableblock frame-all grid-none stripes-none stretch strategy-box">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="title">What Happens when Pyret loads a spreadsheet?</span></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>When using a spreadsheet, we can make a pie-chart out of any collection of cells - even if those cells are blank, contain mismatched data, or contain data from multiple, unrelated tables! This can jeopardize our analysis, so each cell has to be checked by hand in order for any data displays to be trusted!</p>
+</li>
+<li>
+<p>When Pyret imports a sheet, it reads all the cells and builds something it calls a <em>Table</em>. The original spreadsheet is still out there, exactly as it used to be! And when building that Table, Pyret does <em>all of the cell checks automatically</em>, and holds us accountable for using clean and complete data so that all displays can be trusted.</p>
+</li>
+<li>
+<p>Each time we sort, filter or change a Table, Pyret makes a <em>new Table</em>. This means that we explore one transformation or another, or even multiple transformations together&#8230;&#8203;and can always go back as many steps as we want.</p>
+</li>
+<li>
+<p>When working with spreadsheets we have to choose between making "backup" copies of sheets at every step, or modifying the original sheet. Modifying the sheet makes it really hard to undo. And making copies means the same data is duplicated in many places, so a change in one sheet needs to be replicated <em>by hand</em> in other sheets.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This kind of tedious busywork - or the inability to undo a mistake - is problematic for students, teachers, and Data Scientists alike!</p>
+</div>
+<div class="paragraph">
+<p>For younger students, the strictness of programming may outweigh the benefits. But for students who are comfortable writing code, programming is a vastly more powerful and learner-friendly tool for Data Science!</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>After that, we see the following code:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre><code class="pyret"># load the 'pets' sheet as a table called animals-table
+animals-table = load-table: name, species, sex, age, fixed, legs, pounds, weeks
+  source: pets-sheet.sheet-by-name("pets", true)
+end</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The first line (starting with <code class="pyret">#</code>) is called a <span class="vocab">Comment</span>. Comments are notes for humans, which the computer ignores. The next line defines a new table called animals-table, (loaded from the shelter-sheet!) and defines column names: <code class="pyret">name</code>, <code class="pyret">species</code>, <code class="pyret">sex</code>, <code class="pyret">age</code>, <code class="pyret">fixed</code>, <code class="pyret">legs</code>, <code class="pyret">pounds</code> and <code class="pyret">weeks</code>. We could use any names we want for these columns, but it’s always a good idea to pick names that make sense!</p>
+</div>
+<div class="paragraph lesson-point">
+<p>Even if your spreadsheet already has column headers, Pyret requires that you name them in the program itself.</p>
+</div>
+<div class="paragraph">
+<p>Every table is made of cells, which are arranged in a grid of rows and columns. <em>The first row and first column</em> are special. The first row is called the <span class="vocab">header row</span>, which gives a unique name to each variable (or “column”) in the table. The first column in the table is the <span class="vocab">identifier column</span>, which contains a unique ID for each row. Often, this will be the name of each individual in the table, or sometimes just an ID number.</p>
+</div>
+<div class="paragraph">
+<p>Below is an example of a table with one header row and two data rows:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch pyret-table">
+<colgroup>
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">name</th>
+<th class="tableblock halign-left valign-top">species</th>
+<th class="tableblock halign-left valign-top">sex</th>
+<th class="tableblock halign-left valign-top">age</th>
+<th class="tableblock halign-left valign-top">fixed</th>
+<th class="tableblock halign-left valign-top">legs</th>
+<th class="tableblock halign-left valign-top">pounds</th>
+<th class="tableblock halign-left valign-top">weeks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>"Sasha"</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>"cat"</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>"female"</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>1</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>false</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>4</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>6.5</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>3</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>"Mittens"</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>"cat"</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>"female"</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>2</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>true</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>4</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>7.4</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>1</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>How many variables are listed in the header row for the Animals Dataset? What are they called? What is being used for the identifier column in this dataset?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>There are eight variables listed: name, species, sex, age, fixed, legs, pounds, and weeks. <code class="pyret">name</code> is the identifier column.</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Try changing the name of one of the columns, and click "Run". What happens when you  look at the table?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>The column name also gets changed on the table.</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>What happens if you remove a column from the list? Or add an extra one?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>When I remove a column, I get this message: "Loaded worksheet has 8 columns, but 7 column names were given." When I add a column, I get this message: "Loaded worksheet has 8 columns, but 9 column names were given."</em></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>After the header, Pyret tables can have any number of <span class="vocab">data rows</span>.
+Each data row has values for every column variable (nothing can be left empty!). A table can have any number of data rows, including <em>zero</em>, as in the table below:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch pyret-table">
+<colgroup>
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">name</th>
+<th class="tableblock halign-left valign-top">species</th>
+<th class="tableblock halign-left valign-top">sex</th>
+<th class="tableblock halign-left valign-top">age</th>
+<th class="tableblock halign-left valign-top">fixed</th>
+<th class="tableblock halign-left valign-top">legs</th>
+<th class="tableblock halign-left valign-top">pounds</th>
+<th class="tableblock halign-left valign-top">weeks</th>
+</tr>
+</thead>
+</table>
+<div class="paragraph">
+<p>Pyret lets us use many different kinds of data. In the animals table, for example, there are Numbers (the number of legs each animal has), Strings (the species of the animal), and Booleans (whether it is true or false that an animal is fixed).</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_synthesize_3">Synthesize</h3>
+<div class="paragraph">
+<p>Once you know how to program, you can do a <em>lot</em> with datasets:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Data Scientists <strong>display</strong> tables as all kinds of charts and graphs. For example, we might want to make a pie chart showing how many animals of each species we have.</p>
+</li>
+<li>
+<p>Sometimes they want to <strong>filter</strong> a table, showing only a few of the rows. For example we might only want to look at animals where <code class="pyret">species</code> is equal to <code class="pyret">"dog"</code>.</p>
+</li>
+<li>
+<p>Or perhaps we want to <strong>build</strong> a column! For example, there could be a vaccination for all cats under the age of 3, and we want to add a <code class="pyret">needs-vaccine</code> column that says <code class="pyret">true</code> for cats under the age of 3, and <code class="pyret">false</code> for everyone else.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In this course, you&#8217;ll learn how to do all three: Display, Filter, and Build.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-17 19:42:13 -0400
+</div>
+</div>
+</div>
+</body>
+</html>

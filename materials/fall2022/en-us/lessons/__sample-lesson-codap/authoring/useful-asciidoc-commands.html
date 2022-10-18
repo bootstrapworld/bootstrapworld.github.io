@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Asciidoc Command Notes for New Authors - read (at least in part) as an asciidoc.</title>
+
+  <link rel="stylesheet" href="../../../lib/curriculum.css" />
+    <link rel="stylesheet" href="../../../lib/codemirror.css" />
+    <script src="../../../lib/codemirror.js"></script>
+    <script src="../../../lib/runmode.js"></script>
+    <script src="../../../lib/scheme2.js"></script>
+    <script src="../../../lib/pyret-mode.js"></script>
+    <script src="../../../lib/langtable.js"></script>
+    <script src="../../../lib/bootstraplesson.js"></script>
+    <script src="../../../dependency-graph.js"></script>
+    <script src="../../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"Asciidoc Command Notes for New Authors - read (at least in part) as an asciidoc.",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="workbookpage article codap" onload="renderSaveToDrive()">
+<div id="header">
+<h1>Asciidoc Command Notes for New Authors - read (at least in part) as an asciidoc.</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div class="sect1 lesson-section-1">
+<h2 id="_dont_be_afraid_to_ask">Don&#8217;t be afraid to ask!</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Sometimes it&#8217;s way more efficient to post a question to the curriculum remix team</p>
+</li>
+<li>
+<p>It might also be true that your work will surface a bug in something somebody else did and you won&#8217;t be able to solve the problem alone!</p>
+</li>
+</ul>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_some_files_have_commented_notes_to_authors_at_the_top_because_our_system_has_layers_and_is_dependent_on_other_systems_which_sometimes_require_work_arounds">Some files have commented notes to authors at the top because our system has layers and is dependent on other systems, which sometimes require work arounds.</h3>
+<div class="paragraph">
+<p>The one that seems to work the best is:</p>
+</div>
+<div class="paragraph">
+<!-- </p>
+</div>
+
+<div class="paragraph">
+<p>
+-->
+</div>
+<div class="paragraph">
+<p>But you will also see:</p>
+</div>
+<div class="paragraph">
+<p>If you&#8217;re commenting out something in a table use</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_heads_up">Heads up!</h3>
+<div class="paragraph">
+<p>Some asciidoc files use multiple languages! asciidoc, css, racket, mathjax&#8230;&#8203;</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_text_formatting">Text formatting</h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_style">Style</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>bold</strong></p>
+</li>
+<li>
+<p><em>italics</em></p>
+</li>
+<li>
+<p><em> <code class="pyret">italics</code> if the formatting of the phrase is more complicated </em></p>
+</li>
+<li>
+<p><span class="underline">underline</span></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="obeyspaces"><code class="racket">code</code></span>
+<span class="obeyspaces"><code class="racket">(coded sentences with "punctuation")</code></span>
+We are trying to write all functions using <code class="pyret">code</code> &#8230;&#8203;
+It&#8217;s special Dorai wizardry that will
+- take whatever we write in racket and automatically translate it into pyret if the document is opened in a pyret version
+- autogenerate a list of functions used in the lesson plan and accompanying pages for a language prerequisites table
+- who knows what other fabulous things it will do by the time you&#8217;re reading this ;)</p>
+</div>
+<div class="paragraph">
+<p>Widespread use of <code class="pyret">sexp</code> in lesson plans is relatively recent, so you will also see code written like this.
+- <code class="pyret">code</code>
+<em><code class="pyret">code</code> at the beginning of an italicized sentence</em></p>
+</div>
+<div class="paragraph">
+<p>Feel free to update expressions you encounter to use <code class="pyret">code</code>!
+(And to use the alternate version of formatting code in text when wanting to format code that is outside the bounds of what <code class="pyret">sexp</code> is used for.)</p>
+</div>
+<div class="paragraph">
+<p>Vocab words like <span class="vocab">variable</span> get flagged using the <!-- </p>
+</div>
+@vocab{}
+<div class="paragraph">
+<p>
+--> directive when they are:</p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">1</span> focal to the lesson and</p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">2</span> focal to the sentence you&#8217;re using it in.</p>
+</div>
+<div class="paragraph">
+<p><em>If you flag a word as a vocabulary word, be sure to add it to the glossary in both plural and singular form. The glossary is found in the curriculum directory (shared is at the same level as lessons and within that you will find glossary-terms.rkt)</em></p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_size">Size</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>all sizes in bootstrap are written in <code class="pyret">rem</code> not <code class="pyret">pt</code> (10 pt = 1.1em) so that changes to the system as a whole can happen without having to rework font sizes on each section of each page individually.</p>
+</li>
+<li>
+<p>rem stands for relative em (em is a unit equivalent to the width of the letter "m")</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_formatting_parts_of_the_page">Formatting parts of the page</h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_to_center_text_horizontally_on_the_line">To center text horizontally on the line</h3>
+<div class="paragraph center">
+<p>this text will be centered</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_vertical_spaces_between_lines_of_text">Vertical spaces between lines of text</h3>
+<div class="paragraph">
+<p>Vertical space is measured in "ex" (a unit equivalent to the height of the letter x.)
+<span class="vspace" style="height: 1ex"></span></p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_fill_in_the_blank_lines_for_students_to_write_on">Fill in the Blank lines for students to write on</h3>
+<div class="paragraph">
+<p>Width is measured in "em" (a unit equivalent to the width of the letter "m")
+<span class="fitb" style="width: 30em">if you want text to appear on the line, type it here</span>
+<span class="fitb" style="width: 30em"></span> whether or not you want something on the line you have to include the second set of brackets or it will break the build</p>
+</div>
+<div class="paragraph">
+<p><span class="right"><span class="fitb" style="width: 60ex"></span></span></p>
+</div>
+<div class="paragraph">
+<p>This makes a line that fills the whole width of the page:
+<span class="fitb stretch"></span></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+to fill the whole page, the directive must have a blank line between it and the text above.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_horizontal_space_between_words_on_the_same_line">Horizontal space between words on the same line</h3>
+<div class="paragraph">
+<p>If you need significant space between words <span class="quad" style="width: 15em"></span> will create that gap.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_links">Links</h3>
+<div class="paragraph">
+<p>These 7 directives are for links that appear in the lesson plan and should be auto-included in the list of materials at the start of the lesson plan including starter files, projects, workbook pages, desmos activities, etc.  (See comments in asciidoc)</p>
+</div>
+<div class="paragraph">
+<p><em>Note: What is included in the workbook is determined by what is listed in the workbook-pages.txt file in the lesson&#8217;s "pages" folder.</em></p>
+</div>
+<div class="paragraph">
+<!-- </p>
+</div>
+- @printable-exercise{pages/whateverthepagetitleis.adoc} This is for workbook pages only and will automatically be shown with the title and the page number in the lesson plan. - @opt-printable-exercise{pages/whateverthepagetitleis.adoc} This is for pages that can be printed but are not going to be included in the workbook. W - @online-exercise{whateverthelink is} or @online-exercise{whateverthelink is, however you want the link to be named in the lesson plan}. This link is designed for things that we expect all teachers to use while teaching the lesson - @opt-online-exercise{whateverthelink is} This link is desinged for things that some people may use. - @opt-project{project.adoc, rubric.adoc} This link not only adds projects to the materials section but to a table on the teacher resources page. Be sure that the project.adoc itself has an @description{} beneath the title - @starter-file{} and @opt-starter-file{whatever it's called in shared/starter-files.rkt} This link will automatically include the correct link for the language, will list starter files in the materials section, and will also list starter files in teacher resources. Lesson slides and other external links can also be linked using @link{} If you're using @link{} you need to use the file ending .html instead of .adoc
+<div class="paragraph">
+<p>
+-->
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_bullet_points">Bullet points</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>can be written like this using hyphens</p>
+</li>
+<li>
+<p>and it&#8217;s important to leave a space after the dash</p>
+</li>
+<li>
+<p>and a blank line before the first line of the list</p>
+<div class="ulist">
+<ul>
+<li>
+<p>They can also be</p>
+</li>
+<li>
+<p>written using</p>
+</li>
+<li>
+<p>asterisks</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="autonum">3</span> we have a special autonumbering command that will</p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">4</span> keep numbering top to bottom</p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">5</span> even if you go in and out of a table or other formatting</p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">6</span> but it&#8217;s new</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>so you will see</p>
+</li>
+<li>
+<p>some pages that are</p>
+</li>
+<li>
+<p>numbered like this instead</p>
+</li>
+<li>
+<p>if you have energy, switch them to our new numbering command</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_tables">Tables</h3>
+<div class="paragraph">
+<p>In the code below, cols= could also be defined more simply as 4,2,3,1.</p>
+</div>
+<div class="paragraph">
+<p>You can change the numbers to shift the ratio of the width of the columns and add or subtract numbers to increase or decrease the number of colummsn.</p>
+</div>
+<div class="paragraph">
+<p>The other formatting defines where in the cell the words end up being placed (see alignment notes below)</p>
+</div>
+<table class="tableblock frame-all grid-all stripes-none stretch">
+<colgroup>
+<col style="width: 40%;">
+<col style="width: 20%;">
+<col style="width: 30%;">
+<col style="width: 10%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-middle">each vertical</th>
+<th class="tableblock halign-left valign-middle">bar</th>
+<th class="tableblock halign-right valign-bottom">is</th>
+<th class="tableblock halign-left valign-top">a</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">break</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">between</p></td>
+<td class="tableblock halign-right valign-bottom"><p class="tableblock">columns</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect3 lesson-section-3">
+<h4 id="_aligning_text_within_the_table">Aligning text within the table</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>without a dot, we mean horizontal alignment.</p>
+</li>
+<li>
+<p>With a dot, it&#8217;s vertical alignment.</p>
+</li>
+<li>
+<p>&lt; means to the left (horizontally) or top (vertically).</p>
+</li>
+<li>
+<p>^ is center (horizontally or vertically)</p>
+</li>
+<li>
+<p>&gt; pushes to the right (horizontally) or bottom (vertically).</p>
+</li>
+<li>
+<p><sup>.</sup> centers both horizontally &amp; vertically</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3 lesson-section-3">
+<h4 id="_inserting_a_table_within_a_table">Inserting a table within a table</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>add a to the column width to let asciidoc know to look out for something complicated</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>and</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>use exclamation points instead of vertical bars to indicate the column breaks of the nested table</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>this</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>part</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>is</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>nested</p>
+</div></div></td>
+</tr>
+</tbody>
+</table></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_programming_language_specific_content">Programming Language specific content</h3>
+<div class="paragraph">
+<p>When possible, use Dorai the Wizard&#8217;s Special Code that automatically converts code you write into the correct programming language for the pathway.</p>
+</div>
+<div class="paragraph">
+<p><span class="obeyspaces"><code class="racket">(text "Math is fun!" 30 "red")</code></span></p>
+</div>
+<div class="paragraph">
+<p>There are language specific commands (see asciidoc file):</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>-
+There are also pathyway specific commands, which we only use sparingly to include optional pages in core materials (see asciidoc file):</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>-</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_indentation">Indentation</h3>
+<div class="paragraph">
+<p>You can use</p>
+</div>
+<div class="openblock indentedpara">
+<div class="content">
+<div class="paragraph">
+<p>and whatever you write in here will be indented</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_landscape_pages">Landscape pages</h3>
+<div class="paragraph">
+<p><em>see comment</em></p>
+</div>
+<div class="paragraph">
+<!-- </p>
+</div>
+[.landscape] in the first line of the file makes it landscape
+<div class="paragraph">
+<p>
+-->
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_special_symbols_can_be_included_using_unicode">Special symbols can be included using unicode</h3>
+<div class="paragraph">
+<p><a href="https://unicode-table.com/en/search/?q=triangle" class="bare">https://unicode-table.com/en/search/?q=triangle</a></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_solutions">Solutions!</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The easy way is to make a copy of the page, add the solutions as you want them to appear, and put in the solution-pages folder for the same lesson.</p>
+</div>
+<div class="paragraph">
+<p>The elegant way (which occasionally is impossible and you have to accept the easy way) is to use the command `` in the original document for whatever you only want to only appear in the solutions mode version of the document. Whatever goes inside the brackets has to read as racket, so strings go in quotes.</p>
+</div>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-16 11:54:55 -0400
+</div>
+</div>
+</body>
+</html>

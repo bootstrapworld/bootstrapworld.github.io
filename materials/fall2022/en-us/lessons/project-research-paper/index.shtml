@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Project: Write a Research Paper</title>
+
+  <link rel="stylesheet" href="../../lib/curriculum.css" />
+    <script src="../../lib/langtable.js"></script>
+    <script src="../../lib/bootstraplesson.js"></script>
+    <script src="../../dependency-graph.js"></script>
+    <script src="../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"Project: Write a Research Paper",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="article LessonPlan pyret" onload="renderSaveToDrive()">
+<!--#include virtual="/menubar.ssi"-->
+<div id="body" onload="renderSaveToDrive()">
+<div id="header">
+<h1>Project: Write a Research Paper</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<script>
+function preselect(klass) {
+  const items = document.getElementsByClassName(klass);
+  for (let i = 0; i < items.length; i++) {
+    items[i].style.display = 'none';
+  }
+  if (items.length > 0) {
+    items[0].style.display = 'block';
+  }
+}
+window.onload = function() {
+  preselect('alignedStandards');
+  preselect('alignedTextbooks');
+  preselect('alignedPractices');
+}
+function showStandardsAlignment() {
+  const selectTag = document.getElementsByClassName('standardsAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const stdTables = document.getElementsByClassName('alignedStandards');
+  //const intro = document.getElementsByClassName('alignedStandardsIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < stdTables.length; i++) {
+    const stdTable = stdTables[i];
+    stdTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optStd = opt.value;
+      for (let j = 0; j < stdTables.length; j++) {
+        const stdTable = stdTables[j];
+        if (stdTable.classList.contains(optStd)) {
+          stdTable.style.display = 'block';
+         // introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+function toggleNonPrereqDisplay() {
+  const inputTag = document.getElementsByClassName('sidebarinput')[0];
+  const checkedP = inputTag.checked;
+  const lessonTable = document.getElementsByClassName('sidebarlessons')[0];
+  const lis = lessonTable.getElementsByTagName('li');
+  for (let i = 0; i < lis.length; i++) {
+    const li = lis[i];
+    const lesson = li.getElementsByClassName('prerequisite');
+    if (lesson.length === 0) {
+      li.style.display = checkedP ? 'none' : 'block';
+    }
+  }
+}
+</script>
+<script>
+function showTextbooksAlignment() {
+  const selectTag = document.getElementsByClassName('textbooksAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const textbookTables = document.getElementsByClassName('alignedTextbooks');
+  //const intro = document.getElementsByClassName('alignedTextbooksIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < textbookTables.length; i++) {
+    const textbookTable = textbookTables[i];
+    textbookTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optTextbook = opt.value;
+      for (let j = 0; j < textbookTables.length; j++) {
+        const textbookTable = textbookTables[j];
+        if (textbookTable.classList.contains(optTextbook)) {
+          textbookTable.style.display = 'block';
+          //introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+</script>
+<script>
+function showPracticesAlignment() {
+  const selectTag = document.getElementsByClassName('practicesAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const practiceTables = document.getElementsByClassName('alignedPractices');
+  for (let i = 0; i < practiceTables.length; i++) {
+    const practiceTable = practiceTables[i];
+    practiceTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optPractice = opt.value;
+      for (let j = 0; j < practiceTables.length; j++) {
+        const practiceTable = practiceTables[j];
+        if (practiceTable.classList.contains(optPractice)) {
+          practiceTable.style.display = 'block';
+        }
+      }
+    }
+  }
+}
+</script>
+<div class="paragraph">
+<!-- </p>
+</div>
+--></div><div class="sidebar"><div id="toggle"></div><div class="paragraph"><!--
+<div class="paragraph">
+<p>
+--><div class="sidebarlessons"><strong>Lessons</strong>
+<ul></ul></div>
+</div>
+<table class="tableblock frame-all grid-all stretch sidebarstandards">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Standards in this Lesson</strong>
+<select class="standardsAlignmentSelect"  onchange="showStandardsAlignment()"><option selected="selected" value="standards-CSTA">CSTA</option></select></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist alignedStandards standards-CSTA">
+<div class="title"><a href="https://csteachers.org/page/standards">CSTA Standards</a></div>
+<dl>
+<dt class="hdlist1">1B-AP-09</dt>
+<dd>
+<p>Create programs that use variables to store and modify data.</p>
+</dd>
+<dt class="hdlist1">1B-AP-10</dt>
+<dd>
+<p>Create programs that include sequences, events, loops, and conditionals.</p>
+</dd>
+<dt class="hdlist1">1B-AP-11</dt>
+<dd>
+<p>Decompose (break down) problems into smaller, manageable subproblems to facilitate the program development process.</p>
+</dd>
+<dt class="hdlist1">1B-AP-12</dt>
+<dd>
+<p>Modify, remix, or incorporate portions of an existing program into one&#8217;s own work, to develop something new or add more advanced features.</p>
+</dd>
+<dt class="hdlist1">1B-AP-13</dt>
+<dd>
+<p>Use an iterative process to plan the development of a program by including others' perspectives and considering user preferences.</p>
+</dd>
+<dt class="hdlist1">1B-AP-15</dt>
+<dd>
+<p>Test and debug (identify and fix errors) a program or algorithm to ensure it runs as intended.</p>
+</dd>
+<dt class="hdlist1">1B-AP-16</dt>
+<dd>
+<p>Take on varying roles, with teacher guidance, when collaborating with peers during the design, implementation, and review stages of program development.</p>
+</dd>
+<dt class="hdlist1">1B-AP-17</dt>
+<dd>
+<p>Describe choices made during program development using code comments, presentations, and demonstrations.</p>
+</dd>
+<dt class="hdlist1">1B-DA-06</dt>
+<dd>
+<p>Organize and present collected data visually to highlight relationships and support a claim.</p>
+</dd>
+<dt class="hdlist1">1B-DA-07</dt>
+<dd>
+<p>Use data to highlight or propose cause-and-effect relationships, predict outcomes, or communicate an idea.</p>
+</dd>
+<dt class="hdlist1">1B-IC-18</dt>
+<dd>
+<p>Discuss computing technologies that have changed the world, and express how those technologies influence, and are influenced by, cultural practices.</p>
+</dd>
+<dt class="hdlist1">2-AP-11</dt>
+<dd>
+<p>Create clearly named variables that represent different data types and perform operations on their values.</p>
+</dd>
+<dt class="hdlist1">2-AP-12</dt>
+<dd>
+<p>Design and iteratively develop programs that combine control structures, including nested loops and compound conditionals</p>
+</dd>
+<dt class="hdlist1">2-AP-13</dt>
+<dd>
+<p>Decompose problems and subproblems into parts to facilitate the design, implementation, and review of programs</p>
+</dd>
+<dt class="hdlist1">2-AP-14</dt>
+<dd>
+<p>Create procedures with parameters to organize code and make it easier to reuse.</p>
+</dd>
+<dt class="hdlist1">2-AP-16</dt>
+<dd>
+<p>Incorporate existing code, media, and libraries into original programs, and give attribution.</p>
+</dd>
+<dt class="hdlist1">2-AP-17</dt>
+<dd>
+<p>Systematically test and refine programs using a range of test cases</p>
+</dd>
+<dt class="hdlist1">2-AP-19</dt>
+<dd>
+<p>Document programs in order to make them easier to follow, test, and debug.</p>
+</dd>
+<dt class="hdlist1">2-DA-08</dt>
+<dd>
+<p>Collect data using computational tools and transform the data to make it more useful and reliable.</p>
+</dd>
+<dt class="hdlist1">2-DA-09</dt>
+<dd>
+<p>Refine computational models based on the data they have generated.</p>
+</dd>
+<dt class="hdlist1">2-IC-21</dt>
+<dd>
+<p>Discuss issues of bias and accessibility in the design of existing technologies</p>
+</dd>
+<dt class="hdlist1">3A-AP-13</dt>
+<dd>
+<p>Create prototypes that use algorithms to solve computational problems by leveraging prior student knowledge and personal interests.</p>
+</dd>
+<dt class="hdlist1">3A-AP-14</dt>
+<dd>
+<p>Use lists to simplify solutions, generalizing computational problems instead of repeatedly using simple variables</p>
+</dd>
+<dt class="hdlist1">3A-AP-16</dt>
+<dd>
+<p>Design and iteratively develop computational artifacts for practical intent, personal expression, or to address a societal issue by using events to initiate instructions.</p>
+</dd>
+<dt class="hdlist1">3A-AP-17</dt>
+<dd>
+<p>Decompose problems into smaller components through systematic analysis, using constructs such as procedures, modules, and/or objects.</p>
+</dd>
+<dt class="hdlist1">3A-AP-18</dt>
+<dd>
+<p>Create artifacts by using procedures within a program, combinations of data and procedures, or independent but interrelated programs.</p>
+</dd>
+<dt class="hdlist1">3A-AP-22</dt>
+<dd>
+<p>Design and develop computational artifacts working in team roles using collaborative tools</p>
+</dd>
+<dt class="hdlist1">3A-AP-23</dt>
+<dd>
+<p>Document design decisions using text, graphics, presentations, and/or demonstrations in the development of complex programs.</p>
+</dd>
+<dt class="hdlist1">3A-DA-11</dt>
+<dd>
+<p>Create interactive data visualizations using software tools to help others better understand real-world phenomena.</p>
+</dd>
+<dt class="hdlist1">3A-DA-12</dt>
+<dd>
+<p>Create computational models that represent the relationships among different elements of data collected from a phenomenon or process.</p>
+</dd>
+<dt class="hdlist1">3A-IC-24</dt>
+<dd>
+<p>Evaluate the ways computing impacts personal, ethical, social, economic, and cultural practices</p>
+</dd>
+<dt class="hdlist1">3A-IC-25</dt>
+<dd>
+<p>Test and refine computational artifacts to reduce bias and equity deficits.</p>
+</dd>
+<dt class="hdlist1">3A-IC-29</dt>
+<dd>
+<p>Explain the privacy concerns related to the collection and generation of data through automated processes that may not be evident to users.</p>
+</dd>
+<dt class="hdlist1">3A-IC-30</dt>
+<dd>
+<p>Evaluate the social and economic implications of privacy in the context of safety, law, or ethics.</p>
+</dd>
+<dt class="hdlist1">3B-AP-14</dt>
+<dd>
+<p>Construct solutions to problems using student-created components, such as procedures, modules and/or objects.</p>
+</dd>
+<dt class="hdlist1">3B-AP-16</dt>
+<dd>
+<p>Demonstrate code reuse by creating programming solutions using libraries and APIs.</p>
+</dd>
+<dt class="hdlist1">3B-AP-21</dt>
+<dd>
+<p>Develop and use a series of test cases to verify that a program performs according to its design specifications.</p>
+</dd>
+<dt class="hdlist1">3B-AP-22</dt>
+<dd>
+<p>Modify an existing program to add additional functionality and discuss intended and unintended implications (e.g., breaking other functionality).</p>
+</dd>
+<dt class="hdlist1">3B-AP-23</dt>
+<dd>
+<p>Evaluate key qualities of a program through a process such as a code review</p>
+</dd>
+<dt class="hdlist1">3B-IC-25</dt>
+<dd>
+<p>Evaluate computational artifacts to maximize their beneficial effects and minimize harmful effects on society.</p>
+</dd>
+<dt class="hdlist1">3B-IC-26</dt>
+<dd>
+<p>Evaluate the impact of equity, access, and influence on the distribution of computing resources in a global society.</p>
+</dd>
+<dt class="hdlist1">3B-NI-06</dt>
+<dd>
+<p>Select data collection tools and techniques to generate data sets that support a claim or communicate information.</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch sidebarpractices">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Practices in this Lesson</strong>
+<select class="practicesAlignmentSelect"  onchange="showPracticesAlignment()"><option selected="selected" value="practices-K12CS"><a href="https://k12cs.org">K12CS</a></option><option value="practices-SJ"><a href="https://www.learningforjustice.org/sites/default/files/2017-06/TT_Social_Justice_Standards_0.pdf">Social Justice</a></option></select></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist alignedPractices practices-K12CS">
+<div class="title"><a href="https://k12cs.org">K12CS</a></div>
+<dl>
+<dt class="hdlist1">P1</dt>
+<dd>
+<p>Fostering an Inclusive Computing Culture</p>
+</dd>
+<dt class="hdlist1">P2</dt>
+<dd>
+<p>Collaborating Around Computing</p>
+</dd>
+<dt class="hdlist1">P6</dt>
+<dd>
+<p>Testing and Refining Computational Artifacts</p>
+</dd>
+<dt class="hdlist1">P5</dt>
+<dd>
+<p>Creating Computational Artifacts</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedPractices practices-SJ">
+<div class="title"><a href="https://www.learningforjustice.org/sites/default/files/2017-06/TT_Social_Justice_Standards_0.pdf">Social Justice</a></div>
+<dl>
+<dt class="hdlist1">SJ.7</dt>
+<dd>
+<p>Students will develop language and knowledge to accurately and respectfully describe how people (including themselves) are both similar to and different from each other and others in their identity groups.</p>
+</dd>
+<dt class="hdlist1">SJ.12</dt>
+<dd>
+<p>Students will recognize unfairness on the individual level (e.g., biased speech) and injustice at the institutional or systemic level (e.g., discrimination).</p>
+</dd>
+<dt class="hdlist1">SJ.13</dt>
+<dd>
+<p>Students will analyze the harmful impact of bias and injustice on the world, historically and today</p>
+</dd>
+<dt class="hdlist1">SJ.14</dt>
+<dd>
+<p>Students will recognize that power and privilege influence relationships on interpersonal, intergroup and institutional levels and consider how they have been affected by those dynamics.</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<!-- </p>
+</div>
+--></div><!--
+<div class="paragraph">
+<p>
+-->
+</div>
+<style>
+h3 { margin-top: 3ex; }
+.autonum:after { content: '.'; }
+th { text-align: center !important; }
+table * { line-height: 1.2rem; }
+.ulist p { margin: 0; }
+</style>
+<div class="paragraph description">
+<p>Students come up with an original research question, conduct the analysis to find results, and share their findings.</p>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_overview"><span class="section-link"><a href="#_overview"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Overview</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This project can be used as the capstone for Bootstrap:Data Science, and is designed to provide real-world and engaging connections to the following math, computing, and data science concepts:</p>
+</div>
+<table class="tableblock frame-none grid-none stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Bar and Pie Charts</p>
+</li>
+<li>
+<p>Histograms and Box Plots</p>
+</li>
+<li>
+<p>Skew and Symmetry</p>
+</li>
+<li>
+<p>Measures of Center &amp; Spread</p>
+</li>
+<li>
+<p>Strength and Direction of Correlations</p>
+</li>
+<li>
+<p>Linear Regression</p>
+</li>
+<li>
+<p>Random and Grouped Sampling</p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Outliers and Extreme Values</p>
+</li>
+<li>
+<p>Data Types and Representations of Data</p>
+</li>
+<li>
+<p>Functions and Variables</p>
+</li>
+<li>
+<p>Looping and Iteration</p>
+</li>
+<li>
+<p>Sorting, Filtering and Transforming Tables</p>
+</li>
+<li>
+<p>Importing Data</p>
+</li>
+<li>
+<p>Ethics, Privacy and Bias</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>In addition, this project can address <em>domain-specific learning goals</em> that are appropriate for your classroom. For example, students in a Physics class, might write their paper about data they collected from an experiment.</p>
+</div>
+<div class="paragraph">
+<p>Many Bootstrap teachers arrange publishing parties or data fairs, complete with tri-fold posters explaining their findings.</p>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_students_will_be_able_to">Students will be able to&#8230;&#8203;</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Use the Data Cycle to develop new questions from the findings their initial questions lead them to</p>
+</li>
+<li>
+<p>Identify and explore grouped samples from within their dataset</p>
+</li>
+<li>
+<p>Identify Threats to Validity</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_assessment_and_grading">Assessment and Grading</h3>
+<div class="paragraph">
+<p>We provide a student-facing <a href="../../lessons/project-research-paper/pages/research-paper-rubric.html" target="_blank" rel="noopener">rubric for the paper</a>, but teachers should always feel free to edit and adapt it for their classroom.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_where_does_it_fit"><span class="section-link"><a href="#_where_does_it_fit"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Where Does it Fit?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The project is constructed over a series of lessons, which reinforce concepts learned in earlier lessons. Taken together, these lessons form the scope and sequence for the project. There are two options for implementation:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch implementation-options">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Integrated</th>
+<th class="tableblock halign-left valign-top">All at Once</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>The default lesson order for Bootstrap:Data Science has paper-focused lessons sprinkled throughout the curriculum, with students writing sections of their paper throughout the course sequence.</p>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 1ex"></span></p>
+</div>
+<div class="paragraph">
+<p><strong>Pros:</strong> (1) Breaking a long paper down into pieces can be less intimidating for students, (2) provides more opportunities for formative assessment and revision, and (3) students get a learning-applying-writing cycle for each concept.</p>
+</div>
+<div class="paragraph">
+<p><strong>Cons:</strong> Some students may lose interest in the research paper after such a long time. Harder for the project to serve as a summative assessment.</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Students can go through the earlier lessons without worrying about the paper at all, focusing purely on the computing and math content. At the end of the year (for example), they shift gears to focus on writing.</p>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 1ex"></span></p>
+</div>
+<div class="paragraph">
+<p><strong>Pros:</strong> (1) Satisfying "captsone" for students, (2) terrific summative assessment, (3) easier to focus on statistical writing without switching back and forth to math/code.</p>
+</div>
+<div class="paragraph">
+<p><strong>Cons:</strong> Without a narrative project to tie everything together, students are less likely to see the "big picture" throughout the year.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-17 19:42:16 -0400
+</div>
+</div>
+</div>
+</body>
+</html>

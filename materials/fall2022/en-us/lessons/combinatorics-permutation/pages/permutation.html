@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Permutation</title>
+
+  <link rel="stylesheet" href="../../../lib/curriculum.css" />
+    <link rel="stylesheet" href="../../../lib/codemirror.css" />
+    <script src="../../../lib/codemirror.js"></script>
+    <script src="../../../lib/runmode.js"></script>
+    <script src="../../../lib/scheme2.js"></script>
+    <script src="../../../lib/pyret-mode.js"></script>
+      <script src="../../../extlib/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML%2Clocal%2Fmathjaxlocal.js"></script>
+      <script>window.status = "not_ready_to_print";</script>
+    <script src="../../../lib/langtable.js"></script>
+    <script src="../../../lib/bootstraplesson.js"></script>
+    <script src="../../../dependency-graph.js"></script>
+    <script src="../../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"Permutation",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="workbookpage article pyret" onload="renderSaveToDrive()">
+<div id="header">
+<h1>Permutation</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<style>
+table { height: 90%; }
+td:nth-of-type(2){ font-size: 0.9rem !important; }
+</style>
+<div class="paragraph">
+<p>For each of the problems below, (1) figure out whether this involves permutation with or without replacement, then (2) compute the solution. The first one has been done for you.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 3.2258%;">
+<col style="width: 35.4838%;">
+<col style="width: 12.9032%;">
+<col style="width: 48.3872%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-middle"></th>
+<th class="tableblock halign-left valign-top">Word problem</th>
+<th class="tableblock halign-center valign-middle">Replacement?</th>
+<th class="tableblock halign-center valign-top">Solution</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Joy has picked out seven outfits for the week. She intends to wear each of them once, but she hasn&#8217;t chosen an order yet. How many different ways could she dress up this week?</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Yes  &#160;  <strong><em>No</em></strong></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="gdrive-only">permute\mbox-no\mbox-replace(7, 7)</span><script type="math/tex">\displaystyle permute\mbox{-}no\mbox{-}replace(7, 7)</script>
+<span class="gdrive-only">= 7!/( 7-7! )</span><script type="math/tex">\displaystyle = \frac{7!}{(7-7)!}</script>
+<span class="gdrive-only">= 7!/( 0! ) = 5040/1 = 5040</span><script type="math/tex">\displaystyle = \frac{7!}{(0)!} = \frac{5040}{1} = 5040</script></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mrs. Burke&#8217;s cell phone has a 6-character password. Her son is trying to unlock it to play a game. How many possible passwords does he have to guess?</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><span class="notsolution">Yes</span>  &#160;  No</p></td>
+<td class="tableblock halign-center valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The dentist has 8 different stickers to give away to the next patients <code class="pyret">A</code> through <code class="pyret">H</code>. How many different ways could she give them out?</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Yes  &#160;  <span class="notsolution">No</span></p></td>
+<td class="tableblock halign-center valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Eric Allatta is the head chef at the top restaurant in Santa Fe. His speciality is four-color enchilada platter, with each enchilada covered in a different sauce. How many ways can he order them on the plate?</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Yes  &#160;  <span class="notsolution">No</span></p></td>
+<td class="tableblock halign-center valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A magician opens a fresh deck of 52 cards, and asks an audience member to pick six of them. He says he&#8217;ll guess all six - in order. What are the chances he&#8217;ll guess them correctly?</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Yes  &#160;  <span class="notsolution">No</span></p></td>
+<td class="tableblock halign-center valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Emma is knitting a hat, and each row of stitching can be a different color. She has three different colors of yarn to choose from, and the hat has 30 rows. How many different designs could she make?</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><span class="notsolution">Yes</span> &#160;   No</p></td>
+<td class="tableblock halign-center valign-top"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-17 19:41:46 -0400
+</div>
+</div>
+</body>
+</html>

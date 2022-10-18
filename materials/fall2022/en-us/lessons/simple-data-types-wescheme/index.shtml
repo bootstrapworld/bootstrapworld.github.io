@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Simple Data Types</title>
+
+  <link rel="stylesheet" href="../../lib/curriculum.css" />
+    <link rel="stylesheet" href="../../lib/codemirror.css" />
+    <script src="../../lib/codemirror.js"></script>
+    <script src="../../lib/runmode.js"></script>
+    <script src="../../lib/scheme2.js"></script>
+    <script src="../../lib/pyret-mode.js"></script>
+    <script src="../../lib/langtable.js"></script>
+    <script src="../../lib/bootstraplesson.js"></script>
+    <script src="../../dependency-graph.js"></script>
+    <script src="../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"Simple Data Types",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="article LessonPlan wescheme" onload="renderSaveToDrive()">
+<!--#include virtual="/menubar.ssi"-->
+<div id="body" onload="renderSaveToDrive()">
+<div id="header">
+<h1>Simple Data Types</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<script>
+function preselect(klass) {
+  const items = document.getElementsByClassName(klass);
+  for (let i = 0; i < items.length; i++) {
+    items[i].style.display = 'none';
+  }
+  if (items.length > 0) {
+    items[0].style.display = 'block';
+  }
+}
+window.onload = function() {
+  preselect('alignedStandards');
+  preselect('alignedTextbooks');
+  preselect('alignedPractices');
+}
+function showStandardsAlignment() {
+  const selectTag = document.getElementsByClassName('standardsAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const stdTables = document.getElementsByClassName('alignedStandards');
+  //const intro = document.getElementsByClassName('alignedStandardsIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < stdTables.length; i++) {
+    const stdTable = stdTables[i];
+    stdTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optStd = opt.value;
+      for (let j = 0; j < stdTables.length; j++) {
+        const stdTable = stdTables[j];
+        if (stdTable.classList.contains(optStd)) {
+          stdTable.style.display = 'block';
+         // introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+function toggleNonPrereqDisplay() {
+  const inputTag = document.getElementsByClassName('sidebarinput')[0];
+  const checkedP = inputTag.checked;
+  const lessonTable = document.getElementsByClassName('sidebarlessons')[0];
+  const lis = lessonTable.getElementsByTagName('li');
+  for (let i = 0; i < lis.length; i++) {
+    const li = lis[i];
+    const lesson = li.getElementsByClassName('prerequisite');
+    if (lesson.length === 0) {
+      li.style.display = checkedP ? 'none' : 'block';
+    }
+  }
+}
+</script>
+<script>
+function showTextbooksAlignment() {
+  const selectTag = document.getElementsByClassName('textbooksAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const textbookTables = document.getElementsByClassName('alignedTextbooks');
+  //const intro = document.getElementsByClassName('alignedTextbooksIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < textbookTables.length; i++) {
+    const textbookTable = textbookTables[i];
+    textbookTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optTextbook = opt.value;
+      for (let j = 0; j < textbookTables.length; j++) {
+        const textbookTable = textbookTables[j];
+        if (textbookTable.classList.contains(optTextbook)) {
+          textbookTable.style.display = 'block';
+          //introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+</script>
+<script>
+function showPracticesAlignment() {
+  const selectTag = document.getElementsByClassName('practicesAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const practiceTables = document.getElementsByClassName('alignedPractices');
+  for (let i = 0; i < practiceTables.length; i++) {
+    const practiceTable = practiceTables[i];
+    practiceTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optPractice = opt.value;
+      for (let j = 0; j < practiceTables.length; j++) {
+        const practiceTable = practiceTables[j];
+        if (practiceTable.classList.contains(optPractice)) {
+          practiceTable.style.display = 'block';
+        }
+      }
+    }
+  }
+}
+</script>
+<div class="paragraph">
+<!-- </p>
+</div>
+--></div><div class="sidebar"><div id="toggle"></div><div class="paragraph"><!--
+<div class="paragraph">
+<p>
+--><div class="sidebarlessons"><strong>Lessons</strong>
+<ul></ul></div>
+</div>
+<table class="tableblock frame-all grid-all stretch sidebarstandards">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Standards in this Lesson</strong>
+<select class="standardsAlignmentSelect"  onchange="showStandardsAlignment()"><option selected="selected" value="standards-CSTA">CSTA</option><option value="standards-Oklahoma">Oklahoma</option></select></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist alignedStandards standards-CSTA">
+<div class="title"><a href="https://csteachers.org/page/standards">CSTA Standards</a></div>
+<dl>
+<dt class="hdlist1">2-AP-11</dt>
+<dd>
+<p>Create clearly named variables that represent different data types and perform operations on their values.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Oklahoma">
+<div class="title"><a href="https://sde.ok.gov/oklahoma-academic-standards">Oklahoma Standards</a></div>
+<dl>
+<dt class="hdlist1">OK.6.A.1.3</dt>
+<dd>
+<p>Use and evaluate variables in expressions, equations, and inequalities that arise from various contexts, including determining when or if, for a given value of the variable, an equation or inequality involving a variable is true or false.</p>
+</dd>
+<dt class="hdlist1">OK.7.AP.A.01</dt>
+<dd>
+<p>Select and modify an existing algorithm in natural language or pseudocode to solve complex problems.</p>
+</dd>
+<dt class="hdlist1">OK.7.N.1.1</dt>
+<dd>
+<p>Know that every rational number can be written as the ratio of two integers or as a terminating or repeating decimal.</p>
+</dd>
+<dt class="hdlist1">OK.7.N.1.2</dt>
+<dd>
+<p>Compare and order rational numbers expressed in various forms using the symbols &lt;, &gt;, and =.</p>
+</dd>
+<dt class="hdlist1">OK.7.N.1.3</dt>
+<dd>
+<p>Recognize and generate equivalent representations of rational numbers, including equivalent fractions.</p>
+</dd>
+<dt class="hdlist1">OK.8.AP.C.01</dt>
+<dd>
+<p>Develop programs that utilize combinations of nested repetition, compound conditionals, procedures without parameters, and the manipulation of variables representing different data types.</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch sidebartextbooks">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Textbook Alignment</strong>
+<select class="textbooksAlignmentSelect"  onchange="showTextbooksAlignment()"><option selected="selected" value="textbook-IM_Alg_1"><a href="https://illustrativemathematics.org/">IM Algebra 1</a></option><option value="textbook-IM_7"><a href="https://illustrativemathematics.org/">IM 7 Math™</a></option><option value="textbook-IM_6"><a href="https://illustrativemathematics.org/">IM 6 Math™</a></option></select></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist alignedTextbooks textbook-IM_Alg_1">
+<div class="title"><a href="https://illustrativemathematics.org/">IM Algebra 1</a></div>
+<dl>
+<dt class="hdlist1">IM.Alg1.1.6</dt>
+<dd>
+<p>Mystery Computations</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedTextbooks textbook-IM_7">
+<div class="title"><a href="https://illustrativemathematics.org/">IM 7 Math™</a></div>
+<dl>
+<dt class="hdlist1">IM.7.6.13</dt>
+<dd>
+<p>Reintroducing Inequalities</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedTextbooks textbook-IM_6">
+<div class="title"><a href="https://illustrativemathematics.org/">IM 6 Math™</a></div>
+<dl>
+<dt class="hdlist1">IM.6.7.10</dt>
+<dd>
+<p>Interpreting Inequalities</p>
+</dd>
+<dt class="hdlist1">IM.6.7.9</dt>
+<dd>
+<p>Solutions of Inequalities</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch sidebarpractices">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Practices in this Lesson</strong>
+<select class="practicesAlignmentSelect"  onchange="showPracticesAlignment()"><option selected="selected" value="practices-MLR"><a href="https://achievethecore.org/peersandpedagogy/developing-math-language-routines/">Math Lang. Routines</a></option><option value="practices-CC"><a href="http://corestandards.org/Math/">Math</a></option></select></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist alignedPractices practices-MLR">
+<div class="title"><a href="https://achievethecore.org/peersandpedagogy/developing-math-language-routines/">Math Lang. Routines</a></div>
+<dl>
+<dt class="hdlist1">MLR.4</dt>
+<dd>
+<p>Information Gap</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedPractices practices-CC">
+<div class="title"><a href="http://corestandards.org/Math/">Math</a></div>
+<dl>
+<dt class="hdlist1">MP.6</dt>
+<dd>
+<p>Attend to precision</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<!-- </p>
+</div>
+--></div><!--
+<div class="paragraph">
+<p>
+-->
+</div>
+<div class="paragraph">
+<p><span class="other-proglang">(Also available in <a href="../../lessons/simple-data-types/index.shtml">Pyret</a>)</span></p>
+</div>
+<div class="paragraph description">
+<p>Students begin to program, explorings how Numbers, Strings, Booleans and operations on those data types work in this programming language.</p>
+</div>
+<table class="tableblock frame-all grid-all stripes-none stretch left-header preamble">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Lesson Goals</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Students will be able to&#8230;&#8203;</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Identify examples of the following data types: Numbers, Strings, and Booleans</p>
+</li>
+<li>
+<p>Write Numbers, Strings, and Booleans in the Interactions Area</p>
+</li>
+<li>
+<p>Write expressions that produce values of those types</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Student-facing Lesson Goals</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>I can tell if a value is a Number, String or a Boolean</p>
+</li>
+<li>
+<p>I can explain the different between those types</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Materials</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist materials-links">
+<ul>
+<li>
+<p><a href="https://docs.google.com/presentation/d/1Yt1WCUSoYvx_EJuUWFMBU9p_FDUavblgTcUYZwL5EBM/" target="_blank" rel="noopener">Lesson Slides</a></p>
+</li>
+<li>
+<p><span class="materialSectionPlaceholder"> </span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/simple-data-types-wescheme/pages/numbers-n-strings.html" target="_blank" rel="noopener">Numbers and Strings</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/simple-data-types-wescheme/pages/booleans.html" target="_blank" rel="noopener">Booleans</a></span></p>
+</li>
+<li>
+<p><strong>Classroom visual:</strong> <a href="javascript:showLangTable()">Language Table</a></p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Preparation</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Make sure student computers can access <a href="https://www.wescheme.org/openEditor" target="_blank" rel="noopener">WeScheme</a>.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Key Points For The Facilitator</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Error messages are the computer trying to give us a clue that something is wrong.  Model reacting to <span class="vocab">error messages</span> with interest to demonstrate to students that the messages are a helpful tool.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="dlist glossary">
+<div class="title">Glossary</div>
+<dl>
+<dt class="hdlist1">Boolean</dt>
+<dd>
+<p>a type of data with two values: true and false</p>
+</dd>
+<dt class="hdlist1">definitions area</dt>
+<dd>
+<p>the left-most text box in the Editor where definitions for values and functions are written</p>
+</dd>
+<dt class="hdlist1">editor</dt>
+<dd>
+<p>software in which code can be written and evaluated</p>
+</dd>
+<dt class="hdlist1">error message</dt>
+<dd>
+<p>information from the computer about errors in code</p>
+</dd>
+<dt class="hdlist1">interactions area</dt>
+<dd>
+<p>the right-most text box in the Editor, where expressions are entered to be evaluated</p>
+</dd>
+<dt class="hdlist1">syntax error</dt>
+<dd>
+<p>errors where the computer cannot make sense of the code (e.g. - missing commas, missing parentheses, unclosed strings)</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_numbers_strings_duration_20_minutes_"><span class="section-link"><a href="#_numbers_strings_duration_20_minutes_"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Numbers &amp; Strings <span class="duration">20 minutes</span></h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_overview">Overview</h3>
+<div class="paragraph">
+<p>Working together using a Driver/Navigator group setup, students experiment with the Editor. They explore Number and String data types, and how they behave in this programming language.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_launch">Launch</h3>
+<div class="paragraph">
+<p><span class="right"><span class="image-figure"><span class="image"><img src="images/9325adff995e0ec3.png" alt="Driver/Navigator icon" width="150" title="Driver/Navigator icon"></span><a href="images/9325adff995e0ec3.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span>
+When programming in this class, you&#8217;ll be working together using the <em>Driver/Navigator</em> model. Each group can only have one "Driver" - their hands are on the keyboard, and their job is to manage the typing, clicking, shortcuts, etc. If you&#8217;re not a Driver, you&#8217;re a "Navigator" - your job is to tell the Driver where to go, what to type, etc. A good Driver types only what the Navigator tells them to, and a good Navigator makes sure to give clear and precise instructions.</p>
+</div>
+<table class="tableblock frame-all grid-none stripes-none stretch strategy-box">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="title">The Driver/Navigator Model</span></p>
+<p class="tableblock">This model of pair programming is extremely useful for teasing apart the "thinking" step from the "typing" one. Students - especially those who are new to text-based programming or typing itself - can struggle to put their thoughts into the programming environment. This model allows them to focus on <em>communicating their ideas</em>, but letting the Driver focus on the coding. Likewise, the Driver has a chance to focus on syntax and programming. Finally, the requirement that ideas are translated through another person&#8217;s hands is an excellent scaffold for getting students talking about their thinking and about code.</p>
+<p class="tableblock"><a href="https://en.wikipedia.org/wiki/Pair_programming" target="_blank" rel="noopener">You can read more about the Driver/Navigator model here&#8230;&#8203;</a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Have students open <a href="https://www.wescheme.org/openEditor" target="_blank" rel="noopener">WeScheme</a>.</p>
+</div>
+<div class="paragraph">
+<p><span class="right"><span class="image-figure"><span class="image"><img src="images/85042acd156f94d5.png" alt="Our Editing Environment with the Definitions are on the left and the Interactions Area on the right" width="300" title="Our Editing Environment with the Definitions are on the left and the Interactions Area on the right"></span><a href="images/85042acd156f94d5.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></p>
+</div>
+<div class="paragraph">
+<p>This screen is called the <span class="vocab">Editor</span>, and it looks something like the diagram you see here. There are a few buttons at the top, but most of the screen is taken up by two large boxes: the <span class="vocab">Definitions Area</span> on the left and the <span class="vocab">Interactions Area</span> on the right.</p>
+</div>
+<div class="paragraph">
+<p>The <span class="vocab">Definitions Area</span> is where programmers define values and functions that they want to keep, while the <span class="vocab">Interactions Area</span> allows them to experiment with those values and functions. This is like writing function definitions on a blackboard, and having students use those functions to compute answers on scrap paper.</p>
+</div>
+<div class="paragraph lesson-point">
+<p>For now, we will only be writing programs in the <strong>Interactions Area</strong> on the right.</p>
+</div>
+<div class="paragraph">
+<p><span style="clear: both;display: block"></span></p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_investigate">Investigate</h3>
+<div class="paragraph">
+<p>Math is a language, just like English, Spanish, or any other language. Languages have <strong>nouns</strong> (e.g. “ball”, “tomato”, etc.) and <strong>verbs</strong>, which are actions we can perform on these nouns (e.g. - I can “throw a ball”). Math and programming also have <strong>values</strong>, like the numbers 1, 2 and 3. And, instead of verbs, they have functions, which are actions we can perform on values (e.g. - “I can square a number”).</p>
+</div>
+<div class="paragraph">
+<p>Languages also have rules for <strong>syntax</strong>. In English, for example, words don’t have <code class="racket">!</code> and <code class="racket">?</code> in the middle. In math and programming numbers don’t have <code class="racket">&amp;</code> in them.</p>
+</div>
+<div class="paragraph">
+<p>Languages also have rules for <strong>grammar</strong>. <em>The cat sat.</em> is a sentence, whereas <em>The sat cat.</em> is nonsense, even though all the words are valid syntax. The order of the words matters!</p>
+</div>
+<div class="paragraph">
+<p>Keeping the importance of <strong>syntax</strong> and <strong>grammar</strong> in mind is helpful when learning to program!.</p>
+</div>
+<div class="openblock lesson-instruction">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Complete <a href="../../lessons/simple-data-types-wescheme/pages/numbers-n-strings.html" target="_blank" rel="noopener">Numbers and Strings</a>.</p>
+</li>
+<li>
+<p>What did you Notice? What do you Wonder?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Check out the Synthesize section, below, for a list key take-aways from this activity.</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Did you get any error messages? What did you learn from them?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Most of the error messages we&#8217;ve seen were drawing our attention to <span class="vocab">syntax errors</span>: missing commas, unclosed strings, etc.</em></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<table class="tableblock frame-all grid-none stripes-none stretch strategy-box">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="title">Classroom Visual: The Language Table</span></p>
+</div>
+<div class="paragraph">
+<p>One of the most common visuals used by Bootstrap teachers is the <em>Language Table.</em> This summarizes the data types and functions students have seen so far, and serves as a useful reference for a lot of common questions.</p>
+</div>
+<div class="paragraph">
+<p>The language table has three columns: Data Type, Functions, and Values. In this lesson, students will fill in the first three rows of the table with their data types: Numbers, Strings and Booleans. As they progress through the course, they will add to the list of functions for each type as they encounter them. They may even add new rows as they discover new data types besides the ones introduced here!</p>
+</div>
+<div class="paragraph">
+<p>Each Bootstrap lesson is written to show you what the language table looks like <em>at that point in time.</em> You can access this table by clicking the <a href="javascript:showLangTable()">Language Table</a> link in the materials section at the top of the lesson plan.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_synthesize">Synthesize</h3>
+<div class="paragraph">
+<p>Our programming language knows about many types of numbers, and they behave pretty much the way they do in math.
+Discuss what students have learned:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Numbers and Strings evaluate to themselves.</p>
+</li>
+<li>
+<p>Our Editor is pretty smart, and can automatically switch between showing a rational number as a fraction or a decimal, just by clicking on it!</p>
+</li>
+<li>
+<p>Anything in quotes is a String, even something like <code class="racket">"42"</code>.</p>
+</li>
+<li>
+<p>Strings <em>must</em> have quotation marks on both sides.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_booleans_duration_20_minutes_"><span class="section-link"><a href="#_booleans_duration_20_minutes_"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Booleans <span class="duration">20 minutes</span></h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_overview_2">Overview</h3>
+<div class="paragraph">
+<p>This lesson introduces students to <span class="vocab">Booleans</span>, a unique data type with only two values: "true" and "false", and why they are useful in both the real world and the programming environment.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_launch_2">Launch</h3>
+<div class="paragraph lesson-instruction">
+<p>What&#8217;s the answer: is 3 greater than 10?</p>
+</div>
+<div class="paragraph">
+<p>Boolean-producing expressions are yes-or-no questions and will always evaluate to either <code class="racket">true</code> (“yes”) or <code class="racket">false</code> (“no”).  The ability to separate inputs into two categories is unique and quite useful!</p>
+</div>
+<div class="paragraph">
+<p>For example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Some rollercoasters with loops require passengers to be a minimum height to make sure that riders are safely held in place by the one-size-fits all harnesses. The gate keeper doesn&#8217;t care exactly how tall you are, they just check whether you are as tall as the mark on the pole. If you are tall enough, you can ride, but they don&#8217;t let people on the ride who are shorter than the mark because they can&#8217;t keep them safe.</p>
+</li>
+<li>
+<p>When you log into your email, the computer asks for your password and checks whether it matches what&#8217;s on file. If the match is <code class="racket">true</code> it takes you to your messages, but, if what you enter doesn&#8217;t match, you get an error message instead.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph lesson-instruction">
+<p>Brainstorm other scenarios where Booleans are useful in and out of the programming environment.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_investigate_2">Investigate</h3>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>In pairs, complete <a href="../../lessons/simple-data-types-wescheme/pages/booleans.html" target="_blank" rel="noopener">Booleans</a>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>On this worksheet, students will make predictions about what a variety of Boolean expressions will return and testing them in the editor. Debrief student answers as a class.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_synthesize_2">Synthesize</h3>
+<div class="paragraph">
+<p>What sets Booleans apart from other data types?</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-18 16:15:45 -0400
+</div>
+</div>
+</div>
+</body>
+</html>

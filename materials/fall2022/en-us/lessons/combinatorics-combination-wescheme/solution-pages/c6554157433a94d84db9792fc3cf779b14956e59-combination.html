@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Combinations</title>
+
+  <link rel="stylesheet" href="../../../lib/curriculum.css" />
+      <script src="../../../extlib/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML%2Clocal%2Fmathjaxlocal.js"></script>
+      <script>window.status = "not_ready_to_print";</script>
+    <script src="../../../lib/langtable.js"></script>
+    <script src="../../../lib/bootstraplesson.js"></script>
+    <script src="../../../dependency-graph.js"></script>
+    <script src="../../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"Combinations",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="workbookpage article wescheme" onload="renderSaveToDrive()">
+<div id="header">
+<h1>Combinations</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<style>
+table { height: 90%; }
+td:nth-of-type(2){ font-size: 0.9rem !important; }
+</style>
+<div class="paragraph">
+<p>For each of the problems below, (1) figure out whether this involves combination with or without replacement, then (2) compute the solution.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 2.8571%;">
+<col style="width: 42.8571%;">
+<col style="width: 11.4285%;">
+<col style="width: 42.8573%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-middle"></th>
+<th class="tableblock halign-left valign-top">Word problem</th>
+<th class="tableblock halign-center valign-middle">Replacement?</th>
+<th class="tableblock halign-center valign-top">Solution</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The shaved ice truck has added six new flavors, and three friends want to sample them. They agree to order different flavors, and then all three will try each flavor. How many possible combinations are there?</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Yes  &#160;  <strong><em>No</em></strong></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="gdrive-only">combinations(6, 3) = 6!/( 6-3! ) &divide; 3</span><script type="math/tex">\displaystyle combinations(6, 3) = \frac{6!}{(6-3)!} \div 3</script>
+<span class="gdrive-only">= 6!/3! &divide; 3 = 720/6 &divide; 3</span><script type="math/tex">\displaystyle = \frac{6!}{3!} \div 3 = \frac{720}{6} \div 3</script><br>
+<span class="gdrive-only">= 120 &divide; 3 = 40</span><script type="math/tex">\displaystyle = 120 \div 3 = 40</script></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A soccer team has 20 players, but only 11 are allowed on the field at once. How many different groups of players can be on the field at one time?</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Yes  &#160;  <span class="solution"><strong><em>No</em></strong></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">[.solution]&#8201;&#8212;&#8201;<span class="gdrive-only">combinations(20, 11) = 20!/( (20 - 11)! ) &divide; 11!</span><script type="math/tex">\displaystyle combinations(20, 11) = \frac{20!}{(20 - 11)!} \div 11!</script><br>
+<span class="gdrive-only">20!/9! &divide; 11! = 167,960</span><script type="math/tex">\displaystyle \frac{20!}{9!} \div 11! = 167,960</script>
+&#8201;&#8212;&#8201;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A set of pool balls is numbered 1-15. How many different ways are there to choose six balls?</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Yes  &#160;  <span class="solution"><strong><em>No</em></strong></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">[.solution]&#8201;&#8212;&#8201;<span class="gdrive-only">combinations(15, 6) = 15!/( (15 - 6)! ) &divide; 6!</span><script type="math/tex">\displaystyle combinations(15, 6) = \frac{15!}{(15 - 6)!} \div 6!</script><br>
+<span class="gdrive-only">15!/9! &divide; 6! = 5,005</span><script type="math/tex">\displaystyle \frac{15!}{9!} \div 6! = 5,005</script>
+&#8201;&#8212;&#8201;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Six friends get together to play video games. All the games can only have two players, so they decided to pair off to make sure everyone gets to play everyone else. How many games will they have to play?</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Yes  &#160;  <span class="solution"><strong><em>No</em></strong></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">[.solution]&#8201;&#8212;&#8201;<span class="gdrive-only">combinations(6, 2) = 6!/( (6 - 2)! ) &divide; 2!</span><script type="math/tex">\displaystyle combinations(6, 2) = \frac{6!}{(6 - 2)!} \div 2!</script><br>
+<span class="gdrive-only">6!/4! &divide; 2! = 15</span><script type="math/tex">\displaystyle \frac{6!}{4!} \div 2! = 15</script>
+&#8201;&#8212;&#8201;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A set of pool balls is numbered 1-15. Seven of them are striped and eight are solid colors. How many different ways are there to choose 4 balls where 2 are striped and 2 are solid?</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Yes  &#160;  <span class="solution"><strong><em>No</em></strong></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">[.solution]&#8201;&#8212;&#8201;<span class="gdrive-only">combinations(10, 3) = 10!/( (10 - 3)! ) &divide; 3!</span><script type="math/tex">\displaystyle combinations(10, 3) = \frac{10!}{(10 - 3)!} \div 3!</script><br>
+<span class="gdrive-only">10!/7! &divide; 3! = 120</span><script type="math/tex">\displaystyle \frac{10!}{7!} \div 3! = 120</script>
+&#8201;&#8212;&#8201;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">★</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A pizzeria has a 3-topping special on any pizza, for only $12.99. If they have 10 toppings to choose from, how many different pizzas can they make?</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Yes  &#160;  <span class="solution"><strong><em>No</em></strong></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">[.solution]&#8201;&#8212;&#8201;Each combination of striped balls can pair with each combination of solids, so the two outcomes are <em>multiplied</em>.</p>
+<p class="tableblock"><span class="gdrive-only">striped = combinations(7, 2) = 7!/( (7 - 2)! ) &divide; 2! = 21</span><script type="math/tex">\displaystyle striped = combinations(7, 2) = \frac{7!}{(7 - 2)!} \div 2! = 21</script><br>
+<span class="gdrive-only">solid = combinations(8, 2) = 8!/( (8 - 2)! ) &divide; 2! = 28</span><script type="math/tex">\displaystyle solid = combinations(8, 2) = \frac{8!}{(8 - 2)!} \div 2! = 28</script><br>
+<span class="gdrive-only">striped &times; solid = 21 &times; 28 = 588</span><script type="math/tex">\displaystyle striped \times solid = 21 \times 28 = 588</script>
+&#8201;&#8212;&#8201;</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-17 19:41:46 -0400
+</div>
+</div>
+</body>
+</html>

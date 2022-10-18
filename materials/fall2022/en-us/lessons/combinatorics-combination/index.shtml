@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Combinations</title>
+
+  <link rel="stylesheet" href="../../lib/curriculum.css" />
+      <script src="../../extlib/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML%2Clocal%2Fmathjaxlocal.js"></script>
+      <script>window.status = "not_ready_to_print";</script>
+    <script src="../../lib/langtable.js"></script>
+    <script src="../../lib/bootstraplesson.js"></script>
+    <script src="../../dependency-graph.js"></script>
+    <script src="../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"Combinations",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="article LessonPlan pyret" onload="renderSaveToDrive()">
+<!--#include virtual="/menubar.ssi"-->
+<div id="body" onload="renderSaveToDrive()">
+<div id="header">
+<h1>Combinations</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<script>
+function preselect(klass) {
+  const items = document.getElementsByClassName(klass);
+  for (let i = 0; i < items.length; i++) {
+    items[i].style.display = 'none';
+  }
+  if (items.length > 0) {
+    items[0].style.display = 'block';
+  }
+}
+window.onload = function() {
+  preselect('alignedStandards');
+  preselect('alignedTextbooks');
+  preselect('alignedPractices');
+}
+function showStandardsAlignment() {
+  const selectTag = document.getElementsByClassName('standardsAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const stdTables = document.getElementsByClassName('alignedStandards');
+  //const intro = document.getElementsByClassName('alignedStandardsIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < stdTables.length; i++) {
+    const stdTable = stdTables[i];
+    stdTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optStd = opt.value;
+      for (let j = 0; j < stdTables.length; j++) {
+        const stdTable = stdTables[j];
+        if (stdTable.classList.contains(optStd)) {
+          stdTable.style.display = 'block';
+         // introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+function toggleNonPrereqDisplay() {
+  const inputTag = document.getElementsByClassName('sidebarinput')[0];
+  const checkedP = inputTag.checked;
+  const lessonTable = document.getElementsByClassName('sidebarlessons')[0];
+  const lis = lessonTable.getElementsByTagName('li');
+  for (let i = 0; i < lis.length; i++) {
+    const li = lis[i];
+    const lesson = li.getElementsByClassName('prerequisite');
+    if (lesson.length === 0) {
+      li.style.display = checkedP ? 'none' : 'block';
+    }
+  }
+}
+</script>
+<script>
+function showTextbooksAlignment() {
+  const selectTag = document.getElementsByClassName('textbooksAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const textbookTables = document.getElementsByClassName('alignedTextbooks');
+  //const intro = document.getElementsByClassName('alignedTextbooksIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < textbookTables.length; i++) {
+    const textbookTable = textbookTables[i];
+    textbookTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optTextbook = opt.value;
+      for (let j = 0; j < textbookTables.length; j++) {
+        const textbookTable = textbookTables[j];
+        if (textbookTable.classList.contains(optTextbook)) {
+          textbookTable.style.display = 'block';
+          //introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+</script>
+<script>
+function showPracticesAlignment() {
+  const selectTag = document.getElementsByClassName('practicesAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const practiceTables = document.getElementsByClassName('alignedPractices');
+  for (let i = 0; i < practiceTables.length; i++) {
+    const practiceTable = practiceTables[i];
+    practiceTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optPractice = opt.value;
+      for (let j = 0; j < practiceTables.length; j++) {
+        const practiceTable = practiceTables[j];
+        if (practiceTable.classList.contains(optPractice)) {
+          practiceTable.style.display = 'block';
+        }
+      }
+    }
+  }
+}
+</script>
+<div class="paragraph">
+<!-- </p>
+</div>
+--></div><div class="sidebar"><div id="toggle"></div><div class="paragraph"><!--
+<div class="paragraph">
+<p>
+--><div class="sidebarlessons"><strong>Lessons</strong>
+<ul></ul></div>
+</div>
+<table class="tableblock frame-all grid-all stretch sidebarstandards">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Standards in this Lesson</strong>
+<select class="standardsAlignmentSelect"  onchange="showStandardsAlignment()"><option selected="selected" value="standards-CCSS-Math">CCSS-Math</option><option value="standards-Oklahoma">Oklahoma</option></select></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist alignedStandards standards-CCSS-Math">
+<div class="title"><a href="http://corestandards.org/Math/">Common Core Math Standards</a></div>
+<dl>
+<dt class="hdlist1">HSS.CP.B.9</dt>
+<dd>
+<p>Use permutations and combinations to compute probabilities of compound events and solve problems.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Oklahoma">
+<div class="title"><a href="https://sde.ok.gov/oklahoma-academic-standards">Oklahoma Standards</a></div>
+<dl>
+<dt class="hdlist1">OK.SP.1.5</dt>
+<dd>
+<p>Use counting techniques including permutations and combinations to solve mathematical and real-world problems, including determining probabilities of compound events.</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch sidebarpractices">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Practices in this Lesson</strong>
+<select class="practicesAlignmentSelect"  onchange="showPracticesAlignment()"><option selected="selected" value="practices-NGSS"><a href="https://ngss.nsta.org/practicesfull.aspx">Science and Engineering</a></option><option value="practices-CC"><a href="http://corestandards.org/Math/">Math</a></option></select></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist alignedPractices practices-NGSS">
+<div class="title"><a href="https://ngss.nsta.org/practicesfull.aspx">Science and Engineering</a></div>
+<dl>
+<dt class="hdlist1">SEP.5</dt>
+<dd>
+<p>Using Mathematics and Computational Thinking</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedPractices practices-CC">
+<div class="title"><a href="http://corestandards.org/Math/">Math</a></div>
+<dl>
+<dt class="hdlist1">MP.4</dt>
+<dd>
+<p>Model with mathematics</p>
+</dd>
+<dt class="hdlist1">MP.7</dt>
+<dd>
+<p>Look for and make use of structure</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<!-- </p>
+</div>
+--></div><!--
+<div class="paragraph">
+<p>
+-->
+</div>
+<div class="paragraph">
+<p><span class="other-proglang">(Also available in <a href="../../lessons/combinatorics-combination-wescheme/index.shtml">WeScheme</a>)</span></p>
+</div>
+<!--
+
+Visme URLs for tree diagrams:
+- https://my.visme.co/view/epd0w63y-permutation-and-combination-2
+- https://my.visme.co/view/8rerg1ee-permutation-and-combination
+-->
+<div class="paragraph description">
+<p>Students explore the concept of combinations as a restricted set of permutations in which order does not matter. They compute the possible number of outcomes when choosing n items from m possibilities in a variety of real-world situations.</p>
+</div>
+<table class="tableblock frame-all grid-all stripes-none stretch left-header preamble">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Lesson Goals</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Students will be able to&#8230;&#8203;</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Define and explain "combination" (without replacement)</p>
+</li>
+<li>
+<p>Compute the number of combinations for a given situation (without replacement)</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Student-facing Lesson Goals</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>I can explain what combination means (without replacement)</p>
+</li>
+<li>
+<p>I can compute the number of combinations from a word problem</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Materials</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist materials-links">
+<ul>
+<li>
+<p><span class="materialSectionPlaceholder"> </span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/combinatorics-combination/pages/combination.html" target="_blank" rel="noopener">Combinations</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/combinatorics-combination/pages/combination-or-permutation.html" target="_blank" rel="noopener">Combination or Permutation?</a></span></p>
+</li>
+<li>
+<p><span class="StarterFile Optional"><a href="https://code.pyret.org/editor#share=1pOwcDplD2vidTIvBMrBI5fVZ2jmk369Q" target="_blank" rel="noopener">Permutations and Combinations Starter File</a></span></p>
+</li>
+<li>
+<p><strong>Classroom visual:</strong> <a href="javascript:showLangTable()">Language Table</a></p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="dlist glossary">
+<div class="title">Glossary</div>
+<dl>
+<dt class="hdlist1">combination</dt>
+<dd>
+<p>the number of possible arrangements in a collection of items where the order of the selection does NOT matter. (ABC and CBA would be considered the same combination.)</p>
+</dd>
+<dt class="hdlist1">permutation</dt>
+<dd>
+<p>the number of possible arrangements in a collection of items where the order of the selection matters (ABC and CBA would be considered different permutations)</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_combinations"><span class="section-link"><a href="#_combinations"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Combinations</h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_overview">Overview</h3>
+<div class="paragraph">
+<p>Students are introduced to the concept of <span class="vocab">combinations</span>. They learn the definition and compute a number of combinations by hand using tree diagrams, then learn the formula for computing combinations.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_launch">Launch</h3>
+<div class="paragraph">
+<p><span class="right"><span class="image-figure"><span class="image"><img src="images/af5b22ce0ac53daa.jpg" alt="ravioli" title="ravioli"></span><a href="images/af5b22ce0ac53daa.jpg" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span>
+With his new set of rules, Luigi&#8217;s Family Restaurant is more popular than ever! But with a full house every night, the cooks are busy and the kitchen gets backed up. Customers start complaining about slow service, and Luigi is once again in trouble.</p>
+</div>
+<div class="paragraph">
+<p>The cooks point out that it&#8217;s easy to add twice as much ravioli to the same pot - but it&#8217;s hard to make two <em>separate</em> pots of ravioli. If people could choose their four courses in advance, the chefs could just make a few huge batches of each item and divide them up on people&#8217;s plates!</p>
+</div>
+<div class="paragraph">
+<p>Luigi decides to change the rules again, to help his kitchen staff. There are still six items on the menu, customers can still choose any four they want, and they still can&#8217;t choose the same item twice&#8230;&#8203;but <strong>order no longer matters</strong>. Instead of a four-course meal, diners get a "combination platter" with all four items on the plate.</p>
+</div>
+<div class="openblock lesson-instruction">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>How is this situation similar to the permutation questions?</p>
+</li>
+<li>
+<p>How is it different?</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_investigate">Investigate</h3>
+<div class="paragraph">
+<p>When order <em>doesn&#8217;t</em> matter, all the possible options are called <span class="vocab">combinations</span> (think of Luigi&#8217;s "combination platter!").</p>
+</div>
+<div class="paragraph">
+<p>Since there&#8217;s no replacement, let&#8217;s start by using our formula for permutation-without-replacement to compute all the possible permutations. We have six items to choose from and are selecting four of them:</p>
+</div>
+<div class="paragraph">
+<p><span class="gdrive-only">permute\mbox-no\mbox-replace(6, 4) = 6!/( (6 - 4)! ) = 6!/2! = 360</span><script type="math/tex">\displaystyle permute\mbox{-}no\mbox{-}replace(6, 4) = \frac{6!}{(6 - 4)!} = \frac{6!}{2!} = 360</script></p>
+</div>
+<div class="paragraph">
+<p>In this situation, the order <em>doesn&#8217;t matter</em>, so some of these platters are going to be the same combination: Lasagna, Soup, Ziti and Chicken is a different <span class="vocab">permutation</span> from Lasagna, Soup, Chicken, Ziti, but it&#8217;s the same <span class="vocab">combination</span>! If we knew that every combination would have a duplicate, we&#8217;d divide the number of platters by two. If we knew each one would have a triplicate, we&#8217;d divide by three.</p>
+</div>
+<div class="paragraph lesson-instruction">
+<p>How do we compute the number of duplicates in a four-course platter?</p>
+</div>
+<div class="paragraph">
+<p>We already know how to do this! This is the same question as "How many permutations are there for the same four courses?"</p>
+</div>
+<div class="paragraph">
+<p>Using our formula for permutation without replacement we get:
+<span class="gdrive-only">permute\mbox-no\mbox-replace(4, 4) = 4!/( 4-4! ) = 4! = 24</span><script type="math/tex">\displaystyle permute\mbox{-}no\mbox{-}replace(4, 4) = \frac{4!}{(4-4)!} = 4! = 24</script> duplicates!</p>
+</div>
+<div class="paragraph">
+<p>Now, we need to divide 'the number of permutations (without replacement) for choosing 4 courses out of six items" by "the number of duplicate permutations in any four-course platter".</p>
+</div>
+<div class="paragraph">
+<p><span class="gdrive-only">combinations(6, 4) = 6!/( (6 - 4)! ) &divide; 4! = 360 &divide; 24 = 15</span><script type="math/tex">\displaystyle combinations(6, 4) = \frac{6!}{(6 - 4)!} \div 4! = 360 \div 24 = 15</script></p>
+</div>
+<div class="paragraph">
+<p>We can rewrite this using our functions from earlier:</p>
+</div>
+<div class="paragraph">
+<p><span class="gdrive-only">combinations(items, choose) = ( permute\mbox-/no\mbox-replace(items, choose) )( permute\mbox-no\mbox-replace(choose, choose) )</span><script type="math/tex">\displaystyle combinations(items, choose) = \frac{permute\mbox{-}no\mbox{-}replace(items, choose)}{permute\mbox{-}no\mbox{-}replace(choose, choose)}</script></p>
+</div>
+<div class="paragraph">
+<p>In this situation, we have 6 possible choices and we get to choose 4 times:</p>
+</div>
+<div class="paragraph">
+<p><span class="gdrive-only">combinations(6, 4) = ( permute\mbox-/no\mbox-replace(6, 4) )( permute\mbox-no\mbox-replace(4, 4) )</span><script type="math/tex">\displaystyle combinations(6, 4) = \frac{permute\mbox{-}no\mbox{-}replace(6, 4)}{permute\mbox{-}no\mbox{-}replace(4, 4)}</script></p>
+</div>
+<div class="paragraph lesson-instruction">
+<p>Complete the <a href="../../lessons/combinatorics-combination/pages/combination.html" target="_blank" rel="noopener">Combinations</a> and <a href="../../lessons/combinatorics-combination/pages/combination-or-permutation.html" target="_blank" rel="noopener">Combination or Permutation?</a> worksheets.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_synthesize">Synthesize</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>What is the difference between <span class="vocab">combination</span> and <span class="vocab">permutation</span>?</p>
+</li>
+<li>
+<p>What are some real-world examples of combinations?</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_additional_exercises"><span class="section-link"><a href="#_additional_exercises"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Additional Exercises:</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://code.pyret.org/editor#share=1pOwcDplD2vidTIvBMrBI5fVZ2jmk369Q" target="_blank" rel="noopener">Permutations and Combinations Starter File</a> provides students with a chance to view all the permutations and combinations for Luigi&#8217;s menu.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-17 19:42:12 -0400
+</div>
+</div>
+</div>
+</body>
+</html>

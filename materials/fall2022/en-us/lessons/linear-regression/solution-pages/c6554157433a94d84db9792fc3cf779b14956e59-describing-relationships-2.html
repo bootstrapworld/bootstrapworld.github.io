@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Describing Relationships (2)</title>
+
+  <link rel="stylesheet" href="../../../lib/curriculum.css" />
+    <script src="../../../lib/langtable.js"></script>
+    <script src="../../../lib/bootstraplesson.js"></script>
+    <script src="../../../dependency-graph.js"></script>
+    <script src="../../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"Describing Relationships (2)",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="workbookpage article pyret" onload="renderSaveToDrive()">
+<div id="header">
+<h1>Describing Relationships (2)</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<style>
+.data-table td { margin: 0; padding: 0; }
+</style>
+<div class="paragraph">
+<p>Are people more satisfied with a purchase on which they spent more money? A group of people were surveyed about their most recent purchase, rating their satisfaction from 1 (very unsatisfied) to 5 (extremely satisfied).</p>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 2ex"></span></p>
+</div>
+<table class="tableblock frame-none grid-none stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><div class="content"><table class="tableblock frame-all grid-all stretch data-table">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-middle">Dollars</th>
+<th class="tableblock halign-center valign-middle">Satisfaction</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">15.5</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">4</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">280</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">5</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">0.99</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">2.3</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">3</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">39</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">3</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">82</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">4</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">215</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">4</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">700</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">4</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">25</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">3</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">79</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">4</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">99.99</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">5</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">30</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">75</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">5</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">13</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">4</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">320</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">5</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">260</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">5</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">150</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">28</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">45</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">2</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">65</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">2</p></td>
+</tr>
+</tbody>
+</table></div></td>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="paragraph">
+<p><span class="image-figure"><span class="image"><img src="807c6652932decf2.png" alt="scatter plot of customer satisfaction" width="350" title="scatter plot of customer satisfaction"></span><a href="807c6652932decf2.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="openblock clear">
+<div class="content">
+<div class="paragraph">
+<p><span class="vspace" style="height: 2ex"></span></p>
+</div>
+<div class="paragraph">
+<p>Describe the relationship between dollars spent and satisfaction shown in the data above.</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch">
+	<span class="solution">There is a somewhat weak positive relationship between number of dollars spent on an item and satisfaction with that item.</span>
+</span></p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch">
+	<span class="solution">Based on the r-squared value, about 16% of the variation in satisfaction can be explained by amount of money spent.</span>
+</span></p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch">
+	<span class="solution">Based on the predictor function, we can predict that a person getting an item for free will rate their satisfaction at 2.8.</span>
+</span></p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"></span></p>
+</div>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-17 19:42:06 -0400
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,2206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Problem Decomposition</title>
+<style>
+/* Overall document font */
+* {font-family: Lato, Arial, Helvetica, sans-serif;}
+
+/* document headings */
+h1,.lesson-section-1 {color: #75328A;}
+h1{font-size: 32px; font-family: sans-serif;}
+table.section-heading *, .lesson-section-1 h2{font-size: 32px; font-weight: 100;}
+table.section-heading{width: 100%;}
+table.section-heading td:last-child{text-align: right; color: #d9d2e9;}
+
+/* preamble section */
+table.preamble td {padding: 10px;}
+table.preamble td:first-child{background: #b7d893; width: 25%;}
+table.preamble td:first-child p {font-weight: bold; margin: 5px;}
+
+/* content used throughout the body */
+table{ border-collapse: collapse; border: none; }
+table.grid-all.frame-all {border: solid 1px black;}
+table.grid-none.frame-none {border-width: 0px;}
+
+.big {font-size: 30pt;}
+.vocab{font-weight: bold; font-style: italic;}
+.right{text-align: right;}
+.acknowledgment {
+  border-top: solid 1px black; 
+  font-style: italic; 
+  font-size: 8pt;
+}
+.lesson-point {
+  border-top: solid 1px black; 
+  border-bottom: solid 1px black; 
+  color: black;
+  font-weight: bold;
+}
+
+.web-page-only, #footer { display: none; visibility: hidden; }
+
+/* Callout boxes */
+.strategy-box, .notice-box {
+  background: #efefef;
+  border: solid 5px !important;
+  margin: 15px auto;
+  width: 100%;
+}
+.strategy-box { border-color: #1a73b5 !important; }
+.notice-box   { border-color: #7747a5 !important; }
+.strategy-box td, .notice-box td{ padding: 10px; }
+.strategy-box .title, .notice-box .title{
+  width: 100%;
+  display: block;
+  font-weight: bold;
+  font-size: 24px;
+  clear: both;
+  margin: 100px;
+}
+.strategy-box p.tableblock:first-child, .notice-box p.tableblock:first-child{
+  text-align: center;
+  padding-bottom: 15px;
+}
+.strategy-box .title { color: #1a73b5; }
+.notice-box   .title { color: #7747a5; }
+.strategy-box a, .notice-box a { color: blue; text-decoration: underline; }
+
+/* "Tables" of Evaluation */
+.operator{border-bottom: solid 1px black; text-align: center;}
+.operator * {text-align: center;}
+td {padding: 0px 10px; font-size: 14px;}
+table.expression {
+    font-family:"Courier New", Monaco, monospace;
+    border:     solid 1px black;
+    font-size:  1px;
+    max-width:  400px;
+    color:      #666666;
+    display:    inline-block;
+}
+table.args {border: none; text-align: center;}
+
+.wescheme-string,     .cm-scheme-string    {color: green;}
+.wescheme-number,     .cm-scheme-number    {color: blue;}
+.wescheme-boolean,    .cm-scheme-boolean   {color: darkred;}
+.wescheme-character,  .cm-scheme-character {color: orange;}
+.wescheme-symbol,     .cm-scheme-symbol    {color: steelblue;}
+.wescheme-comment,    .cm-scheme-comment   {color: orange; }
+
+.racket, .pyret, .studentAnswerCode, .studentAnswer, .pyretkeyword, .keyword_only {
+    font-family:"Courier New", Monaco, monospace !important; 
+    color: black;
+}
+
+/* Design Recipe */
+.recipe_instructions { font-style: italic; }
+table.recipe_title {
+  color:              white;
+  background:         gray;
+  display:            block;
+  padding:            0px;
+  font-size:          1.1rem;
+  font-weight:        bold;
+}</style>
+
+    <script src="../../lib/langtable.js"></script>
+    <script src="../../dependency-graph.js"></script>
+    <script src="../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:window.location.href,
+    filename:"Problem Decomposition",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="article LessonPlan wescheme" onload="renderSaveToDrive()">
+<span id="body" onload="renderSaveToDrive()">
+<span id="header">
+<h1>Problem Decomposition</h1>
+
+  <span id="savetodrive-div"></span>
+
+</span>
+<span id="content">
+<span id="preamble_disabled" class="lessonSummary">
+<span class="sectionbody">
+<script>
+function preselect(klass) {
+  const items = document.getElementsByClassName(klass);
+  for (let i = 0; i < items.length; i++) {
+    items[i].style.display = 'none';
+  }
+  if (items.length > 0) {
+    items[0].style.display = 'block';
+  }
+}
+window.onload = function() {
+  preselect('alignedStandards');
+  preselect('alignedTextbooks');
+  preselect('alignedPractices');
+}
+function showStandardsAlignment() {
+  const selectTag = document.getElementsByClassName('standardsAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const stdTables = document.getElementsByClassName('alignedStandards');
+  //const intro = document.getElementsByClassName('alignedStandardsIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < stdTables.length; i++) {
+    const stdTable = stdTables[i];
+    stdTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optStd = opt.value;
+      for (let j = 0; j < stdTables.length; j++) {
+        const stdTable = stdTables[j];
+        if (stdTable.classList.contains(optStd)) {
+          stdTable.style.display = 'block';
+         // introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+function toggleNonPrereqDisplay() {
+  const inputTag = document.getElementsByClassName('sidebarinput')[0];
+  const checkedP = inputTag.checked;
+  const lessonTable = document.getElementsByClassName('sidebarlessons')[0];
+  const lis = lessonTable.getElementsByTagName('li');
+  for (let i = 0; i < lis.length; i++) {
+    const li = lis[i];
+    const lesson = li.getElementsByClassName('prerequisite');
+    if (lesson.length === 0) {
+      li.style.display = checkedP ? 'none' : 'block';
+    }
+  }
+}
+</script>
+<script>
+function showTextbooksAlignment() {
+  const selectTag = document.getElementsByClassName('textbooksAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const textbookTables = document.getElementsByClassName('alignedTextbooks');
+  //const intro = document.getElementsByClassName('alignedTextbooksIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < textbookTables.length; i++) {
+    const textbookTable = textbookTables[i];
+    textbookTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optTextbook = opt.value;
+      for (let j = 0; j < textbookTables.length; j++) {
+        const textbookTable = textbookTables[j];
+        if (textbookTable.classList.contains(optTextbook)) {
+          textbookTable.style.display = 'block';
+          //introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+</script>
+<script>
+function showPracticesAlignment() {
+  const selectTag = document.getElementsByClassName('practicesAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const practiceTables = document.getElementsByClassName('alignedPractices');
+  for (let i = 0; i < practiceTables.length; i++) {
+    const practiceTable = practiceTables[i];
+    practiceTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optPractice = opt.value;
+      for (let j = 0; j < practiceTables.length; j++) {
+        const practiceTable = practiceTables[j];
+        if (practiceTable.classList.contains(optPractice)) {
+          practiceTable.style.display = 'block';
+        }
+      }
+    }
+  }
+}
+</script>
+<span class="paragraph">
+<!-- </p>
+</span>
+--></span><span class="sidebar"><span id="toggle"></span><span class="paragraph"><!--
+<span class="paragraph">
+<p>
+--><span class="sidebarlessons"><strong>Lessons</strong>
+<ul></ul></span>
+</span>
+<table class="tableblock frame-all grid-all stretch sidebarstandards">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p><strong>Standards in this Lesson</strong>
+<select class="standardsAlignmentSelect"  onchange="showStandardsAlignment()"><option selected="selected" value="standards-CSTA">CSTA</option><option value="standards-Alabama">Alabama</option><option value="standards-Arkansas">Arkansas</option><option value="standards-California">California</option><option value="standards-Colorado">Colorado</option><option value="standards-Connecticut">Connecticut</option><option value="standards-Delaware">Delaware</option><option value="standards-Georgia">Georgia</option><option value="standards-Hawaii">Hawaii</option><option value="standards-Idaho">Idaho</option><option value="standards-Illinois">Illinois</option><option value="standards-Iowa">Iowa</option><option value="standards-Kansas">Kansas</option><option value="standards-Kentucky">Kentucky</option><option value="standards-Louisiana">Louisiana</option><option value="standards-Maine">Maine</option><option value="standards-Michigan">Michigan</option><option value="standards-Maryland">Maryland</option><option value="standards-Massachusetts">Massachusetts</option><option value="standards-Mississippi">Mississippi</option><option value="standards-Missouri">Missouri</option><option value="standards-Montana">Montana</option><option value="standards-New Hampshire">New Hampshire</option><option value="standards-Nevada">Nevada</option><option value="standards-New Jersey">New Jersey</option><option value="standards-New Mexico">New Mexico</option><option value="standards-North Carolina">North Carolina</option><option value="standards-North Dakota">North Dakota</option><option value="standards-New York">New York</option><option value="standards-Oklahoma">Oklahoma</option><option value="standards-Ohio">Ohio</option><option value="standards-Oregon">Oregon</option><option value="standards-Pennsylvania">Pennsylvania</option><option value="standards-Rhode Island">Rhode Island</option><option value="standards-South Dakota">South Dakota</option><option value="standards-Tennessee">Tennessee</option><option value="standards-Utah">Utah</option><option value="standards-Vermont">Vermont</option><option value="standards-Washington">Washington</option><option value="standards-West Virginia">West Virginia</option><option value="standards-Wisconsin">Wisconsin</option><option value="standards-Wyoming">Wyoming</option></select></p>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="dlist standards-CSTA">
+<span class="title"><a href="https://csteachers.org/page/standards">CSTA Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>1B-AP-11</dt>
+<dd>
+<p>Decompose (break down) problems into smaller, manageable subproblems to facilitate the program development process.</p>
+</dd>
+<dt class="hdlist1"><br/>2-AP-11</dt>
+<dd>
+<p>Create clearly named variables that represent different data types and perform operations on their values.</p>
+</dd>
+<dt class="hdlist1"><br/>2-AP-13</dt>
+<dd>
+<p>Decompose problems and subproblems into parts to facilitate the design, implementation, and review of programs</p>
+</dd>
+<dt class="hdlist1"><br/>2-AP-17</dt>
+<dd>
+<p>Systematically test and refine programs using a range of test cases</p>
+</dd>
+<dt class="hdlist1"><br/>2-AP-19</dt>
+<dd>
+<p>Document programs in order to make them easier to follow, test, and debug.</p>
+</dd>
+<dt class="hdlist1"><br/>3A-AP-17</dt>
+<dd>
+<p>Decompose problems into smaller components through systematic analysis, using constructs such as procedures, modules, and/or objects.</p>
+</dd>
+<dt class="hdlist1"><br/>3B-AP-14</dt>
+<dd>
+<p>Construct solutions to problems using student-created components, such as procedures, modules and/or objects.</p>
+</dd>
+<dt class="hdlist1"><br/>3B-AP-21</dt>
+<dd>
+<p>Develop and use a series of test cases to verify that a program performs according to its design specifications.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Alabama">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Alabama Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>AL.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>AL.7.EE.A.2</dt>
+<dd>
+<p>Understand that rewriting an expression in different forms in a problem context can shed light on the problem and how the quantities in it are related.</p>
+</dd>
+<dt class="hdlist1"><br/>AL.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>AL.HSF.BF.A</dt>
+<dd>
+<p>Build a function that models a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1"><br/>AL.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1"><br/>AL.HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.</p>
+</dd>
+<dt class="hdlist1"><br/>AL.HSF.BF.B</dt>
+<dd>
+<p>Build new functions from existing functions.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Arkansas">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Arkansas Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>AR.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>AR.7.EE.A.2</dt>
+<dd>
+<p>Understand that rewriting an expression in different forms in a problem context can shed light on the problem and how the quantities in it are related.</p>
+</dd>
+<dt class="hdlist1"><br/>AR.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>AR.HSF.BF.A</dt>
+<dd>
+<p>Build a function that models a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1"><br/>AR.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1"><br/>AR.HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.</p>
+</dd>
+<dt class="hdlist1"><br/>AR.HSF.BF.B</dt>
+<dd>
+<p>Build new functions from existing functions.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-California">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">California Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>CA.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>CA.7.EE.A.2</dt>
+<dd>
+<p>Understand that rewriting an expression in different forms in a problem context can shed light on the problem and how the quantities in it are related.</p>
+</dd>
+<dt class="hdlist1"><br/>CA.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>CA.HSF.BF.A</dt>
+<dd>
+<p>Build a function that models a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1"><br/>CA.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1"><br/>CA.HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.</p>
+</dd>
+<dt class="hdlist1"><br/>CA.HSF.BF.B</dt>
+<dd>
+<p>Build new functions from existing functions.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Colorado">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Colorado Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>CO.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>CO.7.EE.A.2</dt>
+<dd>
+<p>Understand that rewriting an expression in different forms in a problem context can shed light on the problem and how the quantities in it are related.</p>
+</dd>
+<dt class="hdlist1"><br/>CO.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>CO.HSF.BF.A</dt>
+<dd>
+<p>Build a function that models a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1"><br/>CO.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1"><br/>CO.HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.</p>
+</dd>
+<dt class="hdlist1"><br/>CO.HSF.BF.B</dt>
+<dd>
+<p>Build new functions from existing functions.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Connecticut">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Connecticut Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>CT.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>CT.7.EE.A.2</dt>
+<dd>
+<p>Understand that rewriting an expression in different forms in a problem context can shed light on the problem and how the quantities in it are related.</p>
+</dd>
+<dt class="hdlist1"><br/>CT.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>CT.HSF.BF.A</dt>
+<dd>
+<p>Build a function that models a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1"><br/>CT.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1"><br/>CT.HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.</p>
+</dd>
+<dt class="hdlist1"><br/>CT.HSF.BF.B</dt>
+<dd>
+<p>Build new functions from existing functions.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Delaware">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Delaware Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>DE.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>DE.7.EE.A.2</dt>
+<dd>
+<p>Understand that rewriting an expression in different forms in a problem context can shed light on the problem and how the quantities in it are related.</p>
+</dd>
+<dt class="hdlist1"><br/>DE.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>DE.HSF.BF.A</dt>
+<dd>
+<p>Build a function that models a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1"><br/>DE.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1"><br/>DE.HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.</p>
+</dd>
+<dt class="hdlist1"><br/>DE.HSF.BF.B</dt>
+<dd>
+<p>Build new functions from existing functions.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Georgia">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Delaware Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>GA.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>GA.7.EE.A.2</dt>
+<dd>
+<p>Understand that rewriting an expression in different forms in a problem context can shed light on the problem and how the quantities in it are related.</p>
+</dd>
+<dt class="hdlist1"><br/>GA.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>GA.HSF.BF.A</dt>
+<dd>
+<p>Build a function that models a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1"><br/>GA.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1"><br/>GA.HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.</p>
+</dd>
+<dt class="hdlist1"><br/>GA.HSF.BF.B</dt>
+<dd>
+<p>Build new functions from existing functions.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Hawaii">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Hawaii Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>HI.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>HI.7.EE.A.2</dt>
+<dd>
+<p>Understand that rewriting an expression in different forms in a problem context can shed light on the problem and how the quantities in it are related.</p>
+</dd>
+<dt class="hdlist1"><br/>HI.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>HI.HSF.BF.A</dt>
+<dd>
+<p>Build a function that models a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1"><br/>HI.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1"><br/>HI.HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.</p>
+</dd>
+<dt class="hdlist1"><br/>HI.HSF.BF.B</dt>
+<dd>
+<p>Build new functions from existing functions.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Idaho">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Idaho Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>ID.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>ID.7.EE.A.2</dt>
+<dd>
+<p>Understand that rewriting an expression in different forms in a problem context can shed light on the problem and how the quantities in it are related.</p>
+</dd>
+<dt class="hdlist1"><br/>ID.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>ID.HSF.BF.A</dt>
+<dd>
+<p>Build a function that models a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1"><br/>ID.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1"><br/>ID.HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.</p>
+</dd>
+<dt class="hdlist1"><br/>ID.HSF.BF.B</dt>
+<dd>
+<p>Build new functions from existing functions.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Illinois">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Illinois Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>IL.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>IL.7.EE.A.2</dt>
+<dd>
+<p>Understand that rewriting an expression in different forms in a problem context can shed light on the problem and how the quantities in it are related.</p>
+</dd>
+<dt class="hdlist1"><br/>IL.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>IL.HSF.BF.A</dt>
+<dd>
+<p>Build a function that models a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1"><br/>IL.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1"><br/>IL.HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.</p>
+</dd>
+<dt class="hdlist1"><br/>IL.HSF.BF.B</dt>
+<dd>
+<p>Build new functions from existing functions.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Iowa">
+<span class="title"><a href="https://iowacore.gov/standards/iowa-core-standards">Iowa Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>IA.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>IA.7.EE.A.2</dt>
+<dd>
+<p>Understand that rewriting an expression in different forms in a problem context can shed light on the problem and how the quantities in it are related.</p>
+</dd>
+<dt class="hdlist1"><br/>IA.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>IA.HSF.BF.A</dt>
+<dd>
+<p>Build a function that models a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1"><br/>IA.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1"><br/>IA.HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.</p>
+</dd>
+<dt class="hdlist1"><br/>IA.HSF.BF.B</dt>
+<dd>
+<p>Build new functions from existing functions.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Kansas">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Kansas Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>KS.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>KS.7.EE.A.2</dt>
+<dd>
+<p>Understand that rewriting an expression in different forms in a problem context can shed light on the problem and how the quantities in it are related.</p>
+</dd>
+<dt class="hdlist1"><br/>KS.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>KS.HSF.BF.A</dt>
+<dd>
+<p>Build a function that models a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1"><br/>KS.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1"><br/>KS.HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.</p>
+</dd>
+<dt class="hdlist1"><br/>KS.HSF.BF.B</dt>
+<dd>
+<p>Build new functions from existing functions.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Kentucky">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Kentucky Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>KY.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>KY.7.EE.A.2</dt>
+<dd>
+<p>Understand that rewriting an expression in different forms in a problem context can shed light on the problem and how the quantities in it are related.</p>
+</dd>
+<dt class="hdlist1"><br/>KY.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>KY.HSF.BF.A</dt>
+<dd>
+<p>Build a function that models a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1"><br/>KY.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1"><br/>KY.HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.</p>
+</dd>
+<dt class="hdlist1"><br/>KY.HSF.BF.B</dt>
+<dd>
+<p>Build new functions from existing functions.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Louisiana">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Louisiana Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>LA.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>LA.7.EE.A.2</dt>
+<dd>
+<p>Understand that rewriting an expression in different forms in a problem context can shed light on the problem and how the quantities in it are related.</p>
+</dd>
+<dt class="hdlist1"><br/>LA.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>LA.HSF.BF.A</dt>
+<dd>
+<p>Build a function that models a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1"><br/>LA.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1"><br/>LA.HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.</p>
+</dd>
+<dt class="hdlist1"><br/>LA.HSF.BF.B</dt>
+<dd>
+<p>Build new functions from existing functions.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Maine">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Maine Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>ME.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>ME.7.EE.A.2</dt>
+<dd>
+<p>Understand that rewriting an expression in different forms in a problem context can shed light on the problem and how the quantities in it are related.</p>
+</dd>
+<dt class="hdlist1"><br/>ME.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>ME.HSF.BF.A</dt>
+<dd>
+<p>Build a function that models a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1"><br/>ME.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1"><br/>ME.HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.</p>
+</dd>
+<dt class="hdlist1"><br/>ME.HSF.BF.B</dt>
+<dd>
+<p>Build new functions from existing functions.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Michigan">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Michigan Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>MI.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>MI.7.EE.A.2</dt>
+<dd>
+<p>Understand that rewriting an expression in different forms in a problem context can shed light on the problem and how the quantities in it are related.</p>
+</dd>
+<dt class="hdlist1"><br/>MI.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>MI.HSF.BF.A</dt>
+<dd>
+<p>Build a function that models a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1"><br/>MI.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1"><br/>MI.HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.</p>
+</dd>
+<dt class="hdlist1"><br/>MI.HSF.BF.B</dt>
+<dd>
+<p>Build new functions from existing functions.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Maryland">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Maryland Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>MD.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>MD.7.EE.A.2</dt>
+<dd>
+<p>Understand that rewriting an expression in different forms in a problem context can shed light on the problem and how the quantities in it are related.</p>
+</dd>
+<dt class="hdlist1"><br/>MD.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>MD.HSF.BF.A</dt>
+<dd>
+<p>Build a function that models a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1"><br/>MD.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1"><br/>MD.HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.</p>
+</dd>
+<dt class="hdlist1"><br/>MD.HSF.BF.B</dt>
+<dd>
+<p>Build new functions from existing functions.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Massachusetts">
+<span class="title"><a href="https://www.doe.mass.edu/frameworks/">Massachusetts Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>MA.6-8.CT.a.2</dt>
+<dd>
+<p>Define a simple function that represents a more complex task/problem and can be reused to solve similar tasks/problems.</p>
+</dd>
+<dt class="hdlist1"><br/>MA.6-8.CT.b.2</dt>
+<dd>
+<p>Use logical reasoning to predict outputs given varying inputs.</p>
+</dd>
+<dt class="hdlist1"><br/>MA.6-8.CT.b.3</dt>
+<dd>
+<p>Individually and collaboratively decompose a problem and create a sub-solution for each of its parts (e.g., video game, robot obstacle course, making dinner).</p>
+</dd>
+<dt class="hdlist1"><br/>MA.6-8.CT.d.2</dt>
+<dd>
+<p>Use functions to hide the detail in a program.</p>
+</dd>
+<dt class="hdlist1"><br/>MA.6-8.CT.d.5</dt>
+<dd>
+<p>Trace programs step-by-step in order to predict their behavior.</p>
+</dd>
+<dt class="hdlist1"><br/>MA.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>MA.7.EE.A.2</dt>
+<dd>
+<p>Understand that rewriting an expression in different forms in a problem context can shed light on the problem and how the quantities in it are related.</p>
+</dd>
+<dt class="hdlist1"><br/>MA.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>MA.9-12.CT.a.1</dt>
+<dd>
+<p>Discuss and give an example of the value of generalizing and decomposing aspects of a problem in order to solve it more effectively.</p>
+</dd>
+<dt class="hdlist1"><br/>MA.9-12.CT.b.2</dt>
+<dd>
+<p>Represent algorithms using structured language, such as pseudocode.</p>
+</dd>
+<dt class="hdlist1"><br/>MA.HSF.BF.A</dt>
+<dd>
+<p>Build a function that models a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1"><br/>MA.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1"><br/>MA.HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.</p>
+</dd>
+<dt class="hdlist1"><br/>MA.HSF.BF.B</dt>
+<dd>
+<p>Build new functions from existing functions.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Mississippi">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Mississippi Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>MS.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>MS.7.EE.A.2</dt>
+<dd>
+<p>Understand that rewriting an expression in different forms in a problem context can shed light on the problem and how the quantities in it are related.</p>
+</dd>
+<dt class="hdlist1"><br/>MS.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>MS.HSF.BF.A</dt>
+<dd>
+<p>Build a function that models a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1"><br/>MS.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1"><br/>MS.HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.</p>
+</dd>
+<dt class="hdlist1"><br/>MS.HSF.BF.B</dt>
+<dd>
+<p>Build new functions from existing functions.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Missouri">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Missouri Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>MO.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>MO.7.EE.A.2</dt>
+<dd>
+<p>Understand that rewriting an expression in different forms in a problem context can shed light on the problem and how the quantities in it are related.</p>
+</dd>
+<dt class="hdlist1"><br/>MO.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>MO.HSF.BF.A</dt>
+<dd>
+<p>Build a function that models a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1"><br/>MO.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1"><br/>MO.HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.</p>
+</dd>
+<dt class="hdlist1"><br/>MO.HSF.BF.B</dt>
+<dd>
+<p>Build new functions from existing functions.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Montana">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Montana Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>MT.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>MT.7.EE.A.2</dt>
+<dd>
+<p>Understand that rewriting an expression in different forms in a problem context can shed light on the problem and how the quantities in it are related.</p>
+</dd>
+<dt class="hdlist1"><br/>MT.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>MT.HSF.BF.A</dt>
+<dd>
+<p>Build a function that models a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1"><br/>MT.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1"><br/>MT.HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.</p>
+</dd>
+<dt class="hdlist1"><br/>MT.HSF.BF.B</dt>
+<dd>
+<p>Build new functions from existing functions.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist .alignedStandards.standards-New Hampshire">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">New Hampshire Standards</a></span>
+<dl>
+<dt>NH.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt>NH.7.EE.A.2</dt>
+<dd>
+<p>Understand that rewriting an expression in different forms in a problem context can shed light on the problem and how the quantities in it are related.</p>
+</dd>
+<dt>NH.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt>NH.HSF.BF.A</dt>
+<dd>
+<p>Build a function that models a relationship between two quantities.</p>
+</dd>
+<dt>NH.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt>NH.HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.</p>
+</dd>
+<dt>NH.HSF.BF.B</dt>
+<dd>
+<p>Build new functions from existing functions.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Nevada">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Nevada Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>NV.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>NV.7.EE.A.2</dt>
+<dd>
+<p>Understand that rewriting an expression in different forms in a problem context can shed light on the problem and how the quantities in it are related.</p>
+</dd>
+<dt class="hdlist1"><br/>NV.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>NV.HSF.BF.A</dt>
+<dd>
+<p>Build a function that models a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1"><br/>NV.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1"><br/>NV.HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.</p>
+</dd>
+<dt class="hdlist1"><br/>NV.HSF.BF.B</dt>
+<dd>
+<p>Build new functions from existing functions.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist .alignedStandards.standards-New Jersey">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">New Jersey Standards</a></span>
+<dl>
+<dt>NJ.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt>NJ.7.EE.A.2</dt>
+<dd>
+<p>Understand that rewriting an expression in different forms in a problem context can shed light on the problem and how the quantities in it are related.</p>
+</dd>
+<dt>NJ.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt>NJ.HSF.BF.A</dt>
+<dd>
+<p>Build a function that models a relationship between two quantities.</p>
+</dd>
+<dt>NJ.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt>NJ.HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.</p>
+</dd>
+<dt>NJ.HSF.BF.B</dt>
+<dd>
+<p>Build new functions from existing functions.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist .alignedStandards.standards-New Mexico">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">New Mexico Standards</a></span>
+<dl>
+<dt>NM.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt>NM.7.EE.A.2</dt>
+<dd>
+<p>Understand that rewriting an expression in different forms in a problem context can shed light on the problem and how the quantities in it are related.</p>
+</dd>
+<dt>NM.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt>NM.HSF.BF.A</dt>
+<dd>
+<p>Build a function that models a relationship between two quantities.</p>
+</dd>
+<dt>NM.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt>NM.HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.</p>
+</dd>
+<dt>NM.HSF.BF.B</dt>
+<dd>
+<p>Build new functions from existing functions.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist .alignedStandards.standards-North Carolina">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">North Carolina Standards</a></span>
+<dl>
+<dt>NC.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt>NC.7.EE.A.2</dt>
+<dd>
+<p>Understand that rewriting an expression in different forms in a problem context can shed light on the problem and how the quantities in it are related.</p>
+</dd>
+<dt>NC.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt>NC.HSF.BF.A</dt>
+<dd>
+<p>Build a function that models a relationship between two quantities.</p>
+</dd>
+<dt>NC.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt>NC.HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.</p>
+</dd>
+<dt>NC.HSF.BF.B</dt>
+<dd>
+<p>Build new functions from existing functions.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist .alignedStandards.standards-North Dakota">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">North Dakota Standards</a></span>
+<dl>
+<dt>ND.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt>ND.7.EE.A.2</dt>
+<dd>
+<p>Understand that rewriting an expression in different forms in a problem context can shed light on the problem and how the quantities in it are related.</p>
+</dd>
+<dt>ND.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt>ND.HSF.BF.A</dt>
+<dd>
+<p>Build a function that models a relationship between two quantities.</p>
+</dd>
+<dt>ND.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt>ND.HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.</p>
+</dd>
+<dt>ND.HSF.BF.B</dt>
+<dd>
+<p>Build new functions from existing functions.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist .alignedStandards.standards-New York">
+<span class="title"><a href="http://www.nysed.gov/curriculum-instruction/new-york-state-next-generation-mathematics-learning-standards">New York Standards</a></span>
+<dl>
+<dt>NY.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt>NY.7.EE.A.2</dt>
+<dd>
+<p>Understand that rewriting an expression in different forms in a problem context can shed light on the problem and how the quantities in it are related.</p>
+</dd>
+<dt>NY.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt>NY.HSF.BF.A</dt>
+<dd>
+<p>Build a function that models a relationship between two quantities.</p>
+</dd>
+<dt>NY.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt>NY.HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.</p>
+</dd>
+<dt>NY.HSF.BF.B</dt>
+<dd>
+<p>Build new functions from existing functions.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Oklahoma">
+<span class="title"><a href="https://sde.ok.gov/oklahoma-academic-standards">Oklahoma Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>OK.4.AP.M.01</dt>
+<dd>
+<p>Decompose large problems into smaller, manageable subproblems to facilitate the program development process.</p>
+</dd>
+<dt class="hdlist1"><br/>OK.5.AP.M.01</dt>
+<dd>
+<p>Decompose large problems into smaller, manageable subproblems and then into a precise sequence of instructions.</p>
+</dd>
+<dt class="hdlist1"><br/>OK.6.AP.M.01</dt>
+<dd>
+<p>Decompose problems into parts to facilitate the design, implementation, and review of programs.</p>
+</dd>
+<dt class="hdlist1"><br/>OK.7.AP.M.01</dt>
+<dd>
+<p>Decompose problems into parts to facilitate the design, implementation, and review of increasingly complex programs.</p>
+</dd>
+<dt class="hdlist1"><br/>OK.7.CS.T.01</dt>
+<dd>
+<p>Identify and fix increasingly complex software and hardware problems with computing devices and their components.</p>
+</dd>
+<dt class="hdlist1"><br/>OK.8.AP.M.01</dt>
+<dd>
+<p>Decompose problems and subproblems into parts to facilitate the design, implementation, and review of complex programs.</p>
+</dd>
+<dt class="hdlist1"><br/>OK.8.CS.T.01</dt>
+<dd>
+<p>Systematically identify, fix, and document increasingly complex software and hardware problems with computing devices and their components.</p>
+</dd>
+<dt class="hdlist1"><br/>OK.A1.A.3.1</dt>
+<dd>
+<p>Solve equations involving several variables for one variable in terms of the others.</p>
+</dd>
+<dt class="hdlist1"><br/>OK.L1.AP.M.01</dt>
+<dd>
+<p>Break down a solution into procedures using systematic analysis and design.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Ohio">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Ohio Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>OH.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>OH.7.EE.A.2</dt>
+<dd>
+<p>Understand that rewriting an expression in different forms in a problem context can shed light on the problem and how the quantities in it are related.</p>
+</dd>
+<dt class="hdlist1"><br/>OH.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>OH.HSF.BF.A</dt>
+<dd>
+<p>Build a function that models a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1"><br/>OH.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1"><br/>OH.HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.</p>
+</dd>
+<dt class="hdlist1"><br/>OH.HSF.BF.B</dt>
+<dd>
+<p>Build new functions from existing functions.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Oregon">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Oregon Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>OR.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>OR.7.EE.A.2</dt>
+<dd>
+<p>Understand that rewriting an expression in different forms in a problem context can shed light on the problem and how the quantities in it are related.</p>
+</dd>
+<dt class="hdlist1"><br/>OR.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>OR.HSF.BF.A</dt>
+<dd>
+<p>Build a function that models a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1"><br/>OR.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1"><br/>OR.HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.</p>
+</dd>
+<dt class="hdlist1"><br/>OR.HSF.BF.B</dt>
+<dd>
+<p>Build new functions from existing functions.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Pennsylvania">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Pennsylvania Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>PA.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>PA.7.EE.A.2</dt>
+<dd>
+<p>Understand that rewriting an expression in different forms in a problem context can shed light on the problem and how the quantities in it are related.</p>
+</dd>
+<dt class="hdlist1"><br/>PA.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>PA.HSF.BF.A</dt>
+<dd>
+<p>Build a function that models a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1"><br/>PA.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1"><br/>PA.HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.</p>
+</dd>
+<dt class="hdlist1"><br/>PA.HSF.BF.B</dt>
+<dd>
+<p>Build new functions from existing functions.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist .alignedStandards.standards-Rhode Island">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Rhode Island Standards</a></span>
+<dl>
+<dt>RI.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt>RI.7.EE.A.2</dt>
+<dd>
+<p>Understand that rewriting an expression in different forms in a problem context can shed light on the problem and how the quantities in it are related.</p>
+</dd>
+<dt>RI.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt>RI.HSF.BF.A</dt>
+<dd>
+<p>Build a function that models a relationship between two quantities.</p>
+</dd>
+<dt>RI.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt>RI.HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.</p>
+</dd>
+<dt>RI.HSF.BF.B</dt>
+<dd>
+<p>Build new functions from existing functions.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist .alignedStandards.standards-South Dakota">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">South Dakota Standards</a></span>
+<dl>
+<dt>SD.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt>SD.7.EE.A.2</dt>
+<dd>
+<p>Understand that rewriting an expression in different forms in a problem context can shed light on the problem and how the quantities in it are related.</p>
+</dd>
+<dt>SD.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt>SD.HSF.BF.A</dt>
+<dd>
+<p>Build a function that models a relationship between two quantities.</p>
+</dd>
+<dt>SD.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt>SD.HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.</p>
+</dd>
+<dt>SD.HSF.BF.B</dt>
+<dd>
+<p>Build new functions from existing functions.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Tennessee">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Tennessee Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>TN.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>TN.7.EE.A.2</dt>
+<dd>
+<p>Understand that rewriting an expression in different forms in a problem context can shed light on the problem and how the quantities in it are related.</p>
+</dd>
+<dt class="hdlist1"><br/>TN.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>TN.HSF.BF.A</dt>
+<dd>
+<p>Build a function that models a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1"><br/>TN.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1"><br/>TN.HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.</p>
+</dd>
+<dt class="hdlist1"><br/>TN.HSF.BF.B</dt>
+<dd>
+<p>Build new functions from existing functions.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Utah">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Utah Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>UT.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>UT.7.EE.A.2</dt>
+<dd>
+<p>Understand that rewriting an expression in different forms in a problem context can shed light on the problem and how the quantities in it are related.</p>
+</dd>
+<dt class="hdlist1"><br/>UT.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>UT.HSF.BF.A</dt>
+<dd>
+<p>Build a function that models a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1"><br/>UT.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1"><br/>UT.HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.</p>
+</dd>
+<dt class="hdlist1"><br/>UT.HSF.BF.B</dt>
+<dd>
+<p>Build new functions from existing functions.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Vermont">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Vermont Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>VT.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>VT.7.EE.A.2</dt>
+<dd>
+<p>Understand that rewriting an expression in different forms in a problem context can shed light on the problem and how the quantities in it are related.</p>
+</dd>
+<dt class="hdlist1"><br/>VT.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>VT.HSF.BF.A</dt>
+<dd>
+<p>Build a function that models a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1"><br/>VT.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1"><br/>VT.HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.</p>
+</dd>
+<dt class="hdlist1"><br/>VT.HSF.BF.B</dt>
+<dd>
+<p>Build new functions from existing functions.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Washington">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Washington Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>WA.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>WA.7.EE.A.2</dt>
+<dd>
+<p>Understand that rewriting an expression in different forms in a problem context can shed light on the problem and how the quantities in it are related.</p>
+</dd>
+<dt class="hdlist1"><br/>WA.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>WA.HSF.BF.A</dt>
+<dd>
+<p>Build a function that models a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1"><br/>WA.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1"><br/>WA.HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.</p>
+</dd>
+<dt class="hdlist1"><br/>WA.HSF.BF.B</dt>
+<dd>
+<p>Build new functions from existing functions.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist .alignedStandards.standards-West Virginia">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">West Virginia Standards</a></span>
+<dl>
+<dt>WV.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt>WV.7.EE.A.2</dt>
+<dd>
+<p>Understand that rewriting an expression in different forms in a problem context can shed light on the problem and how the quantities in it are related.</p>
+</dd>
+<dt>WV.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt>WV.HSF.BF.A</dt>
+<dd>
+<p>Build a function that models a relationship between two quantities.</p>
+</dd>
+<dt>WV.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt>WV.HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.</p>
+</dd>
+<dt>WV.HSF.BF.B</dt>
+<dd>
+<p>Build new functions from existing functions.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Wisconsin">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Wisconsin Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>WI.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>WI.7.EE.A.2</dt>
+<dd>
+<p>Understand that rewriting an expression in different forms in a problem context can shed light on the problem and how the quantities in it are related.</p>
+</dd>
+<dt class="hdlist1"><br/>WI.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>WI.HSF.BF.A</dt>
+<dd>
+<p>Build a function that models a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1"><br/>WI.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1"><br/>WI.HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.</p>
+</dd>
+<dt class="hdlist1"><br/>WI.HSF.BF.B</dt>
+<dd>
+<p>Build new functions from existing functions.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Wyoming">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Wyoming Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>WY.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>WY.7.EE.A.2</dt>
+<dd>
+<p>Understand that rewriting an expression in different forms in a problem context can shed light on the problem and how the quantities in it are related.</p>
+</dd>
+<dt class="hdlist1"><br/>WY.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>WY.HSF.BF.A</dt>
+<dd>
+<p>Build a function that models a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1"><br/>WY.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1"><br/>WY.HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.</p>
+</dd>
+<dt class="hdlist1"><br/>WY.HSF.BF.B</dt>
+<dd>
+<p>Build new functions from existing functions.</p>
+</dd>
+</dl>
+</span></span></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch sidebartextbooks">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p><strong>Textbook Alignment</strong>
+<select class="textbooksAlignmentSelect"  onchange="showTextbooksAlignment()"><option selected="selected" value="textbook-IM_6"><a href="https://illustrativemathematics.org/">IM 6 Math™</a></option><option value="textbook-IM_Alg_1"><a href="https://illustrativemathematics.org/">IM Algebra 1</a></option></select></p>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="dlist alignedTextbooks textbook-IM_6">
+<span class="title"><a href="https://illustrativemathematics.org/">IM 6 Math™</a></span>
+<dl>
+<dt class="hdlist1"><br/>IM.6.6.8</dt>
+<dd>
+<p>Equal and Equivalent</p>
+</dd>
+</dl>
+</span>
+<span class="dlist alignedTextbooks textbook-IM_Alg_1">
+<span class="title"><a href="https://illustrativemathematics.org/">IM Algebra 1</a></span>
+<dl>
+<dt class="hdlist1"><br/>IM.Alg1.2.8</dt>
+<dd>
+<p>Which Variable to Solve for? (Part 1)</p>
+</dd>
+<dt class="hdlist1"><br/>IM.Alg1.2.6</dt>
+<dd>
+<p>Equivalent Equations</p>
+</dd>
+</dl>
+</span></span></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch sidebarpractices">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p><strong>Practices in this Lesson</strong>
+<select class="practicesAlignmentSelect"  onchange="showPracticesAlignment()"><option selected="selected" value="practices-MLR"><a href="https://achievethecore.org/peersandpedagogy/developing-math-language-routines/">Math Lang. Routines</a></option><option value="practices-CC"><a href="http://corestandards.org/Math/">Math</a></option></select></p>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="dlist alignedPractices practices-MLR">
+<span class="title"><a href="https://achievethecore.org/peersandpedagogy/developing-math-language-routines/">Math Lang. Routines</a></span>
+<dl>
+<dt class="hdlist1"><br/>MLR.7</dt>
+<dd>
+<p>Compare and Connect</p>
+</dd>
+</dl>
+</span>
+<span class="dlist alignedPractices practices-CC">
+<span class="title"><a href="http://corestandards.org/Math/">Math</a></span>
+<dl>
+<dt class="hdlist1"><br/>MP.4</dt>
+<dd>
+<p>Model with mathematics</p>
+</dd>
+<dt class="hdlist1"><br/>MP.6</dt>
+<dd>
+<p>Attend to precision</p>
+</dd>
+<dt class="hdlist1"><br/>MP.1</dt>
+<dd>
+<p>Make sense of problems and persevere in solving them</p>
+</dd>
+<dt class="hdlist1"><br/>MP.3</dt>
+<dd>
+<p>Construct viable arguments and critique the reasoning of others</p>
+</dd>
+</dl>
+</span></span></td>
+</tr>
+</tbody>
+</table>
+<span class="paragraph">
+<!-- </p>
+</span>
+--></span><!--
+<span class="paragraph">
+<p>
+-->
+</span>
+<span class="paragraph">
+<p><span class="other-proglang">(Also available in <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/../../lessons/problem-decomposition/index.shtml">Pyret</a>)</span></p>
+</span>
+<span class="paragraph description">
+<p>Students take a closer look at how functions can work together by investigating the relationship between revenue, cost, and profit.</p>
+</span>
+<table class="tableblock frame-all grid-all stripes-none stretch left-header preamble">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>Lesson Goals</p>
+</span></span></td>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>Students will be able to:</p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p>Write a <span class="vocab">function</span> that explicitly uses another function.</p>
+</li>
+<li>
+<p>Explain the benefits and drawbacks of functions that depend on each other.</p>
+</li>
+<li>
+<p>Explain the difference between bottom-up and top-down strategies.</p>
+</li>
+</ul>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>Student-Facing Lesson Goals</p>
+</span></span></td>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="ulist">
+<ul>
+<li>
+<p>I can explain the benefits and drawbacks of functions that use other functions.</p>
+</li>
+<li>
+<p>I can write a function that uses another function.</p>
+</li>
+</ul>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>Materials</p>
+</span></span></td>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="ulist materials-links">
+<ul>
+<li>
+<p><a href="https://docs.google.com/presentation/d/1j4OnzlWPIavNZj28VSD1rXnsJEjScfwjZ5lg_kvAJ7w/" target="_blank" rel="noopener">Lesson Slides</a></p>
+</li>
+<li>
+<p><span class="StarterFile"><a href="https://www.wescheme.org/openEditor?publicId=vc8K8Xmlin" target="_blank" rel="noopener">Sally&#8217;s Lemonade Starter File</a></span></p>
+</li>
+<li>
+<p><span class="materialSectionPlaceholder"> </span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/../../lessons/problem-decomposition-wescheme/pages/revenue-and-cost.html" target="_blank" rel="noopener">Word Problems: revenue&#x2c; cost</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/../../lessons/problem-decomposition-wescheme/pages/profit.html" target="_blank" rel="noopener">Word Problem: profit</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/../../lessons/problem-decomposition-wescheme/pages/profit-discussion.html" target="_blank" rel="noopener">Profit - More than one Way!</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/../../lessons/problem-decomposition-wescheme/pages/topdown-bottomup-discussion.html" target="_blank" rel="noopener">Top Down or Bottom Up</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/../../lessons/problem-decomposition-wescheme/pages/sallys-bike.html" target="_blank" rel="noopener">Sally&#8217;s Bike</a></span></p>
+</li>
+<li>
+<p><strong>Classroom visual:</strong> <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/javascript:showLangTable()">Language Table</a></p>
+</li>
+</ul>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>Key Points for the Facilitator</p>
+</span></span></td>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="ulist">
+<ul>
+<li>
+<p>There are several ways to write the <code class="racket">profit</code> function - use this opportunity for discussion and to promote higher-order critical thinking.</p>
+</li>
+<li>
+<p>If students are struggling with understanding the basics of the problem, start by coming up with examples of <code class="racket">cost</code> and <code class="racket">revenue</code>.  If Sally sells one glass, what is her total revenue?  How much does it cost her to produce that one glass?</p>
+</li>
+<li>
+<p>Ensure students understand the difference between "revenue" and "profit", and that "cost" refers to the cost of <em>making</em> the lemonade, not the amount Sally is charging.</p>
+</li>
+</ul>
+</span></span></td>
+</tr>
+</tbody>
+</table>
+<span class="dlist glossary">
+<span class="title">Glossary</span>
+<dl>
+<dt class="hdlist1"><br/>function</dt>
+<dd>
+<p>a relation from a set of inputs to a set of possible outputs, where each input is related to exactly one output</p>
+</dd>
+</dl>
+</span>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<table class="grid-none frame-none section-heading"><tr><td width="65%">Problem Decomposition </td><td width="35%">30 minutes</td></tr></table>
+<span class="sectionbody">
+<span class="sect2 lesson-section-2">
+<h3 id="_overview">Overview</h3>
+<span class="paragraph">
+<p>Students are introduced to word problems that can be broken down into <em>multiple</em> problems, the solutions to which can be composed to solve other problems. They adapt the Design Recipe to handle this situation.</p>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_launch">Launch</h3>
+<span class="paragraph">
+<p>Display the following image:</p>
+</span>
+<span class="paragraph">
+<p><span class="centered-image"><span class="image-figure"><span class="image"><img src="images/ac3a4e8670a3e7ca.png" alt="Lemonade Stand Ideas including: charge $1.75, ask mom about cups, new bike = $198, how much lemonade? sugar? lemons? powdered drink mix?" width="400"></span><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/images/ac3a4e8670a3e7ca.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></p>
+</span>
+<span class="paragraph">
+<p>Have students share everything they Notice about the image. Then, have them share what they Wonder.</p>
+</span>
+<span class="ulist lesson-instruction">
+<ul>
+<li>
+<p>One example of a <em>relationship</em> we can find in this situation is that every glass sold incurs <strong>costs</strong>. Sally will need lemons, sugar, powdered drink mix, cups, and water.</p>
+</li>
+<li>
+<p>What other relationships can you find? <em>Below are some possible observations students might share; it&#8217;s okay if students are not confident using terms such as cost, revenue, and profit!</em></p>
+<span class="ulist">
+<ul>
+<li>
+<p><em>Every glass sold brings in $1.75 in <strong>revenue</strong>.</em></p>
+</li>
+<li>
+<p><em>Every glass sold brings in some amount of <strong>profit</strong>: it costs a certain amount to make, but it brings in another amount in revenue.</em></p>
+</li>
+<li>
+<p><em>The total cost of the bike will be depend on the tax rate.</em></p>
+</li>
+<li>
+<p><em>In order to figure out how many lemonade sales it will take to pay for the bike, we&#8217;d need to to divide the cost (with tax) by the profit per glass.</em></p>
+</li>
+</ul>
+</span>
+</li>
+</ul>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_investigate">Investigate</h3>
+<span class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Define functions for <code class="racket">revenue</code> and <code class="racket">cost</code> on <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/../../lessons/problem-decomposition-wescheme/pages/revenue-and-cost.html" target="_blank" rel="noopener">Revenue & Cost</a>. <em>Note: The information you need to write the cost function is provided in the Design Recipe word problem!</em></p>
+</li>
+<li>
+<p>Once you&#8217;ve defined the functions, open <a href="https://www.wescheme.org/openEditor?publicId=vc8K8Xmlin" target="_blank" rel="noopener">Sally&#8217;s Lemonade Starter File</a>.</p>
+</li>
+<li>
+<p>Enter your code for <code class="racket">revenue</code> (including all examples and definitions) below the first prompt. Enter your code for <code class="racket">cost</code> below the second prompt. Click "Run" and make sure your tests pass.</p>
+</li>
+<li>
+<p>What is the difference between <em>revenue</em> and <em>profit</em>?</p>
+<span class="ulist">
+<ul>
+<li>
+<p><em>Revenue is the total amount of money that comes in, profit is the remaining money <strong>after cost has been subtracted</strong>.</em></p>
+</li>
+</ul>
+</span>
+</li>
+<li>
+<p>How could Sally <em>increase</em> her profits?</p>
+<span class="ulist">
+<ul>
+<li>
+<p><em>By decreasing her costs, raising her prices (which increases revenue), by selling more lemonade.</em></p>
+</li>
+</ul>
+</span>
+</li>
+<li>
+<p>What is the <em>relationship</em> between profit, cost, and revenue?</p>
+<span class="ulist">
+<ul>
+<li>
+<p><em>Profit = Revenue - Cost</em></p>
+</li>
+</ul>
+</span>
+</li>
+</ul>
+</span>
+<span class="paragraph">
+<p>Ensure that students have correctly defined the functions for <code class="racket">revenue</code> and <code class="racket">cost</code> before moving onto the next task - using the Design Recipe to define <code class="racket">profit</code>.</p>
+</span>
+<span class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Complete <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/../../lessons/problem-decomposition-wescheme/pages/profit.html" target="_blank" rel="noopener">Word Problem: profit</a>, using the Design Recipe. (There are multiple correct solutions!)</p>
+</li>
+<li>
+<p>Add your code for <code class="racket">profit</code> in <a href="https://www.wescheme.org/openEditor?publicId=vc8K8Xmlin" target="_blank" rel="noopener">Sally&#8217;s Lemonade Starter File</a> below the third prompt; be sure to type all examples and definitions. Click "Run". Do all your tests pass?</p>
+</li>
+</ul>
+</span>
+<span class="paragraph">
+<p>While students are working, walk the room and gauge student understanding.  There is more than one way to write the <code class="racket">profit</code> function!  Encourage discussion between students and push them to develop their thinking on the advantages and disadvantages of each correct solution.</p>
+</span>
+<span class="paragraph">
+<p>As students finish, or for homework, you may also want them to figure out how many cups of lemonade Sally would have to sell in order to buy her bike using <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/../../lessons/problem-decomposition-wescheme/pages/sallys-bike.html" target="_blank" rel="noopener">Sally&#8217;s Bike</a>.</p>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_synthesize">Synthesize</h3>
+<span class="paragraph">
+<p>This activity started with a situation, and students modeled that situation with functions. One part of the model was <em>profit</em>, which can be written several ways. Have students turn to <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/../../lessons/problem-decomposition-wescheme/pages/profit-discussion.html" target="_blank" rel="noopener">Profit - More than one Way!</a> and reflect on the four function definitions presented. Give them a few minutes.</p>
+</span>
+<span class="paragraph">
+<p>The four definitions of <code class="racket">profit</code> from this workbook page are shown here:</p>
+</span>
+<span class="listingblock">
+<span class="content">
+<pre class="highlight"><code class="racket">(define (profit g) (- (* 1.75 g) (* 0.30 g)))
+(define (profit g) (* (- 1.75 0.30) g))
+(define (profit g) (* 1.45 g))
+(define (profit g) (- (revenue g) (cost g)))</code></code></pre>
+</span>
+</span>
+<span class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Which of these four <code class="racket">profit</code> definitions do you think is "best", and why?</p>
+<span class="ulist">
+<ul>
+<li>
+<p><em>Possible arguments: The first one is "closest to the word problem". The third one is "fastest", with the computation already completed. The last one is the most readable.</em></p>
+</li>
+</ul>
+</span>
+</li>
+<li>
+<p>Did anyone have additional ideas for how to define a <code class="racket">profit</code> function?</p>
+</li>
+<li>
+<p>If lemons get more expensive, which definitions of <code class="racket">profit</code> need to be changed?</p>
+<span class="ulist">
+<ul>
+<li>
+<p><em>Every definition except the last one would need to be changed.</em></p>
+</li>
+</ul>
+</span>
+</li>
+<li>
+<p>If Sally raises her prices, which definitions of <code class="racket">profit</code> need to be changed?</p>
+<span class="ulist">
+<ul>
+<li>
+<p><em>Every definition except the last one would need to be changed.</em></p>
+</li>
+</ul>
+</span>
+</li>
+<li>
+<p>Which definition of <code class="racket">profit</code> is the most flexible? Why?</p>
+<span class="ulist">
+<ul>
+<li>
+<p><em>The last definition is the most flexible; it can be used with any revenue and cost functions.</em></p>
+</li>
+</ul>
+</span>
+</li>
+</ul>
+</span>
+<span class="paragraph">
+<p><code class="racket">profit</code> can be <em>decomposed</em> into a simpler function that uses the <code class="racket">cost</code> and <code class="racket">revenue</code> functions.</p>
+</span>
+<div class="paragraph lesson-point">
+<p>Decomposing a problem allows us to solve it in smaller pieces</p>
+</div>
+<span class="paragraph">
+<p><strong>Big Ideas</strong></p>
+</span>
+<span class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Smaller pieces are <em>easier to think about</em>, and to test!</p>
+</li>
+<li>
+<p>These pieces can also be <em>re-used</em>! Like lego pieces, smaller functions can be used to build all kinds of things.</p>
+</li>
+<li>
+<p>Re-using code means <em>less code</em> overall. Less code means fewer places to make mistakes.</p>
+</li>
+<li>
+<p>Re-using code means <em>less duplicate code</em>. When code needs to be changed, that change only needs to made in one place, instead of in multiple places.</p>
+</li>
+</ol>
+</span>
+</span>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<table class="grid-none frame-none section-heading"><tr><td width="65%">Top-Down vs. Bottom-Up </td><td width="35%">20 minutes</td></tr></table>
+<span class="sectionbody">
+<span class="sect2 lesson-section-2">
+<h3 id="_overview_2">Overview</h3>
+<span class="paragraph">
+<p>Students explore problem decomposition as an explicit strategy, and learn about two ways of decomposing.</p>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_launch_2">Launch</h3>
+<div class="paragraph lesson-point">
+<p><em>Top-Down</em> and <em>Bottom-Up</em> design are two different strategies for problem decomposition.</p>
+</div>
+<span class="paragraph right">
+<p><table class="gdrive-only expression"><tr><td class="operator"><span class="operator"><span class="value wescheme-symbol">&#8230;&#8203;</span></span></td></tr><tr><td><table class="args"><tr><td class="arg"><table class="gdrive-only expression"><tr><td class="operator"><span class="operator"><span class="value wescheme-symbol">revenue</span></span></td></tr><tr><td><table class="args"><tr><td class="arg"><span class="value wescheme-symbol">g</span></td></tr></table></td></tr></table></td><td class="arg"><table class="gdrive-only expression"><tr><td class="operator"><span class="operator"><span class="value wescheme-symbol">cost</span></span></td></tr><tr><td><table class="args"><tr><td class="arg"><span class="value wescheme-symbol">g</span></td></tr></table></td></tr></table></td></tr></table></td></tr></table><!--<span class="begin-ignore-for-gdrive"></span><span class="circleevalsexp"><span class="expression"><span class="lParen">(</span><span class="operator"><span class="value wescheme-symbol">&#8230;&#8203;</span></span><span class="hspace">&#160;</span><span class="expression"><span class="lParen">(</span><span class="operator"><span class="value wescheme-symbol">revenue</span></span><span class="hspace">&#160;</span><span class="value wescheme-symbol">g</span><span class="rParen">)</span></span><span class="hspace">&#160;</span><span class="expression"><span class="lParen">(</span><span class="operator"><span class="value wescheme-symbol">cost</span></span><span class="hspace">&#160;</span><span class="value wescheme-symbol">g</span><span class="rParen">)</span></span><span class="rParen">)</span></span></span><span class="end-ignore-for-gdrive"></span>--></p>
+</span>
+<span class="paragraph">
+<p><strong>Bottom-Up:</strong> start with the small, easy relationships like <code class="racket">revenue</code> and <code class="racket">cost</code> first. How are they connected with the outer circle? You&#8217;ll get there eventually, but <em>we can leave it blank for now (<code class="racket">&#8230;&#8203;</code>)</em>. In the Lemonade Stand, you defined <code class="racket">cost</code> and <code class="racket">revenue</code> first, and then put them together in <code class="racket">profit</code>. <em>This is the same approach as building your Circle of Evaluation inside-out!</em></p>
+</span>
+<span class="paragraph">
+<p><span style="clear: both;display: block"></span></p>
+</span>
+<span class="paragraph right">
+<p><table class="gdrive-only expression"><tr><td class="operator"><span class="operator"><span class="value wescheme-symbol">&#8203;-</span></span></td></tr><tr><td><table class="args"><tr><td class="arg"><span class="value wescheme-symbol">&#8230;&#8203;revenue&#8230;&#8203;</span></td><td class="arg"><span class="value wescheme-symbol">&#8230;&#8203;cost&#8230;&#8203;</span></td></tr></table></td></tr></table><!--<span class="begin-ignore-for-gdrive"></span><span class="circleevalsexp"><span class="expression"><span class="lParen">(</span><span class="operator"><span class="value wescheme-symbol">&#8203;-</span></span><span class="hspace">&#160;</span><span class="value wescheme-symbol">&#8230;&#8203;revenue&#8230;&#8203;</span><span class="hspace">&#160;</span><span class="value wescheme-symbol">&#8230;&#8203;cost&#8230;&#8203;</span><span class="rParen">)</span></span></span><span class="end-ignore-for-gdrive"></span>--></p>
+</span>
+<span class="paragraph">
+<p><strong>Top-Down:</strong> start with the "big picture" and then worry about the details later. We could have started with <code class="racket">profit</code> as <span class="obeyspaces"><code class="racket">(- revenue cost)</code></span>, and <em>fill in the details of <code class="racket">revenue</code> and <code class="racket">cost</code> later (thus the <code class="racket">&#8230;&#8203;</code>)</em>. <em>This is the same approach as building your Circle of Evaluation outside-in!</em></p>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_investigate_2">Investigate</h3>
+<span class="openblock lesson-instruction">
+<span class="content">
+<span class="paragraph">
+<p>Consider the following situation:</p>
+</span>
+<span class="paragraph">
+<p><em>Jamal&#8217;s trip requires him to drive 20mi to the airport, fly 2300mi, and then take a bus 6mi to his hotel. His average speed driving to the airport is 40mph, the average speed of an airplane is 575mph, and the average speed of his bus is 15mph. Aside from time waiting for the plane or bus, how long is Jamal in transit?</em></p>
+</span>
+<span class="paragraph">
+<p>Take a moment to think: What would your first step be if you were trying to figure out how long Jamal would be transit? What circles would you draw or functions would you define to solve this? Would you work top-down or bottom-up?</p>
+</span>
+<span class="paragraph">
+<p>Then turn to <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/../../lessons/problem-decomposition-wescheme/pages/topdown-bottomup-discussion.html" target="_blank" rel="noopener">Top Down or Bottom Up</a>.</p>
+</span>
+</span>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_synthesize_2">Synthesize</h3>
+<span class="paragraph">
+<p>Make sure that students see <em>both</em> strategies, and have them discuss which they prefer and why.</p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p>Whose strategy was top-down? How do you know?</p>
+</li>
+<li>
+<p>Do you have questions about either of these strategies?</p>
+</li>
+<li>
+<p>Which strategy to do you prefer? Why?</p>
+</li>
+</ul>
+</span>
+</span>
+</span>
+</span>
+<span class="sect1 acknowledgmentsect">
+<span class="sectionbody">
+<span class="openblock acknowledgment"><hr/>
+<span class="content">
+<span class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</span>
+</span>
+</span>
+</span>
+</span>
+</span>
+<span id="footer">
+<span id="footer-text">
+Last updated 2022-10-18 16:15:46 -0400
+</span>
+</span>
+</span>
+</body>
+</html>

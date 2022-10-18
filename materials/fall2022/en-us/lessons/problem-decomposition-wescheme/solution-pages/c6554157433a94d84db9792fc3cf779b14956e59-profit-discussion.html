@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Profit - More than one Way!</title>
+
+  <link rel="stylesheet" href="../../../lib/curriculum.css" />
+    <link rel="stylesheet" href="../../../lib/codemirror.css" />
+    <script src="../../../lib/codemirror.js"></script>
+    <script src="../../../lib/runmode.js"></script>
+    <script src="../../../lib/scheme2.js"></script>
+    <script src="../../../lib/pyret-mode.js"></script>
+    <script src="../../../lib/langtable.js"></script>
+    <script src="../../../lib/bootstraplesson.js"></script>
+    <script src="../../../dependency-graph.js"></script>
+    <script src="../../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"Profit - More than one Way!",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="workbookpage article wescheme" onload="renderSaveToDrive()">
+<div id="header">
+<h1>Profit - More than one Way!</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<style>
+td { padding: 0 !important; margin: 0; }
+td p { margin: 0 !important; }
+</style>
+<div class="paragraph">
+<p>Four students defined the same <code class="racket">revenue</code> and <code class="racket">cost</code> functions, shown below:</p>
+</div>
+<div class="openblock indentedpara">
+<div class="content">
+<div class="paragraph">
+<p><span class="obeyspaces"><code class="racket">(define (revenue g) (* 1.75 g))</code></span></p>
+</div>
+<div class="paragraph">
+<p><span class="obeyspaces"><code class="racket">(define (cost g) (* 0.3 g))</code></span></p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 1ex"></span></p>
+</div>
+<div class="paragraph">
+<p>However, they came up with <strong>four different definitions</strong> for <code class="racket">profit</code>:</p>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 1ex"></span></p>
+</div>
+<table class="tableblock frame-none grid-none stripes-none stretch">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 83.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Khalil:</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="obeyspaces"><code class="racket">(define (profit g) (- (* 1.75 g) (* 0.3 g)))</code></span></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Samaria:</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="obeyspaces"><code class="racket">(define (profit g) (* (- 1.75 0.3) g))</code></span></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Alenka:</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="obeyspaces"><code class="racket">(define (profit g) (* 1.45 g))</code></span></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Fauzi:</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="obeyspaces"><code class="racket">(define (profit g) (- (revenue g) (cost g)))</code></span></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><span class="vspace" style="height: 1ex"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">1</span> Which of these four definitions do you think is "best", and why?</p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"><span class="solution">Answers may vary, but they should be sensible!</span></span></p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"><span class="solution">A student might argue that Khalil&#8217;s definition is "closest to the word problem",</span></span></p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"><span class="solution">or that Alenka&#8217;s is the "fastest" since the computation is already done.</span></span></p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"><span class="solution">Fauzi&#8217;s solution uses the other definitions to do its work, and is the most readable.</span></span></p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">2</span> If lemons get more expensive, which definitions of <code class="racket">profit</code> need to be changed?</p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"><span class="solution">Everyone but Fauzi&#8217;s definition needs to be changed.</span></span></p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">3</span> If Sally raises her prices, which definitions of <code class="racket">profit</code> need to be changed?</p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"><span class="solution">Everyone but Fauzi&#8217;s definition needs to be changed.</span></span></p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">4</span> Which definition of <code class="racket">profit</code> is the most flexible? Why?</p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"><span class="solution">Fauzi&#8217;s definition describes profit as <code class="racket">revenue - cost</code>,</span></span></p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"><span class="solution"><em>and can be used with <strong>any</strong> revenue and cost functions.</em></span></span></p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"></span></p>
+</div>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-18 16:15:43 -0400
+</div>
+</div>
+</body>
+</html>

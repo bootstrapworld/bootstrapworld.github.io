@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Alignments</title>
+
+  <link rel="stylesheet" href="../../lib/curriculum.css" />
+    <script src="../../lib/langtable.js"></script>
+    <script src="../../lib/bootstraplesson.js"></script>
+    <script src="../../dependency-graph.js"></script>
+    <script src="../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+</head>
+<body class="narrativepage article">
+<!--#include virtual="/menubar.ssi"-->
+<div id="body">
+<div id="header">
+<h1>Alignments</h1>
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<script>
+function preselect(klass) {
+  const items = document.getElementsByClassName(klass);
+  for (let i = 0; i < items.length; i++) {
+    items[i].style.display = 'none';
+  }
+  if (items.length > 0) {
+    items[0].style.display = 'block';
+  }
+}
+window.onload = function() {
+  preselect('coverageElement');
+}
+function showCoverageAlignment() {
+  const selectTag = document.getElementsByClassName('coverageAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const stdTables = document.getElementsByClassName('coverageElement');
+  for (let i = 0; i < stdTables.length; i++) {
+    const stdTable = stdTables[i];
+    stdTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optStd = opt.value;
+      for (let j = 0; j < stdTables.length; j++) {
+        const stdTable = stdTables[j];
+        if (stdTable.classList.contains(optStd)) {
+          stdTable.style.display = 'block';
+        }
+      }
+    }
+  }
+}
+</script>
+<div class="paragraph">
+<p><div class="standard-menu-container"><div>
+Bootstrap lessons align with several important teaching standards, textbooks, and practices.
+Select from the following menu to see
+which lessons meet those alignments.
+</div><div><select class="coverageAlignmentSelect" onchange="showCoverageAlignment()"><optgroup label="Standards"><option value="standards-CCSS-Math">CCSS-Math</option><option value="standards-CSTA">CSTA</option><option value="standards-K12CS">K12CS</option><option value="standards-Oklahoma">Oklahoma</option></optgroup><optgroup label="Practices"><option value="practices-CC">CC</option></optgroup></select>
+</div></div></p>
+</div>
+</div>
+</div>
+<div class="sect1 coverageElement standards-CCSS-Math">
+<h2 id="_common_core_math_standards"><a href="http://corestandards.org/Math/">Common Core Math Standards</a></h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.
+[See:  <a href="./../../lessons/piecewise-functions-conditionals/index.shtml?pathway=__sample">Piecewise Functions and Conditionals</a>.]</p>
+</dd>
+<dt class="hdlist1">7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.
+[See:  <a href="./../../lessons/piecewise-functions-conditionals/index.shtml?pathway=__sample">Piecewise Functions and Conditionals</a>.]</p>
+</dd>
+<dt class="hdlist1">HSA.SSE.A.1.A</dt>
+<dd>
+<p>Interpret parts of an expression, such as terms, factors, and coefficients.
+[See:  <a href="./../../lessons/piecewise-functions-conditionals/index.shtml?pathway=__sample">Piecewise Functions and Conditionals</a>.]</p>
+</dd>
+<dt class="hdlist1">HSA.SSE.A.1.B</dt>
+<dd>
+<p>Interpret complicated expressions by viewing one or more of their parts as a single entity.
+[See:  <a href="./../../lessons/piecewise-functions-conditionals/index.shtml?pathway=__sample">Piecewise Functions and Conditionals</a>.]</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1 coverageElement standards-CSTA">
+<h2 id="_csta_standards"><a href="https://csteachers.org/page/standards">CSTA Standards</a></h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">1B-AP-10</dt>
+<dd>
+<p>Create programs that include sequences, events, loops, and conditionals.
+[See:  <a href="./../../lessons/piecewise-functions-conditionals/index.shtml?pathway=__sample">Piecewise Functions and Conditionals</a>.]</p>
+</dd>
+<dt class="hdlist1">1B-AP-12</dt>
+<dd>
+<p>Modify, remix, or incorporate portions of an existing program into one&#8217;s own work, to develop something new or add more advanced features.
+[See:  <a href="./../../lessons/piecewise-functions-conditionals/index.shtml?pathway=__sample">Piecewise Functions and Conditionals</a>.]</p>
+</dd>
+<dt class="hdlist1">2-AP-11</dt>
+<dd>
+<p>Create clearly named variables that represent different data types and perform operations on their values.
+[See:  <a href="./../../lessons/piecewise-functions-conditionals/index.shtml?pathway=__sample">Piecewise Functions and Conditionals</a>.]</p>
+</dd>
+<dt class="hdlist1">2-AP-17</dt>
+<dd>
+<p>Systematically test and refine programs using a range of test cases
+[See:  <a href="./../../lessons/piecewise-functions-conditionals/index.shtml?pathway=__sample">Piecewise Functions and Conditionals</a>.]</p>
+</dd>
+<dt class="hdlist1">2-AP-19</dt>
+<dd>
+<p>Document programs in order to make them easier to follow, test, and debug.
+[See:  <a href="./../../lessons/piecewise-functions-conditionals/index.shtml?pathway=__sample">Piecewise Functions and Conditionals</a>.]</p>
+</dd>
+<dt class="hdlist1">3B-AP-14</dt>
+<dd>
+<p>Construct solutions to problems using student-created components, such as procedures, modules and/or objects.
+[See:  <a href="./../../lessons/piecewise-functions-conditionals/index.shtml?pathway=__sample">Piecewise Functions and Conditionals</a>.]</p>
+</dd>
+<dt class="hdlist1">3B-AP-21</dt>
+<dd>
+<p>Develop and use a series of test cases to verify that a program performs according to its design specifications.
+[See:  <a href="./../../lessons/piecewise-functions-conditionals/index.shtml?pathway=__sample">Piecewise Functions and Conditionals</a>.]</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1 coverageElement standards-K12CS">
+<h2 id="_k_12cs_standards"><a href="https://k12cs.org">K-12CS Standards</a></h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">9-12.Algorithms and Programming.Control</dt>
+<dd>
+<p>Programmers consider tradeoffs related to implementation, readability, and program performance when selecting and combining control structures.
+[See:  <a href="./../../lessons/piecewise-functions-conditionals/index.shtml?pathway=__sample">Piecewise Functions and Conditionals</a>.]</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1 coverageElement standards-Oklahoma">
+<h2 id="_oklahoma_standards"><a href="https://sde.ok.gov/oklahoma-academic-standards">Oklahoma Standards</a></h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">OK.L1.AP.M.01</dt>
+<dd>
+<p>Break down a solution into procedures using systematic analysis and design.
+[See:  <a href="./../../lessons/piecewise-functions-conditionals/index.shtml?pathway=__sample">Piecewise Functions and Conditionals</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.L1.AP.M.02</dt>
+<dd>
+<p>Create computational artifacts by systematically organizing, manipulating and/or processing data.
+[See:  <a href="./../../lessons/piecewise-functions-conditionals/index.shtml?pathway=__sample">Piecewise Functions and Conditionals</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.PA.A.1.1</dt>
+<dd>
+<p>Recognize that a function is a relationship between an independent variable and a dependent variable in which the value of the independent variable determines the value of the dependent variable.
+[See:  <a href="./../../lessons/piecewise-functions-conditionals/index.shtml?pathway=__sample">Piecewise Functions and Conditionals</a>.]</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1 coverageElement practices-CC">
+<h2 id="_math"><a href="http://corestandards.org/Math/">Math</a></h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">MP.8</dt>
+<dd>
+<p>Look for and express regularity in repeated reasoning. [See:  <a href="./../../lessons/piecewise-functions-conditionals/index.shtml?pathway=__sample">Piecewise Functions and Conditionals</a>.]</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-16 11:55:01 -0400
+</div>
+</div>
+</div>
+</body>
+</html>

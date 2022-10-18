@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Glossary</title>
+
+  <link rel="stylesheet" href="../../lib/curriculum.css" />
+    <script src="../../lib/langtable.js"></script>
+    <script src="../../lib/bootstraplesson.js"></script>
+    <script src="../../dependency-graph.js"></script>
+    <script src="../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+</head>
+<body class="narrativepage article">
+<!--#include virtual="/menubar.ssi"-->
+<div id="body">
+<div id="header">
+<h1>Glossary</h1>
+</div>
+<div id="content">
+<div class="dlist glossary">
+<dl>
+<dt class="hdlist1">argument</dt>
+<dd>
+<p>the inputs to a function; the expressions for each argument follow the function name</p>
+</dd>
+<dt class="hdlist1">Boolean</dt>
+<dd>
+<p>a type of data with two values: true and false</p>
+</dd>
+<dt class="hdlist1">calling</dt>
+<dd>
+<p>using a function by giving it inputs</p>
+</dd>
+<dt class="hdlist1">comments</dt>
+<dd>
+<p>messages in the code, generally ignored by the computer, to help people interacting with the code understand what it is doing</p>
+</dd>
+<dt class="hdlist1">constructor</dt>
+<dd>
+<p>a function that creates instances of a data structure</p>
+</dd>
+<dt class="hdlist1">contract</dt>
+<dd>
+<p>a statement of the name, domain, and range of a function</p>
+</dd>
+<dt class="hdlist1">contract error</dt>
+<dd>
+<p>errors where the code makes sense, but uses a function with the wrong number or type of arguments</p>
+</dd>
+<dt class="hdlist1">data block</dt>
+<dd>
+<p>code that lists the name, constructor(s), and field(s) of a data structure</p>
+</dd>
+<dt class="hdlist1">data structure</dt>
+<dd>
+<p>a 'container' data type, which has fields that can hold other data (e.g. - a 'coordinate' is a data structure holding number fields x and y)</p>
+</dd>
+<dt class="hdlist1">data type</dt>
+<dd>
+<p>a way of classifying values, such as: Number, String, Image, Boolean, or any user-defined data structure</p>
+</dd>
+<dt class="hdlist1">define</dt>
+<dd>
+<p>to associate a descriptive name with a value</p>
+</dd>
+<dt class="hdlist1">definitions area</dt>
+<dd>
+<p>the left-most text box in the Editor where definitions for values and functions are written</p>
+</dd>
+<dt class="hdlist1">domain</dt>
+<dd>
+<p>the type or set of inputs that a function expects</p>
+</dd>
+<dt class="hdlist1">dot accessor</dt>
+<dd>
+<p>a way to extract the values of fields an instance</p>
+</dd>
+<dt class="hdlist1">editor</dt>
+<dd>
+<p>software in which code can be written and evaluated</p>
+</dd>
+<dt class="hdlist1">error message</dt>
+<dd>
+<p>information from the computer about errors in code</p>
+</dd>
+<dt class="hdlist1">event</dt>
+<dd>
+<p>something that happens outside of a running program, which the program can respond to</p>
+</dd>
+<dt class="hdlist1">example</dt>
+<dd>
+<p>shows the use of a function on specific inputs and the computation the function should perform on those inputs</p>
+</dd>
+<dt class="hdlist1">field</dt>
+<dd>
+<p>a part of a data structure that has a name and holds a single value of a specified data type</p>
+</dd>
+<dt class="hdlist1">function</dt>
+<dd>
+<p>a relation from a set of inputs to a set of possible outputs, where each input is related to exactly one output</p>
+</dd>
+<dt class="hdlist1">function definition</dt>
+<dd>
+<p>code that names a function, lists its variables, and states the expression to compute when the function is used</p>
+</dd>
+<dt class="hdlist1">handler</dt>
+<dd>
+<p>Connects an event (like a tick or keypress) and a function within a reactor</p>
+</dd>
+<dt class="hdlist1">helper function</dt>
+<dd>
+<p>a small function that handles a specific part of another computation, and gets called from other functions</p>
+</dd>
+<dt class="hdlist1">hypotenuse</dt>
+<dd>
+<p>the side opposite the 90-degree angle in a right triangle</p>
+</dd>
+<dt class="hdlist1">image</dt>
+<dd>
+<p>a type of data for pictures</p>
+</dd>
+<dt class="hdlist1">instance</dt>
+<dd>
+<p>a specific example of a data structure, with specific values for each field (e.g. - (4,5) is an instance of an (x,y) coordinate</p>
+</dd>
+<dt class="hdlist1">interactions area</dt>
+<dd>
+<p>the right-most text box in the Editor, where expressions are entered to be evaluated</p>
+</dd>
+<dt class="hdlist1">name</dt>
+<dd>
+<p>how we refer to a function or value defined in a language (examples: +, *, star, circle)</p>
+</dd>
+<dt class="hdlist1">operator</dt>
+<dd>
+<p>a symbol that manipulates two Numbers and produces a result</p>
+</dd>
+<dt class="hdlist1">origin</dt>
+<dd>
+<p>the point (0,0) where the horizontal and vertical axes intersect</p>
+</dd>
+<dt class="hdlist1">piecewise function</dt>
+<dd>
+<p>a function that computes different expressions based on its input</p>
+</dd>
+<dt class="hdlist1">purpose statement</dt>
+<dd>
+<p>a concise, detailed description of what a function does with its inputs</p>
+</dd>
+<dt class="hdlist1">range</dt>
+<dd>
+<p>the type or set of outputs that a function produces</p>
+</dd>
+<dt class="hdlist1">ratio</dt>
+<dd>
+<p>the relative sizes of two or more values</p>
+</dd>
+<dt class="hdlist1">reactor</dt>
+<dd>
+<p>a value that contains a current state, and functions for updating, drawing, and interacting with that state</p>
+</dd>
+<dt class="hdlist1">refactor</dt>
+<dd>
+<p>the process of changing the style or structure of a program&#8217;s code, without changing the program&#8217;s behavior</p>
+</dd>
+<dt class="hdlist1">scale</dt>
+<dd>
+<p>resize an image to be larger or smaller while maintaining ratios and proportions</p>
+</dd>
+<dt class="hdlist1">state</dt>
+<dd>
+<p>the value of a changing system at any point in time (i.e. a stoplight can be in the 'red', 'yellow' or 'green' state). In Pyret, the state of a Reactor is it&#8217;s current value.</p>
+</dd>
+<dt class="hdlist1">syntax error</dt>
+<dd>
+<p>errors where the computer cannot make sense of the code (e.g. - missing commas, missing parentheses, unclosed strings)</p>
+</dd>
+<dt class="hdlist1">value</dt>
+<dd>
+<p>a specific piece of data, like 5 or "hello"</p>
+</dd>
+<dt class="hdlist1">variable</dt>
+<dd>
+<p>a name or symbol that stands for some value or expression, often a value or expression that changes</p>
+</dd>
+</dl>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-17 19:42:18 -0400
+</div>
+</div>
+</div>
+</body>
+</html>

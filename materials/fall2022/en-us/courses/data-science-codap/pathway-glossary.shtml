@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Glossary</title>
+
+  <link rel="stylesheet" href="../../lib/curriculum.css" />
+    <script src="../../lib/langtable.js"></script>
+    <script src="../../lib/bootstraplesson.js"></script>
+    <script src="../../dependency-graph.js"></script>
+    <script src="../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+</head>
+<body class="narrativepage article">
+<!--#include virtual="/menubar.ssi"-->
+<div id="body">
+<div id="header">
+<h1>Glossary</h1>
+</div>
+<div id="content">
+<div class="dlist glossary">
+<dl>
+<dt class="hdlist1">bias</dt>
+<dd>
+<p>prejudice in favor of or against one outcome, person, or group compared with another, usually in a way considered to be unfair.</p>
+</dd>
+<dt class="hdlist1">categorical data</dt>
+<dd>
+<p>data whose values are qualities that are not subject to the laws of arithmetic</p>
+</dd>
+<dt class="hdlist1">data science</dt>
+<dd>
+<p>the science of collecting, organizing, and drawing general conclusions from data, with the help of computers</p>
+</dd>
+<dt class="hdlist1">error message</dt>
+<dd>
+<p>information from the computer about errors in code</p>
+</dd>
+<dt class="hdlist1">grouped sample</dt>
+<dd>
+<p>a non-random subset of individuals chosen from a larger set, where the individuals belong to a specific group</p>
+</dd>
+<dt class="hdlist1">null hypothesis</dt>
+<dd>
+<p>the hypothesis that there is no significant difference between specified populations, any observed difference being due to sampling or experimental error.</p>
+</dd>
+<dt class="hdlist1">quantitative data</dt>
+<dd>
+<p>number values for which arithmetic makes sense</p>
+</dd>
+<dt class="hdlist1">random sample</dt>
+<dd>
+<p>a subset of individuals chosen from a larger set, such that each individual has the same probability of being chosen</p>
+</dd>
+<dt class="hdlist1">sample size</dt>
+<dd>
+<p>the number of participants or observations included in a study</p>
+</dd>
+<dt class="hdlist1">statistical inference</dt>
+<dd>
+<p>using information from a sample to draw conclusions about the larger population from which the sample was taken</p>
+</dd>
+<dt class="hdlist1">syntax error</dt>
+<dd>
+<p>errors where the computer cannot make sense of the code (e.g. - missing commas, missing parentheses, unclosed strings)</p>
+</dd>
+</dl>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-17 19:42:18 -0400
+</div>
+</div>
+</div>
+</body>
+</html>

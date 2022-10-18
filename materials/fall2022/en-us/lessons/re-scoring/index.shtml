@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Scoring</title>
+
+  <link rel="stylesheet" href="../../lib/curriculum.css" />
+    <link rel="stylesheet" href="../../lib/codemirror.css" />
+    <script src="../../lib/codemirror.js"></script>
+    <script src="../../lib/runmode.js"></script>
+    <script src="../../lib/scheme2.js"></script>
+    <script src="../../lib/pyret-mode.js"></script>
+    <script src="../../lib/langtable.js"></script>
+    <script src="../../lib/bootstraplesson.js"></script>
+    <script src="../../dependency-graph.js"></script>
+    <script src="../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"Scoring",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="article LessonPlan pyret" onload="renderSaveToDrive()">
+<!--#include virtual="/menubar.ssi"-->
+<div id="body" onload="renderSaveToDrive()">
+<div id="header">
+<h1>Scoring</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<script>
+function preselect(klass) {
+  const items = document.getElementsByClassName(klass);
+  for (let i = 0; i < items.length; i++) {
+    items[i].style.display = 'none';
+  }
+  if (items.length > 0) {
+    items[0].style.display = 'block';
+  }
+}
+window.onload = function() {
+  preselect('alignedStandards');
+  preselect('alignedTextbooks');
+  preselect('alignedPractices');
+}
+function showStandardsAlignment() {
+  const selectTag = document.getElementsByClassName('standardsAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const stdTables = document.getElementsByClassName('alignedStandards');
+  //const intro = document.getElementsByClassName('alignedStandardsIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < stdTables.length; i++) {
+    const stdTable = stdTables[i];
+    stdTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optStd = opt.value;
+      for (let j = 0; j < stdTables.length; j++) {
+        const stdTable = stdTables[j];
+        if (stdTable.classList.contains(optStd)) {
+          stdTable.style.display = 'block';
+         // introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+function toggleNonPrereqDisplay() {
+  const inputTag = document.getElementsByClassName('sidebarinput')[0];
+  const checkedP = inputTag.checked;
+  const lessonTable = document.getElementsByClassName('sidebarlessons')[0];
+  const lis = lessonTable.getElementsByTagName('li');
+  for (let i = 0; i < lis.length; i++) {
+    const li = lis[i];
+    const lesson = li.getElementsByClassName('prerequisite');
+    if (lesson.length === 0) {
+      li.style.display = checkedP ? 'none' : 'block';
+    }
+  }
+}
+</script>
+<script>
+function showTextbooksAlignment() {
+  const selectTag = document.getElementsByClassName('textbooksAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const textbookTables = document.getElementsByClassName('alignedTextbooks');
+  //const intro = document.getElementsByClassName('alignedTextbooksIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < textbookTables.length; i++) {
+    const textbookTable = textbookTables[i];
+    textbookTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optTextbook = opt.value;
+      for (let j = 0; j < textbookTables.length; j++) {
+        const textbookTable = textbookTables[j];
+        if (textbookTable.classList.contains(optTextbook)) {
+          textbookTable.style.display = 'block';
+          //introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+</script>
+<script>
+function showPracticesAlignment() {
+  const selectTag = document.getElementsByClassName('practicesAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const practiceTables = document.getElementsByClassName('alignedPractices');
+  for (let i = 0; i < practiceTables.length; i++) {
+    const practiceTable = practiceTables[i];
+    practiceTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optPractice = opt.value;
+      for (let j = 0; j < practiceTables.length; j++) {
+        const practiceTable = practiceTables[j];
+        if (practiceTable.classList.contains(optPractice)) {
+          practiceTable.style.display = 'block';
+        }
+      }
+    }
+  }
+}
+</script>
+<div class="paragraph">
+<!-- </p>
+</div>
+--></div><div class="sidebar"><div id="toggle"></div><div class="paragraph"><!--
+<div class="paragraph">
+<p>
+--><div class="sidebarlessons"><strong>Lessons</strong>
+<ul></ul></div>
+</div>
+<table class="tableblock frame-all grid-all stretch sidebarstandards">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Standards in this Lesson</strong>
+<select class="standardsAlignmentSelect"  onchange="showStandardsAlignment()"><option selected="selected" value="standards-CSTA">CSTA</option></select></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist alignedStandards standards-CSTA">
+<div class="title"><a href="https://csteachers.org/page/standards">CSTA Standards</a></div>
+<dl>
+<dt class="hdlist1">2-AP-14</dt>
+<dd>
+<p>Create procedures with parameters to organize code and make it easier to reuse.</p>
+</dd>
+<dt class="hdlist1">2-AP-17</dt>
+<dd>
+<p>Systematically test and refine programs using a range of test cases</p>
+</dd>
+<dt class="hdlist1">3A-AP-18</dt>
+<dd>
+<p>Create artifacts by using procedures within a program, combinations of data and procedures, or independent but interrelated programs.</p>
+</dd>
+<dt class="hdlist1">3B-AP-22</dt>
+<dd>
+<p>Modify an existing program to add additional functionality and discuss intended and unintended implications (e.g., breaking other functionality).</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch sidebarpractices">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Practices in this Lesson</strong>
+<select class="practicesAlignmentSelect"  onchange="showPracticesAlignment()"><option selected="selected" value="practices-K12CS"><a href="https://k12cs.org">K12CS</a></option></select></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist alignedPractices practices-K12CS">
+<div class="title"><a href="https://k12cs.org">K12CS</a></div>
+<dl>
+<dt class="hdlist1">P6</dt>
+<dd>
+<p>Testing and Refining Computational Artifacts</p>
+</dd>
+<dt class="hdlist1">P4</dt>
+<dd>
+<p>Developing and Using Abstractions</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<!-- </p>
+</div>
+--></div><!--
+<div class="paragraph">
+<p>
+-->
+</div>
+<div class="paragraph description">
+<p>Students extend the data structure that represents their game to include a score, then modify their helper functions and event handlers to update and display that score.</p>
+</div>
+<table class="tableblock frame-all grid-all stripes-none stretch left-header preamble">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Product Outcomes</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Students add a <code class="pyret">score</code> field to their <code class="pyret">gameState</code> structure</p>
+</li>
+<li>
+<p>Students modify their <code class="pyret">draw-state</code> function to display the score on the screen</p>
+</li>
+<li>
+<p>Students modify other parts of their code to increment or decrement the score</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Materials</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist materials-links">
+<ul>
+<li>
+<p><a href="https://docs.google.com/presentation/d/Intentionally-left-blank-as-this-lesson-does-not-have-any-slides/" target="_blank" rel="noopener">Lesson Slides</a></p>
+</li>
+<li>
+<p><span class="materialSectionPlaceholder"> </span></p>
+</li>
+<li>
+<p><strong>Classroom visual:</strong> <a href="javascript:showLangTable()">Language Table</a></p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="dlist glossary">
+<div class="title">Glossary</div>
+<dl>
+<dt class="hdlist1">helper function</dt>
+<dd>
+<p>a small function that handles a specific part of another computation, and gets called from other functions</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_adding_a_scoring_system_duration_45_minutes_"><span class="section-link"><a href="#_adding_a_scoring_system_duration_45_minutes_"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Adding a Scoring System <span class="duration">45 minutes</span></h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_overview">Overview</h3>
+<div class="paragraph">
+<p>Students add a score to their game.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_launch">Launch</h3>
+<div class="paragraph">
+<p>The score is something that will be changing in the game, so you can be sure that it has to be added to the <code class="pyret">____State</code> data structure. In our example Ninja Cat program, we’ve called our structure <code class="pyret">GameState</code>, which currently contains the x and y-coordinates for our player, danger, and target, plus the speed of the danger, and speed of the target. Your game(s) will likely have different structures.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_investigate">Investigate</h3>
+<div class="openblock lesson-instruction">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>What data type is a score? Number, String, Image, or Boolean?</p>
+</li>
+<li>
+<p>What would be the score in your starting game state? (we called this <code class="pyret">START</code> in our game.)</p>
+</li>
+<li>
+<p>Change the data structure in your game so it includes a score.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Remember: Since your structure is changing, you now have to go through your game code&#8201;&#8212;&#8201;<em>every</em> time you call the constructor function for your structure (ours is <code class="pyret">game()</code>), the score must be included. It may be helpful to add the score as the very first or last field of the structure, to make this easier.</p>
+</div>
+<div class="paragraph lesson-instruction">
+<p>How would you get the <code class="pyret">score</code> out of one of your instances?</p>
+</div>
+<div class="paragraph">
+<p>The <code class="pyret">GameState</code> structure for <a href="https://code.pyret.org/editor#share=0B9rKDmABYlJVVkpkTmEyd1ZTaE0">our Ninja Cat game</a> now looks like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><code class="pyret">data GameState:
+    game(
+      playerx :: Number,
+      playery :: Number,
+      dangerx :: Number,
+      dangery :: Number,
+      dangerspeed :: Number,
+      targetx :: Number,
+      targety :: Number,
+      targetspeed :: Number,
+      score :: Number)
+end</code></pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-none stripes-none stretch strategy-box">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="title">Reminder</span></p>
+<p class="tableblock">Your students will likely have radically different games at this point in the course. This lesson is not meant to be followed exactly, but rather used to give students an idea of what steps they should take to add a scoring system to their own games. For extra practice, students can work through adding a scoring system to the Ninja Cat program as well as their own games.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Now that the game has a score, that score needs to actually increase or decrease depending on what happens in the game. For our Ninja Cat game, we’ll say that the score should go up by 30 points when Ninja Cat collides with the ruby (target), and down by 20 points when she collides with the dog (danger).</p>
+</div>
+<div class="openblock lesson-instruction">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Which of the <code class="pyret">if</code> branches in your <code class="pyret">next-state-tick</code> function checks whether your player has collided with another character?</p>
+</li>
+<li>
+<p>How would you decrease the game’s <code class="pyret">score</code> by 20 points if the player collides with the danger?</p>
+</li>
+<li>
+<p>Hint: How many dangers does your game have? If there are multiple things your player could hit to lose points, remember to check for each possible collision condition!</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>If you completed the optional challenge at the end of the <span class="pathway-link"><a href="lessons/re-adding-collisions/" target="_blank" rel="noopener">Collisions Feature</a></span> to write the function <code class="pyret">game-over</code>, you already have your own <span class="vocab">helper function</span> to check whether or not your game over condition is met. That will be the first condition inside <code class="pyret">next-state-tick</code>, since we don’t want the game to continue if it’s already over! (In our Ninja Cat game, game-over returns true if the cat collides with the dog, AND the cat is on the ground.) After checking whether or not the game is over, the next three conditions in our <code class="pyret">next-state-tick</code> function check whether the player has collided with the danger and target, as well as whether the player is jumping on the danger:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><code class="pyret"># next-state-tick :: GameState -&gt; GameState
+fun next-state-tick(g):
+  if game-over(g): g
+  # if player and danger collide while player is on the ground,
+  #reset player and danger and decrease score
+  else if is-collision(g.playerx, g.playery, g.dangerx, g.dangery)
+    and (g.playery &lt; 110):
+    game(
+      START.playerx,
+      START.playery,
+      750,
+      g.dangery,
+      g.dangerspeed,
+      g.targetx,
+      g.targety,
+      g.targetspeed,
+      g.score - 20)
+    # if player and danger collide while player is jumping,
+    # reset danger and increase score
+  else if is-collision(g.playerx, g.playery, g.dangerx, g.dangery)
+    and (g.playery &gt; 110) and (g.playery &lt; 300):
+    game(
+      g.playerx,
+      200,
+      -100,
+      0,
+      0,
+      g.targetx,
+      g.targety,
+      g.targetspeed,
+      g.score + 30)
+  # if player and target collide, reset target and increase score
+  else if is-collision(g.playerx, g.playery, g.targetx, g.targety):
+    game(
+      g.playerx,
+      g.playery,
+      g.dangerx,
+      g.dangery,
+      g.dangerspeed,
+      -400,
+      0,
+      0,
+      g.score + 30)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Change your own game code so that your score increases and decreases depending on various game conditions: Maybe your score increases when the player collides with a target, reaches a specific area of the screen, or reaches a specific area <em>only after</em> picking up an item. Maybe your game’s scoring system isn’t a seprate score at all, but a timer that increases every tick, and represents how long someone has been playing your game. There are lots of ways to implement a scoring system, and which one you choose will depend on the specific mechanics of your individual game.</p>
+</div>
+<div class="paragraph">
+<p>Now your scoring system is in place, but how will the person playing your game know what their score is? You’ll want to display the score on the screen.</p>
+</div>
+<div class="paragraph lesson-instruction">
+<p>Which function handles how the game state is drawn?</p>
+</div>
+<div class="paragraph">
+<p>In the <code class="pyret">draw-state</code> function, images are placed onto the background using <code class="pyret">put-image</code> to draw the game. But the score is represented by a Number: we need a way to represent it as an Image. Thankfully, Pyret has some built-in functions that can help with this: the function <code class="pyret">num-to-string</code> takes in a Number for its domain and returns a String representation of that number. This string can then be passed to the text function to return an Image that can be used in <code class="pyret">draw-state</code>.</p>
+</div>
+<div class="openblock lesson-instruction">
+<div class="content">
+<div class="paragraph">
+<p>Copy the following contracts into your workbook:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code class="pyret"># num-to-string :: Number -&gt; String</code></p>
+</li>
+<li>
+<p><code class="pyret"># text :: String, Number, String -&gt; Image</code></p>
+</li>
+<li>
+<p>How would you use the <code class="pyret">num-to-string</code> and <code class="pyret">text</code> functions together to draw the score into the game?</p>
+</li>
+<li>
+<p>How do you get the <code class="pyret">score</code> out of the game state?</p>
+</li>
+<li>
+<p>How large should the text of the score be? Where should it be placed on your game scene?</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>The expression:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><code class="pyret">put-image(text(num-to-string(g.score), 20, "white"), 320, 240, BACKGROUND-IMG)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>will place the score (drawn in size 20 white text) onto the center of the BACKGROUND-IMG.</p>
+</div>
+<div class="openblock lesson-instruction">
+<div class="content">
+<div class="paragraph">
+<p>Use these functions to draw the score onto your game screen. You could also use the string-append function to make it clear to players that the number they see is their score, like so:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><code class="pyret">text(string-append("Score: ", num-to-string(g.score)), 20, "white")</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-17 19:42:17 -0400
+</div>
+</div>
+</div>
+</body>
+</html>

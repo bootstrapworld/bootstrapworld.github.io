@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>The Design Recipe (Direct Variation)</title>
+
+  <link rel="stylesheet" href="../../../lib/curriculum.css" />
+    <link rel="stylesheet" href="../../../lib/codemirror.css" />
+    <script src="../../../lib/codemirror.js"></script>
+    <script src="../../../lib/runmode.js"></script>
+    <script src="../../../lib/scheme2.js"></script>
+    <script src="../../../lib/pyret-mode.js"></script>
+    <script src="../../../lib/langtable.js"></script>
+    <script src="../../../lib/bootstraplesson.js"></script>
+    <script src="../../../dependency-graph.js"></script>
+    <script src="../../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"The Design Recipe (Direct Variation)",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="workbookpage pyret article pyret" onload="renderSaveToDrive()">
+<div id="header">
+<h1>The Design Recipe (Direct Variation)</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<style>
+#content .recipe_word_problem {margin: 1ex 0ex; }
+</style>
+<div class="paragraph recipe_word_problem headless-design-recipe FORpyret">
+<p><strong>Directions</strong>: Use the Design Recipe to write a function <code class="pyret">wage</code>, that takes in a number of hours worked and returns the amount a worker will get paid if their rate is $10.25/hr.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch recipe_title">
+<colgroup>
+<col style="width: 99.0099%;">
+<col style="width: 0.9901%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Contract and Purpose Statement</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph recipe recipe_instructions">
+<p>Every contract has three parts&#8230;&#8203;</p>
+</div>
+<div class="paragraph recipe recipe_contract">
+<p><span class="studentAnswer studentAnswerCode blank recipe_name">&#x5f;&#x5f;&#x5f;&#x5f;</span>::<span class="studentAnswer studentAnswerCode blank recipe_domain">&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;</span>-&gt;<span class="studentAnswer studentAnswerCode blank recipe_range">&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;</span></p>
+</div>
+<div class="paragraph recipe recipe_purpose_statement">
+<p><span class="studentAnswer blank recipe_purpose">&#x5f;</span><span class="gdrive-only"><span class="studentAnswer blank recipe_purpose">&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;</span></span></p>
+</div>
+<table class="tableblock frame-all grid-all stretch recipe_title">
+<colgroup>
+<col style="width: 99.0099%;">
+<col style="width: 0.9901%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Examples</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph recipe recipe_instructions">
+<p>Write some examples, then circle and label what changes&#8230;&#8203;</p>
+</div>
+<div class="openblock wrapper recipe recipe_example_line keyword_only">
+<div class="content">
+<div class="paragraph">
+<p><span class="clear"> </span><span class="pyretkeyword">examples:</span></p>
+</div>
+</div>
+</div>
+<div class="openblock wrapper recipe recipe_example_line">
+<div class="content">
+<div class="paragraph">
+<p><span class="clear"> </span><span class="studentAnswerCode blank">&#x5f;&#x5f;</span><span class="studentAnswer studentAnswerCode blank recipe_name">&#x5f;&#x5f;&#x5f;&#x5f;</span> <span class="studentAnswerCode">(</span><span class="studentAnswer studentAnswerCode blank recipe_example_inputs">&#x5f;</span><span class="studentAnswerCode">)</span><span class="studentAnswerCode blank">&#x5f;&#x5f;</span> <span class="pyretkeyword">is</span> <span class="studentAnswer studentAnswerCode blank recipe_example_body">&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;</span></p>
+</div>
+</div>
+</div>
+<div class="openblock wrapper recipe recipe_example_line">
+<div class="content">
+<div class="paragraph">
+<p><span class="clear"> </span><span class="studentAnswerCode blank">&#x5f;&#x5f;</span><span class="studentAnswer studentAnswerCode blank recipe_name">&#x5f;&#x5f;&#x5f;&#x5f;</span> <span class="studentAnswerCode">(</span><span class="studentAnswer studentAnswerCode blank recipe_example_inputs">&#x5f;&#x5f;</span><span class="studentAnswerCode">)</span><span class="studentAnswerCode blank">&#x5f;&#x5f;</span> <span class="pyretkeyword">is</span> <span class="studentAnswer studentAnswerCode blank recipe_example_body">&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;</span></p>
+</div>
+</div>
+</div>
+<div class="openblock wrapper recipe recipe_example_line keyword_only">
+<div class="content">
+<div class="paragraph">
+<p><span class="clear"> </span><span class="pyretkeyword">end</span></p>
+</div>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch recipe_title">
+<colgroup>
+<col style="width: 99.0099%;">
+<col style="width: 0.9901%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Definition</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph recipe recipe_instructions">
+<p>Write the definition, giving variable names to all your input values&#8230;&#8203;</p>
+</div>
+<div class="openblock wrapper recipe recipe_line">
+<div class="content">
+<div class="paragraph">
+<p><span class="clear"> </span><span class="pyretkeyword">fun</span> <span class="studentAnswer studentAnswerCode blank recipe_name">&#x5f;&#x5f;&#x5f;&#x5f;</span><span class="studentAnswerCode">(</span><span class="studentAnswer studentAnswerCode blank recipe_variables">&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;</span><span class="studentAnswerCode">):</span></p>
+</div>
+</div>
+</div>
+<div class="openblock wrapper recipe recipe_line">
+<div class="content">
+<div class="paragraph">
+<p><span class="clear"> </span><span class="studentAnswerCode blank">&#x5f;&#x5f;</span><span class="studentAnswer studentAnswerCode blank recipe_definition_body">&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;</span></p>
+</div>
+</div>
+</div>
+<div class="openblock wrapper recipe recipe_line keyword_only">
+<div class="content">
+<div class="paragraph">
+<p><span class="clear"> </span><span class="pyretkeyword">end</span></p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><span class="sectionbreak"></span></p>
+</div>
+<div class="paragraph recipe_word_problem headless-design-recipe FORpyret">
+<p><strong>Directions</strong>: On average, people burn about 11 calories/minute riding a bike.  Use the Design Recipe to write a function <code class="pyret">calories-burned</code> that takes in the number of minutes you bike and returns the number of calories burned.
+.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch recipe_title">
+<colgroup>
+<col style="width: 99.0099%;">
+<col style="width: 0.9901%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Contract and Purpose Statement</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph recipe recipe_instructions">
+<p>Every contract has three parts&#8230;&#8203;</p>
+</div>
+<div class="paragraph recipe recipe_contract">
+<p><span class="studentAnswer studentAnswerCode blank recipe_name">&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;</span>::<span class="studentAnswer studentAnswerCode solution recipe_domain">Number</span>-&gt;<span class="studentAnswer studentAnswerCode solution recipe_range">Number</span></p>
+</div>
+<div class="paragraph recipe recipe_purpose_statement">
+<p><span class="studentAnswer blank recipe_purpose">&#x5f;</span><span class="gdrive-only"><span class="studentAnswer blank recipe_purpose">&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;</span></span></p>
+</div>
+<table class="tableblock frame-all grid-all stretch recipe_title">
+<colgroup>
+<col style="width: 99.0099%;">
+<col style="width: 0.9901%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Examples</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph recipe recipe_instructions">
+<p>Write some examples, then circle and label what changes&#8230;&#8203;</p>
+</div>
+<div class="openblock wrapper recipe recipe_example_line keyword_only">
+<div class="content">
+<div class="paragraph">
+<p><span class="clear"> </span><span class="pyretkeyword">examples:</span></p>
+</div>
+</div>
+</div>
+<div class="openblock wrapper recipe recipe_example_line">
+<div class="content">
+<div class="paragraph">
+<p><span class="clear"> </span><span class="studentAnswerCode blank">&#x5f;&#x5f;</span><span class="studentAnswer studentAnswerCode blank recipe_name">&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;</span> <span class="studentAnswerCode">(</span><span class="studentAnswer studentAnswerCode blank recipe_example_inputs">&#x5f;&#x5f;</span><span class="studentAnswerCode">)</span><span class="studentAnswerCode blank">&#x5f;&#x5f;</span> <span class="pyretkeyword">is</span> <span class="studentAnswer studentAnswerCode blank recipe_example_body">&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;</span></p>
+</div>
+</div>
+</div>
+<div class="openblock wrapper recipe recipe_example_line">
+<div class="content">
+<div class="paragraph">
+<p><span class="clear"> </span><span class="studentAnswerCode blank">&#x5f;&#x5f;</span><span class="studentAnswer studentAnswerCode blank recipe_name">&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;</span> <span class="studentAnswerCode">(</span><span class="studentAnswer studentAnswerCode blank recipe_example_inputs">&#x5f;&#x5f;&#x5f;</span><span class="studentAnswerCode">)</span><span class="studentAnswerCode blank">&#x5f;&#x5f;</span> <span class="pyretkeyword">is</span> <span class="studentAnswer studentAnswerCode blank recipe_example_body">&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;</span></p>
+</div>
+</div>
+</div>
+<div class="openblock wrapper recipe recipe_example_line keyword_only">
+<div class="content">
+<div class="paragraph">
+<p><span class="clear"> </span><span class="pyretkeyword">end</span></p>
+</div>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch recipe_title">
+<colgroup>
+<col style="width: 99.0099%;">
+<col style="width: 0.9901%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Definition</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph recipe recipe_instructions">
+<p>Write the definition, giving variable names to all your input values&#8230;&#8203;</p>
+</div>
+<div class="openblock wrapper recipe recipe_line">
+<div class="content">
+<div class="paragraph">
+<p><span class="clear"> </span><span class="pyretkeyword">fun</span> <span class="studentAnswer studentAnswerCode blank recipe_name">&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;</span><span class="studentAnswerCode">(</span><span class="studentAnswer studentAnswerCode blank recipe_variables">&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;</span><span class="studentAnswerCode">):</span></p>
+</div>
+</div>
+</div>
+<div class="openblock wrapper recipe recipe_line">
+<div class="content">
+<div class="paragraph">
+<p><span class="clear"> </span><span class="studentAnswerCode blank">&#x5f;&#x5f;</span><span class="studentAnswer studentAnswerCode blank recipe_definition_body">&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;&#x5f;</span></p>
+</div>
+</div>
+</div>
+<div class="openblock wrapper recipe recipe_line keyword_only">
+<div class="content">
+<div class="paragraph">
+<p><span class="clear"> </span><span class="pyretkeyword">end</span></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-17 19:42:00 -0400
+</div>
+</div>
+</body>
+</html>

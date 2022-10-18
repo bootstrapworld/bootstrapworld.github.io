@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Player Animation</title>
+
+  <link rel="stylesheet" href="../../lib/curriculum.css" />
+    <link rel="stylesheet" href="../../lib/codemirror.css" />
+    <script src="../../lib/codemirror.js"></script>
+    <script src="../../lib/runmode.js"></script>
+    <script src="../../lib/scheme2.js"></script>
+    <script src="../../lib/pyret-mode.js"></script>
+    <script src="../../lib/langtable.js"></script>
+    <script src="../../lib/bootstraplesson.js"></script>
+    <script src="../../dependency-graph.js"></script>
+    <script src="../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"Player Animation",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="article LessonPlan pyret" onload="renderSaveToDrive()">
+<!--#include virtual="/menubar.ssi"-->
+<div id="body" onload="renderSaveToDrive()">
+<div id="header">
+<h1>Player Animation</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<script>
+function preselect(klass) {
+  const items = document.getElementsByClassName(klass);
+  for (let i = 0; i < items.length; i++) {
+    items[i].style.display = 'none';
+  }
+  if (items.length > 0) {
+    items[0].style.display = 'block';
+  }
+}
+window.onload = function() {
+  preselect('alignedStandards');
+  preselect('alignedTextbooks');
+  preselect('alignedPractices');
+}
+function showStandardsAlignment() {
+  const selectTag = document.getElementsByClassName('standardsAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const stdTables = document.getElementsByClassName('alignedStandards');
+  //const intro = document.getElementsByClassName('alignedStandardsIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < stdTables.length; i++) {
+    const stdTable = stdTables[i];
+    stdTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optStd = opt.value;
+      for (let j = 0; j < stdTables.length; j++) {
+        const stdTable = stdTables[j];
+        if (stdTable.classList.contains(optStd)) {
+          stdTable.style.display = 'block';
+         // introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+function toggleNonPrereqDisplay() {
+  const inputTag = document.getElementsByClassName('sidebarinput')[0];
+  const checkedP = inputTag.checked;
+  const lessonTable = document.getElementsByClassName('sidebarlessons')[0];
+  const lis = lessonTable.getElementsByTagName('li');
+  for (let i = 0; i < lis.length; i++) {
+    const li = lis[i];
+    const lesson = li.getElementsByClassName('prerequisite');
+    if (lesson.length === 0) {
+      li.style.display = checkedP ? 'none' : 'block';
+    }
+  }
+}
+</script>
+<script>
+function showTextbooksAlignment() {
+  const selectTag = document.getElementsByClassName('textbooksAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const textbookTables = document.getElementsByClassName('alignedTextbooks');
+  //const intro = document.getElementsByClassName('alignedTextbooksIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < textbookTables.length; i++) {
+    const textbookTable = textbookTables[i];
+    textbookTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optTextbook = opt.value;
+      for (let j = 0; j < textbookTables.length; j++) {
+        const textbookTable = textbookTables[j];
+        if (textbookTable.classList.contains(optTextbook)) {
+          textbookTable.style.display = 'block';
+          //introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+</script>
+<script>
+function showPracticesAlignment() {
+  const selectTag = document.getElementsByClassName('practicesAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const practiceTables = document.getElementsByClassName('alignedPractices');
+  for (let i = 0; i < practiceTables.length; i++) {
+    const practiceTable = practiceTables[i];
+    practiceTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optPractice = opt.value;
+      for (let j = 0; j < practiceTables.length; j++) {
+        const practiceTable = practiceTables[j];
+        if (practiceTable.classList.contains(optPractice)) {
+          practiceTable.style.display = 'block';
+        }
+      }
+    }
+  }
+}
+</script>
+<div class="paragraph">
+<!-- </p>
+</div>
+--></div><div class="sidebar"><div id="toggle"></div><div class="paragraph"><!--
+<div class="paragraph">
+<p>
+--><div class="sidebarlessons"><strong>Lessons</strong>
+<ul></ul></div>
+</div>
+<table class="tableblock frame-all grid-all stretch sidebarstandards">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Standards in this Lesson</strong>
+<select class="standardsAlignmentSelect"  onchange="showStandardsAlignment()"><option selected="selected" value="standards-CCSS-Math">CCSS-Math</option><option value="standards-CSTA">CSTA</option><option value="standards-Oklahoma">Oklahoma</option></select></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist alignedStandards standards-CCSS-Math">
+<div class="title"><a href="http://corestandards.org/Math/">Common Core Math Standards</a></div>
+<dl>
+<dt class="hdlist1">6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1">7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1">HSA.SSE.A.1.A</dt>
+<dd>
+<p>Interpret parts of an expression, such as terms, factors, and coefficients.</p>
+</dd>
+<dt class="hdlist1">HSA.SSE.A.1.B</dt>
+<dd>
+<p>Interpret complicated expressions by viewing one or more of their parts as a single entity.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-CSTA">
+<div class="title"><a href="https://csteachers.org/page/standards">CSTA Standards</a></div>
+<dl>
+<dt class="hdlist1">1B-AP-10</dt>
+<dd>
+<p>Create programs that include sequences, events, loops, and conditionals.</p>
+</dd>
+<dt class="hdlist1">1B-AP-12</dt>
+<dd>
+<p>Modify, remix, or incorporate portions of an existing program into one&#8217;s own work, to develop something new or add more advanced features.</p>
+</dd>
+<dt class="hdlist1">2-AP-11</dt>
+<dd>
+<p>Create clearly named variables that represent different data types and perform operations on their values.</p>
+</dd>
+<dt class="hdlist1">2-AP-17</dt>
+<dd>
+<p>Systematically test and refine programs using a range of test cases</p>
+</dd>
+<dt class="hdlist1">2-AP-19</dt>
+<dd>
+<p>Document programs in order to make them easier to follow, test, and debug.</p>
+</dd>
+<dt class="hdlist1">3A-AP-16</dt>
+<dd>
+<p>Design and iteratively develop computational artifacts for practical intent, personal expression, or to address a societal issue by using events to initiate instructions.</p>
+</dd>
+<dt class="hdlist1">3B-AP-14</dt>
+<dd>
+<p>Construct solutions to problems using student-created components, such as procedures, modules and/or objects.</p>
+</dd>
+<dt class="hdlist1">3B-AP-21</dt>
+<dd>
+<p>Develop and use a series of test cases to verify that a program performs according to its design specifications.</p>
+</dd>
+<dt class="hdlist1">3B-AP-22</dt>
+<dd>
+<p>Modify an existing program to add additional functionality and discuss intended and unintended implications (e.g., breaking other functionality).</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Oklahoma">
+<div class="title"><a href="https://sde.ok.gov/oklahoma-academic-standards">Oklahoma Standards</a></div>
+<dl>
+<dt class="hdlist1">OK.3.AP.M.02</dt>
+<dd>
+<p>With grade appropriate complexity, modify, remix, or incorporate portions of an existing program into one&#8217;s own work, to develop something new or add more advanced features.</p>
+</dd>
+<dt class="hdlist1">OK.4.AP.M.02</dt>
+<dd>
+<p>With grade appropriate complexity, modify, remix, or incorporate portions of an existing program into one&#8217;s own work, to develop something new or add more advanced features.</p>
+</dd>
+<dt class="hdlist1">OK.5.AP.M.02</dt>
+<dd>
+<p>With grade appropriate complexity, modify, remix, or incorporate portions of an existing program into one&#8217;s own work, to develop something new or add more advanced features.</p>
+</dd>
+<dt class="hdlist1">OK.6.AP.PD.01</dt>
+<dd>
+<p>Seek and incorporate feedback from team members to refine a solution to a problem.</p>
+</dd>
+<dt class="hdlist1">OK.7.AP.PD.01</dt>
+<dd>
+<p>Seek and incorporate feedback from team members and users to refine a solution to a problem.</p>
+</dd>
+<dt class="hdlist1">OK.L2.AP.PD.07</dt>
+<dd>
+<p>Modify an existing program to add additional functionality and discuss intended and unintended implications (e.g., breaking other functionality).</p>
+</dd>
+<dt class="hdlist1">OK.PA.A.1.1</dt>
+<dd>
+<p>Recognize that a function is a relationship between an independent variable and a dependent variable in which the value of the independent variable determines the value of the dependent variable.</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch sidebartextbooks">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Textbook Alignment</strong>
+<select class="textbooksAlignmentSelect"  onchange="showTextbooksAlignment()"><option selected="selected" value="textbook-IM_Alg_1"><a href="https://illustrativemathematics.org/">IM Algebra 1</a></option><option value="textbook-IM_8"><a href="https://illustrativemathematics.org/">IM 8 Math™</a></option></select></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist alignedTextbooks textbook-IM_Alg_1">
+<div class="title"><a href="https://illustrativemathematics.org/">IM Algebra 1</a></div>
+<dl>
+<dt class="hdlist1">IM.Alg1.4.12</dt>
+<dd>
+<p>Piecewise Functions</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedTextbooks textbook-IM_8">
+<div class="title"><a href="https://illustrativemathematics.org/">IM 8 Math™</a></div>
+<dl>
+<dt class="hdlist1">IM.8.5.10</dt>
+<dd>
+<p>Piecewise Linear Functions</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch sidebarpractices">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Practices in this Lesson</strong>
+<select class="practicesAlignmentSelect"  onchange="showPracticesAlignment()"><option selected="selected" value="practices-MLR"><a href="https://achievethecore.org/peersandpedagogy/developing-math-language-routines/">Math Lang. Routines</a></option><option value="practices-CC"><a href="http://corestandards.org/Math/">Math</a></option></select></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist alignedPractices practices-MLR">
+<div class="title"><a href="https://achievethecore.org/peersandpedagogy/developing-math-language-routines/">Math Lang. Routines</a></div>
+<dl>
+<dt class="hdlist1">MLR.6</dt>
+<dd>
+<p>Three Reads</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedPractices practices-CC">
+<div class="title"><a href="http://corestandards.org/Math/">Math</a></div>
+<dl>
+<dt class="hdlist1">MP.4</dt>
+<dd>
+<p>Model with mathematics</p>
+</dd>
+<dt class="hdlist1">MP.6</dt>
+<dd>
+<p>Attend to precision</p>
+</dd>
+<dt class="hdlist1">MP.3</dt>
+<dd>
+<p>Construct viable arguments and critique the reasoning of others</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<!-- </p>
+</div>
+--></div><!--
+<div class="paragraph">
+<p>
+-->
+</div>
+<div class="paragraph">
+<p><span class="other-proglang">(Also available in <a href="../../lessons/player-animation-wescheme/index.shtml">WeScheme</a>)</span></p>
+</div>
+<div class="paragraph description">
+<p>Students apply their knowledge of piecewise functions to write a function that will move the player in their game in different directions and at different speeds depending on which key is pressed.</p>
+</div>
+<table class="tableblock frame-all grid-all stripes-none stretch left-header preamble">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Lesson Goals</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Students will be able to:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Apply previous knowledge of <span class="vocab">piecewise function</span>s to a new problem situation.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Student-Facing Lesson Goals</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>I can write a function using conditionals to move my player.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Materials</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist materials-links">
+<ul>
+<li>
+<p><a href="https://docs.google.com/presentation/d/1eTAxGL525phZpOf31tGKcIxBcxlBBWuO8W9jIKZTv3o/" target="_blank" rel="noopener">Lesson Slides</a></p>
+</li>
+<li>
+<p><span class="materialSectionPlaceholder"> </span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/player-animation/pages/update-player.html" target="_blank" rel="noopener">Word Problem: update-player</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/player-animation/pages/challenges.html" target="_blank" rel="noopener">Challenges for update-player</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="../../lessons/player-animation/pages/2d-character-movement.html" target="_blank" rel="noopener">Challenge: Character Movement in Two Dimensions</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="../../lessons/player-animation/pages/2d-character-movement-cont.html" target="_blank" rel="noopener">Challenge: Character Movement in Two Dimensions (continued)</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="../../lessons/player-animation/pages/update-player-2.html" target="_blank" rel="noopener">Challenge: update-player-2</a></span></p>
+</li>
+<li>
+<p><strong>Classroom visual:</strong> <a href="javascript:showLangTable()">Language Table</a></p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Key Points for the Facilitator</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Encourage students to challenge themselves when creating update-player by completing one of the extension activities.</p>
+</li>
+<li>
+<p>The update-player function is one of the main places where students can set their game apart and make it theirs.  Encourage exploration and experimentation!</p>
+</li>
+<li>
+<p>Adding comments to code - if you have to ask a student "What are you trying to do there?", then they probably need more comments!</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="dlist glossary">
+<div class="title">Glossary</div>
+<dl>
+<dt class="hdlist1">comments</dt>
+<dd>
+<p>messages in the code, generally ignored by the computer, to help people interacting with the code understand what it is doing</p>
+</dd>
+<dt class="hdlist1">compound inequality</dt>
+<dd>
+<p>an inequality that combines two simple inequalities using <em>and</em> or <em>or</em></p>
+</dd>
+<dt class="hdlist1">contract</dt>
+<dd>
+<p>a statement of the name, domain, and range of a function</p>
+</dd>
+<dt class="hdlist1">debug</dt>
+<dd>
+<p>to find and fix errors in one&#8217;s code</p>
+</dd>
+<dt class="hdlist1">function</dt>
+<dd>
+<p>a relation from a set of inputs to a set of possible outputs, where each input is related to exactly one output</p>
+</dd>
+<dt class="hdlist1">piecewise function</dt>
+<dd>
+<p>a function that computes different expressions based on its input</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_defining_piecewise_functions_duration_30_minutes_"><span class="section-link"><a href="#_defining_piecewise_functions_duration_30_minutes_"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Defining Piecewise Functions <span class="duration">30 minutes</span></h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_overview">Overview</h3>
+<div class="paragraph">
+<p>Students <em>define</em> a piecewise function. This is a challenging task, which is motivated by introducing key events in their video game.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_launch">Launch</h3>
+<div class="paragraph">
+<p>Have students sign in to <a href="https://code.pyret.org/" target="_blank" rel="noopener">code.pyret.org (CPO)</a> and open their saved game starter files.</p>
+</div>
+<div class="paragraph">
+<p>You&#8217;ve already defined functions to move your <code class="pyret">DANGER</code> and <code class="pyret">TARGET</code>. Take a moment to look at your code or workbook, and refresh your memory on how they work.</p>
+</div>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>What controlled the speed of your characters?</p>
+</li>
+<li>
+<p>What controlled the <em>direction</em> of your characters?</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>If we wanted our <code class="pyret">PLAYER</code> to go up all the time, we would already know how to do that. If we wanted our <code class="pyret">PLAYER</code> to go <em>down</em> all the time, we would already know how to do that. But we want the player to go up <em>only</em> when the "up" arrow is pressed, and down <em>only</em> when the "down" arrow is pressed. Do we know how to make a function behave differently, based on its input?</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_investigate">Investigate</h3>
+<div class="paragraph">
+<p>Direct students to open their saved Game Project files. Tell them to look for update player. Lead a discussion by posing the following questions.</p>
+</div>
+<table class="tableblock frame-all grid-none stripes-none stretch strategy-box">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="title">Strategies for English Language Learners</span></p>
+<p class="tableblock">MLR 6 - Three Reads: Have students read through the problem statement three times, looking for different information.  What is the problem asking me?  What is the <span class="vocab">contract</span> for this <span class="vocab">function</span>?  What information do I need to create that function?</p></td>
+</tr>
+</tbody>
+</table>
+<div class="openblock lesson-instruction">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>What is the contract for <code class="pyret">update-player</code>?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>The Name is <code class="pyret">update-player</code>, the Domain consists of two Numbers and a String, and the Range is a Number.</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>What does each part of the domain and range represent?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Domain: the Numbers are the x-coordinate and the y-coordinate of <code class="pyret">PLAYER</code> when the key is pressed, the String is the key that the user pressed; Range: the Number is the new y-coordinate of <code class="pyret">PLAYER</code>.</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>How does the y-coordinate of <code class="pyret">PLAYER</code> change when the user presses the "up" key?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>It should increase, the program should add something to it.</em></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="centered-image"><span class="image-figure"><span class="image"><img src="images/fe07c4c670f8c6cc.png" alt="a coordinate grid with the player, target and danger&#8217;s locations and directions of movement labeled. The player&#8217;s movement is circled with an arrow indicating upward movement from (200,220) to (200, 240)" width="400"></span><a href="images/fe07c4c670f8c6cc.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Complete <a href="../../lessons/player-animation/pages/update-player.html" target="_blank" rel="noopener">Word Problem: update-player</a> with a partner, then type your code into your <strong>Game Project file</strong> and test.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<table class="tableblock frame-all grid-none stripes-none stretch strategy-box">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="title">2-D Game Movement</span></p>
+<p class="tableblock">If your students have their games working and you are ready to support them in delving into the Posn datatype that will support 2-d movement in the game, the first step is to complete <a href="../../lessons/player-animation/pages/2d-character-movement.html" target="_blank" rel="noopener">Challenge: Character Movement in Two Dimensions</a> and <a href="../../lessons/player-animation/pages/2d-character-movement-cont.html" target="_blank" rel="noopener">Challenge: Character Movement in Two Dimensions (continued)</a>. Once they&#8217;ve gotten their danger moving diagonally, they&#8217;re ready to build upon their understanding of Posn and piecewise functions to tackle <a href="../../lessons/player-animation/pages/update-player-2.html" target="_blank" rel="noopener">Challenge: update-player-2</a>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_common_misconceptions">Common Misconceptions</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Students often think of this function as returning a <em>relative distance</em> (e.g. "it adds 20"), instead of an absolute coordinate (e.g. "the new y-coordinate is the old y plus 20")</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_synthesize">Synthesize</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>How is this function similar to the piecewise functions you&#8217;ve seen before? How is it different?</p>
+</li>
+<li>
+<p>How could we change this function so that the "W" key makes the player go up, instead of the arrow key?</p>
+</li>
+<li>
+<p>How could we change this function so that the "W" key makes the player go up, <em>in addition to</em> the arrow key?</p>
+</li>
+<li>
+<p>Suppose your little brother or sister walks by and hits a random key. What should happen if you hit a random key that doesn’t have a meaning in your function? What happens now?</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_cheat_codes_and_customizations_duration_flexible_"><span class="section-link"><a href="#_cheat_codes_and_customizations_duration_flexible_"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Cheat Codes and Customizations <span class="duration">flexible</span></h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_overview_2">Overview</h3>
+<div class="paragraph">
+<p>Students choose one or more features to make their game more unique. These features can be quite simple, such as adding another key that does the same thing that "up" or "down" does. But they can also be extremely sophisticated, requiring students to exploit properties of the number line in conjunction with function composition and <span class="vocab">compound inequalities</span>!</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_launch_2">Launch</h3>
+<div class="paragraph">
+<p>Right now, all of your games allow the player to move up and down at a constant speed. But what if we wanted to add a special key that made the player warp to the top of the screen, or move down twice as fast? What if we wanted the player to <em>wrap</em>, so going off one side of the screen would make it re-appear on the other?</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_investigate_2">Investigate</h3>
+<div class="paragraph lesson-instruction">
+<p>Complete at least one of the <a href="../../lessons/player-animation/pages/challenges.html" target="_blank" rel="noopener">Challenges for update-player</a> before turning to your computer to customize your game.</p>
+</div>
+<div class="paragraph">
+<p>Some possible features students might include are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Warping</strong> - program one key to "warp" the player to a set location, such as the center of the screen</p>
+</li>
+<li>
+<p><strong>Boundaries</strong> - change <code class="pyret">update-player</code> such that <code class="pyret">PLAYER</code> cannot move off the top or bottom of the screen</p>
+</li>
+<li>
+<p><strong>Wrapping</strong> - add code to <code class="pyret">update-player</code> such that when <code class="pyret">PLAYER</code> moves to the top of the screen, it reappears at the bottom, and vice versa</p>
+</li>
+<li>
+<p><strong>Hiding</strong> - add a key that will make <code class="pyret">PLAYER</code> seem to disappear, and reappear when the same key is pressed again</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Reminder: Use <code class="pyret">#</code> to add comments to code!<br></p>
+</div>
+<div class="paragraph">
+<p>Adding useful <span class="vocab">comments</span> to code is an important part of programming. It lets us leave messages for other programmers, leave notes for ourselves, or "turn off" pieces of code that we don&#8217;t want or need to <span class="vocab">debug</span> later.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_synthesize_2">Synthesize</h3>
+<div class="paragraph">
+<p>Have students share back what they implemented. Sharing solutions is encouraged!</p>
+</div>
+<div class="paragraph">
+<p>What would it take to make the player move left and right? Why can&#8217;t we do this without changing the contract?</p>
+</div>
+<table class="tableblock frame-all grid-none stripes-none stretch strategy-box">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="title">Pedagogy Note</span></p>
+<p class="tableblock">It&#8217;s likely that once they hear other students' ideas, they will want more time to try them out. If time allows, give students additional <em>slices</em> of "hacking time", bringing them back to share each other&#8217;s ideas and solutions before sending them off to program some more. This dramatically ramps up the creativity and engagement in the classroom, giving better results than having one long stretch of programming time.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-17 19:42:16 -0400
+</div>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Introduction to Transformers: Sort</title>
+
+  <link rel="stylesheet" href="../../lib/curriculum.css" />
+    <link rel="stylesheet" href="../../lib/codemirror.css" />
+    <script src="../../lib/codemirror.js"></script>
+    <script src="../../lib/runmode.js"></script>
+    <script src="../../lib/scheme2.js"></script>
+    <script src="../../lib/pyret-mode.js"></script>
+    <script src="../../lib/langtable.js"></script>
+    <script src="../../lib/bootstraplesson.js"></script>
+    <script src="../../dependency-graph.js"></script>
+    <script src="../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"Introduction to Transformers: Sort",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="article LessonPlan codap" onload="renderSaveToDrive()">
+<!--#include virtual="/menubar.ssi"-->
+<div id="body" onload="renderSaveToDrive()">
+<div id="header">
+<h1>Introduction to Transformers: Sort</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<script>
+function preselect(klass) {
+  const items = document.getElementsByClassName(klass);
+  for (let i = 0; i < items.length; i++) {
+    items[i].style.display = 'none';
+  }
+  if (items.length > 0) {
+    items[0].style.display = 'block';
+  }
+}
+window.onload = function() {
+  preselect('alignedStandards');
+  preselect('alignedTextbooks');
+  preselect('alignedPractices');
+}
+function showStandardsAlignment() {
+  const selectTag = document.getElementsByClassName('standardsAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const stdTables = document.getElementsByClassName('alignedStandards');
+  //const intro = document.getElementsByClassName('alignedStandardsIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < stdTables.length; i++) {
+    const stdTable = stdTables[i];
+    stdTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optStd = opt.value;
+      for (let j = 0; j < stdTables.length; j++) {
+        const stdTable = stdTables[j];
+        if (stdTable.classList.contains(optStd)) {
+          stdTable.style.display = 'block';
+         // introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+function toggleNonPrereqDisplay() {
+  const inputTag = document.getElementsByClassName('sidebarinput')[0];
+  const checkedP = inputTag.checked;
+  const lessonTable = document.getElementsByClassName('sidebarlessons')[0];
+  const lis = lessonTable.getElementsByTagName('li');
+  for (let i = 0; i < lis.length; i++) {
+    const li = lis[i];
+    const lesson = li.getElementsByClassName('prerequisite');
+    if (lesson.length === 0) {
+      li.style.display = checkedP ? 'none' : 'block';
+    }
+  }
+}
+</script>
+<script>
+function showTextbooksAlignment() {
+  const selectTag = document.getElementsByClassName('textbooksAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const textbookTables = document.getElementsByClassName('alignedTextbooks');
+  //const intro = document.getElementsByClassName('alignedTextbooksIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < textbookTables.length; i++) {
+    const textbookTable = textbookTables[i];
+    textbookTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optTextbook = opt.value;
+      for (let j = 0; j < textbookTables.length; j++) {
+        const textbookTable = textbookTables[j];
+        if (textbookTable.classList.contains(optTextbook)) {
+          textbookTable.style.display = 'block';
+          //introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+</script>
+<script>
+function showPracticesAlignment() {
+  const selectTag = document.getElementsByClassName('practicesAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const practiceTables = document.getElementsByClassName('alignedPractices');
+  for (let i = 0; i < practiceTables.length; i++) {
+    const practiceTable = practiceTables[i];
+    practiceTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optPractice = opt.value;
+      for (let j = 0; j < practiceTables.length; j++) {
+        const practiceTable = practiceTables[j];
+        if (practiceTable.classList.contains(optPractice)) {
+          practiceTable.style.display = 'block';
+        }
+      }
+    }
+  }
+}
+</script>
+<div class="paragraph">
+<!-- </p>
+</div>
+--></div><div class="sidebar"><div id="toggle"></div><div class="paragraph"><!--
+<div class="paragraph">
+<p>
+--><div class="sidebarlessons"><strong>Lessons</strong>
+<ul></ul></div>
+<div class="sidebarstandards"><strong>Standards in this Lesson</strong>: <em>None</em></div>
+<div class="sidebarpractices"><strong>Practices in this Lesson</strong>: <em>None</em></div>
+<!-- </p>
+</div>
+--></div><!--
+<div class="paragraph">
+<p>
+-->
+</div>
+<div class="paragraph description">
+<p>Students learn two different ways to sort - by modifying the table, and by using a <em>Transformer</em> to build and modify a copy of the table.</p>
+</div>
+<table class="tableblock frame-all grid-all stripes-none stretch left-header preamble">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Lesson Goals</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Students will be able to&#8230;&#8203;</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>write a contract, purpose statement, and expression</p>
+</li>
+<li>
+<p>use the <code class="pyret">Sort</code> Transformer order the Animals Dataset by a number of criteria</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Student-facing Lesson Goals</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Let’s learn how transform one table into another.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Materials</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist materials-links">
+<ul>
+<li>
+<p><a href="https://docs.google.com/presentation/d/1_bfhJAf4tCgeFJGCVVoHXn92fcTXlNu_6AKurB4mvUE/" target="_blank" rel="noopener">Lesson Slides</a></p>
+</li>
+<li>
+<p><span class="StarterFile"><a href="https://codap.concord.org/app/static/dg/en/cert/index.html#shared=https%3A%2F%2Fcfm-shared.concord.org%2FI6zAvad2EELkQxtS0SZG%2Ffile.json" target="_blank" rel="noopener">Animals Starter File</a></span></p>
+</li>
+<li>
+<p><span class="materialSectionPlaceholder"> </span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/codap-transformers-1-codap/pages/codap-sort-transformer.html" target="_blank" rel="noopener">Sort Transformer</a></span></p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_sorting_by_changing_a_table_duration_10_minutes_"><span class="section-link"><a href="#_sorting_by_changing_a_table_duration_10_minutes_"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Sorting by Changing a Table <span class="duration">10 minutes</span></h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_overview">Overview</h3>
+<div class="paragraph">
+<p>Students <em>change a table,</em> sorting it by a particular column.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_launch">Launch</h3>
+<div class="paragraph">
+<p>Open the <a href="https://codap.concord.org/app/static/dg/en/cert/index.html#shared=https%3A%2F%2Fcfm-shared.concord.org%2FI6zAvad2EELkQxtS0SZG%2Ffile.json" target="_blank" rel="noopener">Animals Starter File</a> in CODAP. How many animals' names start with the letter M? What would make it easier to figure out how many animals' names start with the letter M?</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_investigate">Investigate</h3>
+<div class="paragraph">
+<p>Student work in groups or pairs. You will direct them to sort various columns on the table by clicking the attribute name and then selecting from the drop-down menu either <code class="pyret">Sort Ascending</code> or <code class="pyret">Sort Descending</code>.</p>
+</div>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Let&#8217;s sort the animals alphabetically by name and see if we get the same answer as we did before! <em>(The image below shows where to click to sort the animals alphabetically by name.)</em>
+<span class="centered-image"><span class="image-figure"><span class="image"><img src="images/893a0b167e6589a4.png" alt="how to sort the animals alphabetically by name in CODAP" width="450" title="how to sort the animals alphabetically by name in CODAP"></span><a href="images/893a0b167e6589a4.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></p>
+</li>
+<li>
+<p>Can you sort the animals by age, from youngest to oldest?</p>
+</li>
+<li>
+<p>How about from heaviest to lightest?</p>
+</li>
+<li>
+<p>Now sort the animals table by how long it took for each animal to be adopted, in ascending order.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Now, direct students to go to the hamburger menu in the upper left corner and select "Save" from the drop-down menu. Students will be prompted to login to Google and enter their login credentials, linking CODAP with their Google Drive. After saving the sorted table, tell students to close CODAP.</p>
+</div>
+<div class="paragraph">
+<p>You might even pretend that the online portion of class is over; you&#8217;re about to do a bit of performing for students in order to illustrate a point.</p>
+</div>
+<div class="paragraph">
+<p>Now: dramatically tell students that you forgot something! You REALLY need to know which animal was the third animal on the original table. Direct students to reopen the saved  file (they can access it by selecting the hamburger icon again). Tell them they must <em>undo</em> any sorting and then consult the original list.</p>
+</div>
+<div class="paragraph">
+<p>Students will discover that they in fact <em>cannot</em> undo their actions, thereby uncovering one of the primary limitations of this type of table transformation.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_synthesize">Synthesize</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Does sorting the Animals Dataset produce a <em>new</em> table, or change the existing one? How do you know?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Sorting the dataset alters the existing table. No new tables appear.</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Can you think of another scenario (like the one manufactured, above) when the inability to revert to the original table might cause problems?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Whenever we experiment with data, there is a chance we will want to make comparisons to the original dataset.</em></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_sorting_with_transformers_duration_20_minutes_"><span class="section-link"><a href="#_sorting_with_transformers_duration_20_minutes_"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Sorting with Transformers! <span class="duration">20 minutes</span></h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_overview_2">Overview</h3>
+<div class="paragraph">
+<p>Students use the <code class="pyret">Sort</code> Transformer to build and modify a <em>copy</em> of the original table.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_launch_2">Launch</h3>
+<div class="paragraph">
+<p>When students apply Transformers, they create <em>copies</em> of the original dataset. The original dataset is always preserved - meaning there is no need for students to undo their actions, or to re-open a saved dataset to consider a different configuration. The Transformers plugin enables easy, low-stakes "what if?" exploration that encourages open-ended investigation.</p>
+</div>
+<div class="openblock lesson-instruction">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Login to the <a href="https://codap.concord.org/app/static/dg/en/cert/index.html#shared=https%3A%2F%2Fcfm-shared.concord.org%2FI6zAvad2EELkQxtS0SZG%2Ffile.json" target="_blank" rel="noopener">Animals Starter File</a> in CODAP.</p>
+</li>
+<li>
+<p>Access the Transformers plugin.
+<span class="centered-image"><span class="image-figure"><span class="image"><img src="images/f4a7be71a89af4b1.png" alt="A screenshot of CODAP, showing where the Transformers plugin can be found" width="450" title="A screenshot of CODAP, showing where the Transformers plugin can be found"></span><a href="images/f4a7be71a89af4b1.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></p>
+</li>
+<li>
+<p>Explore the different Transformers available, especially those categorized under “Construction.”</p>
+</li>
+<li>
+<p>What do you Notice? What do you Wonder?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Students might notice the following: there are Transformers for constructing, measuring the center, aggregating, summarizing, restructuring, tidying, and copying; I often need to provide a dataset; sometimes I see contracts; sometimes I am asked to provide formulas.</em></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_investigate_2">Investigate</h3>
+<div class="paragraph">
+<p>Explain to students that another way to sort is with the Sort <em>Transformer</em> (pictured below), which will create a <em>copy</em> of the Animals dataset in which the animals are organized alphabetically by name.</p>
+</div>
+<div class="paragraph lesson-instruction">
+<p>Complete the <a href="../../lessons/codap-transformers-1-codap/pages/codap-sort-transformer.html" target="_blank" rel="noopener">Sort Transformer</a> worksheet, which will walk you through creating, applying, and saving a <code class="pyret">Sort</code> Transformer.</p>
+</div>
+<div class="paragraph">
+<p><span class="right"><span class="image-figure"><span class="image"><img src="images/d47b710c7ec0b78f.png" alt="An image of the Sort Transformer" width="300" title="An image of the Sort Transformer"></span><a href="images/d47b710c7ec0b78f.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></p>
+</div>
+<div class="paragraph">
+<p>Initially, students might question the value of using a Transformer to sort. At first, using the Transformer will quite likely feel more laborious than using the sort functionality embedded in CODAP. Encourage students to experiment with all of the functionality that the Transformers offer; invite them to be curious and playful as they work, to consider the possibilities afforded by Transformers. For instance, why might it be useful to name and save a Transformer?</p>
+</div>
+<div class="paragraph">
+<p>Students might observe that new and modified tables created by Transformers are automatically saved.  Each new table is titled first with the Transformer name, then the name of the dataset (in parentheses), followed by a number in curly braces at the end to indicate how many times a Transformer has been applied. Students may rename saved tables, if they’d like. Highlight for students that, each time they apply a saved Transformer, the <em>new</em> datasets that are created will appear in the Transformer&#8217;s "Dataset to sort" drop-down menu.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_synthesize_2">Synthesize</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Does the Transformer <code class="pyret">Sort</code> produce a <em>new</em> table, or change the existing one?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>The <code class="pyret">Sort</code> Transformer produceds a new, modified copy of the original table.</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>You&#8217;ve now learned two different strategies for sorting a column of a table. What do the two strategies have in common? How are they different?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Transformers can be named and saved for future use. Transformers create a modified copy of a table rather than altering the original dataset.</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>When would it be better to use the <code class="pyret">Sort</code> Transformer to make a new Table, instead of changing the table? When might it be worse?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>If we are experimenting with a dataset and want to preserve the original table, it would make more sense to use a Transformer.</em></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-17 19:42:12 -0400
+</div>
+</div>
+</div>
+</body>
+</html>

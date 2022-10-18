@@ -1,0 +1,2250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Sam the Butterfly - Applying Inequalities</title>
+<style>
+/* Overall document font */
+* {font-family: Lato, Arial, Helvetica, sans-serif;}
+
+/* document headings */
+h1,.lesson-section-1 {color: #75328A;}
+h1{font-size: 32px; font-family: sans-serif;}
+table.section-heading *, .lesson-section-1 h2{font-size: 32px; font-weight: 100;}
+table.section-heading{width: 100%;}
+table.section-heading td:last-child{text-align: right; color: #d9d2e9;}
+
+/* preamble section */
+table.preamble td {padding: 10px;}
+table.preamble td:first-child{background: #b7d893; width: 25%;}
+table.preamble td:first-child p {font-weight: bold; margin: 5px;}
+
+/* content used throughout the body */
+table{ border-collapse: collapse; border: none; }
+table.grid-all.frame-all {border: solid 1px black;}
+table.grid-none.frame-none {border-width: 0px;}
+
+.big {font-size: 30pt;}
+.vocab{font-weight: bold; font-style: italic;}
+.right{text-align: right;}
+.acknowledgment {
+  border-top: solid 1px black; 
+  font-style: italic; 
+  font-size: 8pt;
+}
+.lesson-point {
+  border-top: solid 1px black; 
+  border-bottom: solid 1px black; 
+  color: black;
+  font-weight: bold;
+}
+
+.web-page-only, #footer { display: none; visibility: hidden; }
+
+/* Callout boxes */
+.strategy-box, .notice-box {
+  background: #efefef;
+  border: solid 5px !important;
+  margin: 15px auto;
+  width: 100%;
+}
+.strategy-box { border-color: #1a73b5 !important; }
+.notice-box   { border-color: #7747a5 !important; }
+.strategy-box td, .notice-box td{ padding: 10px; }
+.strategy-box .title, .notice-box .title{
+  width: 100%;
+  display: block;
+  font-weight: bold;
+  font-size: 24px;
+  clear: both;
+  margin: 100px;
+}
+.strategy-box p.tableblock:first-child, .notice-box p.tableblock:first-child{
+  text-align: center;
+  padding-bottom: 15px;
+}
+.strategy-box .title { color: #1a73b5; }
+.notice-box   .title { color: #7747a5; }
+.strategy-box a, .notice-box a { color: blue; text-decoration: underline; }
+
+/* "Tables" of Evaluation */
+.operator{border-bottom: solid 1px black; text-align: center;}
+.operator * {text-align: center;}
+td {padding: 0px 10px; font-size: 14px;}
+table.expression {
+    font-family:"Courier New", Monaco, monospace;
+    border:     solid 1px black;
+    font-size:  1px;
+    max-width:  400px;
+    color:      #666666;
+    display:    inline-block;
+}
+table.args {border: none; text-align: center;}
+
+.wescheme-string,     .cm-scheme-string    {color: green;}
+.wescheme-number,     .cm-scheme-number    {color: blue;}
+.wescheme-boolean,    .cm-scheme-boolean   {color: darkred;}
+.wescheme-character,  .cm-scheme-character {color: orange;}
+.wescheme-symbol,     .cm-scheme-symbol    {color: steelblue;}
+.wescheme-comment,    .cm-scheme-comment   {color: orange; }
+
+.racket, .pyret, .studentAnswerCode, .studentAnswer, .pyretkeyword, .keyword_only {
+    font-family:"Courier New", Monaco, monospace !important; 
+    color: black;
+}
+
+/* Design Recipe */
+.recipe_instructions { font-style: italic; }
+table.recipe_title {
+  color:              white;
+  background:         gray;
+  display:            block;
+  padding:            0px;
+  font-size:          1.1rem;
+  font-weight:        bold;
+}</style>
+
+      <script src="../../extlib/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML%2Clocal%2Fmathjaxlocal.js"></script>
+      <script>window.status = "not_ready_to_print";</script>
+    <script src="../../lib/langtable.js"></script>
+    <script src="../../dependency-graph.js"></script>
+    <script src="../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:window.location.href,
+    filename:"Sam the Butterfly - Applying Inequalities",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="article LessonPlan wescheme" onload="renderSaveToDrive()">
+<span id="body" onload="renderSaveToDrive()">
+<span id="header">
+<h1>Sam the Butterfly - Applying Inequalities</h1>
+
+  <span id="savetodrive-div"></span>
+
+</span>
+<span id="content">
+<span id="preamble_disabled" class="lessonSummary">
+<span class="sectionbody">
+<script>
+function preselect(klass) {
+  const items = document.getElementsByClassName(klass);
+  for (let i = 0; i < items.length; i++) {
+    items[i].style.display = 'none';
+  }
+  if (items.length > 0) {
+    items[0].style.display = 'block';
+  }
+}
+window.onload = function() {
+  preselect('alignedStandards');
+  preselect('alignedTextbooks');
+  preselect('alignedPractices');
+}
+function showStandardsAlignment() {
+  const selectTag = document.getElementsByClassName('standardsAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const stdTables = document.getElementsByClassName('alignedStandards');
+  //const intro = document.getElementsByClassName('alignedStandardsIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < stdTables.length; i++) {
+    const stdTable = stdTables[i];
+    stdTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optStd = opt.value;
+      for (let j = 0; j < stdTables.length; j++) {
+        const stdTable = stdTables[j];
+        if (stdTable.classList.contains(optStd)) {
+          stdTable.style.display = 'block';
+         // introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+function toggleNonPrereqDisplay() {
+  const inputTag = document.getElementsByClassName('sidebarinput')[0];
+  const checkedP = inputTag.checked;
+  const lessonTable = document.getElementsByClassName('sidebarlessons')[0];
+  const lis = lessonTable.getElementsByTagName('li');
+  for (let i = 0; i < lis.length; i++) {
+    const li = lis[i];
+    const lesson = li.getElementsByClassName('prerequisite');
+    if (lesson.length === 0) {
+      li.style.display = checkedP ? 'none' : 'block';
+    }
+  }
+}
+</script>
+<script>
+function showTextbooksAlignment() {
+  const selectTag = document.getElementsByClassName('textbooksAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const textbookTables = document.getElementsByClassName('alignedTextbooks');
+  //const intro = document.getElementsByClassName('alignedTextbooksIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < textbookTables.length; i++) {
+    const textbookTable = textbookTables[i];
+    textbookTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optTextbook = opt.value;
+      for (let j = 0; j < textbookTables.length; j++) {
+        const textbookTable = textbookTables[j];
+        if (textbookTable.classList.contains(optTextbook)) {
+          textbookTable.style.display = 'block';
+          //introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+</script>
+<script>
+function showPracticesAlignment() {
+  const selectTag = document.getElementsByClassName('practicesAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const practiceTables = document.getElementsByClassName('alignedPractices');
+  for (let i = 0; i < practiceTables.length; i++) {
+    const practiceTable = practiceTables[i];
+    practiceTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optPractice = opt.value;
+      for (let j = 0; j < practiceTables.length; j++) {
+        const practiceTable = practiceTables[j];
+        if (practiceTable.classList.contains(optPractice)) {
+          practiceTable.style.display = 'block';
+        }
+      }
+    }
+  }
+}
+</script>
+<span class="paragraph">
+<!-- </p>
+</span>
+--></span><span class="sidebar"><span id="toggle"></span><span class="paragraph"><!--
+<span class="paragraph">
+<p>
+--><span class="sidebarlessons"><strong>Lessons</strong>
+<ul></ul></span>
+</span>
+<table class="tableblock frame-all grid-all stretch sidebarstandards">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p><strong>Standards in this Lesson</strong>
+<select class="standardsAlignmentSelect"  onchange="showStandardsAlignment()"><option selected="selected" value="standards-CSTA">CSTA</option><option value="standards-Alabama">Alabama</option><option value="standards-Arkansas">Arkansas</option><option value="standards-California">California</option><option value="standards-Colorado">Colorado</option><option value="standards-Connecticut">Connecticut</option><option value="standards-Delaware">Delaware</option><option value="standards-Georgia">Georgia</option><option value="standards-Hawaii">Hawaii</option><option value="standards-Idaho">Idaho</option><option value="standards-Illinois">Illinois</option><option value="standards-Iowa">Iowa</option><option value="standards-Kansas">Kansas</option><option value="standards-Kentucky">Kentucky</option><option value="standards-Louisiana">Louisiana</option><option value="standards-Maine">Maine</option><option value="standards-Michigan">Michigan</option><option value="standards-Maryland">Maryland</option><option value="standards-Massachusetts">Massachusetts</option><option value="standards-Mississippi">Mississippi</option><option value="standards-Missouri">Missouri</option><option value="standards-Montana">Montana</option><option value="standards-New Hampshire">New Hampshire</option><option value="standards-Nevada">Nevada</option><option value="standards-New Jersey">New Jersey</option><option value="standards-New Mexico">New Mexico</option><option value="standards-North Carolina">North Carolina</option><option value="standards-North Dakota">North Dakota</option><option value="standards-New York">New York</option><option value="standards-Oklahoma">Oklahoma</option><option value="standards-Ohio">Ohio</option><option value="standards-Oregon">Oregon</option><option value="standards-Pennsylvania">Pennsylvania</option><option value="standards-Rhode Island">Rhode Island</option><option value="standards-South Dakota">South Dakota</option><option value="standards-Tennessee">Tennessee</option><option value="standards-Utah">Utah</option><option value="standards-Vermont">Vermont</option><option value="standards-Washington">Washington</option><option value="standards-West Virginia">West Virginia</option><option value="standards-Wisconsin">Wisconsin</option><option value="standards-Wyoming">Wyoming</option></select></p>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="dlist standards-CSTA">
+<span class="title"><a href="https://csteachers.org/page/standards">CSTA Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>3B-AP-10</dt>
+<dd>
+<p>Use and adapt classic algorithms to solve computational problems.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Alabama">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Alabama Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>AL.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>AL.6.EE.B.8</dt>
+<dd>
+<p>Write an inequality of the form x &gt; c or x &lt; c to represent a constraint or condition in a real-world or mathematical problem. Recognize that inequalities of the form x &gt; c or x &lt; c have infinitely many solutions; represent solutions of such inequalities on number line diagrams.</p>
+</dd>
+<dt class="hdlist1"><br/>AL.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>AL.HSA.CED.A.1</dt>
+<dd>
+<p>Create equations and inequalities in one variable and use them to solve problems.</p>
+</dd>
+<dt class="hdlist1"><br/>AL.HSA.CED.A.3</dt>
+<dd>
+<p>Represent constraints by equations or inequalities, and by systems of equations and/or inequalities, and interpret solutions as viable or nonviable options in a modeling context.</p>
+</dd>
+<dt class="hdlist1"><br/>AL.HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.</p>
+</dd>
+<dt class="hdlist1"><br/>AL.HSF.BF.B</dt>
+<dd>
+<p>Build new functions from existing functions.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Arkansas">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Arkansas Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>AR.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>AR.6.EE.B.8</dt>
+<dd>
+<p>Write an inequality of the form x &gt; c or x &lt; c to represent a constraint or condition in a real-world or mathematical problem. Recognize that inequalities of the form x &gt; c or x &lt; c have infinitely many solutions; represent solutions of such inequalities on number line diagrams.</p>
+</dd>
+<dt class="hdlist1"><br/>AR.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>AR.HSA.CED.A.1</dt>
+<dd>
+<p>Create equations and inequalities in one variable and use them to solve problems.</p>
+</dd>
+<dt class="hdlist1"><br/>AR.HSA.CED.A.3</dt>
+<dd>
+<p>Represent constraints by equations or inequalities, and by systems of equations and/or inequalities, and interpret solutions as viable or nonviable options in a modeling context.</p>
+</dd>
+<dt class="hdlist1"><br/>AR.HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.</p>
+</dd>
+<dt class="hdlist1"><br/>AR.HSF.BF.B</dt>
+<dd>
+<p>Build new functions from existing functions.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-California">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">California Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>CA.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>CA.6.EE.B.8</dt>
+<dd>
+<p>Write an inequality of the form x &gt; c or x &lt; c to represent a constraint or condition in a real-world or mathematical problem. Recognize that inequalities of the form x &gt; c or x &lt; c have infinitely many solutions; represent solutions of such inequalities on number line diagrams.</p>
+</dd>
+<dt class="hdlist1"><br/>CA.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>CA.HSA.CED.A.1</dt>
+<dd>
+<p>Create equations and inequalities in one variable and use them to solve problems.</p>
+</dd>
+<dt class="hdlist1"><br/>CA.HSA.CED.A.3</dt>
+<dd>
+<p>Represent constraints by equations or inequalities, and by systems of equations and/or inequalities, and interpret solutions as viable or nonviable options in a modeling context.</p>
+</dd>
+<dt class="hdlist1"><br/>CA.HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.</p>
+</dd>
+<dt class="hdlist1"><br/>CA.HSF.BF.B</dt>
+<dd>
+<p>Build new functions from existing functions.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Colorado">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Colorado Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>CO.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>CO.6.EE.B.8</dt>
+<dd>
+<p>Write an inequality of the form x &gt; c or x &lt; c to represent a constraint or condition in a real-world or mathematical problem. Recognize that inequalities of the form x &gt; c or x &lt; c have infinitely many solutions; represent solutions of such inequalities on number line diagrams.</p>
+</dd>
+<dt class="hdlist1"><br/>CO.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>CO.HSA.CED.A.1</dt>
+<dd>
+<p>Create equations and inequalities in one variable and use them to solve problems.</p>
+</dd>
+<dt class="hdlist1"><br/>CO.HSA.CED.A.3</dt>
+<dd>
+<p>Represent constraints by equations or inequalities, and by systems of equations and/or inequalities, and interpret solutions as viable or nonviable options in a modeling context.</p>
+</dd>
+<dt class="hdlist1"><br/>CO.HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.</p>
+</dd>
+<dt class="hdlist1"><br/>CO.HSF.BF.B</dt>
+<dd>
+<p>Build new functions from existing functions.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Connecticut">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Connecticut Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>CT.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>CT.6.EE.B.8</dt>
+<dd>
+<p>Write an inequality of the form x &gt; c or x &lt; c to represent a constraint or condition in a real-world or mathematical problem. Recognize that inequalities of the form x &gt; c or x &lt; c have infinitely many solutions; represent solutions of such inequalities on number line diagrams.</p>
+</dd>
+<dt class="hdlist1"><br/>CT.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>CT.HSA.CED.A.1</dt>
+<dd>
+<p>Create equations and inequalities in one variable and use them to solve problems.</p>
+</dd>
+<dt class="hdlist1"><br/>CT.HSA.CED.A.3</dt>
+<dd>
+<p>Represent constraints by equations or inequalities, and by systems of equations and/or inequalities, and interpret solutions as viable or nonviable options in a modeling context.</p>
+</dd>
+<dt class="hdlist1"><br/>CT.HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.</p>
+</dd>
+<dt class="hdlist1"><br/>CT.HSF.BF.B</dt>
+<dd>
+<p>Build new functions from existing functions.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Delaware">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Delaware Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>DE.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>DE.6.EE.B.8</dt>
+<dd>
+<p>Write an inequality of the form x &gt; c or x &lt; c to represent a constraint or condition in a real-world or mathematical problem. Recognize that inequalities of the form x &gt; c or x &lt; c have infinitely many solutions; represent solutions of such inequalities on number line diagrams.</p>
+</dd>
+<dt class="hdlist1"><br/>DE.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>DE.HSA.CED.A.1</dt>
+<dd>
+<p>Create equations and inequalities in one variable and use them to solve problems.</p>
+</dd>
+<dt class="hdlist1"><br/>DE.HSA.CED.A.3</dt>
+<dd>
+<p>Represent constraints by equations or inequalities, and by systems of equations and/or inequalities, and interpret solutions as viable or nonviable options in a modeling context.</p>
+</dd>
+<dt class="hdlist1"><br/>DE.HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.</p>
+</dd>
+<dt class="hdlist1"><br/>DE.HSF.BF.B</dt>
+<dd>
+<p>Build new functions from existing functions.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Georgia">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Delaware Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>GA.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>GA.6.EE.B.8</dt>
+<dd>
+<p>Write an inequality of the form x &gt; c or x &lt; c to represent a constraint or condition in a real-world or mathematical problem. Recognize that inequalities of the form x &gt; c or x &lt; c have infinitely many solutions; represent solutions of such inequalities on number line diagrams.</p>
+</dd>
+<dt class="hdlist1"><br/>GA.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>GA.HSA.CED.A.1</dt>
+<dd>
+<p>Create equations and inequalities in one variable and use them to solve problems.</p>
+</dd>
+<dt class="hdlist1"><br/>GA.HSA.CED.A.3</dt>
+<dd>
+<p>Represent constraints by equations or inequalities, and by systems of equations and/or inequalities, and interpret solutions as viable or nonviable options in a modeling context.</p>
+</dd>
+<dt class="hdlist1"><br/>GA.HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.</p>
+</dd>
+<dt class="hdlist1"><br/>GA.HSF.BF.B</dt>
+<dd>
+<p>Build new functions from existing functions.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Hawaii">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Hawaii Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>HI.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>HI.6.EE.B.8</dt>
+<dd>
+<p>Write an inequality of the form x &gt; c or x &lt; c to represent a constraint or condition in a real-world or mathematical problem. Recognize that inequalities of the form x &gt; c or x &lt; c have infinitely many solutions; represent solutions of such inequalities on number line diagrams.</p>
+</dd>
+<dt class="hdlist1"><br/>HI.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>HI.HSA.CED.A.1</dt>
+<dd>
+<p>Create equations and inequalities in one variable and use them to solve problems.</p>
+</dd>
+<dt class="hdlist1"><br/>HI.HSA.CED.A.3</dt>
+<dd>
+<p>Represent constraints by equations or inequalities, and by systems of equations and/or inequalities, and interpret solutions as viable or nonviable options in a modeling context.</p>
+</dd>
+<dt class="hdlist1"><br/>HI.HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.</p>
+</dd>
+<dt class="hdlist1"><br/>HI.HSF.BF.B</dt>
+<dd>
+<p>Build new functions from existing functions.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Idaho">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Idaho Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>ID.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>ID.6.EE.B.8</dt>
+<dd>
+<p>Write an inequality of the form x &gt; c or x &lt; c to represent a constraint or condition in a real-world or mathematical problem. Recognize that inequalities of the form x &gt; c or x &lt; c have infinitely many solutions; represent solutions of such inequalities on number line diagrams.</p>
+</dd>
+<dt class="hdlist1"><br/>ID.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>ID.HSA.CED.A.1</dt>
+<dd>
+<p>Create equations and inequalities in one variable and use them to solve problems.</p>
+</dd>
+<dt class="hdlist1"><br/>ID.HSA.CED.A.3</dt>
+<dd>
+<p>Represent constraints by equations or inequalities, and by systems of equations and/or inequalities, and interpret solutions as viable or nonviable options in a modeling context.</p>
+</dd>
+<dt class="hdlist1"><br/>ID.HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.</p>
+</dd>
+<dt class="hdlist1"><br/>ID.HSF.BF.B</dt>
+<dd>
+<p>Build new functions from existing functions.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Illinois">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Illinois Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>IL.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>IL.6.EE.B.8</dt>
+<dd>
+<p>Write an inequality of the form x &gt; c or x &lt; c to represent a constraint or condition in a real-world or mathematical problem. Recognize that inequalities of the form x &gt; c or x &lt; c have infinitely many solutions; represent solutions of such inequalities on number line diagrams.</p>
+</dd>
+<dt class="hdlist1"><br/>IL.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>IL.HSA.CED.A.1</dt>
+<dd>
+<p>Create equations and inequalities in one variable and use them to solve problems.</p>
+</dd>
+<dt class="hdlist1"><br/>IL.HSA.CED.A.3</dt>
+<dd>
+<p>Represent constraints by equations or inequalities, and by systems of equations and/or inequalities, and interpret solutions as viable or nonviable options in a modeling context.</p>
+</dd>
+<dt class="hdlist1"><br/>IL.HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.</p>
+</dd>
+<dt class="hdlist1"><br/>IL.HSF.BF.B</dt>
+<dd>
+<p>Build new functions from existing functions.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Iowa">
+<span class="title"><a href="https://iowacore.gov/standards/iowa-core-standards">Iowa Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>IA.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>IA.6.EE.B.8</dt>
+<dd>
+<p>Write an inequality of the form x &gt; c or x &lt; c to represent a constraint or condition in a real-world or mathematical problem. Recognize that inequalities of the form x &gt; c or x &lt; c have infinitely many solutions; represent solutions of such inequalities on number line diagrams.</p>
+</dd>
+<dt class="hdlist1"><br/>IA.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>IA.HSA.CED.A.1</dt>
+<dd>
+<p>Create equations and inequalities in one variable and use them to solve problems.</p>
+</dd>
+<dt class="hdlist1"><br/>IA.HSA.CED.A.3</dt>
+<dd>
+<p>Represent constraints by equations or inequalities, and by systems of equations and/or inequalities, and interpret solutions as viable or nonviable options in a modeling context.</p>
+</dd>
+<dt class="hdlist1"><br/>IA.HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.</p>
+</dd>
+<dt class="hdlist1"><br/>IA.HSF.BF.B</dt>
+<dd>
+<p>Build new functions from existing functions.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Kansas">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Kansas Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>KS.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>KS.6.EE.B.8</dt>
+<dd>
+<p>Write an inequality of the form x &gt; c or x &lt; c to represent a constraint or condition in a real-world or mathematical problem. Recognize that inequalities of the form x &gt; c or x &lt; c have infinitely many solutions; represent solutions of such inequalities on number line diagrams.</p>
+</dd>
+<dt class="hdlist1"><br/>KS.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>KS.HSA.CED.A.1</dt>
+<dd>
+<p>Create equations and inequalities in one variable and use them to solve problems.</p>
+</dd>
+<dt class="hdlist1"><br/>KS.HSA.CED.A.3</dt>
+<dd>
+<p>Represent constraints by equations or inequalities, and by systems of equations and/or inequalities, and interpret solutions as viable or nonviable options in a modeling context.</p>
+</dd>
+<dt class="hdlist1"><br/>KS.HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.</p>
+</dd>
+<dt class="hdlist1"><br/>KS.HSF.BF.B</dt>
+<dd>
+<p>Build new functions from existing functions.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Kentucky">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Kentucky Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>KY.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>KY.6.EE.B.8</dt>
+<dd>
+<p>Write an inequality of the form x &gt; c or x &lt; c to represent a constraint or condition in a real-world or mathematical problem. Recognize that inequalities of the form x &gt; c or x &lt; c have infinitely many solutions; represent solutions of such inequalities on number line diagrams.</p>
+</dd>
+<dt class="hdlist1"><br/>KY.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>KY.HSA.CED.A.1</dt>
+<dd>
+<p>Create equations and inequalities in one variable and use them to solve problems.</p>
+</dd>
+<dt class="hdlist1"><br/>KY.HSA.CED.A.3</dt>
+<dd>
+<p>Represent constraints by equations or inequalities, and by systems of equations and/or inequalities, and interpret solutions as viable or nonviable options in a modeling context.</p>
+</dd>
+<dt class="hdlist1"><br/>KY.HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.</p>
+</dd>
+<dt class="hdlist1"><br/>KY.HSF.BF.B</dt>
+<dd>
+<p>Build new functions from existing functions.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Louisiana">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Louisiana Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>LA.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>LA.6.EE.B.8</dt>
+<dd>
+<p>Write an inequality of the form x &gt; c or x &lt; c to represent a constraint or condition in a real-world or mathematical problem. Recognize that inequalities of the form x &gt; c or x &lt; c have infinitely many solutions; represent solutions of such inequalities on number line diagrams.</p>
+</dd>
+<dt class="hdlist1"><br/>LA.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>LA.HSA.CED.A.1</dt>
+<dd>
+<p>Create equations and inequalities in one variable and use them to solve problems.</p>
+</dd>
+<dt class="hdlist1"><br/>LA.HSA.CED.A.3</dt>
+<dd>
+<p>Represent constraints by equations or inequalities, and by systems of equations and/or inequalities, and interpret solutions as viable or nonviable options in a modeling context.</p>
+</dd>
+<dt class="hdlist1"><br/>LA.HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.</p>
+</dd>
+<dt class="hdlist1"><br/>LA.HSF.BF.B</dt>
+<dd>
+<p>Build new functions from existing functions.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Maine">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Maine Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>ME.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>ME.6.EE.B.8</dt>
+<dd>
+<p>Write an inequality of the form x &gt; c or x &lt; c to represent a constraint or condition in a real-world or mathematical problem. Recognize that inequalities of the form x &gt; c or x &lt; c have infinitely many solutions; represent solutions of such inequalities on number line diagrams.</p>
+</dd>
+<dt class="hdlist1"><br/>ME.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>ME.HSA.CED.A.1</dt>
+<dd>
+<p>Create equations and inequalities in one variable and use them to solve problems.</p>
+</dd>
+<dt class="hdlist1"><br/>ME.HSA.CED.A.3</dt>
+<dd>
+<p>Represent constraints by equations or inequalities, and by systems of equations and/or inequalities, and interpret solutions as viable or nonviable options in a modeling context.</p>
+</dd>
+<dt class="hdlist1"><br/>ME.HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.</p>
+</dd>
+<dt class="hdlist1"><br/>ME.HSF.BF.B</dt>
+<dd>
+<p>Build new functions from existing functions.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Michigan">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Michigan Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>MI.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>MI.6.EE.B.8</dt>
+<dd>
+<p>Write an inequality of the form x &gt; c or x &lt; c to represent a constraint or condition in a real-world or mathematical problem. Recognize that inequalities of the form x &gt; c or x &lt; c have infinitely many solutions; represent solutions of such inequalities on number line diagrams.</p>
+</dd>
+<dt class="hdlist1"><br/>MI.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>MI.HSA.CED.A.1</dt>
+<dd>
+<p>Create equations and inequalities in one variable and use them to solve problems.</p>
+</dd>
+<dt class="hdlist1"><br/>MI.HSA.CED.A.3</dt>
+<dd>
+<p>Represent constraints by equations or inequalities, and by systems of equations and/or inequalities, and interpret solutions as viable or nonviable options in a modeling context.</p>
+</dd>
+<dt class="hdlist1"><br/>MI.HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.</p>
+</dd>
+<dt class="hdlist1"><br/>MI.HSF.BF.B</dt>
+<dd>
+<p>Build new functions from existing functions.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Maryland">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Maryland Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>MD.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>MD.6.EE.B.8</dt>
+<dd>
+<p>Write an inequality of the form x &gt; c or x &lt; c to represent a constraint or condition in a real-world or mathematical problem. Recognize that inequalities of the form x &gt; c or x &lt; c have infinitely many solutions; represent solutions of such inequalities on number line diagrams.</p>
+</dd>
+<dt class="hdlist1"><br/>MD.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>MD.HSA.CED.A.1</dt>
+<dd>
+<p>Create equations and inequalities in one variable and use them to solve problems.</p>
+</dd>
+<dt class="hdlist1"><br/>MD.HSA.CED.A.3</dt>
+<dd>
+<p>Represent constraints by equations or inequalities, and by systems of equations and/or inequalities, and interpret solutions as viable or nonviable options in a modeling context.</p>
+</dd>
+<dt class="hdlist1"><br/>MD.HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.</p>
+</dd>
+<dt class="hdlist1"><br/>MD.HSF.BF.B</dt>
+<dd>
+<p>Build new functions from existing functions.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Massachusetts">
+<span class="title"><a href="https://www.doe.mass.edu/frameworks/">Massachusetts Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>MA.6-8.CT.a.2</dt>
+<dd>
+<p>Define a simple function that represents a more complex task/problem and can be reused to solve similar tasks/problems.</p>
+</dd>
+<dt class="hdlist1"><br/>MA.6-8.CT.b.2</dt>
+<dd>
+<p>Use logical reasoning to predict outputs given varying inputs.</p>
+</dd>
+<dt class="hdlist1"><br/>MA.6-8.CT.b.5</dt>
+<dd>
+<p>Recognize that boundaries need to be taken into account for an algorithm to produce correct results.</p>
+</dd>
+<dt class="hdlist1"><br/>MA.6-8.CT.d.2</dt>
+<dd>
+<p>Use functions to hide the detail in a program.</p>
+</dd>
+<dt class="hdlist1"><br/>MA.6-8.CT.d.5</dt>
+<dd>
+<p>Trace programs step-by-step in order to predict their behavior.</p>
+</dd>
+<dt class="hdlist1"><br/>MA.6-8.DTC.a.4</dt>
+<dd>
+<p>Individually and collaboratively use advanced tools to design and create online content (e.g., digital portfolio, multimedia, blog, webpage).</p>
+</dd>
+<dt class="hdlist1"><br/>MA.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>MA.6.EE.B.8</dt>
+<dd>
+<p>Write an inequality of the form x &gt; c or x &lt; c to represent a constraint or condition in a real-world or mathematical problem. Recognize that inequalities of the form x &gt; c or x &lt; c have infinitely many solutions; represent solutions of such inequalities on number line diagrams.</p>
+</dd>
+<dt class="hdlist1"><br/>MA.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>MA.9-12.CT.b.2</dt>
+<dd>
+<p>Represent algorithms using structured language, such as pseudocode.</p>
+</dd>
+<dt class="hdlist1"><br/>MA.HSA.CED.A.1</dt>
+<dd>
+<p>Create equations and inequalities in one variable and use them to solve problems.</p>
+</dd>
+<dt class="hdlist1"><br/>MA.HSA.CED.A.3</dt>
+<dd>
+<p>Represent constraints by equations or inequalities, and by systems of equations and/or inequalities, and interpret solutions as viable or nonviable options in a modeling context.</p>
+</dd>
+<dt class="hdlist1"><br/>MA.HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.</p>
+</dd>
+<dt class="hdlist1"><br/>MA.HSF.BF.B</dt>
+<dd>
+<p>Build new functions from existing functions.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Mississippi">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Mississippi Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>MS.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>MS.6.EE.B.8</dt>
+<dd>
+<p>Write an inequality of the form x &gt; c or x &lt; c to represent a constraint or condition in a real-world or mathematical problem. Recognize that inequalities of the form x &gt; c or x &lt; c have infinitely many solutions; represent solutions of such inequalities on number line diagrams.</p>
+</dd>
+<dt class="hdlist1"><br/>MS.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>MS.HSA.CED.A.1</dt>
+<dd>
+<p>Create equations and inequalities in one variable and use them to solve problems.</p>
+</dd>
+<dt class="hdlist1"><br/>MS.HSA.CED.A.3</dt>
+<dd>
+<p>Represent constraints by equations or inequalities, and by systems of equations and/or inequalities, and interpret solutions as viable or nonviable options in a modeling context.</p>
+</dd>
+<dt class="hdlist1"><br/>MS.HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.</p>
+</dd>
+<dt class="hdlist1"><br/>MS.HSF.BF.B</dt>
+<dd>
+<p>Build new functions from existing functions.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Missouri">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Missouri Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>MO.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>MO.6.EE.B.8</dt>
+<dd>
+<p>Write an inequality of the form x &gt; c or x &lt; c to represent a constraint or condition in a real-world or mathematical problem. Recognize that inequalities of the form x &gt; c or x &lt; c have infinitely many solutions; represent solutions of such inequalities on number line diagrams.</p>
+</dd>
+<dt class="hdlist1"><br/>MO.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>MO.HSA.CED.A.1</dt>
+<dd>
+<p>Create equations and inequalities in one variable and use them to solve problems.</p>
+</dd>
+<dt class="hdlist1"><br/>MO.HSA.CED.A.3</dt>
+<dd>
+<p>Represent constraints by equations or inequalities, and by systems of equations and/or inequalities, and interpret solutions as viable or nonviable options in a modeling context.</p>
+</dd>
+<dt class="hdlist1"><br/>MO.HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.</p>
+</dd>
+<dt class="hdlist1"><br/>MO.HSF.BF.B</dt>
+<dd>
+<p>Build new functions from existing functions.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Montana">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Montana Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>MT.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>MT.6.EE.B.8</dt>
+<dd>
+<p>Write an inequality of the form x &gt; c or x &lt; c to represent a constraint or condition in a real-world or mathematical problem. Recognize that inequalities of the form x &gt; c or x &lt; c have infinitely many solutions; represent solutions of such inequalities on number line diagrams.</p>
+</dd>
+<dt class="hdlist1"><br/>MT.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>MT.HSA.CED.A.1</dt>
+<dd>
+<p>Create equations and inequalities in one variable and use them to solve problems.</p>
+</dd>
+<dt class="hdlist1"><br/>MT.HSA.CED.A.3</dt>
+<dd>
+<p>Represent constraints by equations or inequalities, and by systems of equations and/or inequalities, and interpret solutions as viable or nonviable options in a modeling context.</p>
+</dd>
+<dt class="hdlist1"><br/>MT.HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.</p>
+</dd>
+<dt class="hdlist1"><br/>MT.HSF.BF.B</dt>
+<dd>
+<p>Build new functions from existing functions.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist .alignedStandards.standards-New Hampshire">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">New Hampshire Standards</a></span>
+<dl>
+<dt>NH.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt>NH.6.EE.B.8</dt>
+<dd>
+<p>Write an inequality of the form x &gt; c or x &lt; c to represent a constraint or condition in a real-world or mathematical problem. Recognize that inequalities of the form x &gt; c or x &lt; c have infinitely many solutions; represent solutions of such inequalities on number line diagrams.</p>
+</dd>
+<dt>NH.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt>NH.HSA.CED.A.1</dt>
+<dd>
+<p>Create equations and inequalities in one variable and use them to solve problems.</p>
+</dd>
+<dt>NH.HSA.CED.A.3</dt>
+<dd>
+<p>Represent constraints by equations or inequalities, and by systems of equations and/or inequalities, and interpret solutions as viable or nonviable options in a modeling context.</p>
+</dd>
+<dt>NH.HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.</p>
+</dd>
+<dt>NH.HSF.BF.B</dt>
+<dd>
+<p>Build new functions from existing functions.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Nevada">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Nevada Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>NV.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>NV.6.EE.B.8</dt>
+<dd>
+<p>Write an inequality of the form x &gt; c or x &lt; c to represent a constraint or condition in a real-world or mathematical problem. Recognize that inequalities of the form x &gt; c or x &lt; c have infinitely many solutions; represent solutions of such inequalities on number line diagrams.</p>
+</dd>
+<dt class="hdlist1"><br/>NV.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>NV.HSA.CED.A.1</dt>
+<dd>
+<p>Create equations and inequalities in one variable and use them to solve problems.</p>
+</dd>
+<dt class="hdlist1"><br/>NV.HSA.CED.A.3</dt>
+<dd>
+<p>Represent constraints by equations or inequalities, and by systems of equations and/or inequalities, and interpret solutions as viable or nonviable options in a modeling context.</p>
+</dd>
+<dt class="hdlist1"><br/>NV.HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.</p>
+</dd>
+<dt class="hdlist1"><br/>NV.HSF.BF.B</dt>
+<dd>
+<p>Build new functions from existing functions.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist .alignedStandards.standards-New Jersey">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">New Jersey Standards</a></span>
+<dl>
+<dt>NJ.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt>NJ.6.EE.B.8</dt>
+<dd>
+<p>Write an inequality of the form x &gt; c or x &lt; c to represent a constraint or condition in a real-world or mathematical problem. Recognize that inequalities of the form x &gt; c or x &lt; c have infinitely many solutions; represent solutions of such inequalities on number line diagrams.</p>
+</dd>
+<dt>NJ.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt>NJ.HSA.CED.A.1</dt>
+<dd>
+<p>Create equations and inequalities in one variable and use them to solve problems.</p>
+</dd>
+<dt>NJ.HSA.CED.A.3</dt>
+<dd>
+<p>Represent constraints by equations or inequalities, and by systems of equations and/or inequalities, and interpret solutions as viable or nonviable options in a modeling context.</p>
+</dd>
+<dt>NJ.HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.</p>
+</dd>
+<dt>NJ.HSF.BF.B</dt>
+<dd>
+<p>Build new functions from existing functions.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist .alignedStandards.standards-New Mexico">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">New Mexico Standards</a></span>
+<dl>
+<dt>NM.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt>NM.6.EE.B.8</dt>
+<dd>
+<p>Write an inequality of the form x &gt; c or x &lt; c to represent a constraint or condition in a real-world or mathematical problem. Recognize that inequalities of the form x &gt; c or x &lt; c have infinitely many solutions; represent solutions of such inequalities on number line diagrams.</p>
+</dd>
+<dt>NM.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt>NM.HSA.CED.A.1</dt>
+<dd>
+<p>Create equations and inequalities in one variable and use them to solve problems.</p>
+</dd>
+<dt>NM.HSA.CED.A.3</dt>
+<dd>
+<p>Represent constraints by equations or inequalities, and by systems of equations and/or inequalities, and interpret solutions as viable or nonviable options in a modeling context.</p>
+</dd>
+<dt>NM.HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.</p>
+</dd>
+<dt>NM.HSF.BF.B</dt>
+<dd>
+<p>Build new functions from existing functions.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist .alignedStandards.standards-North Carolina">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">North Carolina Standards</a></span>
+<dl>
+<dt>NC.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt>NC.6.EE.B.8</dt>
+<dd>
+<p>Write an inequality of the form x &gt; c or x &lt; c to represent a constraint or condition in a real-world or mathematical problem. Recognize that inequalities of the form x &gt; c or x &lt; c have infinitely many solutions; represent solutions of such inequalities on number line diagrams.</p>
+</dd>
+<dt>NC.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt>NC.HSA.CED.A.1</dt>
+<dd>
+<p>Create equations and inequalities in one variable and use them to solve problems.</p>
+</dd>
+<dt>NC.HSA.CED.A.3</dt>
+<dd>
+<p>Represent constraints by equations or inequalities, and by systems of equations and/or inequalities, and interpret solutions as viable or nonviable options in a modeling context.</p>
+</dd>
+<dt>NC.HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.</p>
+</dd>
+<dt>NC.HSF.BF.B</dt>
+<dd>
+<p>Build new functions from existing functions.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist .alignedStandards.standards-North Dakota">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">North Dakota Standards</a></span>
+<dl>
+<dt>ND.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt>ND.6.EE.B.8</dt>
+<dd>
+<p>Write an inequality of the form x &gt; c or x &lt; c to represent a constraint or condition in a real-world or mathematical problem. Recognize that inequalities of the form x &gt; c or x &lt; c have infinitely many solutions; represent solutions of such inequalities on number line diagrams.</p>
+</dd>
+<dt>ND.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt>ND.HSA.CED.A.1</dt>
+<dd>
+<p>Create equations and inequalities in one variable and use them to solve problems.</p>
+</dd>
+<dt>ND.HSA.CED.A.3</dt>
+<dd>
+<p>Represent constraints by equations or inequalities, and by systems of equations and/or inequalities, and interpret solutions as viable or nonviable options in a modeling context.</p>
+</dd>
+<dt>ND.HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.</p>
+</dd>
+<dt>ND.HSF.BF.B</dt>
+<dd>
+<p>Build new functions from existing functions.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist .alignedStandards.standards-New York">
+<span class="title"><a href="http://www.nysed.gov/curriculum-instruction/new-york-state-next-generation-mathematics-learning-standards">New York Standards</a></span>
+<dl>
+<dt>NY.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt>NY.6.EE.B.8</dt>
+<dd>
+<p>Write an inequality of the form x &gt; c or x &lt; c to represent a constraint or condition in a real-world or mathematical problem. Recognize that inequalities of the form x &gt; c or x &lt; c have infinitely many solutions; represent solutions of such inequalities on number line diagrams.</p>
+</dd>
+<dt>NY.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt>NY.HSA.CED.A.1</dt>
+<dd>
+<p>Create equations and inequalities in one variable and use them to solve problems.</p>
+</dd>
+<dt>NY.HSA.CED.A.3</dt>
+<dd>
+<p>Represent constraints by equations or inequalities, and by systems of equations and/or inequalities, and interpret solutions as viable or nonviable options in a modeling context.</p>
+</dd>
+<dt>NY.HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.</p>
+</dd>
+<dt>NY.HSF.BF.B</dt>
+<dd>
+<p>Build new functions from existing functions.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Oklahoma">
+<span class="title"><a href="https://sde.ok.gov/oklahoma-academic-standards">Oklahoma Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>OK.6.AP.C.01</dt>
+<dd>
+<p>Develop programs that utilize combinations of repetition, conditionals, and the manipulation of variables representing different data types.</p>
+</dd>
+<dt class="hdlist1"><br/>OK.6.AP.M.01</dt>
+<dd>
+<p>Decompose problems into parts to facilitate the design, implementation, and review of programs.</p>
+</dd>
+<dt class="hdlist1"><br/>OK.7.A.3.3</dt>
+<dd>
+<p>Represent real-world or mathematical situations using equations and inequalities involving variables and rational numbers.</p>
+</dd>
+<dt class="hdlist1"><br/>OK.7.AP.C.01</dt>
+<dd>
+<p>Develop programs that utilize combinations of repetition, compound conditionals, and the manipulation of variables representing different data types.</p>
+</dd>
+<dt class="hdlist1"><br/>OK.7.AP.M.01</dt>
+<dd>
+<p>Decompose problems into parts to facilitate the design, implementation, and review of increasingly complex programs.</p>
+</dd>
+<dt class="hdlist1"><br/>OK.8.AP.M.01</dt>
+<dd>
+<p>Decompose problems and subproblems into parts to facilitate the design, implementation, and review of complex programs.</p>
+</dd>
+<dt class="hdlist1"><br/>OK.A1.A.2</dt>
+<dd>
+<p>Represent and solve real-world and mathematical problems using linear inequalities, compound inequalities and systems of linear inequalities; interpret solutions in the original context.</p>
+</dd>
+<dt class="hdlist1"><br/>OK.A1.A.2.2</dt>
+<dd>
+<p>Represent relationships in various contexts with compound and absolute value inequalities and solve the resulting inequalities by graphing and interpreting the solutions on a number line.</p>
+</dd>
+<dt class="hdlist1"><br/>OK.L1.AP.A.01</dt>
+<dd>
+<p>Create a prototype that uses algorithms (e.g., searching, sorting, finding shortest distance) to provide a possible solution for a real-world problem.</p>
+</dd>
+<dt class="hdlist1"><br/>OK.L2.AP.M.03</dt>
+<dd>
+<p>Create programming solutions by reusing existing code (e.g., libraries, Application Programming Interface (APIs), code repositories).</p>
+</dd>
+<dt class="hdlist1"><br/>OK.PA.A.4.3</dt>
+<dd>
+<p>Represent real-world situations using equations and inequalities involving one variable.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Ohio">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Ohio Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>OH.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>OH.6.EE.B.8</dt>
+<dd>
+<p>Write an inequality of the form x &gt; c or x &lt; c to represent a constraint or condition in a real-world or mathematical problem. Recognize that inequalities of the form x &gt; c or x &lt; c have infinitely many solutions; represent solutions of such inequalities on number line diagrams.</p>
+</dd>
+<dt class="hdlist1"><br/>OH.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>OH.HSA.CED.A.1</dt>
+<dd>
+<p>Create equations and inequalities in one variable and use them to solve problems.</p>
+</dd>
+<dt class="hdlist1"><br/>OH.HSA.CED.A.3</dt>
+<dd>
+<p>Represent constraints by equations or inequalities, and by systems of equations and/or inequalities, and interpret solutions as viable or nonviable options in a modeling context.</p>
+</dd>
+<dt class="hdlist1"><br/>OH.HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.</p>
+</dd>
+<dt class="hdlist1"><br/>OH.HSF.BF.B</dt>
+<dd>
+<p>Build new functions from existing functions.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Oregon">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Oregon Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>OR.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>OR.6.EE.B.8</dt>
+<dd>
+<p>Write an inequality of the form x &gt; c or x &lt; c to represent a constraint or condition in a real-world or mathematical problem. Recognize that inequalities of the form x &gt; c or x &lt; c have infinitely many solutions; represent solutions of such inequalities on number line diagrams.</p>
+</dd>
+<dt class="hdlist1"><br/>OR.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>OR.HSA.CED.A.1</dt>
+<dd>
+<p>Create equations and inequalities in one variable and use them to solve problems.</p>
+</dd>
+<dt class="hdlist1"><br/>OR.HSA.CED.A.3</dt>
+<dd>
+<p>Represent constraints by equations or inequalities, and by systems of equations and/or inequalities, and interpret solutions as viable or nonviable options in a modeling context.</p>
+</dd>
+<dt class="hdlist1"><br/>OR.HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.</p>
+</dd>
+<dt class="hdlist1"><br/>OR.HSF.BF.B</dt>
+<dd>
+<p>Build new functions from existing functions.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Pennsylvania">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Pennsylvania Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>PA.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>PA.6.EE.B.8</dt>
+<dd>
+<p>Write an inequality of the form x &gt; c or x &lt; c to represent a constraint or condition in a real-world or mathematical problem. Recognize that inequalities of the form x &gt; c or x &lt; c have infinitely many solutions; represent solutions of such inequalities on number line diagrams.</p>
+</dd>
+<dt class="hdlist1"><br/>PA.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>PA.HSA.CED.A.1</dt>
+<dd>
+<p>Create equations and inequalities in one variable and use them to solve problems.</p>
+</dd>
+<dt class="hdlist1"><br/>PA.HSA.CED.A.3</dt>
+<dd>
+<p>Represent constraints by equations or inequalities, and by systems of equations and/or inequalities, and interpret solutions as viable or nonviable options in a modeling context.</p>
+</dd>
+<dt class="hdlist1"><br/>PA.HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.</p>
+</dd>
+<dt class="hdlist1"><br/>PA.HSF.BF.B</dt>
+<dd>
+<p>Build new functions from existing functions.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist .alignedStandards.standards-Rhode Island">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Rhode Island Standards</a></span>
+<dl>
+<dt>RI.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt>RI.6.EE.B.8</dt>
+<dd>
+<p>Write an inequality of the form x &gt; c or x &lt; c to represent a constraint or condition in a real-world or mathematical problem. Recognize that inequalities of the form x &gt; c or x &lt; c have infinitely many solutions; represent solutions of such inequalities on number line diagrams.</p>
+</dd>
+<dt>RI.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt>RI.HSA.CED.A.1</dt>
+<dd>
+<p>Create equations and inequalities in one variable and use them to solve problems.</p>
+</dd>
+<dt>RI.HSA.CED.A.3</dt>
+<dd>
+<p>Represent constraints by equations or inequalities, and by systems of equations and/or inequalities, and interpret solutions as viable or nonviable options in a modeling context.</p>
+</dd>
+<dt>RI.HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.</p>
+</dd>
+<dt>RI.HSF.BF.B</dt>
+<dd>
+<p>Build new functions from existing functions.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist .alignedStandards.standards-South Dakota">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">South Dakota Standards</a></span>
+<dl>
+<dt>SD.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt>SD.6.EE.B.8</dt>
+<dd>
+<p>Write an inequality of the form x &gt; c or x &lt; c to represent a constraint or condition in a real-world or mathematical problem. Recognize that inequalities of the form x &gt; c or x &lt; c have infinitely many solutions; represent solutions of such inequalities on number line diagrams.</p>
+</dd>
+<dt>SD.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt>SD.HSA.CED.A.1</dt>
+<dd>
+<p>Create equations and inequalities in one variable and use them to solve problems.</p>
+</dd>
+<dt>SD.HSA.CED.A.3</dt>
+<dd>
+<p>Represent constraints by equations or inequalities, and by systems of equations and/or inequalities, and interpret solutions as viable or nonviable options in a modeling context.</p>
+</dd>
+<dt>SD.HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.</p>
+</dd>
+<dt>SD.HSF.BF.B</dt>
+<dd>
+<p>Build new functions from existing functions.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Tennessee">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Tennessee Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>TN.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>TN.6.EE.B.8</dt>
+<dd>
+<p>Write an inequality of the form x &gt; c or x &lt; c to represent a constraint or condition in a real-world or mathematical problem. Recognize that inequalities of the form x &gt; c or x &lt; c have infinitely many solutions; represent solutions of such inequalities on number line diagrams.</p>
+</dd>
+<dt class="hdlist1"><br/>TN.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>TN.HSA.CED.A.1</dt>
+<dd>
+<p>Create equations and inequalities in one variable and use them to solve problems.</p>
+</dd>
+<dt class="hdlist1"><br/>TN.HSA.CED.A.3</dt>
+<dd>
+<p>Represent constraints by equations or inequalities, and by systems of equations and/or inequalities, and interpret solutions as viable or nonviable options in a modeling context.</p>
+</dd>
+<dt class="hdlist1"><br/>TN.HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.</p>
+</dd>
+<dt class="hdlist1"><br/>TN.HSF.BF.B</dt>
+<dd>
+<p>Build new functions from existing functions.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Utah">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Utah Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>UT.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>UT.6.EE.B.8</dt>
+<dd>
+<p>Write an inequality of the form x &gt; c or x &lt; c to represent a constraint or condition in a real-world or mathematical problem. Recognize that inequalities of the form x &gt; c or x &lt; c have infinitely many solutions; represent solutions of such inequalities on number line diagrams.</p>
+</dd>
+<dt class="hdlist1"><br/>UT.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>UT.HSA.CED.A.1</dt>
+<dd>
+<p>Create equations and inequalities in one variable and use them to solve problems.</p>
+</dd>
+<dt class="hdlist1"><br/>UT.HSA.CED.A.3</dt>
+<dd>
+<p>Represent constraints by equations or inequalities, and by systems of equations and/or inequalities, and interpret solutions as viable or nonviable options in a modeling context.</p>
+</dd>
+<dt class="hdlist1"><br/>UT.HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.</p>
+</dd>
+<dt class="hdlist1"><br/>UT.HSF.BF.B</dt>
+<dd>
+<p>Build new functions from existing functions.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Vermont">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Vermont Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>VT.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>VT.6.EE.B.8</dt>
+<dd>
+<p>Write an inequality of the form x &gt; c or x &lt; c to represent a constraint or condition in a real-world or mathematical problem. Recognize that inequalities of the form x &gt; c or x &lt; c have infinitely many solutions; represent solutions of such inequalities on number line diagrams.</p>
+</dd>
+<dt class="hdlist1"><br/>VT.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>VT.HSA.CED.A.1</dt>
+<dd>
+<p>Create equations and inequalities in one variable and use them to solve problems.</p>
+</dd>
+<dt class="hdlist1"><br/>VT.HSA.CED.A.3</dt>
+<dd>
+<p>Represent constraints by equations or inequalities, and by systems of equations and/or inequalities, and interpret solutions as viable or nonviable options in a modeling context.</p>
+</dd>
+<dt class="hdlist1"><br/>VT.HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.</p>
+</dd>
+<dt class="hdlist1"><br/>VT.HSF.BF.B</dt>
+<dd>
+<p>Build new functions from existing functions.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Washington">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Washington Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>WA.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>WA.6.EE.B.8</dt>
+<dd>
+<p>Write an inequality of the form x &gt; c or x &lt; c to represent a constraint or condition in a real-world or mathematical problem. Recognize that inequalities of the form x &gt; c or x &lt; c have infinitely many solutions; represent solutions of such inequalities on number line diagrams.</p>
+</dd>
+<dt class="hdlist1"><br/>WA.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>WA.HSA.CED.A.1</dt>
+<dd>
+<p>Create equations and inequalities in one variable and use them to solve problems.</p>
+</dd>
+<dt class="hdlist1"><br/>WA.HSA.CED.A.3</dt>
+<dd>
+<p>Represent constraints by equations or inequalities, and by systems of equations and/or inequalities, and interpret solutions as viable or nonviable options in a modeling context.</p>
+</dd>
+<dt class="hdlist1"><br/>WA.HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.</p>
+</dd>
+<dt class="hdlist1"><br/>WA.HSF.BF.B</dt>
+<dd>
+<p>Build new functions from existing functions.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist .alignedStandards.standards-West Virginia">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">West Virginia Standards</a></span>
+<dl>
+<dt>WV.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt>WV.6.EE.B.8</dt>
+<dd>
+<p>Write an inequality of the form x &gt; c or x &lt; c to represent a constraint or condition in a real-world or mathematical problem. Recognize that inequalities of the form x &gt; c or x &lt; c have infinitely many solutions; represent solutions of such inequalities on number line diagrams.</p>
+</dd>
+<dt>WV.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt>WV.HSA.CED.A.1</dt>
+<dd>
+<p>Create equations and inequalities in one variable and use them to solve problems.</p>
+</dd>
+<dt>WV.HSA.CED.A.3</dt>
+<dd>
+<p>Represent constraints by equations or inequalities, and by systems of equations and/or inequalities, and interpret solutions as viable or nonviable options in a modeling context.</p>
+</dd>
+<dt>WV.HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.</p>
+</dd>
+<dt>WV.HSF.BF.B</dt>
+<dd>
+<p>Build new functions from existing functions.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Wisconsin">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Wisconsin Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>WI.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>WI.6.EE.B.8</dt>
+<dd>
+<p>Write an inequality of the form x &gt; c or x &lt; c to represent a constraint or condition in a real-world or mathematical problem. Recognize that inequalities of the form x &gt; c or x &lt; c have infinitely many solutions; represent solutions of such inequalities on number line diagrams.</p>
+</dd>
+<dt class="hdlist1"><br/>WI.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>WI.HSA.CED.A.1</dt>
+<dd>
+<p>Create equations and inequalities in one variable and use them to solve problems.</p>
+</dd>
+<dt class="hdlist1"><br/>WI.HSA.CED.A.3</dt>
+<dd>
+<p>Represent constraints by equations or inequalities, and by systems of equations and/or inequalities, and interpret solutions as viable or nonviable options in a modeling context.</p>
+</dd>
+<dt class="hdlist1"><br/>WI.HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.</p>
+</dd>
+<dt class="hdlist1"><br/>WI.HSF.BF.B</dt>
+<dd>
+<p>Build new functions from existing functions.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Wyoming">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Wyoming Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>WY.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>WY.6.EE.B.8</dt>
+<dd>
+<p>Write an inequality of the form x &gt; c or x &lt; c to represent a constraint or condition in a real-world or mathematical problem. Recognize that inequalities of the form x &gt; c or x &lt; c have infinitely many solutions; represent solutions of such inequalities on number line diagrams.</p>
+</dd>
+<dt class="hdlist1"><br/>WY.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>WY.HSA.CED.A.1</dt>
+<dd>
+<p>Create equations and inequalities in one variable and use them to solve problems.</p>
+</dd>
+<dt class="hdlist1"><br/>WY.HSA.CED.A.3</dt>
+<dd>
+<p>Represent constraints by equations or inequalities, and by systems of equations and/or inequalities, and interpret solutions as viable or nonviable options in a modeling context.</p>
+</dd>
+<dt class="hdlist1"><br/>WY.HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.</p>
+</dd>
+<dt class="hdlist1"><br/>WY.HSF.BF.B</dt>
+<dd>
+<p>Build new functions from existing functions.</p>
+</dd>
+</dl>
+</span></span></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch sidebartextbooks">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p><strong>Textbook Alignment</strong>
+<select class="textbooksAlignmentSelect"  onchange="showTextbooksAlignment()"><option selected="selected" value="textbook-IM_7"><a href="https://illustrativemathematics.org/">IM 7 Math™</a></option><option value="textbook-IM_Alg_1"><a href="https://illustrativemathematics.org/">IM Algebra 1</a></option><option value="textbook-IM_6"><a href="https://illustrativemathematics.org/">IM 6 Math™</a></option></select></p>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="dlist alignedTextbooks textbook-IM_7">
+<span class="title"><a href="https://illustrativemathematics.org/">IM 7 Math™</a></span>
+<dl>
+<dt class="hdlist1"><br/>IM.7.6.17</dt>
+<dd>
+<p>Modeling with Inequalities</p>
+</dd>
+</dl>
+</span>
+<span class="dlist alignedTextbooks textbook-IM_Alg_1">
+<span class="title"><a href="https://illustrativemathematics.org/">IM Algebra 1</a></span>
+<dl>
+<dt class="hdlist1"><br/>IM.Alg1.2.20</dt>
+<dd>
+<p>Writing and Solving Inequalities in One Variable</p>
+</dd>
+</dl>
+</span>
+<span class="dlist alignedTextbooks textbook-IM_6">
+<span class="title"><a href="https://illustrativemathematics.org/">IM 6 Math™</a></span>
+<dl>
+<dt class="hdlist1"><br/>IM.6.7.10</dt>
+<dd>
+<p>Interpreting Inequalities</p>
+</dd>
+</dl>
+</span></span></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch sidebarpractices">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p><strong>Practices in this Lesson</strong>
+<select class="practicesAlignmentSelect"  onchange="showPracticesAlignment()"><option selected="selected" value="practices-CC"><a href="http://corestandards.org/Math/">Math</a></option></select></p>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="dlist alignedPractices practices-CC">
+<span class="title"><a href="http://corestandards.org/Math/">Math</a></span>
+<dl>
+<dt class="hdlist1"><br/>MP.4</dt>
+<dd>
+<p>Model with mathematics</p>
+</dd>
+</dl>
+</span></span></td>
+</tr>
+</tbody>
+</table>
+<span class="paragraph">
+<!-- </p>
+</span>
+--></span><!--
+<span class="paragraph">
+<p>
+-->
+</span>
+<span class="paragraph">
+<p><span class="other-proglang">(Also available in <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/../../lessons/inequalities3-sam/index.shtml">Pyret</a>)</span></p>
+</span>
+<span class="paragraph description">
+<p>Students discover that inequalities have an important application in video games: keeping game characters on the screen! Students apply their understanding to edit code so that it will keep Sam the Butterfly safely in view.</p>
+</span>
+<table class="tableblock frame-all grid-all stripes-none stretch left-header preamble">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>Lesson Goals</p>
+</span></span></td>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>Students will be able to:</p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p>apply their understanding of inequalities to keep a game character on the screen</p>
+</li>
+</ul>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>Student-Facing Lesson Goals</p>
+</span></span></td>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="ulist">
+<ul>
+<li>
+<p>I can use what I know about inequalities to define the boundaries that will keep a character on the screen.</p>
+</li>
+</ul>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>Materials</p>
+</span></span></td>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="ulist materials-links">
+<ul>
+<li>
+<p><a href="https://docs.google.com/presentation/d/1VOV4ReakVpq9LbfUaaxi2gNiiY_bW57vNOrSHy4MoWM/" target="_blank" rel="noopener">Lesson Slides</a></p>
+</li>
+<li>
+<p><span class="StarterFile"><a href="https://www.wescheme.org/openEditor?publicId=0elP8WrmfM" target="_blank" rel="noopener">Sam the Butterfly Starter File</a></span></p>
+</li>
+<li>
+<p><span class="materialSectionPlaceholder"> </span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/../../lessons/inequalities3-sam-wescheme/pages/sam-intro.html" target="_blank" rel="noopener">Sam the Butterfly</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/../../lessons/inequalities3-sam-wescheme/pages/left-and-right.html" target="_blank" rel="noopener">Left and Right</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/../../lessons/inequalities3-sam-wescheme/pages/onscreen.html" target="_blank" rel="noopener">Word Problem: onscreen?</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/../../lessons/inequalities3-sam-wescheme/pages/onscreen-discussion.html" target="_blank" rel="noopener">Onscreen - More than One Way</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/../../lessons/inequalities3-sam-wescheme/pages/keeping-ninjacat-in-the-game.html" target="_blank" rel="noopener">Keeping NinjaCat in the Game</a></span></p>
+</li>
+<li>
+<p><strong>Classroom visual:</strong> <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/javascript:showLangTable()">Language Table</a></p>
+</li>
+</ul>
+</span></span></td>
+</tr>
+</tbody>
+</table>
+<span class="dlist glossary">
+<span class="title">Glossary</span>
+<dl>
+<dt class="hdlist1"><br/>inequality</dt>
+<dd>
+<p>a mathematical description of the relationship between two variables or quantities, in which they are not necessarily equal</p>
+</dd>
+</dl>
+</span>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<table class="grid-none frame-none section-heading"><tr><td width="65%">Introducing Sam </td><td width="35%">15 minutes</td></tr></table>
+<span class="sectionbody">
+<span class="sect2 lesson-section-2">
+<h3 id="_overview">Overview</h3>
+<span class="paragraph">
+<p>Students are introduced to Sam the Butterfly, a simple activity in which they must write simple <span class="vocab">inequalities</span> to detect when Sam has gone too far in one dimension.</p>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_launch">Launch</h3>
+<span class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Open the <a href="https://www.wescheme.org/openEditor?publicId=0elP8WrmfM" target="_blank" rel="noopener">Sam the Butterfly Starter File</a> in a new tab and save a copy of your own.</p>
+</li>
+<li>
+<p>Complete <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/../../lessons/inequalities3-sam-wescheme/pages/sam-intro.html" target="_blank" rel="noopener">Introducing Sam</a>, clicking "Run" and using the arrow keys to investigate the program with your partner.</p>
+</li>
+</ul>
+</span>
+<span class="paragraph">
+<p>As students complete the worksheet and explore the program, they should notice that Sam&#8217;s coordinates are displayed at the top of the screen. When Sam is at (0,0), we only see a part of Sam&#8217;s wing because Sam&#8217;s position is based on the <em>center</em> of the butterfly image. Students should observe that Sam can go up to, but not beyond, an x of -50. Students can represent this algebraically as <span class="gdrive-only">x &gt; -50</span><!--<span class="begin-ignore-for-gdrive"></span><script type="math/tex">\displaystyle x \gt -50</script><span class="end-ignore-for-gdrive"></span>-->, or (for students who notice that Sam only moves in increments of 10) <span class="gdrive-only">x &ge; -40</span><!--<span class="begin-ignore-for-gdrive"></span><script type="math/tex">\displaystyle x \geq -40</script><span class="end-ignore-for-gdrive"></span>-->.</p>
+</span>
+<div class="paragraph lesson-point">
+<p>Every time Sam moves, we want to check and see if Sam is safe.</p>
+</div>
+<span class="paragraph">
+<p><strong>Note:</strong> In this programming language, question marks are prounced "huh?" So <code class="racket">safe-left?</code> would be prounounced "safe left huh?" This can be a source of some amusement for students!</p>
+</span>
+<span class="paragraph">
+<p>To further support students, consider asking what three functions are defined in their starter files. Then, ask students what each function <em>should</em> do, when working properly.</p>
+</span>
+<span class="ulist lesson-instruction">
+<ul>
+<li>
+<p>What <em>should</em> our left-checking function do?</p>
+<span class="ulist">
+<ul>
+<li>
+<p><em>Check to see if x is greater than -50.</em></p>
+</li>
+</ul>
+</span>
+</li>
+<li>
+<p>What <em>should</em> our right-checking function do?</p>
+<span class="ulist">
+<ul>
+<li>
+<p><em>Check to see if x is less than 690.</em></p>
+</li>
+</ul>
+</span>
+</li>
+<li>
+<p>What should <code class="racket">onscreen?</code> do?</p>
+<span class="ulist">
+<ul>
+<li>
+<p><em>Answers may vary. Let students drive the discussion, and don&#8217;t give away the answer!</em></p>
+</li>
+</ul>
+</span>
+</li>
+</ul>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_investigate">Investigate</h3>
+<span class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Complete <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/../../lessons/inequalities3-sam-wescheme/pages/left-and-right.html" target="_blank" rel="noopener">Left and Right</a> with your partner.</p>
+</li>
+<li>
+<p>Once finished, fix the corresponding functions in your Sam the Butterfly file, and test them out.</p>
+</li>
+</ul>
+</span>
+<span class="paragraph">
+<p>Students will notice that fixing <span class="obeyspaces"><code class="racket">safe-left?</code></span> keeps Sam from disappearing off the left side, but fixing <span class="obeyspaces"><code class="racket">safe-right?</code></span> doesn&#8217;t seem to keep Sam from disappearing off the right side!  When students encounter this, encourage them to look through the code to try and figure out why.</p>
+</span>
+<table class="tableblock frame-all grid-none stripes-none stretch strategy-box">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p><span class="title">"False" doesn&#8217;t mean "Wrong"!</span></p>
+</span>
+<span class="paragraph">
+<p>A lot of students - especially confident ones - may struggle to come up with an example where <span class="obeyspaces"><code class="racket">safe-left?</code></span> returns <code class="racket">false</code>:</p>
+</span>
+<span class="paragraph">
+<p><span class="obeyspaces"><code class="racket">; Students hate writing the second one!
+(EXAMPLE (safe-left? 189) (&gt; 189 -50))
+(EXAMPLE (safe-left? -65) (&gt; -65 -50))</code></span></p>
+</span>
+<span class="paragraph">
+<p>This misconception comes from confusing a statement that is "false" with a program that is "wrong". In the second example, above, the result of <span class="obeyspaces"><code class="racket">(safe-left? -65)</code></span> <em>is</em> <code class="racket">false</code>, because "65 is greater than -50" <em>is a false statement</em>. Remind your students that you want one example that&#8217;s true, and a second that&#8217;s false!</p>
+</span></span></td>
+</tr>
+</tbody>
+</table>
+<span class="paragraph">
+<p>Emphasize to students that they cannot trust the behavior of a complex system! After looking closely at examples and observing that they all pass, students should suspect that the bug is elsewhere.</p>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_synthesize">Synthesize</h3>
+<span class="ulist">
+<ul>
+<li>
+<p>Does <span class="obeyspaces"><code class="racket">safe-left?</code></span> work correctly? How do you know?</p>
+</li>
+<li>
+<p>Does <span class="obeyspaces"><code class="racket">safe-right?</code></span> work correctly? How do you know?</p>
+</li>
+</ul>
+</span>
+</span>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<table class="grid-none frame-none section-heading"><tr><td width="65%">Protecting Sam on Both Sides </td><td width="35%">30 minutes</td></tr></table>
+<span class="sectionbody">
+<span class="sect2 lesson-section-2">
+<h3 id="_overview_2">Overview</h3>
+<span class="paragraph">
+<p>Students solve a word problem involving compound inequalities, using <code class="racket">and</code> to compose the simpler Boundary-checking functions from the previous lesson.</p>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_launch_2">Launch</h3>
+<span class="paragraph">
+<p><strong>Note:</strong> In this programming language, question marks are pronounced "huh?". So <code class="racket">safe-left?</code> would be pronounced "safe left huh?" This can be a source of some amusement for students!</p>
+</span>
+<span class="openblock lesson-roleplay">
+<span class="content">
+<span class="paragraph">
+<p>Recruit three student volunteers to roleplay the functions <span class="obeyspaces"><code class="racket">safe-left?</code></span>, <span class="obeyspaces"><code class="racket">safe-right?</code></span>, and <span class="obeyspaces"><code class="racket">onscreen?</code></span>. Give them 1 minute to read the contract and code, as written in the program.</p>
+</span>
+<span class="paragraph">
+<p>Ask the volunteers what their name, Domain and Range are. Explain that you, the facilitator, will be providing a coordinate input. The functions <span class="obeyspaces"><code class="racket">safe-left?</code></span> and <span class="obeyspaces"><code class="racket">safe-right?</code></span> will respond with either "true" or "false".</p>
+</span>
+<span class="paragraph">
+<p>The function <span class="obeyspaces"><code class="racket">onscreen?</code></span>, however, will call the <span class="obeyspaces"><code class="racket">safe-left?</code></span> function! So the student roleplaying <span class="obeyspaces"><code class="racket">onscreen?</code></span> should turn to <span class="obeyspaces"><code class="racket">safe-left?</code></span> and give the input to them.</p>
+</span>
+<span class="paragraph">
+<p>For example:</p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p>Facilitator: "onscreen-huh 70"</p>
+</li>
+<li>
+<p>onscreen? (turns to safe-left?): "safe-left-huh 70"</p>
+</li>
+<li>
+<p>safe-left?: "true"</p>
+</li>
+<li>
+<p>onscreen? (turns back to facilitator): "true"<br>
+<br></p>
+</li>
+<li>
+<p>Facilitator: "onscreen-huh -100"</p>
+</li>
+<li>
+<p>onscreen? (turns to safe-left?): "safe-left-huh -100"</p>
+</li>
+<li>
+<p>safe-left?: "false"</p>
+</li>
+<li>
+<p>onscreen? (turns back to facilitator): "false"<br>
+<br></p>
+</li>
+<li>
+<p>Facilitator: "onscreen-huh 900"</p>
+</li>
+<li>
+<p>onscreen? (turns to safe-left?): "safe-left-huh 900"</p>
+</li>
+<li>
+<p>safe-left?: "true"</p>
+</li>
+<li>
+<p>onscreen? (turns back to facilitator): "true"</p>
+</li>
+</ul>
+</span>
+<span class="paragraph">
+<p>Hopefully your students will notice that <code class="racket">safe-right?</code> did not participate in this roleplay scenario at all!</p>
+</span>
+</span>
+</span>
+<span class="ulist lesson-instruction">
+<ul>
+<li>
+<p>What is the problem with <code class="racket">onscreen?</code>?</p>
+<span class="ulist">
+<ul>
+<li>
+<p><em>It&#8217;s only talking to <code class="racket">safe-left?</code>, it&#8217;s not checking with <code class="racket">safe-right?</code></em></p>
+</li>
+</ul>
+</span>
+</li>
+<li>
+<p>How can <code class="racket">onscreen?</code> check with both?</p>
+<span class="ulist">
+<ul>
+<li>
+<p><em>It needs to talk to <code class="racket">safe-left?</code> AND <code class="racket">safe-right?</code></em></p>
+</li>
+</ul>
+</span>
+</li>
+</ul>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_investigate_2">Investigate</h3>
+<span class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Complete <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/../../lessons/inequalities3-sam-wescheme/pages/onscreen.html" target="_blank" rel="noopener">Word Problem: onscreen?</a>.</p>
+</li>
+<li>
+<p>When this function is entered into the editor, students should now see that Sam is protected on <em>both</em> sides of the screen.</p>
+</li>
+</ul>
+</span>
+<table class="tableblock frame-all grid-none stripes-none stretch strategy-box">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="title">Extension Option</span>
+What if we wanted to keep Sam safe on the top and bottom edges of the screen as well?  What additional functions would we need?  What functions would need to change? <em>We recommend that students tackling this challenge define a new function <code class="racket">is-onscreen-2</code>.</em></p></td>
+</tr>
+</tbody>
+</table>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_synthesize_2">Synthesize</h3>
+<span class="paragraph">
+<p>Bring back the three new student volunteers to roleplay those functions, with the onscreen function now working properly. Make sure students provide correct answers, testing both <code class="racket">true</code> and <code class="racket">false</code> conditions using coordinates where Sam is onscreen and offscreen.</p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p>How did it feel when you saw Sam hit both walls?</p>
+</li>
+<li>
+<p>Are there multiple solutions for <span class="obeyspaces"><code class="racket">onscreen?</code></span>?</p>
+</li>
+<li>
+<p>Is this <em>Top-Down</em> or <em>Bottom-Up</em> design?</p>
+</li>
+</ul>
+</span>
+</span>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<table class="grid-none frame-none section-heading"><tr><td width="65%">Boundary Detection in the Game </td><td width="35%">10 minutes</td></tr></table>
+<span class="sectionbody">
+<span class="sect2 lesson-section-2">
+<h3 id="_overview_3">Overview</h3>
+<span class="paragraph">
+<p>Students identify common patterns between two-dimensional Boundary detection and detecting whether a player is onscreen. They apply the same problem-solving and narrow mathematical concept from the previous lesson to a more general problem.</p>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_launch_3">Launch</h3>
+<span class="paragraph">
+<p>Have students open their in-progress game file and click "Run". Invite them to analyze the movement of the danger and the target</p>
+</span>
+<span class="ulist lesson-instruction">
+<ul>
+<li>
+<p>How are the <code class="racket">TARGET</code> and <code class="racket">DANGER</code> behaving right now?</p>
+<span class="ulist">
+<ul>
+<li>
+<p><em>They move across the screen.</em></p>
+</li>
+</ul>
+</span>
+</li>
+<li>
+<p>What do we want to change?</p>
+<span class="ulist">
+<ul>
+<li>
+<p><em>We want them to come back after they leave one side of the screen.</em></p>
+</li>
+</ul>
+</span>
+</li>
+<li>
+<p>What happens to an image&#8217;s x-coordinate when it moves off the screen?</p>
+<span class="ulist">
+<ul>
+<li>
+<p><em>An image is entirely off-screen if its x-coordinate is less than -50 and greater than 690.</em></p>
+</li>
+</ul>
+</span>
+</li>
+<li>
+<p>How can we make the computer understand when an image has moved off the screen?</p>
+<span class="ulist">
+<ul>
+<li>
+<p><em>We can teach the computer to compare the image&#8217;s coordinates to a boundary on the number line, just like we did with Sam the Butterfly!</em></p>
+</li>
+</ul>
+</span>
+</li>
+</ul>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_investigate_3">Investigate</h3>
+<span class="paragraph lesson-instruction">
+<p>Apply what you learned from Sam the Butterly to fix the <span class="obeyspaces"><code class="racket">safe-left?</code></span>, <span class="obeyspaces"><code class="racket">safe-right?</code></span>, and <span class="obeyspaces"><code class="racket">onscreen?</code></span> functions in your own code.</p>
+</span>
+<span class="paragraph">
+<p>Since the screen dimensions for their game are 640x480, just like Sam, they can use their code from Sam as a starting point.</p>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_common_misconceptions">Common Misconceptions</h3>
+<span class="ulist">
+<ul>
+<li>
+<p>Students will need to test their code with their images to see if the boundaries are correct for them.  Students with large images may need to use slightly wider boundaries, or vice versa for small images.  In some cases, students may have to go back and rescale their images if they are too large or too small for the game.</p>
+</li>
+<li>
+<p>Students may be surprised that the same code that "traps Sam" also "resets the <code class="racket">DANGER</code> and <code class="racket">TARGET</code> ". It&#8217;s critical to explain that these functions do <em>neither</em> of those things! All they do is test if a coordinate is within a certain range on the x-axis. There is other code (hidden in the teachpack) that determines <em>what to do if the coordinate is offscreen</em>. The ability to re-use function is one of the most powerful features of mathematics - and programming!</p>
+</li>
+</ul>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_synthesize_3">Synthesize</h3>
+<span class="ulist">
+<ul>
+<li>
+<p>The same code that "trapped" Sam also "resets" the <code class="racket">DANGER</code> and the <code class="racket">TARGET</code>. What is actually going on?</p>
+</li>
+</ul>
+</span>
+</span>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<h2 id="_additional_exercises"><span class="section-link"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/#_additional_exercises"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Additional Exercises</h2>
+<span class="sectionbody">
+<span class="ulist">
+<ul>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/../../lessons/inequalities3-sam-wescheme/pages/onscreen-discussion.html" target="_blank" rel="noopener">Onscreen - More than One Way</a></p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/../../lessons/inequalities3-sam-wescheme/pages/keeping-ninjacat-in-the-game.html" target="_blank" rel="noopener">Keeping NinjaCat in the Game</a></p>
+</li>
+</ul>
+</span>
+</span>
+</span>
+<span class="sect1 acknowledgmentsect">
+<span class="sectionbody">
+<span class="openblock acknowledgment"><hr/>
+<span class="content">
+<span class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</span>
+</span>
+</span>
+</span>
+</span>
+</span>
+<span id="footer">
+<span id="footer-text">
+Last updated 2022-10-18 16:15:46 -0400
+</span>
+</span>
+</span>
+</body>
+</html>

@@ -1,0 +1,1656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Order of Operations</title>
+
+  <link rel="stylesheet" href="../../lib/curriculum.css" />
+    <link rel="stylesheet" href="../../lib/codemirror.css" />
+    <script src="../../lib/codemirror.js"></script>
+    <script src="../../lib/runmode.js"></script>
+    <script src="../../lib/scheme2.js"></script>
+    <script src="../../lib/pyret-mode.js"></script>
+      <script src="../../extlib/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML%2Clocal%2Fmathjaxlocal.js"></script>
+      <script>window.status = "not_ready_to_print";</script>
+    <script src="../../lib/langtable.js"></script>
+    <script src="../../lib/bootstraplesson.js"></script>
+    <script src="../../dependency-graph.js"></script>
+    <script src="../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"Order of Operations",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="article LessonPlan wescheme" onload="renderSaveToDrive()">
+<!--#include virtual="/menubar.ssi"-->
+<div id="body" onload="renderSaveToDrive()">
+<div id="header">
+<h1>Order of Operations</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<script>
+function preselect(klass) {
+  const items = document.getElementsByClassName(klass);
+  for (let i = 0; i < items.length; i++) {
+    items[i].style.display = 'none';
+  }
+  if (items.length > 0) {
+    items[0].style.display = 'block';
+  }
+}
+window.onload = function() {
+  preselect('alignedStandards');
+  preselect('alignedTextbooks');
+  preselect('alignedPractices');
+}
+function showStandardsAlignment() {
+  const selectTag = document.getElementsByClassName('standardsAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const stdTables = document.getElementsByClassName('alignedStandards');
+  //const intro = document.getElementsByClassName('alignedStandardsIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < stdTables.length; i++) {
+    const stdTable = stdTables[i];
+    stdTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optStd = opt.value;
+      for (let j = 0; j < stdTables.length; j++) {
+        const stdTable = stdTables[j];
+        if (stdTable.classList.contains(optStd)) {
+          stdTable.style.display = 'block';
+         // introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+function toggleNonPrereqDisplay() {
+  const inputTag = document.getElementsByClassName('sidebarinput')[0];
+  const checkedP = inputTag.checked;
+  const lessonTable = document.getElementsByClassName('sidebarlessons')[0];
+  const lis = lessonTable.getElementsByTagName('li');
+  for (let i = 0; i < lis.length; i++) {
+    const li = lis[i];
+    const lesson = li.getElementsByClassName('prerequisite');
+    if (lesson.length === 0) {
+      li.style.display = checkedP ? 'none' : 'block';
+    }
+  }
+}
+</script>
+<script>
+function showTextbooksAlignment() {
+  const selectTag = document.getElementsByClassName('textbooksAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const textbookTables = document.getElementsByClassName('alignedTextbooks');
+  //const intro = document.getElementsByClassName('alignedTextbooksIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < textbookTables.length; i++) {
+    const textbookTable = textbookTables[i];
+    textbookTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optTextbook = opt.value;
+      for (let j = 0; j < textbookTables.length; j++) {
+        const textbookTable = textbookTables[j];
+        if (textbookTable.classList.contains(optTextbook)) {
+          textbookTable.style.display = 'block';
+          //introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+</script>
+<script>
+function showPracticesAlignment() {
+  const selectTag = document.getElementsByClassName('practicesAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const practiceTables = document.getElementsByClassName('alignedPractices');
+  for (let i = 0; i < practiceTables.length; i++) {
+    const practiceTable = practiceTables[i];
+    practiceTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optPractice = opt.value;
+      for (let j = 0; j < practiceTables.length; j++) {
+        const practiceTable = practiceTables[j];
+        if (practiceTable.classList.contains(optPractice)) {
+          practiceTable.style.display = 'block';
+        }
+      }
+    }
+  }
+}
+</script>
+<div class="paragraph">
+<!-- </p>
+</div>
+--></div><div class="sidebar"><div id="toggle"></div><div class="paragraph"><!--
+<div class="paragraph">
+<p>
+--><div class="sidebarlessons"><strong>Lessons</strong>
+<ul></ul></div>
+</div>
+<table class="tableblock frame-all grid-all stretch sidebarstandards">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Standards in this Lesson</strong>
+<select class="standardsAlignmentSelect"  onchange="showStandardsAlignment()"><option selected="selected" value="standards-Alabama">Alabama</option><option value="standards-Arkansas">Arkansas</option><option value="standards-California">California</option><option value="standards-Colorado">Colorado</option><option value="standards-Connecticut">Connecticut</option><option value="standards-Delaware">Delaware</option><option value="standards-Georgia">Georgia</option><option value="standards-Hawaii">Hawaii</option><option value="standards-Idaho">Idaho</option><option value="standards-Illinois">Illinois</option><option value="standards-Iowa">Iowa</option><option value="standards-Kansas">Kansas</option><option value="standards-Kentucky">Kentucky</option><option value="standards-Louisiana">Louisiana</option><option value="standards-Maine">Maine</option><option value="standards-Michigan">Michigan</option><option value="standards-Maryland">Maryland</option><option value="standards-Massachusetts">Massachusetts</option><option value="standards-Mississippi">Mississippi</option><option value="standards-Missouri">Missouri</option><option value="standards-Montana">Montana</option><option value="standards-New Hampshire">New Hampshire</option><option value="standards-Nevada">Nevada</option><option value="standards-New Jersey">New Jersey</option><option value="standards-New Mexico">New Mexico</option><option value="standards-North Carolina">North Carolina</option><option value="standards-North Dakota">North Dakota</option><option value="standards-New York">New York</option><option value="standards-Oklahoma">Oklahoma</option><option value="standards-Ohio">Ohio</option><option value="standards-Oregon">Oregon</option><option value="standards-Pennsylvania">Pennsylvania</option><option value="standards-Rhode Island">Rhode Island</option><option value="standards-South Dakota">South Dakota</option><option value="standards-Tennessee">Tennessee</option><option value="standards-Utah">Utah</option><option value="standards-Vermont">Vermont</option><option value="standards-Washington">Washington</option><option value="standards-West Virginia">West Virginia</option><option value="standards-Wisconsin">Wisconsin</option><option value="standards-Wyoming">Wyoming</option></select></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist alignedStandards standards-Alabama">
+<div class="title"><a href="">Alabama Standards</a></div>
+<dl>
+<dt class="hdlist1">AL.HSA.SSE.A.2</dt>
+<dd>
+<p>Use the structure of an expression to identify ways to rewrite it.</p>
+</dd>
+<dt class="hdlist1">AL.HSA.SSE.B</dt>
+<dd>
+<p>Write expressions in equivalent forms to solve problems.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Arkansas">
+<div class="title"><a href="">Arkansas Standards</a></div>
+<dl>
+<dt class="hdlist1">AR.HSA.SSE.A.2</dt>
+<dd>
+<p>Use the structure of an expression to identify ways to rewrite it.</p>
+</dd>
+<dt class="hdlist1">AR.HSA.SSE.B</dt>
+<dd>
+<p>Write expressions in equivalent forms to solve problems.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-California">
+<div class="title"><a href="">California Standards</a></div>
+<dl>
+<dt class="hdlist1">CA.HSA.SSE.A.2</dt>
+<dd>
+<p>Use the structure of an expression to identify ways to rewrite it.</p>
+</dd>
+<dt class="hdlist1">CA.HSA.SSE.B</dt>
+<dd>
+<p>Write expressions in equivalent forms to solve problems.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Colorado">
+<div class="title"><a href="">Colorado Standards</a></div>
+<dl>
+<dt class="hdlist1">CO.HSA.SSE.A.2</dt>
+<dd>
+<p>Use the structure of an expression to identify ways to rewrite it.</p>
+</dd>
+<dt class="hdlist1">CO.HSA.SSE.B</dt>
+<dd>
+<p>Write expressions in equivalent forms to solve problems.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Connecticut">
+<div class="title"><a href="">Connecticut Standards</a></div>
+<dl>
+<dt class="hdlist1">CT.HSA.SSE.A.2</dt>
+<dd>
+<p>Use the structure of an expression to identify ways to rewrite it.</p>
+</dd>
+<dt class="hdlist1">CT.HSA.SSE.B</dt>
+<dd>
+<p>Write expressions in equivalent forms to solve problems.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Delaware">
+<div class="title"><a href="">Delaware Standards</a></div>
+<dl>
+<dt class="hdlist1">DE.HSA.SSE.A.2</dt>
+<dd>
+<p>Use the structure of an expression to identify ways to rewrite it.</p>
+</dd>
+<dt class="hdlist1">DE.HSA.SSE.B</dt>
+<dd>
+<p>Write expressions in equivalent forms to solve problems.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Georgia">
+<div class="title"><a href="">Delaware Standards</a></div>
+<dl>
+<dt class="hdlist1">GA.HSA.SSE.A.2</dt>
+<dd>
+<p>Use the structure of an expression to identify ways to rewrite it.</p>
+</dd>
+<dt class="hdlist1">GA.HSA.SSE.B</dt>
+<dd>
+<p>Write expressions in equivalent forms to solve problems.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Hawaii">
+<div class="title"><a href="">Hawaii Standards</a></div>
+<dl>
+<dt class="hdlist1">HI.HSA.SSE.A.2</dt>
+<dd>
+<p>Use the structure of an expression to identify ways to rewrite it.</p>
+</dd>
+<dt class="hdlist1">HI.HSA.SSE.B</dt>
+<dd>
+<p>Write expressions in equivalent forms to solve problems.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Idaho">
+<div class="title"><a href="">Idaho Standards</a></div>
+<dl>
+<dt class="hdlist1">ID.HSA.SSE.A.2</dt>
+<dd>
+<p>Use the structure of an expression to identify ways to rewrite it.</p>
+</dd>
+<dt class="hdlist1">ID.HSA.SSE.B</dt>
+<dd>
+<p>Write expressions in equivalent forms to solve problems.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Illinois">
+<div class="title"><a href="">Illinois Standards</a></div>
+<dl>
+<dt class="hdlist1">IL.HSA.SSE.A.2</dt>
+<dd>
+<p>Use the structure of an expression to identify ways to rewrite it.</p>
+</dd>
+<dt class="hdlist1">IL.HSA.SSE.B</dt>
+<dd>
+<p>Write expressions in equivalent forms to solve problems.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Iowa">
+<div class="title"><a href="https://iowacore.gov/standards/iowa-core-standards">Iowa Standards</a></div>
+<dl>
+<dt class="hdlist1">IA.HSA.SSE.A.2</dt>
+<dd>
+<p>Use the structure of an expression to identify ways to rewrite it.</p>
+</dd>
+<dt class="hdlist1">IA.HSA.SSE.B</dt>
+<dd>
+<p>Write expressions in equivalent forms to solve problems.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Kansas">
+<div class="title"><a href="">Kansas Standards</a></div>
+<dl>
+<dt class="hdlist1">KS.HSA.SSE.A.2</dt>
+<dd>
+<p>Use the structure of an expression to identify ways to rewrite it.</p>
+</dd>
+<dt class="hdlist1">KS.HSA.SSE.B</dt>
+<dd>
+<p>Write expressions in equivalent forms to solve problems.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Kentucky">
+<div class="title"><a href="">Kentucky Standards</a></div>
+<dl>
+<dt class="hdlist1">KY.HSA.SSE.A.2</dt>
+<dd>
+<p>Use the structure of an expression to identify ways to rewrite it.</p>
+</dd>
+<dt class="hdlist1">KY.HSA.SSE.B</dt>
+<dd>
+<p>Write expressions in equivalent forms to solve problems.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Louisiana">
+<div class="title"><a href="">Louisiana Standards</a></div>
+<dl>
+<dt class="hdlist1">LA.HSA.SSE.A.2</dt>
+<dd>
+<p>Use the structure of an expression to identify ways to rewrite it.</p>
+</dd>
+<dt class="hdlist1">LA.HSA.SSE.B</dt>
+<dd>
+<p>Write expressions in equivalent forms to solve problems.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Maine">
+<div class="title"><a href="">Maine Standards</a></div>
+<dl>
+<dt class="hdlist1">ME.HSA.SSE.A.2</dt>
+<dd>
+<p>Use the structure of an expression to identify ways to rewrite it.</p>
+</dd>
+<dt class="hdlist1">ME.HSA.SSE.B</dt>
+<dd>
+<p>Write expressions in equivalent forms to solve problems.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Michigan">
+<div class="title"><a href="">Michigan Standards</a></div>
+<dl>
+<dt class="hdlist1">MI.HSA.SSE.A.2</dt>
+<dd>
+<p>Use the structure of an expression to identify ways to rewrite it.</p>
+</dd>
+<dt class="hdlist1">MI.HSA.SSE.B</dt>
+<dd>
+<p>Write expressions in equivalent forms to solve problems.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Maryland">
+<div class="title"><a href="">Maryland Standards</a></div>
+<dl>
+<dt class="hdlist1">MD.HSA.SSE.A.2</dt>
+<dd>
+<p>Use the structure of an expression to identify ways to rewrite it.</p>
+</dd>
+<dt class="hdlist1">MD.HSA.SSE.B</dt>
+<dd>
+<p>Write expressions in equivalent forms to solve problems.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Massachusetts">
+<div class="title"><a href="https://www.doe.mass.edu/frameworks/">Massachusetts Standards</a></div>
+<dl>
+<dt class="hdlist1">MA.9-12.CT.d.7</dt>
+<dd>
+<p>Use a programming language or tool feature correctly to enforce operator precedence.</p>
+</dd>
+<dt class="hdlist1">MA.HSA.SSE.A.2</dt>
+<dd>
+<p>Use the structure of an expression to identify ways to rewrite it.</p>
+</dd>
+<dt class="hdlist1">MA.HSA.SSE.B</dt>
+<dd>
+<p>Write expressions in equivalent forms to solve problems.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Mississippi">
+<div class="title"><a href="">Mississippi Standards</a></div>
+<dl>
+<dt class="hdlist1">MS.HSA.SSE.A.2</dt>
+<dd>
+<p>Use the structure of an expression to identify ways to rewrite it.</p>
+</dd>
+<dt class="hdlist1">MS.HSA.SSE.B</dt>
+<dd>
+<p>Write expressions in equivalent forms to solve problems.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Missouri">
+<div class="title"><a href="">Missouri Standards</a></div>
+<dl>
+<dt class="hdlist1">MO.HSA.SSE.A.2</dt>
+<dd>
+<p>Use the structure of an expression to identify ways to rewrite it.</p>
+</dd>
+<dt class="hdlist1">MO.HSA.SSE.B</dt>
+<dd>
+<p>Write expressions in equivalent forms to solve problems.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Montana">
+<div class="title"><a href="">Montana Standards</a></div>
+<dl>
+<dt class="hdlist1">MT.HSA.SSE.A.2</dt>
+<dd>
+<p>Use the structure of an expression to identify ways to rewrite it.</p>
+</dd>
+<dt class="hdlist1">MT.HSA.SSE.B</dt>
+<dd>
+<p>Write expressions in equivalent forms to solve problems.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist .alignedStandards.standards-New Hampshire">
+<div class="title"><a href="">New Hampshire Standards</a></div>
+<dl>
+<dt>NH.HSA.SSE.A.2</dt>
+<dd>
+<p>Use the structure of an expression to identify ways to rewrite it.</p>
+</dd>
+<dt>NH.HSA.SSE.B</dt>
+<dd>
+<p>Write expressions in equivalent forms to solve problems.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Nevada">
+<div class="title"><a href="">Nevada Standards</a></div>
+<dl>
+<dt class="hdlist1">NV.HSA.SSE.A.2</dt>
+<dd>
+<p>Use the structure of an expression to identify ways to rewrite it.</p>
+</dd>
+<dt class="hdlist1">NV.HSA.SSE.B</dt>
+<dd>
+<p>Write expressions in equivalent forms to solve problems.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist .alignedStandards.standards-New Jersey">
+<div class="title"><a href="">New Jersey Standards</a></div>
+<dl>
+<dt>NJ.HSA.SSE.A.2</dt>
+<dd>
+<p>Use the structure of an expression to identify ways to rewrite it.</p>
+</dd>
+<dt>NJ.HSA.SSE.B</dt>
+<dd>
+<p>Write expressions in equivalent forms to solve problems.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist .alignedStandards.standards-New Mexico">
+<div class="title"><a href="">New Mexico Standards</a></div>
+<dl>
+<dt>NM.HSA.SSE.A.2</dt>
+<dd>
+<p>Use the structure of an expression to identify ways to rewrite it.</p>
+</dd>
+<dt>NM.HSA.SSE.B</dt>
+<dd>
+<p>Write expressions in equivalent forms to solve problems.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist .alignedStandards.standards-North Carolina">
+<div class="title"><a href="">North Carolina Standards</a></div>
+<dl>
+<dt>NC.HSA.SSE.A.2</dt>
+<dd>
+<p>Use the structure of an expression to identify ways to rewrite it.</p>
+</dd>
+<dt>NC.HSA.SSE.B</dt>
+<dd>
+<p>Write expressions in equivalent forms to solve problems.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist .alignedStandards.standards-North Dakota">
+<div class="title"><a href="">North Dakota Standards</a></div>
+<dl>
+<dt>ND.HSA.SSE.A.2</dt>
+<dd>
+<p>Use the structure of an expression to identify ways to rewrite it.</p>
+</dd>
+<dt>ND.HSA.SSE.B</dt>
+<dd>
+<p>Write expressions in equivalent forms to solve problems.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist .alignedStandards.standards-New York">
+<div class="title"><a href="http://www.nysed.gov/curriculum-instruction/new-york-state-next-generation-mathematics-learning-standards">New York Standards</a></div>
+<dl>
+<dt>NY.HSA.SSE.A.2</dt>
+<dd>
+<p>Use the structure of an expression to identify ways to rewrite it.</p>
+</dd>
+<dt>NY.HSA.SSE.B</dt>
+<dd>
+<p>Write expressions in equivalent forms to solve problems.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Oklahoma">
+<div class="title"><a href="https://sde.ok.gov/oklahoma-academic-standards">Oklahoma Standards</a></div>
+<dl>
+<dt class="hdlist1">OK.7.A.4.2</dt>
+<dd>
+<p>Apply understanding of order of operations and grouping symbols when using calculators and other technologies</p>
+</dd>
+<dt class="hdlist1">OK.A1.A.3</dt>
+<dd>
+<p>Generate equivalent algebraic expressions and use algebraic properties to evaluate expressions and arithmetic and geometric sequences.</p>
+</dd>
+<dt class="hdlist1">OK.MAP.2</dt>
+<dd>
+<p>Develop accurate and appropriate procedural fluency.</p>
+</dd>
+<dt class="hdlist1">OK.PA.A.3</dt>
+<dd>
+<p>Generate equivalent numerical and algebraic expressions and use algebraic properties to evaluate expressions.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Ohio">
+<div class="title"><a href="">Ohio Standards</a></div>
+<dl>
+<dt class="hdlist1">OH.HSA.SSE.A.2</dt>
+<dd>
+<p>Use the structure of an expression to identify ways to rewrite it.</p>
+</dd>
+<dt class="hdlist1">OH.HSA.SSE.B</dt>
+<dd>
+<p>Write expressions in equivalent forms to solve problems.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Oregon">
+<div class="title"><a href="">Oregon Standards</a></div>
+<dl>
+<dt class="hdlist1">OR.HSA.SSE.A.2</dt>
+<dd>
+<p>Use the structure of an expression to identify ways to rewrite it.</p>
+</dd>
+<dt class="hdlist1">OR.HSA.SSE.B</dt>
+<dd>
+<p>Write expressions in equivalent forms to solve problems.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Pennsylvania">
+<div class="title"><a href="">Pennsylvania Standards</a></div>
+<dl>
+<dt class="hdlist1">PA.HSA.SSE.A.2</dt>
+<dd>
+<p>Use the structure of an expression to identify ways to rewrite it.</p>
+</dd>
+<dt class="hdlist1">PA.HSA.SSE.B</dt>
+<dd>
+<p>Write expressions in equivalent forms to solve problems.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist .alignedStandards.standards-Rhode Island">
+<div class="title"><a href="">Rhode Island Standards</a></div>
+<dl>
+<dt>RI.HSA.SSE.A.2</dt>
+<dd>
+<p>Use the structure of an expression to identify ways to rewrite it.</p>
+</dd>
+<dt>RI.HSA.SSE.B</dt>
+<dd>
+<p>Write expressions in equivalent forms to solve problems.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist .alignedStandards.standards-South Dakota">
+<div class="title"><a href="">South Dakota Standards</a></div>
+<dl>
+<dt>SD.HSA.SSE.A.2</dt>
+<dd>
+<p>Use the structure of an expression to identify ways to rewrite it.</p>
+</dd>
+<dt>SD.HSA.SSE.B</dt>
+<dd>
+<p>Write expressions in equivalent forms to solve problems.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Tennessee">
+<div class="title"><a href="">Tennessee Standards</a></div>
+<dl>
+<dt class="hdlist1">TN.HSA.SSE.A.2</dt>
+<dd>
+<p>Use the structure of an expression to identify ways to rewrite it.</p>
+</dd>
+<dt class="hdlist1">TN.HSA.SSE.B</dt>
+<dd>
+<p>Write expressions in equivalent forms to solve problems.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Utah">
+<div class="title"><a href="">Utah Standards</a></div>
+<dl>
+<dt class="hdlist1">UT.HSA.SSE.A.2</dt>
+<dd>
+<p>Use the structure of an expression to identify ways to rewrite it.</p>
+</dd>
+<dt class="hdlist1">UT.HSA.SSE.B</dt>
+<dd>
+<p>Write expressions in equivalent forms to solve problems.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Vermont">
+<div class="title"><a href="">Vermont Standards</a></div>
+<dl>
+<dt class="hdlist1">VT.HSA.SSE.A.2</dt>
+<dd>
+<p>Use the structure of an expression to identify ways to rewrite it.</p>
+</dd>
+<dt class="hdlist1">VT.HSA.SSE.B</dt>
+<dd>
+<p>Write expressions in equivalent forms to solve problems.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Washington">
+<div class="title"><a href="">Washington Standards</a></div>
+<dl>
+<dt class="hdlist1">WA.HSA.SSE.A.2</dt>
+<dd>
+<p>Use the structure of an expression to identify ways to rewrite it.</p>
+</dd>
+<dt class="hdlist1">WA.HSA.SSE.B</dt>
+<dd>
+<p>Write expressions in equivalent forms to solve problems.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist .alignedStandards.standards-West Virginia">
+<div class="title"><a href="">West Virginia Standards</a></div>
+<dl>
+<dt>WV.HSA.SSE.A.2</dt>
+<dd>
+<p>Use the structure of an expression to identify ways to rewrite it.</p>
+</dd>
+<dt>WV.HSA.SSE.B</dt>
+<dd>
+<p>Write expressions in equivalent forms to solve problems.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Wisconsin">
+<div class="title"><a href="">Wisconsin Standards</a></div>
+<dl>
+<dt class="hdlist1">WI.HSA.SSE.A.2</dt>
+<dd>
+<p>Use the structure of an expression to identify ways to rewrite it.</p>
+</dd>
+<dt class="hdlist1">WI.HSA.SSE.B</dt>
+<dd>
+<p>Write expressions in equivalent forms to solve problems.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Wyoming">
+<div class="title"><a href="">Wyoming Standards</a></div>
+<dl>
+<dt class="hdlist1">WY.HSA.SSE.A.2</dt>
+<dd>
+<p>Use the structure of an expression to identify ways to rewrite it.</p>
+</dd>
+<dt class="hdlist1">WY.HSA.SSE.B</dt>
+<dd>
+<p>Write expressions in equivalent forms to solve problems.</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch sidebartextbooks">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Textbook Alignment</strong>
+<select class="textbooksAlignmentSelect"  onchange="showTextbooksAlignment()"><option selected="selected" value="textbook-IM_Alg_1"><a href="https://illustrativemathematics.org/">IM Algebra 1</a></option><option value="textbook-IM_8"><a href="https://illustrativemathematics.org/">IM 8 Math™</a></option><option value="textbook-IM_7"><a href="https://illustrativemathematics.org/">IM 7 Math™</a></option><option value="textbook-IM_6"><a href="https://illustrativemathematics.org/">IM 6 Math™</a></option><option value="textbook-CMP"><a href="https://connectedmath.msu.edu/">Connected Math</a></option></select></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist alignedTextbooks textbook-IM_Alg_1">
+<div class="title"><a href="https://illustrativemathematics.org/">IM Algebra 1</a></div>
+<dl>
+<dt class="hdlist1">IM.Alg1.2.6</dt>
+<dd>
+<p>Equivalent Equations</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedTextbooks textbook-IM_8">
+<div class="title"><a href="https://illustrativemathematics.org/">IM 8 Math™</a></div>
+<dl>
+<dt class="hdlist1">IM.8.7.7</dt>
+<dd>
+<p>Practice with Rational Bases</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedTextbooks textbook-IM_7">
+<div class="title"><a href="https://illustrativemathematics.org/">IM 7 Math™</a></div>
+<dl>
+<dt class="hdlist1">IM.7.5.14</dt>
+<dd>
+<p>Solving Problems with Rational Numbers</p>
+</dd>
+<dt class="hdlist1">IM.7.5.13</dt>
+<dd>
+<p>Expressions with Rational Numbers</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedTextbooks textbook-IM_6">
+<div class="title"><a href="https://illustrativemathematics.org/">IM 6 Math™</a></div>
+<dl>
+<dt class="hdlist1">IM.6.6.15</dt>
+<dd>
+<p>Equivalent Exponential Expressions</p>
+</dd>
+<dt class="hdlist1">IM.6.6.14</dt>
+<dd>
+<p>Evaluating Expressions with Exponents</p>
+</dd>
+<dt class="hdlist1">IM.6.6.13</dt>
+<dd>
+<p>Expressions with Exponents</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedTextbooks textbook-CMP">
+<div class="title"><a href="https://connectedmath.msu.edu/">Connected Math</a></div>
+<dl>
+<dt class="hdlist1">CMP.7.2</dt>
+<dd>
+<p>Accentuate the Negative: Integers and Rational Numbers</p>
+</dd>
+<dt class="hdlist1">CMP.6.1</dt>
+<dd>
+<p>Prime Time: Factors &amp; Multiples</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch sidebarpractices">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Practices in this Lesson</strong>
+<select class="practicesAlignmentSelect"  onchange="showPracticesAlignment()"><option selected="selected" value="practices-NGSS"><a href="https://ngss.nsta.org/practicesfull.aspx">Science and Engineering</a></option><option value="practices-MLR"><a href="https://achievethecore.org/peersandpedagogy/developing-math-language-routines/">Math Lang. Routines</a></option><option value="practices-CC"><a href="http://corestandards.org/Math/">Math</a></option></select></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist alignedPractices practices-NGSS">
+<div class="title"><a href="https://ngss.nsta.org/practicesfull.aspx">Science and Engineering</a></div>
+<dl>
+<dt class="hdlist1">SEP.2</dt>
+<dd>
+<p>Developing and Using Models</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedPractices practices-MLR">
+<div class="title"><a href="https://achievethecore.org/peersandpedagogy/developing-math-language-routines/">Math Lang. Routines</a></div>
+<dl>
+<dt class="hdlist1">MLR.7</dt>
+<dd>
+<p>Compare and Connect</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedPractices practices-CC">
+<div class="title"><a href="http://corestandards.org/Math/">Math</a></div>
+<dl>
+<dt class="hdlist1">MP.4</dt>
+<dd>
+<p>Model with mathematics</p>
+</dd>
+<dt class="hdlist1">MP.1</dt>
+<dd>
+<p>Make sense of problems and persevere in solving them</p>
+</dd>
+<dt class="hdlist1">MP.3</dt>
+<dd>
+<p>Construct viable arguments and critique the reasoning of others</p>
+</dd>
+<dt class="hdlist1">MP.2</dt>
+<dd>
+<p>Reason abstractly and quantitatively</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<!-- </p>
+</div>
+--></div><!--
+<div class="paragraph">
+<p>
+-->
+</div>
+<div class="paragraph">
+<p><span class="other-proglang">(Also available in <a href="../../lessons/order-of-operations/index.shtml">Pyret</a>)</span></p>
+</div>
+<style>
+#content .embedded {min-width: 550px; width: 80%; margin: 0px auto;}
+</style>
+<div class="paragraph description">
+<p>Students learn to model arithmetic expressions with a visual tool for Order of Operations, known as "Circles of Evaluation".</p>
+</div>
+<table class="tableblock frame-all grid-all stripes-none stretch left-header preamble">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Lesson Goals</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Students will be able to:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Model an arithmetic expression using <span class="vocab">Circles of Evaluation</span>.</p>
+</li>
+<li>
+<p>Translate Circles of Evaluation into code.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Student-facing Goals</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>I can write Circles of Evaluation for a given arithmetic <span class="vocab">expression</span>.</p>
+</li>
+<li>
+<p>I can translate a Circle of Evaluation model into code.</p>
+</li>
+<li>
+<p>I can use numbers and operations in a programming environment.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Materials</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist materials-links">
+<ul>
+<li>
+<p><a href="https://docs.google.com/presentation/d/1mqo5ZMBHK153tXNvxWmb-0R8yAW5DkG0LOM9VNu91kE/" target="_blank" rel="noopener">Lesson Slides</a></p>
+</li>
+<li>
+<p><span class="materialSectionPlaceholder"> </span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/order-of-operations-wescheme/pages/complete-coe-from-arith.html" target="_blank" rel="noopener">Completing Circles of Evaluation from Arithmetic Expressions</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/order-of-operations-wescheme/pages/match-arith-coe.html" target="_blank" rel="noopener">Matching Circles of Evaluation and Arithmetic Expressions</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/order-of-operations-wescheme/pages/translate-arithmetic-to-coe-and-code-1-intro-w-parenth.html" target="_blank" rel="noopener">Translate Arithmetic to Circles of Evaluation &amp; Code (Intro)</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/order-of-operations-wescheme/pages/complete-code-from-coe.html" target="_blank" rel="noopener">Completing Partial Code from Circles of Evaluation</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/order-of-operations-wescheme/pages/match-coe-to-code.html" target="_blank" rel="noopener">Matching Circles of Evaluation &amp; Code</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/order-of-operations-wescheme/pages/translate-arithmetic-to-coe-and-code-2-outro.html" target="_blank" rel="noopener">Translate Arithmetic to Circles of Evaluation &amp; Code 2</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/order-of-operations-wescheme/pages/translate-arithmetic-to-circles-and-code-challenge.html" target="_blank" rel="noopener">Arithmetic Expressions to Circles of Evaluation &amp; Code - Challenge</a></span></p>
+</li>
+<li>
+<p><span class="OnlineExercise"><a href="https://teacher.desmos.com/activitybuilder/custom/5fc980e05de8ae2e71174aeb?collections=5fbecc2b40d7aa0d844956f0" target="_blank" rel="noopener">Matching Circles of Evaluation to Expressions (Desmos)</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="../../lessons/order-of-operations-wescheme/pages/matching-coe-exp.html" target="_blank" rel="noopener">Matching Circles of Evaluation &amp; Code</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="../../lessons/order-of-operations-wescheme/pages/arith-to-coe.html" target="_blank" rel="noopener">Creating Circles of Evaluation from Arithmetic Expressions</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="../../lessons/order-of-operations-wescheme/pages/arith-to-coe2.html" target="_blank" rel="noopener">Creating Circles of Evaluation from Arithmetic Expressions 2</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="../../lessons/order-of-operations-wescheme/pages/arith-to-coe3.html" target="_blank" rel="noopener">Creating Circles of Evaluation from Arithmetic Expressions 3</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="../../lessons/order-of-operations-wescheme/pages/coe-to-arith.html" target="_blank" rel="noopener">Converting Circles of Evaluation to Arithmetic Expressions</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="../../lessons/order-of-operations-wescheme/pages/coe-to-arith2.html" target="_blank" rel="noopener">Converting Circles of Evaluation to Arithmetic Expressions 2</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="../../lessons/order-of-operations-wescheme/pages/evaluate-coe.html" target="_blank" rel="noopener">Evaluating Circles of Evaluation</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="../../lessons/order-of-operations-wescheme/pages/evaluate-coe2.html" target="_blank" rel="noopener">Evaluating Circles of Evaluation 2</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="../../lessons/order-of-operations-wescheme/pages/coe-to-code.html" target="_blank" rel="noopener">Converting Circles of Evaluation to Code</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="../../lessons/order-of-operations-wescheme/pages/coe-to-code2.html" target="_blank" rel="noopener">Converting Circles of Evaluation to Code 2</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="../../lessons/order-of-operations-wescheme/pages/translate-arithmetic-to-coe-and-code-3.html" target="_blank" rel="noopener">Translate Arithmetic Expressions to Circles of Evaluation &amp; Code 3</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="../../lessons/order-of-operations-wescheme/pages/translate-arithmetic-to-coe-and-code-4.html" target="_blank" rel="noopener">Translate Arithmetic Expressions to Circles of Evaluation &amp; Code 4</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="../../lessons/order-of-operations-wescheme/pages/translate-arithmetic-to-coe-and-code-w-neg-5.html" target="_blank" rel="noopener">Translate Arithmetic Expressions to Circles of Evaluation &amp; Code 5</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="../../lessons/order-of-operations-wescheme/pages/translate-arithmetic-to-coe-and-code-w-neg-6.html" target="_blank" rel="noopener">Translate Arithmetic Expressions to Circles of Evaluation &amp; Code 6</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="../../lessons/order-of-operations-wescheme/pages/translate-coe-to-code-w-sqrts.html" target="_blank" rel="noopener">Translating Circles of Evaluation to Code - w/Square Roots</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="../../lessons/order-of-operations-wescheme/pages/translate-arithmetic-to-circles-and-code-challenge-2.html" target="_blank" rel="noopener">Arithmetic Expressions to Circles of Evaluation &amp; Code - Challenge 2</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="../../lessons/order-of-operations-wescheme/pages/translate-arithmetic-to-circles-and-code-challenge-3.html" target="_blank" rel="noopener">Arithmetic Expressions to Circles of Evaluation &amp; Code - Challenge 3</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="../../lessons/order-of-operations-wescheme/pages/translate-arithmetic-to-circles-and-code-challenge-4.html" target="_blank" rel="noopener">Arithmetic Expressions to Circles of Evaluation &amp; Code - Challenge 4</a></span></p>
+</li>
+<li>
+<p><strong>Classroom visual:</strong> <a href="javascript:showLangTable()">Language Table</a></p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Key Points For The Facilitator</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Error messages are the computer trying to give us a clue that something is wrong.  Model reacting to <span class="vocab">error messages</span> with interest to demonstrate to students that the messages are a helpful tool.</p>
+</li>
+<li>
+<p>After the first few exercises in creating Circles of Evaluation, ask students whether they create them from the 'inside-out' (drawing the inner circles first) or from the 'outside-in.'  After they&#8217;ve given their responses, have them try using the OTHER way!</p>
+</li>
+<li>
+<p>Up until now, we didn&#8217;t have a visual spatial model for <em>reading</em> arithmetic expressions. Ask students to compare Circles of Evaluation to previous methods they&#8217;ve learned for <em>computing</em> these expressions (PEMDAS, GEMDAS, etc)</p>
+</li>
+<li>
+<p>For a memory hook, model the "bug that crawls through the circle" explanation.</p>
+</li>
+<li>
+<p>Students may benefit from using multiple colors to distinguish between the different smaller expressions and parentheses.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="dlist glossary">
+<div class="title">Glossary</div>
+<dl>
+<dt class="hdlist1">circle of evaluation</dt>
+<dd>
+<p>a 'sentence diagram' of the structure of a mathematical expression</p>
+</dd>
+<dt class="hdlist1">error message</dt>
+<dd>
+<p>information from the computer about errors in code</p>
+</dd>
+<dt class="hdlist1">expression</dt>
+<dd>
+<p>a computation written in the rules of some language (such as arithmetic, code, or a Circle of Evaluation)</p>
+</dd>
+<dt class="hdlist1">function</dt>
+<dd>
+<p>a relation from a set of inputs to a set of possible outputs, where each input is related to exactly one output</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_order_of_operations_duration_30_minutes_"><span class="section-link"><a href="#_order_of_operations_duration_30_minutes_"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Order of Operations <span class="duration">30 minutes</span></h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_overview">Overview</h3>
+<div class="paragraph">
+<p>Students are given a challenging expression that exposes common misconceptions about order of operations. The goal is to demonstrate that a brittle, fixed notion of order of operations is insufficient, and lead students to a deeper understanding of order of operations as a grammatical device. The Circles of Evaluation are introduced as "sentence diagramming for arithmetic".</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_launch">Launch</h3>
+<div class="paragraph">
+<p>Humans use verbs like "throw", "run", "build" and "jump" to describe operations on nouns like "ball", "puppy", and "blocks". Mathematics has "operations" and <span class="vocab">functions</span>, like addition and subtraction. Just as you can "<strong>throw</strong> a <em>ball</em>", a person can also "<strong>add</strong> <em>four</em> and <em>five</em>".</p>
+</div>
+<div class="paragraph">
+<p>A mathematical expression is an instruction for doing something, which specifies the verbs and nouns involved. The expression <span class="gdrive-only">4 + 5</span><script type="math/tex">\displaystyle 4 + 5</script> tells us to add 4 and 5. To evaluate an expression, we follow the instructions. The expression <span class="gdrive-only">4 + 5</span><script type="math/tex">\displaystyle 4 + 5</script> evaluates to 9.</p>
+</div>
+<div class="paragraph">
+<p>If you were to write instructions for getting ready for school, it would matter very much which instruction came first: putting on your socks, putting on your shoes, etc. Sometimes we need multiple expressions in mathematics, and the order matters there, too!</p>
+</div>
+<div class="paragraph">
+<p><span class="right"><span class="image-figure"><span class="image"><img src="images/e433ef0af67ac4cd.png" alt="The pyramid model of Order of Operations" width="300" title="The pyramid model of Order of Operations"></span><a href="images/e433ef0af67ac4cd.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span>
+Mathematicians didn’t always agree on the order of operations, but at some point it became important to develop rules to help them work together.</p>
+</div>
+<div class="paragraph">
+<p>The pyramid on the right is a model for summarizing the order of operations. When evaluating an expression, we begin by applying the operations written at the top of the pyramid (operations in parentheses and other grouping symbols). Only after we have completed all of those operations can we move down to the lower level. If both operations from the same level are present (as in <span class="gdrive-only">4 + 2 - 1</span><script type="math/tex">\displaystyle 4 + 2 - 1</script>), we read the expression from left to right, applying the operations in the order in which they appear. This set of rules is brittle, and doesn&#8217;t always make it clear what we need to do. Mnemonic devices for the order of operations like PEMDAS, GEMDAS, etc focus on how to get the answer. What we need is a <em>better way to read math</em>.</p>
+</div>
+<div class="paragraph">
+<p><span style="clear: both;display: block"></span></p>
+</div>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Check out the expression below. What do you think the answer is?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Students will likely offer 9 (correct) and 1 (incorrect).</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>This math problem went viral on social media recently, with math teachers arguing about what the answer was! Why might they disagree on the solution?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Disagreement on the solution is a result of disparate ideas of how to parse the problem.</em></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<style>
+.centered-image.big, .centered-image.big p {margin-top: 0px; padding-top: 0px;}
+.big .MathJax {font-size: 4em; color: black;}
+</style>
+<div class="paragraph centered-image big">
+<p><span class="gdrive-only">6 &divide; 2(1 + 2)</span><script type="math/tex">\displaystyle 6 \div 2(1 + 2)</script></p>
+</div>
+<div class="paragraph">
+<p>Instead of using a rule for computing answers, let&#8217;s start by diagramming the math itself!</p>
+</div>
+<table class="tableblock frame-all grid-none stripes-none stretch strategy-box">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="title">Circles of Evaluation</span></p>
+<p class="tableblock">The Circles of Evaluation are a critical pedagogical tool in this course. They place the focus on the <em>structure</em> of mathematical expressions, as a means of combating the harmful student belief that the only thing that matters is the <em>answer</em>. They can be used to diagram arithmetic sentences to expose common misconceptions about Order of Operations, and make an excellent scaffold for tracing mistakes when a student applies the Order of Operations incorrectly. They are also a bridge representation, which naturally connects to function composition and converting arithmetic into code.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph lesson-instruction">
+<p>We can <em>draw the structure</em> of this grammar in mathematics using something called the <strong>Circles of Evaluation</strong>. The rules are simple:</p>
+</div>
+<div class="paragraph lesson-point">
+<p>1) Every Circle must have one - and only one! - function, written at the top.</p>
+</div>
+<div class="paragraph">
+<p>That means that Numbers (e.g. - <span class="gdrive-only">3</span><script type="math/tex">\displaystyle 3</script>, <span class="gdrive-only">-29</span><script type="math/tex">\displaystyle -29</script>, <span class="gdrive-only">77.01</span><script type="math/tex">\displaystyle 77.01</script>&#8230;&#8203;) are still written by themselves. It&#8217;s only when we want to <em>do something</em> like add, subtract, etc. that we need to draw a Circle.</p>
+</div>
+<div class="paragraph lesson-point">
+<p>2) The inputs to the function are written left-to-right, in the middle of the Circle.</p>
+</div>
+<div class="paragraph">
+<p>If we want to draw the Circle of Evaluation for <span class="gdrive-only">6 &divide; 3</span><script type="math/tex">\displaystyle 6 \div 3</script>, the division function (<code class="racket">/</code>) is written at the top, with the <code class="racket">6</code> on the left and the <code class="racket">3</code> on the right.</p>
+</div>
+<div class="paragraph centered-image">
+<p><table class="gdrive-only expression"><tr><td class="operator"><span class="operator"><span class="value wescheme-symbol">/</span></span></td></tr><tr><td><table class="args"><tr><td class="arg"><span class="value wescheme-number">6</span></td><td class="arg"><span class="value wescheme-number">3</span></td></tr></table></td></tr></table><div class="circleevalsexp"><span class="expression"><span class="lParen">(</span><span class="operator"><span class="value wescheme-symbol">/</span></span><span class="hspace">&#160;</span><span class="value wescheme-number">6</span><span class="hspace">&#160;</span><span class="value wescheme-number">3</span><span class="rParen">)</span></span></div>
+<span style="clear: both;display: block"></span></p>
+</div>
+<div class="paragraph">
+<p>What if we want to use multiple functions? How would we draw the Circle of Evaluation for <span class="gdrive-only">6 &divide; ( 1 + 2 )</span><script type="math/tex">\displaystyle 6 \div ( 1 + 2 )</script>? Drawing the Circle of Evaluation for the <span class="gdrive-only">1 + 2</span><script type="math/tex">\displaystyle 1 + 2</script> is easy. But how do we take the result of that circle, and divide 6 by it?</p>
+</div>
+<div class="paragraph lesson-point">
+<p>Circles can contain other Circles</p>
+</div>
+<div class="paragraph">
+<p>We basically replace the <code class="racket">3</code> from our earlier Circle of Evaluation with <em>another</em> Circle, which adds 1 and 2!</p>
+</div>
+<div class="paragraph centered-image">
+<p><table class="gdrive-only expression"><tr><td class="operator"><span class="operator"><span class="value wescheme-symbol">/</span></span></td></tr><tr><td><table class="args"><tr><td class="arg"><span class="value wescheme-number">6</span></td><td class="arg"><table class="gdrive-only expression"><tr><td class="operator"><span class="operator"><span class="value wescheme-symbol">&#43;</span></span></td></tr><tr><td><table class="args"><tr><td class="arg"><span class="value wescheme-number">1</span></td><td class="arg"><span class="value wescheme-number">2</span></td></tr></table></td></tr></table></td></tr></table></td></tr></table><div class="circleevalsexp"><span class="expression"><span class="lParen">(</span><span class="operator"><span class="value wescheme-symbol">/</span></span><span class="hspace">&#160;</span><span class="value wescheme-number">6</span><span class="hspace">&#160;</span><span class="expression"><span class="lParen">(</span><span class="operator"><span class="value wescheme-symbol">&#43;</span></span><span class="hspace">&#160;</span><span class="value wescheme-number">1</span><span class="hspace">&#160;</span><span class="value wescheme-number">2</span><span class="rParen">)</span></span><span class="rParen">)</span></span></div>
+<span style="clear: both;display: block"></span></p>
+</div>
+<div class="paragraph lesson-instruction">
+<p>What would the Circle of Evaluation for <span class="gdrive-only">5 &times; 6</span><script type="math/tex">\displaystyle 5 \times 6</script> look like?</p>
+</div>
+<div class="paragraph centered-image">
+<p><table class="gdrive-only expression"><tr><td class="operator"><span class="operator"><span class="value wescheme-symbol">&#8203;*</span></span></td></tr><tr><td><table class="args"><tr><td class="arg"><span class="value wescheme-number">5</span></td><td class="arg"><span class="value wescheme-number">6</span></td></tr></table></td></tr></table><div class="circleevalsexp"><span class="expression"><span class="lParen">(</span><span class="operator"><span class="value wescheme-symbol">&#8203;*</span></span><span class="hspace">&#160;</span><span class="value wescheme-number">5</span><span class="hspace">&#160;</span><span class="value wescheme-number">6</span><span class="rParen">)</span></span></div>
+<span style="clear: both;display: block"></span></p>
+</div>
+<div class="paragraph lesson-instruction">
+<p>How about the Circle of Evaluation for <span class="gdrive-only">(10 - 5) &times; 6</span><script type="math/tex">\displaystyle (10 - 5) \times 6</script>?</p>
+</div>
+<div class="paragraph centered-image">
+<p><table class="gdrive-only expression"><tr><td class="operator"><span class="operator"><span class="value wescheme-symbol">&#8203;*</span></span></td></tr><tr><td><table class="args"><tr><td class="arg"><table class="gdrive-only expression"><tr><td class="operator"><span class="operator"><span class="value wescheme-symbol">&#8203;-</span></span></td></tr><tr><td><table class="args"><tr><td class="arg"><span class="value wescheme-number">10</span></td><td class="arg"><span class="value wescheme-number">5</span></td></tr></table></td></tr></table></td><td class="arg"><span class="value wescheme-number">6</span></td></tr></table></td></tr></table><div class="circleevalsexp"><span class="expression"><span class="lParen">(</span><span class="operator"><span class="value wescheme-symbol">&#8203;*</span></span><span class="hspace">&#160;</span><span class="expression"><span class="lParen">(</span><span class="operator"><span class="value wescheme-symbol">&#8203;-</span></span><span class="hspace">&#160;</span><span class="value wescheme-number">10</span><span class="hspace">&#160;</span><span class="value wescheme-number">5</span><span class="rParen">)</span></span><span class="hspace">&#160;</span><span class="value wescheme-number">6</span><span class="rParen">)</span></span></div>
+<span style="clear: both;display: block"></span></p>
+</div>
+<div class="paragraph">
+<p>Aside from helping us catch mistakes before they happen, Circles of Evaluation are also a useful way to think about <em>transformation</em> in mathematics. For example, you may have heard that "addition is commutative, so <span class="gdrive-only">a + b</span><script type="math/tex">\displaystyle a + b</script> can always be written as <span class="gdrive-only">b + a</span><script type="math/tex">\displaystyle b + a</script>." For example, <span class="gdrive-only">1 + 2</span><script type="math/tex">\displaystyle 1 + 2</script> can be transformed to <span class="gdrive-only">2 + 1</span><script type="math/tex">\displaystyle 2 + 1</script>.</p>
+</div>
+<div class="paragraph">
+<p>Suppose another student tells you that <span class="gdrive-only">1 + 2 &times; 3</span><script type="math/tex">\displaystyle 1 + 2 \;\times\; 3</script> can be rewritten as <span class="gdrive-only">2 + 1 &times; 3</span><script type="math/tex">\displaystyle 2 + 1 \;\times\; 3</script>. This is obviously wrong, but <em>why</em>?</p>
+</div>
+<div class="paragraph">
+<p><strong>Take a moment to think: what&#8217;s the problem?</strong> We can use the Circles of Evaluation to figure it out!</p>
+</div>
+<div class="paragraph">
+<p>The first Circle is just the original expression. The second expression represents what the (incorrect) commutativity transformation gives us:</p>
+</div>
+<table class="tableblock frame-none grid-none stripes-none stretch embedded">
+<colgroup>
+<col style="width: 42.8571%;">
+<col style="width: 14.2857%;">
+<col style="width: 42.8572%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><table class="gdrive-only expression"><tr><td class="operator"><span class="operator"><span class="value wescheme-symbol">&#43;</span></span></td></tr><tr><td><table class="args"><tr><td class="arg"><span class="value wescheme-number">1</span></td><td class="arg"><table class="gdrive-only expression"><tr><td class="operator"><span class="operator"><span class="value wescheme-symbol">&#8203;*</span></span></td></tr><tr><td><table class="args"><tr><td class="arg"><span class="value wescheme-number">2</span></td><td class="arg"><span class="value wescheme-number">3</span></td></tr></table></td></tr></table></td></tr></table></td></tr></table><div class="circleevalsexp"><span class="expression"><span class="lParen">(</span><span class="operator"><span class="value wescheme-symbol">&#43;</span></span><span class="hspace">&#160;</span><span class="value wescheme-number">1</span><span class="hspace">&#160;</span><span class="expression"><span class="lParen">(</span><span class="operator"><span class="value wescheme-symbol">&#8203;*</span></span><span class="hspace">&#160;</span><span class="value wescheme-number">2</span><span class="hspace">&#160;</span><span class="value wescheme-number">3</span><span class="rParen">)</span></span><span class="rParen">)</span></span></div></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><em> ? </em> &rarr;</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><table class="gdrive-only expression"><tr><td class="operator"><span class="operator"><span class="value wescheme-symbol">&#43;</span></span></td></tr><tr><td><table class="args"><tr><td class="arg"><span class="value wescheme-number">2</span></td><td class="arg"><table class="gdrive-only expression"><tr><td class="operator"><span class="operator"><span class="value wescheme-symbol">&#8203;*</span></span></td></tr><tr><td><table class="args"><tr><td class="arg"><span class="value wescheme-number">1</span></td><td class="arg"><span class="value wescheme-number">3</span></td></tr></table></td></tr></table></td></tr></table></td></tr></table><div class="circleevalsexp"><span class="expression"><span class="lParen">(</span><span class="operator"><span class="value wescheme-symbol">&#43;</span></span><span class="hspace">&#160;</span><span class="value wescheme-number">2</span><span class="hspace">&#160;</span><span class="expression"><span class="lParen">(</span><span class="operator"><span class="value wescheme-symbol">&#8203;*</span></span><span class="hspace">&#160;</span><span class="value wescheme-number">1</span><span class="hspace">&#160;</span><span class="value wescheme-number">3</span><span class="rParen">)</span></span><span class="rParen">)</span></span></div></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>In this case, the student <em>failed to see the structure</em>, viewing the term to the right of the <span class="gdrive-only">+</span><script type="math/tex">\displaystyle +</script> sign as <span class="gdrive-only">2</span><script type="math/tex">\displaystyle 2</script> instead of <span class="gdrive-only">2 &times; 3</span><script type="math/tex">\displaystyle 2 \;\times\; 3</script>. The Circles of Evaluation help us see the structure of the expression, rather than forcing us to construct it and keep it in our heads.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_investigate">Investigate</h3>
+<div class="paragraph lesson-instruction">
+<p>Turn to  <a href="../../lessons/order-of-operations-wescheme/pages/translate-arithmetic-to-coe-and-code-1-intro-w-parenth.html" target="_blank" rel="noopener">Translate Arithmetic to Circles of Evaluation &amp; Code (Intro)</a> in the student workbook
+and draw Circles of Evaluation for each of the expressions. (Ignore the code column for now! We will come back to it later.)</p>
+</div>
+<div class="paragraph">
+<p>Spend some time ensuring that students have drawn their circles correctly. You may want to have them compare their circles with a partner and another pair of partners or you may want to post an answer key. Students will use their circles to write code in the next segment of the lesson - so this step is crucial.</p>
+</div>
+<div class="paragraph">
+<p>You may also want to have students complete <a href="../../lessons/order-of-operations-wescheme/pages/complete-coe-from-arith.html" target="_blank" rel="noopener">Completing Circles of Evaluation from Arithmetic Expressions</a>, <a href="../../lessons/order-of-operations-wescheme/pages/match-arith-coe.html" target="_blank" rel="noopener">Matching Circles of Evaluation and Arithmetic Expressions</a> and/or <a href="https://teacher.desmos.com/activitybuilder/custom/5fc980e05de8ae2e71174aeb?collections=5fbecc2b40d7aa0d844956f0" target="_blank" rel="noopener">Matching Circles of Evaluation to Expressions (Desmos)</a>.</p>
+</div>
+<table class="tableblock frame-all grid-none stripes-none stretch strategy-box">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="title">Pedagogy Note</span></p>
+<p class="tableblock">Circles of Evaluation are a great way to get older students to reengage with (and finally understand) the order of operations while their focus and motivation are on learning to code.  Because we recognize this work to be so foundational, and know that some teachers choose to spend a whole week on it, we have developed lots of additional materials to help scaffold and stretch. You will find some additional pages in the workbook and over 20 more linked in <a href="#_additional_exercises" target="_blank" rel="noopener">the Additional Exercises section</a> at the the end of this lesson.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_synthesize">Synthesize</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Did some students prefer working outside-in to inside-out? Why?</p>
+</li>
+<li>
+<p>Did some students find that different strategies worked better for different <em>kinds</em> of problems? Why or why not?</p>
+</li>
+<li>
+<p>Is there more than one way to draw the Circle for <span class="gdrive-only">1 + 2</span><script type="math/tex">\displaystyle 1 + 2</script>? If so, is one way more "correct" than the other?</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_from_circles_of_evaluation_to_code_duration_25_minutes_"><span class="section-link"><a href="#_from_circles_of_evaluation_to_code_duration_25_minutes_"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>From Circles of Evaluation to Code  <span class="duration">25 minutes</span></h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_overview_2">Overview</h3>
+<div class="paragraph">
+<p>Students learn how to use the Circles of Evaluation to translate arithmetic expressions into code.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_launch_2">Launch</h3>
+<div class="paragraph">
+<p>When converting a Circle of Evaluation to code, it&#8217;s useful to imagine a spider crawling through the circle from the left and exiting on the right.</p>
+</div>
+<div class="paragraph">
+<p>The first thing the spider does is cross over a curved line (an open parenthesis!), then visit the operation - also called the <em>function</em> - at the top. After that, she crawls from left to right, visiting each of the inputs to the function. Finally, she has to leave the circle by crossing another curved line (a close parenthesis).</p>
+</div>
+<table class="tableblock frame-none grid-none stripes-none stretch embedded">
+<colgroup>
+<col style="width: 42.8571%;">
+<col style="width: 14.2857%;">
+<col style="width: 42.8572%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>Expression</strong></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">&rarr;</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><span class="gdrive-only">3 + 8</span><script type="math/tex">\displaystyle 3 + 8</script></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>Circle of Evaluation</strong></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">&rarr;</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><table class="gdrive-only expression"><tr><td class="operator"><span class="operator"><span class="value wescheme-symbol">&#43;</span></span></td></tr><tr><td><table class="args"><tr><td class="arg"><span class="value wescheme-number">3</span></td><td class="arg"><span class="value wescheme-number">8</span></td></tr></table></td></tr></table><div class="circleevalsexp"><span class="expression"><span class="lParen">(</span><span class="operator"><span class="value wescheme-symbol">&#43;</span></span><span class="hspace">&#160;</span><span class="value wescheme-number">3</span><span class="hspace">&#160;</span><span class="value wescheme-number">8</span><span class="rParen">)</span></span></div></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>Code</strong></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">&rarr;</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><span class="obeyspaces"><code class="racket">(+ 3 8)</code></span></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>All of the expressions that follow the function name are called arguments to the function. The following diagram summarizes the shape of an expression that uses a function.
+<span class="center"><span class="image-figure"><span class="image"><img src="images/a8ca57f9f3a853d6.png" alt="Diagram of a WeScheme Expression" width="400" title="Diagram of a WeScheme Expression"></span><a href="images/a8ca57f9f3a853d6.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></p>
+</div>
+<div class="paragraph">
+<p>Arithmetic expressions involving more than one operation, will end up with more than one circle,
+and more than one pair of parentheses.</p>
+</div>
+<table class="tableblock frame-none grid-none stripes-none stretch embedded">
+<colgroup>
+<col style="width: 42.8571%;">
+<col style="width: 14.2857%;">
+<col style="width: 42.8572%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>Expression</strong></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">&rarr;</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><span class="gdrive-only">2 &times; ( 3 + 8 )</span><script type="math/tex">\displaystyle 2 \;\times\; ( 3 + 8 )</script></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>Circle of Evaluation</strong></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">&rarr;</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><table class="gdrive-only expression"><tr><td class="operator"><span class="operator"><span class="value wescheme-symbol">&#8203;*</span></span></td></tr><tr><td><table class="args"><tr><td class="arg"><span class="value wescheme-number">2</span></td><td class="arg"><table class="gdrive-only expression"><tr><td class="operator"><span class="operator"><span class="value wescheme-symbol">&#43;</span></span></td></tr><tr><td><table class="args"><tr><td class="arg"><span class="value wescheme-number">3</span></td><td class="arg"><span class="value wescheme-number">8</span></td></tr></table></td></tr></table></td></tr></table></td></tr></table><div class="circleevalsexp"><span class="expression"><span class="lParen">(</span><span class="operator"><span class="value wescheme-symbol">&#8203;*</span></span><span class="hspace">&#160;</span><span class="value wescheme-number">2</span><span class="hspace">&#160;</span><span class="expression"><span class="lParen">(</span><span class="operator"><span class="value wescheme-symbol">&#43;</span></span><span class="hspace">&#160;</span><span class="value wescheme-number">3</span><span class="hspace">&#160;</span><span class="value wescheme-number">8</span><span class="rParen">)</span></span><span class="rParen">)</span></span></div></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>Code</strong></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">&rarr;</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><span class="obeyspaces"><code class="racket">(* 2 (+ 3 8))</code></span></p></td>
+</tr>
+</tbody>
+</table>
+<div class="ulist">
+<ul>
+<li>
+<p>Why are there two closing parentheses in a row, at the end of the code?</p>
+</li>
+<li>
+<p>If an expression has three sets of parentheses, how many Circles of Evaluation do you expect to need?</p>
+</li>
+</ul>
+</div>
+<div class="paragraph lesson-instruction">
+<p>What would the code look like for these circles?</p>
+</div>
+<table class="tableblock frame-none grid-none stripes-none stretch embedded">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><table class="gdrive-only expression"><tr><td class="operator"><span class="operator"><span class="value wescheme-symbol">/</span></span></td></tr><tr><td><table class="args"><tr><td class="arg"><span class="value wescheme-number">6</span></td><td class="arg"><table class="gdrive-only expression"><tr><td class="operator"><span class="operator"><span class="value wescheme-symbol">&#43;</span></span></td></tr><tr><td><table class="args"><tr><td class="arg"><span class="value wescheme-number">1</span></td><td class="arg"><span class="value wescheme-number">2</span></td></tr></table></td></tr></table></td></tr></table></td></tr></table><div class="circleevalsexp"><span class="expression"><span class="lParen">(</span><span class="operator"><span class="value wescheme-symbol">/</span></span><span class="hspace">&#160;</span><span class="value wescheme-number">6</span><span class="hspace">&#160;</span><span class="expression"><span class="lParen">(</span><span class="operator"><span class="value wescheme-symbol">&#43;</span></span><span class="hspace">&#160;</span><span class="value wescheme-number">1</span><span class="hspace">&#160;</span><span class="value wescheme-number">2</span><span class="rParen">)</span></span><span class="rParen">)</span></span></div></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><table class="gdrive-only expression"><tr><td class="operator"><span class="operator"><span class="value wescheme-symbol">&#8203;*</span></span></td></tr><tr><td><table class="args"><tr><td class="arg"><table class="gdrive-only expression"><tr><td class="operator"><span class="operator"><span class="value wescheme-symbol">&#8203;-</span></span></td></tr><tr><td><table class="args"><tr><td class="arg"><span class="value wescheme-number">10</span></td><td class="arg"><span class="value wescheme-number">5</span></td></tr></table></td></tr></table></td><td class="arg"><span class="value wescheme-number">6</span></td></tr></table></td></tr></table><div class="circleevalsexp"><span class="expression"><span class="lParen">(</span><span class="operator"><span class="value wescheme-symbol">&#8203;*</span></span><span class="hspace">&#160;</span><span class="expression"><span class="lParen">(</span><span class="operator"><span class="value wescheme-symbol">&#8203;-</span></span><span class="hspace">&#160;</span><span class="value wescheme-number">10</span><span class="hspace">&#160;</span><span class="value wescheme-number">5</span><span class="rParen">)</span></span><span class="hspace">&#160;</span><span class="value wescheme-number">6</span><span class="rParen">)</span></span></div></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_investigate_2">Investigate</h3>
+<div class="paragraph">
+<p>If you have time, start with the two pages in the student workbook that scaffold translating circles to code: <a href="../../lessons/order-of-operations-wescheme/pages/complete-code-from-coe.html" target="_blank" rel="noopener">Completing Partial Code from Circles of Evaluation</a> and <a href="../../lessons/order-of-operations-wescheme/pages/match-coe-to-code.html" target="_blank" rel="noopener">Matching Circles of Evaluation &amp; Code</a>.</p>
+</div>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Now that we know how to translate Circles of Evaluation into Code, turn back to <a href="../../lessons/order-of-operations-wescheme/pages/translate-arithmetic-to-coe-and-code-1-intro-w-parenth.html" target="_blank" rel="noopener">Translate Arithmetic to Circles of Evaluation &amp; Code (Intro)</a>. Translate the circles you drew into code!</p>
+</li>
+<li>
+<p>Once you confirm that your code is correct, continue on to <a href="../../lessons/order-of-operations-wescheme/pages/translate-arithmetic-to-coe-and-code-2-outro.html" target="_blank" rel="noopener">Translate Arithmetic to Circles of Evaluation &amp; Code 2</a>.</p>
+</li>
+<li>
+<p>If time allows, take turns entering the code into the editor with your partner.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Note: <a href="../../lessons/order-of-operations-wescheme/pages/translate-arithmetic-to-coe-and-code-1-intro-w-parenth.html" target="_blank" rel="noopener">Translate Arithmetic to Circles of Evaluation &amp; Code (Intro)</a> offers students the scaffold of extra parentheses. Those scaffolds drop away on <a href="../../lessons/order-of-operations-wescheme/pages/translate-arithmetic-to-coe-and-code-2-outro.html" target="_blank" rel="noopener">Translate Arithmetic to Circles of Evaluation &amp; Code 2</a>.</p>
+</div>
+<div class="paragraph">
+<p>There is one page of more complex problems - <a href="../../lessons/order-of-operations-wescheme/pages/translate-arithmetic-to-circles-and-code-challenge.html" target="_blank" rel="noopener">Arithmetic Expressions to Circles of Evaluation &amp; Code - Challenge</a> - so that you&#8217;re ready to challenge students who fly. Make sure these students know that we use <span class="obeyspaces"><code class="racket">sqrt</code></span> as the name of the square root function, and <span class="obeyspaces"><code class="racket">sqr</code></span> as the function that squares its input.</p>
+</div>
+<table class="tableblock frame-all grid-none stripes-none stretch strategy-box">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="title">Strategies For English Language Learners</span></p>
+<p class="tableblock">MLR 7 - Compare and Connect: Gather students' graphic organizers to highlight and analyze a few of them as a class, asking students to compare and connect different representations.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_synthesize_2">Synthesize</h3>
+<div class="paragraph">
+<p>Have students share back what they learned from the Circles of Evaluation.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_testing_out_your_code_duration_optional_"><span class="section-link"><a href="#_testing_out_your_code_duration_optional_"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Testing out your Code <span class="duration">optional</span></h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_overview_3">Overview</h3>
+<div class="paragraph">
+<p>Circles of Evaluation are a powerful tool that can be used without ever getting students on computers. If you have time to introduce students to the <a href="https://www.wescheme.org/openEditor" target="_blank" rel="noopener">WeScheme</a>, typing their code into the Interactions Area gives students a chance to get feedback on their use of parentheses as well as the satisfaction of seeing their code successfully evaluate the expressions they&#8217;ve generated.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_launch_3">Launch</h3>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Open <a href="https://www.wescheme.org/openEditor" target="_blank" rel="noopener">WeScheme</a> and click "Run".</p>
+</li>
+<li>
+<p>For now, we are only going to be working in the Interactions Area on the right hand side of your screen.</p>
+</li>
+<li>
+<p>Type <span class="obeyspaces"><code class="racket">(+ (* 8 2) (/ 6 3))</code></span> into the Interactions Area.</p>
+</li>
+<li>
+<p>Notice how the editor highlights pairs of parentheses to help you confirm that you have closed each pair.</p>
+</li>
+<li>
+<p>Hit Enter (or Return) to evaluate this expression. What happens? <em>If you typed the code correctly you&#8217;ll get 18. If you make a mistake with your typing, the computer should help you identify your mistake so that you can correct it and try it again!</em></p>
+</li>
+<li>
+<p>Take a few minutes to go back and test each line of code you wrote on the pages you&#8217;ve completed by typing them into the Interactions Area. Use the error messages to help you identify any missing characters and edit your code to get it working.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_investigate_3">Investigate</h3>
+<div class="openblock lesson-instruction">
+<div class="content">
+<div class="paragraph">
+<p>Here are two Circles of Evaluation.</p>
+</div>
+<table class="tableblock frame-none grid-none stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><table class="gdrive-only expression"><tr><td class="operator"><span class="operator"><span class="value wescheme-symbol">&#8203;*</span></span></td></tr><tr><td><table class="args"><tr><td class="arg"><span class="value wescheme-number">10</span></td><td class="arg"><span class="value wescheme-number">-4</span></td></tr></table></td></tr></table><div class="circleevalsexp"><span class="expression"><span class="lParen">(</span><span class="operator"><span class="value wescheme-symbol">&#8203;*</span></span><span class="hspace">&#160;</span><span class="value wescheme-number">10</span><span class="hspace">&#160;</span><span class="value wescheme-number">-4</span><span class="rParen">)</span></span></div></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><table class="gdrive-only expression"><tr><td class="operator"><span class="operator"><span class="value wescheme-symbol">text</span></span></td></tr><tr><td><table class="args"><tr><td class="arg"><span class="value wescheme-string">"Good work!"</span></td><td class="arg"><span class="value wescheme-number">50</span></td><td class="arg"><span class="value wescheme-string">"red"</span></td></tr></table></td></tr></table><div class="circleevalsexp"><span class="expression"><span class="lParen">(</span><span class="operator"><span class="value wescheme-symbol">text</span></span><span class="hspace">&#160;</span><span class="value wescheme-string">"Good work!"</span><span class="hspace">&#160;</span><span class="value wescheme-number">50</span><span class="hspace">&#160;</span><span class="value wescheme-string">"red"</span><span class="rParen">)</span></span></div></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>One of them is familiar, but the other is very different from what you&#8217;ve been working with. What&#8217;s different about the Circle on the right?</p>
+</div>
+</div>
+</div>
+<div class="openblock indentedpara">
+<div class="content">
+<div class="paragraph">
+<p><em>Possible responses:</em></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><em>We&#8217;ve never seen <code class="racket">text</code> before</em></p>
+</li>
+<li>
+<p><em>We&#8217;ve never seen words like "red" used in a Circle of Evaluation before</em></p>
+</li>
+<li>
+<p><em>We&#8217;ve never seen <strong>three</strong> inputs</em></p>
+</li>
+<li>
+<p><em>We&#8217;ve never seen a mix of Numbers and words</em></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="openblock lesson-instruction">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Can you figure out the Name for the function in the second Circle? This is a chance to look for and make use of structure in deciphering a novel expression!
+<em>We know the name of the function is <code class="racket">text</code>, because that&#8217;s what is at the top of the circle.</em></p>
+</li>
+<li>
+<p>What do you think this expression will evaluate to?</p>
+</li>
+<li>
+<p>Convert this Circle to code and try it out!</p>
+</li>
+<li>
+<p>What does the <code class="racket">50</code> mean to the computer? Try replacing it with different values, and see what you get.</p>
+</li>
+<li>
+<p>What does the <code class="racket">"blue"</code> mean to the computer? Try replacing it with different values, and see what you get.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Here is another circle to explore.
+<table class="gdrive-only expression"><tr><td class="operator"><span class="operator"><span class="value wescheme-symbol">string-length</span></span></td></tr><tr><td><table class="args"><tr><td class="arg"><span class="value wescheme-string">"fun!"</span></td></tr></table></td></tr></table><div class="circleevalsexp"><span class="expression"><span class="lParen">(</span><span class="operator"><span class="value wescheme-symbol">string-length</span></span><span class="hspace">&#160;</span><span class="value wescheme-string">"fun!"</span><span class="rParen">)</span></span></div></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>What do you think this expression will evaluate to?</p>
+</li>
+<li>
+<p>Convert this Circle to code and try it out!</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_synthesize_3">Synthesize</h3>
+<div class="paragraph">
+<p>Now that we understand the structure of Circles of Evaluation, we can use them to write code for any function!</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_additional_exercises"><span class="section-link"><a href="#_additional_exercises"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Additional Exercises</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you are digging into Order or Operations and are looking for more practice with Circles of Evaluation before introducing code, we have lots of options!</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="../../lessons/order-of-operations-wescheme/pages/matching-coe-exp.html" target="_blank" rel="noopener">A printable set of cards for physically matching expressions with Circles of Evaluation</a></p>
+</li>
+<li>
+<p><a href="../../lessons/order-of-operations-wescheme/pages/arith-to-coe.html" target="_blank" rel="noopener">Creating Circles of Evaluation from Arithmetic Expressions</a></p>
+</li>
+<li>
+<p><a href="../../lessons/order-of-operations-wescheme/pages/arith-to-coe2.html" target="_blank" rel="noopener">Creating Circles of Evaluation from Arithmetic Expressions 2</a></p>
+</li>
+<li>
+<p><a href="../../lessons/order-of-operations-wescheme/pages/arith-to-coe3.html" target="_blank" rel="noopener">Creating Circles of Evaluation from Arithmetic Expressions 3</a></p>
+</li>
+<li>
+<p><a href="../../lessons/order-of-operations-wescheme/pages/coe-to-arith.html" target="_blank" rel="noopener">Converting Circles of Evaluation to Arithmetic Expressions</a></p>
+</li>
+<li>
+<p><a href="../../lessons/order-of-operations-wescheme/pages/coe-to-arith2.html" target="_blank" rel="noopener">Converting Circles of Evaluation to Arithmetic Expressions 2</a></p>
+</li>
+<li>
+<p><a href="../../lessons/order-of-operations-wescheme/pages/evaluate-coe.html" target="_blank" rel="noopener">Evaluating Circles of Evaluation</a></p>
+</li>
+<li>
+<p><a href="../../lessons/order-of-operations-wescheme/pages/evaluate-coe2.html" target="_blank" rel="noopener">Evaluating Circles of Evaluation 2</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>More practice connecting Circles of Evaluation to Code</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="../../lessons/order-of-operations-wescheme/pages/coe-to-code.html" target="_blank" rel="noopener">Converting Circles of Evaluation to Code</a></p>
+</li>
+<li>
+<p><a href="../../lessons/order-of-operations-wescheme/pages/coe-to-code2.html" target="_blank" rel="noopener">Converting Circles of Evaluation to Code 2</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>More 3-column practice connecting Arithmetic Expressions with Circles of Evaluation and Code:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="../../lessons/order-of-operations-wescheme/pages/translate-arithmetic-to-coe-and-code-3.html" target="_blank" rel="noopener">Translate Arithmetic Expressions to Circles of Evaluation &amp; Code 3</a></p>
+</li>
+<li>
+<p><a href="../../lessons/order-of-operations-wescheme/pages/translate-arithmetic-to-coe-and-code-4.html" target="_blank" rel="noopener">Translate Arithmetic Expressions to Circles of Evaluation &amp; Code 4</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>More 3-column practice with negatives:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="../../lessons/order-of-operations-wescheme/pages/translate-arithmetic-to-coe-and-code-w-neg-5.html" target="_blank" rel="noopener">Translate Arithmetic Expressions to Circles of Evaluation &amp; Code 5</a></p>
+</li>
+<li>
+<p><a href="../../lessons/order-of-operations-wescheme/pages/translate-arithmetic-to-coe-and-code-w-neg-6.html" target="_blank" rel="noopener">Translate Arithmetic Expressions to Circles of Evaluation &amp; Code 6</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>More 3-column practice with square roots:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="../../lessons/order-of-operations-wescheme/pages/translate-coe-to-code-w-sqrts.html" target="_blank" rel="noopener">Translating Circles of Evaluation to Code - w/Square Roots</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>3-column challenge problems with brackets and exponents:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="../../lessons/order-of-operations-wescheme/pages/translate-arithmetic-to-circles-and-code-challenge-2.html" target="_blank" rel="noopener">Arithmetic Expressions to Circles of Evaluation &amp; Code - Challenge 2</a></p>
+</li>
+<li>
+<p><a href="../../lessons/order-of-operations-wescheme/pages/translate-arithmetic-to-circles-and-code-challenge-3.html" target="_blank" rel="noopener">Arithmetic Expressions to Circles of Evaluation &amp; Code - Challenge 3</a></p>
+</li>
+<li>
+<p><a href="../../lessons/order-of-operations-wescheme/pages/translate-arithmetic-to-circles-and-code-challenge-4.html" target="_blank" rel="noopener">Arithmetic Expressions to Circles of Evaluation &amp; Code - Challenge 4</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-18 16:15:45 -0400
+</div>
+</div>
+</div>
+</body>
+</html>

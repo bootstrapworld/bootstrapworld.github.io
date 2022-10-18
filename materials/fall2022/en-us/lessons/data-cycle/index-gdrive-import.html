@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>The Data Cycle</title>
+<style>
+/* Overall document font */
+* {font-family: Lato, Arial, Helvetica, sans-serif;}
+
+/* document headings */
+h1,.lesson-section-1 {color: #75328A;}
+h1{font-size: 32px; font-family: sans-serif;}
+table.section-heading *, .lesson-section-1 h2{font-size: 32px; font-weight: 100;}
+table.section-heading{width: 100%;}
+table.section-heading td:last-child{text-align: right; color: #d9d2e9;}
+
+/* preamble section */
+table.preamble td {padding: 10px;}
+table.preamble td:first-child{background: #b7d893; width: 25%;}
+table.preamble td:first-child p {font-weight: bold; margin: 5px;}
+
+/* content used throughout the body */
+table{ border-collapse: collapse; border: none; }
+table.grid-all.frame-all {border: solid 1px black;}
+table.grid-none.frame-none {border-width: 0px;}
+
+.big {font-size: 30pt;}
+.vocab{font-weight: bold; font-style: italic;}
+.right{text-align: right;}
+.acknowledgment {
+  border-top: solid 1px black; 
+  font-style: italic; 
+  font-size: 8pt;
+}
+.lesson-point {
+  border-top: solid 1px black; 
+  border-bottom: solid 1px black; 
+  color: black;
+  font-weight: bold;
+}
+
+.web-page-only, #footer { display: none; visibility: hidden; }
+
+/* Callout boxes */
+.strategy-box, .notice-box {
+  background: #efefef;
+  border: solid 5px !important;
+  margin: 15px auto;
+  width: 100%;
+}
+.strategy-box { border-color: #1a73b5 !important; }
+.notice-box   { border-color: #7747a5 !important; }
+.strategy-box td, .notice-box td{ padding: 10px; }
+.strategy-box .title, .notice-box .title{
+  width: 100%;
+  display: block;
+  font-weight: bold;
+  font-size: 24px;
+  clear: both;
+  margin: 100px;
+}
+.strategy-box p.tableblock:first-child, .notice-box p.tableblock:first-child{
+  text-align: center;
+  padding-bottom: 15px;
+}
+.strategy-box .title { color: #1a73b5; }
+.notice-box   .title { color: #7747a5; }
+.strategy-box a, .notice-box a { color: blue; text-decoration: underline; }
+
+/* "Tables" of Evaluation */
+.operator{border-bottom: solid 1px black; text-align: center;}
+.operator * {text-align: center;}
+td {padding: 0px 10px; font-size: 14px;}
+table.expression {
+    font-family:"Courier New", Monaco, monospace;
+    border:     solid 1px black;
+    font-size:  1px;
+    max-width:  400px;
+    color:      #666666;
+    display:    inline-block;
+}
+table.args {border: none; text-align: center;}
+
+.wescheme-string,     .cm-scheme-string    {color: green;}
+.wescheme-number,     .cm-scheme-number    {color: blue;}
+.wescheme-boolean,    .cm-scheme-boolean   {color: darkred;}
+.wescheme-character,  .cm-scheme-character {color: orange;}
+.wescheme-symbol,     .cm-scheme-symbol    {color: steelblue;}
+.wescheme-comment,    .cm-scheme-comment   {color: orange; }
+
+.racket, .pyret, .studentAnswerCode, .studentAnswer, .pyretkeyword, .keyword_only {
+    font-family:"Courier New", Monaco, monospace !important; 
+    color: black;
+}
+
+/* Design Recipe */
+.recipe_instructions { font-style: italic; }
+table.recipe_title {
+  color:              white;
+  background:         gray;
+  display:            block;
+  padding:            0px;
+  font-size:          1.1rem;
+  font-weight:        bold;
+}</style>
+
+    <script src="../../lib/langtable.js"></script>
+    <script src="../../dependency-graph.js"></script>
+    <script src="../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:window.location.href,
+    filename:"The Data Cycle",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="article LessonPlan pyret" onload="renderSaveToDrive()">
+<span id="body" onload="renderSaveToDrive()">
+<span id="header">
+<h1>The Data Cycle</h1>
+
+  <span id="savetodrive-div"></span>
+
+</span>
+<span id="content">
+<span id="preamble_disabled" class="lessonSummary">
+<span class="sectionbody">
+<script>
+function preselect(klass) {
+  const items = document.getElementsByClassName(klass);
+  for (let i = 0; i < items.length; i++) {
+    items[i].style.display = 'none';
+  }
+  if (items.length > 0) {
+    items[0].style.display = 'block';
+  }
+}
+window.onload = function() {
+  preselect('alignedStandards');
+  preselect('alignedTextbooks');
+  preselect('alignedPractices');
+}
+function showStandardsAlignment() {
+  const selectTag = document.getElementsByClassName('standardsAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const stdTables = document.getElementsByClassName('alignedStandards');
+  //const intro = document.getElementsByClassName('alignedStandardsIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < stdTables.length; i++) {
+    const stdTable = stdTables[i];
+    stdTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optStd = opt.value;
+      for (let j = 0; j < stdTables.length; j++) {
+        const stdTable = stdTables[j];
+        if (stdTable.classList.contains(optStd)) {
+          stdTable.style.display = 'block';
+         // introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+function toggleNonPrereqDisplay() {
+  const inputTag = document.getElementsByClassName('sidebarinput')[0];
+  const checkedP = inputTag.checked;
+  const lessonTable = document.getElementsByClassName('sidebarlessons')[0];
+  const lis = lessonTable.getElementsByTagName('li');
+  for (let i = 0; i < lis.length; i++) {
+    const li = lis[i];
+    const lesson = li.getElementsByClassName('prerequisite');
+    if (lesson.length === 0) {
+      li.style.display = checkedP ? 'none' : 'block';
+    }
+  }
+}
+</script>
+<script>
+function showTextbooksAlignment() {
+  const selectTag = document.getElementsByClassName('textbooksAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const textbookTables = document.getElementsByClassName('alignedTextbooks');
+  //const intro = document.getElementsByClassName('alignedTextbooksIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < textbookTables.length; i++) {
+    const textbookTable = textbookTables[i];
+    textbookTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optTextbook = opt.value;
+      for (let j = 0; j < textbookTables.length; j++) {
+        const textbookTable = textbookTables[j];
+        if (textbookTable.classList.contains(optTextbook)) {
+          textbookTable.style.display = 'block';
+          //introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+</script>
+<script>
+function showPracticesAlignment() {
+  const selectTag = document.getElementsByClassName('practicesAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const practiceTables = document.getElementsByClassName('alignedPractices');
+  for (let i = 0; i < practiceTables.length; i++) {
+    const practiceTable = practiceTables[i];
+    practiceTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optPractice = opt.value;
+      for (let j = 0; j < practiceTables.length; j++) {
+        const practiceTable = practiceTables[j];
+        if (practiceTable.classList.contains(optPractice)) {
+          practiceTable.style.display = 'block';
+        }
+      }
+    }
+  }
+}
+</script>
+<span class="paragraph">
+<!-- </p>
+</span>
+--></span><span class="sidebar"><span id="toggle"></span><span class="paragraph"><!--
+<span class="paragraph">
+<p>
+--><span class="sidebarlessons"><strong>Lessons</strong>
+<ul></ul></span>
+<span class="sidebarstandards"><strong>Standards in this Lesson</strong>: <em>None</em></span>
+</span>
+<table class="tableblock frame-all grid-all stretch sidebarpractices">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p><strong>Practices in this Lesson</strong>
+<select class="practicesAlignmentSelect"  onchange="showPracticesAlignment()"><option selected="selected" value="practices-K12CS"><a href="https://k12cs.org">K12CS</a></option><option value="practices-CC"><a href="http://corestandards.org/Math/">Math</a></option><option value="practices-NGSS"><a href="https://ngss.nsta.org/practicesfull.aspx">Science and Engineering</a></option></select></p>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="dlist alignedPractices practices-K12CS">
+<span class="title"><a href="https://k12cs.org">K12CS</a></span>
+<dl>
+<dt class="hdlist1"><br/>P3</dt>
+<dd>
+<p>Recognizing and Defining Computational Problems</p>
+</dd>
+</dl>
+</span>
+<span class="dlist alignedPractices practices-CC">
+<span class="title"><a href="http://corestandards.org/Math/">Math</a></span>
+<dl>
+<dt class="hdlist1"><br/>MP.6</dt>
+<dd>
+<p>Attend to precision</p>
+</dd>
+<dt class="hdlist1"><br/>MP.5</dt>
+<dd>
+<p>Use appropriate tools strategically</p>
+</dd>
+</dl>
+</span>
+<span class="dlist alignedPractices practices-NGSS">
+<span class="title"><a href="https://ngss.nsta.org/practicesfull.aspx">Science and Engineering</a></span>
+<dl>
+<dt class="hdlist1"><br/>SEP.8</dt>
+<dd>
+<p>Obtaining, Evaluating, and Communicating Information</p>
+</dd>
+<dt class="hdlist1"><br/>SEP.7</dt>
+<dd>
+<p>Engaging in Argument from Evidence</p>
+</dd>
+<dt class="hdlist1"><br/>SEP.4</dt>
+<dd>
+<p>Analyzing and Interpreting Data</p>
+</dd>
+</dl>
+</span></span></td>
+</tr>
+</tbody>
+</table>
+<span class="paragraph">
+<!-- </p>
+</span>
+--></span><!--
+<span class="paragraph">
+<p>
+-->
+</span>
+<span class="paragraph">
+<p><span class="other-proglang">(Also available in <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/data-cycle-codap/index.shtml">CODAP</a>)</span></p>
+</span>
+<span class="paragraph description">
+<p>Students are introduced to the Data Cycle, a four-step scaffold for getting an answer from a dataset - and then generating the next question! Students learn to identify - and ask - statistical questions, by comparing and contrasting them with other kinds of questions.</p>
+</span>
+<table class="tableblock frame-all grid-all stripes-none stretch left-header preamble">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>Lesson Goals</p>
+</span></span></td>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>Students will be able to&#8230;&#8203;</p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p>Articulate the parts of the Data Cycle</p>
+</li>
+<li>
+<p>Tell the difference between Lookup, Arithmetic, and Statistical questions</p>
+</li>
+<li>
+<p>Come up with their own examples of Lookup, Arithmetic, and Statistical questions</p>
+</li>
+</ul>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>Student-facing Lesson Goals</p>
+</span></span></td>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="ulist">
+<ul>
+<li>
+<p>Let&#8217;s think about what it means to ask questions of data, and the steps to do it</p>
+</li>
+<li>
+<p>Not all questions are created equal! Let&#8217;s learn the difference between them</p>
+</li>
+</ul>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>Materials</p>
+</span></span></td>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="ulist materials-links">
+<ul>
+<li>
+<p><a href="https://docs.google.com/presentation/d/1avBun_cTX4vqdDN7m-wpE_EDN5BA_cY2M4y0xo14c7A/" target="_blank" rel="noopener">Lesson Slides</a></p>
+</li>
+<li>
+<p><span class="StarterFile"><a href="https://code.pyret.org/editor#share=1lGjndLCWSEoIrV3ErZMXSn_-xakqGvrK" target="_blank" rel="noopener">Animals Starter File</a></span></p>
+</li>
+<li>
+<p><span class="materialSectionPlaceholder"> </span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/ds-intro/pages/animals-dataset.html" target="_blank" rel="noopener">The Animals Dataset</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/ds-intro/pages/questions-and-column-descriptions.html" target="_blank" rel="noopener">Questions and Column Descriptions</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/data-cycle/pages/which-question-type.html" target="_blank" rel="noopener">Which Question Type?</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/data-cycle/pages/which-rows-which-columns.html" target="_blank" rel="noopener">Data Cycle: Consider Data</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/data-cycle/pages/analyzing-with-displays.html" target="_blank" rel="noopener">Data Cycle: Analyzing with Displays</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/data-cycle/pages/question-types-animals.html" target="_blank" rel="noopener">Question Types: Animals</a></span></p>
+</li>
+<li>
+<p><strong>Classroom visual:</strong> <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/javascript:showLangTable()">Language Table</a></p>
+</li>
+</ul>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>Preparation</p>
+</span></span></td>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="ulist">
+<ul>
+<li>
+<p>All students should log into <a href="https://code.pyret.org/" target="_blank" rel="noopener">code.pyret.org (CPO)</a> and open their saved "Animals Starter File". If they don&#8217;t have the file, they can open a new one from <a href="https://code.pyret.org/editor#share=1lGjndLCWSEoIrV3ErZMXSn_-xakqGvrK" target="_blank" rel="noopener">Animals Starter File</a>.</p>
+</li>
+</ul>
+</span></span></td>
+</tr>
+</tbody>
+</table>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<table class="grid-none frame-none section-heading"><tr><td width="65%">Telling Your Data Story </td><td width="35%">10 minutes</td></tr></table>
+<span class="sectionbody">
+<span class="sect2 lesson-section-2">
+<h3 id="_overview">Overview</h3>
+<span class="paragraph">
+<p>Students learn about the <em>Data Cycle</em>, which is a scaffold to support asking them in questions, thinking about how those questions relate to the data in front of them, analyzing that data, and interpreting the results.</p>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_launch">Launch</h3>
+<span class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Open your saved Animals Starter File, or <a href="https://code.pyret.org/editor#share=1lGjndLCWSEoIrV3ErZMXSn_-xakqGvrK" target="_blank" rel="noopener">make a new copy</a>.</p>
+</li>
+<li>
+<p>Working in pairs, turn to <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/ds-intro/pages/animals-dataset.html" target="_blank" rel="noopener">The Animals Dataset</a> in your student workbooks, or open <a href="https://docs.google.com/spreadsheets/d/1VeR2_bhpLvnRUZslmCAcSRKfZWs_5RNVujtZgEl6umA/edit?usp=sharing" target="_blank" rel="noopener">the Animals Spreadsheet</a>.</p>
+</li>
+<li>
+<p>You and your partner are going to answer a simple question: <strong>are more animals fixed or unfixed?</strong></p>
+</li>
+</ul>
+</span>
+<span class="paragraph">
+<p>Data Science is all about <em>asking questions of data</em>. Sometimes the answer is easy to compute. Sometimes the answer to a question is <em>already in the dataset</em> - no computation needed.  And sometimes the answer just sparks more questions!</p>
+</span>
+<span class="paragraph">
+<p>Data Scientists ask a ton of questions, and each question adds a chapter to their <strong>data story</strong>. Even if a question turns out to be a dead-end, it&#8217;s valuable to share what the question was and what work you did to answer it!</p>
+</span>
+<span class="paragraph">
+<p><span class="right"><span class="image-figure"><span class="image"><img src="images/129e0201e1ce0e8a.png" alt="A circular progression: (1) Ask Questions, (2) Consider Data, (3) Analyze Data, (4) Interpret Data, and starting over" width="400" title="A circular progression: (1) Ask Questions, (2) Consider Data, (3) Analyze Data, (4) Interpret Data, and starting over"></span><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/images/129e0201e1ce0e8a.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span>
+The Data Cycle[*] is a <em>roadmap</em>, which helps guide us in the process of data analysis.</p>
+</span>
+<span class="paragraph">
+<p>1) We <strong>Ask Questions</strong> - which can be answered with data.</p>
+</span>
+<span class="paragraph">
+<p>2) We <strong>Consider Data</strong>. This could be done by conducting a survey, observing and recording data, or finding a dataset.</p>
+</span>
+<span class="paragraph">
+<p>3) We <strong>Analyze the Data</strong>, to produce data displays and new tables of filtered or transformed data, to identify patterns and relationships.</p>
+</span>
+<span class="paragraph">
+<p>4) We <strong>Interpret the Data</strong>, answering questions and summarizing results. As we&#8217;ve already seen from the Animals Dataset, these interpretations often lead to <em>new</em> questions&#8230;&#8203;.and the cycle begins again.</p>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_investigate">Investigate</h3>
+<span class="paragraph">
+<p>This was a pretty specific question, and it was straightforward to answer it. But the answers to even simple questions can lead to more interesting questions down the road!</p>
+</span>
+<span class="ulist lesson-instruction">
+<ul>
+<li>
+<p>What other questions might come from counting the ratio of fixed to unfixed animals?</p>
+<span class="ulist">
+<ul>
+<li>
+<p><em>Sample responses: Is there a higher percentage of fixed dogs or fixed cats? At what age do animals get fixed? Do fixed animals get adopted more quickly than unfixed animals?</em></p>
+</li>
+</ul>
+</span>
+</li>
+</ul>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_synthesize">Synthesize</h3>
+<span class="paragraph">
+<p>This is a short example of a <strong>Data Story</strong> - a description of how each step in the Data Cycle was used to go from a question to an answer, and then to the next question. When analyzing a real dataset, Data Scientists might explore lots of questions, resulting in many different Data Stories to tell.</p>
+</span>
+<span class="paragraph">
+<p>Each chapter in the Data Story is valuable, and the Data Cycle represents each chapter you plan to add.</p>
+</span>
+</span>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<table class="grid-none frame-none section-heading"><tr><td width="65%">Ask Questions </td><td width="35%">15 minutes</td></tr></table>
+<span class="sectionbody">
+<span class="sect2 lesson-section-2">
+<h3 id="_overview_2">Overview</h3>
+<span class="paragraph">
+<p>Students begin to categorize questions, sorting them into "lookup", "arithmetic", and "statistical" questions - as well as questions that simply can&#8217;t be answered based on the data.</p>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_launch_2">Launch</h3>
+<span class="paragraph">
+<p><span class="right"><span class="image-figure"><span class="image"><img src="images/af4d01e719061ae0.png" alt="Ask Questions icon" width="200" title="Ask Questions icon"></span><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/images/af4d01e719061ae0.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span> How do we know what questions to ask? There’s an art to asking the right questions, and good Data Scientists think hard about what kind of questions can and can’t be answered.</p>
+</span>
+<span class="paragraph">
+<p>Most questions can be broken down into one of four categories:</p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p><strong>Lookup questions</strong> can be answered simply by looking up a single value in the table and reading it out. Once you find the value, you’re done! Examples of lookup questions might be “How many legs does Felix have?” or "What species is Sheba?"</p>
+</li>
+<li>
+<p><strong>Arithmetic questions</strong> can be answered by computing an answer across a single column. Examples of arithemetic questions might be “How much does the heaviest animal weigh?” or “What is the average age of animals from the shelter?”</p>
+</li>
+<li>
+<p><strong>Statistical questions</strong> are where things get interesting. If we asked, "How old are animals at the shelter?", there are lots of ways to answer! We could report back the average age, the age that shows up most frequently or the range of the ages. Other  examples of statistical questions might include "How long does it take for an animal to get adopted?" or "What&#8217;s a typical age for the cats?". There are also some statistical questions that deal with <em>relationships between <strong>two</strong> columns</em>: “Do cats tend to be adopted faster than dogs?” or “Are older animals heavier than young ones?”</p>
+</li>
+<li>
+<p><strong>Questions we can&#8217;t answer</strong> would need data that we don&#8217;t have. We might wonder where the animal shelter is located, or what time of year the data was gathered! But the data in the table won&#8217;t help us answer that question, so as Data Scientists we might need to do some research <em>beyond the data</em>. And if nothing turns up, we simply recognize that there are limits to what we can analyze.</p>
+</li>
+</ul>
+</span>
+<span class="ulist lesson-instruction">
+<ul>
+<li>
+<p>What kind of question is "Are more animals fixed or unfixed?"?</p>
+<span class="ulist">
+<ul>
+<li>
+<p>It&#8217;s an <em>arithmetic question</em>.</p>
+</li>
+</ul>
+</span>
+</li>
+<li>
+<p>What kind of question is "How old is Toggle?"</p>
+<span class="ulist">
+<ul>
+<li>
+<p>It&#8217;s a <em>lookup question</em>.</p>
+</li>
+</ul>
+</span>
+</li>
+</ul>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_investigate_2">Investigate</h3>
+<span class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Turn to <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/data-cycle/pages/which-question-type.html" target="_blank" rel="noopener">Which Question Type?</a>, and fill out the "Type" column in the table at the bottom. <strong>For now, ignore the other columns.</strong></p>
+</li>
+<li>
+<p>Look at the Wonders you wrote on <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/ds-intro/pages/questions-and-column-descriptions.html" target="_blank" rel="noopener">Questions and Column Descriptions</a>. Are these Lookup, Arithmetic, or Statistical questions?</p>
+</li>
+<li>
+<p>Optional: For more practice, complete <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/data-cycle/pages/question-types-animals.html" target="_blank" rel="noopener">Question Types: Animals</a>, by coming up with examples of each type of question for the Animals Dataset.</p>
+</li>
+</ul>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_common_misconceptions">Common Misconceptions</h3>
+<span class="ulist">
+<ul>
+<li>
+<p>Students generally struggle to make the leap into asking statistical questions. It&#8217;s worth taking time on this, to support them coming up with better (and more engaging!) questions later.</p>
+</li>
+<li>
+<p>They may think that "What&#8217;s the average weight of the animals?" is a statistical question, because "average" is a term that shows up in statistics. But computing the average is just pure arithmetic! A <em>statistical</em> question would be "What&#8217;s the typical weight of an animal?", because it does not specify a particular arithmetic process. The answer could be the mean, the median, or even the mode! Figuring out which one to use depends on the distribution of the data, which we&#8217;ll discuss more in a later lesson.</p>
+</li>
+</ul>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_synthesize_2">Synthesize</h3>
+<span class="ulist">
+<ul>
+<li>
+<p>How would you explain the difference between Lookup, Arithmetic, and Statistical questions?</p>
+</li>
+<li>
+<p>When you looked back at your Wonders from the Animals Dataset, were they mostly Lookup questions? Arithmetic? Statistical?</p>
+</li>
+<li>
+<p>What are some examples of statistical questions the owner of a sports team might ask? Or a researcher who is trying to see if a cancer drug is effective? Or a principal who wants to know what will help their students the most?</p>
+</li>
+</ul>
+</span>
+</span>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<table class="grid-none frame-none section-heading"><tr><td width="65%">Consider Data </td><td width="35%">20 minutes</td></tr></table>
+<span class="sectionbody">
+<span class="sect2 lesson-section-2">
+<h3 id="_overview_3">Overview</h3>
+<span class="paragraph">
+<p>Students bridge from a human-language question into something more formal, by specifying the rows and columns they would need to examine. This activity stresses a hard programming skill (reading Contracts) with formal reading comprehension (identifying key portions of a statistical instruction).</p>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_launch_3">Launch</h3>
+<span class="paragraph">
+<p>Once we have our question, it&#8217;s time to figure out what data we&#8217;ll need to answer it!</p>
+</span>
+<div class="paragraph lesson-point">
+<p>When considering data, we ask: <strong>Which Rows</strong> do we need? <strong>Which Column(s)</strong> do we care about?</p>
+</div>
+<span class="paragraph">
+<p><span class="right"><span class="image-figure"><span class="image"><img src="images/8479268d8c107288.png" alt="Consider Data icon" width="200" title="Consider Data icon"></span><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/images/8479268d8c107288.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span> Tables are made of <strong>Rows</strong> and <strong>Columns</strong>. Each Row represents one member of our population. In the Animals Dataset, each row represents a single animal. In a dataset of temperature readings, each row might represent the temperature at a particular hour.</p>
+</span>
+<span class="paragraph">
+<p>Columns, on the other hand, represent information <em>about each row</em>. Every animal, for example, has columns for their name, species, sex, age, weight, legs, whether they are fixed or unfixed, and how long it took to be adopted.</p>
+</span>
+<span class="paragraph">
+<p>If we want to know which cat is the heaviest, we <em>only care about rows for cats</em>, and <em>we only need the <code class="pyret">pounds</code> column</em>. If we want to know how many fixed animals are rabbits, <em>we only care about rows for fixed animals</em>, and <em>we only need the <code class="pyret">species</code> column</em>.</p>
+</span>
+<span class="ulist lesson-instruction">
+<ul>
+<li>
+<p>If our question is "How old is Mittens?", what rows and column(s) do we need?</p>
+<span class="ulist">
+<ul>
+<li>
+<p><em>We only need one row for Mittens, and we just need the <code class="pyret">age</code> column</em></p>
+</li>
+</ul>
+</span>
+</li>
+<li>
+<p>If our question is "Which animal is the heaviest?", what rows and column(s) do we need?</p>
+<span class="ulist">
+<ul>
+<li>
+<p><em>We need to compare every row, and we only look at the <code class="pyret">pounds</code> column</em></p>
+</li>
+</ul>
+</span>
+</li>
+<li>
+<p>What rows and columns did we need to answer "Are more animals fixed or unfixed?"?</p>
+<span class="ulist">
+<ul>
+<li>
+<p>We needed to look at <em>all</em> the rows, but the only column we care about is <code class="pyret">fixed</code>.</p>
+</li>
+</ul>
+</span>
+</li>
+</ul>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_investigate_3">Investigate</h3>
+<span class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Return to <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/data-cycle/pages/which-question-type.html" target="_blank" rel="noopener">Which Question Type?</a> For each question, which rows would you need to answer them? (Sometimes we need all rows, and sometimes we only need a subset.) Which columns would you look at? Write your answers in the last two columns of the table at the bottom.</p>
+</li>
+<li>
+<p>Complete <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/data-cycle/pages/which-rows-which-columns.html" target="_blank" rel="noopener">Data Cycle: Consider Data</a>.</p>
+</li>
+</ul>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_common_misconceptions_2">Common Misconceptions</h3>
+<span class="paragraph">
+<p>Students often forget that questions like "Who is the oldest?" or "What is the most?" require looking at <em>every row</em> in the table.</p>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_synthesize_3">Synthesize</h3>
+<span class="paragraph">
+<p>Have students share their answers and discuss any questions they have about these pages.</p>
+</span>
+<span class="paragraph">
+<p>How does asking "Which rows? Which columns?" help us figure out what code to write?</p>
+</span>
+</span>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<table class="grid-none frame-none section-heading"><tr><td width="65%">Analyzing Data </td><td width="35%">15 minutes</td></tr></table>
+<span class="sectionbody">
+<span class="sect2 lesson-section-2">
+<h3 id="_overview_4">Overview</h3>
+<span class="paragraph">
+<p>Students progress to the third step in the Data Cycle, by combining the "Consider Data" stepwith their knowledge of Contracts to help them <em>Analyze</em> that data.</p>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_launch_4">Launch</h3>
+<span class="paragraph">
+<p><span class="right"><span class="image-figure"><span class="image"><img src="images/6f9f4fc1de348a81.png" alt="Analyze Data icon" width="200" title="Analyze Data icon"></span><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/images/6f9f4fc1de348a81.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span> Once we know what data we need, we can turn our attention to what we want to build with it!</p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p>Do we need all the rows, or just some of them?</p>
+</li>
+<li>
+<p>Do we need a bar chart? A pie chart? A scatter plot?</p>
+</li>
+</ul>
+</span>
+<span class="paragraph">
+<p>What kinds of displays can help us analyze whether there are more fixed or unfixed animals? We could use a bar-chart <em>or</em> a pie-chart to do this analysis, but since we care more about the ratio ("2x as many fixed as unfixed") than the actual count ("20 fixed vs. 10 fixed") a pie chart is the better choice.
+Once we&#8217;ve decided what to make and we know which rows and columns we&#8217;re plotting, the next step is to <em>write the code!</em>
+Once we know that we want a pie-chart, and that we&#8217;re using it to look at the <code class="pyret">fixed</code> column, analyzing the data is as easy as reading the Contract!</p>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_investigate_4">Investigate</h3>
+<span class="paragraph">
+<p>Let&#8217;s get some practice going from questions to code, and making data displays in the process!</p>
+</span>
+<span class="paragraph lesson-instruction">
+<p>Turn to <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/data-cycle/pages/analyzing-with-displays.html" target="_blank" rel="noopener">Data Cycle: Analyzing with Displays</a>, and see if you can fill in the first 3 steps of the Data Cycle for a set of predefined questions. When you&#8217;re finished, try to make the display in Pyret.</p>
+</span>
+<span class="paragraph">
+<p>Have students share their results. What did their charts tell them?</p>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_synthesize_4">Synthesize</h3>
+<span class="paragraph">
+<p><span class="right"><span class="image-figure"><span class="image"><img src="images/b89190f3904f08f7.png" alt="Interpret Data icon" width="100" title="Interpret Data icon"></span><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/images/b89190f3904f08f7.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span> In this case, we got a clear answer to our question. But perhaps that&#8217;s not the end of the story! We might be curious about whether a higher percentage of dogs are spayed and neutered than cats, or whether it&#8217;s even possible to "fix" a tarantula. <em>All of this belongs in our data story!</em></p>
+</span>
+<span class="paragraph">
+<p>How do Contracts and the Data Cycle work together, to help us figure out what program will answer our questions?</p>
+</span>
+<span class="paragraph">
+<p>[*] From the <a href="http://introdatascience.org/" target="_blank" rel="noopener">Mobilizing IDS project</a> and <a href="https://www.amstat.org/asa/files/pdfs/GAISE/GAISEPreK12_Intro.pdf" target="_blank" rel="noopener">GAISE</a></p>
+</span>
+</span>
+</span>
+</span>
+<span class="sect1 acknowledgmentsect">
+<span class="sectionbody">
+<span class="openblock acknowledgment"><hr/>
+<span class="content">
+<span class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</span>
+</span>
+</span>
+</span>
+</span>
+</span>
+<span id="footer">
+<span id="footer-text">
+Last updated 2022-10-17 19:42:13 -0400
+</span>
+</span>
+</span>
+</body>
+</html>

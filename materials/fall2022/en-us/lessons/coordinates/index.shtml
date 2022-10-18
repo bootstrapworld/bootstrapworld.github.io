@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Coordinates and Game Design</title>
+
+  <link rel="stylesheet" href="../../lib/curriculum.css" />
+      <script src="../../extlib/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML%2Clocal%2Fmathjaxlocal.js"></script>
+      <script>window.status = "not_ready_to_print";</script>
+    <script src="../../lib/langtable.js"></script>
+    <script src="../../lib/bootstraplesson.js"></script>
+    <script src="../../dependency-graph.js"></script>
+    <script src="../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"Coordinates and Game Design",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="article LessonPlan pyret" onload="renderSaveToDrive()">
+<!--#include virtual="/menubar.ssi"-->
+<div id="body" onload="renderSaveToDrive()">
+<div id="header">
+<h1>Coordinates and Game Design</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<script>
+function preselect(klass) {
+  const items = document.getElementsByClassName(klass);
+  for (let i = 0; i < items.length; i++) {
+    items[i].style.display = 'none';
+  }
+  if (items.length > 0) {
+    items[0].style.display = 'block';
+  }
+}
+window.onload = function() {
+  preselect('alignedStandards');
+  preselect('alignedTextbooks');
+  preselect('alignedPractices');
+}
+function showStandardsAlignment() {
+  const selectTag = document.getElementsByClassName('standardsAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const stdTables = document.getElementsByClassName('alignedStandards');
+  //const intro = document.getElementsByClassName('alignedStandardsIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < stdTables.length; i++) {
+    const stdTable = stdTables[i];
+    stdTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optStd = opt.value;
+      for (let j = 0; j < stdTables.length; j++) {
+        const stdTable = stdTables[j];
+        if (stdTable.classList.contains(optStd)) {
+          stdTable.style.display = 'block';
+         // introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+function toggleNonPrereqDisplay() {
+  const inputTag = document.getElementsByClassName('sidebarinput')[0];
+  const checkedP = inputTag.checked;
+  const lessonTable = document.getElementsByClassName('sidebarlessons')[0];
+  const lis = lessonTable.getElementsByTagName('li');
+  for (let i = 0; i < lis.length; i++) {
+    const li = lis[i];
+    const lesson = li.getElementsByClassName('prerequisite');
+    if (lesson.length === 0) {
+      li.style.display = checkedP ? 'none' : 'block';
+    }
+  }
+}
+</script>
+<script>
+function showTextbooksAlignment() {
+  const selectTag = document.getElementsByClassName('textbooksAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const textbookTables = document.getElementsByClassName('alignedTextbooks');
+  //const intro = document.getElementsByClassName('alignedTextbooksIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < textbookTables.length; i++) {
+    const textbookTable = textbookTables[i];
+    textbookTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optTextbook = opt.value;
+      for (let j = 0; j < textbookTables.length; j++) {
+        const textbookTable = textbookTables[j];
+        if (textbookTable.classList.contains(optTextbook)) {
+          textbookTable.style.display = 'block';
+          //introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+</script>
+<script>
+function showPracticesAlignment() {
+  const selectTag = document.getElementsByClassName('practicesAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const practiceTables = document.getElementsByClassName('alignedPractices');
+  for (let i = 0; i < practiceTables.length; i++) {
+    const practiceTable = practiceTables[i];
+    practiceTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optPractice = opt.value;
+      for (let j = 0; j < practiceTables.length; j++) {
+        const practiceTable = practiceTables[j];
+        if (practiceTable.classList.contains(optPractice)) {
+          practiceTable.style.display = 'block';
+        }
+      }
+    }
+  }
+}
+</script>
+<div class="paragraph">
+<!-- </p>
+</div>
+--></div><div class="sidebar"><div id="toggle"></div><div class="paragraph"><!--
+<div class="paragraph">
+<p>
+--><div class="sidebarlessons"><strong>Lessons</strong>
+<ul></ul></div>
+</div>
+<table class="tableblock frame-all grid-all stretch sidebarstandards">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Standards in this Lesson</strong>
+<select class="standardsAlignmentSelect"  onchange="showStandardsAlignment()"><option selected="selected" value="standards-CCSS-Math">CCSS-Math</option><option value="standards-Oklahoma">Oklahoma</option><option value="standards-Iowa">Iowa</option></select></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist alignedStandards standards-CCSS-Math">
+<div class="title"><a href="http://corestandards.org/Math/">Common Core Math Standards</a></div>
+<dl>
+<dt class="hdlist1">5.G.A.1</dt>
+<dd>
+<p>Use a pair of perpendicular number lines, called axes, to define a coordinate system, with the intersection of the lines (the origin) arranged to coincide with the 0 on each line and a given point in the plane located by using an ordered pair of numbers, called its coordinates. Understand that the first number indicates how far to travel from the origin in the direction of one axis, and the second number indicates how far to travel in the direction of the second axis, with the convention that the names of the two axes and the coordinates correspond (e.g., x-axis and x-coordinate, y-axis and y-coordinate).</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Oklahoma">
+<div class="title"><a href="https://sde.ok.gov/oklahoma-academic-standards">Oklahoma Standards</a></div>
+<dl>
+<dt class="hdlist1">OK.6.A.1.1</dt>
+<dd>
+<p>Plot integer- and rational-valued (limited to halves and fourths) ordered-pairs as coordinates in all four quadrants and recognize the reflective relationships among coordinates that differ only by their signs.</p>
+</dd>
+<dt class="hdlist1">OK.L1.CS.D.01</dt>
+<dd>
+<p>Explain how abstractions hide the underlying implementation details of computing systems embedded in everyday objects.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Iowa">
+<div class="title"><a href="https://iowacore.gov/standards/iowa-core-standards">Iowa Standards</a></div>
+<dl>
+<dt class="hdlist1">IA.5.G.A.1</dt>
+<dd>
+<p>Use a pair of perpendicular number lines, called axes, to define a coordinate system, with the intersection of the lines (the origin) arranged to coincide with the 0 on each line and a given point in the plane located by using an ordered pair of numbers, called its coordinates. Understand that the first number indicates how far to travel from the origin in the direction of one axis, and the second number indicates how far to travel in the direction of the second axis, with the convention that the names of the two axes and the coordinates correspond (e.g., x-axis and x-coordinate, y-axis and y-coordinate).</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch sidebartextbooks">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Textbook Alignment</strong>
+<select class="textbooksAlignmentSelect"  onchange="showTextbooksAlignment()"><option selected="selected" value="textbook-IM_Alg_1"><a href="https://illustrativemathematics.org/">IM Algebra 1</a></option><option value="textbook-IM_8"><a href="https://illustrativemathematics.org/">IM 8 Math™</a></option></select></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist alignedTextbooks textbook-IM_Alg_1">
+<div class="title"><a href="https://illustrativemathematics.org/">IM Algebra 1</a></div>
+<dl>
+<dt class="hdlist1">IM.Alg1.4.1</dt>
+<dd>
+<p>Describing and Graphing Situations</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedTextbooks textbook-IM_8">
+<div class="title"><a href="https://illustrativemathematics.org/">IM 8 Math™</a></div>
+<dl>
+<dt class="hdlist1">IM.8.1.1</dt>
+<dd>
+<p>Moving in the Plane</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch sidebarpractices">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Practices in this Lesson</strong>
+<select class="practicesAlignmentSelect"  onchange="showPracticesAlignment()"><option selected="selected" value="practices-CC"><a href="http://corestandards.org/Math/">Math</a></option></select></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist alignedPractices practices-CC">
+<div class="title"><a href="http://corestandards.org/Math/">Math</a></div>
+<dl>
+<dt class="hdlist1">MP.2</dt>
+<dd>
+<p>Reason abstractly and quantitatively</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<!-- </p>
+</div>
+--></div><!--
+<div class="paragraph">
+<p>
+-->
+</div>
+<div class="paragraph">
+<p><span class="other-proglang">(Also available in <a href="../../lessons/coordinates-wescheme/index.shtml">WeScheme</a>)</span></p>
+</div>
+<div class="paragraph description">
+<p>Students learn that characters' positions in video games can be described using coordinates, then brainstorm the context and characters for the games they will design.</p>
+</div>
+<table class="tableblock frame-all grid-all stripes-none stretch left-header preamble">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Lesson Goals</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Students will be able to:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Explain the need for <span class="vocab">coordinates</span> in a given situation.</p>
+</li>
+<li>
+<p>Estimate coordinates in a bounded area.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Student-Facing Lesson Goals</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>I can estimate the positions of objects using coordinates.</p>
+</li>
+<li>
+<p>I can collaborate with a partner to brainstorm a video game.</p>
+</li>
+<li>
+<p>I can create a sample mock-up (proof of concept) of my video game.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Materials</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist materials-links">
+<ul>
+<li>
+<p><a href="https://docs.google.com/presentation/d/1_DHAhhQ_88gQwhVL_x8cWjwX9DXjWcTcV8kM7kzaUxA/" target="_blank" rel="noopener">Lesson Slides</a></p>
+</li>
+<li>
+<p><span class="materialSectionPlaceholder"> </span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/coordinates/pages/Estimation.html" target="_blank" rel="noopener">Estimating Coordinates</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/coordinates/pages/BrainstormGame.html" target="_blank" rel="noopener">Brainstorm Your Own Game</a></span></p>
+</li>
+<li>
+<p><span class="OnlineExercise"><a href="https://www.desmos.com/calculator/pbm9nxr2rd" target="_blank" rel="noopener">Ninja Cat Desmos graph (Desmos)</a></span></p>
+</li>
+<li>
+<p><strong>Classroom visual:</strong> <a href="javascript:showLangTable()">Language Table</a></p>
+</li>
+<li>
+<p><a href="https://docs.google.com/drawings/d/1xXNWcbJ7KOgTClFQeHq-tIy0xmeZds9N3OktvEBaO4c/copy" target="_blank" rel="noopener">Google Draw template</a></p>
+</li>
+<li>
+<p>Optional: cutouts of the <a href="images/cat.png" target="_blank" rel="noopener">Cat</a>, <a href="images/dog.png" target="_blank" rel="noopener">Dog</a>, and <a href="images/ruby.png" target="_blank" rel="noopener">Ruby</a> from the NinjaCat game.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Key Points for the Facilitator</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>The launch activity should create and reinforce the need for coordinates and to attend to precision.</p>
+</li>
+<li>
+<p>Continue to use the same "Estimating Coordinates" page so students can track their pattern of estimation over time.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="dlist glossary">
+<div class="title">Glossary</div>
+<dl>
+<dt class="hdlist1">coordinate</dt>
+<dd>
+<p>a number describing an object&#8217;s location</p>
+</dd>
+<dt class="hdlist1">x-axis</dt>
+<dd>
+<p>axis on a coordinate plane that runs from left to right</p>
+</dd>
+<dt class="hdlist1">y-axis</dt>
+<dd>
+<p>number line on a coordinate plane that runs from bottom to top, indicating values in that direction</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_navigating_a_grid_duration_20_minutes_"><span class="section-link"><a href="#_navigating_a_grid_duration_20_minutes_"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Navigating a Grid <span class="duration">20 minutes</span></h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_overview">Overview</h3>
+<div class="paragraph">
+<p>Students are asked to come up with a way of identifying location on a grid, which provides the justification for coordinates.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_launch">Launch</h3>
+<div class="paragraph">
+<p><span class="right"><span class="image-figure"><span class="image"><img src="images/3f69975931d466a0.png" alt="A number line with a dog on it" title="A number line with a dog on it"></span><a href="images/3f69975931d466a0.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span>
+Computers use numbers to represent a character’s position onscreen, using number lines as rulers to measure the distance from the bottom-left corner of the screen. For this example, we will draw the number line so that the screen runs from 0 (on the left) to 1000 (on the right).</p>
+</div>
+<div class="paragraph">
+<p>We can take the image of the Dog, stick it anywhere on the line, and measure the distance back to the left-hand edge. Anyone else who knows about our number line will be able to duplicate the exact position of the Dog, as long as they know the number.</p>
+</div>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>What is the coordinate of the Dog, if it&#8217;s on the left-hand edge of the screen?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>The Dog&#8217;s coordinate would be zero.</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>What is the coordinate of the Dog, if it&#8217;s on the right-hand edge of the screen?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>The Dog&#8217;s coordinate would be 1000.</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>What is the coordinate of the Dog, if it&#8217;s in the center of the screen?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>The Dog&#8217;s coordinate would be 500.</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>What coordinate would place the Dog beyond the left-hand edge of the screen?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>The Dog&#8217;s coordinate would be less than zero (negative).</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>What coordinate would place the Dog beyond the right-hand edge of the screen?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>The Dog&#8217;s coordinate would be greater than 1000.</em></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Optional: Draw a number line on the board, and select a volunteer to leave the room for a moment. Place the printed Dog image somewhere on that line, and have the class quietly choose the number that represents the Dog&#8217;s location. Remove the Dog and invite the student back into the room. Can they position the Dog at the right place, based on the number chosen by the class?</p>
+</div>
+<div class="paragraph">
+<p>This number line lets us communicate the position of the Dog using a single number! Unfortunately, it only represents the distance from the left-hand edge of the screen. That means the dog could be at any <em>height</em> in the center of the screen, and it would always have the same number to represent its position.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_investigate">Investigate</h3>
+<div class="paragraph">
+<p>By adding a second number line, we can locate a character <em>anywhere</em> on the screen in either direction. The first line we drews is called the <span class="vocab">x-axis</span>, which runs from left to right. The second line, which runs up and down, is called the <span class="vocab">y-axis</span>. A 2-dimensional <span class="vocab">coordinate</span> consists of both the x- and y-locations on the axes.</p>
+</div>
+<div class="paragraph">
+<p><span class="right"><span class="image-figure"><span class="image"><img src="images/1a7e9dc858f98f7b.png" alt="A coordinate plane with two axes, and two circles on it, illustrating the distance between two characters in two dimensions" title="A coordinate plane with two axes, and two circles on it, illustrating the distance between two characters in two dimensions"></span><a href="images/1a7e9dc858f98f7b.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span>
+Suppose we wanted to locate NinjaCat’s position on the screen. We can find the x-coordinate by dropping a line down from NinjaCat and read the position on the number line. The y-coordinate is found by running a line to the y-axis.</p>
+</div>
+<div class="paragraph">
+<p>A coordinate pair is always written in the form of (x, y). When we write down these coordinates, we always put the x before the y (just like in the alphabet!). Most of the time, you’ll see coordinates written like this: <span class="gdrive-only">(200, 50)</span><script type="math/tex">\displaystyle (200, 50)</script> meaning that the x-coordinate is 200 and the y-coordinate is 50.</p>
+</div>
+<div class="paragraph lesson-instruction">
+<p>To develop an intuition for coordinates, complete <a href="../../lessons/coordinates/pages/Estimation.html" target="_blank" rel="noopener">Estimating Coordinates</a>.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_common_misconceptions">Common Misconceptions</h3>
+<div class="paragraph">
+<p>Math-phobic students often fail to realize that <em>common sense</em> and <em>intuition</em> can be helpful in exercises where the answer is a number! The first two prompts in the "Synthesize" section directly get at this misconception, but you may want to pay special attention to those students while they are working on this workbook page.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_synthesize">Synthesize</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Should any of the characters have x-coordinates that are very similar? How come?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Ninja Cat and the cloud have similar x-coordinates. They have the same horizontal position.</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Should any of the characters have y-coordinates that are very similar? How come?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>The Ruby and the Dog have similar y-coordinates. They have the same vertical position.</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>How do you think this concept relates to a video game?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Answers vary: we need to know where characters are on the screen, we need a way for players to interact with certain parts of the screen, etc</em></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_bridging_to_video_games_duration_30_minutes_"><span class="section-link"><a href="#_bridging_to_video_games_duration_30_minutes_"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Bridging to video games <span class="duration">30 minutes</span></h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_overview_2">Overview</h3>
+<div class="paragraph">
+<p>Students explore a coordinate activity in which a cartesian point is used to compute the position of a character in a game. From there, they brainstorm a game of their own.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_launch_2">Launch</h3>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>In pairs, explore the <a href="https://www.desmos.com/calculator/pbm9nxr2rd" target="_blank" rel="noopener">Ninja Cat Desmos graph (Desmos)</a>.</p>
+</li>
+<li>
+<p>What happens when you adjust the first slider in the side panel?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Adjusting the first slider changes the horizontal position (x-coordinate) of Ninja Cat.</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>What happens when you adjust the second slider in the side panel?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Adjusting the second slider changes the vertical position (y-coordinate) of Ninja Cat.</em></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_investigate_2">Investigate</h3>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Complete the <a href="../../lessons/coordinates/pages/BrainstormGame.html" target="_blank" rel="noopener">Brainstorm Your Own Game</a> worksheet and decide on a Player, Target, Danger, and Background for your game!</p>
+</li>
+<li>
+<p>Then, use a <a href="https://docs.google.com/drawings/d/1xXNWcbJ7KOgTClFQeHq-tIy0xmeZds9N3OktvEBaO4c/copy" target="_blank" rel="noopener">Google Draw template</a> (click "Make a copy" when prompted) to create a sample "screenshot" of your game by inserting images via Google Search.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Screenshot should include:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Labeled estimates of coordinates for each character.</p>
+</li>
+<li>
+<p>2 characters that have the same x-coordinate.</p>
+</li>
+<li>
+<p>2 different characters that have the same y-coordinate.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_synthesize_2">Synthesize</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>When the "Game Over" screen is supposed to be off screen, what coordinates might hide it?</p>
+</li>
+<li>
+<p>What would be the coordinate of the dog <em>before it gets onscreen?</em></p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>The dog would have a negative x-coordinate before getting on screen.</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Why do we estimate?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>We estimate to practice number sense and make approximations that we can later refine.</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>What constitutes a good estimate?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>A good estimate is a rough guess that makes sense given the limited information available to us.</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>How can we improve our estimation skills?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Practice! Estimation skills will improve as we get more comfortable with numbers and with making guesses</em></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-17 19:42:13 -0400
+</div>
+</div>
+</div>
+</body>
+</html>

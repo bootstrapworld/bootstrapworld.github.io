@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Implementation Models for Data Science</title>
+<style>
+/* Overall document font */
+* {font-family: Lato, Arial, Helvetica, sans-serif;}
+
+/* document headings */
+h1,.lesson-section-1 {color: #75328A;}
+h1{font-size: 32px; font-family: sans-serif;}
+table.section-heading *, .lesson-section-1 h2{font-size: 32px; font-weight: 100;}
+table.section-heading{width: 100%;}
+table.section-heading td:last-child{text-align: right; color: #d9d2e9;}
+
+/* preamble section */
+table.preamble td {padding: 10px;}
+table.preamble td:first-child{background: #b7d893; width: 25%;}
+table.preamble td:first-child p {font-weight: bold; margin: 5px;}
+
+/* content used throughout the body */
+table{ border-collapse: collapse; border: none; }
+table.grid-all.frame-all {border: solid 1px black;}
+table.grid-none.frame-none {border-width: 0px;}
+
+.big {font-size: 30pt;}
+.vocab{font-weight: bold; font-style: italic;}
+.right{text-align: right;}
+.acknowledgment {
+  border-top: solid 1px black; 
+  font-style: italic; 
+  font-size: 8pt;
+}
+.lesson-point {
+  border-top: solid 1px black; 
+  border-bottom: solid 1px black; 
+  color: black;
+  font-weight: bold;
+}
+
+.web-page-only, #footer { display: none; visibility: hidden; }
+
+/* Callout boxes */
+.strategy-box, .notice-box {
+  background: #efefef;
+  border: solid 5px !important;
+  margin: 15px auto;
+  width: 100%;
+}
+.strategy-box { border-color: #1a73b5 !important; }
+.notice-box   { border-color: #7747a5 !important; }
+.strategy-box td, .notice-box td{ padding: 10px; }
+.strategy-box .title, .notice-box .title{
+  width: 100%;
+  display: block;
+  font-weight: bold;
+  font-size: 24px;
+  clear: both;
+  margin: 100px;
+}
+.strategy-box p.tableblock:first-child, .notice-box p.tableblock:first-child{
+  text-align: center;
+  padding-bottom: 15px;
+}
+.strategy-box .title { color: #1a73b5; }
+.notice-box   .title { color: #7747a5; }
+.strategy-box a, .notice-box a { color: blue; text-decoration: underline; }
+
+/* "Tables" of Evaluation */
+.operator{border-bottom: solid 1px black; text-align: center;}
+.operator * {text-align: center;}
+td {padding: 0px 10px; font-size: 14px;}
+table.expression {
+    font-family:"Courier New", Monaco, monospace;
+    border:     solid 1px black;
+    font-size:  1px;
+    max-width:  400px;
+    color:      #666666;
+    display:    inline-block;
+}
+table.args {border: none; text-align: center;}
+
+.wescheme-string,     .cm-scheme-string    {color: green;}
+.wescheme-number,     .cm-scheme-number    {color: blue;}
+.wescheme-boolean,    .cm-scheme-boolean   {color: darkred;}
+.wescheme-character,  .cm-scheme-character {color: orange;}
+.wescheme-symbol,     .cm-scheme-symbol    {color: steelblue;}
+.wescheme-comment,    .cm-scheme-comment   {color: orange; }
+
+.racket, .pyret, .studentAnswerCode, .studentAnswer, .pyretkeyword, .keyword_only {
+    font-family:"Courier New", Monaco, monospace !important; 
+    color: black;
+}
+
+/* Design Recipe */
+.recipe_instructions { font-style: italic; }
+table.recipe_title {
+  color:              white;
+  background:         gray;
+  display:            block;
+  padding:            0px;
+  font-size:          1.1rem;
+  font-weight:        bold;
+}</style>
+
+    <script src="../../../../lib/langtable.js"></script>
+    <script src="../../../../dependency-graph.js"></script>
+    <script src="../../../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:window.location.href,
+    filename:"Implementation Models for Data Science",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="workbookpage article LessonPlan pyret" onload="renderSaveToDrive()">
+<span id="header">
+<h1>Implementation Models for Data Science</h1>
+
+  <span id="savetodrive-div"></span>
+
+</span>
+<span id="content">
+<span id="preamble_disabled" class="lessonSummary">
+<span class="sectionbody">
+<style>
+@import 'https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap';
+
+th { text-align: center !important; }
+#footer { display: none; }
+td .ulist ul { list-style: none; margin-left: 0; }
+
+.Unit {
+	border: solid 1px #75328A77;
+	padding: 0.5rem;
+	margin: 1em;
+	width: 90%;
+	display: inline-block;
+	background: white;
+}
+.Unit div.paragraph:first-child p {
+	font-size: 	 1.5rem;
+	line-height: 1.5rem;
+    font-weight: bold;
+	margin-top: 0;
+}
+.Unit .ulist p { font-size: 8pt; line-height: 8pt; }
+
+.Unit .Lessons { display: inline-block; width: 50%; }
+.Unit .Lessons li { list-style-type: none; margin-bottom: 2ex; }
+.Unit .Projects {
+	display: inline-block;
+	font-family: 'Reenie Beanie';
+	width: 30%;
+	padding: 0.25em;
+	background: yellow;
+	margin: 1em;
+	box-shadow: 5px 5px 7px rgba(33,33,33,.7);
+	vertical-align: top;
+	transform: rotate(-1deg);
+	transition: transform .15s linear;
+	color: black !important;
+	font-size: 20px;
+}
+.Unit:nth-child(2n) .Projects { transform: rotate(1deg); }
+.Unit .Projects a { font-size: 18px; text-decoration: underline 1px; }
+.Unit .Projects a::after { content: '!'; }
+.Unit .Projects::before {
+	content: 'Project Options:';
+	font-weight: bold;
+	width: 100%;
+	display: inline-block;
+	text-align: center;
+}
+</style>
+<span class="paragraph">
+<p>We designed our lessons in Bootstrap:Data Science to be incredibly flexible, with options for teachers in multiple subjects from grade 6-12. <strong>Choose which of the following implementation models is right for you:</strong></p>
+</span>
+</span>
+</span>
+<span class="sect1">
+<table class="grid-none frame-none section-heading"><tr><td width="65%">Dedicated Data Science Class </td><td width="35%">1 semester to Full Year</td></tr></table>
+<span class="sectionbody">
+<span class="paragraph">
+<p>The Bootstrap:Data Science lessons can be broken up into five distinct units, each with a clear theme and a set of creative projects.</p>
+</span>
+<span class="paragraph">
+<p><strong>Note: Many teachers pace themselves in order to have their students analyze <em>additional datasets</em> after completing all five units.</strong> Analyzing multiple datasets allows students to refine their skills and broaden and/or deepen domain knowledge. Most teacher start with one of the provided datasets (or a cleaned one they found themselves), and only have students collect their own data after working through their first analysis.</p>
+</span>
+<span class="openblock Unit">
+<span class="content">
+<span class="paragraph">
+<p>Unit 1: Who are Data Scientists, and what do they do?</p>
+</span>
+<span class="paragraph">
+<p>Students see the wide range of people involved with mathematics, computing, and data science, and confront the challenge of answering messy questions with data. They explore a sample dataset, consider the relationship between probability and statistics, and learn the basic programming and statistics necessary to display that dataset using a variety of charts, plots and graphs.</p>
+</span>
+<span class="ulist Lessons">
+<ul>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../../lessons/computing-needs-all-voices/index.shtml">Computing Needs All Voices</a></p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../../lessons/ds-intro/index.shtml">Introduction to Data Science</a></p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../../lessons/simple-data-types/index.shtml">Simple Data Types</a></p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../../lessons/contracts/index.shtml">Contracts</a></p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../../lessons/bar-and-pie-charts/index.shtml">Bar and Pie Charts</a></p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../../lessons/data-cycle/index.shtml">The Data Cycle</a></p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../../lessons/random-samples/index.shtml">Probability&#x2c; Inference&#x2c; and Sample Size</a></p>
+</li>
+</ul>
+</span>
+<span class="ulist Projects">
+<ul>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../../lessons/bar-and-pie-charts/pages/infographic.html">Making an Infographic</a></p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../../lessons/random-samples/pages/food-habits-project.html">Food Habits</a></p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../../lessons/random-samples/pages/time-use-project.html">Time Use</a></p>
+</li>
+</ul>
+</span>
+</span>
+</span>
+<span class="openblock Unit">
+<span class="content">
+<span class="paragraph">
+<p>Unit 2: Gathering, Analyzing, and Visualizing Data</p>
+</span>
+<span class="paragraph">
+<p>Students choose a real dataset, or create their own! They explore this dataset, diving deep into the meaning, use, and interpretation of one-dimensional analyses like histograms, box-plots, measures of center and spread. What do these tools tell us about our data, and when is it appropriate to use one tool over another?</p>
+</span>
+<span class="ulist Lessons">
+<ul>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../../lessons/choosing-your-dataset/index.shtml">Choosing Your Dataset</a></p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../../lessons/histograms/index.shtml">Histograms</a></p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../../lessons/histograms2/index.shtml">Visualizing the “Shape” of Data</a></p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../../lessons/measures-of-center/index.shtml">Measures of Center</a></p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../../lessons/box-plots/index.shtml">Box Plots</a></p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../../lessons/standard-deviation/index.shtml">Standard Deviation</a></p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../../lessons/data-collection/index.shtml">Collecting Data</a></p>
+</li>
+</ul>
+</span>
+<span class="ulist Projects">
+<ul>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../../lessons/data-collection/pages/survey-design.html">Design a Survey</a></p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../../lessons/project-exploration-paper/index.shtml">Exploring Your Dataset</a></p>
+</li>
+</ul>
+</span>
+</span>
+</span>
+<span class="openblock Unit">
+<span class="content">
+<span class="paragraph">
+<p>Unit 3: Transforming and Playing with Data</p>
+</span>
+<span class="paragraph">
+<p>Students learn to program <em>functions</em>, super-charging their programming arsenals with core algebraic concepts that allow them to create custom visualations that express many dimensions of data. They also learn how to <em>sort, filter, and transform</em> their dataset to search for patterns, zoom in on samples, and identify trends within sub-groups of their samples.</p>
+</span>
+<span class="ulist Lessons">
+<ul>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../../lessons/lookups/index.shtml">Row and Column Lookups</a></p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../../lessons/functions-make-life-easier/index.shtml">Functions Make Life Easier!</a></p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../../lessons/functions-examples-definitions/index.shtml">Functions: Contracts&#x2c; Examples &amp; Definitions</a></p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../../lessons/custom-scatter-plots/index.shtml">Custom Scatter Plots</a></p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../../lessons/table-methods/index.shtml">Table Methods</a></p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../../lessons/functions-dr/index.shtml">Solving Word Problems with the Design Recipe</a></p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../../lessons/method-chaining/index.shtml">Method Chaining</a></p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../../lessons/defining-table-functions/index.shtml">Defining Table Functions</a></p>
+</li>
+</ul>
+</span>
+<span class="ulist Projects">
+<ul>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../../lessons/functions-dr/pages/dr-telephone.html">Design Recipe Telephone</a></p>
+</li>
+<li>
+<p>Beautiful Evidence (Coming Soon!)</p>
+</li>
+</ul>
+</span>
+</span>
+</span>
+<span class="openblock Unit">
+<span class="content">
+<span class="paragraph">
+<p>Unit 4: Modeling the World Around Us with Data</p>
+</span>
+<span class="paragraph">
+<p>In this unit, students apply their newfound programming power to identify <em>relationships within their data</em>, and developing linear (and even non-linear!) models to describe those relationships. They generate numerous data displays, and combine them into a library of visualizations and inferences about their data.</p>
+</span>
+<span class="ulist Lessons">
+<ul>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../../lessons/grouped-samples/index.shtml">Grouped Samples</a></p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../../lessons/scatter-plots/index.shtml">Scatter Plots</a></p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../../lessons/correlations/index.shtml">Correlations</a></p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../../lessons/linear-regression/index.shtml">Linear Regression</a></p>
+</li>
+</ul>
+</span>
+<span class="ulist Projects">
+<ul>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../../lessons/linear-regression/pages/olympics-project.html">Olympic Records</a></p>
+</li>
+</ul>
+</span>
+</span>
+</span>
+<span class="openblock Unit">
+<span class="content">
+<span class="paragraph">
+<p>Unit 5: Using Data Responsibly</p>
+</span>
+<span class="paragraph">
+<p>As full-fledged data scientists, students consider the <em>social impact</em> of their work. How do we know that the tools we use to analyze data haven&#8217;t been tampered with? How do we know to trust the validity of our methods and data-collection? What are the ethical implications of this work? Using the visualization library from the previous unit, students conduct an original research project into their data. In doing so, they confront both analytical and ethical factors in their final report, and discuss the ethical standards that define a responsible data scientist.</p>
+</span>
+<span class="ulist Lessons">
+<ul>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../../lessons/checking-your-work/index.shtml">Checking Your Work</a></p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../../lessons/threats-to-validity/index.shtml">Threats to Validity</a></p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../../lessons/ethics-privacy-and-bias/index.shtml">Ethics&#x2c; Privacy&#x2c; and Bias</a></p>
+</li>
+</ul>
+</span>
+<span class="ulist Projects">
+<ul>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../../lessons/bar-and-pie-charts/pages/infographic.html">Making an Infographic</a></p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../../lessons/project-research-paper/index.shtml">Project: Write a Research Paper</a></p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../../lessons/threats-to-validity/pages/rubric-threats-to-validity.html">Make the slimiest research paper possible!</a></p>
+</li>
+</ul>
+</span>
+</span>
+</span>
+<span class="sect2">
+<h3 id="_other_considerations">Other Considerations</h3>
+<span class="paragraph">
+<p><strong>What Domain Knowledge do you care about?</strong> Do you want your students to focus on climate systems? Economics? Social Studies or History themes? Do you want them to design a survey for their school or neighborhood? What topics are important to your students? What topics are exciting to them? Your answers to these questions will determine the dataset(s) you&#8217;ll use or collect, which has significant impacts on engagement, relevance, and inclusion.</p>
+</span>
+</span>
+</span>
+</span>
+<span class="sect1">
+<table class="grid-none frame-none section-heading"><tr><td width="65%">Integrate Data Science an Existing Class </td><td width="35%">4 weeks, up to 1 semester</td></tr></table>
+<span class="sectionbody">
+<span class="paragraph">
+<p>A module with programming aimed specifically at transforming tables and data visualation, designed for:</p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p>Statistics teachers</p>
+</li>
+<li>
+<p>Modeling-Based Science teachers</p>
+</li>
+<li>
+<p>Computer Science teachers looking to teach more programming</p>
+</li>
+<li>
+<p>Data Science teachers</p>
+</li>
+</ul>
+</span>
+<span class="paragraph">
+<p>This format includes multiple project-based options, including <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../../lessons/bar-and-pie-charts/pages/infographic.html">Making an Infographic</a>, <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../../lessons/random-samples/pages/food-habits-project.html">Food Habits</a>, <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../../lessons/box-plots/pages/stress-project.html">Stress or Chill?</a>, and <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../../lessons/random-samples/pages/time-use-project.html">Time Use</a>.</p>
+</span>
+<table class="tableblock frame-none grid-none stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="sect2">
+<h3 id="_build_a_foundation">Build a foundation&#8230;&#8203;</h3>
+<span class="ulist">
+<ul>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../../lessons/ds-intro/index.shtml">Introduction to Data Science</a></p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../../lessons/simple-data-types/index.shtml">Simple Data Types</a></p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../../lessons/contracts/index.shtml">Contracts</a></p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../../lessons/bar-and-pie-charts/index.shtml">Bar and Pie Charts</a></p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../../lessons/data-cycle/index.shtml">The Data Cycle</a></p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../../lessons/choosing-your-dataset/index.shtml">Choosing Your Dataset</a></p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../../lessons/functions-examples-definitions/index.shtml">Functions: Contracts&#x2c; Examples &amp; Definitions</a></p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../../lessons/lookups/index.shtml">Row and Column Lookups</a></p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../../lessons/custom-scatter-plots/index.shtml">Custom Scatter Plots</a></p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../../lessons/table-methods/index.shtml">Table Methods</a></p>
+</li>
+</ul>
+</span>
+</span></span></td>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="sect2">
+<h3 id="_then_choose_what_you_need">&#8230;&#8203;then choose what you need</h3>
+<span class="ulist">
+<ul>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../../lessons/data-collection/index.shtml">Collecting Data</a></p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../../lessons/computing-needs-all-voices/index.shtml">Computing Needs All Voices</a></p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../../lessons/method-chaining/index.shtml">Method Chaining</a></p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../../lessons/functions-dr/index.shtml">Solving Word Problems with the Design Recipe</a></p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../../lessons/defining-table-functions/index.shtml">Defining Table Functions</a></p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../../lessons/grouped-samples/index.shtml">Grouped Samples</a></p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../../lessons/random-samples/index.shtml">Probability&#x2c; Inference&#x2c; and Sample Size</a></p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../../lessons/correlations/index.shtml">Correlations</a></p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../../lessons/linear-regression/index.shtml">Linear Regression</a></p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../../lessons/checking-your-work/index.shtml">Checking Your Work</a></p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../../lessons/threats-to-validity/index.shtml">Threats to Validity</a></p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../../lessons/ethics-privacy-and-bias/index.shtml">Ethics&#x2c; Privacy&#x2c; and Bias</a></p>
+</li>
+</ul>
+</span>
+</span></span></td>
+</tr>
+</tbody>
+</table>
+<span class="sect2">
+<h3 id="_other_considerations_2">Other Considerations</h3>
+<span class="paragraph">
+<p><strong>What Domain Knowledge do you care about?</strong> If you&#8217;re integrating into a Science class, maybe you want students to study data from experiments, or data related to Earth Science or Biological phenomena from the Next Generation Science Standards. If you&#8217;re integrating into a Social Studies class, maybe you&#8217;re looking at datasets involving gerrymandering or redlinling. Your answer to this question will determine the dataset(s) you&#8217;ll use or collect, which has significant impacts on engagement, relevance, and inclusion.</p>
+</span>
+<span class="paragraph">
+<p><strong>Which Math and Statistics learning goals do you have?</strong> The answer to this question will determine which lessons and projects from our library are relevant to you. A middle-school teacher might focus on lessons dealing pie and bar charts, histograms, etc. An Algebra teacher might focus on lessons about defining and composing functions. Meanwhile, a CS teacher might spend time on If-Expressions and conditionals.</p>
+</span>
+</span>
+</span>
+</span>
+<span class="sect1">
+<table class="grid-none frame-none section-heading"><tr><td width="65%">Just a taste of Data Science </td><td width="35%">1 to 4 weeks</td></tr></table>
+<span class="sectionbody">
+<span class="paragraph">
+<p>A module with minimial programming, designed for:</p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p>Science teachers who want students to gather data and generate charts for lab reports</p>
+</li>
+<li>
+<p>Math teachers who want students to experiment with charts and plots</p>
+</li>
+<li>
+<p>History or Social Studies teachers who want students explore census data, voting data, economic data, etc.</p>
+</li>
+<li>
+<p>Computer Science teachers who want a small, gentle exposure to Data Science for their students</p>
+</li>
+</ul>
+</span>
+<span class="paragraph">
+<p>In addition to whatever project you want your students to do with the data from your class, this format includes optional projects, such as <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../../lessons/bar-and-pie-charts/pages/infographic.html">Making an Infographic</a> and <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../../lessons/box-plots/pages/stress-project.html">Stress or Chill?</a>.</p>
+</span>
+<table class="tableblock frame-none grid-none stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="sect2">
+<h3 id="_build_a_foundation_2">Build a foundation&#8230;&#8203;</h3>
+<span class="ulist">
+<ul>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../../lessons/ds-intro/index.shtml">Introduction to Data Science</a></p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../../lessons/simple-data-types/index.shtml">Simple Data Types</a></p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../../lessons/contracts/index.shtml">Contracts</a></p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../../lessons/bar-and-pie-charts/index.shtml">Bar and Pie Charts</a></p>
+</li>
+</ul>
+</span>
+</span></span></td>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="sect2">
+<h3 id="_then_choose_what_you_need_2">&#8230;&#8203;then choose what you need</h3>
+<span class="ulist">
+<ul>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../../lessons/histograms2/index.shtml">Visualizing the “Shape” of Data</a></p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../../lessons/measures-of-center/index.shtml">Measures of Center</a></p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../../lessons/box-plots/index.shtml">Box Plots</a></p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../../lessons/scatter-plots/index.shtml">Scatter Plots</a></p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../../lessons/correlations/index.shtml">Correlations</a></p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../../lessons/linear-regression/index.shtml">Linear Regression</a></p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../../lessons/ethics-privacy-and-bias/index.shtml">Ethics&#x2c; Privacy&#x2c; and Bias</a></p>
+</li>
+</ul>
+</span>
+</span></span></td>
+</tr>
+</tbody>
+</table>
+</span>
+</span>
+<span class="sect1 acknowledgmentsect">
+<span class="sectionbody">
+<span class="openblock acknowledgment"><hr/>
+<span class="content">
+<span class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</span>
+</span>
+</span>
+</span>
+</span>
+</span>
+<span id="footer">
+<span id="footer-text">
+Last updated 2022-10-17 19:42:18 -0400
+</span>
+</span>
+</body>
+</html>

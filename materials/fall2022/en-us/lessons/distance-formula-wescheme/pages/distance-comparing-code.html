@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Comparing Code: Finding Missing Distances</title>
+
+  <link rel="stylesheet" href="../../../lib/curriculum.css" />
+    <link rel="stylesheet" href="../../../lib/codemirror.css" />
+    <script src="../../../lib/codemirror.js"></script>
+    <script src="../../../lib/runmode.js"></script>
+    <script src="../../../lib/scheme2.js"></script>
+    <script src="../../../lib/pyret-mode.js"></script>
+      <script src="../../../extlib/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML%2Clocal%2Fmathjaxlocal.js"></script>
+      <script>window.status = "not_ready_to_print";</script>
+    <script src="../../../lib/langtable.js"></script>
+    <script src="../../../lib/bootstraplesson.js"></script>
+    <script src="../../../dependency-graph.js"></script>
+    <script src="../../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"Comparing Code: Finding Missing Distances",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="workbookpage article wescheme" onload="renderSaveToDrive()">
+<div id="header">
+<h1>Comparing Code: Finding Missing Distances</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<style>
+	img { max-width: 450px; }
+	.center { padding: 0; }
+</style>
+<div class="paragraph">
+<p>For each of the game screenshots below, the math and the code for computing the covered distance is shown. Notice what is similar and what is different about how the top and bottom distances are calculated. Think about why those similarities and differences exist and record your thinking.</p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"></span></p>
+</div>
+<div class="openblock center">
+<div class="content">
+<div class="paragraph">
+<p><span class="image-figure"><span class="image"><img src="../images/9dce46a037005a22.png" alt="Screenshot of a desert game. A right triangle connects a cactus and a raindrop. The vertical distance between them is 166 and the horizontal distance is 276" title="Screenshot of a desert game. A right triangle connects a cactus and a raindrop. The vertical distance between them is 166 and the horizontal distance is 276"></span><a href="../images/9dce46a037005a22.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></p>
+</div>
+<table class="tableblock frame-none grid-none stripes-none stretch imageWidth">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="gdrive-only">&radic;( 166^2 + 276^2 )</span><script type="math/tex">\displaystyle \sqrt{166^2 + 276^2}</script></p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><span class="obeyspaces"><code class="racket">(sqrt (+ (sqr 166) (sqr 276)))</code></span></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><span class="vspace" style="height: 1ex"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="image-figure"><span class="image"><img src="../images/f17a112f7c095e76.png" alt="Screenshot of a sewer game. A right triangle connects a two characters. The horizontal distance between them is 194 and the diagonal distance is 276" title="Screenshot of a sewer game. A right triangle connects a two characters. The horizontal distance between them is 194 and the diagonal distance is 276"></span><a href="../images/f17a112f7c095e76.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></p>
+</div>
+<table class="tableblock frame-none grid-none stripes-none stretch imageWidth">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="gdrive-only">&radic;( 276^2 - 194^2 )</span><script type="math/tex">\displaystyle \sqrt{276^2 - 194^2}</script></p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><span class="obeyspaces"><code class="racket">(sqrt (- (sqr 276) (sqr 194)))</code></span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-18 16:15:44 -0400
+</div>
+</div>
+</body>
+</html>

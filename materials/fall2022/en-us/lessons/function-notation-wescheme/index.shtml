@@ -1,0 +1,1640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Function Notation</title>
+
+  <link rel="stylesheet" href="../../lib/curriculum.css" />
+    <link rel="stylesheet" href="../../lib/codemirror.css" />
+    <script src="../../lib/codemirror.js"></script>
+    <script src="../../lib/runmode.js"></script>
+    <script src="../../lib/scheme2.js"></script>
+    <script src="../../lib/pyret-mode.js"></script>
+      <script src="../../extlib/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML%2Clocal%2Fmathjaxlocal.js"></script>
+      <script>window.status = "not_ready_to_print";</script>
+    <script src="../../lib/langtable.js"></script>
+    <script src="../../lib/bootstraplesson.js"></script>
+    <script src="../../dependency-graph.js"></script>
+    <script src="../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"Function Notation",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="article LessonPlan wescheme" onload="renderSaveToDrive()">
+<!--#include virtual="/menubar.ssi"-->
+<div id="body" onload="renderSaveToDrive()">
+<div id="header">
+<h1>Function Notation</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<script>
+function preselect(klass) {
+  const items = document.getElementsByClassName(klass);
+  for (let i = 0; i < items.length; i++) {
+    items[i].style.display = 'none';
+  }
+  if (items.length > 0) {
+    items[0].style.display = 'block';
+  }
+}
+window.onload = function() {
+  preselect('alignedStandards');
+  preselect('alignedTextbooks');
+  preselect('alignedPractices');
+}
+function showStandardsAlignment() {
+  const selectTag = document.getElementsByClassName('standardsAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const stdTables = document.getElementsByClassName('alignedStandards');
+  //const intro = document.getElementsByClassName('alignedStandardsIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < stdTables.length; i++) {
+    const stdTable = stdTables[i];
+    stdTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optStd = opt.value;
+      for (let j = 0; j < stdTables.length; j++) {
+        const stdTable = stdTables[j];
+        if (stdTable.classList.contains(optStd)) {
+          stdTable.style.display = 'block';
+         // introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+function toggleNonPrereqDisplay() {
+  const inputTag = document.getElementsByClassName('sidebarinput')[0];
+  const checkedP = inputTag.checked;
+  const lessonTable = document.getElementsByClassName('sidebarlessons')[0];
+  const lis = lessonTable.getElementsByTagName('li');
+  for (let i = 0; i < lis.length; i++) {
+    const li = lis[i];
+    const lesson = li.getElementsByClassName('prerequisite');
+    if (lesson.length === 0) {
+      li.style.display = checkedP ? 'none' : 'block';
+    }
+  }
+}
+</script>
+<script>
+function showTextbooksAlignment() {
+  const selectTag = document.getElementsByClassName('textbooksAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const textbookTables = document.getElementsByClassName('alignedTextbooks');
+  //const intro = document.getElementsByClassName('alignedTextbooksIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < textbookTables.length; i++) {
+    const textbookTable = textbookTables[i];
+    textbookTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optTextbook = opt.value;
+      for (let j = 0; j < textbookTables.length; j++) {
+        const textbookTable = textbookTables[j];
+        if (textbookTable.classList.contains(optTextbook)) {
+          textbookTable.style.display = 'block';
+          //introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+</script>
+<script>
+function showPracticesAlignment() {
+  const selectTag = document.getElementsByClassName('practicesAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const practiceTables = document.getElementsByClassName('alignedPractices');
+  for (let i = 0; i < practiceTables.length; i++) {
+    const practiceTable = practiceTables[i];
+    practiceTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optPractice = opt.value;
+      for (let j = 0; j < practiceTables.length; j++) {
+        const practiceTable = practiceTables[j];
+        if (practiceTable.classList.contains(optPractice)) {
+          practiceTable.style.display = 'block';
+        }
+      }
+    }
+  }
+}
+</script>
+<div class="paragraph">
+<!-- </p>
+</div>
+--></div><div class="sidebar"><div id="toggle"></div><div class="paragraph"><!--
+<div class="paragraph">
+<p>
+--><div class="sidebarlessons"><strong>Lessons</strong>
+<ul></ul></div>
+</div>
+<table class="tableblock frame-all grid-all stretch sidebarstandards">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Standards in this Lesson</strong>
+<select class="standardsAlignmentSelect"  onchange="showStandardsAlignment()"><option selected="selected" value="standards-Alabama">Alabama</option><option value="standards-Arkansas">Arkansas</option><option value="standards-California">California</option><option value="standards-Colorado">Colorado</option><option value="standards-Connecticut">Connecticut</option><option value="standards-Delaware">Delaware</option><option value="standards-Georgia">Georgia</option><option value="standards-Hawaii">Hawaii</option><option value="standards-Idaho">Idaho</option><option value="standards-Illinois">Illinois</option><option value="standards-Iowa">Iowa</option><option value="standards-Kansas">Kansas</option><option value="standards-Kentucky">Kentucky</option><option value="standards-Louisiana">Louisiana</option><option value="standards-Maine">Maine</option><option value="standards-Michigan">Michigan</option><option value="standards-Maryland">Maryland</option><option value="standards-Massachusetts">Massachusetts</option><option value="standards-Mississippi">Mississippi</option><option value="standards-Missouri">Missouri</option><option value="standards-Montana">Montana</option><option value="standards-New Hampshire">New Hampshire</option><option value="standards-Nevada">Nevada</option><option value="standards-New Jersey">New Jersey</option><option value="standards-New Mexico">New Mexico</option><option value="standards-North Carolina">North Carolina</option><option value="standards-North Dakota">North Dakota</option><option value="standards-New York">New York</option><option value="standards-Ohio">Ohio</option><option value="standards-Oregon">Oregon</option><option value="standards-Pennsylvania">Pennsylvania</option><option value="standards-Rhode Island">Rhode Island</option><option value="standards-South Dakota">South Dakota</option><option value="standards-Tennessee">Tennessee</option><option value="standards-Utah">Utah</option><option value="standards-Vermont">Vermont</option><option value="standards-Washington">Washington</option><option value="standards-West Virginia">West Virginia</option><option value="standards-Wisconsin">Wisconsin</option><option value="standards-Wyoming">Wyoming</option></select></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist alignedStandards standards-Alabama">
+<div class="title"><a href="">Alabama Standards</a></div>
+<dl>
+<dt class="hdlist1">AL.HSF.IF.A</dt>
+<dd>
+<p>Understand the concept of a function and use function notation.</p>
+</dd>
+<dt class="hdlist1">AL.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">AL.HSF.IF.B.5</dt>
+<dd>
+<p>Relate the domain of a function to its graph and, where applicable, to the quantitative relationship it describes.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Arkansas">
+<div class="title"><a href="">Arkansas Standards</a></div>
+<dl>
+<dt class="hdlist1">AR.HSF.IF.A</dt>
+<dd>
+<p>Understand the concept of a function and use function notation.</p>
+</dd>
+<dt class="hdlist1">AR.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">AR.HSF.IF.B.5</dt>
+<dd>
+<p>Relate the domain of a function to its graph and, where applicable, to the quantitative relationship it describes.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-California">
+<div class="title"><a href="">California Standards</a></div>
+<dl>
+<dt class="hdlist1">CA.HSF.IF.A</dt>
+<dd>
+<p>Understand the concept of a function and use function notation.</p>
+</dd>
+<dt class="hdlist1">CA.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">CA.HSF.IF.B.5</dt>
+<dd>
+<p>Relate the domain of a function to its graph and, where applicable, to the quantitative relationship it describes.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Colorado">
+<div class="title"><a href="">Colorado Standards</a></div>
+<dl>
+<dt class="hdlist1">CO.HSF.IF.A</dt>
+<dd>
+<p>Understand the concept of a function and use function notation.</p>
+</dd>
+<dt class="hdlist1">CO.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">CO.HSF.IF.B.5</dt>
+<dd>
+<p>Relate the domain of a function to its graph and, where applicable, to the quantitative relationship it describes.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Connecticut">
+<div class="title"><a href="">Connecticut Standards</a></div>
+<dl>
+<dt class="hdlist1">CT.HSF.IF.A</dt>
+<dd>
+<p>Understand the concept of a function and use function notation.</p>
+</dd>
+<dt class="hdlist1">CT.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">CT.HSF.IF.B.5</dt>
+<dd>
+<p>Relate the domain of a function to its graph and, where applicable, to the quantitative relationship it describes.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Delaware">
+<div class="title"><a href="">Delaware Standards</a></div>
+<dl>
+<dt class="hdlist1">DE.HSF.IF.A</dt>
+<dd>
+<p>Understand the concept of a function and use function notation.</p>
+</dd>
+<dt class="hdlist1">DE.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">DE.HSF.IF.B.5</dt>
+<dd>
+<p>Relate the domain of a function to its graph and, where applicable, to the quantitative relationship it describes.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Georgia">
+<div class="title"><a href="">Delaware Standards</a></div>
+<dl>
+<dt class="hdlist1">GA.HSF.IF.A</dt>
+<dd>
+<p>Understand the concept of a function and use function notation.</p>
+</dd>
+<dt class="hdlist1">GA.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">GA.HSF.IF.B.5</dt>
+<dd>
+<p>Relate the domain of a function to its graph and, where applicable, to the quantitative relationship it describes.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Hawaii">
+<div class="title"><a href="">Hawaii Standards</a></div>
+<dl>
+<dt class="hdlist1">HI.HSF.IF.A</dt>
+<dd>
+<p>Understand the concept of a function and use function notation.</p>
+</dd>
+<dt class="hdlist1">HI.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">HI.HSF.IF.B.5</dt>
+<dd>
+<p>Relate the domain of a function to its graph and, where applicable, to the quantitative relationship it describes.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Idaho">
+<div class="title"><a href="">Idaho Standards</a></div>
+<dl>
+<dt class="hdlist1">ID.HSF.IF.A</dt>
+<dd>
+<p>Understand the concept of a function and use function notation.</p>
+</dd>
+<dt class="hdlist1">ID.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">ID.HSF.IF.B.5</dt>
+<dd>
+<p>Relate the domain of a function to its graph and, where applicable, to the quantitative relationship it describes.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Illinois">
+<div class="title"><a href="">Illinois Standards</a></div>
+<dl>
+<dt class="hdlist1">IL.HSF.IF.A</dt>
+<dd>
+<p>Understand the concept of a function and use function notation.</p>
+</dd>
+<dt class="hdlist1">IL.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">IL.HSF.IF.B.5</dt>
+<dd>
+<p>Relate the domain of a function to its graph and, where applicable, to the quantitative relationship it describes.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Iowa">
+<div class="title"><a href="https://iowacore.gov/standards/iowa-core-standards">Iowa Standards</a></div>
+<dl>
+<dt class="hdlist1">IA.HSF.IF.A</dt>
+<dd>
+<p>Understand the concept of a function and use function notation.</p>
+</dd>
+<dt class="hdlist1">IA.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">IA.HSF.IF.B.5</dt>
+<dd>
+<p>Relate the domain of a function to its graph and, where applicable, to the quantitative relationship it describes.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Kansas">
+<div class="title"><a href="">Kansas Standards</a></div>
+<dl>
+<dt class="hdlist1">KS.HSF.IF.A</dt>
+<dd>
+<p>Understand the concept of a function and use function notation.</p>
+</dd>
+<dt class="hdlist1">KS.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">KS.HSF.IF.B.5</dt>
+<dd>
+<p>Relate the domain of a function to its graph and, where applicable, to the quantitative relationship it describes.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Kentucky">
+<div class="title"><a href="">Kentucky Standards</a></div>
+<dl>
+<dt class="hdlist1">KY.HSF.IF.A</dt>
+<dd>
+<p>Understand the concept of a function and use function notation.</p>
+</dd>
+<dt class="hdlist1">KY.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">KY.HSF.IF.B.5</dt>
+<dd>
+<p>Relate the domain of a function to its graph and, where applicable, to the quantitative relationship it describes.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Louisiana">
+<div class="title"><a href="">Louisiana Standards</a></div>
+<dl>
+<dt class="hdlist1">LA.HSF.IF.A</dt>
+<dd>
+<p>Understand the concept of a function and use function notation.</p>
+</dd>
+<dt class="hdlist1">LA.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">LA.HSF.IF.B.5</dt>
+<dd>
+<p>Relate the domain of a function to its graph and, where applicable, to the quantitative relationship it describes.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Maine">
+<div class="title"><a href="">Maine Standards</a></div>
+<dl>
+<dt class="hdlist1">ME.HSF.IF.A</dt>
+<dd>
+<p>Understand the concept of a function and use function notation.</p>
+</dd>
+<dt class="hdlist1">ME.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">ME.HSF.IF.B.5</dt>
+<dd>
+<p>Relate the domain of a function to its graph and, where applicable, to the quantitative relationship it describes.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Michigan">
+<div class="title"><a href="">Michigan Standards</a></div>
+<dl>
+<dt class="hdlist1">MI.HSF.IF.A</dt>
+<dd>
+<p>Understand the concept of a function and use function notation.</p>
+</dd>
+<dt class="hdlist1">MI.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">MI.HSF.IF.B.5</dt>
+<dd>
+<p>Relate the domain of a function to its graph and, where applicable, to the quantitative relationship it describes.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Maryland">
+<div class="title"><a href="">Maryland Standards</a></div>
+<dl>
+<dt class="hdlist1">MD.HSF.IF.A</dt>
+<dd>
+<p>Understand the concept of a function and use function notation.</p>
+</dd>
+<dt class="hdlist1">MD.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">MD.HSF.IF.B.5</dt>
+<dd>
+<p>Relate the domain of a function to its graph and, where applicable, to the quantitative relationship it describes.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Massachusetts">
+<div class="title"><a href="https://www.doe.mass.edu/frameworks/">Massachusetts Standards</a></div>
+<dl>
+<dt class="hdlist1">MA.HSF.IF.A</dt>
+<dd>
+<p>Understand the concept of a function and use function notation.</p>
+</dd>
+<dt class="hdlist1">MA.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">MA.HSF.IF.B.5</dt>
+<dd>
+<p>Relate the domain of a function to its graph and, where applicable, to the quantitative relationship it describes.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Mississippi">
+<div class="title"><a href="">Mississippi Standards</a></div>
+<dl>
+<dt class="hdlist1">MS.HSF.IF.A</dt>
+<dd>
+<p>Understand the concept of a function and use function notation.</p>
+</dd>
+<dt class="hdlist1">MS.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">MS.HSF.IF.B.5</dt>
+<dd>
+<p>Relate the domain of a function to its graph and, where applicable, to the quantitative relationship it describes.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Missouri">
+<div class="title"><a href="">Missouri Standards</a></div>
+<dl>
+<dt class="hdlist1">MO.HSF.IF.A</dt>
+<dd>
+<p>Understand the concept of a function and use function notation.</p>
+</dd>
+<dt class="hdlist1">MO.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">MO.HSF.IF.B.5</dt>
+<dd>
+<p>Relate the domain of a function to its graph and, where applicable, to the quantitative relationship it describes.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Montana">
+<div class="title"><a href="">Montana Standards</a></div>
+<dl>
+<dt class="hdlist1">MT.HSF.IF.A</dt>
+<dd>
+<p>Understand the concept of a function and use function notation.</p>
+</dd>
+<dt class="hdlist1">MT.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">MT.HSF.IF.B.5</dt>
+<dd>
+<p>Relate the domain of a function to its graph and, where applicable, to the quantitative relationship it describes.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist .alignedStandards.standards-New Hampshire">
+<div class="title"><a href="">New Hampshire Standards</a></div>
+<dl>
+<dt>NH.HSF.IF.A</dt>
+<dd>
+<p>Understand the concept of a function and use function notation.</p>
+</dd>
+<dt>NH.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt>NH.HSF.IF.B.5</dt>
+<dd>
+<p>Relate the domain of a function to its graph and, where applicable, to the quantitative relationship it describes.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Nevada">
+<div class="title"><a href="">Nevada Standards</a></div>
+<dl>
+<dt class="hdlist1">NV.HSF.IF.A</dt>
+<dd>
+<p>Understand the concept of a function and use function notation.</p>
+</dd>
+<dt class="hdlist1">NV.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">NV.HSF.IF.B.5</dt>
+<dd>
+<p>Relate the domain of a function to its graph and, where applicable, to the quantitative relationship it describes.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist .alignedStandards.standards-New Jersey">
+<div class="title"><a href="">New Jersey Standards</a></div>
+<dl>
+<dt>NJ.HSF.IF.A</dt>
+<dd>
+<p>Understand the concept of a function and use function notation.</p>
+</dd>
+<dt>NJ.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt>NJ.HSF.IF.B.5</dt>
+<dd>
+<p>Relate the domain of a function to its graph and, where applicable, to the quantitative relationship it describes.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist .alignedStandards.standards-New Mexico">
+<div class="title"><a href="">New Mexico Standards</a></div>
+<dl>
+<dt>NM.HSF.IF.A</dt>
+<dd>
+<p>Understand the concept of a function and use function notation.</p>
+</dd>
+<dt>NM.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt>NM.HSF.IF.B.5</dt>
+<dd>
+<p>Relate the domain of a function to its graph and, where applicable, to the quantitative relationship it describes.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist .alignedStandards.standards-North Carolina">
+<div class="title"><a href="">North Carolina Standards</a></div>
+<dl>
+<dt>NC.HSF.IF.A</dt>
+<dd>
+<p>Understand the concept of a function and use function notation.</p>
+</dd>
+<dt>NC.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt>NC.HSF.IF.B.5</dt>
+<dd>
+<p>Relate the domain of a function to its graph and, where applicable, to the quantitative relationship it describes.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist .alignedStandards.standards-North Dakota">
+<div class="title"><a href="">North Dakota Standards</a></div>
+<dl>
+<dt>ND.HSF.IF.A</dt>
+<dd>
+<p>Understand the concept of a function and use function notation.</p>
+</dd>
+<dt>ND.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt>ND.HSF.IF.B.5</dt>
+<dd>
+<p>Relate the domain of a function to its graph and, where applicable, to the quantitative relationship it describes.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist .alignedStandards.standards-New York">
+<div class="title"><a href="http://www.nysed.gov/curriculum-instruction/new-york-state-next-generation-mathematics-learning-standards">New York Standards</a></div>
+<dl>
+<dt>NY.HSF.IF.A</dt>
+<dd>
+<p>Understand the concept of a function and use function notation.</p>
+</dd>
+<dt>NY.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt>NY.HSF.IF.B.5</dt>
+<dd>
+<p>Relate the domain of a function to its graph and, where applicable, to the quantitative relationship it describes.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Ohio">
+<div class="title"><a href="">Ohio Standards</a></div>
+<dl>
+<dt class="hdlist1">OH.HSF.IF.A</dt>
+<dd>
+<p>Understand the concept of a function and use function notation.</p>
+</dd>
+<dt class="hdlist1">OH.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">OH.HSF.IF.B.5</dt>
+<dd>
+<p>Relate the domain of a function to its graph and, where applicable, to the quantitative relationship it describes.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Oregon">
+<div class="title"><a href="">Oregon Standards</a></div>
+<dl>
+<dt class="hdlist1">OR.HSF.IF.A</dt>
+<dd>
+<p>Understand the concept of a function and use function notation.</p>
+</dd>
+<dt class="hdlist1">OR.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">OR.HSF.IF.B.5</dt>
+<dd>
+<p>Relate the domain of a function to its graph and, where applicable, to the quantitative relationship it describes.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Pennsylvania">
+<div class="title"><a href="">Pennsylvania Standards</a></div>
+<dl>
+<dt class="hdlist1">PA.HSF.IF.A</dt>
+<dd>
+<p>Understand the concept of a function and use function notation.</p>
+</dd>
+<dt class="hdlist1">PA.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">PA.HSF.IF.B.5</dt>
+<dd>
+<p>Relate the domain of a function to its graph and, where applicable, to the quantitative relationship it describes.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist .alignedStandards.standards-Rhode Island">
+<div class="title"><a href="">Rhode Island Standards</a></div>
+<dl>
+<dt>RI.HSF.IF.A</dt>
+<dd>
+<p>Understand the concept of a function and use function notation.</p>
+</dd>
+<dt>RI.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt>RI.HSF.IF.B.5</dt>
+<dd>
+<p>Relate the domain of a function to its graph and, where applicable, to the quantitative relationship it describes.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist .alignedStandards.standards-South Dakota">
+<div class="title"><a href="">South Dakota Standards</a></div>
+<dl>
+<dt>SD.HSF.IF.A</dt>
+<dd>
+<p>Understand the concept of a function and use function notation.</p>
+</dd>
+<dt>SD.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt>SD.HSF.IF.B.5</dt>
+<dd>
+<p>Relate the domain of a function to its graph and, where applicable, to the quantitative relationship it describes.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Tennessee">
+<div class="title"><a href="">Tennessee Standards</a></div>
+<dl>
+<dt class="hdlist1">TN.HSF.IF.A</dt>
+<dd>
+<p>Understand the concept of a function and use function notation.</p>
+</dd>
+<dt class="hdlist1">TN.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">TN.HSF.IF.B.5</dt>
+<dd>
+<p>Relate the domain of a function to its graph and, where applicable, to the quantitative relationship it describes.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Utah">
+<div class="title"><a href="">Utah Standards</a></div>
+<dl>
+<dt class="hdlist1">UT.HSF.IF.A</dt>
+<dd>
+<p>Understand the concept of a function and use function notation.</p>
+</dd>
+<dt class="hdlist1">UT.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">UT.HSF.IF.B.5</dt>
+<dd>
+<p>Relate the domain of a function to its graph and, where applicable, to the quantitative relationship it describes.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Vermont">
+<div class="title"><a href="">Vermont Standards</a></div>
+<dl>
+<dt class="hdlist1">VT.HSF.IF.A</dt>
+<dd>
+<p>Understand the concept of a function and use function notation.</p>
+</dd>
+<dt class="hdlist1">VT.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">VT.HSF.IF.B.5</dt>
+<dd>
+<p>Relate the domain of a function to its graph and, where applicable, to the quantitative relationship it describes.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Washington">
+<div class="title"><a href="">Washington Standards</a></div>
+<dl>
+<dt class="hdlist1">WA.HSF.IF.A</dt>
+<dd>
+<p>Understand the concept of a function and use function notation.</p>
+</dd>
+<dt class="hdlist1">WA.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">WA.HSF.IF.B.5</dt>
+<dd>
+<p>Relate the domain of a function to its graph and, where applicable, to the quantitative relationship it describes.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist .alignedStandards.standards-West Virginia">
+<div class="title"><a href="">West Virginia Standards</a></div>
+<dl>
+<dt>WV.HSF.IF.A</dt>
+<dd>
+<p>Understand the concept of a function and use function notation.</p>
+</dd>
+<dt>WV.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt>WV.HSF.IF.B.5</dt>
+<dd>
+<p>Relate the domain of a function to its graph and, where applicable, to the quantitative relationship it describes.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Wisconsin">
+<div class="title"><a href="">Wisconsin Standards</a></div>
+<dl>
+<dt class="hdlist1">WI.HSF.IF.A</dt>
+<dd>
+<p>Understand the concept of a function and use function notation.</p>
+</dd>
+<dt class="hdlist1">WI.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">WI.HSF.IF.B.5</dt>
+<dd>
+<p>Relate the domain of a function to its graph and, where applicable, to the quantitative relationship it describes.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Wyoming">
+<div class="title"><a href="">Wyoming Standards</a></div>
+<dl>
+<dt class="hdlist1">WY.HSF.IF.A</dt>
+<dd>
+<p>Understand the concept of a function and use function notation.</p>
+</dd>
+<dt class="hdlist1">WY.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+<dt class="hdlist1">WY.HSF.IF.B.5</dt>
+<dd>
+<p>Relate the domain of a function to its graph and, where applicable, to the quantitative relationship it describes.</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch sidebarpractices">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Practices in this Lesson</strong>
+<select class="practicesAlignmentSelect"  onchange="showPracticesAlignment()"><option selected="selected" value="practices-CC"><a href="http://corestandards.org/Math/">Math</a></option></select></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist alignedPractices practices-CC">
+<div class="title"><a href="http://corestandards.org/Math/">Math</a></div>
+<dl>
+<dt class="hdlist1">MP.4</dt>
+<dd>
+<p>Model with mathematics</p>
+</dd>
+<dt class="hdlist1">MP.6</dt>
+<dd>
+<p>Attend to precision</p>
+</dd>
+<dt class="hdlist1">MP.7</dt>
+<dd>
+<p>Look for and make use of structure</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<!-- </p>
+</div>
+--></div><!--
+<div class="paragraph">
+<p>
+-->
+</div>
+<div class="paragraph">
+<p><span class="other-proglang">(Also available in <a href="../../lessons/function-notation/index.shtml">Pyret</a>)</span></p>
+</div>
+<div class="paragraph description">
+<p>Students learn to read function notation and evaluate expressions using function definitions, tables, and graphs.</p>
+</div>
+<table class="tableblock frame-all grid-all stripes-none stretch left-header preamble">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Lesson Goals</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Students will be able to:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Identify the value that applying a function (e.g. - f(3)) produces from symbolic definitions, tables, or graphs.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Student-Facing Lesson Goals</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>I can find the value of an expression such as f(3), given a table, graph or symbolic definiton.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Materials</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph materials-links">
+<p><em><strong>This lesson is unplugged</strong> and does not require a computer.</em></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://docs.google.com/presentation/d/11PyaY48voazey_X--V7f7qH9_I0ekCx3Hm_jtt8DRq8/" target="_blank" rel="noopener">Lesson Slides</a></p>
+</li>
+<li>
+<p><span class="materialSectionPlaceholder"> </span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/function-notation-wescheme/pages/match-examples-definitions-math.html" target="_blank" rel="noopener">Matching Examples and Definitions (Math)</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/function-notation-wescheme/pages/function-notation-substitution.html" target="_blank" rel="noopener">Function Notation - Substitution</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/function-notation-wescheme/pages/function-notation-graphs.html" target="_blank" rel="noopener">Function Notation - Graphs</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/function-notation-wescheme/pages/function-notation-tables.html" target="_blank" rel="noopener">Function Notation - Tables</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="../../lessons/function-notation-wescheme/pages/function-notation-graphs-pw.html" target="_blank" rel="noopener">Function Notation - Piecewise Graphs</a></span></p>
+</li>
+<li>
+<p><span class="Optional OnlineExercise"><a href="https://teacher.desmos.com/activitybuilder/custom/60aa5c452505ed0802bfff38" target="_blank" rel="noopener">Matching Examples &amp; Function Definitions (Math) (Desmos)</a></span></p>
+</li>
+<li>
+<p><strong>Classroom visual:</strong> <a href="javascript:showLangTable()">Language Table</a></p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="dlist glossary">
+<div class="title">Glossary</div>
+<dl>
+<dt class="hdlist1">apply</dt>
+<dd>
+<p>use a given function on some inputs</p>
+</dd>
+<dt class="hdlist1">coordinate plane</dt>
+<dd>
+<p>a grid formed by a pair of intersecting horizontal and vertical number lines</p>
+</dd>
+<dt class="hdlist1">evaluate</dt>
+<dd>
+<p>perform the computation in an expression, producing an answer</p>
+</dd>
+<dt class="hdlist1">function</dt>
+<dd>
+<p>a relation from a set of inputs to a set of possible outputs, where each input is related to exactly one output</p>
+</dd>
+<dt class="hdlist1">function notation</dt>
+<dd>
+<p>a standard way to denote functions, beginning with a function name, such as <em>f</em> or <em>gt</em>, the variable(s) the function takes in, such as <em>x</em> or <em>size</em>, and a definition of what the function does using a formula in terms of the variable. For example, f(x) = x + 1 takes in a number and adds 1.</p>
+</dd>
+<dt class="hdlist1">line</dt>
+<dd>
+<p>an infinite collection of points forming a straight one-dimensional figure having no thickness and extending infinitely in both directions</p>
+</dd>
+<dt class="hdlist1">substitute</dt>
+<dd>
+<p>replace a variable with a value or expression and evaluate or simplify the resulting expression</p>
+</dd>
+<dt class="hdlist1">variable</dt>
+<dd>
+<p>a name or symbol that stands for some value or expression, often a value or expression that changes</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_function_notation_definitions_duration_15_minutes_"><span class="section-link"><a href="#_function_notation_definitions_duration_15_minutes_"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Function Notation (Definitions) <span class="duration">15 minutes</span></h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_overview">Overview</h3>
+<div class="paragraph">
+<p>Students connect their understanding of function definitions in Wescheme to function definitions in math.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_launch">Launch</h3>
+<div class="paragraph">
+<p>We&#8217;ve seen how functions like <code class="racket">gt</code> can be defined, and then <span class="vocab">applied</span> to a number to create a green triangle. And once <code class="racket">gt</code> is defined, we can use it with many different numbers to create many different triangles - all without having to write out <code class="racket">"solid"</code>, <code class="racket">"green"</code>, etc.</p>
+</div>
+<div class="paragraph">
+<p>But how does this function <em>work?</em></p>
+</div>
+<div class="paragraph">
+<p>When we apply a function to some inputs, we <span class="vocab">substitute</span> those inputs for the <span class="vocab">variables</span> in the definition. In the example below, the inputs are <span class="vocab">substituted</span> for the variable <code class="racket">size</code> in the body of the <code class="racket">gt</code> function.</p>
+</div>
+<div class="paragraph">
+<p><span class="center"><strong><span class="obeyspaces"><code class="racket">(define (gt size) (triangle size "solid" "green"))</code></span></strong></span></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 28.5714%;">
+<col style="width: 42.8571%;">
+<col style="width: 28.5715%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-middle">Apply the Function</th>
+<th class="tableblock halign-center valign-middle">Substitute the Input(s)</th>
+<th class="tableblock halign-center valign-middle">Compute the Answer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><span class="obeyspaces"><code class="racket">(gt 10)</code></span></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><span class="obeyspaces"><code class="racket">(triangle 10 "solid" "green")</code></span></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><span class="image-figure"><span class="image"><img src="images/7de7d11aa734fe43.png" alt="green triangle 10" title="green triangle 10"></span><a href="images/7de7d11aa734fe43.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><span class="obeyspaces"><code class="racket">(gt 20)</code></span></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><span class="obeyspaces"><code class="racket">(triangle 20 "solid" "green")</code></span></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><span class="image-figure"><span class="image"><img src="images/fee614ce48d90b94.png" alt="green triangle 20" title="green triangle 20"></span><a href="images/fee614ce48d90b94.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><span class="obeyspaces"><code class="racket">(gt 30)</code></span></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><span class="obeyspaces"><code class="racket">(triangle 30 "solid" "green")</code></span></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><span class="image-figure"><span class="image"><img src="images/945582ea6001a944.png" alt="green triangle 30" title="green triangle 30"></span><a href="images/945582ea6001a944.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><span class="obeyspaces"><code class="racket">(gt 40)</code></span></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><span class="obeyspaces"><code class="racket">(triangle 40 "solid" "green")</code></span></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><span class="image-figure"><span class="image"><img src="images/8f5a69a8a073e904.png" alt="green triangle 40" title="green triangle 40"></span><a href="images/8f5a69a8a073e904.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><span class="obeyspaces"><code class="racket">(gt 50)</code></span></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><span class="obeyspaces"><code class="racket">(triangle 50 "solid" "green")</code></span></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><span class="image-figure"><span class="image"><img src="images/e57611bacb83a4be.png" alt="green triangle 50" title="green triangle 50"></span><a href="images/e57611bacb83a4be.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><span class="vspace" style="height: 1ex"></span></p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s take a look at a <span class="vocab">function</span> that works with Numbers:</p>
+</div>
+<div class="paragraph">
+<p><span class="center"><strong><span class="obeyspaces"><code class="racket">(define (f x) (+ x 8))</code></span></strong></span></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 28.5714%;">
+<col style="width: 42.8571%;">
+<col style="width: 28.5715%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-middle">Apply the Function</th>
+<th class="tableblock halign-center valign-middle">Substitute the Input(s)</th>
+<th class="tableblock halign-center valign-middle">Compute the Answer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><span class="gdrive-only">f10</span><script type="math/tex">\displaystyle f(10)</script></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><span class="obeyspaces"><code class="racket">(+ 10 8)</code></span></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">18</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><span class="gdrive-only">f20</span><script type="math/tex">\displaystyle f(20)</script></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><span class="obeyspaces"><code class="racket">(+ 20 8)</code></span></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">28</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><span class="gdrive-only">f30</span><script type="math/tex">\displaystyle f(30)</script></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><span class="obeyspaces"><code class="racket">(+ 30 8)</code></span></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">38</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><span class="gdrive-only">f40</span><script type="math/tex">\displaystyle f(40)</script></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><span class="obeyspaces"><code class="racket">(+ 40 8)</code></span></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">48</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><span class="gdrive-only">f50</span><script type="math/tex">\displaystyle f(50)</script></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><span class="obeyspaces"><code class="racket">(+ 50 8)</code></span></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">58</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><span class="vspace" style="height: 1ex"></span></p>
+</div>
+<div class="paragraph">
+<p>Once again, the input is <span class="vocab">substituted</span> for the variable.</p>
+</div>
+<div class="paragraph">
+<p>You&#8217;ve already seen that Wescheme looks a little different from traditional math, even if it behaves the same way.</p>
+</div>
+<div class="paragraph">
+<p>Math books use something called <span class="vocab">Function Notation</span> to define functions. Here&#8217;s a side-by-side comparison of the same function, in our programming language and in function notation:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">Defining Functions in Wescheme</th>
+<th class="tableblock halign-center valign-top">Defining Functions in Function Notation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="obeyspaces"><code class="racket">(define (f x) (+ x 8))</code></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="gdrive-only">fx = x + 8</span><script type="math/tex">\displaystyle f(x) = x + 8</script></p></td>
+</tr>
+</tbody>
+</table>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>What do these forms have in common?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Both forms show the <strong>name of the function</strong>, as well as the <strong>names of the variables</strong>. They also show <strong>what the function does with those variables</strong>.</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>How are these forms different from one another?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>In Pyret, we use a colon instead of an equals sign. In Pyret, we see <code class="racket">fun</code> at the beginning and <code class="racket">end</code> at the end.</em></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In math - just as in programming - <strong>we compute the value of the expression for any specific input by substituting numbers for the variable(s) used in the definition</strong>, just as we did with <code class="racket">gt</code>.</p>
+</div>
+<div class="paragraph">
+<p><span class="center"><strong><span class="gdrive-only">fx = x + 8</span><script type="math/tex">\displaystyle f(x) = x + 8</script></strong></span></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 28.5714%;">
+<col style="width: 42.8571%;">
+<col style="width: 28.5715%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-middle">Apply the Function</th>
+<th class="tableblock halign-center valign-middle">Substitute the Input(s)</th>
+<th class="tableblock halign-center valign-middle">Compute the Answer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><span class="gdrive-only">f10</span><script type="math/tex">\displaystyle f(10)</script></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><span class="gdrive-only">10 + 8</span><script type="math/tex">\displaystyle 10 + 8</script></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">18</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><span class="gdrive-only">f20</span><script type="math/tex">\displaystyle f(20)</script></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><span class="gdrive-only">20 + 8</span><script type="math/tex">\displaystyle 20 + 8</script></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">28</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><span class="gdrive-only">f30</span><script type="math/tex">\displaystyle f(30)</script></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><span class="gdrive-only">30 + 8</span><script type="math/tex">\displaystyle 30 + 8</script></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">38</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><span class="gdrive-only">f40</span><script type="math/tex">\displaystyle f(40)</script></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><span class="gdrive-only">40 + 8</span><script type="math/tex">\displaystyle 40 + 8</script></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">48</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><span class="gdrive-only">f50</span><script type="math/tex">\displaystyle f(50)</script></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><span class="gdrive-only">50 + 8</span><script type="math/tex">\displaystyle 50 + 8</script></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">58</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_investigate">Investigate</h3>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Turn to <a href="../../lessons/function-notation-wescheme/pages/match-examples-definitions-math.html" target="_blank" rel="noopener">Matching Examples and Definitions (Math)</a> and <a href="../../lessons/function-notation-wescheme/pages/function-notation-substitution.html" target="_blank" rel="noopener">Function Notation - Substitution</a>.</p>
+</li>
+<li>
+<p>Start by looking at each table and highlighting what is changing from the first row to the following rows.</p>
+</li>
+<li>
+<p>Then, match each table to the function that defines it.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>You may also want to have students complete <a href="https://teacher.desmos.com/activitybuilder/custom/60aa5c452505ed0802bfff38" target="_blank" rel="noopener">Matching Examples &amp; Function Definitions (Math) (Desmos)</a></p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_synthesize">Synthesize</h3>
+<div class="openblock lesson-instruction">
+<div class="content">
+<div class="paragraph">
+<p>You can think of <span class="gdrive-only">f3</span><script type="math/tex">\displaystyle f(3)</script> as a question.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>What question is it asking you to <span class="vocab">evaluate</span>?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>What is the value of <span class="gdrive-only">x + 8</span><script type="math/tex">\displaystyle x + 8</script> when <span class="gdrive-only">x</span><script type="math/tex">\displaystyle x</script> is 3?</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>What is another way you can ask it?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>What is <span class="gdrive-only">3 + 8</span><script type="math/tex">\displaystyle 3 + 8</script>?</em></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_function_notation_graphs_duration_15_minutes_"><span class="section-link"><a href="#_function_notation_graphs_duration_15_minutes_"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Function Notation (Graphs) <span class="duration">15 minutes</span></h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_overview_2">Overview</h3>
+<div class="paragraph">
+<p>Students will learn to connect function definitions to Graphs.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_launch_2">Launch</h3>
+<div class="openblock lesson-instruction">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>If <span class="gdrive-only">fx = x - 5</span><script type="math/tex">\displaystyle f(x) = x - 5</script>, what is the value of <span class="gdrive-only">f7</span><script type="math/tex">\displaystyle f(7)</script>, and why?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em><span class="gdrive-only">2</span><script type="math/tex">\displaystyle 2</script>. Because if we substitute 7 for x we get <span class="gdrive-only">7 - 5 = 2</span><script type="math/tex">\displaystyle 7 - 5 = 2</script></em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>What is the value of <span class="gdrive-only">f8</span><script type="math/tex">\displaystyle f(8)</script>?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em><span class="gdrive-only">3</span><script type="math/tex">\displaystyle 3</script>. Because if we substitute 8 for x we get <span class="gdrive-only">8 - 5 = 2</span><script type="math/tex">\displaystyle 8 - 5 = 2</script></em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>What is the value of <span class="gdrive-only">f9</span><script type="math/tex">\displaystyle f(9)</script>?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em><span class="gdrive-only">4</span><script type="math/tex">\displaystyle 4</script></em></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>For each of these inputs, we have an output. If we graph each input-output pair on the <span class="vocab">coordinate plane</span>, we can "see" the function as a <span class="vocab">line</span> on a graph.</p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s take a look at the graph of <span class="gdrive-only">fx = x - 5</span><script type="math/tex">\displaystyle f(x) = x - 5</script>.</p>
+</div>
+<div class="paragraph">
+<p><span class="centered-image"><span class="image-figure"><span class="image"><img src="images/44047925529c71ac.png" alt="graph of the line f(x) = x - 5" width="350" title="graph of the line f(x) = x - 5"></span><a href="images/44047925529c71ac.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></p>
+</div>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>How could we have determined that <span class="gdrive-only">f7 = 2</span><script type="math/tex">\displaystyle f(7) = 2</script> from looking at the graph, if we hadn&#8217;t started with the function definition?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>We could have looked for a point whose y-coordinate was 2. This would lead us to the point (7, 2), which tells us that the output of the function when x is 7 is 2.</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>From looking at the graph, what is the value of <span class="gdrive-only">f3</span><script type="math/tex">\displaystyle f(3)</script>?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>-2</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>What other values on this graph could we describe using function notation?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Answers will vary. For example: <span class="gdrive-only">f0 = -5</span><script type="math/tex">\displaystyle f(0) = -5</script> or <span class="gdrive-only">f0.5 = -4.5</span><script type="math/tex">\displaystyle f(0.5) = -4.5</script></em></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Even if we can&#8217;t see the <em>definition</em> of a function, we can reason about it just by looking at the graph!</p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s look at the graph below, which shows only a few points on the line drawn by a function:</p>
+</div>
+<div class="paragraph">
+<p><span class="centered-image"><span class="image-figure"><span class="image"><img src="images/f05367e3b20ebba4.png" alt="a series of points on a graph: (-4,1), (-2,-4), (-1,4), (-3,-3), (1,2), (2,4), (4,-1)" width="350" title="a series of points on a graph: (-4,1), (-2,-4), (-1,4), (-3,-3), (1,2), (2,4), (4,-1)"></span><a href="images/f05367e3b20ebba4.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></p>
+</div>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>From looking at the graph, what is the value of <span class="gdrive-only">f-2</span><script type="math/tex">\displaystyle f(-2)</script>?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>-4</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>What is the value of <span class="gdrive-only">f1</span><script type="math/tex">\displaystyle f(1)</script>?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>2</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>What is the value of <span class="gdrive-only">f3</span><script type="math/tex">\displaystyle f(3)</script>?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>There isn&#8217;t one! It&#8217;s undefined.</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>What other values on this graph could we describe using function notation?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Answers will vary. For example, <span class="gdrive-only">f-1 = 4</span><script type="math/tex">\displaystyle f(-1) = 4</script> or <span class="gdrive-only">f2 = 4</span><script type="math/tex">\displaystyle f(2) = 4</script></em></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<table class="tableblock frame-all grid-none stripes-none stretch strategy-box">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="title">Optional: Piecewise Functions</span></p>
+</div>
+<div class="paragraph">
+<p>When evaluating an expression for a piecewise function, points on the graph marked with hollow circles are boundary points, but not part of the solution set, so we ignore them and focus on the solid points. For example, on the graph below, when evaluating <span class="gdrive-only">f2</span><script type="math/tex">\displaystyle f(2)</script>, we ignore the hollow point at <span class="gdrive-only">(2, 4)</span><script type="math/tex">\displaystyle (2, 4)</script> and focus on the solid point at <span class="gdrive-only">2,3</span><script type="math/tex">\displaystyle (2,3)</script>, so <span class="gdrive-only">f2 = 3</span><script type="math/tex">\displaystyle f(2) = 3</script>.</p>
+</div>
+<div class="paragraph">
+<p><span class="centered-image"><span class="image-figure"><span class="image"><img src="images/2a81d98cc88ab02e.png" alt="graph of a piecewise function with 4 separate curvy and linear sections. Hollow endpoints at (0,2.5) and (2,4). solid endpoints at (0,3) and (2,3)" title="graph of a piecewise function with 4 separate curvy and linear sections. Hollow endpoints at (0,2.5) and (2,4). solid endpoints at (0,3) and (2,3)"></span><a href="images/2a81d98cc88ab02e.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>What is the value of <span class="gdrive-only">f0</span><script type="math/tex">\displaystyle f(0)</script> in the graph above?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>3</em></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_investigate_2">Investigate</h3>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Complete <a href="../../lessons/function-notation-wescheme/pages/function-notation-graphs.html" target="_blank" rel="noopener">Function Notation - Graphs</a>.</p>
+</li>
+<li>
+<p>If you&#8217;re ready for a challenge (piecewise functions!), try out <a href="../../lessons/function-notation-wescheme/pages/function-notation-graphs-pw.html" target="_blank" rel="noopener">Function Notation - Piecewise Graphs</a>.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_synthesize_2">Synthesize</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Can you think of any values that it would be difficult to determine from one of these graphs?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>It would be hard to be precise for many of the points on the graphs that curve. For example, <span class="gdrive-only">f4</span><script type="math/tex">\displaystyle f(4)</script> on the second graph would have to be a decimal value and it&#8217;s hard to know exactly what the decimal should be without a function definition to evaluate&#8230;&#8203;</em></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_function_notation_tables_duration_15_minutes_"><span class="section-link"><a href="#_function_notation_tables_duration_15_minutes_"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Function Notation (Tables) <span class="duration">15 minutes</span></h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_overview_3">Overview</h3>
+<div class="paragraph">
+<p>Students will learn to connect function definitions to input-output Tables.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_launch_3">Launch</h3>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Let&#8217;s take a look at a table of input-output pairs that satisfy the function <span class="gdrive-only">fx = x - 5</span><script type="math/tex">\displaystyle f(x) = x - 5</script>, and think about how could we have determined the value of <span class="gdrive-only">f7</span><script type="math/tex">\displaystyle f(7)</script> from looking at the table.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>We would just look for 7 in the x-column and see that the value beside it is 2.</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Looking at the table, what is the value of <span class="gdrive-only">f-10</span><script type="math/tex">\displaystyle f(-10)</script>?</p>
+<div class="ulist">
+<ul>
+<li>
+<p>-15</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 1ex"></span></p>
+</div>
+<table class="tableblock frame-all grid-all stretch sideways-pyret-table">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.667%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-10</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">13</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">y</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-15</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-10</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_investigate_3">Investigate</h3>
+<div class="paragraph lesson-instruction">
+<p>Complete <a href="../../lessons/function-notation-wescheme/pages/function-notation-tables.html" target="_blank" rel="noopener">Function Notation - Tables</a>.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_synthesize_3">Synthesize</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>What did you Notice?</p>
+</li>
+<li>
+<p>What did you Wonder?</p>
+</li>
+<li>
+<p>A few of the tables did not represent functions. Which ones?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>The last one in the top row, the last one in the middle row and the 3rd one in the bottom row.</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>How did the fact that those tables weren&#8217;t functions impact our ability to describe a value using function notation?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>When x appeared more than once in the table and was associated with different outputs, it wasn&#8217;t clear what number the expression should evaluate to.</em></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-18 16:15:45 -0400
+</div>
+</div>
+</div>
+</body>
+</html>

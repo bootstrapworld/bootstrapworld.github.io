@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Using Contracts</title>
+
+  <link rel="stylesheet" href="../../../lib/curriculum.css" />
+    <link rel="stylesheet" href="../../../lib/codemirror.css" />
+    <script src="../../../lib/codemirror.js"></script>
+    <script src="../../../lib/runmode.js"></script>
+    <script src="../../../lib/scheme2.js"></script>
+    <script src="../../../lib/pyret-mode.js"></script>
+    <script src="../../../lib/langtable.js"></script>
+    <script src="../../../lib/bootstraplesson.js"></script>
+    <script src="../../../dependency-graph.js"></script>
+    <script src="../../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"Using Contracts",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="workbookpage article wescheme" onload="renderSaveToDrive()">
+<div id="header">
+<h1>Using Contracts</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<style>
+	td { padding: 0 .5em !important; }
+	td p.tableblock { text-align: left; }
+	tr { height: 8ex; }
+	tr > td:nth-child(2) { vertical-align: top; text-align: left; }
+</style>
+<div class="openblock center">
+<div class="content">
+<div class="paragraph">
+<p><span class="obeyspaces"><code class="racket">ellipse</code></span><code class="racket">:: Number, Number, String, String -&gt; Image</code></p>
+</div>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stripes-none stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-middle"><div class="content"><div class="paragraph">
+<p><span class="centered-image"><span class="image-figure"><span class="image"><img src="../images/4a9485c8b9bebf92.png" alt="black outline of an ellipse that&#8217;s about 3 times as tall as it is wide" title="black outline of an ellipse that&#8217;s about 3 times as tall as it is wide"></span><a href="../images/4a9485c8b9bebf92.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></p>
+</div></div></td>
+<td class="tableblock halign-center valign-middle"><div class="content"><div class="paragraph">
+<p>Use the contract to write an expression that generates a similar image:</p>
+</div>
+<div class="paragraph">
+<p><span class="obeyspaces"><code class="racket">(ellipse 50 150 "outline" "black")</code></span></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><div class="content"><div class="paragraph">
+<p><span class="centered-image"><span class="image-figure"><span class="image"><img src="../images/bad7a903464a8936.png" alt="solid black ellipse that&#8217;s about 3 times as wide as it is tall" title="solid black ellipse that&#8217;s about 3 times as wide as it is tall"></span><a href="../images/bad7a903464a8936.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></p>
+</div></div></td>
+<td class="tableblock halign-center valign-middle"><div class="content"><div class="paragraph">
+<p>Use the contract to write an expression that generates a similar image:</p>
+</div>
+<div class="paragraph">
+<p><span class="obeyspaces"><code class="racket">(ellipse 150 50 "solid" "black")</code></span></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><div class="content"><div class="paragraph">
+<p>What changes with the first Number?</p>
+</div></div></td>
+<td class="tableblock halign-center valign-middle"><div class="content"><div class="paragraph">
+<p><em>width</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><div class="content"><div class="paragraph">
+<p>What about the shape changes with the second Number?</p>
+</div></div></td>
+<td class="tableblock halign-center valign-middle"><div class="content"><div class="paragraph">
+<p><em>height</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><div class="content"><div class="paragraph">
+<p>Write an expression using <span class="obeyspaces"><code class="racket">ellipse</code></span> to produce a circle.</p>
+</div></div></td>
+<td class="tableblock halign-center valign-middle"><div class="content"><div class="paragraph">
+<p><span class="obeyspaces"><code class="racket">(ellipse 50 50 "solid" "black")</code></span></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="openblock center">
+<div class="content">
+<div class="paragraph">
+<p><span class="obeyspaces"><code class="racket">regular-polygon</code></span><code class="racket">:: Number, Number, String, String -&gt; Image</code></p>
+</div>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stripes-none stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-middle"><div class="content"><div class="paragraph">
+<p><span class="centered-image"><span class="image-figure"><span class="image"><img src="../images/1c923b5a8094b6b0.png" alt="solid black pentagon" title="solid black pentagon"></span><a href="../images/1c923b5a8094b6b0.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></p>
+</div></div></td>
+<td class="tableblock halign-center valign-middle"><div class="content"><div class="paragraph">
+<p>Use the contract to write an expression that generates a similar image:</p>
+</div>
+<div class="paragraph">
+<p><span class="obeyspaces"><code class="racket">(regular-polygon 50 5 "solid" "black")</code></span></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><div class="content"><div class="paragraph">
+<p><span class="centered-image"><span class="image-figure"><span class="image"><img src="../images/a6fe1656b7ef4f71.png" alt="black outline of an octagon" title="black outline of an octagon"></span><a href="../images/a6fe1656b7ef4f71.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></p>
+</div></div></td>
+<td class="tableblock halign-center valign-middle"><div class="content"><div class="paragraph">
+<p>Use the contract to write an expression that generates a similar image:</p>
+</div>
+<div class="paragraph">
+<p><span class="obeyspaces"><code class="racket">(regular-polygon 25 8 "outline" "black")</code></span></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><div class="content"><div class="paragraph">
+<p>What changes with the first Number?</p>
+</div></div></td>
+<td class="tableblock halign-center valign-middle"><div class="content"><div class="paragraph">
+<p><em>the length of each side</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><div class="content"><div class="paragraph">
+<p>What about the shape changes with the second Number?</p>
+</div></div></td>
+<td class="tableblock halign-center valign-middle"><div class="content"><div class="paragraph">
+<p><em>the number of sides</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><div class="content"><div class="paragraph">
+<p>Use <span class="obeyspaces"><code class="racket">regular-polygon</code></span> to write an expression for a square!</p>
+</div></div></td>
+<td class="tableblock halign-center valign-middle"><div class="content"><div class="paragraph">
+<p><span class="obeyspaces"><code class="racket">(regular-polygon 50 4 "solid" "black")</code></span></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><div class="content"><div class="paragraph">
+<p>How would you describe a <strong>regular polygon</strong> to a friend?</p>
+</div></div></td>
+<td class="tableblock halign-center valign-middle"><div class="content"><div class="paragraph">
+<p><em>a closed shape made of equal-length straight lines, all joined at the same angle</em></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-18 16:15:39 -0400
+</div>
+</div>
+</body>
+</html>

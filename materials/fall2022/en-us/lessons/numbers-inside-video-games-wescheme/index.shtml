@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>The Numbers Inside Video Games</title>
+
+  <link rel="stylesheet" href="../../lib/curriculum.css" />
+    <script src="../../lib/langtable.js"></script>
+    <script src="../../lib/bootstraplesson.js"></script>
+    <script src="../../dependency-graph.js"></script>
+    <script src="../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"The Numbers Inside Video Games",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="article LessonPlan wescheme" onload="renderSaveToDrive()">
+<!--#include virtual="/menubar.ssi"-->
+<div id="body" onload="renderSaveToDrive()">
+<div id="header">
+<h1>The Numbers Inside Video Games</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<script>
+function preselect(klass) {
+  const items = document.getElementsByClassName(klass);
+  for (let i = 0; i < items.length; i++) {
+    items[i].style.display = 'none';
+  }
+  if (items.length > 0) {
+    items[0].style.display = 'block';
+  }
+}
+window.onload = function() {
+  preselect('alignedStandards');
+  preselect('alignedTextbooks');
+  preselect('alignedPractices');
+}
+function showStandardsAlignment() {
+  const selectTag = document.getElementsByClassName('standardsAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const stdTables = document.getElementsByClassName('alignedStandards');
+  //const intro = document.getElementsByClassName('alignedStandardsIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < stdTables.length; i++) {
+    const stdTable = stdTables[i];
+    stdTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optStd = opt.value;
+      for (let j = 0; j < stdTables.length; j++) {
+        const stdTable = stdTables[j];
+        if (stdTable.classList.contains(optStd)) {
+          stdTable.style.display = 'block';
+         // introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+function toggleNonPrereqDisplay() {
+  const inputTag = document.getElementsByClassName('sidebarinput')[0];
+  const checkedP = inputTag.checked;
+  const lessonTable = document.getElementsByClassName('sidebarlessons')[0];
+  const lis = lessonTable.getElementsByTagName('li');
+  for (let i = 0; i < lis.length; i++) {
+    const li = lis[i];
+    const lesson = li.getElementsByClassName('prerequisite');
+    if (lesson.length === 0) {
+      li.style.display = checkedP ? 'none' : 'block';
+    }
+  }
+}
+</script>
+<script>
+function showTextbooksAlignment() {
+  const selectTag = document.getElementsByClassName('textbooksAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const textbookTables = document.getElementsByClassName('alignedTextbooks');
+  //const intro = document.getElementsByClassName('alignedTextbooksIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < textbookTables.length; i++) {
+    const textbookTable = textbookTables[i];
+    textbookTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optTextbook = opt.value;
+      for (let j = 0; j < textbookTables.length; j++) {
+        const textbookTable = textbookTables[j];
+        if (textbookTable.classList.contains(optTextbook)) {
+          textbookTable.style.display = 'block';
+          //introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+</script>
+<script>
+function showPracticesAlignment() {
+  const selectTag = document.getElementsByClassName('practicesAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const practiceTables = document.getElementsByClassName('alignedPractices');
+  for (let i = 0; i < practiceTables.length; i++) {
+    const practiceTable = practiceTables[i];
+    practiceTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optPractice = opt.value;
+      for (let j = 0; j < practiceTables.length; j++) {
+        const practiceTable = practiceTables[j];
+        if (practiceTable.classList.contains(optPractice)) {
+          practiceTable.style.display = 'block';
+        }
+      }
+    }
+  }
+}
+</script>
+<div class="paragraph">
+<!-- </p>
+</div>
+--></div><div class="sidebar"><div id="toggle"></div><div class="paragraph"><!--
+<div class="paragraph">
+<p>
+--><div class="sidebarlessons"><strong>Lessons</strong>
+<ul></ul></div>
+<div class="sidebarstandards"><strong>Standards in this Lesson</strong>: <em>None</em></div>
+</div>
+<table class="tableblock frame-all grid-all stretch sidebarpractices">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Practices in this Lesson</strong>
+<select class="practicesAlignmentSelect"  onchange="showPracticesAlignment()"><option selected="selected" value="practices-CC"><a href="http://corestandards.org/Math/">Math</a></option></select></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist alignedPractices practices-CC">
+<div class="title"><a href="http://corestandards.org/Math/">Math</a></div>
+<dl>
+<dt class="hdlist1">MP.4</dt>
+<dd>
+<p>Model with mathematics</p>
+</dd>
+<dt class="hdlist1">MP.2</dt>
+<dd>
+<p>Reason abstractly and quantitatively</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<!-- </p>
+</div>
+--></div><!--
+<div class="paragraph">
+<p>
+-->
+</div>
+<div class="paragraph">
+<p><span class="other-proglang">(Also available in <a href="../../lessons/numbers-inside-video-games/index.shtml">Pyret</a>)</span></p>
+</div>
+<div class="paragraph description">
+<p>Students play a simple video game, identifying which components are constant, which are variables, and how they change. They discuss their favorite games and think about the work involved in making them.</p>
+</div>
+<table class="tableblock frame-all grid-all stripes-none stretch left-header preamble">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Lesson Goals</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Students will be able to:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Identify the objects in a video game that are changing.</p>
+</li>
+<li>
+<p>Use math language to describe what is changing about each object.</p>
+</li>
+<li>
+<p>Understand the time, money, and resources it takes to create a popular video game.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Student-Facing Lesson Goals</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>I can identify the objects in a video game.</p>
+</li>
+<li>
+<p>I can use math vocabulary to describe what is changing about each object.</p>
+</li>
+<li>
+<p>I understand the time, money, and resources it takes to create a popular video game.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Materials</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist materials-links">
+<ul>
+<li>
+<p><a href="https://docs.google.com/presentation/d/1XWbc0sGjgCGqHBVnT3GrS4d34mu3ZkQYBQ-Nf0c7wX0/" target="_blank" rel="noopener">Lesson Slides</a></p>
+</li>
+<li>
+<p><span class="StarterFile"><a href="https://www.wescheme.org/run?publicId=sggzRzgU5T" target="_blank" rel="noopener">Ninja Cat Game</a></span></p>
+</li>
+<li>
+<p><span class="materialSectionPlaceholder"> </span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/numbers-inside-video-games-wescheme/pages/NoticeAndWonder.html" target="_blank" rel="noopener">Notice and Wonder</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/numbers-inside-video-games-wescheme/pages/ReverseEngineerGame.html" target="_blank" rel="noopener">Reverse Engineer a video game</a></span></p>
+</li>
+<li>
+<p><strong>Classroom visual:</strong> <a href="javascript:showLangTable()">Language Table</a></p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Key Points for the Facilitator</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Students will need their own Google accounts.</p>
+</li>
+<li>
+<p>Take care to manage student expectations about what their game will be like.  Modern games are very complex!</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Supplemental Resources</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.nytimes.com/column/whats-going-on-in-this-graph" target="_blank" rel="noopener">What&#8217;s going on in this Graph?</a></p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="dlist glossary">
+<div class="title">Glossary</div>
+<dl>
+<dt class="hdlist1">coordinate</dt>
+<dd>
+<p>a number describing an object&#8217;s location</p>
+</dd>
+<dt class="hdlist1">variable</dt>
+<dd>
+<p>a name or symbol that stands for some value or expression, often a value or expression that changes</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_reverse_engineering_a_video_game_duration_25_minutes_"><span class="section-link"><a href="#_reverse_engineering_a_video_game_duration_25_minutes_"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Reverse Engineering a video game <span class="duration">25 minutes</span></h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_overview">Overview</h3>
+<div class="paragraph">
+<p>Students play a simple video game, and gradually break it down into parts. Doing so reveals how <span class="vocab">coordinates</span> play a crucial role in video games, and how animation is created via equations that govern the changing values of those coordinates.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_launch">Launch</h3>
+<div class="paragraph">
+<p>Play the <a href="https://www.wescheme.org/run?publicId=sggzRzgU5T" target="_blank" rel="noopener">Ninja Cat Game</a> onscreen while students watch. Purposely make mistakes while playing the game, which should elicit responses/direction from students.</p>
+</div>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Take turns playing the game in pairs.</p>
+</li>
+<li>
+<p>After you&#8217;ve both had a chance to play, write down what you <em>notice</em> about the game on <a href="../../lessons/numbers-inside-video-games-wescheme/pages/NoticeAndWonder.html" target="_blank" rel="noopener">Notice and Wonder</a>.</p>
+</li>
+<li>
+<p>"Notice"s should be statements, not questions. What stood out to you? What do you remember?</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Crowdsource students' Notices.</p>
+</div>
+<div class="paragraph lesson-instruction">
+<p>What do you <em>wonder</em> about the game? What questions do you have about how it works? Write these down on <a href="../../lessons/numbers-inside-video-games-wescheme/pages/NoticeAndWonder.html" target="_blank" rel="noopener">Notice and Wonder</a>.</p>
+</div>
+<div class="paragraph">
+<p>Crowdsource students' Wonders.</p>
+</div>
+<table class="tableblock frame-all grid-none stripes-none stretch strategy-box">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="title">Pedagogy Note: Notice &amp; Wonder</span></p>
+<p class="tableblock">This pedagogy is a <a href="https://www.nctm.org/noticeandwonder/" target="_blank" rel="noopener">widely-used best practice in Math-Ed</a>, and is used throughout this course. In the "Notice" phase, students are asked to crowd-source their observations. No observation is too small or too silly! By listening to other students' observations, students may find themselves taking a closer look at the game. The "Wonder" phase involves students raising questions, but they must also explain the context for those questions. Sharon Hessney (moderator for the NYTimes excellent <a href="https://www.nytimes.com/column/whats-going-on-in-this-graph" target="_blank" rel="noopener">What&#8217;s going on in this Graph?</a> activity) sometimes calls this "what do you wonder&#8230;&#8203;and <strong>why</strong>?". Both of these phases should be done in groups or as a whole class, with adequate time given to each.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_investigate">Investigate</h3>
+<div class="openblock lesson-instruction">
+<div class="content">
+<div class="paragraph">
+<p>Students complete the <a href="../../lessons/numbers-inside-video-games-wescheme/pages/ReverseEngineerGame.html" target="_blank" rel="noopener">Reverse Engineer a video game</a> worksheet in pairs.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>1st Column: What are all the various <em>things</em> in this game? <em>(A dog, Clouds, etc.)</em></p>
+</li>
+<li>
+<p>2nd Column: For each of those "things", what is changing about them? <em>(Location, Position, etc.)</em></p>
+</li>
+<li>
+<p>3rd Column: For each change, how is it modeled mathematically? What <span class="vocab">variable</span>(s) does the program need to keep track of?<em>(x-coordinate, y-coordinate, amount, etc.)</em></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_common_misconceptions">Common Misconceptions</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Students are likely to describe what the character is <em>doing</em>, as opposed to <em>what changes</em>. For example: "The dog is moving to the left" is not actualy describing the property being changed (position, place, location, etc).</p>
+</li>
+<li>
+<p>Students may write down what they <em>hope</em> is changeable, as opposed to what actually changes. It&#8217;s common for students to say the cat&#8217;s costume is changing, because they assume the cat will somehow "level up" if they get enough points.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_synthesize">Synthesize</h3>
+<div class="paragraph">
+<p>The main idea here is to understand that while we see images on a screen, the computer only sees a small set of variables, which uniquely model the state of the game. The way those numbers change determines how the game behaves, and we can add features to the game if we&#8217;re willing to keep track of more variables.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If the x- and y-coordinates are each numbers, how many numbers does it take to represent a single frame of the video game?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Six: 2 for the cat, and 1 each for the dog, cloud, ruby, and score</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>How are those numbers changing - or <em>varying</em> - as the game plays? When do they increase? Decrease?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>The cat&#8217;s y-coordinate increases when they jump and decreases when they fall. x-coordinates increase when a character moves right, and decreases when they move left. The score increases when the cat gets a ruby or jumps on the dog.</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>How many variables would we need if the dog could also move up and down?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Seven: we&#8217;d need to add the dog&#8217;s y-coordinate.</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>How many variables would we need to have a two-player game?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>(Sample answer) Eight: we&#8217;d need to add a second set of x-y coordinates.</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>How many variables would we need if the entire game was in 3d?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>(Sample answer) Nine: we&#8217;d need to add z-coordinates to each character.</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>How many variables would we need to keep track of in a modern video game?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>A whole lot&#8201;&#8212;&#8201;Thousands. Millions!</em></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_connecting_to_real_games_duration_25_minutes_"><span class="section-link"><a href="#_connecting_to_real_games_duration_25_minutes_"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Connecting to Real Games <span class="duration">25 minutes</span></h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_overview_2">Overview</h3>
+<div class="paragraph">
+<p>Students apply this way of thinking to more complex, real-world games. They also get a sense for how much work is involved in creating games like that.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_launch_2">Launch</h3>
+<div class="paragraph">
+<p>Ask students to share out their favorite current video game. Write the names of the games on the board.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_investigate_2">Investigate</h3>
+<div class="paragraph lesson-instruction">
+<p>Let&#8217;s choose one current, popular game to discuss.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>How long do you think it took to create that game?</p>
+</li>
+<li>
+<p>How <em>many people</em> do you think it takes to create a game like that?</p>
+</li>
+<li>
+<p>How <em>much money</em> does it take to create a game like that?</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Collect students estimates for each of the questions above.</p>
+</div>
+<div class="paragraph">
+<p><strong>Optional:</strong> Once students have made their estimates, have students use the Internet to research these questions and compare the actual numbers to their estimates.</p>
+</div>
+<div class="paragraph">
+<p><strong>Answers:</strong> There&#8217;s a lot of variability, especially between game consoles and cell phone games! But here&#8217;s a few sample numbers:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6668%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Title</th>
+<th class="tableblock halign-center valign-top">Time</th>
+<th class="tableblock halign-center valign-top">Team Size</th>
+<th class="tableblock halign-center valign-top">Budget</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Call of Duty: Modern Warfare 2</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">2 years</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">500+</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">50m+</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Final Fantasy VII</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">3 years</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">100+</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">40-45m</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Shadow of the Tomb Raider</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">3+ years</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">100+</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">75m+</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The goal here is not to discourage students from the possibility of eventually creating a game like their favorite game, but to manage expectations given our limited resources (time, money, and people).  By starting with this game project, students are learning transferable skills that can help them later on in learning new programming languages and creating bigger projects.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_synthesize_2">Synthesize</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Share-back: have students share their estimates with the class. Was anything drastically higher or lower than they expected?</p>
+</li>
+<li>
+<p>What does this tell us about making modern games?</p>
+</li>
+<li>
+<p>Are we likely to create games like the ones you researched?</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The 3d, two-player version of NinjaCat needed a lot more numbers than the simple one you saw here, <em>but the actual concepts at work are the same</em>. Even if we don&#8217;t have time to make games like the ones we chose here, you&#8217;ll learn the same concepts just by making a simpler one.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-18 16:15:44 -0400
+</div>
+</div>
+</div>
+</body>
+</html>

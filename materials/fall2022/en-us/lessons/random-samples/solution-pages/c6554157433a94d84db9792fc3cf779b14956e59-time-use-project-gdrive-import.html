@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Time Use</title>
+<style>
+/* Overall document font */
+* {font-family: Lato, Arial, Helvetica, sans-serif;}
+
+/* document headings */
+h1,.lesson-section-1 {color: #75328A;}
+h1{font-size: 32px; font-family: sans-serif;}
+table.section-heading *, .lesson-section-1 h2{font-size: 32px; font-weight: 100;}
+table.section-heading{width: 100%;}
+table.section-heading td:last-child{text-align: right; color: #d9d2e9;}
+
+/* preamble section */
+table.preamble td {padding: 10px;}
+table.preamble td:first-child{background: #b7d893; width: 25%;}
+table.preamble td:first-child p {font-weight: bold; margin: 5px;}
+
+/* content used throughout the body */
+table{ border-collapse: collapse; border: none; }
+table.grid-all.frame-all {border: solid 1px black;}
+table.grid-none.frame-none {border-width: 0px;}
+
+.big {font-size: 30pt;}
+.vocab{font-weight: bold; font-style: italic;}
+.right{text-align: right;}
+.acknowledgment {
+  border-top: solid 1px black; 
+  font-style: italic; 
+  font-size: 8pt;
+}
+.lesson-point {
+  border-top: solid 1px black; 
+  border-bottom: solid 1px black; 
+  color: black;
+  font-weight: bold;
+}
+
+.web-page-only, #footer { display: none; visibility: hidden; }
+
+/* Callout boxes */
+.strategy-box, .notice-box {
+  background: #efefef;
+  border: solid 5px !important;
+  margin: 15px auto;
+  width: 100%;
+}
+.strategy-box { border-color: #1a73b5 !important; }
+.notice-box   { border-color: #7747a5 !important; }
+.strategy-box td, .notice-box td{ padding: 10px; }
+.strategy-box .title, .notice-box .title{
+  width: 100%;
+  display: block;
+  font-weight: bold;
+  font-size: 24px;
+  clear: both;
+  margin: 100px;
+}
+.strategy-box p.tableblock:first-child, .notice-box p.tableblock:first-child{
+  text-align: center;
+  padding-bottom: 15px;
+}
+.strategy-box .title { color: #1a73b5; }
+.notice-box   .title { color: #7747a5; }
+.strategy-box a, .notice-box a { color: blue; text-decoration: underline; }
+
+/* "Tables" of Evaluation */
+.operator{border-bottom: solid 1px black; text-align: center;}
+.operator * {text-align: center;}
+td {padding: 0px 10px; font-size: 14px;}
+table.expression {
+    font-family:"Courier New", Monaco, monospace;
+    border:     solid 1px black;
+    font-size:  1px;
+    max-width:  400px;
+    color:      #666666;
+    display:    inline-block;
+}
+table.args {border: none; text-align: center;}
+
+.wescheme-string,     .cm-scheme-string    {color: green;}
+.wescheme-number,     .cm-scheme-number    {color: blue;}
+.wescheme-boolean,    .cm-scheme-boolean   {color: darkred;}
+.wescheme-character,  .cm-scheme-character {color: orange;}
+.wescheme-symbol,     .cm-scheme-symbol    {color: steelblue;}
+.wescheme-comment,    .cm-scheme-comment   {color: orange; }
+
+.racket, .pyret, .studentAnswerCode, .studentAnswer, .pyretkeyword, .keyword_only {
+    font-family:"Courier New", Monaco, monospace !important; 
+    color: black;
+}
+
+/* Design Recipe */
+.recipe_instructions { font-style: italic; }
+table.recipe_title {
+  color:              white;
+  background:         gray;
+  display:            block;
+  padding:            0px;
+  font-size:          1.1rem;
+  font-weight:        bold;
+}</style>
+
+    <script src="../../../lib/langtable.js"></script>
+    <script src="../../../dependency-graph.js"></script>
+    <script src="../../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:window.location.href,
+    filename:"Time Use",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="workbookpage article pyret" onload="renderSaveToDrive()">
+<span id="header">
+<h1>Time Use</h1>
+
+  <span id="savetodrive-div"></span>
+
+</span>
+<span id="content">
+<span id="preamble_disabled" class="lessonSummary">
+<span class="sectionbody">
+<span class="paragraph description">
+<p>Students investigate the amount of time they spend interacting with technology and doing homework as compared with other Americans.</p>
+</span>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<h2 id="_the_issue">The Issue</h2>
+<span class="sectionbody">
+<span class="paragraph">
+<p>There have been many <a href="https://www.washingtonpost.com/postlive/teens-are-spending-more-time-consuming-media-on-mobile-devices/2013/03/12/309bb242-8689-11e2-98a3-b3db6b9ac586_story.html">reports</a> lately about people spending large amounts of time interacting with technology and the Internet. We are going to explore some questions about time use, which will help us to better understand issues of time spent interacting with technology.</p>
+</span>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<h2 id="_objectives">Objectives</h2>
+<span class="sectionbody">
+<span class="paragraph">
+<p>During this project, you will compare yourself to the U.S. population to discover similarities and differences in how you use your time. You will use plots, statistics, and tables to uncover these similarities and differences.</p>
+</span>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<h2 id="_phases_of_the_project">Phases of the Project</h2>
+<span class="sectionbody">
+<span class="sect2 lesson-section-2">
+<h3 id="_1_data_collection">1. Data Collection</h3>
+<span class="paragraph">
+<p>There are two phases of data collection.</p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p>Create a copy of <a href="https://docs.google.com/spreadsheets/d/1EmZUnOhRIyQrgFrh3r16VRXfHQaeG2LytFeq2a2uSWE/copy">this Google spreadsheet</a> to record your time use over a designated five-day period. It is recommended that surveys be completed before school, after school, in the evening, and before bed.</p>
+</li>
+<li>
+<p>Find graphs related to time use by conducting an online search using terms like, “How do Americans use their time?” <a href="https://flowingdata.com/2015/11/10/counting-the-hours/">Here</a> is one possible resource to check out (from FlowingData).</p>
+</li>
+</ul>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_2_asking_a_meaningful_statistical_question">2. Asking a Meaningful Statistical Question</h3>
+<span class="paragraph">
+<p>Once you have all of your data and have looked at several graphics online about America’s time use, you will declare your statistical question for this project. Some suggestions are below, but feel free to develop your own based on your analysis of the data.</p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p>On average, how long do I spend on homework compared with students across the country?</p>
+</li>
+<li>
+<p>Do people who identify as male, female or non-binary take longer to groom themselves?</p>
+</li>
+<li>
+<p>Are there groups of students who spend their time similarly to one another?</p>
+</li>
+</ul>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_3_sharing_results">3. Sharing Results</h3>
+<span class="paragraph">
+<p>You will create a slideshow or poster sharing your results. Your presentation must include:</p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p>A clear summary of YOUR time use data, represented by plots, tables, photos, and paragraphs.</p>
+</li>
+<li>
+<p>A clear summary of America’s time use data, represented by plots, data, tables, photos, and paragraphs.</p>
+</li>
+<li>
+<p>A strong statistical question based on the data that you collect.</p>
+</li>
+<li>
+<p>A clear explanation of your answer to that question, based on the data.</p>
+</li>
+<li>
+<p>A discussion of some of the challenges of this project, for instance: What made it hard to collect data? Did this affect the quality of data?</p>
+</li>
+</ul>
+</span>
+<span class="paragraph">
+<p>(Based on Joy Straub&#8217;s adaptation of the Time Use project from <a href="https://www.introdatascience.org/">IDS at UCLA</a>)</p>
+</span>
+</span>
+</span>
+</span>
+<span class="sect1 acknowledgmentsect">
+<span class="sectionbody">
+<span class="openblock acknowledgment"><hr/>
+<span class="content">
+<span class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</span>
+</span>
+</span>
+</span>
+</span>
+</span>
+<span id="footer">
+<span id="footer-text">
+Last updated 2022-10-17 19:42:10 -0400
+</span>
+</span>
+</body>
+</html>

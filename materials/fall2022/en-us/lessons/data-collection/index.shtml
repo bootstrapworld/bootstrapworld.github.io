@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Collecting Data</title>
+
+  <link rel="stylesheet" href="../../lib/curriculum.css" />
+    <link rel="stylesheet" href="../../lib/codemirror.css" />
+    <script src="../../lib/codemirror.js"></script>
+    <script src="../../lib/runmode.js"></script>
+    <script src="../../lib/scheme2.js"></script>
+    <script src="../../lib/pyret-mode.js"></script>
+    <script src="../../lib/langtable.js"></script>
+    <script src="../../lib/bootstraplesson.js"></script>
+    <script src="../../dependency-graph.js"></script>
+    <script src="../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"Collecting Data",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="article LessonPlan pyret" onload="renderSaveToDrive()">
+<!--#include virtual="/menubar.ssi"-->
+<div id="body" onload="renderSaveToDrive()">
+<div id="header">
+<h1>Collecting Data</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<script>
+function preselect(klass) {
+  const items = document.getElementsByClassName(klass);
+  for (let i = 0; i < items.length; i++) {
+    items[i].style.display = 'none';
+  }
+  if (items.length > 0) {
+    items[0].style.display = 'block';
+  }
+}
+window.onload = function() {
+  preselect('alignedStandards');
+  preselect('alignedTextbooks');
+  preselect('alignedPractices');
+}
+function showStandardsAlignment() {
+  const selectTag = document.getElementsByClassName('standardsAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const stdTables = document.getElementsByClassName('alignedStandards');
+  //const intro = document.getElementsByClassName('alignedStandardsIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < stdTables.length; i++) {
+    const stdTable = stdTables[i];
+    stdTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optStd = opt.value;
+      for (let j = 0; j < stdTables.length; j++) {
+        const stdTable = stdTables[j];
+        if (stdTable.classList.contains(optStd)) {
+          stdTable.style.display = 'block';
+         // introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+function toggleNonPrereqDisplay() {
+  const inputTag = document.getElementsByClassName('sidebarinput')[0];
+  const checkedP = inputTag.checked;
+  const lessonTable = document.getElementsByClassName('sidebarlessons')[0];
+  const lis = lessonTable.getElementsByTagName('li');
+  for (let i = 0; i < lis.length; i++) {
+    const li = lis[i];
+    const lesson = li.getElementsByClassName('prerequisite');
+    if (lesson.length === 0) {
+      li.style.display = checkedP ? 'none' : 'block';
+    }
+  }
+}
+</script>
+<script>
+function showTextbooksAlignment() {
+  const selectTag = document.getElementsByClassName('textbooksAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const textbookTables = document.getElementsByClassName('alignedTextbooks');
+  //const intro = document.getElementsByClassName('alignedTextbooksIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < textbookTables.length; i++) {
+    const textbookTable = textbookTables[i];
+    textbookTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optTextbook = opt.value;
+      for (let j = 0; j < textbookTables.length; j++) {
+        const textbookTable = textbookTables[j];
+        if (textbookTable.classList.contains(optTextbook)) {
+          textbookTable.style.display = 'block';
+          //introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+</script>
+<script>
+function showPracticesAlignment() {
+  const selectTag = document.getElementsByClassName('practicesAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const practiceTables = document.getElementsByClassName('alignedPractices');
+  for (let i = 0; i < practiceTables.length; i++) {
+    const practiceTable = practiceTables[i];
+    practiceTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optPractice = opt.value;
+      for (let j = 0; j < practiceTables.length; j++) {
+        const practiceTable = practiceTables[j];
+        if (practiceTable.classList.contains(optPractice)) {
+          practiceTable.style.display = 'block';
+        }
+      }
+    }
+  }
+}
+</script>
+<div class="paragraph">
+<!-- </p>
+</div>
+--></div><div class="sidebar"><div id="toggle"></div><div class="paragraph"><!--
+<div class="paragraph">
+<p>
+--><div class="sidebarlessons"><strong>Lessons</strong>
+<ul></ul></div>
+</div>
+<table class="tableblock frame-all grid-all stretch sidebarstandards">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Standards in this Lesson</strong>
+<select class="standardsAlignmentSelect"  onchange="showStandardsAlignment()"><option selected="selected" value="standards-K12CS">K12CS</option><option value="standards-Oklahoma">Oklahoma</option></select></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist alignedStandards standards-K12CS">
+<div class="title"><a href="https://k12cs.org">K-12CS Standards</a></div>
+<dl>
+<dt class="hdlist1">6-8.Data and Analysis.Collection</dt>
+<dd>
+<p>People design algorithms and tools to automate the collection of data by computers. When data collection is automated, data is sampled and converted into a form that a computer can process. For example, data from an analog sensor must be converted into a digital form. The method used to automate data collection is influenced by the availability of tools and the intended use of the data.</p>
+</dd>
+<dt class="hdlist1">9-12.Data and Analysis.Collection</dt>
+<dd>
+<p>Data is constantly collected or generated through automated processes that are not always evident, raising privacy concerns. The different collection methods and tools that are used influence the amount and quality of the data that is observed and recorded.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Oklahoma">
+<div class="title"><a href="https://sde.ok.gov/oklahoma-academic-standards">Oklahoma Standards</a></div>
+<dl>
+<dt class="hdlist1">OK.3.DA.CVT.01</dt>
+<dd>
+<p>Collect and organize data in various visual formats.</p>
+</dd>
+<dt class="hdlist1">OK.4.DA.CVT.01</dt>
+<dd>
+<p>Organize and present collected data visually to highlight comparisons.</p>
+</dd>
+<dt class="hdlist1">OK.5.DA.CVT.01</dt>
+<dd>
+<p>Organize and present collected data to highlight comparisons and support a claim.</p>
+</dd>
+<dt class="hdlist1">OK.A1.D.1.2</dt>
+<dd>
+<p>Collect data and use scatterplots to analyze patterns and describe linear relationships between two variables. Using graphing technology, determine regression lines and correlation coefficients; use regression lines to make predictions and correlation coefficients to assess the reliability of those predictions.</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch sidebarpractices">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Practices in this Lesson</strong>
+<select class="practicesAlignmentSelect"  onchange="showPracticesAlignment()"><option selected="selected" value="practices-SJ"><a href="https://www.learningforjustice.org/sites/default/files/2017-06/TT_Social_Justice_Standards_0.pdf">Social Justice</a></option><option value="practices-MLR"><a href="https://achievethecore.org/peersandpedagogy/developing-math-language-routines/">Math Lang. Routines</a></option><option value="practices-CC"><a href="http://corestandards.org/Math/">Math</a></option><option value="practices-K12CS"><a href="https://k12cs.org">K12CS</a></option><option value="practices-NGSS"><a href="https://ngss.nsta.org/practicesfull.aspx">Science and Engineering</a></option></select></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist alignedPractices practices-SJ">
+<div class="title"><a href="https://www.learningforjustice.org/sites/default/files/2017-06/TT_Social_Justice_Standards_0.pdf">Social Justice</a></div>
+<dl>
+<dt class="hdlist1">SJ.14</dt>
+<dd>
+<p>Students will recognize that power and privilege influence relationships on interpersonal, intergroup and institutional levels and consider how they have been affected by those dynamics.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedPractices practices-MLR">
+<div class="title"><a href="https://achievethecore.org/peersandpedagogy/developing-math-language-routines/">Math Lang. Routines</a></div>
+<dl>
+<dt class="hdlist1">MLR.5</dt>
+<dd>
+<p>Co-Craft Questions and Problems</p>
+</dd>
+<dt class="hdlist1">MLR.3</dt>
+<dd>
+<p>Clarify, Critique and Correct</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedPractices practices-CC">
+<div class="title"><a href="http://corestandards.org/Math/">Math</a></div>
+<dl>
+<dt class="hdlist1">MP.3</dt>
+<dd>
+<p>Construct viable arguments and critique the reasoning of others</p>
+</dd>
+<dt class="hdlist1">MP.5</dt>
+<dd>
+<p>Use appropriate tools strategically</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedPractices practices-K12CS">
+<div class="title"><a href="https://k12cs.org">K12CS</a></div>
+<dl>
+<dt class="hdlist1">P2</dt>
+<dd>
+<p>Collaborating Around Computing</p>
+</dd>
+<dt class="hdlist1">P6</dt>
+<dd>
+<p>Testing and Refining Computational Artifacts</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedPractices practices-NGSS">
+<div class="title"><a href="https://ngss.nsta.org/practicesfull.aspx">Science and Engineering</a></div>
+<dl>
+<dt class="hdlist1">SEP.8</dt>
+<dd>
+<p>Obtaining, Evaluating, and Communicating Information</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<!-- </p>
+</div>
+--></div><!--
+<div class="paragraph">
+<p>
+-->
+</div>
+<style>
+img { border: solid 1px; box-shadow: 1px 1px 1px 0px gray; }
+.hygiene-tools li { margin-left: 3rem; margin-bottom: 4ex; max-width: 550px; }
+</style>
+<div class="paragraph description">
+<p>Students learn about the importance of careful data collection, by confronting a "dirty" dataset. They then design a simple survey of their own, gather their data, and import it into Pyret</p>
+</div>
+<table class="tableblock frame-all grid-all stripes-none stretch left-header preamble">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Lesson Goals</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Students will be able to&#8230;&#8203;</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Identify different data-hygiene problems that can mess up analysis</p>
+</li>
+<li>
+<p>Use response validation in Google Forms</p>
+</li>
+<li>
+<p>Import data from a Google Sheet into Pyret</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Student-facing Lesson Goals</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Know when data is "dirty" - and should be avoided!</p>
+</li>
+<li>
+<p>Know how to collect clean data</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Materials</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist materials-links">
+<ul>
+<li>
+<p><a href="https://docs.google.com/presentation/d/1hl1fYRGVTppTSJRuZHdP4DvLUlDmlW0v-jo4Bs36pU8/" target="_blank" rel="noopener">Lesson Slides</a></p>
+</li>
+<li>
+<p><span class="StarterFile"><a href="https://code.pyret.org/editor#share=1qpq3isP-1NcOWmGXzq7Iw02GQcUszoI2&v=6788e10" target="_blank" rel="noopener">Survey of Eighth Graders and their Favorite Desserts Starter File</a></span></p>
+</li>
+<li>
+<p><span class="StarterFile"><a href="https://docs.google.com/forms/d/e/1FAIpQLSfxv9sN_2P1Dxs500Cu5PxBniKHHUXX_2Ef5a_7RcE9GOKmwQ/viewform" target="_blank" rel="noopener">Height vs. Wingspan Survey</a></span></p>
+</li>
+<li>
+<p><span class="materialSectionPlaceholder"> </span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/data-collection/pages/survey-analysis.html" target="_blank" rel="noopener">Analyzing Survey Results When Data is Dirty</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/data-collection/pages/dirty-data.html" target="_blank" rel="noopener">Dirty Data!</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/data-collection/pages/bad-survey.html" target="_blank" rel="noopener">Bad Questions Make Dirty Data</a></span></p>
+</li>
+<li>
+<p><span class="OptProject">[<a href="../../lessons/data-collection/pages/survey-design.html" target="_blank" rel="noopener">Design a Survey</a>] [<a href="../../lessons/data-collection/pages/rubric-survey-design.html" target="_blank" rel="noopener">rubric</a>]</span></p>
+</li>
+<li>
+<p><span class="Optional OnlineExercise"><a href="https://www.nytimes.com/2017/05/10/opinion/the-census-wont-collect-lgbt-data-thats-a-problem.html" target="_blank" rel="noopener">The Census Won&#8217;t Collect L.G.B.T. Data. That&#8217;s a Problem (Nytimes)</a></span></p>
+</li>
+<li>
+<p><strong>Classroom visual:</strong> <a href="javascript:showLangTable()">Language Table</a></p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_when_data_gets_dirty_duration_15_minutes_"><span class="section-link"><a href="#_when_data_gets_dirty_duration_15_minutes_"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>When Data Gets Dirty! <span class="duration">15 minutes</span></h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_overview">Overview</h3>
+<div class="paragraph">
+<p>Students analyze a "dirty" dataset to develop an understanding of why it&#8217;s important to have "clean" data.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_launch">Launch</h3>
+<div class="paragraph">
+<p>There are lots of reasons to gather data:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A company might want to survey its customers to see if they are happy with the product.</p>
+</li>
+<li>
+<p>We might want to gather data on plant growth to see whether a plant grows faster with a lot or a little sun.</p>
+</li>
+<li>
+<p>The CDC might gather data on symptoms to see how serious a disease is</p>
+</li>
+<li>
+<p>An airline could gather data on fuel usage to see which airplane routes are the most efficient.</p>
+</li>
+<li>
+<p>We might want to gather data on our friends to see what&#8217;s stressing them out, or our classmates to see which teachers are the easiest!</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Not all data is created equal.</strong> Only <em>clean</em> data can be properly processed and analyzed. But what does it mean for data to be clean? What does it mean for data to be dirty?_</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_investigate">Investigate</h3>
+<div class="paragraph">
+<p>Humans make mistakes, and that can happen when we are collecting data or entering data. Either way, the result is dirty data. There is a <em>lot</em> of dirty data out there that Data Scientists have to deal with!</p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s take a look at some dirty data.</p>
+</div>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Open the <a href="https://code.pyret.org/editor#share=1qpq3isP-1NcOWmGXzq7Iw02GQcUszoI2&v=6788e10" target="_blank" rel="noopener">Survey of Eighth Graders and their Favorite Desserts Starter File</a>.</p>
+</li>
+<li>
+<p>Answer the questions on <a href="../../lessons/data-collection/pages/survey-analysis.html" target="_blank" rel="noopener">Analyzing Survey Results When Data is Dirty</a>.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_synthesize">Synthesize</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>What were some ways that the data was "dirty"?</p>
+</li>
+<li>
+<p>What ideas do you have for how the survey designers could have solicited better data?</p>
+</li>
+</ul>
+</div>
+<table class="tableblock frame-all grid-none stripes-none stretch strategy-box">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="title">Pedagogy Note!</span></p>
+<p class="tableblock">This could be an opportunity to have students practice cleaning data and importing a google sheet into a pyret starter file. If you want to take the time to have your students work on these skills and see the difference of what the file looks like cleaned up, have them make a copy of the <a href="https://docs.google.com/spreadsheets/d/1Hv9eqiwQ3h2YvdLmm9_vuZuJpa2WsW4ENZsa2kI1pFs/" target="_blank" rel="noopener">google sheet</a>, clean the data by hand, change the google file id in <a href="https://code.pyret.org/editor#share=1qpq3isP-1NcOWmGXzq7Iw02GQcUszoI2&v=6788e10" target="_blank" rel="noopener">Survey of Eighth Graders and their Favorite Desserts Starter File</a>, click "Run" and build the displays again to see how different they look with "clean" data.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_cleaning_data_duration_15_minutes_"><span class="section-link"><a href="#_cleaning_data_duration_15_minutes_"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Cleaning Data <span class="duration">15 minutes</span></h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_overview_2">Overview</h3>
+<div class="paragraph">
+<p>Students analyze a sample dataset to consider the different ways that data can be dirty.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_launch_2">Launch</h3>
+<div class="paragraph">
+<p>Sometimes data is so "dirty" that it can&#8217;t even be processed by tools like Pyret! Here are four ways that data can be dirty:</p>
+</div>
+<div class="paragraph">
+<p>(1) <strong>Missing Data</strong> - A column containing some cells with data, but some cells left blank.</p>
+</div>
+<div class="paragraph">
+<p>(2) <strong>Inconsistent Types</strong> - A column where some values have one data type and some cells have another. For example, a <code class="pyret">years</code> column where almost every cell is a Number, but one cell contains the string <code class="pyret">"5 years old"</code>.</p>
+</div>
+<div class="paragraph">
+<p>(3) <strong>Inconsistent Units</strong> - A column where the data types are the same, but they represent different units. For example, a <code class="pyret">weight</code> column where some entries are in pounds but others are in kilograms.</p>
+</div>
+<div class="paragraph">
+<p>(4) <strong>Inconsistent Naming</strong> - Inconsistent spelling and capitalization for entries lead to them being counted as different. For example, a species column where some entries are "cat" and others are "Cat" will not give us a full picture of the cats.</p>
+</div>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Open <a href="https://docs.google.com/spreadsheets/d/1wLPE6i4P7TMWxpcOnOHGMWBNYopwHf7GpdZMnbgosqA/edit?usp=sharing" target="_blank" rel="noopener">New Animals!</a> and complete <a href="../../lessons/data-collection/pages/dirty-data.html" target="_blank" rel="noopener">Dirty Data!</a> in pairs or small groups.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Have students share their results when they are finished.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_investigate_2">Investigate</h3>
+<div class="paragraph">
+<p>Pyret is pretty smart, and does a lot of checking to make sure data is clean before analyzing it. But many tools - like Google Sheets, Microsoft Excel, etc. - don&#8217;t. Suppose you tried to analyze this data in a tool that doesn&#8217;t do all this checking&#8230;&#8203;</p>
+</div>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>What would happen if you tried to make a pie chart from a categorical column, but three of the cells were blank?</p>
+</li>
+<li>
+<p>What would happen if you tried to take a histogram of a quantitative column, but half the cells were Strings instead of Numbers?</p>
+</li>
+<li>
+<p>What would happen if you made a scatter plot examining <code class="pyret">pounds</code> v. <code class="pyret">weeks</code>, but two of the cells in the <code class="pyret">weeks</code> column were actually showing the <em>days</em> to adoption?</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Sometimes, there&#8217;s an easy way to clean up the data. Chanel and Bibbles have String values for their weights, but we can easily change them to be numbers representing pounds.</p>
+</div>
+<div class="paragraph">
+<p>But what if the data is missing, like the <code class="pyret">weight</code> for our dogs? Or what if it&#8217;s weird data that we know is wrong but we don&#8217;t know how to fix it, like the <code class="pyret">time to adoption</code> for Boss and Porche?</p>
+</div>
+<div class="paragraph lesson-point">
+<p>It&#8217;s never as simple as just deleting dirty rows!</p>
+</div>
+<div class="paragraph">
+<p>Suppose we decided to delete all the rows with blank cells, removing Mona, Rover, Susie Q, and Happy. How might that bias our analysis? <em>Removing all the dogs makes it look like this shelter doesn&#8217;t have any!</em></p>
+</div>
+<div class="paragraph">
+<p>Suppose we decided to delete all the rows with weird data, having inconsistent types or units we don&#8217;t recognize? We could delete Boss and Porche, but how might that bias our analysis? <em>Removing all the female lizards might affect the kind of food or habitat the shelter needs to buy!</em></p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_synthesize_2">Synthesize</h3>
+<div class="paragraph">
+<p>These animal examples were a useful way to illustrate the problem, but dirty data shows up <em>everywhere</em>. Imagine a dataset about people in your town, which asks about height, religion, race, address, and job.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>If unemployed people leave the <code class="pyret">job</code> field blank, why would it be a problem to delete those rows?</p>
+</li>
+<li>
+<p>Suppose the <code class="pyret">height</code> field is full of junk data. Some people leave it blank, some write their height in inches, some write it in centimeters, some write a combination like "5 feet, 9 inches" and others write "I&#8217;m taller than my brother." Can we just delete all those rows?</p>
+</li>
+<li>
+<p>Suppose the <code class="pyret">race</code> question had people choose from a list. What might happen to our data if the list left out an option for one group of people?</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_data_hygiene_duration_20_minutes_"><span class="section-link"><a href="#_data_hygiene_duration_20_minutes_"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Data Hygiene <span class="duration">20 minutes</span></h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_overview_3">Overview</h3>
+<div class="paragraph">
+<p>Students open a google form survey containing "bad" questions. They identify why the questions are problematic, and then create a copy of the survey with their proposed fixes.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_launch_3">Launch</h3>
+<div class="paragraph">
+<p>The way we ask questions - and check responses - plays a big role in how clean our data is.</p>
+</div>
+<div class="paragraph">
+<p>It is often said that a person&#8217;s height is exactly the same as their "wingspan" (the length from fingertip to fingertip when their arms are outstretched). Suppose we want to test this for ourselves, by surveying students at a school.</p>
+</div>
+<div class="paragraph">
+<p>Open <a href="https://docs.google.com/forms/d/e/1FAIpQLSfxv9sN_2P1Dxs500Cu5PxBniKHHUXX_2Ef5a_7RcE9GOKmwQ/viewform" target="_blank" rel="noopener">Height vs. Wingspan Survey</a>, so that students can see it on the projector, tv, or their own screens. This Google form was <em>intentionally designed to gather bad data!</em> Can you see anything wrong with it?</p>
+</div>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Open <a href="https://docs.google.com/forms/d/e/1FAIpQLSfxv9sN_2P1Dxs500Cu5PxBniKHHUXX_2Ef5a_7RcE9GOKmwQ/viewform" target="_blank" rel="noopener">Height vs. Wingspan Survey</a>.</p>
+</li>
+<li>
+<p>Complete <a href="../../lessons/data-collection/pages/bad-survey.html" target="_blank" rel="noopener">Bad Questions Make Dirty Data</a> in pairs or small groups.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>While it&#8217;s almost impossible to <em>guarantee</em> 100% clean data, most survey tools include advanced options to help Data Scientists get data that is as clean possible. Here&#8217;s an overview of those tools:</p>
+</div>
+<div class="openblock hygiene-tools">
+<div class="content">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><span class="right"><span class="image-figure"><span class="image"><img src="images/fad9e164aec60a8e.png" alt="required" title="required"></span><a href="images/fad9e164aec60a8e.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span> <strong>Required Questions</strong> - By making a question "required", we can eliminate missing data and blank cells. Which questions on the survey should be required?
+<span style="clear: both;display: block"></span></p>
+</li>
+<li>
+<p><span class="right"><span class="image-figure"><span class="image"><img src="images/0e8469e77c772628.png" alt="format" title="format"></span><a href="images/0e8469e77c772628.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span> <strong>Question Format</strong> - When you have a fixed number of categories, a dropdown can ensure that everyone selects one - and only one! - category. Questions A and C might be a good candidates for dropdowns. Question C is especially bad, because it allows respondents to select multiple grades!
+<span style="clear: both;display: block"></span></p>
+</li>
+<li>
+<p><span class="right"><span class="image-figure"><span class="image"><img src="images/e1b39b006c1fdce1.png" alt="description" title="description"></span><a href="images/e1b39b006c1fdce1.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span> <strong>Descriptive Instructions</strong> - Sometimes it&#8217;s helpful to just add instructions! This can remind respondents to use inches instead of centimeters, for example, or give them extra guidance to answer accurately.
+<span style="clear: both;display: block"></span></p>
+</li>
+<li>
+<p><span class="right"><span class="image-figure"><span class="image"><img src="images/49a0751d10a7c826.png" alt="validation" title="validation"></span><a href="images/49a0751d10a7c826.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span> <strong>Adding Validation</strong> - Most survey tools allow you to specify whether some data should be a number or a string, which helps guard against inconsistent types. Often, you can even specify parameters for the data as well, such as "strings that are email addresses", or "numbers between 24 and 96". Questions B and E would benefit from some validation. <span class="right"><span class="image-figure"><span class="image"><img src="images/d45b2dea4c0752a7.png" alt="validation" title="validation"></span><a href="images/d45b2dea4c0752a7.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span>
+<span style="clear: both;display: block"></span></p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_investigate_3">Investigate</h3>
+<div class="paragraph lesson-instruction">
+<p><a href="https://docs.google.com/forms/d/1gm-3Ts8LTVkrWBZmDneWc36HxkU8tzcmh_yEt7mbWPg/copy" target="_blank" rel="noopener">Make a copy of the bad survey</a>, and work in pairs or small groups to fix it!</p>
+</div>
+<div class="paragraph">
+<p>Have student share back what changes they made, and what they discussed.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_synthesize_3">Synthesize</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Have you ever taken a survey, where the answer you want to give isn&#8217;t listed?</p>
+</li>
+<li>
+<p>Have you ever taken a survey, where you just <em>know</em> the questions are going to result in bad data?</p>
+</li>
+<li>
+<p>When someone conducts a survey and provides a dataset from it, is it important for them to share the survey? Why or why not?</p>
+</li>
+<li>
+<p>When someone shares a dataset that they&#8217;ve cleaned or modified in some way, is it important for them to share their modifications? Why or why not?</p>
+</li>
+</ul>
+</div>
+<table class="tableblock frame-all grid-none stripes-none stretch strategy-box">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="title">Project Option: Designing a Survey</span></p>
+<p class="tableblock">In this project, students come up with a research question and <a href="../../lessons/data-collection/pages/survey-design.html" target="_blank" rel="noopener">Design a Survey</a> to gather data to answer it. They exchange surveys and try to "hack" each other&#8217;s study with garbage data. Teachers can have their students import the resulting spreadsheets into Pyret, and analyze the data using the skills and concepts they&#8217;ve already learned.</p>
+<p class="tableblock">Finally, this project can also be used to support <em>original data collection</em> for the final research paper.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_additional_exercises"><span class="section-link"><a href="#_additional_exercises"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Additional Exercises</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>If you are interested in digging into the idea that there&#8217;s lots of important data that&#8217;s not being collected, we recommend reading <a href="https://www.nytimes.com/2017/05/10/opinion/the-census-wont-collect-lgbt-data-thats-a-problem.html" target="_blank" rel="noopener">The Census Won&#8217;t Collect L.G.B.T. Data. That&#8217;s a Problem (Nytimes)</a> with your class.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-17 19:42:13 -0400
+</div>
+</div>
+</div>
+</body>
+</html>

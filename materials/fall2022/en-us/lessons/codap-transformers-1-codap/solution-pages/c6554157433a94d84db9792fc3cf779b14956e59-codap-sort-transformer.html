@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Sort Transformer</title>
+
+  <link rel="stylesheet" href="../../../lib/curriculum.css" />
+    <link rel="stylesheet" href="../../../lib/codemirror.css" />
+    <script src="../../../lib/codemirror.js"></script>
+    <script src="../../../lib/runmode.js"></script>
+    <script src="../../../lib/scheme2.js"></script>
+    <script src="../../../lib/pyret-mode.js"></script>
+    <script src="../../../lib/langtable.js"></script>
+    <script src="../../../lib/bootstraplesson.js"></script>
+    <script src="../../../dependency-graph.js"></script>
+    <script src="../../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"Sort Transformer",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="workbookpage article codap" onload="renderSaveToDrive()">
+<div id="header">
+<h1>Sort Transformer</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Make sure you’re logged into CODAP with the Animals Dataset open. Open the Transformers plugin, and select <code class="pyret">Sort</code>.</p>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 1ex"></span></p>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_creating_a_sort_transformer">Creating a Sort Transformer</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Select <code class="pyret">Sort</code> from the drop-down menu of Transformers.</p>
+</li>
+<li>
+<p>We want to give each Transformer a useful name, one which clearly describes what that Transformer does. Generally, a brief hyphenated description works - for instance: <code class="pyret">order-by-pounds</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="autonum">1</span> What would be a good name for a Transformer that organizes the table alphabetically by animals' names?</p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"><span class="solution">order-by-name.</span></span></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Type in the name you wrote above.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="autonum">2</span> Which dataset do you want CODAP to apply this Transformer to? <span class="fitb stretch"><span class="solution">Animals Dataset</span></span></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Select the appropriate dataset from the drop-down menu.</p>
+</li>
+<li>
+<p>Select <code class="pyret">Name</code> as the attribute to sort.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="autonum">3</span> Which direction will you select? Why?</p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"><span class="solution">"Ascending" sorts from A to Z, so I will select that.</span></span></p>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_applying_and_saving_the_sort_transformer">Applying and Saving the Sort Transformer</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><span class="autonum">4</span> Apply the Transformer. What happens?</p>
+</div>
+<div class="paragraph">
+<p><span class="solution">A copy of the original dataset is created.</span></p>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 1ex"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">5</span> What do you notice about the name of the new dataset?</p>
+</div>
+<div class="paragraph">
+<p><span class="solution">It has the Transformer&#8217;s customized name at the front, with the name of the original dataset in parentheses.</span></p>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 1ex"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">6</span> What happens when you save a Transformer?</p>
+</div>
+<div class="paragraph">
+<p><span class="solution">When I save a Transformer, a small box appears that has my Transformer&#8217;s name at the top. I will now be able to use the Transformer again, without inputting all of the different specifications.</span></p>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 1ex"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">7</span> How is saving a Transformer different from saving a dataset?</p>
+</div>
+<div class="paragraph">
+<p><span class="solution">Saving a dataset saves the table, but not the operations performed on it. Saved tables appear on the drop-down menu of datasets to transform. Saving a transformer lets us re-use an operation.</span></p>
+</div>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-17 19:41:46 -0400
+</div>
+</div>
+</body>
+</html>

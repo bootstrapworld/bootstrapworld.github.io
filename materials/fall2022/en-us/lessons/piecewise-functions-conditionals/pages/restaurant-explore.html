@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Alice&#8217;s Restaurant - Explore</title>
+
+  <link rel="stylesheet" href="../../../lib/curriculum.css" />
+    <link rel="stylesheet" href="../../../lib/codemirror.css" />
+    <script src="../../../lib/codemirror.js"></script>
+    <script src="../../../lib/runmode.js"></script>
+    <script src="../../../lib/scheme2.js"></script>
+    <script src="../../../lib/pyret-mode.js"></script>
+    <script src="../../../lib/langtable.js"></script>
+    <script src="../../../lib/bootstraplesson.js"></script>
+    <script src="../../../dependency-graph.js"></script>
+    <script src="../../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"Alice's Restaurant - Explore",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="workbookpage article pyret" onload="renderSaveToDrive()">
+<div id="header">
+<h1>Alice&#8217;s Restaurant - Explore</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<style>
+#content :not(.openblock.acknowledgment) p { line-height: 23pt; }
+#content .editbox {width: auto;}
+</style>
+<div class="paragraph">
+<p>Alice&#8217;s code has some new elements we haven&#8217;t seen before, so let&#8217;s experiment a bit to figure out how it works! <strong>Open the <a href="https://code.pyret.org/editor#share=1GScGyigfRPJDdCiGKGnISTXoVBm9f7aE" target="_blank" rel="noopener">Alice&#8217;s Restaurant Starter File</a>, click “Run”, and try using the <code class="pyret">cost</code> function in the Interactions window.</strong></p>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 2ex"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">1</span> What does <span class="obeyspaces"><code class="pyret">cost&#8203;(&#8203;"hamburger"&#8203;)</code></span> evaluate to?
+<span class="fitb stretch"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">2</span> What does <span class="obeyspaces"><code class="pyret">cost&#8203;(&#8203;"pie"&#8203;)</code></span> evaluate to?
+<span class="fitb stretch"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">3</span> What if you ask for <span class="obeyspaces"><code class="pyret">cost&#8203;(&#8203;"fries"&#8203;)</code></span>?
+<span class="fitb stretch"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">4</span> Explain what the function is doing in your own words.
+<span class="fitb stretch"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">5</span> What is the function&#8217;s name? <span class="fitb stretch"></span>
+Domain? <span class="fitb stretch"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">6</span> What is the name of its variable?
+<span class="fitb stretch"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">7</span> Alice says onion rings have gone up to $3.75. Change the <code class="pyret">cost</code> function to reflect this.</p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">8</span> Try adding menu items of your own. What&#8217;s your favorite?</p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">9</span> For an unknown food item, the function produces the String <code class="pyret">"That&#8217;s not on the menu!"</code> Is this a problem? Why or why not?</p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">10</span> Suppose Alice wants to calculate the price of a hamburger, <em>including a 5% sales tax</em>. Draw a Circle of Evaluation for the expression below.</p>
+</div>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-17 19:42:09 -0400
+</div>
+</div>
+</body>
+</html>

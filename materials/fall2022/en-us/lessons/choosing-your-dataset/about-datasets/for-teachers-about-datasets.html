@@ -1,0 +1,1667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Dataset Notes</title>
+
+  <link rel="stylesheet" href="../../../lib/curriculum.css" />
+    <link rel="stylesheet" href="../../../lib/codemirror.css" />
+    <script src="../../../lib/codemirror.js"></script>
+    <script src="../../../lib/runmode.js"></script>
+    <script src="../../../lib/scheme2.js"></script>
+    <script src="../../../lib/pyret-mode.js"></script>
+    <script src="../../../lib/langtable.js"></script>
+    <script src="../../../lib/bootstraplesson.js"></script>
+    <script src="../../../dependency-graph.js"></script>
+    <script src="../../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"Dataset Notes",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="workbookpage article canBeLongerThanAPage pyret" onload="renderSaveToDrive()">
+<div id="header">
+<h1>Dataset Notes</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div class="sect1 lesson-section-1">
+<h2 id="_descriptions_of_individual_datasets">Descriptions of Individual Datasets</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We&#8217;ve written a description of each dataset including suggestions and things to be aware of as you support students.  Given that these datasets are from the real world, they are not all equally conducive for all learning goals. Keep reading for pointers regarding this or jump straight to the subset of our collection that is of greatest interest to you by clicking on one of the links below.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#environment">The Environment &amp; Health</a></p>
+</li>
+<li>
+<p><a href="#education">Education</a></p>
+</li>
+<li>
+<p><a href="#politics">Politics</a></p>
+</li>
+<li>
+<p><a href="#sports">Sports</a></p>
+</li>
+<li>
+<p><a href="#entertainment">Entertainment</a></p>
+</li>
+<li>
+<p><a href="#education">Education</a></p>
+</li>
+<li>
+<p><a href="#nutrition">Nutrition</a></p>
+</li>
+</ul>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_datasets_requiring_calculations_to_convert_data_before_making_graphs">Datasets requiring calculations to convert data before making graphs</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Rhode Island Schools</p>
+</li>
+<li>
+<p>Marijuana Laws &amp; Arrests by State</p>
+</li>
+<li>
+<p>Countries</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_datasets_with_a_limited_number_of_categories">Datasets with a limited number of categories</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Presidents</p>
+</li>
+<li>
+<p>Countries</p>
+</li>
+<li>
+<p>Movies</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_datasets_with_a_huge_number_of_columns">Datasets with a huge number of columns</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>MLB</p>
+</li>
+<li>
+<p>U.S. Voter Turnout</p>
+</li>
+<li>
+<p>Air Quality, Pollution Sources &amp; Health in the U.S.</p>
+</li>
+<li>
+<p>Health By County</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_datasets_with_fairly_little_quantitative_data_well_suited_to_simpler_analysis_not_recommended_for_scatter_plots">Datasets with fairly little quantitative data (well-suited to simpler analysis, not recommended for scatter plots):</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>International Exhibition of Modern Art 1913</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_dataset_overviews">Dataset Overviews</h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="environment">The Environment &amp; Health</h3>
+
+</div>
+</div>
+</div>
+<div class="sect1 pyret">
+<h2 id="_global_waste_by_country">Global Waste by Country</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This dataset includes data from 174 countries that indicates their annual waste production as well as basic societal statistics that are associated with waste production.</p>
+</div>
+<div class="paragraph">
+<p>The dataset also includes the global region of countries, as well as a few basic indicators of national waste management practices.</p>
+</div>
+<div class="paragraph">
+<p>This dataset has a limited number of categories, making it accessible to any student.</p>
+</div>
+<div class="paragraph">
+<p>The columns of this dataset are defined to allow students to start analysis without much additional coding.</p>
+</div>
+<div class="paragraph">
+<p>This dataset is good for finding linear associations between two variables. Many of the variables are positively correlated with solid municipal waste production (total and per capita).</p>
+</div>
+<div class="paragraph">
+<p><strong>Column Titles:</strong>
+Name, Region, Economic Development, GDP per Capita (USD), Total Municipal Solid Waste per Year (tons), Population, Hazardous Waste per Year (tons), Has national agency for enforcing solid waste laws, Has national law governing solid waste management, MSW per Capita (tons/people), Hazardous Waste per Capita (tons/people), Percent Urban, Urbanization Rate, Human Development Index, Adult Obesity Rate by BMI</p>
+</div>
+<div class="paragraph">
+<p><strong>Have students&#8230;&#8203;</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>define a function</strong> urban-msw-trend, which takes two country names and returns true if the one with a greater MSW per capita also has a greater urban percentage, and has an increasing urbanization rate.</p>
+</li>
+<li>
+<p><strong>define a function</strong> number-urban, which computes the total amount of people within a country living in urban areas.</p>
+</li>
+<li>
+<p><strong>define a function</strong> total-gdp, which computes the total GDP of a country.</p>
+</li>
+<li>
+<p><strong>define a function</strong> number-of-subgroup, that takes a column and string, and determines how many times that string occurs as a value in that column. Use this function to determine how many countries in the dataset are in Sub-Saharan Africa, and how many have economies in transition.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Heads Up</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Strong Correlations: Urban percent and MSW per capita, Obesity Rate and MSW per capita, Population and MSW, Urban percent and HDI</p>
+</li>
+<li>
+<p><strong>Outlier to be aware of:</strong> Ukraine has an extremely high hazardous waste output. This value is from the World Bank dataset so it should be reputable, but from further research it does not seem to be indicative of the average annual hazardous waste output for Ukraine.</p>
+</li>
+<li>
+<p><strong>Outlier to be aware of:</strong> Island nations of Oceania tend to have much higher obesity rates than any other countries in the dataset.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1 datasheet datasheet pyret">
+<h2 id="_world_cities_proximity_to_ocean">World Cities: Proximity to Ocean</h2>
+<div class="sectionbody">
+<div class="openblock question">
+<div class="content">
+
+</div>
+</div>
+<div class="openblock answer-roman">
+<div class="content">
+<div class="paragraph">
+<p>This dataset looks at the 5000 most populous (as of 2020) cities in the world and their geographical information, such as elevation, country, continent, and distance from the nearest shoreline. The data comes from various sources, including the World Cities Database (for cities and population), the National Centers for Environmental Information (for worlds shoreline), JohnSnowLabs (for each country&#8217;s continent), and the World bank (for country GDP per capita).</p>
+</div>
+</div>
+</div>
+<div class="openblock question">
+<div class="content">
+
+</div>
+</div>
+<div class="openblock answer-roman">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>This dataset has a limited number of categories, making it accessible to any student.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="openblock question">
+<div class="content">
+
+</div>
+</div>
+<div class="openblock answer-roman">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The columns of this dataset are defined to allow students to start analysis without much additional coding.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Column Titles:</strong> Name, Country, Population (2020), Continent, Elevation (m), Distance to Shore (km), GDP per Capita ($) 2017. This refers to the country&#8217;s GDP per capita.</p>
+</div>
+</div>
+</div>
+<div class="paragraph question">
+<p><strong>Have students&#8230;&#8203;</strong></p>
+</div>
+<div class="openblock">
+<div class="content">
+
+</div>
+</div>
+<div class="openblock answer-roman">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>define a function</strong> is-poverty, which returns true if a city&#8217;s GDP per capita is below $15,000.</p>
+</li>
+<li>
+<p><strong>define a function</strong> is-climate-change-prone, which returns true if a city&#8217;s distance from shore is less than 20km and elevation is less than 10m.</p>
+</li>
+<li>
+<p><strong>define a function</strong> is-metropolis, which returns true if a city&#8217;s population is above 1 million dollars and GDP per capita is above $10,000.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 pyret">
+<h2 id="_earthquake_sequences_2000_2021_magnitude_7">Earthquake sequences, 2000-2021, Magnitude 7+</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This dataset looks at earthquake sequences recorded by the US Geological Survey that occured from 2000 to 2021, with the mainshock having a magnitude &gt;= 7.0. The dataset contains the geographic and economic information about the location, geologic data, and death/injury tolls.
+This dataset can be used to analyze what factors affect earthquakes, and model what makes an earthquake severe.
+This dataset has a large number of columns (18) that will excite some students and may overwhelm others. The columns of this dataset are defined to allow students to start analysis without much additional coding.</p>
+</div>
+<div class="paragraph">
+<p><strong>Column Titles:</strong> Timestamp, Location, GDP (Millions of USD), GDP per Capita (nearest USD), Year, Month, Weekday, Latitude, Longitude, Depth (km), Magnitude, Over Land?, Type of Earthquake, Plate No1, Plate No2, Tsunami?, Death Toll, Injury Toll</p>
+</div>
+<div class="paragraph">
+<p><strong>Have students&#8230;&#8203;</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>define a function</strong> high-toll, which returns true if a death and injury toll are higher than a certain threshold (to be determined by the student)</p>
+</li>
+<li>
+<p><strong>define a function</strong> pct-pacific, which computes the percentage of earthquakes that happen along a boundary of the Pacific plate.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Heads Up</strong>
+- It may be useful to combine death and injury tolls for correlation analysis.
+- The columns Depth, Magnitude, Death Toll, and Injury Toll all skew right.
+- The weakness of correlations in this data may prompt a discussion about sampling bias - this data only considers earthquakes with magnitude 7.0 or greater. The magnitude scale ranges from 0-10, so this subset is certainly not representative of all earthquakes.
+- <strong>Outliers to be aware of:</strong> there are some earthquakes with unusually high death/injury rates. Scatterplots including these will likely flatten all other data if using a linear axis.</p>
+</div>
+</div>
+</div>
+<div class="sect1 pyret">
+<h2 id="_air_quality_and_related_data_by_us_county">Air Quality and Related Data by US County</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This data mostly comes from censuses completed by either the federal or state government. Besides the census, the dataset also includes information from the U.S Energy and Information Administration and the Bureau of Economic Analysis The dataset can be narrowed down through the isolation of states or even geographical location.
+This dataset has many applications in the real world. For example, if the government wants to try to spread out new power plants, and try to understand how they might affect the population. The government also spends a lot of money on medicare, and one might be interested in lowering that amount by lowering some of the causes of disease.
+This dataset has a huge number of columns that will excite some students and may overwhelm others.
+The columns of this dataset are defined to allow students to start analysis without much additional coding. Though there are many columns that the students could use to narrow down the amount of rows which might count as additional coding.</p>
+</div>
+<div class="paragraph">
+<p><strong>Column Titles:</strong></p>
+</div>
+<div class="paragraph">
+<p>State, County, Full Name, FIPS Code, Median AQI, Median Income, Population Size, Urban, Rural, Metro, Rural-Urban Continuum Code, % White (Non-Hispanic), % Other Races (Hispanic Included), Estimated Asthma Prevalence in Population by Medicare Spending, Cancer Incidence Rate (cases per 100,000), Cancer Projection, Total Number of Power Plants, Primary Power Plant Type, Total C02 Emissions from Power Plants (tons), Mean Travel Time to Work (Minutes), Life Expectancy (years), Main Industry by # of Employees, % Agriculture, forestry, fishing and hunting of Total Industries, % Mining, quarrying, and oil and gas extraction of Total Industries, % Transportation and warehousing of Total Industries, Interstate Highway in County?</p>
+</div>
+<div class="paragraph">
+<p><strong>Have students&#8230;&#8203;</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Isolate factors by narrowing down the data by urban/rural/metropolitan areas, states, or main industry.</p>
+</li>
+<li>
+<p><strong>define a function</strong> pct-industry, which computes the percent of a certain industry in America by County</p>
+</li>
+<li>
+<p><strong>define a function</strong> state-income, that finds the median income for an entire state</p>
+</li>
+<li>
+<p><strong>define a function</strong> missing-counties, that given a full list of counties finds which ones are missing on the spreadsheet</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Heads Up</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The data does not include Minnesota as they do not publish medical information by county.</p>
+</li>
+<li>
+<p>The data used to include Puerto Rico but was taken out for the same reason. This is a shame, as Puerto Rico has incredibly high rates of Asthma which would be interesting to study.</p>
+</li>
+<li>
+<p>The data contains varying times of collection– for example, median income was collected in 2018, while the AQI data is from 2021. All data is post 2016.</p>
+</li>
+<li>
+<p>It might be helpful to find the population density in each county so we can understand the spread of some of the factors (such as power plants or interstate highways), although I believe the rural-urban continuum code is a good proxy.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1 pyret">
+<h2 id="_health_by_u_s_county_2021">Health by U.S. County 2021</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This dataset includes data from 2906 counties in the United States from <a href="https://www.countyhealthrankings.org/" class="bare">https://www.countyhealthrankings.org/</a> and is focused on indicators of the mental and physical health condition of these counties in 2021.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>This dataset has a huge number of columns that will excite some students and may overwhelm others.</p>
+</li>
+<li>
+<p>The columns of this dataset are defined to allow students to start analysis without much additional coding.</p>
+</li>
+<li>
+<p>Students are encouraged to investigate the correlation between Average Number of Physically Unhealthy Days and % Smokers/% Adults with Obesity/% Physically Inactive/% Excessive Drinking.</p>
+</li>
+<li>
+<p>Students are encouraged to investigate the correlation between Average Number of Mentally Unhealthy Days and Income Ratio/% Children in Single-Parent Households/ Severe Housing Problem, % Drive Alone to Work/% Long Commute - Drives Alone.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Column Titles:</strong>
+FIPS, County, State, % Fair or Poor Health, Average Number of Physically Unhealthy Days, Average Number of Mentally Unhealthy Days, % Smokers, % Adults with Obesity, % Physically Inactive, % Excessive Drinking, % Uninsured, % Completed High School, % Some College, % Unemployed, % Children in Poverty, 80th Percentile Income, 20th Percentile Incomer, Income Ratio, % Children in Single-Parent Households, Presence of Water Violation, % Severe Housing Problem, % Long Commute - Drives Alone</p>
+</div>
+<div class="paragraph">
+<p><strong>Have students&#8230;&#8203;</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>define a function</strong> is-in-ca, which returns “true” if a county belongs to California</p>
+</li>
+<li>
+<p><strong>define a function</strong> violate-water, which returns “true” if a county has water violation</p>
+</li>
+<li>
+<p><strong>define a function</strong> mentally-unhealthy, which returns “true” if a county has greater mentally unhealthy days than physically unhealthy days</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Heads Up</strong></p>
+</div>
+<div class="paragraph">
+<p><strong>Outliers to be aware of:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>There exists one state with only 21% completing high school and 1% attending college, a percentage significantly below all other counties included in the dataset.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Strong Correlations to be aware of:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>There exists a strong positive correlation between Average Number of Physically Unhealthy Days and Average Number of Mentally Unhealthy Days.</p>
+</li>
+<li>
+<p>There exists a very strong positive correlation between % Completed High School and % Some College.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Recommended calculation</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Income Ratio is exactly the quotient of 80th Percentile Income divided by 20th Percentile Income.</p>
+</li>
+<li>
+<p>All numbers in the dataset do not show their fractional parts, but they are not necessarily positive integers.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1 pyret">
+<h2 id="_covid_19">Covid-19</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This dataset includes COVID-19 data from 3128 counties of the USA from December 2021.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>This dataset has a huge number of columns that will excite some students and may overwhelm others.</p>
+</li>
+<li>
+<p>The columns of this dataset are defined to allow students to start analysis without much additional coding.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Column Titles:</strong> FIPS County Code, County Name, State, Population, Total Cases, Total Deaths, Cases per 100k, Deaths per 100k, Poverty Estimate, Poverty Percentage, Median Household Income, Dose 1 Administered, Dose 1 Administered %, Series Complete, Series Complete %, Booster Doses	Booster %, Social Vulnerability Index, Metro?</p>
+</div>
+<div class="paragraph">
+<p><strong>Have students&#8230;&#8203;</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Add a column for <code class="pyret">pct-poverty</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Heads Up</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Most data was taken from 27th December, 2021 when cases were picking up across US due to the Delta and Omicron variant.</p>
+</li>
+<li>
+<p>No US territories are mentioned. Some larger cities such as New York City were also removed in the data cleaning process</p>
+</li>
+<li>
+<p>Some values for Dose 1 Administered and its % equivalents were set at 0 although it is unlikely that this is the case. It is likely that the information was not available on that particular date.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1 pyret">
+<h2 id="_arctic_sea_ice">Arctic Sea Ice</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This dataset combines data on Arctic sea ice, global mean sea level variation, global average temperature anomalies, and atmospheric carbon dioxide levels.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>This dataset has a limited number of categories, making it accessible to any student.</p>
+</li>
+<li>
+<p>The columns of this dataset are defined to allow students to start analysis without much additional coding.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Column Titles:</strong>
+January Average Global Temperature Anomaly, February Average Global Temperature Anomaly,
+March Average Global Temperature Anomaly, April Average Global Temperature Anomaly,
+May Average Global Temperature Anomaly, June Average Global Temperature Anomaly, July Average Global Temperature Anomaly, August Average Global Temperature Anomaly, September Average Global Temperature Anomaly, October Average Global Temperature Anomaly, November Average Global Temperature Anomaly, December Average Global Temperature Anomaly, Anual Average Global Temperature Anomaly, Average Sea Ice Extent in the Arctic, Minimum Sea Ice Extent in the Arctic, Month Minimum Sea Ice Extent in the Arctic Occurred, Month Maximum Sea Ice Extent in the Arctic Occurred, Global Mean Sea Level Variation, GLobal CO2 Levels.</p>
+</div>
+<div class="paragraph">
+<p><strong>Have students&#8230;&#8203;</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>define a function</strong> variation-over-time which computes how much a variable has changed within a span of any two years.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Heads Up</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The difference between the maximum and minimum sea ice extent in the Arctic can be calculated to show the range in sea ice extent per year and how that may fluctuate.</p>
+</li>
+</ul>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="politics">Politics</h3>
+
+</div>
+</div>
+</div>
+<div class="sect1 pyret">
+<h2 id="_gerrymandering">Gerrymandering</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This dataset looks at the 2018 United States House of Representatives elections.
+It includes state-wise population and voter turnout data, as well as columns comparing
+the percentage of votes a particular party recieved with the number of seats they won.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>This dataset has a huge number of columns that will excite
+some students and may overwhelm others.</p>
+</li>
+<li>
+<p>The columns of this dataset are defined to allow students to
+start analysis without much additional coding.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Column Titles:</strong> Population, %Turnout, %Vote Democrat, %Vote Republican, Total Seats, Democrat Seats, Republican Seats, %Seats Democrat, %Seats Republican, Winning Party, Seats match vote (Computed for each state by multiplying %Vote Democrat and %Vote Republican by the Total Seats for that state. If the resultant "expected" number of seats can be rounded up or down to match the data in both the Democrat Seats and Republican Seats columns respectively, this field is true. Else false.)</p>
+</div>
+<div class="paragraph">
+<p><strong>Have students&#8230;&#8203;</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>define a function</strong> majority-turnout, which returns true if a state has a voter turnout of more than 50%.</p>
+</li>
+<li>
+<p><strong>define a function</strong> num-votes-dem, which returns the number of people who voted for Democratic party candidates in a given state.</p>
+</li>
+<li>
+<p><strong>define a function</strong> victory-margin, which returns the number of votes the winning party in a particular state won by.</p>
+</li>
+<li>
+<p><strong>define a function</strong> expected-seats-rep, which returns the number of seats you would expect Republican party candidates to win given the percentage of votes they received in a particular state.</p>
+</li>
+<li>
+<p><strong>define a function</strong> flipped-winner, which returns true if the party that recieved the majority of votes did not win the majority of seats in a given state.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Heads Up:</strong> Before computing the number of people who voted for either party, the state&#8217;s population would have to be multiplied by the percentage voter turnout.</p>
+</div>
+</div>
+</div>
+<div class="sect1 pyret">
+<h2 id="_nypd_stop_question_frisk_2019">NYPD Stop Question Frisk 2019</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This dataset includes nearly 9000 incidences of Stop, questions and frisk in NYC in 2019.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>This dataset mostly contains categorical data.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Column Titles:</strong> Description of Suspected Crimed, Minutes Observed, Searched?, Frisked?, Asked for Consent?, Consent Given?, Weapon Found?, Arrested?, Time of Stop, Month, Day, Issuing Officer Rank, Officer in Uniform?, Suspect Reported Age, Suspect Sex, Suspect Race Description, Suspect Eye Color, Suspect Hair Color, Demeanor of Suspect, Boro Where Stopped</p>
+</div>
+</div>
+</div>
+<div class="sect1 datasheet datasheet pyret">
+<h2 id="_marijuana_arrests_and_laws_by_state">Marijuana Arrests and Laws by State</h2>
+<div class="sectionbody">
+<div class="openblock question">
+<div class="content">
+
+</div>
+</div>
+<div class="openblock answer-roman">
+<div class="content">
+<div class="paragraph">
+<p>This dataset looks at marijuana arrest records for the year 2018 in 49 US States (data was unavailable for Florida), and breaks
+these arrests down by race. Each state also includes data for the years marijuana was legalized and/or decriminalized,
+and/or when medical marijuana was legalized.</p>
+</div>
+</div>
+</div>
+<div class="openblock question">
+<div class="content">
+
+</div>
+</div>
+<div class="openblock answer-roman">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>This dataset has a limited number of categories, making it accessible to any student.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="openblock question">
+<div class="content">
+
+</div>
+</div>
+<div class="openblock answer-roman">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The columns of this dataset require calculations to convert data before students start making graphs.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Column Titles:</strong>  State, All Drug Arrests, Total Marijuana Arrests, Total Marijuana Possession Arrests, Black Marijuana Possession Arrests, White Marijuana Possession Arrests, Black Population, White Population, Total Population, Marijuana Legalized (year), Marijuana Decriminalized (year), Medical Marijuana Legalized (year)</p>
+</div>
+</div>
+</div>
+<div class="paragraph question">
+<p><strong>Have students&#8230;&#8203;</strong></p>
+</div>
+<div class="openblock">
+<div class="content">
+
+</div>
+</div>
+<div class="openblock answer-roman">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>define a function</strong> pct-marijuana, which computes the percent of drug arrests that were marijuana arrests.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph question">
+<p><strong>Heads Up</strong></p>
+</div>
+<div class="openblock">
+<div class="content">
+
+</div>
+</div>
+<div class="openblock answer-roman">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>A few states have multiple dates for medical marijuana legalization, denoted by listing the two dates
+separated by a slash.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="openblock question">
+<div class="content">
+
+</div>
+</div>
+<div class="openblock answer-roman">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>In order to compare between states, percentages will need to be calculated. These could include
+the percentage of a population that is black or white, the percentage of marijuana arrests that were
+of a black or white person, or the percentage of total arrests that were for marijuana possession.</p>
+</li>
+<li>
+<p>It may also make sense to split data into groups depending on whether marijuana/medical marijuana was legalized, decriminalized, or illegal.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 pyret">
+<h2 id="_police_traffic_stops_durham_nc_2002_2013">Police Traffic Stops, Durham, NC 2002-2013</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This dataset looks at how many traffic stops in Durham, NC between 2002 and 2013 resulted in searches of the person stopped. Data is broken down by age, race and sex.</p>
+</div>
+<div class="paragraph">
+<p><strong>Column Titles:</strong> group, age, race, sex, stops, searches
+- Have students Define a function search-rate, which computes the percent of stops that result in searches.</p>
+</div>
+</div>
+</div>
+<div class="sect1 datasheet datasheet pyret">
+<h2 id="_refugees_2018">Refugees 2018</h2>
+<div class="sectionbody">
+<div class="openblock question">
+<div class="content">
+
+</div>
+</div>
+<div class="openblock answer-roman">
+<div class="content">
+<div class="paragraph">
+<p>This dataset looks at the countries of the world in 2018, recording the percent share of global refugees who originated from each country, as well as the personal security, civil liberty, and human development score of each country.</p>
+</div>
+</div>
+</div>
+<div class="openblock question">
+<div class="content">
+
+</div>
+</div>
+<div class="openblock answer-roman">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>This dataset has a limited number of categories, making it accessible to any student.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="openblock question">
+<div class="content">
+
+</div>
+</div>
+<div class="openblock answer-roman">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The columns of this dataset are defined to allow students to start analysis without much additional coding.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Column Titles:</strong> Country, Region, Percent of Global Population, Percent of Global Refugees Originating from This Country, Personal Security Index, Democracy Category, Civil Liberties Index, Human Development Index</p>
+</div>
+</div>
+</div>
+<div class="paragraph question">
+<p><strong>Have students&#8230;&#8203;</strong></p>
+</div>
+<div class="openblock">
+<div class="content">
+
+</div>
+</div>
+<div class="openblock answer-roman">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>define a function</strong> little-liberty, which returns true if a country&#8217;s civil liberties index is between 6 &amp; 7.</p>
+</li>
+<li>
+<p><strong>define a function</strong> much-liberty, which returns true if a country&#8217;s civil liberties index is between 1 &amp; 2.</p>
+</li>
+<li>
+<p><strong>define a function</strong> little-security, which returns true if a country’s personal security index is &lt;40.</p>
+</li>
+<li>
+<p><strong>define a function</strong> much-security, which returns true if a country’s personal security index is &gt;60.</p>
+</li>
+<li>
+<p><strong>define a function</strong> little-development, which returns true if a country’s human development index is &lt;0.4.</p>
+</li>
+<li>
+<p><strong>define a function</strong> much-development, which returns true if a country’s human development index is &gt;0.6.</p>
+</li>
+<li>
+<p><strong>define a function</strong> high-indices, which returns true if a country&#8217;s much-liberty, much-security, &amp; much-development all return true.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph question">
+<p><strong>Heads Up</strong></p>
+</div>
+<div class="openblock">
+<div class="content">
+
+</div>
+</div>
+<div class="openblock answer-roman">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Only three countries are in the Oceania category, and the same for the North America category.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="openblock question">
+<div class="content">
+
+</div>
+</div>
+<div class="openblock answer-roman">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>To compare regions of the world, a sieving/filtering function should be created to filter out countries by region.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 question pyret">
+<h2 id="_u_s_voter_turnout_1986_2018">U.S. Voter Turnout 1986-2018</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This dataset looks at demographics of the electorate.  Information is provided on what percentage of the electorate each group represents and how turnout for elections varies across age, educational attainment and race.</p>
+</div>
+<div class="paragraph">
+<p><strong>Column Titles:</strong>  year, Turnout Rate 18-29, Turnout Rate 30-44, Turnout Rate 45-59, Turnout Rate 60+, Share of Electorate 18-29, Share of Electorate 30-44, Share of Electorate 45-59, Share of Electorate 60+, Turnout Rate Less Than High School, Turnout Rate High School Grad, Turnout RateSome College to College Grad, Turnout Rate Post-Graduate, Share of Electorate Less Than High School, Share of Electorate High School Grad, Share of Electorate Some College to College Grad, Share of Electorate Post-Graduate, Turnout Rate Non-Hispanic White, Turnout Rate Non-Hispanic Black, Turnout Rate Hispanic, Turnout Rate Other, Share of Electorate Non-Hispanic White, Share of Electorate Non-Hispanic Black, Share of Electorate Hispanic, Share of Electorate Other</p>
+</div>
+</div>
+</div>
+<div class="sect1 pyret">
+<h2 id="_state_demographics">State Demographics</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This dataset includes all 50 states and the District of Columbia.</p>
+</div>
+<div class="paragraph">
+<p><strong>Column Titles:</strong> state, region, population 2010, population 2014, % bachelors or higher, % hs or higher, % homeowners, # of households, # of housing units, land area (square miles), % non-English at home, mean commute times (minutes), median household income (US$), per capita income (US$), % older than 65, % female, % under 18, % under 5, % in poverty, number of veterans</p>
+</div>
+<div class="paragraph">
+<p><strong>Have students&#8230;&#8203;</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>define a function</strong> pop-density, which computes the people per square mile.</p>
+</li>
+<li>
+<p><strong>define a function</strong> pct-change-pop, which computes the percent change in the population from 2010 to 2014..</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1 pyret">
+<h2 id="_countries_of_the_world">Countries of the World</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This dataset includes 192 countries.</p>
+</div>
+<div class="paragraph">
+<p><strong>Column Titles:</strong> Country, Life-expectancy in years, GDP (in US$), population, continent, has universal healthcare? (yes/no)</p>
+</div>
+<div class="paragraph">
+<p><strong>Have students&#8230;&#8203;</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>define a function</strong> gdp-per-capita, which divides the gdp by the population.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1 pyret">
+<h2 id="_u_s_income">U.S. Income</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This dataset covers the years 1967- 2015.</p>
+</div>
+<div class="paragraph">
+<p><strong>Column Titles:</strong>  Year, Number of Families, Percent in each income group (&lt;15k, 15k-25k, 25k-35k, 35k-50k, 50k-75k, 75k-100k, 100k-150k, 150k-200k, &gt;200k), median income, mean income</p>
+</div>
+</div>
+</div>
+<div class="sect1 pyret">
+<h2 id="_u_s_jobs">U.S. Jobs</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This dataset includes data about 140 occupations in the U.S. in 2019.
+For each occupation, this dataset records its occupation type, total number of employees, percentage of non-white employees, percentage of female employees, typical entry level educational requirement, annual median wage, weekly median wage, and female weekly median wage.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>This dataset has a huge number of columns that will excite some students and may overwhelm others.</p>
+</li>
+<li>
+<p>The columns of this dataset require calculations to convert data before students start making graphs.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Column Titles:</strong> Occupation, Occupation Type, Total Number of Employees, Percentage of Non-white Employees, Percentage of Female Employees, Typical Entry Level Educational Requirement, Annual Median Wage, Weekly Median Wage, Female Weekly Median Wage</p>
+</div>
+<div class="paragraph">
+<p><strong>Have students&#8230;&#8203;</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>define a function</strong> gender-wage-gap, which computes the numerical difference
+between female employees' weekly median wage and all employees' weekly median wage.</p>
+</li>
+<li>
+<p><strong>define a function</strong> female-wage-is-lower, which returns true if an occupation offers
+female employees a wage comparatively lower wage.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Heads Up</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Columns list the median wage for all employees and median wage for female employees. In order to look into gender income equality, wage gap would need to be calculated.</p>
+</li>
+<li>
+<p><strong>Outlier to be aware of:</strong> Occupation veterinarian offers significantly higher wage for female employees.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1 pyret">
+<h2 id="_u_s_presidents">U.S. Presidents</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This dataset includes all 45 presidents.</p>
+</div>
+<div class="paragraph">
+<p><strong>Column Titles:</strong> Nth, Name, home state, inauguration age, year started, year ended, party</p>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="sports">Sports</h3>
+
+</div>
+</div>
+</div>
+<div class="sect1 datasheet datasheet pyret">
+<h2 id="_esports_earnings">Esports Earnings</h2>
+<div class="sectionbody">
+<div class="openblock question">
+<div class="content">
+
+</div>
+</div>
+<div class="openblock answer-roman">
+<div class="content">
+<div class="paragraph">
+<p>This dataset includes data from 1998-2020 that comes from <a href="https://www.esportsearnings.com" class="bare">https://www.esportsearnings.com</a>, a publicly-sourced repository of information on esports earnings.</p>
+</div>
+</div>
+</div>
+<div class="openblock question">
+<div class="content">
+
+</div>
+</div>
+<div class="openblock answer-roman">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>This dataset has a limited number of categories, making it accessible to any student.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="openblock question">
+<div class="content">
+
+</div>
+</div>
+<div class="openblock answer-roman">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The columns of this dataset require calculations to convert data before students start making graphs.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Column Titles:</strong> game, release-date, genre, total-earnings (total earnings of all players in all tournaments), online-earnings (total earnings of all players in online-only tournaments), total-winners (total number of tournament winners in all tournaments), total tournaments (total number of tournaments that took place from the release date to 2020)</p>
+</div>
+</div>
+</div>
+<div class="paragraph question">
+<p><strong>Have students&#8230;&#8203;</strong></p>
+</div>
+<div class="openblock">
+<div class="content">
+
+</div>
+</div>
+<div class="openblock answer-roman">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>define a function</strong> online-ratio, which returns the ratio of online-earnings to total-earnings for a game.</p>
+</li>
+<li>
+<p><strong>define a function</strong> annual-earnings, which returns the average earnings per year since the release date for a game.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph question">
+<p><strong>Heads Up</strong></p>
+</div>
+<div class="openblock">
+<div class="content">
+
+</div>
+</div>
+<div class="openblock answer-roman">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Note that since the data is publicly sourced, there are games with no earnings and no tournaments. Additionally, the nature of the data means that there are a few extremely large outliers that the student will have to deal with when analyzing the data.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="openblock question">
+<div class="content">
+
+</div>
+</div>
+<div class="openblock answer-roman">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The data for many less popular games varies greatly due to one-off tournaments. Additionally, the number of games with zero tournaments and zero players may vary, as the data is publicly sourced. Thus, it is recommended that comparisons between genres be done with subsets containing the games with the highest earnings, as much more data is available for those games.</p>
+</li>
+<li>
+<p>Other metrics that may be interesting to the student for analysis are the average earnings per year since release and the average number of tournaments per year since the release year of the game or 1998&#8212;&#8203;whichever comes second.</p>
+</li>
+<li>
+<p>Keep in mind that the data only includes tournaments that occur from 1998 to 2020, even though some of the games included in the dataset were released before 1998.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 pyret">
+<h2 id="_mlb_hitting_stats_2018">MLB Hitting Stats (2018)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This dataset includes 30 teams.</p>
+</div>
+<div class="paragraph">
+<p><strong>Column Titles:</strong>  Team, League, <strong>28 Columns of Baseball stats!</strong>, Salary</p>
+</div>
+</div>
+</div>
+<div class="sect1 pyret">
+<h2 id="_nba_players_2018_2019">NBA Players 2018-2019</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This dataset includes selected box score stats for the NBA players from the 2018-2019 season.</p>
+</div>
+<div class="paragraph">
+<p><strong>Column Titles:</strong> id, name, was-traded, Team, Position, Age, Games Played, Minutes played per game, Free throws attempted, Free throw percentage, 2-point shots attempted, 2-point shot percentage, 3-point shots attempted, 3-point shots percentage, effective field goal percentage, true shooting percentage, height in inches</p>
+</div>
+<div class="paragraph">
+<p><strong>Heads Up:</strong> Players who were traded during the season are listed more than once, so that stats can be given for their time with each team they played for.</p>
+</div>
+</div>
+</div>
+<div class="sect1 pyret">
+<h2 id="_nfl_passing">NFL Passing</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This dataset includes stats on the top 102 NFL players of the 2019 season.</p>
+</div>
+<div class="paragraph">
+<p><strong>Column Titles:</strong> Rank, Name, Invited to ProBowl, Team, Position, Passes completed, Passes attempted, Percent of Passes Completed, Yards gained, Passing Touchdowns, Percentage of times intercepted when attempting to pass, Adjusted yards gained per pass attempted, Yards gained per pass completion, Yards gained per game played, Times sacked.</p>
+</div>
+</div>
+</div>
+<div class="sect1 pyret">
+<h2 id="_nfl_rushing">NFL Rushing</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This dataset includes stats on the top 334 NFL players of the 2019 season.</p>
+</div>
+<div class="paragraph">
+<p><strong>Column Titles:</strong> Rank, Name, Team, Age, Position, Games Played, Games Started, Attempts, Yards, Touchdowns, First-Downs, Longest, Yards-Average, Yards-Game, Fumbles</p>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="education">Education</h3>
+
+</div>
+</div>
+</div>
+<div class="sect1 pyret">
+<h2 id="_colleges_in_the_us_2019_2020">Colleges in the US (2019-2020)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This dataset includes data from 3232 post-secondary educational institutions in the United States during the school year (2019-2020).</p>
+</div>
+<div class="paragraph">
+<p>Students applying to colleges can use this dataset to evaluate their options given their monetary, locational, and other preferences.</p>
+</div>
+<div class="paragraph">
+<p>This dataset has a huge number of columns that will excite some students and may overwhelm others.</p>
+</div>
+<div class="paragraph">
+<p>The columns of this dataset require calculations to convert data before students start making graphs.</p>
+</div>
+<div class="paragraph">
+<p>Students should filter out a list of all schools in their state and compare them.
+Students should filter out a list of all schools in the “1500+” Converted SAT Range and compare them with a filtered list of all schools with less than 0.1 acceptance rate.</p>
+</div>
+<div class="paragraph">
+<p><strong>Column Titles:</strong></p>
+</div>
+<div class="paragraph">
+<p>School Name, City, State, Urbanicity, Region, Control, Program, Highest Degree, Gender, Operating, Main Campus, HBCU, Indigenous, US Service, Converted SAT Range, Undergrad Population, Acceptance Rate, Part-time Student Ratio, Average Monthly Faculty Salary, In-state Tuition, Out-of-state Tuition, Pell Grant, Average Cost of Attendance, Average Net Price</p>
+</div>
+<div class="paragraph">
+<p><strong>Have students&#8230;&#8203;</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>define</strong> a function all-pell-grant, which computes the total number of undergraduate students in all universities that received a Pell grant.</p>
+</li>
+<li>
+<p><strong>define</strong> a function same-tuition, which returns true if a school has the same in-state and out-of-state tuition.</p>
+</li>
+<li>
+<p><strong>define</strong> a function average-fin-aid, which returns the difference between a school’s cost of attendance and net price.</p>
+</li>
+<li>
+<p><strong>define</strong> a function low-accept, which returns true if a school has less than a 10% acceptance rate.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Heads Up</strong></p>
+</div>
+<div class="paragraph">
+<p>Note that a few schools may have a negative net price, suggesting that some students may actually end up receiving money for attending the particular school.
+Acceptance rates of 1 mean virtually everyone is accepted, though there may still be special circumstances in which a particular student is rejected.
+Some schools lacking significant data may be excluded from this dataset of 3232 colleges.</p>
+</div>
+</div>
+</div>
+<div class="sect1 datasheet datasheet pyret">
+<h2 id="_college_majors_by_gender_employment_rates_earnings">College Majors by Gender, Employment Rates &amp; Earnings</h2>
+<div class="sectionbody">
+<div class="openblock question">
+<div class="content">
+
+</div>
+</div>
+<div class="openblock answer-roman">
+<div class="content">
+<div class="paragraph">
+<p>This dataset examines census data from 2015-2019, recording gender ratios,
+employment levels, and median income based on college major.</p>
+</div>
+</div>
+</div>
+<div class="openblock question">
+<div class="content">
+
+</div>
+</div>
+<div class="openblock answer-roman">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>This dataset has a limited number of categories, making it accessible to any student.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="openblock question">
+<div class="content">
+
+</div>
+</div>
+<div class="openblock answer-roman">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The columns of this dataset are defined to allow students to
+start analysis without much additional coding.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Column Titles:</strong> Major, Major Category, Men, Women, Total, Employed, Unemployed, Median Income</p>
+</div>
+</div>
+</div>
+<div class="paragraph question">
+<p><strong>Have students&#8230;&#8203;</strong></p>
+</div>
+<div class="openblock">
+<div class="content">
+
+</div>
+</div>
+<div class="openblock answer-roman">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>define a function</strong> pct-women, which computes the percent of people
+who studied each major and are women</p>
+</li>
+<li>
+<p><strong>define a function</strong> unemployment-rate, which computes the percent of
+people who are unemployed for each major</p>
+</li>
+<li>
+<p><strong>define a function</strong> rank-by-income, which sorts the majors from
+highest to lowest median income</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 pyret">
+<h2 id="_r_i_schools">R.I. Schools</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This is data from 271 Rhode Island public &amp; charter schools.</p>
+</div>
+<div class="paragraph">
+<p><strong>Column Titles:</strong> District Name, School Name, % passing ELA in 2018, % passing Math in 2018, Charter School (yes/no?), Number of students free lunch eligible, Number of students reduced lunch eligible, Number of students by racial/ethnic group (American Indian/Alaska Native, Asian/Pacific Islander, Hispanic, Black, White, 2 or more races), male, female, total population.</p>
+</div>
+<div class="paragraph">
+<p><strong>Have students:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>define a function</strong> pct-black, which computes the percent of black students at a school.</p>
+</li>
+<li>
+<p><strong>define a function</strong> pct-hispanic, which computes the percent of black students at a school. </p>
+</li>
+<li>
+<p><strong>define a function</strong> high-math, which returns true if a school has more than 60% of students passing the state math test.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Heads up!</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Other than ELA and Math Passing Percentages, columns list the number of students.  <em>In order to compare between schools, percentages would need to be calculated.</em></p>
+</li>
+<li>
+<p>Free and Reduced lunch students are listed as two separate quantities. Usually we combine these numbers for analysis.</p>
+</li>
+<li>
+<p>Outlier to be aware of: Classical High School</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1 pyret">
+<h2 id="_evolution_of_college_admissions_uc_vs_other_public_schools">Evolution of College Admissions (UC vs Other Public Schools)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This dataset includes data from the common datasets of all 9 colleges in the UC system and 2 colleges from the CSU system
+This dataset can be used to analyze the future of college admissions and whether UCs have found a way to increase diversity at schools despite the affirmative action ban.
+This  dataset has a limited number of categories, making it accessible to any student.
+The columns of this dataset are defined to allow students to start analysis without much additional coding.
+I would not recommend taking too many random subsets of data since the analysis hinges on the examination of schools over time. Random sets may result in some unnecessary holes in the data.</p>
+</div>
+<div class="paragraph">
+<p><strong>Column Titles:</strong></p>
+</div>
+<div class="paragraph">
+<p>College + Year, College, Year, Admission Rate, Most Dominant Race, Percentage of Most Dominant Race, Percentage of Whites, Percentage of Asians, Percentage of Blacks/Latinos/Native Americans, GPA (average), Percentage of In-State Enrollees, UC?, Weighted GPA?</p>
+</div>
+<div class="paragraph">
+<p><strong>Have students&#8230;&#8203;</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>define a function</strong> that calculates the difference between the percentage of the most dominant ethnicity and the underrepresented ethnicities for a row.</p>
+</li>
+<li>
+<p><strong>define a function</strong> that takes in a row and a threshold and returns whether the average GPA of that row exceeds the threshold.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Heads Up</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Because of the COVID pandemic, 2020 data from each of the schools may skew from the general trend.</p>
+</li>
+<li>
+<p>There is a large chunk of UC Irvine data missing because the GPA was not reported from those schools/the common dataset was missing.</p>
+</li>
+<li>
+<p>All non-UC percentages except for the in-state percentage are hand-calculated.</p>
+</li>
+<li>
+<p>There is a noticeable negative correlation between the year and admission rates and a positive correlation between the year and average GPA.</p>
+</li>
+<li>
+<p>For UCs, there is a negative correlation between the year and in-state percentage.</p>
+</li>
+<li>
+<p>For UCs, there is a positive correlation between the year and underrepresented ethnicities percentage.</p>
+</li>
+</ul>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="entertainment">Entertainment</h3>
+
+</div>
+</div>
+</div>
+<div class="sect1 pyret">
+<h2 id="_pokemon">Pokemon</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This dataset contains information about all eight generations of Pokemon, which is current up to 2022. This dataset was further extended by a student at Mission Vista High School in CA!</p>
+</div>
+<div class="paragraph">
+<p><strong>Column Titles:</strong> number, name, type1, type2, total, hp, attack, defense, special-attack, special-defense, speed, generation, legendary, region and tier</p>
+</div>
+</div>
+</div>
+<div class="sect1 pyret">
+<h2 id="_movies">Movies:</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>100 top-grossing movies (as of 2018)</p>
+</div>
+<div class="paragraph">
+<p><strong>Column Titles:</strong> Rank, Movie Title, Studio Name, Female-lead, POC-lead, Total Gross Income (million dollars), Domestic Income (million $), Overseas Income (million $), Year</p>
+</div>
+<div class="paragraph">
+<p><strong>Have students&#8230;&#8203;</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>define a function</strong> return-on-investment, which computes the ratio of the Total Gross Income to the budget.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Heads Up:</strong>
+Only a few films are from before 2000.</p>
+</div>
+</div>
+</div>
+<div class="sect1 datasheet datasheet pyret">
+<h2 id="_pipe_organs">Pipe Organs</h2>
+<div class="sectionbody">
+<div class="openblock question">
+<div class="content">
+
+</div>
+</div>
+<div class="openblock answer-roman">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>This dataset describes about 500 pipeorgans, a sample taken from a database of North American organbuilders.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="openblock question">
+<div class="content">
+
+</div>
+</div>
+<div class="openblock answer-roman">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>This dataset has a limited number of categories, making it
+accessible to any student.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="openblock question">
+<div class="content">
+
+</div>
+</div>
+<div class="openblock answer-roman">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The columns of this dataset may require additional coding depending on how the student wishes to analyze the data.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Column Titles:</strong> State, Venue, Most recent builder, Ranks, Stops, Manuals, Lowest Pitch, Year Completed, Altered</p>
+</div>
+</div>
+</div>
+<div class="paragraph question">
+<p><strong>Have students&#8230;&#8203;</strong></p>
+</div>
+<div class="openblock">
+<div class="content">
+
+</div>
+</div>
+<div class="openblock answer-roman">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>define a function</strong> average-ranks-wurlitzer, which takes the average number of ranks for all organs made by Wurlitzer. Do this for a few of these major organ companies as well: Austin, Noack, Hook &amp; Hastings, Möller, Casavant, and Aeolian-Skinner.</p>
+</li>
+<li>
+<p><strong>define a function</strong> ranks-stops-difference which computes the difference between an organ&#8217;s number of ranks and its number of stops.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph question">
+<p><strong>Heads Up - Outliers to be aware of:</strong></p>
+</div>
+<div class="openblock">
+<div class="content">
+
+</div>
+</div>
+<div class="openblock answer-roman">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Organ 131 is the largest pipe organ in the world.</p>
+</li>
+<li>
+<p>Outliers to be aware of:* Only a few organs are not currently in the United States.</p>
+</li>
+<li>
+<p>Organs 2253 and 66436 are comparatively old.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 pyret">
+<h2 id="_international_exhibition_of_modern_art_1913">International Exhibition of Modern Art 1913</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This dataset describes nearly 800 of the pieces included in the first large exhibition of modern art in the United States.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>This dataset has a very little quantitative data.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Column Titles:</strong> Artist, Sex, Title, Medium, Location, Number of Locations exhibited, Sale Price in Dollars, Reason the piece was included in the show</p>
+</div>
+</div>
+</div>
+<div class="sect1 pyret">
+<h2 id="_music">Music:</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This dataset includes over 10,000 songs. It is a subset of the Million songs database published in 2011.</p>
+</div>
+<div class="paragraph">
+<p><strong>Column Titles:</strong> artist, song, duration in seconds, loudness, beats per minute, end of fade-in (seconds), start of fade-out (seconds), familiarity, buzz, terms (category of music)</p>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="nutrition">Nutrition</h3>
+
+</div>
+</div>
+</div>
+<div class="sect1 datasheet datasheet pyret">
+<h2 id="_fast_food_nutrition">Fast Food Nutrition</h2>
+<div class="sectionbody">
+<div class="openblock question">
+<div class="content">
+
+</div>
+</div>
+<div class="openblock answer-roman">
+<div class="content">
+<div class="paragraph">
+<p>This dataset includes simplified nutritional value information about over 400 fastfood menu items from the USDA FNDDS database.</p>
+</div>
+</div>
+</div>
+<div class="openblock question">
+<div class="content">
+
+</div>
+</div>
+<div class="openblock answer-roman">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>This dataset has a limited number of categories,
+making it accessible to any student.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Column Titles:</strong> Name, Type, Vendor, Calories, Fat (g), Protein (g), Carbohydrate (g),
+Cholestorol (mg), Saturated Fats (g), Sodium (mg), Serving Weight (g), 200 Calorie Weight (g)</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 pyret">
+<h2 id="_soda_coffee_other_drinks">Soda, Coffee &amp; other drinks</h2>
+<div class="sectionbody">
+<div class="paragraph roman">
+<p>This dataset includes nutritional data from the USDA FNDDS database on 560 beverages, including juices, milks, coffee, soda, energy drinks and more.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>This dataset has a limited number of categories, making it accessible to any student.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Column Titles:</strong> Name, Type, Calories, Fat (g), Protein (g), Carbohydrate (g), Sugars (g), Sodium (mg), Caffeine (mg), Serving Weight (g), Serving Description (fl oz), 200 Calorie Weight (g)</p>
+</div>
+<div class="paragraph">
+<p><strong>Heads Up:</strong>
+There are some beverages with much higher levels of caffeine than others.</p>
+</div>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-17 19:41:45 -0400
+</div>
+</div>
+</body>
+</html>

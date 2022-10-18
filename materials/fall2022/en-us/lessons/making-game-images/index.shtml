@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Making Game Images</title>
+
+  <link rel="stylesheet" href="../../lib/curriculum.css" />
+    <link rel="stylesheet" href="../../lib/codemirror.css" />
+    <script src="../../lib/codemirror.js"></script>
+    <script src="../../lib/runmode.js"></script>
+    <script src="../../lib/scheme2.js"></script>
+    <script src="../../lib/pyret-mode.js"></script>
+    <script src="../../lib/langtable.js"></script>
+    <script src="../../lib/bootstraplesson.js"></script>
+    <script src="../../dependency-graph.js"></script>
+    <script src="../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"Making Game Images",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="article LessonPlan pyret" onload="renderSaveToDrive()">
+<!--#include virtual="/menubar.ssi"-->
+<div id="body" onload="renderSaveToDrive()">
+<div id="header">
+<h1>Making Game Images</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<script>
+function preselect(klass) {
+  const items = document.getElementsByClassName(klass);
+  for (let i = 0; i < items.length; i++) {
+    items[i].style.display = 'none';
+  }
+  if (items.length > 0) {
+    items[0].style.display = 'block';
+  }
+}
+window.onload = function() {
+  preselect('alignedStandards');
+  preselect('alignedTextbooks');
+  preselect('alignedPractices');
+}
+function showStandardsAlignment() {
+  const selectTag = document.getElementsByClassName('standardsAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const stdTables = document.getElementsByClassName('alignedStandards');
+  //const intro = document.getElementsByClassName('alignedStandardsIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < stdTables.length; i++) {
+    const stdTable = stdTables[i];
+    stdTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optStd = opt.value;
+      for (let j = 0; j < stdTables.length; j++) {
+        const stdTable = stdTables[j];
+        if (stdTable.classList.contains(optStd)) {
+          stdTable.style.display = 'block';
+         // introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+function toggleNonPrereqDisplay() {
+  const inputTag = document.getElementsByClassName('sidebarinput')[0];
+  const checkedP = inputTag.checked;
+  const lessonTable = document.getElementsByClassName('sidebarlessons')[0];
+  const lis = lessonTable.getElementsByTagName('li');
+  for (let i = 0; i < lis.length; i++) {
+    const li = lis[i];
+    const lesson = li.getElementsByClassName('prerequisite');
+    if (lesson.length === 0) {
+      li.style.display = checkedP ? 'none' : 'block';
+    }
+  }
+}
+</script>
+<script>
+function showTextbooksAlignment() {
+  const selectTag = document.getElementsByClassName('textbooksAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const textbookTables = document.getElementsByClassName('alignedTextbooks');
+  //const intro = document.getElementsByClassName('alignedTextbooksIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < textbookTables.length; i++) {
+    const textbookTable = textbookTables[i];
+    textbookTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optTextbook = opt.value;
+      for (let j = 0; j < textbookTables.length; j++) {
+        const textbookTable = textbookTables[j];
+        if (textbookTable.classList.contains(optTextbook)) {
+          textbookTable.style.display = 'block';
+          //introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+</script>
+<script>
+function showPracticesAlignment() {
+  const selectTag = document.getElementsByClassName('practicesAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const practiceTables = document.getElementsByClassName('alignedPractices');
+  for (let i = 0; i < practiceTables.length; i++) {
+    const practiceTable = practiceTables[i];
+    practiceTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optPractice = opt.value;
+      for (let j = 0; j < practiceTables.length; j++) {
+        const practiceTable = practiceTables[j];
+        if (practiceTable.classList.contains(optPractice)) {
+          practiceTable.style.display = 'block';
+        }
+      }
+    }
+  }
+}
+</script>
+<div class="paragraph">
+<!-- </p>
+</div>
+--></div><div class="sidebar"><div id="toggle"></div><div class="paragraph"><!--
+<div class="paragraph">
+<p>
+--><div class="sidebarlessons"><strong>Lessons</strong>
+<ul></ul></div>
+</div>
+<table class="tableblock frame-all grid-all stretch sidebarstandards">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Standards in this Lesson</strong>
+<select class="standardsAlignmentSelect"  onchange="showStandardsAlignment()"><option selected="selected" value="standards-CCSS-Math">CCSS-Math</option><option value="standards-CSTA">CSTA</option><option value="standards-Oklahoma">Oklahoma</option></select></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist alignedStandards standards-CCSS-Math">
+<div class="title"><a href="http://corestandards.org/Math/">Common Core Math Standards</a></div>
+<dl>
+<dt class="hdlist1">7.RP.A.1</dt>
+<dd>
+<p>Compute unit rates associated with ratios of fractions, including ratios of lengths, areas and other quantities measured in like or different units.</p>
+</dd>
+<dt class="hdlist1">8.G.A.1</dt>
+<dd>
+<p>Verify experimentally the properties of rotations, reflections, and translations.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-CSTA">
+<div class="title"><a href="https://csteachers.org/page/standards">CSTA Standards</a></div>
+<dl>
+<dt class="hdlist1">1B-AP-12</dt>
+<dd>
+<p>Modify, remix, or incorporate portions of an existing program into one&#8217;s own work, to develop something new or add more advanced features.</p>
+</dd>
+<dt class="hdlist1">1B-AP-14</dt>
+<dd>
+<p>Observe intellectual property rights and give appropriate attribution when creating or remixing programs.</p>
+</dd>
+<dt class="hdlist1">1B-IC-21</dt>
+<dd>
+<p>Use public domain or creative commons media, and refrain from copying or using material created by others without permission.</p>
+</dd>
+<dt class="hdlist1">2-AP-16</dt>
+<dd>
+<p>Incorporate existing code, media, and libraries into original programs, and give attribution.</p>
+</dd>
+<dt class="hdlist1">3A-AP-18</dt>
+<dd>
+<p>Create artifacts by using procedures within a program, combinations of data and procedures, or independent but interrelated programs.</p>
+</dd>
+<dt class="hdlist1">3A-AP-20</dt>
+<dd>
+<p>Evaluate licenses that limit or restrict use of computational artifacts when using resources such as libraries</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Oklahoma">
+<div class="title"><a href="https://sde.ok.gov/oklahoma-academic-standards">Oklahoma Standards</a></div>
+<dl>
+<dt class="hdlist1">OK.3.AP.M.02</dt>
+<dd>
+<p>With grade appropriate complexity, modify, remix, or incorporate portions of an existing program into one&#8217;s own work, to develop something new or add more advanced features.</p>
+</dd>
+<dt class="hdlist1">OK.3.AP.PD.02</dt>
+<dd>
+<p>Observe intellectual property rights and give appropriate credit when creating or remixing programs.</p>
+</dd>
+<dt class="hdlist1">OK.4.AP.M.02</dt>
+<dd>
+<p>With grade appropriate complexity, modify, remix, or incorporate portions of an existing program into one&#8217;s own work, to develop something new or add more advanced features.</p>
+</dd>
+<dt class="hdlist1">OK.4.AP.PD.02</dt>
+<dd>
+<p>Observe intellectual property rights and give appropriate credit when creating or remixing programs.</p>
+</dd>
+<dt class="hdlist1">OK.5.AP.M.02</dt>
+<dd>
+<p>With grade appropriate complexity, modify, remix, or incorporate portions of an existing program into one&#8217;s own work, to develop something new or add more advanced features.</p>
+</dd>
+<dt class="hdlist1">OK.5.AP.PD.02</dt>
+<dd>
+<p>Observe intellectual property rights and give appropriate credit when creating or remixing programs.</p>
+</dd>
+<dt class="hdlist1">OK.6.AP.PD.01</dt>
+<dd>
+<p>Seek and incorporate feedback from team members to refine a solution to a problem.</p>
+</dd>
+<dt class="hdlist1">OK.6.AP.PD.02</dt>
+<dd>
+<p>Incorporate existing code, media, and libraries into original programs and give attribution.</p>
+</dd>
+<dt class="hdlist1">OK.7.AP.PD.01</dt>
+<dd>
+<p>Seek and incorporate feedback from team members and users to refine a solution to a problem.</p>
+</dd>
+<dt class="hdlist1">OK.7.AP.PD.02</dt>
+<dd>
+<p>Incorporate existing code, media, and libraries into original programs of increasing complexity and give attribution.</p>
+</dd>
+<dt class="hdlist1">OK.7.GM.4.1</dt>
+<dd>
+<p>Describe the properties of similarity, compare geometric figures for similarity, and determine scale factors resulting from dilations.</p>
+</dd>
+<dt class="hdlist1">OK.7.GM.4.2</dt>
+<dd>
+<p>Apply proportions, ratios, and scale factors to solve problems involving scale drawings and determine side lengths and areas of similar triangles and rectangles.</p>
+</dd>
+<dt class="hdlist1">OK.8.AP.A.01</dt>
+<dd>
+<p>Design algorithms in natural language, flow and control diagrams, comments within code, and/or pseudocode to solve complex problems.</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch sidebartextbooks">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Textbook Alignment</strong>
+<select class="textbooksAlignmentSelect"  onchange="showTextbooksAlignment()"><option selected="selected" value="textbook-IM_6"><a href="https://illustrativemathematics.org/">IM 6 Math™</a></option><option value="textbook-IM_7"><a href="https://illustrativemathematics.org/">IM 7 Math™</a></option><option value="textbook-IM_8"><a href="https://illustrativemathematics.org/">IM 8 Math™</a></option><option value="textbook-IM_Alg_1"><a href="https://illustrativemathematics.org/">IM Algebra 1</a></option></select></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist alignedTextbooks textbook-IM_6">
+<div class="title"><a href="https://illustrativemathematics.org/">IM 6 Math™</a></div>
+<dl>
+<dt class="hdlist1">IM.6.5.5</dt>
+<dd>
+<p>Decimal Points in Products</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedTextbooks textbook-IM_7">
+<div class="title"><a href="https://illustrativemathematics.org/">IM 7 Math™</a></div>
+<dl>
+<dt class="hdlist1">IM.7.1.5</dt>
+<dd>
+<p>The Size of the Scale Factor</p>
+</dd>
+<dt class="hdlist1">IM.7.1.1</dt>
+<dd>
+<p>What are Scaled Copies?</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedTextbooks textbook-IM_8">
+<div class="title"><a href="https://illustrativemathematics.org/">IM 8 Math™</a></div>
+<dl>
+<dt class="hdlist1">IM.8.2.1</dt>
+<dd>
+<p>Projecting and Scaling</p>
+</dd>
+<dt class="hdlist1">IM.8.1.3</dt>
+<dd>
+<p>Grid Moves</p>
+</dd>
+<dt class="hdlist1">IM.8.1.2</dt>
+<dd>
+<p>Naming the moves</p>
+</dd>
+<dt class="hdlist1">IM.8.1.1</dt>
+<dd>
+<p>Moving in the Plane</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedTextbooks textbook-IM_Alg_1">
+<div class="title"><a href="https://illustrativemathematics.org/">IM Algebra 1</a></div>
+<dl>
+<dt class="hdlist1">IM.Alg1.4.2</dt>
+<dd>
+<p>Function Notation</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch sidebarpractices">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Practices in this Lesson</strong>
+<select class="practicesAlignmentSelect"  onchange="showPracticesAlignment()"><option selected="selected" value="practices-CC"><a href="http://corestandards.org/Math/">Math</a></option><option value="practices-MLR"><a href="https://achievethecore.org/peersandpedagogy/developing-math-language-routines/">Math Lang. Routines</a></option></select></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist alignedPractices practices-CC">
+<div class="title"><a href="http://corestandards.org/Math/">Math</a></div>
+<dl>
+<dt class="hdlist1">MP.6</dt>
+<dd>
+<p>Attend to precision</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedPractices practices-MLR">
+<div class="title"><a href="https://achievethecore.org/peersandpedagogy/developing-math-language-routines/">Math Lang. Routines</a></div>
+<dl>
+<dt class="hdlist1">MLR.8</dt>
+<dd>
+<p>Discussion Supports</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<!-- </p>
+</div>
+--></div><!--
+<div class="paragraph">
+<p>
+-->
+</div>
+<div class="paragraph">
+<p><span class="other-proglang">(Also available in <a href="../../lessons/making-game-images-wescheme/index.shtml">WeScheme</a>)</span></p>
+</div>
+<div class="paragraph description">
+<p>Students choose, import, scale and orient images for their game, practicing reading comments to make sense of and begin to edit a large body of code.</p>
+</div>
+<table class="tableblock frame-all grid-all stripes-none stretch left-header preamble">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Lesson Goals</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Students will be able to:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Apply previous knowledge of <span class="vocab">functions</span> to new situations</p>
+</li>
+<li>
+<p>Use reasoning skills to select appropriate functions and combine their effects</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Student-Facing Lesson Goals</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>I can use different <span class="vocab">functions</span> to transform <span class="vocab">images</span>.</p>
+</li>
+<li>
+<p>I can write definitions for my transformed images.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Materials</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist materials-links">
+<ul>
+<li>
+<p><a href="https://docs.google.com/presentation/d/1NtsoR8i7Datz5GP9op2BZngkGvU2rX_BJk1s3-12SXI/" target="_blank" rel="noopener">Lesson Slides</a></p>
+</li>
+<li>
+<p><span class="StarterFile"><a href="https://code.pyret.org/editor#share=1rNabrhxIqcfHEjdzJqKQAnA9uVWdprQu" target="_blank" rel="noopener">Blank Game Starter File</a></span></p>
+</li>
+<li>
+<p><span class="materialSectionPlaceholder"> </span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/making-game-images/pages/NoticeAndWonder.html" target="_blank" rel="noopener">Notice and Wonder</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="../../lessons/making-game-images/pages/SavingImagesGuide.pdf" target="_blank" rel="noopener">Quick Guide to Saving Images to Drive</a></span></p>
+</li>
+<li>
+<p><strong>Classroom visual:</strong> <a href="javascript:showLangTable()">Language Table</a></p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Preparation</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Students should have their completed “Game Design” work.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Key Points for the Facilitator</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Discuss copyright and fair use guidelines with your students.</p>
+</li>
+<li>
+<p>Instructional time may vary based on students’ experience with using Google Image Search.</p>
+</li>
+<li>
+<p>Check beforehand for any issues the school Internet security blocker might cause with searching for images.</p>
+</li>
+<li>
+<p>There are two ways of importing images: linking directly to the image on the web or downloading the image to Google Drive and then using the "Insert" button.  See the "Linking Images Guide" below for more information on linking directly.</p>
+</li>
+<li>
+<p>Encourage students to focus on finding and scaling each image as needed before moving on to the next one.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="dlist glossary">
+<div class="title">Glossary</div>
+<dl>
+<dt class="hdlist1">define</dt>
+<dd>
+<p>to associate a descriptive name with a value</p>
+</dd>
+<dt class="hdlist1">function</dt>
+<dd>
+<p>a relation from a set of inputs to a set of possible outputs, where each input is related to exactly one output</p>
+</dd>
+<dt class="hdlist1">image</dt>
+<dd>
+<p>a type of data for pictures</p>
+</dd>
+<dt class="hdlist1">scale</dt>
+<dd>
+<p>resize an image to be larger or smaller while maintaining ratios and proportions</p>
+</dd>
+<dt class="hdlist1">string</dt>
+<dd>
+<p>a data type for any sequence of characters between quotation marks (examples: "hello", "42", "this is a string!")</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_the_game_starter_file_duration_15_minutes_"><span class="section-link"><a href="#_the_game_starter_file_duration_15_minutes_"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>The Game Starter File <span class="duration">15 minutes</span></h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_overview">Overview</h3>
+<div class="paragraph">
+<p>This activity is primarily about <em>review and reading comprehension</em>, in which students open a large and unfamiliar file and must make sense of it using what they&#8217;ve seen before.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_launch">Launch</h3>
+<div class="paragraph">
+<p>By now you&#8217;ve learned about defining values, composing functions, and reading contracts. Taken together, that&#8217;s a lot of code you&#8217;re now able to understand! It&#8217;s time to flex your reading skills, and look at the file you&#8217;ll be working with to build your video game.</p>
+</div>
+<div class="paragraph">
+<p><strong>This file has code you haven&#8217;t seen before! And that&#8217;s ok!</strong> For now, see what parts you recognize, and make sure you understand them.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_investigate">Investigate</h3>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>With your partner, load the <a href="https://code.pyret.org/editor#share=1rNabrhxIqcfHEjdzJqKQAnA9uVWdprQu" target="_blank" rel="noopener">Blank Game Starter File</a>.</p>
+</li>
+<li>
+<p>As you investigate the starter file, record what you Notice and Wonder on <a href="../../lessons/making-game-images/pages/NoticeAndWonder.html" target="_blank" rel="noopener">Notice and Wonder</a>.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_synthesize">Synthesize</h3>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>What familiar things did you see in the Game Starter File file?</p>
+</li>
+<li>
+<p>What were some unfamiliar things?  Any idea what they might do?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Answers vary: new functions, comments, images</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>What data type is <code class="pyret">GAME-TITLE</code>?  What data type is <code class="pyret">BACKGROUND</code>?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em><code class="pyret">GAME-TITLE</code> is a String, <code class="pyret">BACKGROUND</code> is an Image</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>What does <code class="pyret">SCREENSHOT</code> return in the <strong>Interactions Area</strong>?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>An image of the <code class="pyret">BACKGROUND</code>, <code class="pyret">PLAYER</code>, <code class="pyret">TARGET</code>, and <code class="pyret">DANGER</code> all together</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Did anyone try pressing "Run"?  What happens when you press "Run"?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Allow students to discuss what they see and what connections they see with the code</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>What do you think <code class="pyret">image-url</code> does?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Answers vary: It consumes a <span class="vocab">String</span>, which is a URL (an image location on the Internet) and produces the <span class="vocab">Image</span> inside our program</em></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<table class="tableblock frame-all grid-none stripes-none stretch strategy-box">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="title">What is SCREENSHOT?</span></p>
+<p class="tableblock">The Game Starter File defines several image values, such as <code class="pyret">BACKGROUND</code>, <code class="pyret">PLAYER</code>, etc. These definitions are using the running game, which appears when you click "Run". <code class="pyret">SCREENSHOT</code> is defined as a fixed composition of the game images, placing each of them on top of the background at various (x,y) coordinates. It is used to give students a chance to see their characters onscreen before they&#8217;ve gotten them moving, and to give teachers an opportunity to review coordinates. Other than the <span class="vocab">scaling</span>, it is <em>not</em> in any way connected to the running game, so changes made to <code class="pyret">SCREENSHOT</code> will not impact the game that appears when clicking "Run" and the location of the characters on the background in the screenshot is random and irrelevant.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_finding_your_game_images_duration_flexible_"><span class="section-link"><a href="#_finding_your_game_images_duration_flexible_"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Finding Your Game Images <span class="duration">flexible</span></h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_overview_2">Overview</h3>
+<div class="paragraph">
+<p>This activity is all about finding the right images for students' games. Since the internet never has <em>exactly</em> the right image, students' need to get their games <strong>just right</strong> motivates them to confront the need for dilation, rotation, and reflection of the images they find. This, in turn feeds back into their understanding of Contracts and Function Composition.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_launch_2">Launch</h3>
+<div class="paragraph">
+<p>Guide the students through finding an image, saving it to their Drive, importing it into their program, and defining the image value as <code class="pyret">PLAYER</code>. <em>Students will change this image later on their own, this is just for teaching purposes.</em></p>
+</div>
+<div class="openblock lesson-instruction">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>In your favorite search engine (we recommend <a href="https://www.DuckDuckGo.com" target="_blank" rel="noopener">DuckDuckGo</a>), search for an image and then click "Images".</p>
+</li>
+<li>
+<p>Click "All Types" and select "Transparent". If you&#8217;re using Google Image Search, select "Color -&gt; Transparent". This will filter and display images that have a transparent background, appearing as a light white/grey checkerboard pattern behind the character.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="centered-image"><span class="image-figure"><span class="image"><img src="images/c9c1c3960524fe71.png" alt="Finding Images on\nGIS, Source: Google Image Search, images.google.com" width="400"></span><a href="images/c9c1c3960524fe71.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Once an image has been selected, click it to expand and save the image to Google Drive. For file management, students may want to create a folder to store their game images.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>If using a Chromebook, this is done by right-clicking and selecting "Google Drive" on the left for the save location.</p>
+</li>
+<li>
+<p>On a PC or Mac, follow this <a href="../../lessons/making-game-images/pages/SavingImagesGuide.pdf" target="_blank" rel="noopener">Quick Guide to Saving Images to Drive</a>.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Once the image is saved to Google Drive, it can be brought into the program by using the
+ "Insert"
+button.  This will automatically bring in the image using the <code class="pyret">image-url</code> function, and students can run the code to see the image.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_investigate_2">Investigate</h3>
+<div class="paragraph">
+<p>What happens if the image we find needs to be made bigger or smaller? What if it needs to be rotated, or flipped?</p>
+</div>
+<div class="paragraph">
+<p>Students can define the image as a value and make changes to it with the image manipulation functions <code class="pyret">scale</code>, <code class="pyret">rotate</code>, <code class="pyret">flip-horizontal</code>, and <code class="pyret">flip-vertical</code>.</p>
+</div>
+<table class="tableblock frame-all grid-none stripes-none stretch strategy-box">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="title">Strategies for English Language Learners</span></p>
+<p class="tableblock">MLR 8 - Discussion Supports: As students discuss, rephrase responses as questions and encourage precision in the words being used to reinforce the meanings behind some of the functions, such as <code class="pyret">scale</code> and <code class="pyret">flip-horizontal</code>.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph lesson-instruction">
+<p>With your partner, search the Internet for images to use in your game. You will need 4 images, one for each visual element of their game: <code class="pyret">BACKGROUND</code>, <code class="pyret">PLAYER</code>, <code class="pyret">DANGER</code>, <code class="pyret">TARGET</code></p>
+</div>
+<table class="tableblock frame-all grid-none stripes-none stretch strategy-box">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="title">Copyright and Fair Use</span></p>
+<p class="tableblock"><span class="right"> <span class="image-figure"><span class="image"><img src="images/b2c542627472d8bb.png" alt="Fair Use Diagram, Source:\nwww.resourcesforlife.com/docs/item6247" width="300"></span><a href="images/b2c542627472d8bb.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span> </span>
+The students will be using images from the Internet for their game, and while this falls entirely under the "Educational Use" umbrella of Fair Use Guidelines, it is still important to make sure students of all ages understand the purpose of copyright law and the differences between educational and commercial purposes.</p>
+<p class="tableblock"><strong>When adding an image to their game, students <em>must</em> include a comment which gives attribution to the source of the image.</strong></p>
+<p class="tableblock"><span class="clear"></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Students should:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Save the chosen images to their Drive</p>
+</li>
+<li>
+<p>Bring them into the programming environment</p>
+</li>
+<li>
+<p>Include a comment which gives attribution to the source of the image</p>
+</li>
+<li>
+<p><span class="vocab">Define</span> the images as values</p>
+</li>
+<li>
+<p>Plan out how to resize and reorient them in their game</p>
+</li>
+<li>
+<p>Make sure the final version of each image is defined as either <code class="pyret">BACKGROUND</code>, <code class="pyret">TARGET</code>, <code class="pyret">DANGER</code>, or <code class="pyret">PLAYER</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>When finished, students should be able to type <code class="pyret">SCREENSHOT</code> in the interactions window and see all four of their images appropriately sized and oriented.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_synthesize_2">Synthesize</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>What functions were most useful in helping you customize your images to make your game look and feel how you want it?</p>
+</li>
+<li>
+<p>How did you make use of function composition in customizing your images?</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-17 19:42:16 -0400
+</div>
+</div>
+</div>
+</body>
+</html>

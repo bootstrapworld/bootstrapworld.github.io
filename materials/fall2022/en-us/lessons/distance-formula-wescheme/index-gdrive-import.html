@@ -1,0 +1,2046 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>The Distance Formula</title>
+<style>
+/* Overall document font */
+* {font-family: Lato, Arial, Helvetica, sans-serif;}
+
+/* document headings */
+h1,.lesson-section-1 {color: #75328A;}
+h1{font-size: 32px; font-family: sans-serif;}
+table.section-heading *, .lesson-section-1 h2{font-size: 32px; font-weight: 100;}
+table.section-heading{width: 100%;}
+table.section-heading td:last-child{text-align: right; color: #d9d2e9;}
+
+/* preamble section */
+table.preamble td {padding: 10px;}
+table.preamble td:first-child{background: #b7d893; width: 25%;}
+table.preamble td:first-child p {font-weight: bold; margin: 5px;}
+
+/* content used throughout the body */
+table{ border-collapse: collapse; border: none; }
+table.grid-all.frame-all {border: solid 1px black;}
+table.grid-none.frame-none {border-width: 0px;}
+
+.big {font-size: 30pt;}
+.vocab{font-weight: bold; font-style: italic;}
+.right{text-align: right;}
+.acknowledgment {
+  border-top: solid 1px black; 
+  font-style: italic; 
+  font-size: 8pt;
+}
+.lesson-point {
+  border-top: solid 1px black; 
+  border-bottom: solid 1px black; 
+  color: black;
+  font-weight: bold;
+}
+
+.web-page-only, #footer { display: none; visibility: hidden; }
+
+/* Callout boxes */
+.strategy-box, .notice-box {
+  background: #efefef;
+  border: solid 5px !important;
+  margin: 15px auto;
+  width: 100%;
+}
+.strategy-box { border-color: #1a73b5 !important; }
+.notice-box   { border-color: #7747a5 !important; }
+.strategy-box td, .notice-box td{ padding: 10px; }
+.strategy-box .title, .notice-box .title{
+  width: 100%;
+  display: block;
+  font-weight: bold;
+  font-size: 24px;
+  clear: both;
+  margin: 100px;
+}
+.strategy-box p.tableblock:first-child, .notice-box p.tableblock:first-child{
+  text-align: center;
+  padding-bottom: 15px;
+}
+.strategy-box .title { color: #1a73b5; }
+.notice-box   .title { color: #7747a5; }
+.strategy-box a, .notice-box a { color: blue; text-decoration: underline; }
+
+/* "Tables" of Evaluation */
+.operator{border-bottom: solid 1px black; text-align: center;}
+.operator * {text-align: center;}
+td {padding: 0px 10px; font-size: 14px;}
+table.expression {
+    font-family:"Courier New", Monaco, monospace;
+    border:     solid 1px black;
+    font-size:  1px;
+    max-width:  400px;
+    color:      #666666;
+    display:    inline-block;
+}
+table.args {border: none; text-align: center;}
+
+.wescheme-string,     .cm-scheme-string    {color: green;}
+.wescheme-number,     .cm-scheme-number    {color: blue;}
+.wescheme-boolean,    .cm-scheme-boolean   {color: darkred;}
+.wescheme-character,  .cm-scheme-character {color: orange;}
+.wescheme-symbol,     .cm-scheme-symbol    {color: steelblue;}
+.wescheme-comment,    .cm-scheme-comment   {color: orange; }
+
+.racket, .pyret, .studentAnswerCode, .studentAnswer, .pyretkeyword, .keyword_only {
+    font-family:"Courier New", Monaco, monospace !important; 
+    color: black;
+}
+
+/* Design Recipe */
+.recipe_instructions { font-style: italic; }
+table.recipe_title {
+  color:              white;
+  background:         gray;
+  display:            block;
+  padding:            0px;
+  font-size:          1.1rem;
+  font-weight:        bold;
+}</style>
+
+      <script src="../../extlib/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML%2Clocal%2Fmathjaxlocal.js"></script>
+      <script>window.status = "not_ready_to_print";</script>
+    <script src="../../lib/langtable.js"></script>
+    <script src="../../dependency-graph.js"></script>
+    <script src="../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:window.location.href,
+    filename:"The Distance Formula",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="article LessonPlan wescheme" onload="renderSaveToDrive()">
+<span id="body" onload="renderSaveToDrive()">
+<span id="header">
+<h1>The Distance Formula</h1>
+
+  <span id="savetodrive-div"></span>
+
+</span>
+<span id="content">
+<span id="preamble_disabled" class="lessonSummary">
+<span class="sectionbody">
+<script>
+function preselect(klass) {
+  const items = document.getElementsByClassName(klass);
+  for (let i = 0; i < items.length; i++) {
+    items[i].style.display = 'none';
+  }
+  if (items.length > 0) {
+    items[0].style.display = 'block';
+  }
+}
+window.onload = function() {
+  preselect('alignedStandards');
+  preselect('alignedTextbooks');
+  preselect('alignedPractices');
+}
+function showStandardsAlignment() {
+  const selectTag = document.getElementsByClassName('standardsAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const stdTables = document.getElementsByClassName('alignedStandards');
+  //const intro = document.getElementsByClassName('alignedStandardsIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < stdTables.length; i++) {
+    const stdTable = stdTables[i];
+    stdTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optStd = opt.value;
+      for (let j = 0; j < stdTables.length; j++) {
+        const stdTable = stdTables[j];
+        if (stdTable.classList.contains(optStd)) {
+          stdTable.style.display = 'block';
+         // introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+function toggleNonPrereqDisplay() {
+  const inputTag = document.getElementsByClassName('sidebarinput')[0];
+  const checkedP = inputTag.checked;
+  const lessonTable = document.getElementsByClassName('sidebarlessons')[0];
+  const lis = lessonTable.getElementsByTagName('li');
+  for (let i = 0; i < lis.length; i++) {
+    const li = lis[i];
+    const lesson = li.getElementsByClassName('prerequisite');
+    if (lesson.length === 0) {
+      li.style.display = checkedP ? 'none' : 'block';
+    }
+  }
+}
+</script>
+<script>
+function showTextbooksAlignment() {
+  const selectTag = document.getElementsByClassName('textbooksAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const textbookTables = document.getElementsByClassName('alignedTextbooks');
+  //const intro = document.getElementsByClassName('alignedTextbooksIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < textbookTables.length; i++) {
+    const textbookTable = textbookTables[i];
+    textbookTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optTextbook = opt.value;
+      for (let j = 0; j < textbookTables.length; j++) {
+        const textbookTable = textbookTables[j];
+        if (textbookTable.classList.contains(optTextbook)) {
+          textbookTable.style.display = 'block';
+          //introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+</script>
+<script>
+function showPracticesAlignment() {
+  const selectTag = document.getElementsByClassName('practicesAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const practiceTables = document.getElementsByClassName('alignedPractices');
+  for (let i = 0; i < practiceTables.length; i++) {
+    const practiceTable = practiceTables[i];
+    practiceTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optPractice = opt.value;
+      for (let j = 0; j < practiceTables.length; j++) {
+        const practiceTable = practiceTables[j];
+        if (practiceTable.classList.contains(optPractice)) {
+          practiceTable.style.display = 'block';
+        }
+      }
+    }
+  }
+}
+</script>
+<span class="paragraph">
+<!-- </p>
+</span>
+--></span><span class="sidebar"><span id="toggle"></span><span class="paragraph"><!--
+<span class="paragraph">
+<p>
+--><span class="sidebarlessons"><strong>Lessons</strong>
+<ul></ul></span>
+</span>
+<table class="tableblock frame-all grid-all stretch sidebarstandards">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p><strong>Standards in this Lesson</strong>
+<select class="standardsAlignmentSelect"  onchange="showStandardsAlignment()"><option selected="selected" value="standards-CSTA">CSTA</option><option value="standards-Alabama">Alabama</option><option value="standards-Arkansas">Arkansas</option><option value="standards-California">California</option><option value="standards-Colorado">Colorado</option><option value="standards-Connecticut">Connecticut</option><option value="standards-Delaware">Delaware</option><option value="standards-Georgia">Georgia</option><option value="standards-Hawaii">Hawaii</option><option value="standards-Idaho">Idaho</option><option value="standards-Illinois">Illinois</option><option value="standards-Iowa">Iowa</option><option value="standards-Kansas">Kansas</option><option value="standards-Kentucky">Kentucky</option><option value="standards-Louisiana">Louisiana</option><option value="standards-Maine">Maine</option><option value="standards-Michigan">Michigan</option><option value="standards-Maryland">Maryland</option><option value="standards-Massachusetts">Massachusetts</option><option value="standards-Mississippi">Mississippi</option><option value="standards-Missouri">Missouri</option><option value="standards-Montana">Montana</option><option value="standards-New Hampshire">New Hampshire</option><option value="standards-Nevada">Nevada</option><option value="standards-New Jersey">New Jersey</option><option value="standards-New Mexico">New Mexico</option><option value="standards-North Carolina">North Carolina</option><option value="standards-North Dakota">North Dakota</option><option value="standards-New York">New York</option><option value="standards-Oklahoma">Oklahoma</option><option value="standards-Ohio">Ohio</option><option value="standards-Oregon">Oregon</option><option value="standards-Pennsylvania">Pennsylvania</option><option value="standards-Rhode Island">Rhode Island</option><option value="standards-South Dakota">South Dakota</option><option value="standards-Tennessee">Tennessee</option><option value="standards-Utah">Utah</option><option value="standards-Vermont">Vermont</option><option value="standards-Washington">Washington</option><option value="standards-West Virginia">West Virginia</option><option value="standards-Wisconsin">Wisconsin</option><option value="standards-Wyoming">Wyoming</option></select></p>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="dlist standards-CSTA">
+<span class="title"><a href="https://csteachers.org/page/standards">CSTA Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>2-AP-11</dt>
+<dd>
+<p>Create clearly named variables that represent different data types and perform operations on their values.</p>
+</dd>
+<dt class="hdlist1"><br/>2-AP-17</dt>
+<dd>
+<p>Systematically test and refine programs using a range of test cases</p>
+</dd>
+<dt class="hdlist1"><br/>2-AP-19</dt>
+<dd>
+<p>Document programs in order to make them easier to follow, test, and debug.</p>
+</dd>
+<dt class="hdlist1"><br/>3B-AP-10</dt>
+<dd>
+<p>Use and adapt classic algorithms to solve computational problems.</p>
+</dd>
+<dt class="hdlist1"><br/>3B-AP-14</dt>
+<dd>
+<p>Construct solutions to problems using student-created components, such as procedures, modules and/or objects.</p>
+</dd>
+<dt class="hdlist1"><br/>3B-AP-21</dt>
+<dd>
+<p>Develop and use a series of test cases to verify that a program performs according to its design specifications.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Alabama">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Alabama Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>AL.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>AL.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>AL.8.G.B</dt>
+<dd>
+<p>Understand and apply the Pythagorean Theorem.</p>
+</dd>
+<dt class="hdlist1"><br/>AL.8.G.B.7</dt>
+<dd>
+<p>Apply the Pythagorean Theorem to determine unknown side lengths in right triangles in real-world and mathematical problems in two and three dimensions.</p>
+</dd>
+<dt class="hdlist1"><br/>AL.8.G.B.8</dt>
+<dd>
+<p>Apply the Pythagorean Theorem to find the distance between two points in a coordinate system.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Arkansas">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Arkansas Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>AR.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>AR.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>AR.8.G.B</dt>
+<dd>
+<p>Understand and apply the Pythagorean Theorem.</p>
+</dd>
+<dt class="hdlist1"><br/>AR.8.G.B.7</dt>
+<dd>
+<p>Apply the Pythagorean Theorem to determine unknown side lengths in right triangles in real-world and mathematical problems in two and three dimensions.</p>
+</dd>
+<dt class="hdlist1"><br/>AR.8.G.B.8</dt>
+<dd>
+<p>Apply the Pythagorean Theorem to find the distance between two points in a coordinate system.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-California">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">California Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>CA.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>CA.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>CA.8.G.B</dt>
+<dd>
+<p>Understand and apply the Pythagorean Theorem.</p>
+</dd>
+<dt class="hdlist1"><br/>CA.8.G.B.7</dt>
+<dd>
+<p>Apply the Pythagorean Theorem to determine unknown side lengths in right triangles in real-world and mathematical problems in two and three dimensions.</p>
+</dd>
+<dt class="hdlist1"><br/>CA.8.G.B.8</dt>
+<dd>
+<p>Apply the Pythagorean Theorem to find the distance between two points in a coordinate system.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Colorado">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Colorado Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>CO.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>CO.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>CO.8.G.B</dt>
+<dd>
+<p>Understand and apply the Pythagorean Theorem.</p>
+</dd>
+<dt class="hdlist1"><br/>CO.8.G.B.7</dt>
+<dd>
+<p>Apply the Pythagorean Theorem to determine unknown side lengths in right triangles in real-world and mathematical problems in two and three dimensions.</p>
+</dd>
+<dt class="hdlist1"><br/>CO.8.G.B.8</dt>
+<dd>
+<p>Apply the Pythagorean Theorem to find the distance between two points in a coordinate system.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Connecticut">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Connecticut Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>CT.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>CT.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>CT.8.G.B</dt>
+<dd>
+<p>Understand and apply the Pythagorean Theorem.</p>
+</dd>
+<dt class="hdlist1"><br/>CT.8.G.B.7</dt>
+<dd>
+<p>Apply the Pythagorean Theorem to determine unknown side lengths in right triangles in real-world and mathematical problems in two and three dimensions.</p>
+</dd>
+<dt class="hdlist1"><br/>CT.8.G.B.8</dt>
+<dd>
+<p>Apply the Pythagorean Theorem to find the distance between two points in a coordinate system.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Delaware">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Delaware Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>DE.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>DE.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>DE.8.G.B</dt>
+<dd>
+<p>Understand and apply the Pythagorean Theorem.</p>
+</dd>
+<dt class="hdlist1"><br/>DE.8.G.B.7</dt>
+<dd>
+<p>Apply the Pythagorean Theorem to determine unknown side lengths in right triangles in real-world and mathematical problems in two and three dimensions.</p>
+</dd>
+<dt class="hdlist1"><br/>DE.8.G.B.8</dt>
+<dd>
+<p>Apply the Pythagorean Theorem to find the distance between two points in a coordinate system.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Georgia">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Delaware Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>GA.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>GA.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>GA.8.G.B</dt>
+<dd>
+<p>Understand and apply the Pythagorean Theorem.</p>
+</dd>
+<dt class="hdlist1"><br/>GA.8.G.B.7</dt>
+<dd>
+<p>Apply the Pythagorean Theorem to determine unknown side lengths in right triangles in real-world and mathematical problems in two and three dimensions.</p>
+</dd>
+<dt class="hdlist1"><br/>GA.8.G.B.8</dt>
+<dd>
+<p>Apply the Pythagorean Theorem to find the distance between two points in a coordinate system.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Hawaii">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Hawaii Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>HI.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>HI.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>HI.8.G.B</dt>
+<dd>
+<p>Understand and apply the Pythagorean Theorem.</p>
+</dd>
+<dt class="hdlist1"><br/>HI.8.G.B.7</dt>
+<dd>
+<p>Apply the Pythagorean Theorem to determine unknown side lengths in right triangles in real-world and mathematical problems in two and three dimensions.</p>
+</dd>
+<dt class="hdlist1"><br/>HI.8.G.B.8</dt>
+<dd>
+<p>Apply the Pythagorean Theorem to find the distance between two points in a coordinate system.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Idaho">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Idaho Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>ID.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>ID.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>ID.8.G.B</dt>
+<dd>
+<p>Understand and apply the Pythagorean Theorem.</p>
+</dd>
+<dt class="hdlist1"><br/>ID.8.G.B.7</dt>
+<dd>
+<p>Apply the Pythagorean Theorem to determine unknown side lengths in right triangles in real-world and mathematical problems in two and three dimensions.</p>
+</dd>
+<dt class="hdlist1"><br/>ID.8.G.B.8</dt>
+<dd>
+<p>Apply the Pythagorean Theorem to find the distance between two points in a coordinate system.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Illinois">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Illinois Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>IL.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>IL.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>IL.8.G.B</dt>
+<dd>
+<p>Understand and apply the Pythagorean Theorem.</p>
+</dd>
+<dt class="hdlist1"><br/>IL.8.G.B.7</dt>
+<dd>
+<p>Apply the Pythagorean Theorem to determine unknown side lengths in right triangles in real-world and mathematical problems in two and three dimensions.</p>
+</dd>
+<dt class="hdlist1"><br/>IL.8.G.B.8</dt>
+<dd>
+<p>Apply the Pythagorean Theorem to find the distance between two points in a coordinate system.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Iowa">
+<span class="title"><a href="https://iowacore.gov/standards/iowa-core-standards">Iowa Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>IA.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>IA.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>IA.8.G.B</dt>
+<dd>
+<p>Understand and apply the Pythagorean Theorem.</p>
+</dd>
+<dt class="hdlist1"><br/>IA.8.G.B.7</dt>
+<dd>
+<p>Apply the Pythagorean Theorem to determine unknown side lengths in right triangles in real-world and mathematical problems in two and three dimensions.</p>
+</dd>
+<dt class="hdlist1"><br/>IA.8.G.B.8</dt>
+<dd>
+<p>Apply the Pythagorean Theorem to find the distance between two points in a coordinate system.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Kansas">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Kansas Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>KS.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>KS.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>KS.8.G.B</dt>
+<dd>
+<p>Understand and apply the Pythagorean Theorem.</p>
+</dd>
+<dt class="hdlist1"><br/>KS.8.G.B.7</dt>
+<dd>
+<p>Apply the Pythagorean Theorem to determine unknown side lengths in right triangles in real-world and mathematical problems in two and three dimensions.</p>
+</dd>
+<dt class="hdlist1"><br/>KS.8.G.B.8</dt>
+<dd>
+<p>Apply the Pythagorean Theorem to find the distance between two points in a coordinate system.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Kentucky">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Kentucky Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>KY.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>KY.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>KY.8.G.B</dt>
+<dd>
+<p>Understand and apply the Pythagorean Theorem.</p>
+</dd>
+<dt class="hdlist1"><br/>KY.8.G.B.7</dt>
+<dd>
+<p>Apply the Pythagorean Theorem to determine unknown side lengths in right triangles in real-world and mathematical problems in two and three dimensions.</p>
+</dd>
+<dt class="hdlist1"><br/>KY.8.G.B.8</dt>
+<dd>
+<p>Apply the Pythagorean Theorem to find the distance between two points in a coordinate system.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Louisiana">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Louisiana Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>LA.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>LA.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>LA.8.G.B</dt>
+<dd>
+<p>Understand and apply the Pythagorean Theorem.</p>
+</dd>
+<dt class="hdlist1"><br/>LA.8.G.B.7</dt>
+<dd>
+<p>Apply the Pythagorean Theorem to determine unknown side lengths in right triangles in real-world and mathematical problems in two and three dimensions.</p>
+</dd>
+<dt class="hdlist1"><br/>LA.8.G.B.8</dt>
+<dd>
+<p>Apply the Pythagorean Theorem to find the distance between two points in a coordinate system.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Maine">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Maine Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>ME.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>ME.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>ME.8.G.B</dt>
+<dd>
+<p>Understand and apply the Pythagorean Theorem.</p>
+</dd>
+<dt class="hdlist1"><br/>ME.8.G.B.7</dt>
+<dd>
+<p>Apply the Pythagorean Theorem to determine unknown side lengths in right triangles in real-world and mathematical problems in two and three dimensions.</p>
+</dd>
+<dt class="hdlist1"><br/>ME.8.G.B.8</dt>
+<dd>
+<p>Apply the Pythagorean Theorem to find the distance between two points in a coordinate system.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Michigan">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Michigan Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>MI.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>MI.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>MI.8.G.B</dt>
+<dd>
+<p>Understand and apply the Pythagorean Theorem.</p>
+</dd>
+<dt class="hdlist1"><br/>MI.8.G.B.7</dt>
+<dd>
+<p>Apply the Pythagorean Theorem to determine unknown side lengths in right triangles in real-world and mathematical problems in two and three dimensions.</p>
+</dd>
+<dt class="hdlist1"><br/>MI.8.G.B.8</dt>
+<dd>
+<p>Apply the Pythagorean Theorem to find the distance between two points in a coordinate system.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Maryland">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Maryland Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>MD.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>MD.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>MD.8.G.B</dt>
+<dd>
+<p>Understand and apply the Pythagorean Theorem.</p>
+</dd>
+<dt class="hdlist1"><br/>MD.8.G.B.7</dt>
+<dd>
+<p>Apply the Pythagorean Theorem to determine unknown side lengths in right triangles in real-world and mathematical problems in two and three dimensions.</p>
+</dd>
+<dt class="hdlist1"><br/>MD.8.G.B.8</dt>
+<dd>
+<p>Apply the Pythagorean Theorem to find the distance between two points in a coordinate system.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Massachusetts">
+<span class="title"><a href="https://www.doe.mass.edu/frameworks/">Massachusetts Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>MA.6-8.DTC.a.4</dt>
+<dd>
+<p>Individually and collaboratively use advanced tools to design and create online content (e.g., digital portfolio, multimedia, blog, webpage).</p>
+</dd>
+<dt class="hdlist1"><br/>MA.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>MA.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>MA.8.G.B</dt>
+<dd>
+<p>Understand and apply the Pythagorean Theorem.</p>
+</dd>
+<dt class="hdlist1"><br/>MA.8.G.B.7</dt>
+<dd>
+<p>Apply the Pythagorean Theorem to determine unknown side lengths in right triangles in real-world and mathematical problems in two and three dimensions.</p>
+</dd>
+<dt class="hdlist1"><br/>MA.8.G.B.8</dt>
+<dd>
+<p>Apply the Pythagorean Theorem to find the distance between two points in a coordinate system.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Mississippi">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Mississippi Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>MS.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>MS.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>MS.8.G.B</dt>
+<dd>
+<p>Understand and apply the Pythagorean Theorem.</p>
+</dd>
+<dt class="hdlist1"><br/>MS.8.G.B.7</dt>
+<dd>
+<p>Apply the Pythagorean Theorem to determine unknown side lengths in right triangles in real-world and mathematical problems in two and three dimensions.</p>
+</dd>
+<dt class="hdlist1"><br/>MS.8.G.B.8</dt>
+<dd>
+<p>Apply the Pythagorean Theorem to find the distance between two points in a coordinate system.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Missouri">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Missouri Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>MO.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>MO.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>MO.8.G.B</dt>
+<dd>
+<p>Understand and apply the Pythagorean Theorem.</p>
+</dd>
+<dt class="hdlist1"><br/>MO.8.G.B.7</dt>
+<dd>
+<p>Apply the Pythagorean Theorem to determine unknown side lengths in right triangles in real-world and mathematical problems in two and three dimensions.</p>
+</dd>
+<dt class="hdlist1"><br/>MO.8.G.B.8</dt>
+<dd>
+<p>Apply the Pythagorean Theorem to find the distance between two points in a coordinate system.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Montana">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Montana Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>MT.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>MT.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>MT.8.G.B</dt>
+<dd>
+<p>Understand and apply the Pythagorean Theorem.</p>
+</dd>
+<dt class="hdlist1"><br/>MT.8.G.B.7</dt>
+<dd>
+<p>Apply the Pythagorean Theorem to determine unknown side lengths in right triangles in real-world and mathematical problems in two and three dimensions.</p>
+</dd>
+<dt class="hdlist1"><br/>MT.8.G.B.8</dt>
+<dd>
+<p>Apply the Pythagorean Theorem to find the distance between two points in a coordinate system.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist .alignedStandards.standards-New Hampshire">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">New Hampshire Standards</a></span>
+<dl>
+<dt>NH.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt>NH.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt>NH.8.G.B</dt>
+<dd>
+<p>Understand and apply the Pythagorean Theorem.</p>
+</dd>
+<dt>NH.8.G.B.7</dt>
+<dd>
+<p>Apply the Pythagorean Theorem to determine unknown side lengths in right triangles in real-world and mathematical problems in two and three dimensions.</p>
+</dd>
+<dt>NH.8.G.B.8</dt>
+<dd>
+<p>Apply the Pythagorean Theorem to find the distance between two points in a coordinate system.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Nevada">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Nevada Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>NV.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>NV.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>NV.8.G.B</dt>
+<dd>
+<p>Understand and apply the Pythagorean Theorem.</p>
+</dd>
+<dt class="hdlist1"><br/>NV.8.G.B.7</dt>
+<dd>
+<p>Apply the Pythagorean Theorem to determine unknown side lengths in right triangles in real-world and mathematical problems in two and three dimensions.</p>
+</dd>
+<dt class="hdlist1"><br/>NV.8.G.B.8</dt>
+<dd>
+<p>Apply the Pythagorean Theorem to find the distance between two points in a coordinate system.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist .alignedStandards.standards-New Jersey">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">New Jersey Standards</a></span>
+<dl>
+<dt>NJ.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt>NJ.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt>NJ.8.G.B</dt>
+<dd>
+<p>Understand and apply the Pythagorean Theorem.</p>
+</dd>
+<dt>NJ.8.G.B.7</dt>
+<dd>
+<p>Apply the Pythagorean Theorem to determine unknown side lengths in right triangles in real-world and mathematical problems in two and three dimensions.</p>
+</dd>
+<dt>NJ.8.G.B.8</dt>
+<dd>
+<p>Apply the Pythagorean Theorem to find the distance between two points in a coordinate system.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist .alignedStandards.standards-New Mexico">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">New Mexico Standards</a></span>
+<dl>
+<dt>NM.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt>NM.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt>NM.8.G.B</dt>
+<dd>
+<p>Understand and apply the Pythagorean Theorem.</p>
+</dd>
+<dt>NM.8.G.B.7</dt>
+<dd>
+<p>Apply the Pythagorean Theorem to determine unknown side lengths in right triangles in real-world and mathematical problems in two and three dimensions.</p>
+</dd>
+<dt>NM.8.G.B.8</dt>
+<dd>
+<p>Apply the Pythagorean Theorem to find the distance between two points in a coordinate system.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist .alignedStandards.standards-North Carolina">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">North Carolina Standards</a></span>
+<dl>
+<dt>NC.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt>NC.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt>NC.8.G.B</dt>
+<dd>
+<p>Understand and apply the Pythagorean Theorem.</p>
+</dd>
+<dt>NC.8.G.B.7</dt>
+<dd>
+<p>Apply the Pythagorean Theorem to determine unknown side lengths in right triangles in real-world and mathematical problems in two and three dimensions.</p>
+</dd>
+<dt>NC.8.G.B.8</dt>
+<dd>
+<p>Apply the Pythagorean Theorem to find the distance between two points in a coordinate system.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist .alignedStandards.standards-North Dakota">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">North Dakota Standards</a></span>
+<dl>
+<dt>ND.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt>ND.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt>ND.8.G.B</dt>
+<dd>
+<p>Understand and apply the Pythagorean Theorem.</p>
+</dd>
+<dt>ND.8.G.B.7</dt>
+<dd>
+<p>Apply the Pythagorean Theorem to determine unknown side lengths in right triangles in real-world and mathematical problems in two and three dimensions.</p>
+</dd>
+<dt>ND.8.G.B.8</dt>
+<dd>
+<p>Apply the Pythagorean Theorem to find the distance between two points in a coordinate system.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist .alignedStandards.standards-New York">
+<span class="title"><a href="http://www.nysed.gov/curriculum-instruction/new-york-state-next-generation-mathematics-learning-standards">New York Standards</a></span>
+<dl>
+<dt>NY.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt>NY.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt>NY.8.G.B</dt>
+<dd>
+<p>Understand and apply the Pythagorean Theorem.</p>
+</dd>
+<dt>NY.8.G.B.7</dt>
+<dd>
+<p>Apply the Pythagorean Theorem to determine unknown side lengths in right triangles in real-world and mathematical problems in two and three dimensions.</p>
+</dd>
+<dt>NY.8.G.B.8</dt>
+<dd>
+<p>Apply the Pythagorean Theorem to find the distance between two points in a coordinate system.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Oklahoma">
+<span class="title"><a href="https://sde.ok.gov/oklahoma-academic-standards">Oklahoma Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>OK.G.2D.1.5</dt>
+<dd>
+<p>Use coordinate geometry to represent and analyze line segments and polygons, including determining lengths, midpoints, and slopes of line segments.</p>
+</dd>
+<dt class="hdlist1"><br/>OK.G.RT.1.1</dt>
+<dd>
+<p>Apply the distance formula and the Pythagorean Theorem and its
+converse to solve real-world and mathematical problems, as approximate
+and exact values, using algebraic and logical reasoning (include Pythagorean
+                                                                 Triples).</p>
+</dd>
+<dt class="hdlist1"><br/>OK.PA.GM.1</dt>
+<dd>
+<p>Solve problems involving right triangles using the Pythagorean Theorem.</p>
+</dd>
+<dt class="hdlist1"><br/>OK.PA.GM.1.1</dt>
+<dd>
+<p>Informally justify the Pythagorean Theorem using measurements, diagrams, or dynamic software and use the Pythagorean Theorem to solve problems in two and three dimensions involving right triangles.</p>
+</dd>
+<dt class="hdlist1"><br/>OK.PA.GM.1.2</dt>
+<dd>
+<p>Use the Pythagorean Theorem to find the distance between any two points in a coordinate plane.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Ohio">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Ohio Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>OH.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>OH.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>OH.8.G.B</dt>
+<dd>
+<p>Understand and apply the Pythagorean Theorem.</p>
+</dd>
+<dt class="hdlist1"><br/>OH.8.G.B.7</dt>
+<dd>
+<p>Apply the Pythagorean Theorem to determine unknown side lengths in right triangles in real-world and mathematical problems in two and three dimensions.</p>
+</dd>
+<dt class="hdlist1"><br/>OH.8.G.B.8</dt>
+<dd>
+<p>Apply the Pythagorean Theorem to find the distance between two points in a coordinate system.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Oregon">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Oregon Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>OR.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>OR.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>OR.8.G.B</dt>
+<dd>
+<p>Understand and apply the Pythagorean Theorem.</p>
+</dd>
+<dt class="hdlist1"><br/>OR.8.G.B.7</dt>
+<dd>
+<p>Apply the Pythagorean Theorem to determine unknown side lengths in right triangles in real-world and mathematical problems in two and three dimensions.</p>
+</dd>
+<dt class="hdlist1"><br/>OR.8.G.B.8</dt>
+<dd>
+<p>Apply the Pythagorean Theorem to find the distance between two points in a coordinate system.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Pennsylvania">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Pennsylvania Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>PA.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>PA.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>PA.8.G.B</dt>
+<dd>
+<p>Understand and apply the Pythagorean Theorem.</p>
+</dd>
+<dt class="hdlist1"><br/>PA.8.G.B.7</dt>
+<dd>
+<p>Apply the Pythagorean Theorem to determine unknown side lengths in right triangles in real-world and mathematical problems in two and three dimensions.</p>
+</dd>
+<dt class="hdlist1"><br/>PA.8.G.B.8</dt>
+<dd>
+<p>Apply the Pythagorean Theorem to find the distance between two points in a coordinate system.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist .alignedStandards.standards-Rhode Island">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Rhode Island Standards</a></span>
+<dl>
+<dt>RI.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt>RI.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt>RI.8.G.B</dt>
+<dd>
+<p>Understand and apply the Pythagorean Theorem.</p>
+</dd>
+<dt>RI.8.G.B.7</dt>
+<dd>
+<p>Apply the Pythagorean Theorem to determine unknown side lengths in right triangles in real-world and mathematical problems in two and three dimensions.</p>
+</dd>
+<dt>RI.8.G.B.8</dt>
+<dd>
+<p>Apply the Pythagorean Theorem to find the distance between two points in a coordinate system.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist .alignedStandards.standards-South Dakota">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">South Dakota Standards</a></span>
+<dl>
+<dt>SD.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt>SD.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt>SD.8.G.B</dt>
+<dd>
+<p>Understand and apply the Pythagorean Theorem.</p>
+</dd>
+<dt>SD.8.G.B.7</dt>
+<dd>
+<p>Apply the Pythagorean Theorem to determine unknown side lengths in right triangles in real-world and mathematical problems in two and three dimensions.</p>
+</dd>
+<dt>SD.8.G.B.8</dt>
+<dd>
+<p>Apply the Pythagorean Theorem to find the distance between two points in a coordinate system.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Tennessee">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Tennessee Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>TN.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>TN.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>TN.8.G.B</dt>
+<dd>
+<p>Understand and apply the Pythagorean Theorem.</p>
+</dd>
+<dt class="hdlist1"><br/>TN.8.G.B.7</dt>
+<dd>
+<p>Apply the Pythagorean Theorem to determine unknown side lengths in right triangles in real-world and mathematical problems in two and three dimensions.</p>
+</dd>
+<dt class="hdlist1"><br/>TN.8.G.B.8</dt>
+<dd>
+<p>Apply the Pythagorean Theorem to find the distance between two points in a coordinate system.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Utah">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Utah Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>UT.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>UT.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>UT.8.G.B</dt>
+<dd>
+<p>Understand and apply the Pythagorean Theorem.</p>
+</dd>
+<dt class="hdlist1"><br/>UT.8.G.B.7</dt>
+<dd>
+<p>Apply the Pythagorean Theorem to determine unknown side lengths in right triangles in real-world and mathematical problems in two and three dimensions.</p>
+</dd>
+<dt class="hdlist1"><br/>UT.8.G.B.8</dt>
+<dd>
+<p>Apply the Pythagorean Theorem to find the distance between two points in a coordinate system.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Vermont">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Vermont Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>VT.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>VT.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>VT.8.G.B</dt>
+<dd>
+<p>Understand and apply the Pythagorean Theorem.</p>
+</dd>
+<dt class="hdlist1"><br/>VT.8.G.B.7</dt>
+<dd>
+<p>Apply the Pythagorean Theorem to determine unknown side lengths in right triangles in real-world and mathematical problems in two and three dimensions.</p>
+</dd>
+<dt class="hdlist1"><br/>VT.8.G.B.8</dt>
+<dd>
+<p>Apply the Pythagorean Theorem to find the distance between two points in a coordinate system.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Washington">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Washington Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>WA.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>WA.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>WA.8.G.B</dt>
+<dd>
+<p>Understand and apply the Pythagorean Theorem.</p>
+</dd>
+<dt class="hdlist1"><br/>WA.8.G.B.7</dt>
+<dd>
+<p>Apply the Pythagorean Theorem to determine unknown side lengths in right triangles in real-world and mathematical problems in two and three dimensions.</p>
+</dd>
+<dt class="hdlist1"><br/>WA.8.G.B.8</dt>
+<dd>
+<p>Apply the Pythagorean Theorem to find the distance between two points in a coordinate system.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist .alignedStandards.standards-West Virginia">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">West Virginia Standards</a></span>
+<dl>
+<dt>WV.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt>WV.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt>WV.8.G.B</dt>
+<dd>
+<p>Understand and apply the Pythagorean Theorem.</p>
+</dd>
+<dt>WV.8.G.B.7</dt>
+<dd>
+<p>Apply the Pythagorean Theorem to determine unknown side lengths in right triangles in real-world and mathematical problems in two and three dimensions.</p>
+</dd>
+<dt>WV.8.G.B.8</dt>
+<dd>
+<p>Apply the Pythagorean Theorem to find the distance between two points in a coordinate system.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Wisconsin">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Wisconsin Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>WI.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>WI.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>WI.8.G.B</dt>
+<dd>
+<p>Understand and apply the Pythagorean Theorem.</p>
+</dd>
+<dt class="hdlist1"><br/>WI.8.G.B.7</dt>
+<dd>
+<p>Apply the Pythagorean Theorem to determine unknown side lengths in right triangles in real-world and mathematical problems in two and three dimensions.</p>
+</dd>
+<dt class="hdlist1"><br/>WI.8.G.B.8</dt>
+<dd>
+<p>Apply the Pythagorean Theorem to find the distance between two points in a coordinate system.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Wyoming">
+<span class="title"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/">Wyoming Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>WY.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>WY.7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>WY.8.G.B</dt>
+<dd>
+<p>Understand and apply the Pythagorean Theorem.</p>
+</dd>
+<dt class="hdlist1"><br/>WY.8.G.B.7</dt>
+<dd>
+<p>Apply the Pythagorean Theorem to determine unknown side lengths in right triangles in real-world and mathematical problems in two and three dimensions.</p>
+</dd>
+<dt class="hdlist1"><br/>WY.8.G.B.8</dt>
+<dd>
+<p>Apply the Pythagorean Theorem to find the distance between two points in a coordinate system.</p>
+</dd>
+</dl>
+</span></span></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch sidebartextbooks">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p><strong>Textbook Alignment</strong>
+<select class="textbooksAlignmentSelect"  onchange="showTextbooksAlignment()"><option selected="selected" value="textbook-IM_Alg_1"><a href="https://illustrativemathematics.org/">IM Algebra 1</a></option><option value="textbook-IM_8"><a href="https://illustrativemathematics.org/">IM 8 Math™</a></option><option value="textbook-CMP"><a href="https://connectedmath.msu.edu/">Connected Math</a></option></select></p>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="dlist alignedTextbooks textbook-IM_Alg_1">
+<span class="title"><a href="https://illustrativemathematics.org/">IM Algebra 1</a></span>
+<dl>
+<dt class="hdlist1"><br/>IM.Alg1.2.9</dt>
+<dd>
+<p>Which Variable to Solve for? (Part 2)</p>
+</dd>
+</dl>
+</span>
+<span class="dlist alignedTextbooks textbook-IM_8">
+<span class="title"><a href="https://illustrativemathematics.org/">IM 8 Math™</a></span>
+<dl>
+<dt class="hdlist1"><br/>IM.8.8.10</dt>
+<dd>
+<p>Applications of the Pythagorean Theorem</p>
+</dd>
+<dt class="hdlist1"><br/>IM.8.8.8</dt>
+<dd>
+<p>Finding Unknown Side Lengths</p>
+</dd>
+<dt class="hdlist1"><br/>IM.8.8.7</dt>
+<dd>
+<p>A Proof of the Pythagorean Theorem</p>
+</dd>
+<dt class="hdlist1"><br/>IM.8.8.6</dt>
+<dd>
+<p>Finding Side Lengths of Triangles</p>
+</dd>
+</dl>
+</span>
+<span class="dlist alignedTextbooks textbook-CMP">
+<span class="title"><a href="https://connectedmath.msu.edu/">Connected Math</a></span>
+<dl>
+<dt class="hdlist1"><br/>CMP.8.2</dt>
+<dd>
+<p>Looking for Pythagoras: The Pythagorean Theorem</p>
+</dd>
+</dl>
+</span></span></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch sidebarpractices">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p><strong>Practices in this Lesson</strong>
+<select class="practicesAlignmentSelect"  onchange="showPracticesAlignment()"><option selected="selected" value="practices-NGSS"><a href="https://ngss.nsta.org/practicesfull.aspx">Science and Engineering</a></option><option value="practices-CC"><a href="http://corestandards.org/Math/">Math</a></option><option value="practices-MLR"><a href="https://achievethecore.org/peersandpedagogy/developing-math-language-routines/">Math Lang. Routines</a></option></select></p>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="dlist alignedPractices practices-NGSS">
+<span class="title"><a href="https://ngss.nsta.org/practicesfull.aspx">Science and Engineering</a></span>
+<dl>
+<dt class="hdlist1"><br/>SEP.5</dt>
+<dd>
+<p>Using Mathematics and Computational Thinking</p>
+</dd>
+</dl>
+</span>
+<span class="dlist alignedPractices practices-CC">
+<span class="title"><a href="http://corestandards.org/Math/">Math</a></span>
+<dl>
+<dt class="hdlist1"><br/>MP.3</dt>
+<dd>
+<p>Construct viable arguments and critique the reasoning of others</p>
+</dd>
+<dt class="hdlist1"><br/>MP.2</dt>
+<dd>
+<p>Reason abstractly and quantitatively</p>
+</dd>
+</dl>
+</span>
+<span class="dlist alignedPractices practices-MLR">
+<span class="title"><a href="https://achievethecore.org/peersandpedagogy/developing-math-language-routines/">Math Lang. Routines</a></span>
+<dl>
+<dt class="hdlist1"><br/>MLR.8</dt>
+<dd>
+<p>Discussion Supports</p>
+</dd>
+</dl>
+</span></span></td>
+</tr>
+</tbody>
+</table>
+<span class="paragraph">
+<!-- </p>
+</span>
+--></span><!--
+<span class="paragraph">
+<p>
+-->
+</span>
+<span class="paragraph">
+<p><span class="other-proglang">(Also available in <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/../../lessons/distance-formula/index.shtml">Pyret</a>)</span></p>
+</span>
+<span class="paragraph description">
+<p>Students apply their knowledge of the Pythagorean Theorem and Circles of Evaluation to develop a function for the distance formula.</p>
+</span>
+<table class="tableblock frame-all grid-all stripes-none stretch left-header preamble">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>Lesson Goals</p>
+</span></span></td>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>Students will be able to:</p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p>Explain how the distance formula is related to the Pythagorean theorem.</p>
+</li>
+<li>
+<p>Write a function for the distance formula.</p>
+</li>
+</ul>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>Student-Facing Lesson Goals</p>
+</span></span></td>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="ulist">
+<ul>
+<li>
+<p>I can explain how the distance formula is connected to the Pythagorean theorem.</p>
+</li>
+<li>
+<p>I can write a function that takes in 2 points and returns the distance between them.</p>
+</li>
+</ul>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>Materials</p>
+</span></span></td>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="ulist materials-links">
+<ul>
+<li>
+<p><a href="https://docs.google.com/presentation/d/1XmvXAdQvu58B9QG9HstH31OvMeBHnkjZ4BpCAfJ9W9k/" target="_blank" rel="noopener">Lesson Slides</a></p>
+</li>
+<li>
+<p><span class="materialSectionPlaceholder"> </span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/../../lessons/distance-formula-wescheme/pages/distance-write-code-from-lengths.html" target="_blank" rel="noopener">Writing Code to Calculate Missing Lengths</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/../../lessons/distance-formula-wescheme/pages/distance-on-coordinate-plane.html" target="_blank" rel="noopener">Distance on the Coordinate Plane</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/../../lessons/distance-formula-wescheme/pages/distance-coe.html" target="_blank" rel="noopener">Circles of Evaluation: Distance between (0&#x2c; 2) and (4&#x2c; 5)</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/../../lessons/distance-formula-wescheme/pages/Distance-bw-Two-Points-Multiple-Representations.pdf" target="_blank" rel="noopener">Multiple Representations: Distance between two points</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/../../lessons/distance-formula-wescheme/pages/distance-from-game-coordinates.html" target="_blank" rel="noopener">Distance From Game Coordinates</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/../../lessons/distance-formula-wescheme/pages/distance.html" target="_blank" rel="noopener">Distance (px&#x2c; py) to (cx&#x2c; cy)</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/../../lessons/distance-formula-wescheme/pages/distance-comparing-code.html" target="_blank" rel="noopener">Comparing Code: Finding Missing Distances</a></span></p>
+</li>
+<li>
+<p><span class="StarterFile Optional"><a href="https://www.wescheme.org/openEditor?publicId=QweXHnMPxg" target="_blank" rel="noopener">Sample Game Starter File</a></span></p>
+</li>
+<li>
+<p><span class="StarterFile Optional"><a href="https://www.wescheme.org/openEditor?publicId=QgT6PtTZ2v" target="_blank" rel="noopener">Sample Game with Distance Lines Made Visible</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/../../lessons/distance-formula-wescheme/pages/line-length-explore.html" target="_blank" rel="noopener">Line Length Explore</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/../../lessons/distance-formula-wescheme/pages/pythag-practice.pdf" target="_blank" rel="noopener">Pythagorean Theorem Practice</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/../../lessons/distance-formula-wescheme/pages/distance-from-game-coordinates-2.html" target="_blank" rel="noopener">Distance From Game Coordinates 2</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/../../lessons/distance-formula-wescheme/pages/line-length.html" target="_blank" rel="noopener">Word Problem: line-length</a></span></p>
+</li>
+<li>
+<p><strong>Classroom visual:</strong> <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/javascript:showLangTable()">Language Table</a></p>
+</li>
+</ul>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>Supplemental Resources</p>
+</span></span></td>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="ulist">
+<ul>
+<li>
+<p><a href="https://www.youtube.com/watch?v=i9-ZPGp1AJE&feature=youtu.be" target="_blank" rel="noopener">This short video</a> introduces viewers to the nearly 4000 year old Babylonian tablet known as Plimpton 322, which contains a table of Pythagorean Triples that long predates Pythagoras, as well as to Babylonians use of the base 60 system.</p>
+</li>
+</ul>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>Key Points for the Facilitator</p>
+</span></span></td>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="ulist">
+<ul>
+<li>
+<p><em>Note: This lesson assumes that students already have a basic understanding of the Pythagorean Theorem and how to use it. This lesson is designed to build on what they know and deepen their understanding!</em></p>
+</li>
+<li>
+<p>The distance formula is an excellent review of Circles of Evaluation. Have students work out the expression in small groups to foster discussion.</p>
+</li>
+</ul>
+</span></span></td>
+</tr>
+</tbody>
+</table>
+<span class="dlist glossary">
+<span class="title">Glossary</span>
+<dl>
+<dt class="hdlist1"><br/>conditional</dt>
+<dd>
+<p>a code expression made of questions and answers</p>
+</dd>
+<dt class="hdlist1"><br/>coordinate</dt>
+<dd>
+<p>a number describing an object&#8217;s location</p>
+</dd>
+<dt class="hdlist1"><br/>hypotenuse</dt>
+<dd>
+<p>the side opposite the 90-degree angle in a right triangle</p>
+</dd>
+<dt class="hdlist1"><br/>Pythagorean Theorem</dt>
+<dd>
+<p>the relationship between the squares of the sides of a right triangle; can be used to find diagonal distances on the coordinate plane</p>
+</dd>
+</dl>
+</span>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<table class="grid-none frame-none section-heading"><tr><td width="65%">Distance in 1 Dimension </td><td width="35%">15 minutes</td></tr></table>
+<span class="sectionbody">
+<span class="sect2 lesson-section-2">
+<h3 id="_overview">Overview</h3>
+<span class="paragraph">
+<p>Students discover the need for distance calculation (first in one dimension, then in two) in video games.</p>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_launch">Launch</h3>
+<span class="paragraph lesson-instruction">
+<p>Sign in to <a href="https://www.wescheme.org/console" target="_blank" rel="noopener">WeScheme</a> and open your saved Game Starter Files.</p>
+</span>
+<span class="paragraph">
+<p><span class="right"><span class="image-figure"><span class="image"><img src="images/33e083c2f364cef2.jpg" alt="game image: astronaut and space craft on a landscape, with a right triangle showing the horizontal, vertical and diagonal distance between them" width="200" title="game image: astronaut and space craft on a landscape, with a right triangle showing the horizontal, vertical and diagonal distance between them"></span><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/images/33e083c2f364cef2.jpg" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></p>
+</span>
+<span class="paragraph">
+<p>At this point:</p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p>The Target and Danger should be moving on their own.</p>
+</li>
+<li>
+<p>The Player should respond to keypresses.</p>
+</li>
+<li>
+<p>The Target and Danger should re-appear after they leave the screen.</p>
+</li>
+</ul>
+</span>
+<span class="paragraph">
+<p>It&#8217;s almost fully-playable!</p>
+</span>
+<span class="paragraph">
+<p><em>Here&#8217;s a link to a <a href="https://www.wescheme.org/openEditor?publicId=QweXHnMPxg" target="_blank" rel="noopener">Sample Game Starter File</a> you can use if you&#8217;re demoing on the board.</em></p>
+</span>
+<span class="ulist lesson-instruction">
+<ul>
+<li>
+<p>What seems to be missing from this game?</p>
+<span class="ulist">
+<ul>
+<li>
+<p><em>The characters aren&#8217;t doing anything when they collide.</em></p>
+</li>
+</ul>
+</span>
+</li>
+<li>
+<p>What does it mean for characters to 'hit' one another? To collide?</p>
+<span class="ulist">
+<ul>
+<li>
+<p><em>They have to be close enough to touch.</em></p>
+</li>
+</ul>
+</span>
+</li>
+<li>
+<p>How will the computer know when the characters have collided?</p>
+<span class="ulist">
+<ul>
+<li>
+<p><em>When the coordinates of the characters are really close to each other.</em></p>
+</li>
+</ul>
+</span>
+</li>
+</ul>
+</span>
+<span class="openblock lesson-roleplay">
+<span class="content">
+<span class="paragraph">
+<p>In the following activity, students will role play a collision between two characters.</p>
+</span>
+<span class="paragraph">
+<p>Draw a "number line" on the floor or across a wall of your classroom as the backdrop for your movement, and select a volunteer to represent a character in the game (either <code class="racket">TARGET</code> or <code class="racket">DANGER</code>), while represent the <code class="racket">PLAYER</code>. Emphasize that this represents <em>one dimension</em> (perhaps the x-axis). Both of you should stand on the number line, 8-10 steps away from one another.</p>
+</span>
+<span class="paragraph">
+<p>Each image in the game is located based on its center. Make sure that you and your volunteer stand with feet as close together as possible, representing the infinitely small point that identifies your center. Have you and the volunteer raise your arms to form a "T shape", representing the outer edges of the characters.</p>
+</span>
+<span class="paragraph">
+<p>Ask the class how far apart you and your volunteer are. How they would calculate this if you were standing on a number line and they could see the actual coordinates under your feet? The goal is to illicit the response that students would subtract the smaller coordinate from the larger one (or subtract in any order and take the absolute value).</p>
+</span>
+<span class="paragraph">
+<p>Side-step towards each other one step at a time, each time asking the class, "We are colliding: True or False?" <em>Be sure to only accept "true" and "false" as responses - not "yes" and "no"!</em></p>
+</span>
+<span class="paragraph">
+<p>After a few iterations, try switching places and repeating. <em>Point out that students always subtract the smaller number from the larger one, regardless of the character order!</em> <strong>The results are always positive.</strong></p>
+</span>
+<span class="paragraph">
+<p>Do this until students can clearly see that collision happens when the two characters are <em>touching</em> or
+<em>overlapping</em> in some way - NOT when they are <em>at the same point.</em></p>
+</span>
+</span>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_investigate">Investigate</h3>
+<span class="paragraph">
+<p>Our game computes 1-dimensional distance (vertical or horizontal) using a function called <code class="racket">line-length</code>. Let&#8217;s explore how it works!</p>
+</span>
+<span class="paragraph">
+<p><em>If you want to provide students with the questions below, use  <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/../../lessons/distance-formula-wescheme/pages/line-length-explore.html" target="_blank" rel="noopener">Line Length Explore</a>.</em></p>
+</span>
+<span class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Find the <code class="racket">line-length</code> function in your game files and take a minute to look at the code.</p>
+</li>
+<li>
+<p>What do you notice?</p>
+<span class="ulist">
+<ul>
+<li>
+<p><em>Both of the examples do the same thing, even though the numbers are given in a different order.</em></p>
+</li>
+<li>
+<p><em>It&#8217;s a piecewise function!</em></p>
+</li>
+<li>
+<p><em>It uses inequalities.</em></p>
+</li>
+</ul>
+</span>
+</li>
+<li>
+<p>What do you wonder?</p>
+</li>
+<li>
+<p>Click "Run", and practice using <code class="racket">line-length</code> in the Interactions Area with different values for <code class="racket">a</code> and <code class="racket">b</code>.</p>
+</li>
+<li>
+<p>What does the <code class="racket">line-length</code> function <em>do?</em></p>
+<span class="ulist">
+<ul>
+<li>
+<p><em>It always subtracts the smaller number from the larger number and evaluates to a positive distance!</em></p>
+</li>
+</ul>
+</span>
+</li>
+<li>
+<p>Why does it use <span class="vocab">conditionals</span>?</p>
+<span class="ulist">
+<ul>
+<li>
+<p><em>To determine whether or not to subtract the numbers in the given order or to swap the order to get a positive result.</em></p>
+</li>
+</ul>
+</span>
+</li>
+</ul>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_synthesize">Synthesize</h3>
+<span class="ulist">
+<ul>
+<li>
+<p>Why is the distance between two points always positive?</p>
+<span class="ulist">
+<ul>
+<li>
+<p><em>Because distance has nothing to do with direction - it takes just as long to drive from Seattle to Wichita as it does to drive from Wichita to Seattle.</em></p>
+</li>
+</ul>
+</span>
+</li>
+</ul>
+</span>
+<table class="tableblock frame-all grid-none stripes-none stretch strategy-box">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="title">Why line-length?</span>
+Students learn early on that distance in 1-dimension is computed via <span class="gdrive-only">\lvert x_2 - x_1 \rvert</span><!--<span class="begin-ignore-for-gdrive"></span><script type="math/tex">\displaystyle \lvert x_2 - x_1 \rvert</script><span class="end-ignore-for-gdrive"></span>-->, and that distance is always a positive value. The Pythagorean Theorem teaches students that the length of the hypotenuse is computed based on the distance in the x- and y-dimension.</p>
+<p class="tableblock">Most math textbook, however, show the distance formula without connecting back to that theorem.</p>
+<p class="tableblock"><span class="center">  <span class="gdrive-only">&radic;( ( (x_2 - x_1) )^2 + ( (y_2 - y_1) )^2 )</span><!--<span class="begin-ignore-for-gdrive"></span><script type="math/tex">\displaystyle \sqrt{{(x_2 - x_1)}^2 + {(y_2 - y_1)}^2}</script><span class="end-ignore-for-gdrive"></span>-->  </span></p>
+<p class="tableblock">A student who asks whether it&#8217;s a problem when <span class="gdrive-only">x_2 - x_1</span><!--<span class="begin-ignore-for-gdrive"></span><script type="math/tex">\displaystyle x_2 - x_1</script><span class="end-ignore-for-gdrive"></span>--> is negative is displaying a deep understanding of what&#8217;s going on!</p>
+<p class="tableblock">Using the <code class="racket">line-length</code> function explicitly connects the distance formula back to the 1-dimensional distance students know, allowing them to apply prior knowledge and better connect back to the <span class="vocab">Pythagorean Theorem</span> itself.</p>
+<p class="tableblock">This effectively rewrites the distance formula as:</p>
+<p class="tableblock"><span class="center">  <span class="gdrive-only">&radic;( ( \lvert x_2 - x_1 \rvert )^2 + ( \lvert y_2 - y_1 \rvert )^2 )</span><!--<span class="begin-ignore-for-gdrive"></span><script type="math/tex">\displaystyle \sqrt{{\lvert x_2 - x_1 \rvert}^2 + {\lvert y_2 - y_1 \rvert}^2}</script><span class="end-ignore-for-gdrive"></span>-->  </span></p></td>
+</tr>
+</tbody>
+</table>
+</span>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<table class="grid-none frame-none section-heading"><tr><td width="65%">Distance in 2 Dimensions </td><td width="35%">30 minutes</td></tr></table>
+<span class="sectionbody">
+<span class="sect2 lesson-section-2">
+<h3 id="_overview_2">Overview</h3>
+<span class="paragraph">
+<p>Students extend their understanding of <em>distance</em> from one dimension to two.</p>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_launch_2">Launch</h3>
+<span class="paragraph">
+<p>We just practiced computing the distance in 1-dimension, which is useful if the Player and Danger have the same x- or y-coordinate. But how do we compute the distance between two points when both the x- <em>and</em> y-coordinates are different?</p>
+</span>
+<span class="paragraph">
+<p><em>Here&#8217;s a link to a <a href="https://www.wescheme.org/openEditor?publicId=QgT6PtTZ2v" target="_blank" rel="noopener">Sample Game with Distance Lines Made Visible</a> to use if you&#8217;re demoing the instruction below on the board.</em></p>
+</span>
+<span class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Scroll down to <code class="racket">4. Collisions</code> in your game file and look for the <code class="racket">distances-color</code> definition. What is the value defined to be?</p>
+<span class="ulist">
+<ul>
+<li>
+<p><em>Right now this value is defined to be the <em>empty string</em> <code class="racket">""</code>.</em></p>
+</li>
+</ul>
+</span>
+</li>
+<li>
+<p>Change this to a color that will show up on your background, and click "Run". What happens?</p>
+<span class="ulist">
+<ul>
+<li>
+<p><em>This setting draws lines from your Player to each of the other characters, and then uses those lines as the hypotenuse of right triangles! The legs of these triangles show the distance in 1 dimension each (on the x- and y-axis).</em></p>
+</li>
+</ul>
+</span>
+</li>
+</ul>
+</span>
+<span class="paragraph">
+<p>In order to compute the <em>diagonal</em> distance between two characters in a video game, we&#8217;ll need a special formula that considers <em>both the vertical and the horizontal</em> distances between them!</p>
+</span>
+<span class="paragraph">
+<p>When we turned on <code class="racket">distances-color</code> in our game, we saw the diagonal distance between two characters represented as the <span class="vocab">hypotenuse</span> of a right triangle.</p>
+</span>
+<span class="ulist lesson-instruction">
+<ul>
+<li>
+<p>How do we find the hypotenuse of a right triangle if we know the measures of both of its legs?</p>
+<span class="ulist">
+<ul>
+<li>
+<p><em>The Pythagorean Theorem!</em> <span class="gdrive-only">a^2 + b^2 = c^2</span><!--<span class="begin-ignore-for-gdrive"></span><script type="math/tex">\displaystyle a^2 + b^2 = c^2</script><span class="end-ignore-for-gdrive"></span>--></p>
+</li>
+</ul>
+</span>
+</li>
+<li>
+<p>If we had one player at (0,0) and another player at (4,3), we&#8217;d see a right triangle and the lengths of the legs would be 3 and 4. How would we use the Pythagorean Theorem to find the hypotenuse of the triangle?</p>
+<span class="ulist">
+<ul>
+<li>
+<p><em>We would add <span class="gdrive-only">3^2</span><!--<span class="begin-ignore-for-gdrive"></span><script type="math/tex">\displaystyle 3^2</script><span class="end-ignore-for-gdrive"></span>--> and <span class="gdrive-only">4^2</span><!--<span class="begin-ignore-for-gdrive"></span><script type="math/tex">\displaystyle 4^2</script><span class="end-ignore-for-gdrive"></span>-->, or 9 and 16, to get 25. The square root of 25, or 5, is the length of the hypotenuse.</em></p>
+</li>
+</ul>
+</span>
+</li>
+</ul>
+</span>
+<span class="paragraph">
+<p><em>Note: If it&#8217;s been a long time since your students have used the Pythagorean Theorem, now would be a good time to do some <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/../../lessons/distance-formula-wescheme/pages/pythag-practice.pdf" target="_blank" rel="noopener">Pythagorean Theorem Practice</a>.</em></p>
+</span>
+<table class="tableblock frame-all grid-none stripes-none stretch strategy-box">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="title">Connecting Pythagorean Theorem to video games</span>
+We recommend carving out 4.5 minutes and wowing your students with <a href="https://www.youtube.com/watch?v=Ln7myXQx8TM" target="_blank" rel="noopener">Tova Brown&#8217;s Video of a Geometric Proof of the Pythagorean Theorem and its application to finding distance between game characters</a>. Then have them try explaining the proof to one another.</p>
+<p class="tableblock">In our case, the lengths A and B are computed by the <code class="racket">line-length</code> function we already have!</p></td>
+</tr>
+</tbody>
+</table>
+<span class="paragraph">
+<p>Optional: On <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/../../lessons/distance-formula-wescheme/pages/distance-write-code-from-lengths.html" target="_blank" rel="noopener">Writing Code to Calculate Missing Lengths</a> we&#8217;ve provided screenshots from two games where the horizontal and vertical distances between the characters are shown. Students are asked to write the code to calculate the distance between these characters using the Pythagorean Theoream. You could also have them do the computations (using a calculator) and compare their results to what their code evaluates to.</p>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_investigate_2">Investigate</h3>
+<span class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Turn to <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/../../lessons/distance-formula-wescheme/pages/distance-on-coordinate-plane.html" target="_blank" rel="noopener">Distance on the Coordinate Plane</a> and look at how line-length is used in the code. See if you can figure out how to write the code for the second problem.</p>
+</li>
+<li>
+<p>Then turn to <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/../../lessons/distance-formula-wescheme/pages/distance-coe.html" target="_blank" rel="noopener">Circles of Evaluation: Distance between (0&#x2c; 2) and (4&#x2c; 5)</a> in your student workbook. Convert this expression to a Circle of Evaluation, and then to code.</p>
+</li>
+<li>
+<p>Then we&#8217;ll make sure we really understand it all with <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/../../lessons/distance-formula-wescheme/pages/Distance-bw-Two-Points-Multiple-Representations.pdf" target="_blank" rel="noopener">Multiple Representations: Distance between two points</a> by combining circles of evaluation, code, computation and a sketch on a graph.</p>
+</li>
+</ul>
+</span>
+<span class="paragraph">
+<p>For more practice writing code to generate the distance between two fixed points, use:</p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/../../lessons/distance-formula-wescheme/pages/distance-from-game-coordinates.html" target="_blank" rel="noopener">Distance From Game Coordinates</a></p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/../../lessons/distance-formula-wescheme/pages/distance-from-game-coordinates-2.html" target="_blank" rel="noopener">Distance From Game Coordinates 2</a></p>
+</li>
+</ul>
+</span>
+<span class="paragraph">
+<p>Debrief these workbook pages - or have students pair-and-share - before moving on to writing the full distance function. Explain to students that all of the practice they&#8217;ve done so far today focused on a screenshot of a moment in time. With the game stopped in that moment, we knew either the exact location of our characters or the exact distances between them. <strong>As we play our games, however, the characters are constantly changing locations!</strong></p>
+</span>
+<div class="paragraph lesson-point">
+<p>In order to calculate the distance between two objects whose locations are constantly changing, we need to use variables!</p>
+</div>
+<span class="openblock lesson-instruction">
+<span class="content">
+<span class="ulist">
+<ul>
+<li>
+<p>Turn to <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/../../lessons/distance-formula-wescheme/pages/distance.html" target="_blank" rel="noopener">Distance (px&#x2c; py) to (cx&#x2c; cy)</a> and use the Design Recipe to help you write a function that takes in two <span class="vocab">coordinate</span> pairs (four numbers) of two characters (<span class="gdrive-only">px, py</span><!--<span class="begin-ignore-for-gdrive"></span><script type="math/tex">\displaystyle px, py</script><span class="end-ignore-for-gdrive"></span>-->) and (<span class="gdrive-only">cx, cy</span><!--<span class="begin-ignore-for-gdrive"></span><script type="math/tex">\displaystyle cx, cy</script><span class="end-ignore-for-gdrive"></span>-->) and returns the distance between those two points.</p>
+</li>
+<li>
+<p>HINT: The code you wrote in <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/../../lessons/distance-formula-wescheme/pages/distance-coe.html" target="_blank" rel="noopener">Circles of Evaluation: Distance between (0&#x2c; 2) and (4&#x2c; 5)</a> can be used to give you your first example!</p>
+</li>
+<li>
+<p>When you&#8217;re done, fix the broken <code class="racket">distance</code> function in your game file, click "Run" and check that the right triangles in your file now appear with reasonable distances for the hypotenuse.</p>
+</li>
+</ul>
+</span>
+</span>
+</span>
+<table class="tableblock frame-all grid-none stripes-none stretch strategy-box">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p><span class="title">Optional:</span></p>
+</span>
+<span class="paragraph">
+<p>If we knew the lengths of the hypotenuse and one leg of the triangle, could we use the formula <span class="gdrive-only">A^2 + B^2 = C^2</span><!--<span class="begin-ignore-for-gdrive"></span><script type="math/tex">\displaystyle A^2 + B^2 = C^2</script><span class="end-ignore-for-gdrive"></span>--> to compute the length of the other leg?</p>
+</span>
+<span class="paragraph">
+<p>Take a look at the two examples on <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/../../lessons/distance-formula-wescheme/pages/distance-comparing-code.html" target="_blank" rel="noopener">Comparing Code: Finding Missing Distances</a>.</p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p>There&#8217;s a subtle difference between the two examples! What is it?</p>
+<span class="ulist">
+<ul>
+<li>
+<p><em>In the first example, the length of the hypotenuse is missing. In the second example, the length of a leg is missing.</em></p>
+</li>
+</ul>
+</span>
+</li>
+<li>
+<p>Can you explain why they need to be written differently?</p>
+<span class="ulist">
+<ul>
+<li>
+<p><em>Finding the hypotenuse requires finding the square root of the <span class="gdrive-only">A^2 + B^2</span><!--<span class="begin-ignore-for-gdrive"></span><script type="math/tex">\displaystyle A^2 + B^2</script><span class="end-ignore-for-gdrive"></span>-->, whereas finding a leg requires finding the square root of the difference between <span class="gdrive-only">C^2</span><!--<span class="begin-ignore-for-gdrive"></span><script type="math/tex">\displaystyle C^2</script><span class="end-ignore-for-gdrive"></span>--> and <span class="gdrive-only">B^2</span><!--<span class="begin-ignore-for-gdrive"></span><script type="math/tex">\displaystyle B^2</script><span class="end-ignore-for-gdrive"></span>-->.</em></p>
+</li>
+</ul>
+</span>
+</li>
+</ul>
+</span></span></td>
+</tr>
+</tbody>
+</table>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_common_misconceptions">Common Misconceptions</h3>
+<span class="paragraph">
+<p>It is <em>extremely common</em> for students to put variables in the <strong>wrong order</strong>. In other words, their program looks like
+ <code class="racket">&#8230;&#8203;(sqrt (+ (sqr (line-length x1 y1)) (sqr (line-length x2 y2))))&#8230;&#8203;</code>
+instead of <code class="racket">&#8230;&#8203;(sqrt (+ (sqr (line-length x2 x1)) (sqr (line-length y2 y1))))&#8230;&#8203;</code></p>
+</span>
+<span class="paragraph">
+<p>In this situation, remind students to look back at what they circled and labeled in the example steps. <em>This is why we label!</em></p>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_synthesize_2">Synthesize</h3>
+<span class="ulist">
+<ul>
+<li>
+<p>How does the length of the hypoteneuse rely on the length of each side?</p>
+</li>
+<li>
+<p>Where do you see one formula being used inside the other?</p>
+</li>
+</ul>
+</span>
+</span>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<h2 id="_additional_exercises"><span class="section-link"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/#_additional_exercises"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Additional Exercises</h2>
+<span class="sectionbody">
+<span class="ulist">
+<ul>
+<li>
+<p>Have students use the Design Recipe to solve <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/../../lessons/distance-formula-wescheme/pages/line-length.html" target="_blank" rel="noopener">Word Problem: line-length</a> on their own.</p>
+</li>
+<li>
+<p>You might also want to have them modify <code class="racket">line-length</code> to make use of the absolute value function: <span class="obeyspaces"><code class="racket">abs</code></span>.</p>
+</li>
+</ul>
+</span>
+</span>
+</span>
+<span class="sect1 acknowledgmentsect">
+<span class="sectionbody">
+<span class="openblock acknowledgment"><hr/>
+<span class="content">
+<span class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</span>
+</span>
+</span>
+</span>
+</span>
+</span>
+<span id="footer">
+<span id="footer-text">
+Last updated 2022-10-18 16:15:46 -0400
+</span>
+</span>
+</span>
+</body>
+</html>

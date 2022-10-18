@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Glossary</title>
+
+  <link rel="stylesheet" href="../../lib/curriculum.css" />
+    <script src="../../lib/langtable.js"></script>
+    <script src="../../lib/bootstraplesson.js"></script>
+    <script src="../../dependency-graph.js"></script>
+    <script src="../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+</head>
+<body class="narrativepage article">
+<!--#include virtual="/menubar.ssi"-->
+<div id="body">
+<div id="header">
+<h1>Glossary</h1>
+</div>
+<div id="content">
+<div class="dlist glossary">
+<dl>
+<dt class="hdlist1">argument</dt>
+<dd>
+<p>the inputs to a function; the expressions for each argument follow the function name</p>
+</dd>
+<dt class="hdlist1">average</dt>
+<dd>
+<p>a representation of the center, or 'typical' value in a set of numbers, calculated as the sum of those numbers divided by the number of values.</p>
+</dd>
+<dt class="hdlist1">bar chart</dt>
+<dd>
+<p>a display of categorical data that uses bars positioned over category values; each bar’s height reflects the count or percentage of data values in that category</p>
+</dd>
+<dt class="hdlist1">bias</dt>
+<dd>
+<p>prejudice in favor of or against one outcome, person, or group compared with another, usually in a way considered to be unfair.</p>
+</dd>
+<dt class="hdlist1">bin</dt>
+<dd>
+<p>a range that values from a dataset can belong to; there is one bar in a histogram per bin</p>
+</dd>
+<dt class="hdlist1">Boolean</dt>
+<dd>
+<p>a type of data with two values: true and false</p>
+</dd>
+<dt class="hdlist1">box plot</dt>
+<dd>
+<p>the box plot (a.k.a. box-and whisker-plot) is a way of displaying a distribution of data based on the five-number summary: minimum, first quartile, median, third quartile, and maximum</p>
+</dd>
+<dt class="hdlist1">categorical data</dt>
+<dd>
+<p>data whose values are qualities that are not subject to the laws of arithmetic</p>
+</dd>
+<dt class="hdlist1">comments</dt>
+<dd>
+<p>messages in the code, generally ignored by the computer, to help people interacting with the code understand what it is doing</p>
+</dd>
+<dt class="hdlist1">conditional</dt>
+<dd>
+<p>a code expression made of questions and answers</p>
+</dd>
+<dt class="hdlist1">contract</dt>
+<dd>
+<p>a statement of the name, domain, and range of a function</p>
+</dd>
+<dt class="hdlist1">contract error</dt>
+<dd>
+<p>errors where the code makes sense, but uses a function with the wrong number or type of arguments</p>
+</dd>
+<dt class="hdlist1">correlation</dt>
+<dd>
+<p>a single number somewhere between -1 and +1 that reports the direction and strength of the linear relationship between two quantitative variables (also known as the r-value)</p>
+</dd>
+<dt class="hdlist1">data row</dt>
+<dd>
+<p>a structured piece of data in a dataset that typically reports all the information gathered about a given individual</p>
+</dd>
+<dt class="hdlist1">data science</dt>
+<dd>
+<p>the science of collecting, organizing, and drawing general conclusions from data, with the help of computers</p>
+</dd>
+<dt class="hdlist1">data type</dt>
+<dd>
+<p>a way of classifying values, such as: Number, String, Image, Boolean, or any user-defined data structure</p>
+</dd>
+<dt class="hdlist1">dataset</dt>
+<dd>
+<p>a collection of related information that is composed of separate elements, but can be manipulated as a unit by a computer</p>
+</dd>
+<dt class="hdlist1">define</dt>
+<dd>
+<p>to associate a descriptive name with a value</p>
+</dd>
+<dt class="hdlist1">definitions area</dt>
+<dd>
+<p>the left-most text box in the Editor where definitions for values and functions are written</p>
+</dd>
+<dt class="hdlist1">direction</dt>
+<dd>
+<p>the relationship between two quantitative variables: either they increase/decrease together or one may increase while the other decreases</p>
+</dd>
+<dt class="hdlist1">distribution</dt>
+<dd>
+<p>a description of the number of times or relative probabilities that different quantities occur in a sample</p>
+</dd>
+<dt class="hdlist1">domain</dt>
+<dd>
+<p>the type or set of inputs that a function expects</p>
+</dd>
+<dt class="hdlist1">editor</dt>
+<dd>
+<p>software in which code can be written and evaluated</p>
+</dd>
+<dt class="hdlist1">error message</dt>
+<dd>
+<p>information from the computer about errors in code</p>
+</dd>
+<dt class="hdlist1">example</dt>
+<dd>
+<p>shows the use of a function on specific inputs and the computation the function should perform on those inputs</p>
+</dd>
+<dt class="hdlist1">explanatory variable</dt>
+<dd>
+<p>any variable that could impact the "response variable", generally plotted on the x-axis of a scatter plot</p>
+</dd>
+<dt class="hdlist1">form</dt>
+<dd>
+<p>the shape of a relationship between two quantitative variables: whether the two variables together vary linearly or in some other way</p>
+</dd>
+<dt class="hdlist1">frequency</dt>
+<dd>
+<p>how often a particular value appears in a dataset</p>
+</dd>
+<dt class="hdlist1">function</dt>
+<dd>
+<p>a relation from a set of inputs to a set of possible outputs, where each input is related to exactly one output</p>
+</dd>
+<dt class="hdlist1">function definition</dt>
+<dd>
+<p>code that names a function, lists its variables, and states the expression to compute when the function is used</p>
+</dd>
+<dt class="hdlist1">grouped sample</dt>
+<dd>
+<p>a non-random subset of individuals chosen from a larger set, where the individuals belong to a specific group</p>
+</dd>
+<dt class="hdlist1">header</dt>
+<dd>
+<p>the titles of each column of a table, usually shown at the top</p>
+</dd>
+<dt class="hdlist1">histogram</dt>
+<dd>
+<p>a display of quantitative data that uses vertical bars positioned over bins (sub-intervals); each bar’s height reflects the count or percentage of data values in that bin.</p>
+</dd>
+<dt class="hdlist1">identifier column</dt>
+<dd>
+<p>a column of unique values which identify all the individual rows (e.g. - student IDs, SSNs, etc)</p>
+</dd>
+<dt class="hdlist1">interactions area</dt>
+<dd>
+<p>the right-most text box in the Editor, where expressions are entered to be evaluated</p>
+</dd>
+<dt class="hdlist1">interquartile range</dt>
+<dd>
+<p>(IQR) is one possible measure of spread, based on dividing a dataset into four parts. The values that divide each part are called the first quartile (Q1), the median, and third quartile (Q3). IQR is calculated as Q3 minus Q1.</p>
+</dd>
+<dt class="hdlist1">line of best fit</dt>
+<dd>
+<p>summarizes the relationship (if linear) between two quantitative variables</p>
+</dd>
+<dt class="hdlist1">linear regression</dt>
+<dd>
+<p>a type of analysis that models the relationship between two quantitative variables. The result is known as a regression line, or line of best fit.</p>
+</dd>
+<dt class="hdlist1">linear relationship</dt>
+<dd>
+<p>sequences that change at a constant rate, or points forming a straight line on a graph</p>
+</dd>
+<dt class="hdlist1">maximum</dt>
+<dd>
+<p>the largest value in a dataset</p>
+</dd>
+<dt class="hdlist1">mean</dt>
+<dd>
+<p>a representation of the center, or 'typical' value in a set of numbers, calculated as the sum of those numbers divided by the number of values.</p>
+</dd>
+<dt class="hdlist1">median</dt>
+<dd>
+<p>the middle element of a quantitative dataset</p>
+</dd>
+<dt class="hdlist1">method</dt>
+<dd>
+<p>a function that is only associated with an instance of a data type, which consumes inputs and produces an output based on that instance</p>
+</dd>
+<dt class="hdlist1">minimum</dt>
+<dd>
+<p>the smallest value in a dataset</p>
+</dd>
+<dt class="hdlist1">mode</dt>
+<dd>
+<p>the most commonly appearing categorical or quantitative value or values in a dataset</p>
+</dd>
+<dt class="hdlist1">name</dt>
+<dd>
+<p>how we refer to a function or value defined in a language (examples: +, *, star, circle)</p>
+</dd>
+<dt class="hdlist1">null hypothesis</dt>
+<dd>
+<p>the hypothesis that there is no significant difference between specified populations, any observed difference being due to sampling or experimental error.</p>
+</dd>
+<dt class="hdlist1">operator</dt>
+<dd>
+<p>a symbol that manipulates two Numbers and produces a result</p>
+</dd>
+<dt class="hdlist1">outlier</dt>
+<dd>
+<p>observations whose values are very different from the other observations in the same dataset, perhaps due to experimental error. Outliers can also be indicative of data belonging to a different population from the rest of the established samples.</p>
+</dd>
+<dt class="hdlist1">percentage</dt>
+<dd>
+<p>a ratio showing the parts per hundred</p>
+</dd>
+<dt class="hdlist1">pie chart</dt>
+<dd>
+<p>a display that uses areas of a circular pie&#8217;s slices to show percentages in each category</p>
+</dd>
+<dt class="hdlist1">piecewise function</dt>
+<dd>
+<p>a function that computes different expressions based on its input</p>
+</dd>
+<dt class="hdlist1">predictor function</dt>
+<dd>
+<p>a function which, given a value from one dataset, makes an educated guess at a related value in a different dataset</p>
+</dd>
+<dt class="hdlist1">programming language</dt>
+<dd>
+<p>a set of rules for writing code that a computer can evaluate</p>
+</dd>
+<dt class="hdlist1">purpose statement</dt>
+<dd>
+<p>a concise, detailed description of what a function does with its inputs</p>
+</dd>
+<dt class="hdlist1">quantitative data</dt>
+<dd>
+<p>number values for which arithmetic makes sense</p>
+</dd>
+<dt class="hdlist1">quartile</dt>
+<dd>
+<p>each of four equal groups into which a population can be divided according to the distribution of values of a particular variable.</p>
+</dd>
+<dt class="hdlist1">r</dt>
+<dd>
+<p>a number between −1 and 1 that measures the direction and strength of a linear relationship between two quantitative variables (also known as correlation value)</p>
+</dd>
+<dt class="hdlist1">random sample</dt>
+<dd>
+<p>a subset of individuals chosen from a larger set, such that each individual has the same probability of being chosen</p>
+</dd>
+<dt class="hdlist1">range</dt>
+<dd>
+<p>the type or set of outputs that a function produces</p>
+</dd>
+<dt class="hdlist1">range of a dataset</dt>
+<dd>
+<p>the distance between minimum and maximum values</p>
+</dd>
+<dt class="hdlist1">ratio</dt>
+<dd>
+<p>the relative sizes of two or more values</p>
+</dd>
+<dt class="hdlist1">response variable</dt>
+<dd>
+<p>the variable in a relationship that is presumed to be affected by the explanatory variable, generally plotted on the y-axis of a scatter plot</p>
+</dd>
+<dt class="hdlist1">sample</dt>
+<dd>
+<p>a set of individuals or objects collected or selected from a statistical population by a defined procedure</p>
+</dd>
+<dt class="hdlist1">sample size</dt>
+<dd>
+<p>the number of participants or observations included in a study</p>
+</dd>
+<dt class="hdlist1">scatter plot</dt>
+<dd>
+<p>a display of the relationship between two quantitative variables, graphing each explanatory value on the x axis and the accompanying response on the y axis</p>
+</dd>
+<dt class="hdlist1">shape</dt>
+<dd>
+<p>The aspect of a dataset - visible in a histogram or box plot - that describes which values are more or less common.</p>
+</dd>
+<dt class="hdlist1">skew</dt>
+<dd>
+<p>lack of balance in a dataset’s shape, arising from more values that are unusually low or high. Such values tend to trail off, rather than be separated by a gap (as with outliers).</p>
+</dd>
+<dt class="hdlist1">skewed left</dt>
+<dd>
+<p>A distribution is skewed left if there are a few values that are fairly low compared to the others. A histogram of data that is skewed left will have a clump of taller bars on the right, with smaller ones trailing off to the left, like the shape of the toes on a left foot.</p>
+</dd>
+<dt class="hdlist1">skewed right</dt>
+<dd>
+<p>A distribution is skewed right if there are a few values that are fairly high compared to the bulk of data values. A histogram of data that is skewed right will have a clump of taller bars on the left, with smaller ones trailing off to the right, like the shape of the toes on a right foot.</p>
+</dd>
+<dt class="hdlist1">slope</dt>
+<dd>
+<p>the steepness of a straight line on a graph</p>
+</dd>
+<dt class="hdlist1">spread</dt>
+<dd>
+<p>the extent to which values in a dataset vary, either from one another or from the center</p>
+</dd>
+<dt class="hdlist1">standard deviation</dt>
+<dd>
+<p>a number that measures spread of a dataset using the typical distance of values from their mean</p>
+</dd>
+<dt class="hdlist1">statistical inference</dt>
+<dd>
+<p>using information from a sample to draw conclusions about the larger population from which the sample was taken</p>
+</dd>
+<dt class="hdlist1">strength</dt>
+<dd>
+<p>of a relationship between two quantitative variables: how much the value of one variable tells us about the value of the other</p>
+</dd>
+<dt class="hdlist1">symmetric</dt>
+<dd>
+<p>A symmetric distribution has a balanced shape, showing that it&#8217;s just as likely for the variable to take lower values as higher values.</p>
+</dd>
+<dt class="hdlist1">syntax error</dt>
+<dd>
+<p>errors where the computer cannot make sense of the code (e.g. - missing commas, missing parentheses, unclosed strings)</p>
+</dd>
+<dt class="hdlist1">threats to validity</dt>
+<dd>
+<p>factors that can undermine the conclusion of a study</p>
+</dd>
+<dt class="hdlist1">value</dt>
+<dd>
+<p>a specific piece of data, like 5 or "hello"</p>
+</dd>
+<dt class="hdlist1">variable</dt>
+<dd>
+<p>a name or symbol that stands for some value or expression, often a value or expression that changes</p>
+</dd>
+<dt class="hdlist1">y-intercept</dt>
+<dd>
+<p>the point where a line or curve crosses the y-axis of a graph</p>
+</dd>
+</dl>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-17 19:42:18 -0400
+</div>
+</div>
+</div>
+</body>
+</html>

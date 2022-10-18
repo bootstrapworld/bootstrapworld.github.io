@@ -1,0 +1,2013 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Alignments</title>
+
+  <link rel="stylesheet" href="../../lib/curriculum.css" />
+    <script src="../../lib/langtable.js"></script>
+    <script src="../../lib/bootstraplesson.js"></script>
+    <script src="../../dependency-graph.js"></script>
+    <script src="../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+</head>
+<body class="narrativepage article">
+<!--#include virtual="/menubar.ssi"-->
+<div id="body">
+<div id="header">
+<h1>Alignments</h1>
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<script>
+function preselect(klass) {
+  const items = document.getElementsByClassName(klass);
+  for (let i = 0; i < items.length; i++) {
+    items[i].style.display = 'none';
+  }
+  if (items.length > 0) {
+    items[0].style.display = 'block';
+  }
+}
+window.onload = function() {
+  preselect('coverageElement');
+}
+function showCoverageAlignment() {
+  const selectTag = document.getElementsByClassName('coverageAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const stdTables = document.getElementsByClassName('coverageElement');
+  for (let i = 0; i < stdTables.length; i++) {
+    const stdTable = stdTables[i];
+    stdTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optStd = opt.value;
+      for (let j = 0; j < stdTables.length; j++) {
+        const stdTable = stdTables[j];
+        if (stdTable.classList.contains(optStd)) {
+          stdTable.style.display = 'block';
+        }
+      }
+    }
+  }
+}
+</script>
+<div class="paragraph">
+<p><div class="standard-menu-container"><div>
+Bootstrap lessons align with several important teaching standards, textbooks, and practices.
+Select from the following menu to see
+which lessons meet those alignments.
+</div><div><select class="coverageAlignmentSelect" onchange="showCoverageAlignment()"><optgroup label="Standards"><option value="standards-CCSS-Math">CCSS-Math</option><option value="standards-CC-ELA">CC-ELA</option><option value="standards-CSTA">CSTA</option><option value="standards-K12CS">K12CS</option><option value="standards-Oklahoma">Oklahoma</option><option value="standards-Iowa">Iowa</option></optgroup><optgroup label="Textbooks"><option value="textbook-CMP">CMP</option><option value="textbook-IM_6">IM.6</option><option value="textbook-IM_7">IM.7</option><option value="textbook-IM_8">IM.8</option><option value="textbook-IM_Alg_1">IM.Alg.1</option></optgroup><optgroup label="Practices"><option value="practices-NGSS">NGSS</option><option value="practices-MLR">MLR</option><option value="practices-CC">CC</option><option value="practices-K12CS">K12CS</option><option value="practices-SJ">SJ</option></optgroup></select>
+</div></div></p>
+</div>
+</div>
+</div>
+<div class="sect1 coverageElement standards-CCSS-Math">
+<h2 id="_common_core_math_standards"><a href="http://corestandards.org/Math/">Common Core Math Standards</a></h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">6.EE.B.5</dt>
+<dd>
+<p>Understand solving an equation or inequality as a process of answering a question: which values from a specified set, if any, make the equation or inequality true? Use substitution to determine whether a given number in a specified set makes an equation or inequality true.
+[See:  <a href="./../../lessons/inequalities1-simple/index.shtml?pathway=ok">Simple Inequalities</a>.]</p>
+</dd>
+<dt class="hdlist1">6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.
+[See:  <a href="./../../lessons/function-composition/index.shtml?pathway=ok">Function Composition</a>; <a href="./../../lessons/defining-values/index.shtml?pathway=ok">Defining Values</a>; <a href="./../../lessons/functions-make-life-easier/index.shtml?pathway=ok">Functions Make Life Easier!</a>; <a href="./../../lessons/functions-examples-definitions/index.shtml?pathway=ok">Functions: Contracts&#x2c; Examples &amp; Definitions</a>; <a href="./../../lessons/function-definition-linear/index.shtml?pathway=ok">Defining Linear Functions</a>; <a href="./../../lessons/functions-dr/index.shtml?pathway=ok">Solving Word Problems with the Design Recipe</a>; <a href="./../../lessons/inequalities3-sam/index.shtml?pathway=ok">Sam the Butterfly - Applying Inequalities</a>; <a href="./../../lessons/problem-decomposition/index.shtml?pathway=ok">Problem Decomposition</a>; <a href="./../../lessons/surface-area-rect-prism/index.shtml?pathway=ok">Surface Area of a Rectangular Prism</a>; <a href="./../../lessons/defining-table-functions/index.shtml?pathway=ok">Defining Table Functions</a>; <a href="./../../lessons/grouped-samples/index.shtml?pathway=ok">Grouped Samples</a>; <a href="./../../lessons/linear-regression/index.shtml?pathway=ok">Linear Regression</a>.]</p>
+</dd>
+<dt class="hdlist1">6.EE.B.8</dt>
+<dd>
+<p>Write an inequality of the form x &gt; c or x &lt; c to represent a constraint or condition in a real-world or mathematical problem. Recognize that inequalities of the form x &gt; c or x &lt; c have infinitely many solutions; represent solutions of such inequalities on number line diagrams.
+[See:  <a href="./../../lessons/inequalities1-simple/index.shtml?pathway=ok">Simple Inequalities</a>; <a href="./../../lessons/inequalities3-sam/index.shtml?pathway=ok">Sam the Butterfly - Applying Inequalities</a>.]</p>
+</dd>
+<dt class="hdlist1">6.G.A.4</dt>
+<dd>
+<p>Represent three-dimensional figures using nets made up of rectangles and triangles, and use the nets to find the surface area of these figures. Apply these techniques in the context of solving real-world and mathematical problems.
+[See:  <a href="./../../lessons/surface-area-rect-prism/index.shtml?pathway=ok">Surface Area of a Rectangular Prism</a>.]</p>
+</dd>
+<dt class="hdlist1">6.RP.A</dt>
+<dd>
+<p>Understand ratio concepts and use ratio reasoning to solve problems.
+[See:  <a href="./../../lessons/flags/index.shtml?pathway=ok">Making Flags</a>; <a href="./../../lessons/bar-and-pie-charts/index.shtml?pathway=ok">Bar and Pie Charts</a>.]</p>
+</dd>
+<dt class="hdlist1">6.RP.A.3.D</dt>
+<dd>
+<p>Use ratio reasoning to convert measurement units; manipulate and transform units appropriately when multiplying or dividing quantities.
+[See:  <a href="./../../lessons/flags/index.shtml?pathway=ok">Making Flags</a>.]</p>
+</dd>
+<dt class="hdlist1">6.SP.A</dt>
+<dd>
+<p>Develop understanding of statistical variability.
+[See:  <a href="./../../lessons/histograms2/index.shtml?pathway=ok">Visualizing the “Shape” of Data</a>; <a href="./../../lessons/measures-of-center/index.shtml?pathway=ok">Measures of Center</a>; <a href="./../../lessons/box-plots/index.shtml?pathway=ok">Box Plots</a>; <a href="./../../lessons/standard-deviation/index.shtml?pathway=ok">Standard Deviation</a>; <a href="./../../lessons/scatter-plots/index.shtml?pathway=ok">Scatter Plots</a>; <a href="./../../lessons/linear-regression/index.shtml?pathway=ok">Linear Regression</a>.]</p>
+</dd>
+<dt class="hdlist1">6.SP.A.1</dt>
+<dd>
+<p>Recognize a statistical question as one that anticipates variability in the data related to the question and accounts for it in the answers.
+[See:  <a href="./../../lessons/ds-intro/index.shtml?pathway=ok">Introduction to Data Science</a>; <a href="./../../lessons/choosing-your-dataset/index.shtml?pathway=ok">Choosing Your Dataset</a>.]</p>
+</dd>
+<dt class="hdlist1">6.SP.A.2</dt>
+<dd>
+<p>Understand that a set of data collected to answer a statistical question has a distribution which can be described by its center, spread, and overall shape.
+[See:  <a href="./../../lessons/histograms2/index.shtml?pathway=ok">Visualizing the “Shape” of Data</a>; <a href="./../../lessons/measures-of-center/index.shtml?pathway=ok">Measures of Center</a>; <a href="./../../lessons/box-plots/index.shtml?pathway=ok">Box Plots</a>; <a href="./../../lessons/standard-deviation/index.shtml?pathway=ok">Standard Deviation</a>.]</p>
+</dd>
+<dt class="hdlist1">6.SP.B.4</dt>
+<dd>
+<p>Display numerical data in plots on a number line, including dot plots, histograms, and box plots.
+[See:  <a href="./../../lessons/histograms/index.shtml?pathway=ok">Histograms</a>; <a href="./../../lessons/histograms2/index.shtml?pathway=ok">Visualizing the “Shape” of Data</a>; <a href="./../../lessons/box-plots/index.shtml?pathway=ok">Box Plots</a>; <a href="./../../lessons/standard-deviation/index.shtml?pathway=ok">Standard Deviation</a>.]</p>
+</dd>
+<dt class="hdlist1">6.SP.B.5</dt>
+<dd>
+<p>Summarize numerical data sets in relation to their context.
+[See:  <a href="./../../lessons/measures-of-center/index.shtml?pathway=ok">Measures of Center</a>; <a href="./../../lessons/box-plots/index.shtml?pathway=ok">Box Plots</a>; <a href="./../../lessons/standard-deviation/index.shtml?pathway=ok">Standard Deviation</a>.]</p>
+</dd>
+<dt class="hdlist1">6.SP.B.5.C</dt>
+<dd>
+<p>Summarize numerical data sets in relation to their context by giving quantitative measures of center (median and/or mean) and variability (interquartile range and/or mean absolute deviation), as well as describing any overall pattern and any striking deviations from the overall pattern with reference to the context in which the data were gathered.
+[See:  <a href="./../../lessons/measures-of-center/index.shtml?pathway=ok">Measures of Center</a>; <a href="./../../lessons/box-plots/index.shtml?pathway=ok">Box Plots</a>; <a href="./../../lessons/standard-deviation/index.shtml?pathway=ok">Standard Deviation</a>.]</p>
+</dd>
+<dt class="hdlist1">6.SP.B.5.D</dt>
+<dd>
+<p>Summarize numerical data sets in relation to their context by relating the choice of measures of center and variability to the shape of the data distribution and the context in which the data were gathered.
+[See:  <a href="./../../lessons/measures-of-center/index.shtml?pathway=ok">Measures of Center</a>.]</p>
+</dd>
+<dt class="hdlist1">7.EE.A.2</dt>
+<dd>
+<p>Understand that rewriting an expression in different forms in a problem context can shed light on the problem and how the quantities in it are related.
+[See:  <a href="./../../lessons/problem-decomposition/index.shtml?pathway=ok">Problem Decomposition</a>.]</p>
+</dd>
+<dt class="hdlist1">7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.
+[See:  <a href="./../../lessons/functions-dr/index.shtml?pathway=ok">Solving Word Problems with the Design Recipe</a>; <a href="./../../lessons/inequalities3-sam/index.shtml?pathway=ok">Sam the Butterfly - Applying Inequalities</a>; <a href="./../../lessons/problem-decomposition/index.shtml?pathway=ok">Problem Decomposition</a>.]</p>
+</dd>
+<dt class="hdlist1">7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.
+[See:  <a href="./../../lessons/defining-values/index.shtml?pathway=ok">Defining Values</a>; <a href="./../../lessons/functions-make-life-easier/index.shtml?pathway=ok">Functions Make Life Easier!</a>; <a href="./../../lessons/functions-dr/index.shtml?pathway=ok">Solving Word Problems with the Design Recipe</a>; <a href="./../../lessons/inequalities1-simple/index.shtml?pathway=ok">Simple Inequalities</a>; <a href="./../../lessons/inequalities2-compound/index.shtml?pathway=ok">Compound Inequalities: Solutions &amp; Non-Solutions</a>.]</p>
+</dd>
+<dt class="hdlist1">7.G.B.6</dt>
+<dd>
+<p>Solve real-world and mathematical problems involving area, volume and surface area of two- and three-dimensional objects composed of triangles, quadrilaterals, polygons, cubes, and right prisms.
+[See:  <a href="./../../lessons/surface-area-rect-prism/index.shtml?pathway=ok">Surface Area of a Rectangular Prism</a>.]</p>
+</dd>
+<dt class="hdlist1">7.RP.A</dt>
+<dd>
+<p>Analyze proportional relationships and use them to solve real-world and mathematical problems.
+[See:  <a href="./../../lessons/bar-and-pie-charts/index.shtml?pathway=ok">Bar and Pie Charts</a>.]</p>
+</dd>
+<dt class="hdlist1">7.RP.A.3</dt>
+<dd>
+<p>Use proportional relationships to solve multistep ratio and percent problems.
+[See:  <a href="./../../lessons/bar-and-pie-charts/index.shtml?pathway=ok">Bar and Pie Charts</a>.]</p>
+</dd>
+<dt class="hdlist1">7.SP.A</dt>
+<dd>
+<p>Use random sampling to draw inferences about a population.
+[See:  <a href="./../../lessons/random-samples/index.shtml?pathway=ok">Probability&#x2c; Inference&#x2c; and Sample Size</a>.]</p>
+</dd>
+<dt class="hdlist1">7.SP.A.1</dt>
+<dd>
+<p>Understand that statistics can be used to gain information about a population by examining a sample of the population; generalizations about a population from a sample are valid only if the sample is representative of that population. Understand that random sampling tends to produce representative samples and support valid inferences.
+[See:  <a href="./../../lessons/random-samples/index.shtml?pathway=ok">Probability&#x2c; Inference&#x2c; and Sample Size</a>.]</p>
+</dd>
+<dt class="hdlist1">7.SP.B</dt>
+<dd>
+<p>Draw informal comparative inferences about two populations.
+[See:  <a href="./../../lessons/bar-and-pie-charts/index.shtml?pathway=ok">Bar and Pie Charts</a>.]</p>
+</dd>
+<dt class="hdlist1">8.EE.B</dt>
+<dd>
+<p>Understand the connections between proportional relationships, lines, and linear equations.
+[See:  <a href="./../../lessons/functions-can-be-linear/index.shtml?pathway=ok">Functions Can Be Linear</a>; <a href="./../../lessons/function-definition-linear/index.shtml?pathway=ok">Defining Linear Functions</a>.]</p>
+</dd>
+<dt class="hdlist1">8.EE.B.5</dt>
+<dd>
+<p>Graph proportional relationships, interpreting the unit rate as the slope of the graph. Compare two different proportional relationships represented in different ways.
+[See:  <a href="./../../lessons/functions-can-be-linear/index.shtml?pathway=ok">Functions Can Be Linear</a>; <a href="./../../lessons/function-definition-linear/index.shtml?pathway=ok">Defining Linear Functions</a>.]</p>
+</dd>
+<dt class="hdlist1">8.EE.B.6</dt>
+<dd>
+<p>Use similar triangles to explain why the slope m is the same between any two distinct points on a non-vertical line in the coordinate plane; derive the equation y = mx for a line through the origin and the equation y = mx + b for a line intercepting the vertical axis at b.
+[See:  <a href="./../../lessons/functions-can-be-linear/index.shtml?pathway=ok">Functions Can Be Linear</a>.]</p>
+</dd>
+<dt class="hdlist1">8.F.A.1</dt>
+<dd>
+<p>Understand that a function is a rule that assigns to each input exactly one output. The graph of a function is the set of ordered pairs consisting of an input and the corresponding output.
+[See:  <a href="./../../lessons/contracts/index.shtml?pathway=ok">Contracts</a>.]</p>
+</dd>
+<dt class="hdlist1">8.F.A.2</dt>
+<dd>
+<p>Compare properties of two functions each represented in a different way (algebraically, graphically, numerically in tables, or by verbal descriptions).
+[See:  <a href="./../../lessons/functions-can-be-linear/index.shtml?pathway=ok">Functions Can Be Linear</a>.]</p>
+</dd>
+<dt class="hdlist1">8.F.B</dt>
+<dd>
+<p>Use functions to model relationships between quantities.
+[See:  <a href="./../../lessons/functions-make-life-easier/index.shtml?pathway=ok">Functions Make Life Easier!</a>; <a href="./../../lessons/functions-dr/index.shtml?pathway=ok">Solving Word Problems with the Design Recipe</a>.]</p>
+</dd>
+<dt class="hdlist1">8.F.B.4</dt>
+<dd>
+<p>Construct a function to model a linear relationship between two quantities. Determine the rate of change  and initial value of the function from a description of a relationship or from two (x, y) values, including reading these from a table or from a graph. Interpret the rate of change and initial value of a linear function in terms of the situation it models, and in terms of its graph or a table of values.
+[See:  <a href="./../../lessons/functions-can-be-linear/index.shtml?pathway=ok">Functions Can Be Linear</a>.]</p>
+</dd>
+<dt class="hdlist1">8.SP.A.1</dt>
+<dd>
+<p>Construct and interpret scatter plots for bivariate measurement data to investigate patterns of association between two quantities. Describe patterns such as clustering, outliers, positive or negative association, linear association, and nonlinear association.
+[See:  <a href="./../../lessons/scatter-plots/index.shtml?pathway=ok">Scatter Plots</a>; <a href="./../../lessons/grouped-samples/index.shtml?pathway=ok">Grouped Samples</a>; <a href="./../../lessons/correlations/index.shtml?pathway=ok">Correlations</a>; <a href="./../../lessons/linear-regression/index.shtml?pathway=ok">Linear Regression</a>.]</p>
+</dd>
+<dt class="hdlist1">8.SP.A.2</dt>
+<dd>
+<p>Know that straight lines are widely used to model relationships between two quantitative variables. For scatter plots that suggest a linear association, informally fit a straight line, and informally assess the model fit by judging the closeness of the data points to the line.
+[See:  <a href="./../../lessons/scatter-plots/index.shtml?pathway=ok">Scatter Plots</a>; <a href="./../../lessons/correlations/index.shtml?pathway=ok">Correlations</a>; <a href="./../../lessons/linear-regression/index.shtml?pathway=ok">Linear Regression</a>.]</p>
+</dd>
+<dt class="hdlist1">8.SP.A.3</dt>
+<dd>
+<p>Use the equation of a linear model to solve problems in the context of bivariate measurement data, interpreting the slope and intercept.
+[See:  <a href="./../../lessons/linear-regression/index.shtml?pathway=ok">Linear Regression</a>.]</p>
+</dd>
+<dt class="hdlist1">HSA.CED.A.1</dt>
+<dd>
+<p>Create equations and inequalities in one variable and use them to solve problems.
+[See:  <a href="./../../lessons/inequalities3-sam/index.shtml?pathway=ok">Sam the Butterfly - Applying Inequalities</a>.]</p>
+</dd>
+<dt class="hdlist1">HSA.CED.A.3</dt>
+<dd>
+<p>Represent constraints by equations or inequalities, and by systems of equations and/or inequalities, and interpret solutions as viable or nonviable options in a modeling context.
+[See:  <a href="./../../lessons/inequalities3-sam/index.shtml?pathway=ok">Sam the Butterfly - Applying Inequalities</a>.]</p>
+</dd>
+<dt class="hdlist1">HSA.SSE.A.1</dt>
+<dd>
+<p>Interpret expressions that represent a quantity in terms of its context.
+[See:  <a href="./../../lessons/defining-values/index.shtml?pathway=ok">Defining Values</a>; <a href="./../../lessons/functions-make-life-easier/index.shtml?pathway=ok">Functions Make Life Easier!</a>.]</p>
+</dd>
+<dt class="hdlist1">HSA.SSE.A.1.B</dt>
+<dd>
+<p>Interpret complicated expressions by viewing one or more of their parts as a single entity.
+[See:  <a href="./../../lessons/custom-scatter-plots/index.shtml?pathway=ok">Custom Scatter Plots</a>.]</p>
+</dd>
+<dt class="hdlist1">HSA.SSE.A.2</dt>
+<dd>
+<p>Use the structure of an expression to identify ways to rewrite it.
+[See:  <a href="./../../lessons/order-of-operations/index.shtml?pathway=ok">Order of Operations</a>.]</p>
+</dd>
+<dt class="hdlist1">HSA.SSE.B</dt>
+<dd>
+<p>Write expressions in equivalent forms to solve problems.
+[See:  <a href="./../../lessons/order-of-operations/index.shtml?pathway=ok">Order of Operations</a>.]</p>
+</dd>
+<dt class="hdlist1">HSF.BF.A</dt>
+<dd>
+<p>Build a function that models a relationship between two quantities.
+[See:  <a href="./../../lessons/function-composition/index.shtml?pathway=ok">Function Composition</a>; <a href="./../../lessons/problem-decomposition/index.shtml?pathway=ok">Problem Decomposition</a>.]</p>
+</dd>
+<dt class="hdlist1">HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.
+[See:  <a href="./../../lessons/functions-vertical-line-test/index.shtml?pathway=ok">The Vertical Line Test</a>; <a href="./../../lessons/functions-can-be-linear/index.shtml?pathway=ok">Functions Can Be Linear</a>; <a href="./../../lessons/functions-dr/index.shtml?pathway=ok">Solving Word Problems with the Design Recipe</a>; <a href="./../../lessons/problem-decomposition/index.shtml?pathway=ok">Problem Decomposition</a>.]</p>
+</dd>
+<dt class="hdlist1">HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.
+[See:  <a href="./../../lessons/function-composition/index.shtml?pathway=ok">Function Composition</a>; <a href="./../../lessons/inequalities3-sam/index.shtml?pathway=ok">Sam the Butterfly - Applying Inequalities</a>; <a href="./../../lessons/problem-decomposition/index.shtml?pathway=ok">Problem Decomposition</a>.]</p>
+</dd>
+<dt class="hdlist1">HSF.BF.B</dt>
+<dd>
+<p>Build new functions from existing functions.
+[See:  <a href="./../../lessons/inequalities3-sam/index.shtml?pathway=ok">Sam the Butterfly - Applying Inequalities</a>; <a href="./../../lessons/problem-decomposition/index.shtml?pathway=ok">Problem Decomposition</a>.]</p>
+</dd>
+<dt class="hdlist1">HSF.IF.A</dt>
+<dd>
+<p>Understand the concept of a function and use function notation.
+[See:  <a href="./../../lessons/function-notation/index.shtml?pathway=ok">Function Notation</a>.]</p>
+</dd>
+<dt class="hdlist1">HSF.IF.A.1</dt>
+<dd>
+<p>Understand that a function from one set (called the domain) to another set (called the range) assigns to each element of the domain exactly one element of the range. If f is a function and x is an element of its domain, then f(x) denotes the output of f corresponding to the input x. The graph of f is the graph of the equation y = f(x).
+[See:  <a href="./../../lessons/contracts/index.shtml?pathway=ok">Contracts</a>; <a href="./../../lessons/function-definition-linear/index.shtml?pathway=ok">Defining Linear Functions</a>.]</p>
+</dd>
+<dt class="hdlist1">HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.
+[See:  <a href="./../../lessons/contracts/index.shtml?pathway=ok">Contracts</a>; <a href="./../../lessons/flags/index.shtml?pathway=ok">Making Flags</a>; <a href="./../../lessons/function-notation/index.shtml?pathway=ok">Function Notation</a>; <a href="./../../lessons/function-definition-linear/index.shtml?pathway=ok">Defining Linear Functions</a>; <a href="./../../lessons/inequalities1-simple/index.shtml?pathway=ok">Simple Inequalities</a>; <a href="./../../lessons/inequalities2-compound/index.shtml?pathway=ok">Compound Inequalities: Solutions &amp; Non-Solutions</a>.]</p>
+</dd>
+<dt class="hdlist1">HSF.IF.B</dt>
+<dd>
+<p>Interpret functions that arise in applications in terms of the context.
+[See:  <a href="./../../lessons/flags/index.shtml?pathway=ok">Making Flags</a>; <a href="./../../lessons/functions-make-life-easier/index.shtml?pathway=ok">Functions Make Life Easier!</a>.]</p>
+</dd>
+<dt class="hdlist1">HSF.IF.B.5</dt>
+<dd>
+<p>Relate the domain of a function to its graph and, where applicable, to the quantitative relationship it describes.
+[See:  <a href="./../../lessons/function-notation/index.shtml?pathway=ok">Function Notation</a>; <a href="./../../lessons/functions-can-be-linear/index.shtml?pathway=ok">Functions Can Be Linear</a>.]</p>
+</dd>
+<dt class="hdlist1">HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.
+[See:  <a href="./../../lessons/functions-vertical-line-test/index.shtml?pathway=ok">The Vertical Line Test</a>; <a href="./../../lessons/functions-examples-definitions/index.shtml?pathway=ok">Functions: Contracts&#x2c; Examples &amp; Definitions</a>; <a href="./../../lessons/functions-can-be-linear/index.shtml?pathway=ok">Functions Can Be Linear</a>; <a href="./../../lessons/function-definition-linear/index.shtml?pathway=ok">Defining Linear Functions</a>; <a href="./../../lessons/functions-dr/index.shtml?pathway=ok">Solving Word Problems with the Design Recipe</a>.]</p>
+</dd>
+<dt class="hdlist1">HSF.IF.C.9</dt>
+<dd>
+<p>Compare properties of two functions each represented in a different way (algebraically, graphically, numerically in tables, or by verbal descriptions).
+[See:  <a href="./../../lessons/functions-can-be-linear/index.shtml?pathway=ok">Functions Can Be Linear</a>; <a href="./../../lessons/function-definition-linear/index.shtml?pathway=ok">Defining Linear Functions</a>.]</p>
+</dd>
+<dt class="hdlist1">HSN.Q.A</dt>
+<dd>
+<p>Reason quantitatively and use units to solve problems.
+[See:  <a href="./../../lessons/flags/index.shtml?pathway=ok">Making Flags</a>.]</p>
+</dd>
+<dt class="hdlist1">HSS.CP.A.1</dt>
+<dd>
+<p>Describe events as subsets of a sample space (the set of outcomes) using characteristics (or categories) of the outcomes, or as unions, intersections, or complements of other events ('or', 'and', 'not').
+[See:  <a href="./../../lessons/inequalities2-compound/index.shtml?pathway=ok">Compound Inequalities: Solutions &amp; Non-Solutions</a>.]</p>
+</dd>
+<dt class="hdlist1">HSS.CP.B.9</dt>
+<dd>
+<p>Use permutations and combinations to compute probabilities of compound events and solve problems.
+[See:  <a href="./../../lessons/combinatorics-permutation/index.shtml?pathway=ok">Permutations</a>; <a href="./../../lessons/combinatorics-combination/index.shtml?pathway=ok">Combinations</a>.]</p>
+</dd>
+<dt class="hdlist1">HSS.IC.B.3</dt>
+<dd>
+<p>Recognize the purposes of and differences among sample surveys, experiments, and observational studies; explain how randomization relates to each.
+[See:  <a href="./../../lessons/random-samples/index.shtml?pathway=ok">Probability&#x2c; Inference&#x2c; and Sample Size</a>.]</p>
+</dd>
+<dt class="hdlist1">HSS.IC.B.6</dt>
+<dd>
+<p>Evaluate reports based on data.
+[See:  <a href="./../../lessons/threats-to-validity/index.shtml?pathway=ok">Threats to Validity</a>.]</p>
+</dd>
+<dt class="hdlist1">HSS.ID.A</dt>
+<dd>
+<p>Summarize, represent, and interpret data on a single count or measurement variable.
+[See:  <a href="./../../lessons/bar-and-pie-charts/index.shtml?pathway=ok">Bar and Pie Charts</a>.]</p>
+</dd>
+<dt class="hdlist1">HSS.ID.A.1</dt>
+<dd>
+<p>Represent data with plots on the real number line (dot plots, histograms, and box plots).
+[See:  <a href="./../../lessons/histograms/index.shtml?pathway=ok">Histograms</a>; <a href="./../../lessons/histograms2/index.shtml?pathway=ok">Visualizing the “Shape” of Data</a>; <a href="./../../lessons/box-plots/index.shtml?pathway=ok">Box Plots</a>; <a href="./../../lessons/standard-deviation/index.shtml?pathway=ok">Standard Deviation</a>.]</p>
+</dd>
+<dt class="hdlist1">HSS.ID.A.2</dt>
+<dd>
+<p>Use statistics appropriate to the shape of the data distribution to compare center (median, mean) and spread (interquartile range, standard deviation) of two or more different data sets.
+[See:  <a href="./../../lessons/histograms/index.shtml?pathway=ok">Histograms</a>; <a href="./../../lessons/measures-of-center/index.shtml?pathway=ok">Measures of Center</a>; <a href="./../../lessons/box-plots/index.shtml?pathway=ok">Box Plots</a>; <a href="./../../lessons/standard-deviation/index.shtml?pathway=ok">Standard Deviation</a>.]</p>
+</dd>
+<dt class="hdlist1">HSS.ID.A.3</dt>
+<dd>
+<p>Interpret differences in shape, center, and spread in the context of the data sets, accounting for possible effects of extreme data points (outliers).
+[See:  <a href="./../../lessons/histograms/index.shtml?pathway=ok">Histograms</a>; <a href="./../../lessons/histograms2/index.shtml?pathway=ok">Visualizing the “Shape” of Data</a>; <a href="./../../lessons/measures-of-center/index.shtml?pathway=ok">Measures of Center</a>; <a href="./../../lessons/box-plots/index.shtml?pathway=ok">Box Plots</a>; <a href="./../../lessons/standard-deviation/index.shtml?pathway=ok">Standard Deviation</a>.]</p>
+</dd>
+<dt class="hdlist1">HSS.ID.B.6</dt>
+<dd>
+<p>Represent data on two quantitative variables on a scatter plot, and describe how the variables are related.
+[See:  <a href="./../../lessons/scatter-plots/index.shtml?pathway=ok">Scatter Plots</a>; <a href="./../../lessons/correlations/index.shtml?pathway=ok">Correlations</a>.]</p>
+</dd>
+<dt class="hdlist1">HSS.ID.B.6.A</dt>
+<dd>
+<p>Fit a function to the data; use functions fitted to data to solve problems in the context of the data. Use given functions or choose a function suggested by the context. Emphasize linear, quadratic, and exponential models.
+[See:  <a href="./../../lessons/linear-regression/index.shtml?pathway=ok">Linear Regression</a>.]</p>
+</dd>
+<dt class="hdlist1">HSS.ID.B.6.C</dt>
+<dd>
+<p>Fit a linear function for a scatter plot that suggests a linear association.
+[See:  <a href="./../../lessons/linear-regression/index.shtml?pathway=ok">Linear Regression</a>.]</p>
+</dd>
+<dt class="hdlist1">HSS.ID.C.7</dt>
+<dd>
+<p>Interpret the slope (rate of change) and the intercept (constant term) of a linear model in the context of the data.
+[See:  <a href="./../../lessons/linear-regression/index.shtml?pathway=ok">Linear Regression</a>.]</p>
+</dd>
+<dt class="hdlist1">HSS.ID.C.8</dt>
+<dd>
+<p>Compute (using technology) and interpret the correlation coefficient of a linear fit.
+[See:  <a href="./../../lessons/scatter-plots/index.shtml?pathway=ok">Scatter Plots</a>; <a href="./../../lessons/correlations/index.shtml?pathway=ok">Correlations</a>; <a href="./../../lessons/linear-regression/index.shtml?pathway=ok">Linear Regression</a>.]</p>
+</dd>
+<dt class="hdlist1">HSS.ID.C.9</dt>
+<dd>
+<p>Distinguish between correlation and causation.
+[See:  <a href="./../../lessons/correlations/index.shtml?pathway=ok">Correlations</a>; <a href="./../../lessons/linear-regression/index.shtml?pathway=ok">Linear Regression</a>.]</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1 coverageElement standards-CC-ELA">
+<h2 id="_common_core_ela_standards"><a href="http://corestandards.org/ELA-Literacy/">Common Core ELA Standards</a></h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">SL.9-10.1</dt>
+<dd>
+<p>Initiate and participate effectively in a range of collaborative discussions (one-on-one, in groups, and teacher-led) with diverse partners on grades 9-10 topics, texts, and issues, building on others' ideas and expressing their own clearly and persuasively.
+[See:  <a href="./../../lessons/ds-intro/index.shtml?pathway=ok">Introduction to Data Science</a>.]</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1 coverageElement standards-CSTA">
+<h2 id="_csta_standards"><a href="https://csteachers.org/page/standards">CSTA Standards</a></h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">1B-AP-09</dt>
+<dd>
+<p>Create programs that use variables to store and modify data.
+[See:  <a href="./../../lessons/defining-values/index.shtml?pathway=ok">Defining Values</a>.]</p>
+</dd>
+<dt class="hdlist1">1B-AP-10</dt>
+<dd>
+<p>Create programs that include sequences, events, loops, and conditionals.
+[See:  <a href="./../../lessons/custom-scatter-plots/index.shtml?pathway=ok">Custom Scatter Plots</a>; <a href="./../../lessons/method-chaining/index.shtml?pathway=ok">Method Chaining</a>.]</p>
+</dd>
+<dt class="hdlist1">1B-AP-11</dt>
+<dd>
+<p>Decompose (break down) problems into smaller, manageable subproblems to facilitate the program development process.
+[See:  <a href="./../../lessons/problem-decomposition/index.shtml?pathway=ok">Problem Decomposition</a>; <a href="./../../lessons/choosing-your-dataset/index.shtml?pathway=ok">Choosing Your Dataset</a>.]</p>
+</dd>
+<dt class="hdlist1">1B-AP-12</dt>
+<dd>
+<p>Modify, remix, or incorporate portions of an existing program into one&#8217;s own work, to develop something new or add more advanced features.
+[See:  <a href="./../../lessons/custom-scatter-plots/index.shtml?pathway=ok">Custom Scatter Plots</a>.]</p>
+</dd>
+<dt class="hdlist1">1B-AP-15</dt>
+<dd>
+<p>Test and debug (identify and fix errors) a program or algorithm to ensure it runs as intended.
+[See:  <a href="./../../lessons/functions-make-life-easier/index.shtml?pathway=ok">Functions Make Life Easier!</a>; <a href="./../../lessons/debugging/index.shtml?pathway=ok">Debugging</a>; <a href="./../../lessons/checking-your-work/index.shtml?pathway=ok">Checking Your Work</a>.]</p>
+</dd>
+<dt class="hdlist1">1B-DA-06</dt>
+<dd>
+<p>Organize and present collected data visually to highlight relationships and support a claim.
+[See:  <a href="./../../lessons/histograms2/index.shtml?pathway=ok">Visualizing the “Shape” of Data</a>; <a href="./../../lessons/box-plots/index.shtml?pathway=ok">Box Plots</a>; <a href="./../../lessons/standard-deviation/index.shtml?pathway=ok">Standard Deviation</a>; <a href="./../../lessons/scatter-plots/index.shtml?pathway=ok">Scatter Plots</a>; <a href="./../../lessons/correlations/index.shtml?pathway=ok">Correlations</a>; <a href="./../../lessons/linear-regression/index.shtml?pathway=ok">Linear Regression</a>.]</p>
+</dd>
+<dt class="hdlist1">1B-DA-07</dt>
+<dd>
+<p>Use data to highlight or propose cause-and-effect relationships, predict outcomes, or communicate an idea.
+[See:  <a href="./../../lessons/scatter-plots/index.shtml?pathway=ok">Scatter Plots</a>; <a href="./../../lessons/linear-regression/index.shtml?pathway=ok">Linear Regression</a>.]</p>
+</dd>
+<dt class="hdlist1">2-AP-11</dt>
+<dd>
+<p>Create clearly named variables that represent different data types and perform operations on their values.
+[See:  <a href="./../../lessons/simple-data-types/index.shtml?pathway=ok">Simple Data Types</a>; <a href="./../../lessons/function-composition/index.shtml?pathway=ok">Function Composition</a>; <a href="./../../lessons/defining-values/index.shtml?pathway=ok">Defining Values</a>; <a href="./../../lessons/functions-make-life-easier/index.shtml?pathway=ok">Functions Make Life Easier!</a>; <a href="./../../lessons/problem-decomposition/index.shtml?pathway=ok">Problem Decomposition</a>; <a href="./../../lessons/surface-area-rect-prism/index.shtml?pathway=ok">Surface Area of a Rectangular Prism</a>; <a href="./../../lessons/custom-scatter-plots/index.shtml?pathway=ok">Custom Scatter Plots</a>; <a href="./../../lessons/grouped-samples/index.shtml?pathway=ok">Grouped Samples</a>.]</p>
+</dd>
+<dt class="hdlist1">2-AP-13</dt>
+<dd>
+<p>Decompose problems and subproblems into parts to facilitate the design, implementation, and review of programs
+[See:  <a href="./../../lessons/problem-decomposition/index.shtml?pathway=ok">Problem Decomposition</a>; <a href="./../../lessons/method-chaining/index.shtml?pathway=ok">Method Chaining</a>; <a href="./../../lessons/defining-table-functions/index.shtml?pathway=ok">Defining Table Functions</a>.]</p>
+</dd>
+<dt class="hdlist1">2-AP-14</dt>
+<dd>
+<p>Create procedures with parameters to organize code and make it easier to reuse.
+[See:  <a href="./../../lessons/functions-make-life-easier/index.shtml?pathway=ok">Functions Make Life Easier!</a>; <a href="./../../lessons/defining-table-functions/index.shtml?pathway=ok">Defining Table Functions</a>.]</p>
+</dd>
+<dt class="hdlist1">2-AP-17</dt>
+<dd>
+<p>Systematically test and refine programs using a range of test cases
+[See:  <a href="./../../lessons/function-composition/index.shtml?pathway=ok">Function Composition</a>; <a href="./../../lessons/functions-make-life-easier/index.shtml?pathway=ok">Functions Make Life Easier!</a>; <a href="./../../lessons/problem-decomposition/index.shtml?pathway=ok">Problem Decomposition</a>; <a href="./../../lessons/surface-area-rect-prism/index.shtml?pathway=ok">Surface Area of a Rectangular Prism</a>; <a href="./../../lessons/custom-scatter-plots/index.shtml?pathway=ok">Custom Scatter Plots</a>; <a href="./../../lessons/method-chaining/index.shtml?pathway=ok">Method Chaining</a>; <a href="./../../lessons/defining-table-functions/index.shtml?pathway=ok">Defining Table Functions</a>; <a href="./../../lessons/checking-your-work/index.shtml?pathway=ok">Checking Your Work</a>.]</p>
+</dd>
+<dt class="hdlist1">2-AP-19</dt>
+<dd>
+<p>Document programs in order to make them easier to follow, test, and debug.
+[See:  <a href="./../../lessons/function-composition/index.shtml?pathway=ok">Function Composition</a>; <a href="./../../lessons/functions-make-life-easier/index.shtml?pathway=ok">Functions Make Life Easier!</a>; <a href="./../../lessons/problem-decomposition/index.shtml?pathway=ok">Problem Decomposition</a>; <a href="./../../lessons/surface-area-rect-prism/index.shtml?pathway=ok">Surface Area of a Rectangular Prism</a>; <a href="./../../lessons/custom-scatter-plots/index.shtml?pathway=ok">Custom Scatter Plots</a>.]</p>
+</dd>
+<dt class="hdlist1">2-DA-08</dt>
+<dd>
+<p>Collect data using computational tools and transform the data to make it more useful and reliable.
+[See:  <a href="./../../lessons/bar-and-pie-charts/index.shtml?pathway=ok">Bar and Pie Charts</a>; <a href="./../../lessons/random-samples/index.shtml?pathway=ok">Probability&#x2c; Inference&#x2c; and Sample Size</a>; <a href="./../../lessons/custom-scatter-plots/index.shtml?pathway=ok">Custom Scatter Plots</a>; <a href="./../../lessons/table-methods/index.shtml?pathway=ok">Table Methods</a>; <a href="./../../lessons/grouped-samples/index.shtml?pathway=ok">Grouped Samples</a>.]</p>
+</dd>
+<dt class="hdlist1">2-DA-09</dt>
+<dd>
+<p>Refine computational models based on the data they have generated.
+[See:  <a href="./../../lessons/random-samples/index.shtml?pathway=ok">Probability&#x2c; Inference&#x2c; and Sample Size</a>; <a href="./../../lessons/scatter-plots/index.shtml?pathway=ok">Scatter Plots</a>; <a href="./../../lessons/grouped-samples/index.shtml?pathway=ok">Grouped Samples</a>; <a href="./../../lessons/correlations/index.shtml?pathway=ok">Correlations</a>.]</p>
+</dd>
+<dt class="hdlist1">2-IC-21</dt>
+<dd>
+<p>Discuss issues of bias and accessibility in the design of existing technologies
+[See:  <a href="./../../lessons/threats-to-validity/index.shtml?pathway=ok">Threats to Validity</a>.]</p>
+</dd>
+<dt class="hdlist1">2-IC-23</dt>
+<dd>
+<p>Describe tradeoffs between allowing information to be public and keeping information private and secure.
+[See:  <a href="./../../lessons/ethics-privacy-and-bias/index.shtml?pathway=ok">Ethics&#x2c; Privacy&#x2c; and Bias</a>.]</p>
+</dd>
+<dt class="hdlist1">3A-AP-16</dt>
+<dd>
+<p>Design and iteratively develop computational artifacts for practical intent, personal expression, or to address a societal issue by using events to initiate instructions.
+[See:  <a href="./../../lessons/choosing-your-dataset/index.shtml?pathway=ok">Choosing Your Dataset</a>; <a href="./../../lessons/ethics-privacy-and-bias/index.shtml?pathway=ok">Ethics&#x2c; Privacy&#x2c; and Bias</a>.]</p>
+</dd>
+<dt class="hdlist1">3A-AP-17</dt>
+<dd>
+<p>Decompose problems into smaller components through systematic analysis, using constructs such as procedures, modules, and/or objects.
+[See:  <a href="./../../lessons/problem-decomposition/index.shtml?pathway=ok">Problem Decomposition</a>; <a href="./../../lessons/choosing-your-dataset/index.shtml?pathway=ok">Choosing Your Dataset</a>; <a href="./../../lessons/method-chaining/index.shtml?pathway=ok">Method Chaining</a>; <a href="./../../lessons/defining-table-functions/index.shtml?pathway=ok">Defining Table Functions</a>.]</p>
+</dd>
+<dt class="hdlist1">3A-AP-18</dt>
+<dd>
+<p>Create artifacts by using procedures within a program, combinations of data and procedures, or independent but interrelated programs.
+[See:  <a href="./../../lessons/flags/index.shtml?pathway=ok">Making Flags</a>; <a href="./../../lessons/method-chaining/index.shtml?pathway=ok">Method Chaining</a>; <a href="./../../lessons/defining-table-functions/index.shtml?pathway=ok">Defining Table Functions</a>.]</p>
+</dd>
+<dt class="hdlist1">3A-AP-23</dt>
+<dd>
+<p>Document design decisions using text, graphics, presentations, and/or demonstrations in the development of complex programs.
+[See:  <a href="./../../lessons/choosing-your-dataset/index.shtml?pathway=ok">Choosing Your Dataset</a>.]</p>
+</dd>
+<dt class="hdlist1">3A-DA-11</dt>
+<dd>
+<p>Create interactive data visualizations using software tools to help others better understand real-world phenomena.
+[See:  <a href="./../../lessons/bar-and-pie-charts/index.shtml?pathway=ok">Bar and Pie Charts</a>; <a href="./../../lessons/choosing-your-dataset/index.shtml?pathway=ok">Choosing Your Dataset</a>; <a href="./../../lessons/histograms/index.shtml?pathway=ok">Histograms</a>; <a href="./../../lessons/histograms2/index.shtml?pathway=ok">Visualizing the “Shape” of Data</a>; <a href="./../../lessons/box-plots/index.shtml?pathway=ok">Box Plots</a>; <a href="./../../lessons/standard-deviation/index.shtml?pathway=ok">Standard Deviation</a>; <a href="./../../lessons/scatter-plots/index.shtml?pathway=ok">Scatter Plots</a>; <a href="./../../lessons/linear-regression/index.shtml?pathway=ok">Linear Regression</a>.]</p>
+</dd>
+<dt class="hdlist1">3A-DA-12</dt>
+<dd>
+<p>Create computational models that represent the relationships among different elements of data collected from a phenomenon or process.
+[See:  <a href="./../../lessons/scatter-plots/index.shtml?pathway=ok">Scatter Plots</a>; <a href="./../../lessons/linear-regression/index.shtml?pathway=ok">Linear Regression</a>.]</p>
+</dd>
+<dt class="hdlist1">3A-IC-24</dt>
+<dd>
+<p>Evaluate the ways computing impacts personal, ethical, social, economic, and cultural practices
+[See:  <a href="./../../lessons/ethics-privacy-and-bias/index.shtml?pathway=ok">Ethics&#x2c; Privacy&#x2c; and Bias</a>.]</p>
+</dd>
+<dt class="hdlist1">3A-IC-29</dt>
+<dd>
+<p>Explain the privacy concerns related to the collection and generation of data through automated processes that may not be evident to users.
+[See:  <a href="./../../lessons/ethics-privacy-and-bias/index.shtml?pathway=ok">Ethics&#x2c; Privacy&#x2c; and Bias</a>.]</p>
+</dd>
+<dt class="hdlist1">3A-IC-30</dt>
+<dd>
+<p>Evaluate the social and economic implications of privacy in the context of safety, law, or ethics.
+[See:  <a href="./../../lessons/ethics-privacy-and-bias/index.shtml?pathway=ok">Ethics&#x2c; Privacy&#x2c; and Bias</a>.]</p>
+</dd>
+<dt class="hdlist1">3B-AP-10</dt>
+<dd>
+<p>Use and adapt classic algorithms to solve computational problems.
+[See:  <a href="./../../lessons/inequalities1-simple/index.shtml?pathway=ok">Simple Inequalities</a>; <a href="./../../lessons/inequalities2-compound/index.shtml?pathway=ok">Compound Inequalities: Solutions &amp; Non-Solutions</a>; <a href="./../../lessons/inequalities3-sam/index.shtml?pathway=ok">Sam the Butterfly - Applying Inequalities</a>.]</p>
+</dd>
+<dt class="hdlist1">3B-AP-14</dt>
+<dd>
+<p>Construct solutions to problems using student-created components, such as procedures, modules and/or objects.
+[See:  <a href="./../../lessons/functions-make-life-easier/index.shtml?pathway=ok">Functions Make Life Easier!</a>; <a href="./../../lessons/problem-decomposition/index.shtml?pathway=ok">Problem Decomposition</a>; <a href="./../../lessons/choosing-your-dataset/index.shtml?pathway=ok">Choosing Your Dataset</a>; <a href="./../../lessons/histograms/index.shtml?pathway=ok">Histograms</a>; <a href="./../../lessons/histograms2/index.shtml?pathway=ok">Visualizing the “Shape” of Data</a>; <a href="./../../lessons/custom-scatter-plots/index.shtml?pathway=ok">Custom Scatter Plots</a>.]</p>
+</dd>
+<dt class="hdlist1">3B-AP-21</dt>
+<dd>
+<p>Develop and use a series of test cases to verify that a program performs according to its design specifications.
+[See:  <a href="./../../lessons/function-composition/index.shtml?pathway=ok">Function Composition</a>; <a href="./../../lessons/functions-make-life-easier/index.shtml?pathway=ok">Functions Make Life Easier!</a>; <a href="./../../lessons/problem-decomposition/index.shtml?pathway=ok">Problem Decomposition</a>; <a href="./../../lessons/checking-your-work/index.shtml?pathway=ok">Checking Your Work</a>.]</p>
+</dd>
+<dt class="hdlist1">3B-NI-05</dt>
+<dd>
+<p>Use data analysis tools and techniques to identify patterns in data representing complex systems
+[See:  <a href="./../../lessons/scatter-plots/index.shtml?pathway=ok">Scatter Plots</a>; <a href="./../../lessons/custom-scatter-plots/index.shtml?pathway=ok">Custom Scatter Plots</a>; <a href="./../../lessons/correlations/index.shtml?pathway=ok">Correlations</a>; <a href="./../../lessons/linear-regression/index.shtml?pathway=ok">Linear Regression</a>.]</p>
+</dd>
+<dt class="hdlist1">3B-NI-07</dt>
+<dd>
+<p>Evaluate the ability of models and simulations to test and support the refinement of hypotheses.
+[See:  <a href="./../../lessons/correlations/index.shtml?pathway=ok">Correlations</a>; <a href="./../../lessons/threats-to-validity/index.shtml?pathway=ok">Threats to Validity</a>.]</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1 coverageElement standards-K12CS">
+<h2 id="_k_12cs_standards"><a href="https://k12cs.org">K-12CS Standards</a></h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">6-8.Algorithms and Programming.Control</dt>
+<dd>
+<p>Programmers select and combine control structures, such as loops, event handlers, and conditionals, to create more complex program behavior.
+[See:  <a href="./../../lessons/method-chaining/index.shtml?pathway=ok">Method Chaining</a>.]</p>
+</dd>
+<dt class="hdlist1">6-8.Algorithms and Programming.Modularity</dt>
+<dd>
+<p>Programs use procedures to organize code, hide implementation details, and make code easier to reuse. Procedures can be repurposed in new programs. Defining parameters for procedures can generalize behavior and increase reusability.
+[See:  <a href="./../../lessons/functions-make-life-easier/index.shtml?pathway=ok">Functions Make Life Easier!</a>; <a href="./../../lessons/defining-table-functions/index.shtml?pathway=ok">Defining Table Functions</a>.]</p>
+</dd>
+<dt class="hdlist1">6-8.Algorithms and Programming.Variables</dt>
+<dd>
+<p>Programmers create variables to store data values of selected types. A meaningful identifier is assigned to each variable to access and perform operations on the value by name. Variables enable the flexibility to represent different situations, process different sets of data, and produce varying outputs.
+[See:  <a href="./../../lessons/defining-values/index.shtml?pathway=ok">Defining Values</a>; <a href="./../../lessons/functions-make-life-easier/index.shtml?pathway=ok">Functions Make Life Easier!</a>.]</p>
+</dd>
+<dt class="hdlist1">6-8.Computing Systems.Troubleshooting</dt>
+<dd>
+<p>Comprehensive troubleshooting requires knowledge of how computing devices and components work and interact. A systematic process will identify the source of a problem, whether within a device or in a larger system of connected devices.
+[See:  <a href="./../../lessons/checking-your-work/index.shtml?pathway=ok">Checking Your Work</a>.]</p>
+</dd>
+<dt class="hdlist1">6-8.Data and Analysis.Collection</dt>
+<dd>
+<p>People design algorithms and tools to automate the collection of data by computers. When data collection is automated, data is sampled and converted into a form that a computer can process. For example, data from an analog sensor must be converted into a digital form. The method used to automate data collection is influenced by the availability of tools and the intended use of the data.
+[See:  <a href="./../../lessons/data-collection/index.shtml?pathway=ok">Collecting Data</a>; <a href="./../../lessons/threats-to-validity/index.shtml?pathway=ok">Threats to Validity</a>.]</p>
+</dd>
+<dt class="hdlist1">6-8.Data and Analysis.Inference and Models</dt>
+<dd>
+<p>People transform, generalize, simplify, and present large data sets in different ways to influence how other people interpret and understand the underlying information. Examples include visualization, aggregation, rearrangement, and application of mathematical operations.
+[See:  <a href="./../../lessons/choosing-your-dataset/index.shtml?pathway=ok">Choosing Your Dataset</a>; <a href="./../../lessons/measures-of-center/index.shtml?pathway=ok">Measures of Center</a>; <a href="./../../lessons/box-plots/index.shtml?pathway=ok">Box Plots</a>; <a href="./../../lessons/standard-deviation/index.shtml?pathway=ok">Standard Deviation</a>; <a href="./../../lessons/custom-scatter-plots/index.shtml?pathway=ok">Custom Scatter Plots</a>.]</p>
+</dd>
+<dt class="hdlist1">6-8.Data and Analysis.Visualization and Transformation</dt>
+<dd>
+<p>Computer models can be used to simulate events, examine theories and inferences, or make predictions with either few or millions of data points. Computer models are abstractions that represent phenomena and use data and algorithms to emphasize key features and relationships within a system. As more data is automatically collected, models can be refined.
+[See:  <a href="./../../lessons/scatter-plots/index.shtml?pathway=ok">Scatter Plots</a>; <a href="./../../lessons/correlations/index.shtml?pathway=ok">Correlations</a>.]</p>
+</dd>
+<dt class="hdlist1">9-12.Algorithms and Programming.Control</dt>
+<dd>
+<p>Programmers consider tradeoffs related to implementation, readability, and program performance when selecting and combining control structures.
+[See:  <a href="./../../lessons/custom-scatter-plots/index.shtml?pathway=ok">Custom Scatter Plots</a>; <a href="./../../lessons/method-chaining/index.shtml?pathway=ok">Method Chaining</a>.]</p>
+</dd>
+<dt class="hdlist1">9-12.Algorithms and Programming.Modularity</dt>
+<dd>
+<p>Complex programs are designed as systems of interacting modules, each with a specific role, coordinating for a common overall purpose. These modules can be procedures within a program; combinations of data and procedures; or independent, but interrelated, programs. Modules allow for better management of complex tasks.
+[See:  <a href="./../../lessons/functions-make-life-easier/index.shtml?pathway=ok">Functions Make Life Easier!</a>; <a href="./../../lessons/method-chaining/index.shtml?pathway=ok">Method Chaining</a>; <a href="./../../lessons/defining-table-functions/index.shtml?pathway=ok">Defining Table Functions</a>.]</p>
+</dd>
+<dt class="hdlist1">9-12.Computing Systems.Troubleshooting</dt>
+<dd>
+<p>Troubleshooting complex problems involves the use of multiple sources when researching, evaluating, and implementing potential solutions. Troubleshooting also relies on experience, such as when people recognize that a problem is similar to one they have seen before or adapt solutions that have worked in the past.
+[See:  <a href="./../../lessons/checking-your-work/index.shtml?pathway=ok">Checking Your Work</a>.]</p>
+</dd>
+<dt class="hdlist1">9-12.Data and Analysis.Collection</dt>
+<dd>
+<p>Data is constantly collected or generated through automated processes that are not always evident, raising privacy concerns. The different collection methods and tools that are used influence the amount and quality of the data that is observed and recorded.
+[See:  <a href="./../../lessons/ethics-privacy-and-bias/index.shtml?pathway=ok">Ethics&#x2c; Privacy&#x2c; and Bias</a>; <a href="./../../lessons/data-collection/index.shtml?pathway=ok">Collecting Data</a>.]</p>
+</dd>
+<dt class="hdlist1">9-12.Data and Analysis.Inference and Models</dt>
+<dd>
+<p>The accuracy of predictions or inferences depends upon the limitations of the computer model and the data the model is built upon. The amount, quality, and diversity of data and the features chosen can affect the quality of a model and ability to understand a system. Predictions or inferences are tested to validate models.
+[See:  <a href="./../../lessons/linear-regression/index.shtml?pathway=ok">Linear Regression</a>; <a href="./../../lessons/threats-to-validity/index.shtml?pathway=ok">Threats to Validity</a>.]</p>
+</dd>
+<dt class="hdlist1">9-12.Data and Analysis.Visualization and Transformation</dt>
+<dd>
+<p>Data can be transformed to remove errors, highlight or expose relationships, and/or make it easier for computers to process.
+[See:  <a href="./../../lessons/choosing-your-dataset/index.shtml?pathway=ok">Choosing Your Dataset</a>; <a href="./../../lessons/histograms2/index.shtml?pathway=ok">Visualizing the “Shape” of Data</a>; <a href="./../../lessons/box-plots/index.shtml?pathway=ok">Box Plots</a>; <a href="./../../lessons/standard-deviation/index.shtml?pathway=ok">Standard Deviation</a>; <a href="./../../lessons/scatter-plots/index.shtml?pathway=ok">Scatter Plots</a>.]</p>
+</dd>
+<dt class="hdlist1">9-12.Impacts of Computing.Culture</dt>
+<dd>
+<p>The design and use of computing technologies and artifacts can improve, worsen, or maintain inequitable access to information and opportunities.
+[See:  <a href="./../../lessons/ethics-privacy-and-bias/index.shtml?pathway=ok">Ethics&#x2c; Privacy&#x2c; and Bias</a>.]</p>
+</dd>
+<dt class="hdlist1">9-12.Impacts of Computing.Safety, Law, and Ethics</dt>
+<dd>
+<p>Laws govern many aspects of computing, such as privacy, data, property, information, and identity. These laws can have beneficial and harmful effects, such as expediting or delaying advancements in computing and protecting or infringing upon people’s rights. International differences in laws and ethics have implications for computing.
+[See:  <a href="./../../lessons/ethics-privacy-and-bias/index.shtml?pathway=ok">Ethics&#x2c; Privacy&#x2c; and Bias</a>.]</p>
+</dd>
+<dt class="hdlist1">9-12.Impacts of Computing.Social Interactions</dt>
+<dd>
+<p>Many aspects of society, especially careers, have been affected by the degree of communication afforded by computing. The increased connectivity between people in different cultures and in different career fields has changed the nature and content of many careers.
+[See:  <a href="./../../lessons/computing-needs-all-voices/index.shtml?pathway=ok">Computing Needs All Voices</a>.]</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1 coverageElement standards-Oklahoma">
+<h2 id="_oklahoma_standards"><a href="https://sde.ok.gov/oklahoma-academic-standards">Oklahoma Standards</a></h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">OK.3.A.V.01</dt>
+<dd>
+<p>Create programs that use variables to store and modify grade level appropriate data.
+[See:  <a href="./../../lessons/defining-values/index.shtml?pathway=ok">Defining Values</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.3.AP.A.01</dt>
+<dd>
+<p>Compare multiple algorithms for the same task.
+[See:  <a href="./../../lessons/flags/index.shtml?pathway=ok">Making Flags</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.3.AP.C.01</dt>
+<dd>
+<p>Create programs using a programming language that utilize sequencing, repetition, conditionals, and variables to solve a problem or express ideas both independently and collaboratively.
+[See:  <a href="./../../lessons/method-chaining/index.shtml?pathway=ok">Method Chaining</a>; <a href="./../../lessons/grouped-samples/index.shtml?pathway=ok">Grouped Samples</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.3.AP.M.01</dt>
+<dd>
+<p>Decompose the steps needed to solve a problem into a precise sequence of instructions.
+[See:  <a href="./../../lessons/flags/index.shtml?pathway=ok">Making Flags</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.3.AP.PD.01</dt>
+<dd>
+<p>Use an iterative process to plan the development of a program while solving simple problems.
+[See:  <a href="./../../lessons/functions-make-life-easier/index.shtml?pathway=ok">Functions Make Life Easier!</a>; <a href="./../../lessons/functions-dr/index.shtml?pathway=ok">Solving Word Problems with the Design Recipe</a>; <a href="./../../lessons/defining-table-functions/index.shtml?pathway=ok">Defining Table Functions</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.3.AP.PD.03</dt>
+<dd>
+<p>Analyze and debug a program that includes sequencing, repetition and variables in a programming language.
+[See:  <a href="./../../lessons/flags/index.shtml?pathway=ok">Making Flags</a>; <a href="./../../lessons/debugging/index.shtml?pathway=ok">Debugging</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.3.AP.PD.04</dt>
+<dd>
+<p>Communicate and explain your program development using comments, presentations and demonstrations.
+[See:  <a href="./../../lessons/functions-dr/index.shtml?pathway=ok">Solving Word Problems with the Design Recipe</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.3.DA.CVT.01</dt>
+<dd>
+<p>Collect and organize data in various visual formats.
+[See:  <a href="./../../lessons/data-collection/index.shtml?pathway=ok">Collecting Data</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.3.DA.IM.01</dt>
+<dd>
+<p>With guidance, utilize data to make predictions and discuss whether there is adequate data to make reliable predictions.
+[See:  <a href="./../../lessons/linear-regression/index.shtml?pathway=ok">Linear Regression</a>; <a href="./../../lessons/threats-to-validity/index.shtml?pathway=ok">Threats to Validity</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.4.AP.A.01</dt>
+<dd>
+<p>Compare and refine multiple algorithms for the same task.
+[See:  <a href="./../../lessons/flags/index.shtml?pathway=ok">Making Flags</a>; <a href="./../../lessons/method-chaining/index.shtml?pathway=ok">Method Chaining</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.4.AP.C.01</dt>
+<dd>
+<p>Create programs using a programming language that utilize sequencing, repetition, conditionals and variables using math operations manipulate values to solve a problem or express ideas both independently and collaboratively.
+[See:  <a href="./../../lessons/flags/index.shtml?pathway=ok">Making Flags</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.4.AP.M.01</dt>
+<dd>
+<p>Decompose large problems into smaller, manageable subproblems to facilitate the program development process.
+[See:  <a href="./../../lessons/problem-decomposition/index.shtml?pathway=ok">Problem Decomposition</a>; <a href="./../../lessons/method-chaining/index.shtml?pathway=ok">Method Chaining</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.4.AP.PD.03</dt>
+<dd>
+<p>Analyze, create, and debug a program that includes sequencing, repetition, conditionals and variables in a programming language.
+[See:  <a href="./../../lessons/debugging/index.shtml?pathway=ok">Debugging</a>; <a href="./../../lessons/method-chaining/index.shtml?pathway=ok">Method Chaining</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.4.AP.PD.04</dt>
+<dd>
+<p>Communicate and explain your program development using comments, presentations and demonstrations.
+[See:  <a href="./../../lessons/functions-dr/index.shtml?pathway=ok">Solving Word Problems with the Design Recipe</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.4.AP.V.01</dt>
+<dd>
+<p>Create programs that use variables to store and modify grade level appropriate data.
+[See:  <a href="./../../lessons/defining-values/index.shtml?pathway=ok">Defining Values</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.4.DA.CVT.01</dt>
+<dd>
+<p>Organize and present collected data visually to highlight comparisons.
+[See:  <a href="./../../lessons/data-collection/index.shtml?pathway=ok">Collecting Data</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.4.DA.IM.01</dt>
+<dd>
+<p>Determine how the accuracy of conclusions are influenced by the amount of data collected.
+[See:  <a href="./../../lessons/linear-regression/index.shtml?pathway=ok">Linear Regression</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.5.AP.A.01</dt>
+<dd>
+<p>Compare and refine multiple algorithms for the same task and determine which is the most efficient.
+[See:  <a href="./../../lessons/function-composition/index.shtml?pathway=ok">Function Composition</a>; <a href="./../../lessons/flags/index.shtml?pathway=ok">Making Flags</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.5.AP.M.01</dt>
+<dd>
+<p>Decompose large problems into smaller, manageable subproblems and then into a precise sequence of instructions.
+[See:  <a href="./../../lessons/problem-decomposition/index.shtml?pathway=ok">Problem Decomposition</a>; <a href="./../../lessons/method-chaining/index.shtml?pathway=ok">Method Chaining</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.5.AP.PD.03</dt>
+<dd>
+<p>Analyze, create, and debug a program that includes sequencing, repetition, conditionals and variables in a programming language.
+[See:  <a href="./../../lessons/debugging/index.shtml?pathway=ok">Debugging</a>; <a href="./../../lessons/method-chaining/index.shtml?pathway=ok">Method Chaining</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.5.AP.PD.04</dt>
+<dd>
+<p>Communicate and explain your program development using comments, presentations and demonstrations.
+[See:  <a href="./../../lessons/functions-dr/index.shtml?pathway=ok">Solving Word Problems with the Design Recipe</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.5.AP.V.01</dt>
+<dd>
+<p>Create programs that use variables to store and modify grade level appropriate data.
+[See:  <a href="./../../lessons/defining-values/index.shtml?pathway=ok">Defining Values</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.5.DA.CVT.01</dt>
+<dd>
+<p>Organize and present collected data to highlight comparisons and support a claim.
+[See:  <a href="./../../lessons/data-collection/index.shtml?pathway=ok">Collecting Data</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.5.DA.IM.01</dt>
+<dd>
+<p>Use data to highlight or propose cause and effect relationships, predict outcomes, or communicate an idea.
+[See:  <a href="./../../lessons/ds-intro/index.shtml?pathway=ok">Introduction to Data Science</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.5.GM.1.1</dt>
+<dd>
+<p>Describe, classify and construct triangles, including equilateral, right, scalene, and isosceles triangles. Recognize triangles in various contexts.
+[See:  <a href="./../../lessons/contracts/index.shtml?pathway=ok">Contracts</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.6.A.1.1</dt>
+<dd>
+<p>Plot integer- and rational-valued (limited to halves and fourths) ordered-pairs as coordinates in all four quadrants and recognize the reflective relationships among coordinates that differ only by their signs.
+[See:  <a href="./../../lessons/flags/index.shtml?pathway=ok">Making Flags</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.6.A.1.3</dt>
+<dd>
+<p>Use and evaluate variables in expressions, equations, and inequalities that arise from various contexts, including determining when or if, for a given value of the variable, an equation or inequality involving a variable is true or false.
+[See:  <a href="./../../lessons/simple-data-types/index.shtml?pathway=ok">Simple Data Types</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.6.A.3.1</dt>
+<dd>
+<p>Represent real-world or mathematical situations using expressions, equations and inequalities involving variables and rational numbers.
+[See:  <a href="./../../lessons/inequalities1-simple/index.shtml?pathway=ok">Simple Inequalities</a>; <a href="./../../lessons/inequalities2-compound/index.shtml?pathway=ok">Compound Inequalities: Solutions &amp; Non-Solutions</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.6.AP.A.01</dt>
+<dd>
+<p>Use an existing algorithm in natural language or pseudocode to solve complex problems.
+[See:  <a href="./../../lessons/functions-dr/index.shtml?pathway=ok">Solving Word Problems with the Design Recipe</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.6.AP.C.01</dt>
+<dd>
+<p>Develop programs that utilize combinations of repetition, conditionals, and the manipulation of variables representing different data types.
+[See:  <a href="./../../lessons/inequalities3-sam/index.shtml?pathway=ok">Sam the Butterfly - Applying Inequalities</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.6.AP.M.01</dt>
+<dd>
+<p>Decompose problems into parts to facilitate the design, implementation, and review of programs.
+[See:  <a href="./../../lessons/flags/index.shtml?pathway=ok">Making Flags</a>; <a href="./../../lessons/inequalities3-sam/index.shtml?pathway=ok">Sam the Butterfly - Applying Inequalities</a>; <a href="./../../lessons/problem-decomposition/index.shtml?pathway=ok">Problem Decomposition</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.6.AP.PD.01</dt>
+<dd>
+<p>Seek and incorporate feedback from team members to refine a solution to a problem.
+[See:  <a href="./../../lessons/flags/index.shtml?pathway=ok">Making Flags</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.6.AP.PD.04</dt>
+<dd>
+<p>Break down tasks and follow an individual timeline when developing a computational artifact.
+[See:  <a href="./../../lessons/random-samples/index.shtml?pathway=ok">Probability&#x2c; Inference&#x2c; and Sample Size</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.6.AP.PD.05</dt>
+<dd>
+<p>Document text-based programs in order to make them easier to follow, test, and debug.
+[See:  <a href="./../../lessons/functions-dr/index.shtml?pathway=ok">Solving Word Problems with the Design Recipe</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.6.D.1.3</dt>
+<dd>
+<p>Create and analyze box and whisker plots observing how each segment contains one quarter of the data.
+[See:  <a href="./../../lessons/bar-and-pie-charts/index.shtml?pathway=ok">Bar and Pie Charts</a>; <a href="./../../lessons/choosing-your-dataset/index.shtml?pathway=ok">Choosing Your Dataset</a>; <a href="./../../lessons/histograms/index.shtml?pathway=ok">Histograms</a>; <a href="./../../lessons/histograms2/index.shtml?pathway=ok">Visualizing the “Shape” of Data</a>; <a href="./../../lessons/box-plots/index.shtml?pathway=ok">Box Plots</a>; <a href="./../../lessons/standard-deviation/index.shtml?pathway=ok">Standard Deviation</a>; <a href="./../../lessons/grouped-samples/index.shtml?pathway=ok">Grouped Samples</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.6.DA.CVT.01</dt>
+<dd>
+<p>Collect data using computational tools and transform the data to make it more useful.
+[See:  <a href="./../../lessons/box-plots/index.shtml?pathway=ok">Box Plots</a>; <a href="./../../lessons/standard-deviation/index.shtml?pathway=ok">Standard Deviation</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.6.DA.S.01</dt>
+<dd>
+<p>Identify how the same data can be represented in multiple ways.
+[See:  <a href="./../../lessons/bar-and-pie-charts/index.shtml?pathway=ok">Bar and Pie Charts</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.6.GM.2.2</dt>
+<dd>
+<p>Develop and use the fact that the sum of the interior angles of a triangle is 180° to determine missing angle measures in a triangle.
+[See:  <a href="./../../lessons/contracts/index.shtml?pathway=ok">Contracts</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.6.IC.C.01</dt>
+<dd>
+<p>Explain how computing impacts people&#8217;s everyday activities.
+[See:  <a href="./../../lessons/computing-needs-all-voices/index.shtml?pathway=ok">Computing Needs All Voices</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.7.A.3.3</dt>
+<dd>
+<p>Represent real-world or mathematical situations using equations and inequalities involving variables and rational numbers.
+[See:  <a href="./../../lessons/defining-values/index.shtml?pathway=ok">Defining Values</a>; <a href="./../../lessons/inequalities1-simple/index.shtml?pathway=ok">Simple Inequalities</a>; <a href="./../../lessons/inequalities2-compound/index.shtml?pathway=ok">Compound Inequalities: Solutions &amp; Non-Solutions</a>; <a href="./../../lessons/inequalities3-sam/index.shtml?pathway=ok">Sam the Butterfly - Applying Inequalities</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.7.A.4.2</dt>
+<dd>
+<p>Apply understanding of order of operations and grouping symbols when using calculators and other technologies
+[See:  <a href="./../../lessons/order-of-operations/index.shtml?pathway=ok">Order of Operations</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.7.AP.A.01</dt>
+<dd>
+<p>Select and modify an existing algorithm in natural language or pseudocode to solve complex problems.
+[See:  <a href="./../../lessons/simple-data-types/index.shtml?pathway=ok">Simple Data Types</a>; <a href="./../../lessons/functions-dr/index.shtml?pathway=ok">Solving Word Problems with the Design Recipe</a>; <a href="./../../lessons/surface-area-rect-prism/index.shtml?pathway=ok">Surface Area of a Rectangular Prism</a>; <a href="./../../lessons/table-methods/index.shtml?pathway=ok">Table Methods</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.7.AP.C.01</dt>
+<dd>
+<p>Develop programs that utilize combinations of repetition, compound conditionals, and the manipulation of variables representing different data types.
+[See:  <a href="./../../lessons/inequalities3-sam/index.shtml?pathway=ok">Sam the Butterfly - Applying Inequalities</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.7.AP.M.01</dt>
+<dd>
+<p>Decompose problems into parts to facilitate the design, implementation, and review of increasingly complex programs.
+[See:  <a href="./../../lessons/inequalities3-sam/index.shtml?pathway=ok">Sam the Butterfly - Applying Inequalities</a>; <a href="./../../lessons/problem-decomposition/index.shtml?pathway=ok">Problem Decomposition</a>; <a href="./../../lessons/method-chaining/index.shtml?pathway=ok">Method Chaining</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.7.AP.PD.04</dt>
+<dd>
+<p>Distribute tasks and maintain a project timeline when collaboratively developing computational artifacts.
+[See:  <a href="./../../lessons/random-samples/index.shtml?pathway=ok">Probability&#x2c; Inference&#x2c; and Sample Size</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.7.AP.PD.05</dt>
+<dd>
+<p>Document text-based programs of increasing complexity in order to make them easier to follow, test, and debug.
+[See:  <a href="./../../lessons/functions-dr/index.shtml?pathway=ok">Solving Word Problems with the Design Recipe</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.7.CS.T.01</dt>
+<dd>
+<p>Identify and fix increasingly complex software and hardware problems with computing devices and their components.
+[See:  <a href="./../../lessons/problem-decomposition/index.shtml?pathway=ok">Problem Decomposition</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.7.D.1.2</dt>
+<dd>
+<p>Use reasoning with proportions to display and interpret data in circle graphs (pie charts) and histograms. Choose the appropriate data display and know how to create the display using a spreadsheet or other graphing technology.
+[See:  <a href="./../../lessons/bar-and-pie-charts/index.shtml?pathway=ok">Bar and Pie Charts</a>; <a href="./../../lessons/choosing-your-dataset/index.shtml?pathway=ok">Choosing Your Dataset</a>; <a href="./../../lessons/histograms/index.shtml?pathway=ok">Histograms</a>; <a href="./../../lessons/histograms2/index.shtml?pathway=ok">Visualizing the “Shape” of Data</a>; <a href="./../../lessons/box-plots/index.shtml?pathway=ok">Box Plots</a>; <a href="./../../lessons/standard-deviation/index.shtml?pathway=ok">Standard Deviation</a>; <a href="./../../lessons/grouped-samples/index.shtml?pathway=ok">Grouped Samples</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.7.DA.CVT.01</dt>
+<dd>
+<p>Collect data using computational tools and transform the data to make it more useful and reliable.
+[See:  <a href="./../../lessons/box-plots/index.shtml?pathway=ok">Box Plots</a>; <a href="./../../lessons/standard-deviation/index.shtml?pathway=ok">Standard Deviation</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.7.DA.S.01</dt>
+<dd>
+<p>Create multiple representations of data.
+[See:  <a href="./../../lessons/bar-and-pie-charts/index.shtml?pathway=ok">Bar and Pie Charts</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.7.GM.1.1</dt>
+<dd>
+<p>Using a variety of tools and strategies, develop the concept that surface area of a rectangular prism with rational-valued edge lengths can be found by wrapping the figure with samesized square units without gaps or overlap. Use appropriate measurements such as cm^2
+[See:  <a href="./../../lessons/surface-area-rect-prism/index.shtml?pathway=ok">Surface Area of a Rectangular Prism</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.7.GM.4.1</dt>
+<dd>
+<p>Describe the properties of similarity, compare geometric figures for similarity, and determine scale factors resulting from dilations.
+[See:  <a href="./../../lessons/flags/index.shtml?pathway=ok">Making Flags</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.7.GM.4.2</dt>
+<dd>
+<p>Apply proportions, ratios, and scale factors to solve problems involving scale drawings and determine side lengths and areas of similar triangles and rectangles.
+[See:  <a href="./../../lessons/flags/index.shtml?pathway=ok">Making Flags</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.7.N.1.1</dt>
+<dd>
+<p>Know that every rational number can be written as the ratio of two integers or as a terminating or repeating decimal.
+[See:  <a href="./../../lessons/simple-data-types/index.shtml?pathway=ok">Simple Data Types</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.7.N.1.2</dt>
+<dd>
+<p>Compare and order rational numbers expressed in various forms using the symbols &lt;, &gt;, and =.
+[See:  <a href="./../../lessons/simple-data-types/index.shtml?pathway=ok">Simple Data Types</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.7.N.1.3</dt>
+<dd>
+<p>Recognize and generate equivalent representations of rational numbers, including equivalent fractions.
+[See:  <a href="./../../lessons/simple-data-types/index.shtml?pathway=ok">Simple Data Types</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.8.AP.A.01</dt>
+<dd>
+<p>Design algorithms in natural language, flow and control diagrams, comments within code, and/or pseudocode to solve complex problems.
+[See:  <a href="./../../lessons/flags/index.shtml?pathway=ok">Making Flags</a>; <a href="./../../lessons/functions-dr/index.shtml?pathway=ok">Solving Word Problems with the Design Recipe</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.8.AP.C.01</dt>
+<dd>
+<p>Develop programs that utilize combinations of nested repetition, compound conditionals, procedures without parameters, and the manipulation of variables representing different data types.
+[See:  <a href="./../../lessons/simple-data-types/index.shtml?pathway=ok">Simple Data Types</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.8.AP.M.01</dt>
+<dd>
+<p>Decompose problems and subproblems into parts to facilitate the design, implementation, and review of complex programs.
+[See:  <a href="./../../lessons/inequalities3-sam/index.shtml?pathway=ok">Sam the Butterfly - Applying Inequalities</a>; <a href="./../../lessons/problem-decomposition/index.shtml?pathway=ok">Problem Decomposition</a>; <a href="./../../lessons/method-chaining/index.shtml?pathway=ok">Method Chaining</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.8.AP.PD.02</dt>
+<dd>
+<p>Incorporate existing code, media, and libraries into original programs of increasing complexity and give attribution.
+[See:  <a href="./../../lessons/functions-make-life-easier/index.shtml?pathway=ok">Functions Make Life Easier!</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.8.AP.PD.04</dt>
+<dd>
+<p>Explain how effective communication between participants is required for successful collaboration when developing computational artifacts.
+[See:  <a href="./../../lessons/functions-dr/index.shtml?pathway=ok">Solving Word Problems with the Design Recipe</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.8.AP.PD.05</dt>
+<dd>
+<p>Document text-based programs of increasing complexity in order to make them easier to follow, test, and debug.
+[See:  <a href="./../../lessons/functions-dr/index.shtml?pathway=ok">Solving Word Problems with the Design Recipe</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.8.CS.T.01</dt>
+<dd>
+<p>Systematically identify, fix, and document increasingly complex software and hardware problems with computing devices and their components.
+[See:  <a href="./../../lessons/problem-decomposition/index.shtml?pathway=ok">Problem Decomposition</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.8.DA.CVT.01</dt>
+<dd>
+<p>Develop, implement, and refine a process that utilizes computational tools to collect and transform data to make it more useful and reliable.
+[See:  <a href="./../../lessons/ds-intro/index.shtml?pathway=ok">Introduction to Data Science</a>; <a href="./../../lessons/grouped-samples/index.shtml?pathway=ok">Grouped Samples</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.8.DA.S.01</dt>
+<dd>
+<p>Analyze multiple methods of representing data and choose the most appropriate method for representing data.
+[See:  <a href="./../../lessons/bar-and-pie-charts/index.shtml?pathway=ok">Bar and Pie Charts</a>; <a href="./../../lessons/choosing-your-dataset/index.shtml?pathway=ok">Choosing Your Dataset</a>; <a href="./../../lessons/histograms/index.shtml?pathway=ok">Histograms</a>; <a href="./../../lessons/histograms2/index.shtml?pathway=ok">Visualizing the “Shape” of Data</a>; <a href="./../../lessons/box-plots/index.shtml?pathway=ok">Box Plots</a>; <a href="./../../lessons/standard-deviation/index.shtml?pathway=ok">Standard Deviation</a>; <a href="./../../lessons/grouped-samples/index.shtml?pathway=ok">Grouped Samples</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.8.IC.SI.01</dt>
+<dd>
+<p>Communicate and publish key ideas and details individually or collaboratively in a way that informs, persuades, and/or entertains using a variety of digital tools and media-rich resources. Describe and use safe, appropriate, and responsible practices (netiquette) when participating in online communities (e.g., discussion groups, blogs, social networking sites).
+[See:  <a href="./../../lessons/choosing-your-dataset/index.shtml?pathway=ok">Choosing Your Dataset</a>; <a href="./../../lessons/threats-to-validity/index.shtml?pathway=ok">Threats to Validity</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.A1.A.1.1</dt>
+<dd>
+<p>Use knowledge of solving equations with rational values to represent and solve mathematical and real-world problems (e.g., angle measures, geometric formulas, science, or statistics) and interpret the solutions in the original context.
+[See:  <a href="./../../lessons/functions-make-life-easier/index.shtml?pathway=ok">Functions Make Life Easier!</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.A1.A.2</dt>
+<dd>
+<p>Represent and solve real-world and mathematical problems using linear inequalities, compound inequalities and systems of linear inequalities; interpret solutions in the original context.
+[See:  <a href="./../../lessons/inequalities3-sam/index.shtml?pathway=ok">Sam the Butterfly - Applying Inequalities</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.A1.A.2.2</dt>
+<dd>
+<p>Represent relationships in various contexts with compound and absolute value inequalities and solve the resulting inequalities by graphing and interpreting the solutions on a number line.
+[See:  <a href="./../../lessons/inequalities2-compound/index.shtml?pathway=ok">Compound Inequalities: Solutions &amp; Non-Solutions</a>; <a href="./../../lessons/inequalities3-sam/index.shtml?pathway=ok">Sam the Butterfly - Applying Inequalities</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.A1.A.3</dt>
+<dd>
+<p>Generate equivalent algebraic expressions and use algebraic properties to evaluate expressions and arithmetic and geometric sequences.
+[See:  <a href="./../../lessons/order-of-operations/index.shtml?pathway=ok">Order of Operations</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.A1.A.3.1</dt>
+<dd>
+<p>Solve equations involving several variables for one variable in terms of the others.
+[See:  <a href="./../../lessons/problem-decomposition/index.shtml?pathway=ok">Problem Decomposition</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.A1.A.4</dt>
+<dd>
+<p>Analyze mathematical change involving linear equations in real-world and mathematical problems.
+[See:  <a href="./../../lessons/function-definition-linear/index.shtml?pathway=ok">Defining Linear Functions</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.A1.A.4.1</dt>
+<dd>
+<p>Calculate and interpret slope and the x- and y-intercepts of a line using a graph, an equation, two points, or a set of data points to solve realworld and mathematical problems.
+[See:  <a href="./../../lessons/function-definition-linear/index.shtml?pathway=ok">Defining Linear Functions</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.A1.D.1.1</dt>
+<dd>
+<p>Describe a data set using data displays, describe and compare data sets using summary statistics, including measures of central tendency, location, and spread. Know how to use calculators, spreadsheets, or other appropriate technology to display data and calculate summary statistics.
+[See:  <a href="./../../lessons/choosing-your-dataset/index.shtml?pathway=ok">Choosing Your Dataset</a>; <a href="./../../lessons/histograms/index.shtml?pathway=ok">Histograms</a>; <a href="./../../lessons/histograms2/index.shtml?pathway=ok">Visualizing the “Shape” of Data</a>; <a href="./../../lessons/grouped-samples/index.shtml?pathway=ok">Grouped Samples</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.A1.D.1.2</dt>
+<dd>
+<p>Collect data and use scatterplots to analyze patterns and describe linear relationships between two variables. Using graphing technology, determine regression lines and correlation coefficients; use regression lines to make predictions and correlation coefficients to assess the reliability of those predictions.
+[See:  <a href="./../../lessons/data-collection/index.shtml?pathway=ok">Collecting Data</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.A1.D.2.1</dt>
+<dd>
+<p>Select and apply counting procedures, such as the multiplication and addition principles and tree diagrams, to determine the size of a sample space (the number of possible outcomes) and to calculate probabilities.
+[See:  <a href="./../../lessons/table-methods/index.shtml?pathway=ok">Table Methods</a>; <a href="./../../lessons/method-chaining/index.shtml?pathway=ok">Method Chaining</a>; <a href="./../../lessons/defining-table-functions/index.shtml?pathway=ok">Defining Table Functions</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.A1.D.2.2</dt>
+<dd>
+<p>Describe the concepts of intersections, unions, and complements using Venn diagrams to evaluate probabilities. Understand the relationships between these concepts and the words AND, OR, and NOT.
+[See:  <a href="./../../lessons/inequalities2-compound/index.shtml?pathway=ok">Compound Inequalities: Solutions &amp; Non-Solutions</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.A1.F.1.2</dt>
+<dd>
+<p>Identify the dependent and independent variables as well as the domain and range given a function, equation, or graph. Identify restrictions on the domain and range in real-world contexts.
+[See:  <a href="./../../lessons/contracts/index.shtml?pathway=ok">Contracts</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.A1.F.1.3</dt>
+<dd>
+<p>Write linear functions, using function notation, to model real-world and mathematical situations.
+[See:  <a href="./../../lessons/contracts/index.shtml?pathway=ok">Contracts</a>; <a href="./../../lessons/function-composition/index.shtml?pathway=ok">Function Composition</a>; <a href="./../../lessons/functions-make-life-easier/index.shtml?pathway=ok">Functions Make Life Easier!</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.A1.F.1.4</dt>
+<dd>
+<p>Given a graph modeling a real-world situation, read and interpret the linear piecewise function (excluding step functions).
+[See:  <a href="./../../lessons/contracts/index.shtml?pathway=ok">Contracts</a>; <a href="./../../lessons/custom-scatter-plots/index.shtml?pathway=ok">Custom Scatter Plots</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.A1.F.2.1</dt>
+<dd>
+<p>Distinguish between linear and nonlinear (including exponential) functions arising from real-world and mathematical situations that are represented in tables, graphs, and equations. Understand that linear functions grow by equal intervals and that exponential functions grow by equal factors over equal intervals.
+[See:  <a href="./../../lessons/functions-can-be-linear/index.shtml?pathway=ok">Functions Can Be Linear</a>; <a href="./../../lessons/function-definition-linear/index.shtml?pathway=ok">Defining Linear Functions</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.A1.F.3</dt>
+<dd>
+<p>Represent functions in multiple ways and use the representation to interpret real-world and mathematical problems.
+[See:  <a href="./../../lessons/function-composition/index.shtml?pathway=ok">Function Composition</a>; <a href="./../../lessons/defining-values/index.shtml?pathway=ok">Defining Values</a>; <a href="./../../lessons/function-definition-linear/index.shtml?pathway=ok">Defining Linear Functions</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.A1.F.3.1</dt>
+<dd>
+<p>Identify and generate equivalent representations of linear equations, graphs, tables, and real-world situations.
+[See:  <a href="./../../lessons/defining-values/index.shtml?pathway=ok">Defining Values</a>; <a href="./../../lessons/function-definition-linear/index.shtml?pathway=ok">Defining Linear Functions</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.A1.F.3.2</dt>
+<dd>
+<p>Use function notation; evaluate a function, including nonlinear, at a given point in its domain algebraically and graphically. Interpret the results in terms of real-world and mathematical problems.
+[See:  <a href="./../../lessons/function-composition/index.shtml?pathway=ok">Function Composition</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.A1.F.3.3</dt>
+<dd>
+<p>Add, subtract, and multiply functions using function notation.
+[See:  <a href="./../../lessons/function-composition/index.shtml?pathway=ok">Function Composition</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.A2.F.1.8</dt>
+<dd>
+<p>Graph piecewise functions with no more than three branches (including linear, quadratic, or exponential branches) and analyze the function by
+          identifying the domain, range, intercepts, and intervals for which it is increasing, decreasing, and constant.
+[See:  <a href="./../../lessons/custom-scatter-plots/index.shtml?pathway=ok">Custom Scatter Plots</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.G.2D.1.8</dt>
+<dd>
+<p>Construct logical arguments to prove triangle congruence (SSS, SAS, ASA, AAS and HL) and triangle similarity (AA, SSS, SAS).
+[See:  <a href="./../../lessons/contracts/index.shtml?pathway=ok">Contracts</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.G.3D.1.1</dt>
+<dd>
+<p>Solve real-world and mathematical problems
+       using the surface area and volume of prisms, cylinders,
+       pyramids, cones, spheres, and composites of these
+       figures. Use nets, measuring devices, or formulas as
+       appropriate.
+[See:  <a href="./../../lessons/surface-area-rect-prism/index.shtml?pathway=ok">Surface Area of a Rectangular Prism</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.L1.AP.A.01</dt>
+<dd>
+<p>Create a prototype that uses algorithms (e.g., searching, sorting, finding shortest distance) to provide a possible solution for a real-world problem.
+[See:  <a href="./../../lessons/inequalities3-sam/index.shtml?pathway=ok">Sam the Butterfly - Applying Inequalities</a>; <a href="./../../lessons/surface-area-rect-prism/index.shtml?pathway=ok">Surface Area of a Rectangular Prism</a>; <a href="./../../lessons/grouped-samples/index.shtml?pathway=ok">Grouped Samples</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.L1.AP.M.01</dt>
+<dd>
+<p>Break down a solution into procedures using systematic analysis and design.
+[See:  <a href="./../../lessons/problem-decomposition/index.shtml?pathway=ok">Problem Decomposition</a>; <a href="./../../lessons/custom-scatter-plots/index.shtml?pathway=ok">Custom Scatter Plots</a>; <a href="./../../lessons/method-chaining/index.shtml?pathway=ok">Method Chaining</a>; <a href="./../../lessons/defining-table-functions/index.shtml?pathway=ok">Defining Table Functions</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.L1.AP.M.02</dt>
+<dd>
+<p>Create computational artifacts by systematically organizing, manipulating and/or processing data.
+[See:  <a href="./../../lessons/custom-scatter-plots/index.shtml?pathway=ok">Custom Scatter Plots</a>; <a href="./../../lessons/table-methods/index.shtml?pathway=ok">Table Methods</a>; <a href="./../../lessons/method-chaining/index.shtml?pathway=ok">Method Chaining</a>; <a href="./../../lessons/defining-table-functions/index.shtml?pathway=ok">Defining Table Functions</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.L1.AP.PD.05</dt>
+<dd>
+<p>Evaluate and refine computational artifacts to make them more user-friendly, efficient and/or accessible.
+[See:  <a href="./../../lessons/histograms/index.shtml?pathway=ok">Histograms</a>; <a href="./../../lessons/histograms2/index.shtml?pathway=ok">Visualizing the “Shape” of Data</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.L1.CS.T.01</dt>
+<dd>
+<p>Develop and apply criteria for systematic discovery of errors and systematic strategies for correction of errors in computing systems.
+[See:  <a href="./../../lessons/debugging/index.shtml?pathway=ok">Debugging</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.L1.DA.CVT.01</dt>
+<dd>
+<p>Use tools and techniques to locate, collect, and create visualizations of small- and largescale data sets (e.g., paper surveys and online data sets).
+[See:  <a href="./../../lessons/choosing-your-dataset/index.shtml?pathway=ok">Choosing Your Dataset</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.L1.DA.IM.01</dt>
+<dd>
+<p>Show the relationships between collected data elements using computational models.
+[See:  <a href="./../../lessons/scatter-plots/index.shtml?pathway=ok">Scatter Plots</a>; <a href="./../../lessons/correlations/index.shtml?pathway=ok">Correlations</a>; <a href="./../../lessons/linear-regression/index.shtml?pathway=ok">Linear Regression</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.L1.IC.C.01</dt>
+<dd>
+<p>Evaluate the ways computing impacts personal, ethical, social, economic, and cultural practices.
+[See:  <a href="./../../lessons/ethics-privacy-and-bias/index.shtml?pathway=ok">Ethics&#x2c; Privacy&#x2c; and Bias</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.L1.IC.C.02</dt>
+<dd>
+<p>Test and refine computational artifacts to reduce bias and equity deficits.
+[See:  <a href="./../../lessons/random-samples/index.shtml?pathway=ok">Probability&#x2c; Inference&#x2c; and Sample Size</a>; <a href="./../../lessons/choosing-your-dataset/index.shtml?pathway=ok">Choosing Your Dataset</a>; <a href="./../../lessons/grouped-samples/index.shtml?pathway=ok">Grouped Samples</a>; <a href="./../../lessons/checking-your-work/index.shtml?pathway=ok">Checking Your Work</a>; <a href="./../../lessons/threats-to-validity/index.shtml?pathway=ok">Threats to Validity</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.L1.IC.SLE.02</dt>
+<dd>
+<p>Explain the privacy concerns related to the large-scale collection and analysis of information about individuals (e.g., how businesses, social media, and the government collects and uses data) that may not be evident to users.
+[See:  <a href="./../../lessons/ethics-privacy-and-bias/index.shtml?pathway=ok">Ethics&#x2c; Privacy&#x2c; and Bias</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.L1.IC.SLE.03</dt>
+<dd>
+<p>Evaluate the social and economic consequences of how law and ethics interact with digital aspects of privacy, data, property, information, and identity.
+[See:  <a href="./../../lessons/ethics-privacy-and-bias/index.shtml?pathway=ok">Ethics&#x2c; Privacy&#x2c; and Bias</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.L2.AP.M.03</dt>
+<dd>
+<p>Create programming solutions by reusing existing code (e.g., libraries, Application Programming Interface (APIs), code repositories).
+[See:  <a href="./../../lessons/inequalities3-sam/index.shtml?pathway=ok">Sam the Butterfly - Applying Inequalities</a>; <a href="./../../lessons/table-methods/index.shtml?pathway=ok">Table Methods</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.L2.AP.PD.03</dt>
+<dd>
+<p>Develop programs for multiple computing platforms.
+[See:  <a href="./../../lessons/functions-make-life-easier/index.shtml?pathway=ok">Functions Make Life Easier!</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.L2.AP.PD.05</dt>
+<dd>
+<p>Develop and use a series of test cases to verify that a program performs according to its design specifications.
+[See:  <a href="./../../lessons/functions-dr/index.shtml?pathway=ok">Solving Word Problems with the Design Recipe</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.L2.DA.CVT.01</dt>
+<dd>
+<p>Use data analysis tools and techniques to identify patterns from complex real-world data.
+[See:  <a href="./../../lessons/linear-regression/index.shtml?pathway=ok">Linear Regression</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.L2.DA.CVT.02</dt>
+<dd>
+<p>Generate data sets that use a variety of data collection tools and analysis techniques to support a claim and/or communicate information.
+[See:  <a href="./../../lessons/box-plots/index.shtml?pathway=ok">Box Plots</a>; <a href="./../../lessons/standard-deviation/index.shtml?pathway=ok">Standard Deviation</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.L2.IC.C.01</dt>
+<dd>
+<p>Evaluate the beneficial and harmful effects that computational artifacts and innovations have on society.
+[See:  <a href="./../../lessons/ethics-privacy-and-bias/index.shtml?pathway=ok">Ethics&#x2c; Privacy&#x2c; and Bias</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.L2.IC.SLE.01</dt>
+<dd>
+<p>Debate laws and regulations that impact the development and use of software.
+[See:  <a href="./../../lessons/ethics-privacy-and-bias/index.shtml?pathway=ok">Ethics&#x2c; Privacy&#x2c; and Bias</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.MAP.1</dt>
+<dd>
+<p>Develop a deep and flexible conceptual understanding.
+[See:  <a href="./../../lessons/flags/index.shtml?pathway=ok">Making Flags</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.MAP.2</dt>
+<dd>
+<p>Develop accurate and appropriate procedural fluency.
+[See:  <a href="./../../lessons/order-of-operations/index.shtml?pathway=ok">Order of Operations</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.MAP.4</dt>
+<dd>
+<p>Develop mathematical reasoning.
+[See:  <a href="./../../lessons/flags/index.shtml?pathway=ok">Making Flags</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.MAP.5</dt>
+<dd>
+<p>Develop a productive mathematical disposition.
+[See:  <a href="./../../lessons/functions-make-life-easier/index.shtml?pathway=ok">Functions Make Life Easier!</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.MAP.6</dt>
+<dd>
+<p>Develop the ability to make conjectures, model, and generalize.
+[See:  <a href="./../../lessons/functions-make-life-easier/index.shtml?pathway=ok">Functions Make Life Easier!</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.MAP.7</dt>
+<dd>
+<p>Develop the ability to communicate mathematically.
+[See:  <a href="./../../lessons/functions-dr/index.shtml?pathway=ok">Solving Word Problems with the Design Recipe</a>; <a href="./../../lessons/linear-regression/index.shtml?pathway=ok">Linear Regression</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.PA.A.1.1</dt>
+<dd>
+<p>Recognize that a function is a relationship between an independent variable and a dependent variable in which the value of the independent variable determines the value of the dependent variable.
+[See:  <a href="./../../lessons/contracts/index.shtml?pathway=ok">Contracts</a>; <a href="./../../lessons/functions-make-life-easier/index.shtml?pathway=ok">Functions Make Life Easier!</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.PA.A.1.2</dt>
+<dd>
+<p>Use linear functions to represent and explain real-world and mathematical situations.
+[See:  <a href="./../../lessons/functions-make-life-easier/index.shtml?pathway=ok">Functions Make Life Easier!</a>; <a href="./../../lessons/functions-dr/index.shtml?pathway=ok">Solving Word Problems with the Design Recipe</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.PA.A.1.3</dt>
+<dd>
+<p>Identify a function as linear if it can be expressed in the form y = mx + b or if its graph is a straight line.
+[See:  <a href="./../../lessons/functions-dr/index.shtml?pathway=ok">Solving Word Problems with the Design Recipe</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.PA.A.2</dt>
+<dd>
+<p>Recognize linear functions in real-world and mathematical situations; represent linear functions and other functions with tables, verbal descriptions, symbols, and graphs; solve problems involving linear functions and interpret results in the original context.
+[See:  <a href="./../../lessons/functions-dr/index.shtml?pathway=ok">Solving Word Problems with the Design Recipe</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.PA.A.2.1</dt>
+<dd>
+<p>Represent linear functions with tables, verbal descriptions, symbols, and graphs; translate from one representation to another.
+[See:  <a href="./../../lessons/functions-can-be-linear/index.shtml?pathway=ok">Functions Can Be Linear</a>; <a href="./../../lessons/function-definition-linear/index.shtml?pathway=ok">Defining Linear Functions</a>; <a href="./../../lessons/functions-dr/index.shtml?pathway=ok">Solving Word Problems with the Design Recipe</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.PA.A.2.2</dt>
+<dd>
+<p>Identify, describe, and analyze linear relationships between two variables.
+[See:  <a href="./../../lessons/functions-can-be-linear/index.shtml?pathway=ok">Functions Can Be Linear</a>; <a href="./../../lessons/function-definition-linear/index.shtml?pathway=ok">Defining Linear Functions</a>; <a href="./../../lessons/random-samples/index.shtml?pathway=ok">Probability&#x2c; Inference&#x2c; and Sample Size</a>; <a href="./../../lessons/choosing-your-dataset/index.shtml?pathway=ok">Choosing Your Dataset</a>; <a href="./../../lessons/histograms/index.shtml?pathway=ok">Histograms</a>; <a href="./../../lessons/histograms2/index.shtml?pathway=ok">Visualizing the “Shape” of Data</a>; <a href="./../../lessons/grouped-samples/index.shtml?pathway=ok">Grouped Samples</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.PA.A.2.3</dt>
+<dd>
+<p>Identify graphical properties of linear functions including slope and intercepts. Know that the slope equals the rate of change, and that the yintercept is zero when the function represents a proportional relationship.
+[See:  <a href="./../../lessons/function-definition-linear/index.shtml?pathway=ok">Defining Linear Functions</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.PA.A.2.4</dt>
+<dd>
+<p>Predict the effect on the graph of a linear function when the slope or y-intercept changes. Use appropriate tools to examine these effects.
+[See:  <a href="./../../lessons/functions-can-be-linear/index.shtml?pathway=ok">Functions Can Be Linear</a>; <a href="./../../lessons/function-definition-linear/index.shtml?pathway=ok">Defining Linear Functions</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.PA.A.3</dt>
+<dd>
+<p>Generate equivalent numerical and algebraic expressions and use algebraic properties to evaluate expressions.
+[See:  <a href="./../../lessons/order-of-operations/index.shtml?pathway=ok">Order of Operations</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.PA.A.3.1</dt>
+<dd>
+<p>Use substitution to simplify and evaluate algebraic expressions.
+[See:  <a href="./../../lessons/function-composition/index.shtml?pathway=ok">Function Composition</a>; <a href="./../../lessons/defining-values/index.shtml?pathway=ok">Defining Values</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.PA.A.4</dt>
+<dd>
+<p>Represent real-world and mathematical problems using equations and inequalities involving linear expressions. Solve and graph equations and inequalities symbolically and graphically. Interpret solutions in the original context.
+[See:  <a href="./../../lessons/flags/index.shtml?pathway=ok">Making Flags</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.PA.A.4.3</dt>
+<dd>
+<p>Represent real-world situations using equations and inequalities involving one variable.
+[See:  <a href="./../../lessons/inequalities1-simple/index.shtml?pathway=ok">Simple Inequalities</a>; <a href="./../../lessons/inequalities2-compound/index.shtml?pathway=ok">Compound Inequalities: Solutions &amp; Non-Solutions</a>; <a href="./../../lessons/inequalities3-sam/index.shtml?pathway=ok">Sam the Butterfly - Applying Inequalities</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.PA.D.1</dt>
+<dd>
+<p>Display and interpret data in a variety of ways, including using scatterplots and approximate lines of best fit. Use line of best fit and average rate of change to make predictions and draw conclusions about data.
+[See:  <a href="./../../lessons/choosing-your-dataset/index.shtml?pathway=ok">Choosing Your Dataset</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.PA.D.1.1</dt>
+<dd>
+<p>Describe the impact that inserting or deleting a data point has on the mean and the median of a data set. Know how to create data displays using a spreadsheet and use a calculator to examine this impact.
+[See:  <a href="./../../lessons/choosing-your-dataset/index.shtml?pathway=ok">Choosing Your Dataset</a>; <a href="./../../lessons/histograms/index.shtml?pathway=ok">Histograms</a>; <a href="./../../lessons/histograms2/index.shtml?pathway=ok">Visualizing the “Shape” of Data</a>; <a href="./../../lessons/grouped-samples/index.shtml?pathway=ok">Grouped Samples</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.PA.D.1.2</dt>
+<dd>
+<p>Explain how outliers affect measures of central tendency.
+[See:  <a href="./../../lessons/measures-of-center/index.shtml?pathway=ok">Measures of Center</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.PA.D.1.3</dt>
+<dd>
+<p>Collect, display and interpret data using scatterplots. Use the shape of the scatterplot to informally estimate a line of best fit, make statements about average rate of change, and make predictions about values not in the original data set. Use appropriate titles, labels and units.
+[See:  <a href="./../../lessons/scatter-plots/index.shtml?pathway=ok">Scatter Plots</a>; <a href="./../../lessons/correlations/index.shtml?pathway=ok">Correlations</a>; <a href="./../../lessons/linear-regression/index.shtml?pathway=ok">Linear Regression</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.PA.D.2.2</dt>
+<dd>
+<p>Determine how samples are chosen (random, limited, biased) to draw and support conclusions about generalizing a sample to a population.
+[See:  <a href="./../../lessons/random-samples/index.shtml?pathway=ok">Probability&#x2c; Inference&#x2c; and Sample Size</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.PA.GM.2</dt>
+<dd>
+<p>Calculate surface area and volume of three-dimensional figures.
+[See:  <a href="./../../lessons/surface-area-rect-prism/index.shtml?pathway=ok">Surface Area of a Rectangular Prism</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.PA.GM.2.1</dt>
+<dd>
+<p>Calculate the surface area of a rectangular prism using decomposition or nets. Use appropriate units of measure, such as square centimeters.
+[See:  <a href="./../../lessons/surface-area-rect-prism/index.shtml?pathway=ok">Surface Area of a Rectangular Prism</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.PA.GM.2.2</dt>
+<dd>
+<p>Calculate the surface area of a cylinder, in terms of pi and using approximations for pi, using decomposition or nets. Use appropriate units of measure, such as square centimeters.
+[See:  <a href="./../../lessons/surface-area-rect-prism/index.shtml?pathway=ok">Surface Area of a Rectangular Prism</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.SP.1.5</dt>
+<dd>
+<p>Use counting techniques including permutations and combinations to solve mathematical and real-world problems, including determining probabilities of compound events.
+[See:  <a href="./../../lessons/combinatorics-permutation/index.shtml?pathway=ok">Permutations</a>; <a href="./../../lessons/combinatorics-combination/index.shtml?pathway=ok">Combinations</a>.]</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1 coverageElement standards-Iowa">
+<h2 id="_iowa_standards"><a href="https://iowacore.gov/standards/iowa-core-standards">Iowa Standards</a></h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">IA.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.
+[See:  <a href="./../../lessons/defining-values/index.shtml?pathway=ok">Defining Values</a>.]</p>
+</dd>
+<dt class="hdlist1">IA.HSF.BF.A.1.B</dt>
+<dd>
+<p>Combine standard function types using arithmetic operations.
+[See:  <a href="./../../lessons/function-composition/index.shtml?pathway=ok">Function Composition</a>.]</p>
+</dd>
+<dt class="hdlist1">IA.HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.
+[See:  <a href="./../../lessons/function-composition/index.shtml?pathway=ok">Function Composition</a>.]</p>
+</dd>
+<dt class="hdlist1">IA.HSF.IF.A.1</dt>
+<dd>
+<p>Understand that a function from one set (called the domain) to another set (called the range) assigns to each element of the domain exactly one element of the range. If f is a function and x is an element of its domain, then f(x) denotes the output of f corresponding to the input x. The graph of f is the graph of the equation y = f(x).
+[See:  <a href="./../../lessons/contracts/index.shtml?pathway=ok">Contracts</a>.]</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1 coverageElement textbook-CMP">
+<h2 id="_connected_math"><a href="https://connectedmath.msu.edu/">Connected Math</a></h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">CMP.8.1</dt>
+<dd>
+<p>Thinking with Mathematical Models: Linear and Inverse Variations. [See:  <a href="./../../lessons/measures-of-center/index.shtml?pathway=ok">Measures of Center</a>; <a href="./../../lessons/scatter-plots/index.shtml?pathway=ok">Scatter Plots</a>; <a href="./../../lessons/correlations/index.shtml?pathway=ok">Correlations</a>; <a href="./../../lessons/linear-regression/index.shtml?pathway=ok">Linear Regression</a>.]</p>
+</dd>
+<dt class="hdlist1">CMP.6.7</dt>
+<dd>
+<p>Data About Us: Statistics and Data Analysis. [See:  <a href="./../../lessons/measures-of-center/index.shtml?pathway=ok">Measures of Center</a>; <a href="./../../lessons/box-plots/index.shtml?pathway=ok">Box Plots</a>.]</p>
+</dd>
+<dt class="hdlist1">CMP.7.8</dt>
+<dd>
+<p>Samples and Populations: Making Comparisons and Predictions. [See:  <a href="./../../lessons/random-samples/index.shtml?pathway=ok">Probability&#x2c; Inference&#x2c; and Sample Size</a>.]</p>
+</dd>
+<dt class="hdlist1">CMP.6.4</dt>
+<dd>
+<p>Covering and Surrounding: Two Dimensional Measurement. [See:  <a href="./../../lessons/surface-area-rect-prism/index.shtml?pathway=ok">Surface Area of a Rectangular Prism</a>.]</p>
+</dd>
+<dt class="hdlist1">CMP.7.7</dt>
+<dd>
+<p>Filling and Wrapping: Three Dimensional Measurement. [See:  <a href="./../../lessons/surface-area-rect-prism/index.shtml?pathway=ok">Surface Area of a Rectangular Prism</a>.]</p>
+</dd>
+<dt class="hdlist1">CMP.6.6</dt>
+<dd>
+<p>Variables and Patterns: Focus on Algebra. [See:  <a href="./../../lessons/defining-values/index.shtml?pathway=ok">Defining Values</a>.]</p>
+</dd>
+<dt class="hdlist1">CMP.6.1</dt>
+<dd>
+<p>Prime Time: Factors &amp; Multiples. [See:  <a href="./../../lessons/order-of-operations/index.shtml?pathway=ok">Order of Operations</a>.]</p>
+</dd>
+<dt class="hdlist1">CMP.7.2</dt>
+<dd>
+<p>Accentuate the Negative: Integers and Rational Numbers. [See:  <a href="./../../lessons/order-of-operations/index.shtml?pathway=ok">Order of Operations</a>.]</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1 coverageElement textbook-IM_6">
+<h2 id="_im_6_math"><a href="https://illustrativemathematics.org/">IM 6 Math™</a></h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">IM.6.8.15</dt>
+<dd>
+<p>Quartiles and Interquartile Range. [See:  <a href="./../../lessons/box-plots/index.shtml?pathway=ok">Box Plots</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.6.8.16</dt>
+<dd>
+<p>Box Plots. [See:  <a href="./../../lessons/box-plots/index.shtml?pathway=ok">Box Plots</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.6.8.17</dt>
+<dd>
+<p>Using Box Plots. [See:  <a href="./../../lessons/box-plots/index.shtml?pathway=ok">Box Plots</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.6.8.9</dt>
+<dd>
+<p>Interpreting the Mean as Fair Share. [See:  <a href="./../../lessons/measures-of-center/index.shtml?pathway=ok">Measures of Center</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.6.8.10</dt>
+<dd>
+<p>Interpreting the Mean as the Balance Point. [See:  <a href="./../../lessons/measures-of-center/index.shtml?pathway=ok">Measures of Center</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.6.8.13</dt>
+<dd>
+<p>The Median of a Data Set. [See:  <a href="./../../lessons/measures-of-center/index.shtml?pathway=ok">Measures of Center</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.6.8.14</dt>
+<dd>
+<p>Comparing Mean and Median. [See:  <a href="./../../lessons/measures-of-center/index.shtml?pathway=ok">Measures of Center</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.6.8.6</dt>
+<dd>
+<p>Histograms. [See:  <a href="./../../lessons/histograms/index.shtml?pathway=ok">Histograms</a>; <a href="./../../lessons/histograms2/index.shtml?pathway=ok">Visualizing the “Shape” of Data</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.6.8.7</dt>
+<dd>
+<p>Using Histograms to Answer Statistical Questions. [See:  <a href="./../../lessons/histograms/index.shtml?pathway=ok">Histograms</a>; <a href="./../../lessons/histograms2/index.shtml?pathway=ok">Visualizing the “Shape” of Data</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.6.8.8</dt>
+<dd>
+<p>Describing Distributions on Histograms. [See:  <a href="./../../lessons/histograms/index.shtml?pathway=ok">Histograms</a>; <a href="./../../lessons/histograms2/index.shtml?pathway=ok">Visualizing the “Shape” of Data</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.6.8.1</dt>
+<dd>
+<p>Got Data?. [See:  <a href="./../../lessons/ds-intro/index.shtml?pathway=ok">Introduction to Data Science</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.6.8.2</dt>
+<dd>
+<p>Statistical Questions. [See:  <a href="./../../lessons/ds-intro/index.shtml?pathway=ok">Introduction to Data Science</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.6.1.12</dt>
+<dd>
+<p>What is Surface Area?. [See:  <a href="./../../lessons/surface-area-rect-prism/index.shtml?pathway=ok">Surface Area of a Rectangular Prism</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.6.1.13</dt>
+<dd>
+<p>Polyhedra. [See:  <a href="./../../lessons/surface-area-rect-prism/index.shtml?pathway=ok">Surface Area of a Rectangular Prism</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.6.1.14</dt>
+<dd>
+<p>Nets and Surface Area. [See:  <a href="./../../lessons/surface-area-rect-prism/index.shtml?pathway=ok">Surface Area of a Rectangular Prism</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.6.1.15</dt>
+<dd>
+<p>More Nets, More Surface Area. [See:  <a href="./../../lessons/surface-area-rect-prism/index.shtml?pathway=ok">Surface Area of a Rectangular Prism</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.6.6.8</dt>
+<dd>
+<p>Equal and Equivalent. [See:  <a href="./../../lessons/problem-decomposition/index.shtml?pathway=ok">Problem Decomposition</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.6.1.3</dt>
+<dd>
+<p>Reasoning to Find Area. [See:  <a href="./../../lessons/flags/index.shtml?pathway=ok">Making Flags</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.6.2.14</dt>
+<dd>
+<p>Solving Equivalent Ratio Problems. [See:  <a href="./../../lessons/flags/index.shtml?pathway=ok">Making Flags</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.6.7.14</dt>
+<dd>
+<p>Distances on the Coordinate Plane. [See:  <a href="./../../lessons/flags/index.shtml?pathway=ok">Making Flags</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.6.7.15</dt>
+<dd>
+<p>Shapes on the Coordinate Plane. [See:  <a href="./../../lessons/flags/index.shtml?pathway=ok">Making Flags</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.6.6.2</dt>
+<dd>
+<p>Truth and Equations. [See:  <a href="./../../lessons/defining-values/index.shtml?pathway=ok">Defining Values</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.6.6.16</dt>
+<dd>
+<p>Two Related Quantities, Part 1. [See:  <a href="./../../lessons/contracts/index.shtml?pathway=ok">Contracts</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.6.6.17</dt>
+<dd>
+<p>Two Related Quantities, Part 2. [See:  <a href="./../../lessons/contracts/index.shtml?pathway=ok">Contracts</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.6.6.18</dt>
+<dd>
+<p>More Relationships. [See:  <a href="./../../lessons/contracts/index.shtml?pathway=ok">Contracts</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.6.7.9</dt>
+<dd>
+<p>Solutions of Inequalities. [See:  <a href="./../../lessons/simple-data-types/index.shtml?pathway=ok">Simple Data Types</a>; <a href="./../../lessons/inequalities1-simple/index.shtml?pathway=ok">Simple Inequalities</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.6.7.10</dt>
+<dd>
+<p>Interpreting Inequalities. [See:  <a href="./../../lessons/simple-data-types/index.shtml?pathway=ok">Simple Data Types</a>; <a href="./../../lessons/inequalities1-simple/index.shtml?pathway=ok">Simple Inequalities</a>; <a href="./../../lessons/inequalities3-sam/index.shtml?pathway=ok">Sam the Butterfly - Applying Inequalities</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.6.6.13</dt>
+<dd>
+<p>Expressions with Exponents. [See:  <a href="./../../lessons/order-of-operations/index.shtml?pathway=ok">Order of Operations</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.6.6.14</dt>
+<dd>
+<p>Evaluating Expressions with Exponents. [See:  <a href="./../../lessons/order-of-operations/index.shtml?pathway=ok">Order of Operations</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.6.6.15</dt>
+<dd>
+<p>Equivalent Exponential Expressions. [See:  <a href="./../../lessons/order-of-operations/index.shtml?pathway=ok">Order of Operations</a>.]</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1 coverageElement textbook-IM_7">
+<h2 id="_im_7_math"><a href="https://illustrativemathematics.org/">IM 7 Math™</a></h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">IM.7.8.19</dt>
+<dd>
+<p>Comparing Populations with Friends. [See:  <a href="./../../lessons/threats-to-validity/index.shtml?pathway=ok">Threats to Validity</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.7.8.18</dt>
+<dd>
+<p>Comparing Populations Using Samples. [See:  <a href="./../../lessons/grouped-samples/index.shtml?pathway=ok">Grouped Samples</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.7.8.15</dt>
+<dd>
+<p>Estimating Populations Measures of Center. [See:  <a href="./../../lessons/box-plots/index.shtml?pathway=ok">Box Plots</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.7.8.11</dt>
+<dd>
+<p>Comparing Groups. [See:  <a href="./../../lessons/measures-of-center/index.shtml?pathway=ok">Measures of Center</a>; <a href="./../../lessons/grouped-samples/index.shtml?pathway=ok">Grouped Samples</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.7.8.13</dt>
+<dd>
+<p>What Makes a Good Sample?. [See:  <a href="./../../lessons/measures-of-center/index.shtml?pathway=ok">Measures of Center</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.7.8.12</dt>
+<dd>
+<p>Larger Populations. [See:  <a href="./../../lessons/random-samples/index.shtml?pathway=ok">Probability&#x2c; Inference&#x2c; and Sample Size</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.7.8.14</dt>
+<dd>
+<p>Sampling in a Fair Way. [See:  <a href="./../../lessons/random-samples/index.shtml?pathway=ok">Probability&#x2c; Inference&#x2c; and Sample Size</a>; <a href="./../../lessons/threats-to-validity/index.shtml?pathway=ok">Threats to Validity</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.7.8.17</dt>
+<dd>
+<p>More about Sampling Variability. [See:  <a href="./../../lessons/random-samples/index.shtml?pathway=ok">Probability&#x2c; Inference&#x2c; and Sample Size</a>; <a href="./../../lessons/threats-to-validity/index.shtml?pathway=ok">Threats to Validity</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.7.7.14</dt>
+<dd>
+<p>Surface Area of Right Prisms. [See:  <a href="./../../lessons/surface-area-rect-prism/index.shtml?pathway=ok">Surface Area of a Rectangular Prism</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.7.6.17</dt>
+<dd>
+<p>Modeling with Inequalities. [See:  <a href="./../../lessons/inequalities3-sam/index.shtml?pathway=ok">Sam the Butterfly - Applying Inequalities</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.7.1.1</dt>
+<dd>
+<p>What are Scaled Copies?. [See:  <a href="./../../lessons/flags/index.shtml?pathway=ok">Making Flags</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.7.1.5</dt>
+<dd>
+<p>The Size of the Scale Factor. [See:  <a href="./../../lessons/flags/index.shtml?pathway=ok">Making Flags</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.7.4.1</dt>
+<dd>
+<p>Lots of Flags. [See:  <a href="./../../lessons/flags/index.shtml?pathway=ok">Making Flags</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.7.6.11</dt>
+<dd>
+<p>Using Equations to Solve Problems. [See:  <a href="./../../lessons/defining-values/index.shtml?pathway=ok">Defining Values</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.7.2.4</dt>
+<dd>
+<p>Proportional Relationships and Equations. [See:  <a href="./../../lessons/contracts/index.shtml?pathway=ok">Contracts</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.7.2.5</dt>
+<dd>
+<p>Two Equations for Each Relationship. [See:  <a href="./../../lessons/contracts/index.shtml?pathway=ok">Contracts</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.7.2.6</dt>
+<dd>
+<p>Using Equations to Solve Problems. [See:  <a href="./../../lessons/contracts/index.shtml?pathway=ok">Contracts</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.7.6.13</dt>
+<dd>
+<p>Reintroducing Inequalities. [See:  <a href="./../../lessons/simple-data-types/index.shtml?pathway=ok">Simple Data Types</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.7.5.13</dt>
+<dd>
+<p>Expressions with Rational Numbers. [See:  <a href="./../../lessons/order-of-operations/index.shtml?pathway=ok">Order of Operations</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.7.5.14</dt>
+<dd>
+<p>Solving Problems with Rational Numbers. [See:  <a href="./../../lessons/order-of-operations/index.shtml?pathway=ok">Order of Operations</a>.]</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1 coverageElement textbook-IM_8">
+<h2 id="_im_8_math"><a href="https://illustrativemathematics.org/">IM 8 Math™</a></h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">IM.8.6.6</dt>
+<dd>
+<p>The Slope of a Fitted Line. [See:  <a href="./../../lessons/linear-regression/index.shtml?pathway=ok">Linear Regression</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.8.6.7</dt>
+<dd>
+<p>Observing More Patterns in Scatter Plots. [See:  <a href="./../../lessons/linear-regression/index.shtml?pathway=ok">Linear Regression</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.8.6.8</dt>
+<dd>
+<p>Analyzing Bivariate Data. [See:  <a href="./../../lessons/linear-regression/index.shtml?pathway=ok">Linear Regression</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.8.6.4</dt>
+<dd>
+<p>Fitting a Lin to Data. [See:  <a href="./../../lessons/correlations/index.shtml?pathway=ok">Correlations</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.8.6.5</dt>
+<dd>
+<p>Describing Trends in Scatter Plots. [See:  <a href="./../../lessons/correlations/index.shtml?pathway=ok">Correlations</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.8.5.3</dt>
+<dd>
+<p>Equations for Functions. [See:  <a href="./../../lessons/defining-table-functions/index.shtml?pathway=ok">Defining Table Functions</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.8.6.3</dt>
+<dd>
+<p>What a Point in a Scatter Plots Means. [See:  <a href="./../../lessons/scatter-plots/index.shtml?pathway=ok">Scatter Plots</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.8.6.2</dt>
+<dd>
+<p>Plotting Data. [See:  <a href="./../../lessons/bar-and-pie-charts/index.shtml?pathway=ok">Bar and Pie Charts</a>; <a href="./../../lessons/histograms/index.shtml?pathway=ok">Histograms</a>; <a href="./../../lessons/scatter-plots/index.shtml?pathway=ok">Scatter Plots</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.8.6.1</dt>
+<dd>
+<p>Organizing Data. [See:  <a href="./../../lessons/bar-and-pie-charts/index.shtml?pathway=ok">Bar and Pie Charts</a>; <a href="./../../lessons/histograms2/index.shtml?pathway=ok">Visualizing the “Shape” of Data</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.8.1.1</dt>
+<dd>
+<p>Moving in the Plane. [See:  <a href="./../../lessons/flags/index.shtml?pathway=ok">Making Flags</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.8.1.2</dt>
+<dd>
+<p>Naming the moves. [See:  <a href="./../../lessons/flags/index.shtml?pathway=ok">Making Flags</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.8.1.3</dt>
+<dd>
+<p>Grid Moves. [See:  <a href="./../../lessons/flags/index.shtml?pathway=ok">Making Flags</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.8.2.1</dt>
+<dd>
+<p>Projecting and Scaling. [See:  <a href="./../../lessons/flags/index.shtml?pathway=ok">Making Flags</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.8.5.1</dt>
+<dd>
+<p>Inputs and Outputs. [See:  <a href="./../../lessons/contracts/index.shtml?pathway=ok">Contracts</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.8.5.2</dt>
+<dd>
+<p>Introduction to Functions. [See:  <a href="./../../lessons/contracts/index.shtml?pathway=ok">Contracts</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.8.7.7</dt>
+<dd>
+<p>Practice with Rational Bases. [See:  <a href="./../../lessons/order-of-operations/index.shtml?pathway=ok">Order of Operations</a>.]</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1 coverageElement textbook-IM_Alg_1">
+<h2 id="_im_algebra_1"><a href="https://illustrativemathematics.org/">IM Algebra 1</a></h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">IM.Alg1.3.9</dt>
+<dd>
+<p>Causal Relationships. [See:  <a href="./../../lessons/linear-regression/index.shtml?pathway=ok">Linear Regression</a>; <a href="./../../lessons/threats-to-validity/index.shtml?pathway=ok">Threats to Validity</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.Alg1.3.5</dt>
+<dd>
+<p>Fitting Lines. [See:  <a href="./../../lessons/correlations/index.shtml?pathway=ok">Correlations</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.Alg1.3.7</dt>
+<dd>
+<p>The Correlation Coefficient. [See:  <a href="./../../lessons/correlations/index.shtml?pathway=ok">Correlations</a>; <a href="./../../lessons/linear-regression/index.shtml?pathway=ok">Linear Regression</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.Alg1.3.8</dt>
+<dd>
+<p>Using the Correlation Coefficient. [See:  <a href="./../../lessons/correlations/index.shtml?pathway=ok">Correlations</a>; <a href="./../../lessons/linear-regression/index.shtml?pathway=ok">Linear Regression</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.Alg1.4.10</dt>
+<dd>
+<p>Domain and Range (Part 1). [See:  <a href="./../../lessons/defining-table-functions/index.shtml?pathway=ok">Defining Table Functions</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.Alg1.3.4</dt>
+<dd>
+<p>Linear Models. [See:  <a href="./../../lessons/scatter-plots/index.shtml?pathway=ok">Scatter Plots</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.Alg1.1.15</dt>
+<dd>
+<p>Comparing Data Sets. [See:  <a href="./../../lessons/box-plots/index.shtml?pathway=ok">Box Plots</a>; <a href="./../../lessons/checking-your-work/index.shtml?pathway=ok">Checking Your Work</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.Alg1.1.5</dt>
+<dd>
+<p>Calculating Measures of Center and Variability. [See:  <a href="./../../lessons/measures-of-center/index.shtml?pathway=ok">Measures of Center</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.Alg1.1.11</dt>
+<dd>
+<p>Comparing and Contrasting Data Distributions. [See:  <a href="./../../lessons/measures-of-center/index.shtml?pathway=ok">Measures of Center</a>; <a href="./../../lessons/box-plots/index.shtml?pathway=ok">Box Plots</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.Alg1.1.9</dt>
+<dd>
+<p>Technological Graphing. [See:  <a href="./../../lessons/choosing-your-dataset/index.shtml?pathway=ok">Choosing Your Dataset</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.Alg1.3.10</dt>
+<dd>
+<p>Fossils and Flags. [See:  <a href="./../../lessons/choosing-your-dataset/index.shtml?pathway=ok">Choosing Your Dataset</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.Alg1.1.2</dt>
+<dd>
+<p>Data Representations. [See:  <a href="./../../lessons/bar-and-pie-charts/index.shtml?pathway=ok">Bar and Pie Charts</a>; <a href="./../../lessons/histograms/index.shtml?pathway=ok">Histograms</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.Alg1.1.3</dt>
+<dd>
+<p>A Gallery of Data. [See:  <a href="./../../lessons/bar-and-pie-charts/index.shtml?pathway=ok">Bar and Pie Charts</a>; <a href="./../../lessons/histograms/index.shtml?pathway=ok">Histograms</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.Alg1.1.1</dt>
+<dd>
+<p>Getting to Know You. [See:  <a href="./../../lessons/ds-intro/index.shtml?pathway=ok">Introduction to Data Science</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.Alg1.2.2</dt>
+<dd>
+<p>Writing Equations to Model Relationships (Part 1). [See:  <a href="./../../lessons/surface-area-rect-prism/index.shtml?pathway=ok">Surface Area of a Rectangular Prism</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.Alg1.2.3</dt>
+<dd>
+<p>Writing Equations to Model Relationships (Part 2). [See:  <a href="./../../lessons/surface-area-rect-prism/index.shtml?pathway=ok">Surface Area of a Rectangular Prism</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.Alg1.2.8</dt>
+<dd>
+<p>Which Variable to Solve for? (Part 1). [See:  <a href="./../../lessons/problem-decomposition/index.shtml?pathway=ok">Problem Decomposition</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.Alg1.2.20</dt>
+<dd>
+<p>Writing and Solving Inequalities in One Variable. [See:  <a href="./../../lessons/inequalities3-sam/index.shtml?pathway=ok">Sam the Butterfly - Applying Inequalities</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.Alg1.2.18</dt>
+<dd>
+<p>Representing Situations with Inequalities. [See:  <a href="./../../lessons/inequalities1-simple/index.shtml?pathway=ok">Simple Inequalities</a>; <a href="./../../lessons/inequalities2-compound/index.shtml?pathway=ok">Compound Inequalities: Solutions &amp; Non-Solutions</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.Alg1.4.2</dt>
+<dd>
+<p>Function Notation. [See:  <a href="./../../lessons/contracts/index.shtml?pathway=ok">Contracts</a>; <a href="./../../lessons/defining-values/index.shtml?pathway=ok">Defining Values</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.Alg1.4.3</dt>
+<dd>
+<p>Interpreting &amp; Using Function Notation. [See:  <a href="./../../lessons/contracts/index.shtml?pathway=ok">Contracts</a>; <a href="./../../lessons/flags/index.shtml?pathway=ok">Making Flags</a>; <a href="./../../lessons/method-chaining/index.shtml?pathway=ok">Method Chaining</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.Alg1.1.6</dt>
+<dd>
+<p>Mystery Computations. [See:  <a href="./../../lessons/simple-data-types/index.shtml?pathway=ok">Simple Data Types</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.Alg1.2.6</dt>
+<dd>
+<p>Equivalent Equations. [See:  <a href="./../../lessons/order-of-operations/index.shtml?pathway=ok">Order of Operations</a>; <a href="./../../lessons/problem-decomposition/index.shtml?pathway=ok">Problem Decomposition</a>.]</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1 coverageElement practices-NGSS">
+<h2 id="_science_and_engineering"><a href="https://ngss.nsta.org/practicesfull.aspx">Science and Engineering</a></h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">SEP.4</dt>
+<dd>
+<p>Analyzing and Interpreting Data. [See:  <a href="./../../lessons/data-cycle/index.shtml?pathway=ok">The Data Cycle</a>.]</p>
+</dd>
+<dt class="hdlist1">SEP.3</dt>
+<dd>
+<p>Planning and Carrying Out Investigations. [See:  <a href="./../../lessons/bar-and-pie-charts/index.shtml?pathway=ok">Bar and Pie Charts</a>; <a href="./../../lessons/random-samples/index.shtml?pathway=ok">Probability&#x2c; Inference&#x2c; and Sample Size</a>; <a href="./../../lessons/choosing-your-dataset/index.shtml?pathway=ok">Choosing Your Dataset</a>; <a href="./../../lessons/histograms/index.shtml?pathway=ok">Histograms</a>; <a href="./../../lessons/histograms2/index.shtml?pathway=ok">Visualizing the “Shape” of Data</a>; <a href="./../../lessons/measures-of-center/index.shtml?pathway=ok">Measures of Center</a>; <a href="./../../lessons/box-plots/index.shtml?pathway=ok">Box Plots</a>; <a href="./../../lessons/scatter-plots/index.shtml?pathway=ok">Scatter Plots</a>; <a href="./../../lessons/grouped-samples/index.shtml?pathway=ok">Grouped Samples</a>; <a href="./../../lessons/correlations/index.shtml?pathway=ok">Correlations</a>; <a href="./../../lessons/linear-regression/index.shtml?pathway=ok">Linear Regression</a>; <a href="./../../lessons/checking-your-work/index.shtml?pathway=ok">Checking Your Work</a>; <a href="./../../lessons/threats-to-validity/index.shtml?pathway=ok">Threats to Validity</a>.]</p>
+</dd>
+<dt class="hdlist1">SEP.7</dt>
+<dd>
+<p>Engaging in Argument from Evidence. [See:  <a href="./../../lessons/defining-values/index.shtml?pathway=ok">Defining Values</a>; <a href="./../../lessons/data-cycle/index.shtml?pathway=ok">The Data Cycle</a>.]</p>
+</dd>
+<dt class="hdlist1">SEP.5</dt>
+<dd>
+<p>Using Mathematics and Computational Thinking. [See:  <a href="./../../lessons/function-composition/index.shtml?pathway=ok">Function Composition</a>; <a href="./../../lessons/flags/index.shtml?pathway=ok">Making Flags</a>; <a href="./../../lessons/combinatorics-permutation/index.shtml?pathway=ok">Permutations</a>; <a href="./../../lessons/combinatorics-combination/index.shtml?pathway=ok">Combinations</a>.]</p>
+</dd>
+<dt class="hdlist1">SEP.8</dt>
+<dd>
+<p>Obtaining, Evaluating, and Communicating Information. [See:  <a href="./../../lessons/contracts/index.shtml?pathway=ok">Contracts</a>; <a href="./../../lessons/data-cycle/index.shtml?pathway=ok">The Data Cycle</a>; <a href="./../../lessons/data-collection/index.shtml?pathway=ok">Collecting Data</a>.]</p>
+</dd>
+<dt class="hdlist1">SEP.2</dt>
+<dd>
+<p>Developing and Using Models. [See:  <a href="./../../lessons/order-of-operations/index.shtml?pathway=ok">Order of Operations</a>.]</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1 coverageElement practices-MLR">
+<h2 id="_math_lang_routines"><a href="https://achievethecore.org/peersandpedagogy/developing-math-language-routines/">Math Lang. Routines</a></h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">MLR.6</dt>
+<dd>
+<p>Three Reads. [See:  <a href="./../../lessons/functions-dr/index.shtml?pathway=ok">Solving Word Problems with the Design Recipe</a>.]</p>
+</dd>
+<dt class="hdlist1">MLR.5</dt>
+<dd>
+<p>Co-Craft Questions and Problems. [See:  <a href="./../../lessons/defining-values/index.shtml?pathway=ok">Defining Values</a>; <a href="./../../lessons/inequalities1-simple/index.shtml?pathway=ok">Simple Inequalities</a>; <a href="./../../lessons/inequalities2-compound/index.shtml?pathway=ok">Compound Inequalities: Solutions &amp; Non-Solutions</a>; <a href="./../../lessons/data-collection/index.shtml?pathway=ok">Collecting Data</a>.]</p>
+</dd>
+<dt class="hdlist1">MLR.1</dt>
+<dd>
+<p>Stronger and Clearer Each Time. [See:  <a href="./../../lessons/function-composition/index.shtml?pathway=ok">Function Composition</a>; <a href="./../../lessons/functions-dr/index.shtml?pathway=ok">Solving Word Problems with the Design Recipe</a>; <a href="./../../lessons/random-samples/index.shtml?pathway=ok">Probability&#x2c; Inference&#x2c; and Sample Size</a>.]</p>
+</dd>
+<dt class="hdlist1">MLR.3</dt>
+<dd>
+<p>Clarify, Critique and Correct. [See:  <a href="./../../lessons/function-composition/index.shtml?pathway=ok">Function Composition</a>; <a href="./../../lessons/flags/index.shtml?pathway=ok">Making Flags</a>; <a href="./../../lessons/data-collection/index.shtml?pathway=ok">Collecting Data</a>.]</p>
+</dd>
+<dt class="hdlist1">MLR.2</dt>
+<dd>
+<p>Collect and Display. [See:  <a href="./../../lessons/contracts/index.shtml?pathway=ok">Contracts</a>.]</p>
+</dd>
+<dt class="hdlist1">MLR.8</dt>
+<dd>
+<p>Discussion Supports. [See:  <a href="./../../lessons/contracts/index.shtml?pathway=ok">Contracts</a>; <a href="./../../lessons/defining-values/index.shtml?pathway=ok">Defining Values</a>; <a href="./../../lessons/method-chaining/index.shtml?pathway=ok">Method Chaining</a>; <a href="./../../lessons/linear-regression/index.shtml?pathway=ok">Linear Regression</a>.]</p>
+</dd>
+<dt class="hdlist1">MLR.4</dt>
+<dd>
+<p>Information Gap. [See:  <a href="./../../lessons/simple-data-types/index.shtml?pathway=ok">Simple Data Types</a>.]</p>
+</dd>
+<dt class="hdlist1">MLR.7</dt>
+<dd>
+<p>Compare and Connect. [See:  <a href="./../../lessons/order-of-operations/index.shtml?pathway=ok">Order of Operations</a>; <a href="./../../lessons/function-composition/index.shtml?pathway=ok">Function Composition</a>; <a href="./../../lessons/defining-values/index.shtml?pathway=ok">Defining Values</a>; <a href="./../../lessons/flags/index.shtml?pathway=ok">Making Flags</a>; <a href="./../../lessons/functions-dr/index.shtml?pathway=ok">Solving Word Problems with the Design Recipe</a>; <a href="./../../lessons/problem-decomposition/index.shtml?pathway=ok">Problem Decomposition</a>; <a href="./../../lessons/box-plots/index.shtml?pathway=ok">Box Plots</a>; <a href="./../../lessons/correlations/index.shtml?pathway=ok">Correlations</a>.]</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1 coverageElement practices-CC">
+<h2 id="_math"><a href="http://corestandards.org/Math/">Math</a></h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">MP.8</dt>
+<dd>
+<p>Look for and express regularity in repeated reasoning. [See:  <a href="./../../lessons/defining-values/index.shtml?pathway=ok">Defining Values</a>; <a href="./../../lessons/flags/index.shtml?pathway=ok">Making Flags</a>; <a href="./../../lessons/functions-make-life-easier/index.shtml?pathway=ok">Functions Make Life Easier!</a>; <a href="./../../lessons/functions-vertical-line-test/index.shtml?pathway=ok">The Vertical Line Test</a>; <a href="./../../lessons/functions-examples-definitions/index.shtml?pathway=ok">Functions: Contracts&#x2c; Examples &amp; Definitions</a>; <a href="./../../lessons/defining-table-functions/index.shtml?pathway=ok">Defining Table Functions</a>.]</p>
+</dd>
+<dt class="hdlist1">MP.7</dt>
+<dd>
+<p>Look for and make use of structure. [See:  <a href="./../../lessons/defining-values/index.shtml?pathway=ok">Defining Values</a>; <a href="./../../lessons/flags/index.shtml?pathway=ok">Making Flags</a>; <a href="./../../lessons/functions-make-life-easier/index.shtml?pathway=ok">Functions Make Life Easier!</a>; <a href="./../../lessons/function-notation/index.shtml?pathway=ok">Function Notation</a>; <a href="./../../lessons/functions-examples-definitions/index.shtml?pathway=ok">Functions: Contracts&#x2c; Examples &amp; Definitions</a>; <a href="./../../lessons/functions-can-be-linear/index.shtml?pathway=ok">Functions Can Be Linear</a>; <a href="./../../lessons/function-definition-linear/index.shtml?pathway=ok">Defining Linear Functions</a>; <a href="./../../lessons/functions-dr/index.shtml?pathway=ok">Solving Word Problems with the Design Recipe</a>; <a href="./../../lessons/combinatorics-permutation/index.shtml?pathway=ok">Permutations</a>; <a href="./../../lessons/combinatorics-combination/index.shtml?pathway=ok">Combinations</a>; <a href="./../../lessons/lookups/index.shtml?pathway=ok">Row and Column Lookups</a>; <a href="./../../lessons/custom-scatter-plots/index.shtml?pathway=ok">Custom Scatter Plots</a>.]</p>
+</dd>
+<dt class="hdlist1">MP.5</dt>
+<dd>
+<p>Use appropriate tools strategically. [See:  <a href="./../../lessons/function-composition/index.shtml?pathway=ok">Function Composition</a>; <a href="./../../lessons/functions-can-be-linear/index.shtml?pathway=ok">Functions Can Be Linear</a>; <a href="./../../lessons/function-definition-linear/index.shtml?pathway=ok">Defining Linear Functions</a>; <a href="./../../lessons/bar-and-pie-charts/index.shtml?pathway=ok">Bar and Pie Charts</a>; <a href="./../../lessons/data-cycle/index.shtml?pathway=ok">The Data Cycle</a>; <a href="./../../lessons/choosing-your-dataset/index.shtml?pathway=ok">Choosing Your Dataset</a>; <a href="./../../lessons/data-collection/index.shtml?pathway=ok">Collecting Data</a>.]</p>
+</dd>
+<dt class="hdlist1">MP.6</dt>
+<dd>
+<p>Attend to precision. [See:  <a href="./../../lessons/simple-data-types/index.shtml?pathway=ok">Simple Data Types</a>; <a href="./../../lessons/flags/index.shtml?pathway=ok">Making Flags</a>; <a href="./../../lessons/functions-make-life-easier/index.shtml?pathway=ok">Functions Make Life Easier!</a>; <a href="./../../lessons/function-notation/index.shtml?pathway=ok">Function Notation</a>; <a href="./../../lessons/functions-examples-definitions/index.shtml?pathway=ok">Functions: Contracts&#x2c; Examples &amp; Definitions</a>; <a href="./../../lessons/debugging/index.shtml?pathway=ok">Debugging</a>; <a href="./../../lessons/inequalities1-simple/index.shtml?pathway=ok">Simple Inequalities</a>; <a href="./../../lessons/problem-decomposition/index.shtml?pathway=ok">Problem Decomposition</a>; <a href="./../../lessons/bar-and-pie-charts/index.shtml?pathway=ok">Bar and Pie Charts</a>; <a href="./../../lessons/data-cycle/index.shtml?pathway=ok">The Data Cycle</a>; <a href="./../../lessons/method-chaining/index.shtml?pathway=ok">Method Chaining</a>; <a href="./../../lessons/defining-table-functions/index.shtml?pathway=ok">Defining Table Functions</a>.]</p>
+</dd>
+<dt class="hdlist1">MP.2</dt>
+<dd>
+<p>Reason abstractly and quantitatively. [See:  <a href="./../../lessons/order-of-operations/index.shtml?pathway=ok">Order of Operations</a>; <a href="./../../lessons/defining-values/index.shtml?pathway=ok">Defining Values</a>; <a href="./../../lessons/flags/index.shtml?pathway=ok">Making Flags</a>; <a href="./../../lessons/functions-vertical-line-test/index.shtml?pathway=ok">The Vertical Line Test</a>; <a href="./../../lessons/functions-can-be-linear/index.shtml?pathway=ok">Functions Can Be Linear</a>; <a href="./../../lessons/function-definition-linear/index.shtml?pathway=ok">Defining Linear Functions</a>; <a href="./../../lessons/random-samples/index.shtml?pathway=ok">Probability&#x2c; Inference&#x2c; and Sample Size</a>; <a href="./../../lessons/choosing-your-dataset/index.shtml?pathway=ok">Choosing Your Dataset</a>; <a href="./../../lessons/scatter-plots/index.shtml?pathway=ok">Scatter Plots</a>; <a href="./../../lessons/grouped-samples/index.shtml?pathway=ok">Grouped Samples</a>.]</p>
+</dd>
+<dt class="hdlist1">MP.3</dt>
+<dd>
+<p>Construct viable arguments and critique the reasoning of others. [See:  <a href="./../../lessons/order-of-operations/index.shtml?pathway=ok">Order of Operations</a>; <a href="./../../lessons/function-definition-linear/index.shtml?pathway=ok">Defining Linear Functions</a>; <a href="./../../lessons/functions-dr/index.shtml?pathway=ok">Solving Word Problems with the Design Recipe</a>; <a href="./../../lessons/problem-decomposition/index.shtml?pathway=ok">Problem Decomposition</a>; <a href="./../../lessons/ds-intro/index.shtml?pathway=ok">Introduction to Data Science</a>; <a href="./../../lessons/measures-of-center/index.shtml?pathway=ok">Measures of Center</a>; <a href="./../../lessons/box-plots/index.shtml?pathway=ok">Box Plots</a>; <a href="./../../lessons/standard-deviation/index.shtml?pathway=ok">Standard Deviation</a>; <a href="./../../lessons/ethics-privacy-and-bias/index.shtml?pathway=ok">Ethics&#x2c; Privacy&#x2c; and Bias</a>; <a href="./../../lessons/data-collection/index.shtml?pathway=ok">Collecting Data</a>; <a href="./../../lessons/grouped-samples/index.shtml?pathway=ok">Grouped Samples</a>; <a href="./../../lessons/correlations/index.shtml?pathway=ok">Correlations</a>; <a href="./../../lessons/checking-your-work/index.shtml?pathway=ok">Checking Your Work</a>; <a href="./../../lessons/threats-to-validity/index.shtml?pathway=ok">Threats to Validity</a>.]</p>
+</dd>
+<dt class="hdlist1">MP.1</dt>
+<dd>
+<p>Make sense of problems and persevere in solving them. [See:  <a href="./../../lessons/order-of-operations/index.shtml?pathway=ok">Order of Operations</a>; <a href="./../../lessons/function-composition/index.shtml?pathway=ok">Function Composition</a>; <a href="./../../lessons/flags/index.shtml?pathway=ok">Making Flags</a>; <a href="./../../lessons/functions-can-be-linear/index.shtml?pathway=ok">Functions Can Be Linear</a>; <a href="./../../lessons/function-definition-linear/index.shtml?pathway=ok">Defining Linear Functions</a>; <a href="./../../lessons/functions-dr/index.shtml?pathway=ok">Solving Word Problems with the Design Recipe</a>; <a href="./../../lessons/inequalities1-simple/index.shtml?pathway=ok">Simple Inequalities</a>; <a href="./../../lessons/inequalities2-compound/index.shtml?pathway=ok">Compound Inequalities: Solutions &amp; Non-Solutions</a>; <a href="./../../lessons/problem-decomposition/index.shtml?pathway=ok">Problem Decomposition</a>.]</p>
+</dd>
+<dt class="hdlist1">MP.4</dt>
+<dd>
+<p>Model with mathematics. [See:  <a href="./../../lessons/order-of-operations/index.shtml?pathway=ok">Order of Operations</a>; <a href="./../../lessons/flags/index.shtml?pathway=ok">Making Flags</a>; <a href="./../../lessons/functions-vertical-line-test/index.shtml?pathway=ok">The Vertical Line Test</a>; <a href="./../../lessons/function-notation/index.shtml?pathway=ok">Function Notation</a>; <a href="./../../lessons/functions-dr/index.shtml?pathway=ok">Solving Word Problems with the Design Recipe</a>; <a href="./../../lessons/inequalities1-simple/index.shtml?pathway=ok">Simple Inequalities</a>; <a href="./../../lessons/inequalities3-sam/index.shtml?pathway=ok">Sam the Butterfly - Applying Inequalities</a>; <a href="./../../lessons/problem-decomposition/index.shtml?pathway=ok">Problem Decomposition</a>; <a href="./../../lessons/surface-area-rect-prism/index.shtml?pathway=ok">Surface Area of a Rectangular Prism</a>; <a href="./../../lessons/combinatorics-permutation/index.shtml?pathway=ok">Permutations</a>; <a href="./../../lessons/combinatorics-combination/index.shtml?pathway=ok">Combinations</a>; <a href="./../../lessons/histograms/index.shtml?pathway=ok">Histograms</a>; <a href="./../../lessons/histograms2/index.shtml?pathway=ok">Visualizing the “Shape” of Data</a>; <a href="./../../lessons/box-plots/index.shtml?pathway=ok">Box Plots</a>; <a href="./../../lessons/standard-deviation/index.shtml?pathway=ok">Standard Deviation</a>; <a href="./../../lessons/table-methods/index.shtml?pathway=ok">Table Methods</a>; <a href="./../../lessons/correlations/index.shtml?pathway=ok">Correlations</a>; <a href="./../../lessons/linear-regression/index.shtml?pathway=ok">Linear Regression</a>.]</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1 coverageElement practices-K12CS">
+<h2 id="_k12cs"><a href="https://k12cs.org">K12CS</a></h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">P5</dt>
+<dd>
+<p>Creating Computational Artifacts. [See:  <a href="./../../lessons/standard-deviation/index.shtml?pathway=ok">Standard Deviation</a>.]</p>
+</dd>
+<dt class="hdlist1">P3</dt>
+<dd>
+<p>Recognizing and Defining Computational Problems. [See:  <a href="./../../lessons/data-cycle/index.shtml?pathway=ok">The Data Cycle</a>; <a href="./../../lessons/method-chaining/index.shtml?pathway=ok">Method Chaining</a>; <a href="./../../lessons/grouped-samples/index.shtml?pathway=ok">Grouped Samples</a>.]</p>
+</dd>
+<dt class="hdlist1">P7</dt>
+<dd>
+<p>Communicating About Computing. [See:  <a href="./../../lessons/ds-intro/index.shtml?pathway=ok">Introduction to Data Science</a>; <a href="./../../lessons/choosing-your-dataset/index.shtml?pathway=ok">Choosing Your Dataset</a>.]</p>
+</dd>
+<dt class="hdlist1">P6</dt>
+<dd>
+<p>Testing and Refining Computational Artifacts. [See:  <a href="./../../lessons/debugging/index.shtml?pathway=ok">Debugging</a>; <a href="./../../lessons/data-collection/index.shtml?pathway=ok">Collecting Data</a>; <a href="./../../lessons/checking-your-work/index.shtml?pathway=ok">Checking Your Work</a>.]</p>
+</dd>
+<dt class="hdlist1">P2</dt>
+<dd>
+<p>Collaborating Around Computing. [See:  <a href="./../../lessons/debugging/index.shtml?pathway=ok">Debugging</a>; <a href="./../../lessons/data-collection/index.shtml?pathway=ok">Collecting Data</a>.]</p>
+</dd>
+<dt class="hdlist1">P4</dt>
+<dd>
+<p>Developing and Using Abstractions. [See:  <a href="./../../lessons/functions-make-life-easier/index.shtml?pathway=ok">Functions Make Life Easier!</a>; <a href="./../../lessons/defining-table-functions/index.shtml?pathway=ok">Defining Table Functions</a>.]</p>
+</dd>
+<dt class="hdlist1">P1</dt>
+<dd>
+<p>Fostering an Inclusive Computing Culture. [See:  <a href="./../../lessons/computing-needs-all-voices/index.shtml?pathway=ok">Computing Needs All Voices</a>; <a href="./../../lessons/ethics-privacy-and-bias/index.shtml?pathway=ok">Ethics&#x2c; Privacy&#x2c; and Bias</a>; <a href="./../../lessons/threats-to-validity/index.shtml?pathway=ok">Threats to Validity</a>.]</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1 coverageElement practices-SJ">
+<h2 id="_social_justice"><a href="https://www.learningforjustice.org/sites/default/files/2017-06/TT_Social_Justice_Standards_0.pdf">Social Justice</a></h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">SJ.15</dt>
+<dd>
+<p>Students will identify figures, groups, events and a variety of strategies and philosophies relevant to the history of social justice around the world.. [See:  <a href="./../../lessons/checking-your-work/index.shtml?pathway=ok">Checking Your Work</a>.]</p>
+</dd>
+<dt class="hdlist1">SJ.14</dt>
+<dd>
+<p>Students will recognize that power and privilege influence relationships on interpersonal, intergroup and institutional levels and consider how they have been affected by those dynamics.. [See:  <a href="./../../lessons/data-collection/index.shtml?pathway=ok">Collecting Data</a>; <a href="./../../lessons/checking-your-work/index.shtml?pathway=ok">Checking Your Work</a>.]</p>
+</dd>
+<dt class="hdlist1">SJ.12</dt>
+<dd>
+<p>Students will recognize unfairness on the individual level (e.g., biased speech) and injustice at the institutional or systemic level (e.g., discrimination).. [See:  <a href="./../../lessons/ethics-privacy-and-bias/index.shtml?pathway=ok">Ethics&#x2c; Privacy&#x2c; and Bias</a>; <a href="./../../lessons/checking-your-work/index.shtml?pathway=ok">Checking Your Work</a>.]</p>
+</dd>
+<dt class="hdlist1">SJ.13</dt>
+<dd>
+<p>Students will analyze the harmful impact of bias and injustice on the world, historically and today. [See:  <a href="./../../lessons/random-samples/index.shtml?pathway=ok">Probability&#x2c; Inference&#x2c; and Sample Size</a>; <a href="./../../lessons/ethics-privacy-and-bias/index.shtml?pathway=ok">Ethics&#x2c; Privacy&#x2c; and Bias</a>; <a href="./../../lessons/checking-your-work/index.shtml?pathway=ok">Checking Your Work</a>.]</p>
+</dd>
+<dt class="hdlist1">SJ.10</dt>
+<dd>
+<p>Students will examine diversity in social, cultural, political and historical contexts rather than in ways that are superficial or oversimplified.. [See:  <a href="./../../lessons/computing-needs-all-voices/index.shtml?pathway=ok">Computing Needs All Voices</a>.]</p>
+</dd>
+<dt class="hdlist1">SJ.8</dt>
+<dd>
+<p>Students will respectfully express curiosity about the history and lived experiences of others and will exchange ideas and beliefs in an open-minded way. [See:  <a href="./../../lessons/computing-needs-all-voices/index.shtml?pathway=ok">Computing Needs All Voices</a>.]</p>
+</dd>
+<dt class="hdlist1">SJ.7</dt>
+<dd>
+<p>Students will develop language and knowledge to accurately and respectfully describe how people (including themselves) are both similar to and different from each other and others in their identity groups.. [See:  <a href="./../../lessons/computing-needs-all-voices/index.shtml?pathway=ok">Computing Needs All Voices</a>; <a href="./../../lessons/bar-and-pie-charts/index.shtml?pathway=ok">Bar and Pie Charts</a>.]</p>
+</dd>
+<dt class="hdlist1">SJ.4</dt>
+<dd>
+<p>Students will express pride, confidence and healthy self-esteem without denying the value and dignity of other people.. [See:  <a href="./../../lessons/computing-needs-all-voices/index.shtml?pathway=ok">Computing Needs All Voices</a>; <a href="./../../lessons/bar-and-pie-charts/index.shtml?pathway=ok">Bar and Pie Charts</a>.]</p>
+</dd>
+<dt class="hdlist1">SJ.2</dt>
+<dd>
+<p>Students will develop language and historical and cultural knowledge that affirm and accurately describe their membership in multiple identity groups. [See:  <a href="./../../lessons/computing-needs-all-voices/index.shtml?pathway=ok">Computing Needs All Voices</a>; <a href="./../../lessons/bar-and-pie-charts/index.shtml?pathway=ok">Bar and Pie Charts</a>.]</p>
+</dd>
+<dt class="hdlist1">SJ.1</dt>
+<dd>
+<p>Students will develop positive social identities based on their membership in multiple groups in society. [See:  <a href="./../../lessons/computing-needs-all-voices/index.shtml?pathway=ok">Computing Needs All Voices</a>.]</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-17 19:42:18 -0400
+</div>
+</div>
+</div>
+</body>
+</html>

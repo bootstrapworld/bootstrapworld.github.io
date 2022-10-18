@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Grading Predictors</title>
+
+  <link rel="stylesheet" href="../../../lib/curriculum.css" />
+    <link rel="stylesheet" href="../../../lib/codemirror.css" />
+    <script src="../../../lib/codemirror.js"></script>
+    <script src="../../../lib/runmode.js"></script>
+    <script src="../../../lib/scheme2.js"></script>
+    <script src="../../../lib/pyret-mode.js"></script>
+    <script src="../../../lib/langtable.js"></script>
+    <script src="../../../lib/bootstraplesson.js"></script>
+    <script src="../../../dependency-graph.js"></script>
+    <script src="../../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"Grading Predictors",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="workbookpage article pyret" onload="renderSaveToDrive()">
+<div id="header">
+<h1>Grading Predictors</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Below are the scatter plots for datasets A-D, with two different predictor lines drawn
+on top. For plots A-D:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Circle the plot with the line that fits better</p>
+</li>
+<li>
+<p>Give the circled plot your best guess for what r is closest to: −1, −0.5, +0.5, or +1.</p>
+</li>
+</ol>
+</div>
+<table class="tableblock frame-none grid-all stretch">
+<colgroup>
+<col style="width: 4%;">
+<col style="width: 32%;">
+<col style="width: 32%;">
+<col style="width: 32%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p><strong>A</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="centered-image"><span class="image-figure"><span class="image"><img src="4ad70a8e5eb5e9e6.png" alt="grading predictors a 1" width="200" title="grading predictors a 1"></span><a href="4ad70a8e5eb5e9e6.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="centered-image"><span class="image-figure"><span class="image"><img src="a1d050069d7ec3db.png" alt="grading predictors a 2" width="200" title="grading predictors a 2"></span><a href="a1d050069d7ec3db.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></p>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="listingblock big">
+<div class="content">
+<pre><code class="pyret">r= −1   *−0.5*   +0.5   +1</code></pre>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p><strong>B</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="centered-image"><span class="image-figure"><span class="image"><img src="dfb22018eb6007f5.png" alt="grading predictors b 1" width="200" title="grading predictors b 1"></span><a href="dfb22018eb6007f5.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="centered-image"><span class="image-figure"><span class="image"><img src="0c5bbad549421dc2.png" alt="grading predictors b 2" width="200" title="grading predictors b 2"></span><a href="0c5bbad549421dc2.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></p>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="listingblock big">
+<div class="content">
+<pre><code class="pyret">r= −1   −0.5   +0.5   *+1*</code></pre>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p><strong>C</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="centered-image"><span class="image-figure"><span class="image"><img src="cc005a2df5f929c4.png" alt="grading predictors c 1" width="200" title="grading predictors c 1"></span><a href="cc005a2df5f929c4.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="centered-image"><span class="image-figure"><span class="image"><img src="03d532c14ef13f0e.png" alt="grading predictors c 2" width="200" title="grading predictors c 2"></span><a href="03d532c14ef13f0e.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></p>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="listingblock big">
+<div class="content">
+<pre><code class="pyret">r= −1   −0.5   *+0.5*   +1</code></pre>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p><strong>D</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="centered-image"><span class="image-figure"><span class="image"><img src="150a54c2a718b265.png" alt="grading predictors d 1" width="200" title="grading predictors d 1"></span><a href="150a54c2a718b265.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="centered-image"><span class="image-figure"><span class="image"><img src="034c8e3573e14fae.png" alt="grading predictors d 2" width="200" title="grading predictors d 2"></span><a href="034c8e3573e14fae.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></p>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="listingblock big">
+<div class="content">
+<pre><code class="pyret">r= −1   −0.5   *+0.5*   +1</code></pre>
+</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-17 19:42:07 -0400
+</div>
+</div>
+</body>
+</html>

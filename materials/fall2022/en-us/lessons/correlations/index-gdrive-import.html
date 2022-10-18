@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Correlations</title>
+<style>
+/* Overall document font */
+* {font-family: Lato, Arial, Helvetica, sans-serif;}
+
+/* document headings */
+h1,.lesson-section-1 {color: #75328A;}
+h1{font-size: 32px; font-family: sans-serif;}
+table.section-heading *, .lesson-section-1 h2{font-size: 32px; font-weight: 100;}
+table.section-heading{width: 100%;}
+table.section-heading td:last-child{text-align: right; color: #d9d2e9;}
+
+/* preamble section */
+table.preamble td {padding: 10px;}
+table.preamble td:first-child{background: #b7d893; width: 25%;}
+table.preamble td:first-child p {font-weight: bold; margin: 5px;}
+
+/* content used throughout the body */
+table{ border-collapse: collapse; border: none; }
+table.grid-all.frame-all {border: solid 1px black;}
+table.grid-none.frame-none {border-width: 0px;}
+
+.big {font-size: 30pt;}
+.vocab{font-weight: bold; font-style: italic;}
+.right{text-align: right;}
+.acknowledgment {
+  border-top: solid 1px black; 
+  font-style: italic; 
+  font-size: 8pt;
+}
+.lesson-point {
+  border-top: solid 1px black; 
+  border-bottom: solid 1px black; 
+  color: black;
+  font-weight: bold;
+}
+
+.web-page-only, #footer { display: none; visibility: hidden; }
+
+/* Callout boxes */
+.strategy-box, .notice-box {
+  background: #efefef;
+  border: solid 5px !important;
+  margin: 15px auto;
+  width: 100%;
+}
+.strategy-box { border-color: #1a73b5 !important; }
+.notice-box   { border-color: #7747a5 !important; }
+.strategy-box td, .notice-box td{ padding: 10px; }
+.strategy-box .title, .notice-box .title{
+  width: 100%;
+  display: block;
+  font-weight: bold;
+  font-size: 24px;
+  clear: both;
+  margin: 100px;
+}
+.strategy-box p.tableblock:first-child, .notice-box p.tableblock:first-child{
+  text-align: center;
+  padding-bottom: 15px;
+}
+.strategy-box .title { color: #1a73b5; }
+.notice-box   .title { color: #7747a5; }
+.strategy-box a, .notice-box a { color: blue; text-decoration: underline; }
+
+/* "Tables" of Evaluation */
+.operator{border-bottom: solid 1px black; text-align: center;}
+.operator * {text-align: center;}
+td {padding: 0px 10px; font-size: 14px;}
+table.expression {
+    font-family:"Courier New", Monaco, monospace;
+    border:     solid 1px black;
+    font-size:  1px;
+    max-width:  400px;
+    color:      #666666;
+    display:    inline-block;
+}
+table.args {border: none; text-align: center;}
+
+.wescheme-string,     .cm-scheme-string    {color: green;}
+.wescheme-number,     .cm-scheme-number    {color: blue;}
+.wescheme-boolean,    .cm-scheme-boolean   {color: darkred;}
+.wescheme-character,  .cm-scheme-character {color: orange;}
+.wescheme-symbol,     .cm-scheme-symbol    {color: steelblue;}
+.wescheme-comment,    .cm-scheme-comment   {color: orange; }
+
+.racket, .pyret, .studentAnswerCode, .studentAnswer, .pyretkeyword, .keyword_only {
+    font-family:"Courier New", Monaco, monospace !important; 
+    color: black;
+}
+
+/* Design Recipe */
+.recipe_instructions { font-style: italic; }
+table.recipe_title {
+  color:              white;
+  background:         gray;
+  display:            block;
+  padding:            0px;
+  font-size:          1.1rem;
+  font-weight:        bold;
+}</style>
+
+      <script src="../../extlib/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML%2Clocal%2Fmathjaxlocal.js"></script>
+      <script>window.status = "not_ready_to_print";</script>
+    <script src="../../lib/langtable.js"></script>
+    <script src="../../dependency-graph.js"></script>
+    <script src="../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:window.location.href,
+    filename:"Correlations",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="article LessonPlan pyret" onload="renderSaveToDrive()">
+<span id="body" onload="renderSaveToDrive()">
+<span id="header">
+<h1>Correlations</h1>
+
+  <span id="savetodrive-div"></span>
+
+</span>
+<span id="content">
+<span id="preamble_disabled" class="lessonSummary">
+<span class="sectionbody">
+<script>
+function preselect(klass) {
+  const items = document.getElementsByClassName(klass);
+  for (let i = 0; i < items.length; i++) {
+    items[i].style.display = 'none';
+  }
+  if (items.length > 0) {
+    items[0].style.display = 'block';
+  }
+}
+window.onload = function() {
+  preselect('alignedStandards');
+  preselect('alignedTextbooks');
+  preselect('alignedPractices');
+}
+function showStandardsAlignment() {
+  const selectTag = document.getElementsByClassName('standardsAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const stdTables = document.getElementsByClassName('alignedStandards');
+  //const intro = document.getElementsByClassName('alignedStandardsIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < stdTables.length; i++) {
+    const stdTable = stdTables[i];
+    stdTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optStd = opt.value;
+      for (let j = 0; j < stdTables.length; j++) {
+        const stdTable = stdTables[j];
+        if (stdTable.classList.contains(optStd)) {
+          stdTable.style.display = 'block';
+         // introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+function toggleNonPrereqDisplay() {
+  const inputTag = document.getElementsByClassName('sidebarinput')[0];
+  const checkedP = inputTag.checked;
+  const lessonTable = document.getElementsByClassName('sidebarlessons')[0];
+  const lis = lessonTable.getElementsByTagName('li');
+  for (let i = 0; i < lis.length; i++) {
+    const li = lis[i];
+    const lesson = li.getElementsByClassName('prerequisite');
+    if (lesson.length === 0) {
+      li.style.display = checkedP ? 'none' : 'block';
+    }
+  }
+}
+</script>
+<script>
+function showTextbooksAlignment() {
+  const selectTag = document.getElementsByClassName('textbooksAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const textbookTables = document.getElementsByClassName('alignedTextbooks');
+  //const intro = document.getElementsByClassName('alignedTextbooksIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < textbookTables.length; i++) {
+    const textbookTable = textbookTables[i];
+    textbookTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optTextbook = opt.value;
+      for (let j = 0; j < textbookTables.length; j++) {
+        const textbookTable = textbookTables[j];
+        if (textbookTable.classList.contains(optTextbook)) {
+          textbookTable.style.display = 'block';
+          //introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+</script>
+<script>
+function showPracticesAlignment() {
+  const selectTag = document.getElementsByClassName('practicesAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const practiceTables = document.getElementsByClassName('alignedPractices');
+  for (let i = 0; i < practiceTables.length; i++) {
+    const practiceTable = practiceTables[i];
+    practiceTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optPractice = opt.value;
+      for (let j = 0; j < practiceTables.length; j++) {
+        const practiceTable = practiceTables[j];
+        if (practiceTable.classList.contains(optPractice)) {
+          practiceTable.style.display = 'block';
+        }
+      }
+    }
+  }
+}
+</script>
+<span class="paragraph">
+<!-- </p>
+</span>
+--></span><span class="sidebar"><span id="toggle"></span><span class="paragraph"><!--
+<span class="paragraph">
+<p>
+--><span class="sidebarlessons"><strong>Lessons</strong>
+<ul></ul></span>
+</span>
+<table class="tableblock frame-all grid-all stretch sidebarstandards">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p><strong>Standards in this Lesson</strong>
+<select class="standardsAlignmentSelect"  onchange="showStandardsAlignment()"><option selected="selected" value="standards-CCSS-Math">CCSS-Math</option><option value="standards-CSTA">CSTA</option><option value="standards-K12CS">K12CS</option><option value="standards-Oklahoma">Oklahoma</option></select></p>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="dlist standards-CCSS-Math">
+<span class="title"><a href="http://corestandards.org/Math/">Common Core Math Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>8.SP.A.1</dt>
+<dd>
+<p>Construct and interpret scatter plots for bivariate measurement data to investigate patterns of association between two quantities. Describe patterns such as clustering, outliers, positive or negative association, linear association, and nonlinear association.</p>
+</dd>
+<dt class="hdlist1"><br/>8.SP.A.2</dt>
+<dd>
+<p>Know that straight lines are widely used to model relationships between two quantitative variables. For scatter plots that suggest a linear association, informally fit a straight line, and informally assess the model fit by judging the closeness of the data points to the line.</p>
+</dd>
+<dt class="hdlist1"><br/>HSS.ID.B.6</dt>
+<dd>
+<p>Represent data on two quantitative variables on a scatter plot, and describe how the variables are related.</p>
+</dd>
+<dt class="hdlist1"><br/>HSS.ID.C.8</dt>
+<dd>
+<p>Compute (using technology) and interpret the correlation coefficient of a linear fit.</p>
+</dd>
+<dt class="hdlist1"><br/>HSS.ID.C.9</dt>
+<dd>
+<p>Distinguish between correlation and causation.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-CSTA">
+<span class="title"><a href="https://csteachers.org/page/standards">CSTA Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>1B-DA-06</dt>
+<dd>
+<p>Organize and present collected data visually to highlight relationships and support a claim.</p>
+</dd>
+<dt class="hdlist1"><br/>2-DA-09</dt>
+<dd>
+<p>Refine computational models based on the data they have generated.</p>
+</dd>
+<dt class="hdlist1"><br/>3B-NI-05</dt>
+<dd>
+<p>Use data analysis tools and techniques to identify patterns in data representing complex systems</p>
+</dd>
+<dt class="hdlist1"><br/>3B-NI-07</dt>
+<dd>
+<p>Evaluate the ability of models and simulations to test and support the refinement of hypotheses.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-K12CS">
+<span class="title"><a href="https://k12cs.org">K-12CS Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>6-8.Data and Analysis.Visualization and Transformation</dt>
+<dd>
+<p>Computer models can be used to simulate events, examine theories and inferences, or make predictions with either few or millions of data points. Computer models are abstractions that represent phenomena and use data and algorithms to emphasize key features and relationships within a system. As more data is automatically collected, models can be refined.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Oklahoma">
+<span class="title"><a href="https://sde.ok.gov/oklahoma-academic-standards">Oklahoma Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>OK.L1.DA.IM.01</dt>
+<dd>
+<p>Show the relationships between collected data elements using computational models.</p>
+</dd>
+<dt class="hdlist1"><br/>OK.PA.D.1.3</dt>
+<dd>
+<p>Collect, display and interpret data using scatterplots. Use the shape of the scatterplot to informally estimate a line of best fit, make statements about average rate of change, and make predictions about values not in the original data set. Use appropriate titles, labels and units.</p>
+</dd>
+</dl>
+</span></span></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch sidebartextbooks">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p><strong>Textbook Alignment</strong>
+<select class="textbooksAlignmentSelect"  onchange="showTextbooksAlignment()"><option selected="selected" value="textbook-IM_Alg_1"><a href="https://illustrativemathematics.org/">IM Algebra 1</a></option><option value="textbook-IM_8"><a href="https://illustrativemathematics.org/">IM 8 Math™</a></option><option value="textbook-CMP"><a href="https://connectedmath.msu.edu/">Connected Math</a></option></select></p>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="dlist alignedTextbooks textbook-IM_Alg_1">
+<span class="title"><a href="https://illustrativemathematics.org/">IM Algebra 1</a></span>
+<dl>
+<dt class="hdlist1"><br/>IM.Alg1.3.8</dt>
+<dd>
+<p>Using the Correlation Coefficient</p>
+</dd>
+<dt class="hdlist1"><br/>IM.Alg1.3.7</dt>
+<dd>
+<p>The Correlation Coefficient</p>
+</dd>
+<dt class="hdlist1"><br/>IM.Alg1.3.5</dt>
+<dd>
+<p>Fitting Lines</p>
+</dd>
+</dl>
+</span>
+<span class="dlist alignedTextbooks textbook-IM_8">
+<span class="title"><a href="https://illustrativemathematics.org/">IM 8 Math™</a></span>
+<dl>
+<dt class="hdlist1"><br/>IM.8.6.5</dt>
+<dd>
+<p>Describing Trends in Scatter Plots</p>
+</dd>
+<dt class="hdlist1"><br/>IM.8.6.4</dt>
+<dd>
+<p>Fitting a Lin to Data</p>
+</dd>
+</dl>
+</span>
+<span class="dlist alignedTextbooks textbook-CMP">
+<span class="title"><a href="https://connectedmath.msu.edu/">Connected Math</a></span>
+<dl>
+<dt class="hdlist1"><br/>CMP.8.1</dt>
+<dd>
+<p>Thinking with Mathematical Models: Linear and Inverse Variations</p>
+</dd>
+</dl>
+</span></span></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch sidebarpractices">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p><strong>Practices in this Lesson</strong>
+<select class="practicesAlignmentSelect"  onchange="showPracticesAlignment()"><option selected="selected" value="practices-NGSS"><a href="https://ngss.nsta.org/practicesfull.aspx">Science and Engineering</a></option><option value="practices-MLR"><a href="https://achievethecore.org/peersandpedagogy/developing-math-language-routines/">Math Lang. Routines</a></option><option value="practices-CC"><a href="http://corestandards.org/Math/">Math</a></option></select></p>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="dlist alignedPractices practices-NGSS">
+<span class="title"><a href="https://ngss.nsta.org/practicesfull.aspx">Science and Engineering</a></span>
+<dl>
+<dt class="hdlist1"><br/>SEP.3</dt>
+<dd>
+<p>Planning and Carrying Out Investigations</p>
+</dd>
+</dl>
+</span>
+<span class="dlist alignedPractices practices-MLR">
+<span class="title"><a href="https://achievethecore.org/peersandpedagogy/developing-math-language-routines/">Math Lang. Routines</a></span>
+<dl>
+<dt class="hdlist1"><br/>MLR.7</dt>
+<dd>
+<p>Compare and Connect</p>
+</dd>
+</dl>
+</span>
+<span class="dlist alignedPractices practices-CC">
+<span class="title"><a href="http://corestandards.org/Math/">Math</a></span>
+<dl>
+<dt class="hdlist1"><br/>MP.4</dt>
+<dd>
+<p>Model with mathematics</p>
+</dd>
+<dt class="hdlist1"><br/>MP.3</dt>
+<dd>
+<p>Construct viable arguments and critique the reasoning of others</p>
+</dd>
+</dl>
+</span></span></td>
+</tr>
+</tbody>
+</table>
+<span class="paragraph">
+<!-- </p>
+</span>
+--></span><!--
+<span class="paragraph">
+<p>
+-->
+</span>
+<span class="paragraph description">
+<p>Students deepen their understanding of scatter plots, learning to describe and interpret direction and strength of linear relationships.</p>
+</span>
+<table class="tableblock frame-all grid-all stripes-none stretch left-header preamble">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>Lesson Goals</p>
+</span></span></td>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>Students will be able to&#8230;&#8203;</p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p>Confirm if a scatter plot appears linear</p>
+</li>
+<li>
+<p>Understand how correlation assesses direction in a linear relationship</p>
+</li>
+<li>
+<p>Understand how correlation measures strength in a linear relationship</p>
+</li>
+</ul>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>Student-facing Lesson Goals</p>
+</span></span></td>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="ulist">
+<ul>
+<li>
+<p>Let&#8217;s explore scatter plots and what they can tell us about data relationships.</p>
+</li>
+</ul>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>Materials</p>
+</span></span></td>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="ulist materials-links">
+<ul>
+<li>
+<p><a href="https://docs.google.com/presentation/d/1al9dLHo2OqUl8cBXwMu_yTHWxzuzJye4OdXkRO4sp3E/" target="_blank" rel="noopener">Lesson Slides</a></p>
+</li>
+<li>
+<p><span class="StarterFile"><a href="https://code.pyret.org/editor#share=1lGjndLCWSEoIrV3ErZMXSn_-xakqGvrK" target="_blank" rel="noopener">Animals Starter File</a></span></p>
+</li>
+<li>
+<p><span class="materialSectionPlaceholder"> </span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/correlations/pages/identifying-form.html" target="_blank" rel="noopener">Identifying Form&#x2c; Direction and Strength</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/correlations/pages/reflection-correlations.html" target="_blank" rel="noopener">Reflection on Form&#x2c; Direction and Strength</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/correlations/pages/identifying-form-open-ended.html" target="_blank" rel="noopener">Identifying Form and r-Values</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/correlations/pages/correlation-is-not-causation.html" target="_blank" rel="noopener">Correlation Does Not Imply Causation!</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/correlations/pages/correlations-animals.html" target="_blank" rel="noopener">Correlations in the Animals Dataset</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/correlations/pages/correlations-in-my-dataset.html" target="_blank" rel="noopener">Correlations in My Dataset</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/correlations/pages/identifying-form-matching.html" target="_blank" rel="noopener">Identifying Form&#x2c; Direction and Strength (Matching)</a></span></p>
+</li>
+<li>
+<p><span class="Optional OnlineExercise"><a href="https://teacher.desmos.com/activitybuilder/custom/6018c857328251526caea801" target="_blank" rel="noopener">Identifying Strength (Desmos)</a></span></p>
+</li>
+<li>
+<p><strong>Classroom visual:</strong> <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/javascript:showLangTable()">Language Table</a></p>
+</li>
+</ul>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>Preparation</p>
+</span></span></td>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="ulist">
+<ul>
+<li>
+<p>All students should log into <a href="https://code.pyret.org/" target="_blank" rel="noopener">code.pyret.org (CPO)</a> and open their saved "Animals Starter File". If they don&#8217;t have the file, they can open a new one from <a href="https://code.pyret.org/editor#share=1lGjndLCWSEoIrV3ErZMXSn_-xakqGvrK" target="_blank" rel="noopener">Animals Starter File</a>.</p>
+</li>
+</ul>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>Supplemental Resources</p>
+</span></span></td>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="ulist">
+<ul>
+<li>
+<p><a href="http://tylervigen.com/" target="_blank" rel="noopener">Spurious Correlations</a></p>
+</li>
+<li>
+<p><a href="http://guessthecorrelation.com/" target="_blank" rel="noopener">Guess the Correlation</a></p>
+</li>
+</ul>
+</span></span></td>
+</tr>
+</tbody>
+</table>
+<span class="dlist glossary">
+<span class="title">Glossary</span>
+<dl>
+<dt class="hdlist1"><br/>correlation</dt>
+<dd>
+<p>a single number somewhere between -1 and +1 that reports the direction and strength of the linear relationship between two quantitative variables (also known as the r-value)</p>
+</dd>
+<dt class="hdlist1"><br/>direction</dt>
+<dd>
+<p>the relationship between two quantitative variables: either they increase/decrease together or one may increase while the other decreases</p>
+</dd>
+<dt class="hdlist1"><br/>form</dt>
+<dd>
+<p>the shape of a relationship between two quantitative variables: whether the two variables together vary linearly or in some other way</p>
+</dd>
+<dt class="hdlist1"><br/>linear regression</dt>
+<dd>
+<p>a type of analysis that models the relationship between two quantitative variables. The result is known as a regression line, or line of best fit.</p>
+</dd>
+<dt class="hdlist1"><br/>linear relationship</dt>
+<dd>
+<p>sequences that change at a constant rate, or points forming a straight line on a graph</p>
+</dd>
+<dt class="hdlist1"><br/>r</dt>
+<dd>
+<p>a number between −1 and 1 that measures the direction and strength of a linear relationship between two quantitative variables (also known as correlation value)</p>
+</dd>
+<dt class="hdlist1"><br/>strength</dt>
+<dd>
+<p>of a relationship between two quantitative variables: how much the value of one variable tells us about the value of the other</p>
+</dd>
+</dl>
+</span>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<table class="grid-none frame-none section-heading"><tr><td width="65%"> </td><td width="35%">5 minutes</td></tr></table>
+<span class="sectionbody">
+<span class="sect2 lesson-section-2">
+<h3 id="_overview">Overview</h3>
+<span class="paragraph">
+<p>Students identify and make use of patterns in scatter plots, learning to characterize them as being linear, curved, or showing no clear pattern. Determining that  a <span class="vocab">form</span> is linear is a prerequisite for proceeding to <span class="vocab">correlation</span> and <span class="vocab">linear regression</span>.</p>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_launch">Launch</h3>
+<span class="paragraph">
+<p>Students have learned several ways to analyze a single quantitative variable, such as <code class="pyret">age</code> or <code class="pyret">pounds</code> of the animals in our dataset:</p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p>reporting the center</p>
+</li>
+<li>
+<p>computing on the spread</p>
+</li>
+<li>
+<p>describing the shape of the distribution</p>
+</li>
+</ul>
+</span>
+<span class="paragraph">
+<p>Together, those numbers tell us what value is <strong>typical</strong>, how much the values <strong>vary</strong>, and what kind of values are <strong>usual or unusual</strong>.</p>
+</span>
+<span class="paragraph">
+<p>But those analyses tell us nothing about the <em>relationship</em> between animals' ages and weights. In order to understand such relationships, we have to expand our view from one column to two. This goes hand-in-hand with expanding our display from a 1-dimensional histogram or box plot to a 2-dimensional scatter plot.</p>
+</span>
+<span class="paragraph">
+<p>Rather than summarizing each distribution in one dimension, we can search for a <em>linear relationship</em> between two quantitative variables. But linear relationships only make sense if the scatter plot follows a <em>straight-line pattern</em>. So the first thing we need to ask is whether the <span class="vocab">form</span> of the relationship as being linear or not.</p>
+</span>
+<div class="paragraph lesson-point">
+<p>Form indicates whether a relationship is linear, non-linear or undefined.</p>
+</div>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_investigate">Investigate</h3>
+<span class="paragraph">
+<p>Some patterns are <span class="vocab">linear</span>, and cluster around a straight line sloping up or down.
+<span class="right"><span class="image-figure"><span class="image"><img src="images/97e88794eb0d8280.gif" alt="A scatter plot showing a linear (straight-line) relationship" width="250" title="A scatter plot showing a linear (straight-line) relationship"></span><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/images/97e88794eb0d8280.gif" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></p>
+</span>
+<span class="paragraph">
+<p><span style="clear: both;display: block"></span></p>
+</span>
+<span class="paragraph">
+<p><span class="right"><span class="image-figure"><span class="image"><img src="images/223b7836fb19fdf6.gif" alt="A scatter plot showing no relationship" width="250" title="A scatter plot showing no relationship"></span><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/images/223b7836fb19fdf6.gif" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span>Some patterns are <strong>non-linear</strong>, and may look like a curve or an arc.</p>
+</span>
+<span class="paragraph">
+<p><span style="clear: both;display: block"></span></p>
+</span>
+<span class="paragraph">
+<p><span class="right"><span class="image-figure"><span class="image"><img src="images/af3c2973dcb8ec8e.gif" alt="A scatter plot showing a non-linear (curved) relationships" width="250" title="A scatter plot showing a non-linear (curved) relationships"></span><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/images/af3c2973dcb8ec8e.gif" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span>And sometimes there is <strong>no relationship</strong> or pattern at all!</p>
+</span>
+<span class="paragraph lesson-instruction">
+<p>Turn to <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/correlations/pages/identifying-form.html" target="_blank" rel="noopener">Identifying Form&#x2c; Direction and Strength</a>, and complete <em>just the first question</em> for each scatter plot, identifying whether the relationship is linear, non-linear or if there&#8217;s no relationship at all.</p>
+</span>
+<span class="paragraph">
+<p><span style="clear: both;display: block"></span></p>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_synthesize">Synthesize</h3>
+<span class="ulist">
+<ul>
+<li>
+<p>Which scatter plots seem to have <em>linear</em> relationships?</p>
+<span class="ulist">
+<ul>
+<li>
+<p><em>A, C, D, and F seem to have linear relationships.</em></p>
+</li>
+</ul>
+</span>
+</li>
+<li>
+<p>Which scatter plots seem to have <em>non-linear</em> relationships?</p>
+<span class="ulist">
+<ul>
+<li>
+<p><em>Scatter plot E seems to have a non-linaer relationship.</em></p>
+</li>
+</ul>
+</span>
+</li>
+<li>
+<p>Which scatter plots seem to have <em>no relationships</em>?</p>
+<span class="ulist">
+<ul>
+<li>
+<p><em>Scatter plot B seems to have no relationship.</em></p>
+</li>
+</ul>
+</span>
+</li>
+</ul>
+</span>
+<span class="paragraph">
+<p>Data Scientists use their eyes all the time! It doesn&#8217;t make sense to search for correlations when there&#8217;s no pattern at all, and summarizing with a correlation only makes sense for linear relationships!</p>
+</span>
+<table class="tableblock frame-all grid-none stripes-none stretch strategy-box">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="title">Going Deeper</span></p>
+<p class="tableblock">In an AP Statistics class or full-year Data Science class, it&#8217;s appropriate to discuss non-linear relationships here. In a dedicated computer science class, it may also be appropriate to talk about <em>transforming</em> the x- or y-axis (using <code class="pyret">.build-column</code>!) via a quadratic, exponential, or logarithmic function and then looking for a linear pattern in the resulting scatter plot. All of these are <strong>extensions</strong> to the materials presented here.</p></td>
+</tr>
+</tbody>
+</table>
+</span>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<table class="grid-none frame-none section-heading"><tr><td width="65%"> </td><td width="35%">10 minutes</td></tr></table>
+<span class="sectionbody">
+<span class="sect2 lesson-section-2">
+<h3 id="_overview_2">Overview</h3>
+<span class="paragraph">
+<p>Once students have learned to identify a possible linear relationship, they can turn their attention to other qualities of that relationship, like its <span class="vocab">direction</span>.</p>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_launch_2">Launch</h3>
+<span class="paragraph">
+<p>We can also examine the direction of a linear relationship.</p>
+</span>
+<span class="paragraph">
+<p><span class="right"><span class="image-figure"><span class="image"><img src="images/3cc58df837521236.gif" alt="A scatter plot, having a tight point cloud with a positive slope" width="200" title="A scatter plot, having a tight point cloud with a positive slope"></span><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/images/3cc58df837521236.gif" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span><strong>Positive</strong>: the line slopes up as we look from left-to-right. Positive relationships are by far most common because of natural tendencies for variables to increase in tandem. For example, “the older the animal, the more it tends to weigh”. This is usually true for human animals, too!
+<span style="clear: both;display: block"></span></p>
+</span>
+<span class="paragraph">
+<p><span class="right"><span class="image-figure"><span class="image"><img src="images/f70f10e4db19068f.gif" alt="A scatter plot, having a tight point cloud with a negative slope" width="200" title="A scatter plot, having a tight point cloud with a negative slope"></span><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/images/f70f10e4db19068f.gif" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span><strong>Negative</strong>: the line slopes <em>down</em> as we look from left-to-right. Negative relationships can also occur. For example, “the older a child gets, the fewer new words he or she learns each day.”
+<span style="clear: both;display: block"></span></p>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_investigate_2">Investigate</h3>
+<span class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Complete <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/correlations/pages/identifying-form.html" target="_blank" rel="noopener">Identifying Form&#x2c; Direction and Strength</a> and focus <em>just on the second question</em>, determining whether each of the relationships you previously identified as linear is positive or negative.</p>
+</li>
+</ul>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_synthesize_2">Synthesize</h3>
+<span class="paragraph">
+<p>It only makes sense to look for direction in linear relationships!</p>
+</span>
+<span class="paragraph">
+<p>Confirm that students have correctly identified the direction of each linear relationship.</p>
+</span>
+</span>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<table class="grid-none frame-none section-heading"><tr><td width="65%"> </td><td width="35%">10 minutes</td></tr></table>
+<span class="sectionbody">
+<span class="sect2 lesson-section-2">
+<h3 id="_overview_3">Overview</h3>
+<span class="paragraph">
+<p>We&#8217;ll explore another quality of a possible linear relationship: its <span class="vocab">strength</span>.</p>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_launch_3">Launch</h3>
+<span class="paragraph">
+<p>Strength indicates how closely the two variables are correlated.</p>
+</span>
+<span class="paragraph">
+<p>How well does knowing the x-value allow us to predict what the y-value will be?</p>
+</span>
+<span class="paragraph">
+<p><span class="right"><span class="image-figure"><span class="image"><img src="images/f70f10e4db19068f.gif" alt="a scatter plot, with a tightly-clumped point cloud with a negative slope" width="200" title="a scatter plot, with a tightly-clumped point cloud with a negative slope"></span><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/images/f70f10e4db19068f.gif" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span><strong>A relationship is strong if knowing the x-value of a data point gives us a very good idea of what its y-value will be</strong> (knowing a student&#8217;s age gives us a very good idea of what grade they&#8217;re in). A strong linear relationship means that the points in the scatter plot are all clustered <em>tightly</em> around an invisible line.
+<span style="clear: both;display: block"></span></p>
+</span>
+<span class="paragraph">
+<p><span class="right"><span class="image-figure"><span class="image"><img src="images/a8994dc188ebbbc9.gif" alt="a scatter plot, with a loosely-clumped point cloud with a negative slope" width="200" title="a scatter plot, with a loosely-clumped point cloud with a negative slope"></span><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/images/a8994dc188ebbbc9.gif" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span><strong>A relationship is weak if x tells us little about y</strong> (a student&#8217;s age doesn&#8217;t tell us much about their number of siblings). A weak linear relationship means that the cloud of points is scattered very <em>loosely</em> around the line.
+<span style="clear: both;display: block"></span></p>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_investigate_3">Investigate</h3>
+<span class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Complete <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/correlations/pages/identifying-form.html" target="_blank" rel="noopener">Identifying Form&#x2c; Direction and Strength</a>, and focus on the third question for each scatter plot, identifying whether the relationship is strong or weak.</p>
+</li>
+<li>
+<p>Optional: Complete the card sort on <a href="https://teacher.desmos.com/activitybuilder/custom/6018c857328251526caea801" target="_blank" rel="noopener">Identifying Strength (Desmos)</a>.</p>
+</li>
+</ul>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_common_misconceptions">Common Misconceptions</h3>
+<span class="ulist">
+<ul>
+<li>
+<p>Students often conflate strength and direction, thinking that a strong correlation <em>must</em> be positive and a weak one <em>must</em> be negative.</p>
+</li>
+<li>
+<p>Students may also falsely believe that there is ALWAYS a correlation between any two variables in their dataset.</p>
+</li>
+<li>
+<p>Students often believe that strength and sample size are interchangeable, leading to mistaken assumptions like "any correlation found in a million data points <em>must</em> be strong!"</p>
+</li>
+</ul>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_synthesize_3">Synthesize</h3>
+<span class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Complete <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/correlations/pages/reflection-correlations.html" target="_blank" rel="noopener">Reflection on Form&#x2c; Direction and Strength</a>.</p>
+</li>
+<li>
+<p>Be ready to discuss your answers with the class!</p>
+</li>
+</ul>
+</span>
+<span class="paragraph">
+<p>This page includes a series of probing questions that get at the common misconceptions listed above. Discuss the answers as a class.</p>
+</span>
+<span class="paragraph">
+<p>If time permits, you might also want to have them complete <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/correlations/pages/identifying-form-matching.html" target="_blank" rel="noopener">Identifying Form&#x2c; Direction and Strength (Matching)</a>.</p>
+</span>
+</span>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<table class="grid-none frame-none section-heading"><tr><td width="65%">Summarizing Correlations using r-values </td><td width="35%">20 minutes</td></tr></table>
+<span class="sectionbody">
+<span class="sect2 lesson-section-2">
+<h3 id="_overview_4">Overview</h3>
+<span class="paragraph">
+<p>Now that students know how to identify <em>direction</em> and <em>strength</em> for linear relationships, they&#8217;ll learn to read how these are expressed in the <span class="gdrive-only">r</span><!--<span class="begin-ignore-for-gdrive"></span><script type="math/tex">\displaystyle r</script><span class="end-ignore-for-gdrive"></span>-->-value.</p>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_launch_4">Launch</h3>
+<span class="paragraph">
+<p>Students have learned that a correlation can be described by three pieces of information: <em>Form</em>, <em>Direction</em>, and <em>Strength</em>. Statisticians and Data Scientists have a shorter way of describing all three, called <span class="vocab">r-value</span>.</p>
+</span>
+<span class="paragraph">
+<p><span class="gdrive-only">r</span><!--<span class="begin-ignore-for-gdrive"></span><script type="math/tex">\displaystyle r</script><span class="end-ignore-for-gdrive"></span>--> is positive or negative depending on whether the correlation is positive or negative. <strong>The strength of a correlation is the distance from zero</strong>: an <span class="gdrive-only">r</span><!--<span class="begin-ignore-for-gdrive"></span><script type="math/tex">\displaystyle r</script><span class="end-ignore-for-gdrive"></span>-->-value of zero means there is no correlation at all, and stronger correlations will be closer to −1 or 1.</p>
+</span>
+<span class="paragraph">
+<p>An <span class="gdrive-only">r</span><!--<span class="begin-ignore-for-gdrive"></span><script type="math/tex">\displaystyle r</script><span class="end-ignore-for-gdrive"></span>-->-value of about ±0.65 or ±0.70 or more is typically considered a strong correlation, and anything between ±0.35 and ±0.65 is “moderately correlated”. Anything less than about ±0.25 or ±0.35 may be considered weak. However, these cutoffs are not an exact science! In some contexts an <span class="gdrive-only">r</span><!--<span class="begin-ignore-for-gdrive"></span><script type="math/tex">\displaystyle r</script><span class="end-ignore-for-gdrive"></span>-->-value of ±0.50 might be considered impressively strong!</p>
+</span>
+<span class="paragraph">
+<p>If it works for you, give students five minutes to play a few rounds of the online game <a href="http://guessthecorrelation.com/" target="_blank" rel="noopener">Guess the Correlation</a> to develop intuition with r-values. (This will require creating an account.)</p>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_investigate_4">Investigate</h3>
+<span class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Complete <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/correlations/pages/identifying-form-open-ended.html" target="_blank" rel="noopener">Identifying Form and r-Values</a>. For each scatter plot, identify whether the relationship is linear, and, if it is, use <span class="gdrive-only">r</span><!--<span class="begin-ignore-for-gdrive"></span><script type="math/tex">\displaystyle r</script><span class="end-ignore-for-gdrive"></span>--> to summarize direction and strength.</p>
+</li>
+<li>
+<p>Be prepared to discuss your answers with the class!</p>
+</li>
+</ul>
+</span>
+<span class="paragraph">
+<p>Calculating <span class="gdrive-only">r</span><!--<span class="begin-ignore-for-gdrive"></span><script type="math/tex">\displaystyle r</script><span class="end-ignore-for-gdrive"></span>--> from a dataset only tells us the direction and strength of the relationship in <em>that particular sample</em>. If the correlation between adoption time and age for a representative sample of about 30 shelter animals turns out to be +0.44, the correlation for the larger population of animals will probably be <em>close</em> to that, but certainly not the same.</p>
+</span>
+<div class="paragraph lesson-point">
+<p>Correlation does NOT imply causation.</p>
+</div>
+<span class="paragraph">
+<p>It’s easy to be seduced by large <span class="gdrive-only">r</span><!--<span class="begin-ignore-for-gdrive"></span><script type="math/tex">\displaystyle r</script><span class="end-ignore-for-gdrive"></span>-->-values, and believe that we&#8217;re really onto something that will help us claim that one variable really impacts another! But Data Scientists know better than that&#8230;&#8203;</p>
+</span>
+<span class="paragraph lesson-instruction">
+<p>Complete <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/correlations/pages/correlation-is-not-causation.html" target="_blank" rel="noopener">Correlation Does Not Imply Causation!</a></p>
+</span>
+<span class="paragraph">
+<p>If time allows, you may want to emphasize the point that correlation does not imply causation by having students look at the nonsense claims that could be made from the graphs of real world data on the <a href="http://tylervigen.com/" target="_blank" rel="noopener">Spurious Correlations website</a>.</p>
+</span>
+<span class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Let&#8217;s look for correlations in the Animals Dataset!</p>
+</li>
+<li>
+<p>Open your saved Animals Starter File, or <a href="https://code.pyret.org/editor#share=1lGjndLCWSEoIrV3ErZMXSn_-xakqGvrK" target="_blank" rel="noopener">make a new copy</a>.</p>
+</li>
+<li>
+<p>Complete <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/correlations/pages/correlations-animals.html" target="_blank" rel="noopener">Correlations in the Animals Dataset</a>.</p>
+</li>
+</ul>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_synthesize_4">Synthesize</h3>
+<span class="paragraph">
+<p>Which corresponded more strongly with time to adoption, <code class="pyret">"age"</code> or <code class="pyret">"pounds"</code>? What does this <em>mean</em>?</p>
+</span>
+<span class="paragraph">
+<p><em>The correlation with <code class="pyret">"pounds"</code> is higher, meaning that an animal&#8217;s weight is a better predictor of the number of weeks an animal will live at the shelter before being adopted than its age.</em></p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p>People often confuse correlation with causation. What are some examples of this?</p>
+</li>
+<li>
+<p>Why is a problem for society, that people confuse the two?</p>
+</li>
+</ul>
+</span>
+</span>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<table class="grid-none frame-none section-heading"><tr><td width="65%">Your Analysis </td><td width="35%">flexible</td></tr></table>
+<span class="sectionbody">
+<span class="sect2 lesson-section-2">
+<h3 id="_overview_5">Overview</h3>
+<span class="paragraph">
+<p>Students repeat the previous activity, this time applying it to their own dataset and interpreting their own results.</p>
+</span>
+<span class="paragraph">
+<p><strong>Note: this activity can be done as a homework assignment, but we recommend giving students an <em>additional class period</em> to work on this.</strong></p>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_launch_5">Launch</h3>
+<span class="paragraph">
+<p>What correlations do you think there are in your dataset? Would you like to investigate a grouped sample (subset) of your data to find those correlations?</p>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_investigate_5">Investigate</h3>
+<span class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Brainstorm a few possible correlations that you might expect to find in your dataset, and make some scatter plots to investigate.</p>
+</li>
+<li>
+<p>Turn to <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/correlations/pages/correlations-in-my-dataset.html" target="_blank" rel="noopener">Correlations in My Dataset</a>, and list three correlations you’d like to search for.</p>
+</li>
+<li>
+<p>Investigate these correlations. If you need blank Design Recipes, you can find them at the back of your workbook, just before the Contracts.</p>
+</li>
+</ul>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_synthesize_5">Synthesize</h3>
+<span class="ulist">
+<ul>
+<li>
+<p>What correlations did you find?</p>
+</li>
+<li>
+<p>Did you search within any grouped samples? Was the correlation different between groups, or different from the whole population?</p>
+</li>
+<li>
+<p>What can you infer from these correlations?</p>
+</li>
+</ul>
+</span>
+</span>
+</span>
+</span>
+<span class="sect1 acknowledgmentsect">
+<span class="sectionbody">
+<span class="openblock acknowledgment"><hr/>
+<span class="content">
+<span class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</span>
+</span>
+</span>
+</span>
+</span>
+</span>
+<span id="footer">
+<span id="footer-text">
+Last updated 2022-10-17 19:42:13 -0400
+</span>
+</span>
+</span>
+</body>
+</html>

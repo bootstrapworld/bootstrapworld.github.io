@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Problem Decomposition</title>
+
+  <link rel="stylesheet" href="../../lib/curriculum.css" />
+    <link rel="stylesheet" href="../../lib/codemirror.css" />
+    <script src="../../lib/codemirror.js"></script>
+    <script src="../../lib/runmode.js"></script>
+    <script src="../../lib/scheme2.js"></script>
+    <script src="../../lib/pyret-mode.js"></script>
+      <script src="../../extlib/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML%2Clocal%2Fmathjaxlocal.js"></script>
+      <script>window.status = "not_ready_to_print";</script>
+    <script src="../../lib/langtable.js"></script>
+    <script src="../../lib/bootstraplesson.js"></script>
+    <script src="../../dependency-graph.js"></script>
+    <script src="../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"Problem Decomposition",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="article LessonPlan pyret" onload="renderSaveToDrive()">
+<!--#include virtual="/menubar.ssi"-->
+<div id="body" onload="renderSaveToDrive()">
+<div id="header">
+<h1>Problem Decomposition</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<script>
+function preselect(klass) {
+  const items = document.getElementsByClassName(klass);
+  for (let i = 0; i < items.length; i++) {
+    items[i].style.display = 'none';
+  }
+  if (items.length > 0) {
+    items[0].style.display = 'block';
+  }
+}
+window.onload = function() {
+  preselect('alignedStandards');
+  preselect('alignedTextbooks');
+  preselect('alignedPractices');
+}
+function showStandardsAlignment() {
+  const selectTag = document.getElementsByClassName('standardsAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const stdTables = document.getElementsByClassName('alignedStandards');
+  //const intro = document.getElementsByClassName('alignedStandardsIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < stdTables.length; i++) {
+    const stdTable = stdTables[i];
+    stdTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optStd = opt.value;
+      for (let j = 0; j < stdTables.length; j++) {
+        const stdTable = stdTables[j];
+        if (stdTable.classList.contains(optStd)) {
+          stdTable.style.display = 'block';
+         // introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+function toggleNonPrereqDisplay() {
+  const inputTag = document.getElementsByClassName('sidebarinput')[0];
+  const checkedP = inputTag.checked;
+  const lessonTable = document.getElementsByClassName('sidebarlessons')[0];
+  const lis = lessonTable.getElementsByTagName('li');
+  for (let i = 0; i < lis.length; i++) {
+    const li = lis[i];
+    const lesson = li.getElementsByClassName('prerequisite');
+    if (lesson.length === 0) {
+      li.style.display = checkedP ? 'none' : 'block';
+    }
+  }
+}
+</script>
+<script>
+function showTextbooksAlignment() {
+  const selectTag = document.getElementsByClassName('textbooksAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const textbookTables = document.getElementsByClassName('alignedTextbooks');
+  //const intro = document.getElementsByClassName('alignedTextbooksIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < textbookTables.length; i++) {
+    const textbookTable = textbookTables[i];
+    textbookTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optTextbook = opt.value;
+      for (let j = 0; j < textbookTables.length; j++) {
+        const textbookTable = textbookTables[j];
+        if (textbookTable.classList.contains(optTextbook)) {
+          textbookTable.style.display = 'block';
+          //introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+</script>
+<script>
+function showPracticesAlignment() {
+  const selectTag = document.getElementsByClassName('practicesAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const practiceTables = document.getElementsByClassName('alignedPractices');
+  for (let i = 0; i < practiceTables.length; i++) {
+    const practiceTable = practiceTables[i];
+    practiceTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optPractice = opt.value;
+      for (let j = 0; j < practiceTables.length; j++) {
+        const practiceTable = practiceTables[j];
+        if (practiceTable.classList.contains(optPractice)) {
+          practiceTable.style.display = 'block';
+        }
+      }
+    }
+  }
+}
+</script>
+<div class="paragraph">
+<!-- </p>
+</div>
+--></div><div class="sidebar"><div id="toggle"></div><div class="paragraph"><!--
+<div class="paragraph">
+<p>
+--><div class="sidebarlessons"><strong>Lessons</strong>
+<ul></ul></div>
+<div class="sidebarstandards"><strong>Standards in this Lesson</strong>: <em>None</em></div>
+</div>
+<table class="tableblock frame-all grid-all stretch sidebarpractices">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Practices in this Lesson</strong>
+<select class="practicesAlignmentSelect"  onchange="showPracticesAlignment()"><option selected="selected" value="practices-SJ"><a href="https://www.learningforjustice.org/sites/default/files/2017-06/TT_Social_Justice_Standards_0.pdf">Social Justice</a></option></select></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist alignedPractices practices-SJ">
+<div class="title"><a href="https://www.learningforjustice.org/sites/default/files/2017-06/TT_Social_Justice_Standards_0.pdf">Social Justice</a></div>
+<dl>
+<dt class="hdlist1">SJ.1</dt>
+<dd>
+<p>Students will develop positive social identities based on their membership in multiple groups in society</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<!-- </p>
+</div>
+--></div><!--
+<div class="paragraph">
+<p>
+-->
+</div>
+<div class="paragraph">
+<p>change</p>
+</div>
+<div class="paragraph description">
+<p>Students take a closer look at how functions can work together by investigating the relationship between revenue, cost, and profit.</p>
+</div>
+<table class="tableblock frame-all grid-all stripes-none stretch left-header preamble">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Lesson Goals</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Students will be able to:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Write a <span class="vocab">function</span> that explicitly uses another function.</p>
+</li>
+<li>
+<p>Explain the benefits and drawbacks of functions that depend on each other.</p>
+</li>
+<li>
+<p>Explain the difference between bottom-up and top-down strategies.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Student-Facing Lesson Goals</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>I can explain the benefits and drawbacks of functions that use other functions.</p>
+</li>
+<li>
+<p>I can write a function that uses another function.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Materials</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist materials-links">
+<ul>
+<li>
+<p><span class="materialSectionPlaceholder"> </span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/zample-lesson/pages/zample-page1.html" target="_blank" rel="noopener">Zample Page</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="../../lessons/zample-lesson/pages/zample-page2.html" target="_blank" rel="noopener">Zample Page</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="../../lessons/zample-lesson/pages/zample-page3.html" target="_blank" rel="noopener">Zample Page</a></span></p>
+</li>
+<li>
+<p><strong>Classroom visual:</strong> <a href="javascript:showLangTable()">Language Table</a></p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Preparation</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Make sure all materials have been gathered</p>
+</li>
+<li>
+<p>Decide how students will be grouped in pairs</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Key Points for the Facilitator</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>There are several ways to write the <code class="pyret">profit</code> function - use this opportunity for discussion and to promote higher-order critical thinking.</p>
+</li>
+<li>
+<p>If students are struggling with understanding the basics of the problem, start by coming up with examples of <code class="pyret">cost</code> and <code class="pyret">revenue</code>.  If Sally sells one glass, what is her total revenue?  How much does it cost her to produce that one glass?</p>
+</li>
+<li>
+<p>Ensure students understand the difference between "revenue" and "profit", and that "cost" refers to the cost of <em>making</em> the lemonade, not the amount Sally is charging.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="dlist glossary">
+<div class="title">Glossary</div>
+<dl>
+<dt class="hdlist1">function</dt>
+<dd>
+<p>a relation from a set of inputs to a set of possible outputs, where each input is related to exactly one output</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_problem_decomposition_duration_30_minutes_"><span class="section-link"><a href="#_problem_decomposition_duration_30_minutes_"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Problem Decomposition <span class="duration">30 minutes</span></h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_overview">Overview</h3>
+<div class="paragraph">
+<p>Students are introduced to word problems that can be broken down into <em>multiple</em> problems, the solutions to which can be composed to solve other problems. They adapt the Design Recipe to handle this situation.</p>
+</div>
+<div class="paragraph">
+<p><span class="obeyspaces"><code class="pyret">string-length&#8203;(&#8203;num-sqr, +, -, /&#8203;)</code></span></p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_launch">Launch</h3>
+<div class="paragraph">
+<p>Display the following image:</p>
+</div>
+<div class="paragraph">
+<p><span class="centered-image"><span class="image-figure"><span class="image"><img src="images/ac3a4e8670a3e7ca.png" alt="Lemonade Stand Ideas" width="400"></span><a href="images/ac3a4e8670a3e7ca.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></p>
+</div>
+<table class="tableblock frame-all grid-none stripes-none stretch notice-box">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="title">Notice and Wonder</span></p>
+<p class="tableblock">Have students share everything they notice about the situations described above. Then, separately, have them share what they wonder.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>One example of a <em>relationship</em> we can find in this situation is that Sally takes in $1.75 for every glass she sells: <span class="gdrive-only">revenue = \$1.75 &times; glasses</span><script type="math/tex">\displaystyle revenue = \$1.75 \times glasses</script></p>
+</div>
+<div class="paragraph lesson-instruction">
+<p>What other relationships can you find here?</p>
+</div>
+<div class="paragraph">
+<p>(Give students a chance to discuss and brainstorm)</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Every glass sold brings in $1.75 in <strong>revenue</strong></p>
+</li>
+<li>
+<p>Every glass sold costs $0.30 in <strong>costs</strong>, such as lemonds, sugar and water</p>
+</li>
+<li>
+<p>Every glass sold brings in some amount of <strong>profit</strong>: it costs a certain amount to make, but it brings in another amount in revenue</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_investigate">Investigate</h3>
+<div class="paragraph">
+<p>Students form groups and brainstorm their ideas for functions.  Students can use any strategies they&#8217;ve learned so far.</p>
+</div>
+<table class="tableblock frame-all grid-none stripes-none stretch strategy-box">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="title">Strategies for English Language Learners</span></p>
+<p class="tableblock">MLR 7 - Compare and Connect
+There are several correct ways to write the functions needed for Sally&#8217;s Lemonade.  Have students compare methods and develop understanding and language related to mathematical representation and methods.  What are the advantages of the different solutions?  What are some drawbacks?</p></td>
+</tr>
+</tbody>
+</table>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>What is the difference between <em>revenue</em> and <em>profit</em>?</strong>
+<em>Revenue is the total amount of money that comes in, profit is the remaining money after cost has been subtracted.</em></p>
+</li>
+<li>
+<p><strong>How could Sally <em>increase</em> her profits?</strong>
+<em>By decreasing her costs, raising her prices (which increases revenue), by selling more lemonade.</em></p>
+</li>
+<li>
+<p><strong>What is the <em>relationship</em> between profit, cost, and revenue?</strong>
+<em>Profit = Revenue - Cost</em></p>
+</li>
+</ul>
+</div>
+<div class="paragraph lesson-instruction">
+<p>Students work with their partners to develop their function models for
+<a href="../../lessons/zample-lesson/pages/zample-page1.html" target="_blank" rel="noopener">revenue</a>, <a href="../../lessons/zample-lesson/pages/zample-page2.html" target="_blank" rel="noopener">cost</a>, and <a href="../../lessons/zample-lesson/pages/zample-page3.html" target="_blank" rel="noopener">profit</a>, using the Design Recipe.</p>
+</div>
+<div class="paragraph">
+<p>While students are working, walk the room and gauge student understanding.  There is more than one correct way to write the <code class="pyret">profit</code> function!  Encourage discussion between students and push students to develop their thinking on the advantages and disadvantages of each correct solution.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_synthesis">Synthesis</h3>
+<div class="paragraph">
+<p>This activity started with a situation, and students modeled that situation with functions. One part of the model was <em>profit</em>, which can be written several ways, for example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="pyret">fun profit(g): (1.75 * g) - (0.30 * g) end
+fun profit(g): (1.75 - 0.30) * g end
+fun profit(g): 1.45 * g end
+fun profit(g): revenue(g) - cost(g) end</code></code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Which way is "best", and why?</p>
+</li>
+<li>
+<p>If lemons gets more expensive, which way requires the least amount of change?</p>
+</li>
+<li>
+<p>If sugar gets less expensive, which way requires the least amount of change?</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Big Ideas</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code class="pyret">profit</code> can be <em>decomposed</em> into a simple function that uses the <code class="pyret">cost</code> and <code class="pyret">revenue</code> functions.</p>
+</li>
+<li>
+<p>Decomposing a problem allows us to solve it in smaller pieces, which are also easier to test!</p>
+</li>
+<li>
+<p>These pieces can also be re-used, resulting in writing less code, and less <em>duplicate</em> code.</p>
+</li>
+<li>
+<p>Duplicate code means more places to make mistakes, especially when that code needs to be changed.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_top_down_vs_bottom_up_duration_20_minutes_"><span class="section-link"><a href="#_top_down_vs_bottom_up_duration_20_minutes_"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Top-Down vs. Bottom-Up <span class="duration">20 minutes</span></h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_overview_2">Overview</h3>
+<div class="paragraph">
+<p>Students explore problem decomposition as an explicit strategy, and learn about two ways of decomposing.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_launch_2">Launch</h3>
+<div class="paragraph lesson-point">
+<p><em>Top-Down</em> and <em>Bottom-Up</em> design are two different strategies for problem decomposition.</p>
+</div>
+<div class="paragraph">
+<p><strong>Bottom-Up:</strong> start with the small, easy relationships first and then build our way to the larger relationships. In the Lemonade Stand, you defined <code class="pyret">cost</code> and <code class="pyret">revenue</code> first, and then put them together in <code class="pyret">profit</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Top-Down:</strong> start with the "big picture" and then worry about the details later. We could have started with <code class="pyret">profit</code>, and made a to-do list of the smaller pieces we’d build later</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_investigate_2">Investigate</h3>
+<div class="paragraph">
+<p>Consider the following situation:</p>
+</div>
+<div class="paragraph">
+<p><em>Jamal&#8217;s trip requires him to drive 20mi to the airport, fly 9,000mi, and then take a bus 6mi to his hotel. His average speed driving to the airport is 40mph, the average speed of an airplane is 575mph, and the average speed of his bus is 15mph.</em></p>
+</div>
+<div class="paragraph">
+<p><strong>Aside from time waiting for the plane or bus, how long is Jamal in transit?</strong></p>
+</div>
+<div class="paragraph">
+<p>This can be decomposed via Top-Down or Bottom-Up design. What functions would you define to solve this, and in what order? For extra credit, you can actually compute the answer!</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_synthesize">Synthesize</h3>
+<div class="paragraph">
+<p>Make sure that students see <em>both</em> strategies, and have them discuss which they prefer and why.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-16 11:55:00 -0400
+</div>
+</div>
+</div>
+</body>
+</html>

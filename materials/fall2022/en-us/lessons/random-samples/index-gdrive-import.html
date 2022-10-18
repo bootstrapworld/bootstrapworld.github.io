@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Probability, Inference, and Sample Size</title>
+<style>
+/* Overall document font */
+* {font-family: Lato, Arial, Helvetica, sans-serif;}
+
+/* document headings */
+h1,.lesson-section-1 {color: #75328A;}
+h1{font-size: 32px; font-family: sans-serif;}
+table.section-heading *, .lesson-section-1 h2{font-size: 32px; font-weight: 100;}
+table.section-heading{width: 100%;}
+table.section-heading td:last-child{text-align: right; color: #d9d2e9;}
+
+/* preamble section */
+table.preamble td {padding: 10px;}
+table.preamble td:first-child{background: #b7d893; width: 25%;}
+table.preamble td:first-child p {font-weight: bold; margin: 5px;}
+
+/* content used throughout the body */
+table{ border-collapse: collapse; border: none; }
+table.grid-all.frame-all {border: solid 1px black;}
+table.grid-none.frame-none {border-width: 0px;}
+
+.big {font-size: 30pt;}
+.vocab{font-weight: bold; font-style: italic;}
+.right{text-align: right;}
+.acknowledgment {
+  border-top: solid 1px black; 
+  font-style: italic; 
+  font-size: 8pt;
+}
+.lesson-point {
+  border-top: solid 1px black; 
+  border-bottom: solid 1px black; 
+  color: black;
+  font-weight: bold;
+}
+
+.web-page-only, #footer { display: none; visibility: hidden; }
+
+/* Callout boxes */
+.strategy-box, .notice-box {
+  background: #efefef;
+  border: solid 5px !important;
+  margin: 15px auto;
+  width: 100%;
+}
+.strategy-box { border-color: #1a73b5 !important; }
+.notice-box   { border-color: #7747a5 !important; }
+.strategy-box td, .notice-box td{ padding: 10px; }
+.strategy-box .title, .notice-box .title{
+  width: 100%;
+  display: block;
+  font-weight: bold;
+  font-size: 24px;
+  clear: both;
+  margin: 100px;
+}
+.strategy-box p.tableblock:first-child, .notice-box p.tableblock:first-child{
+  text-align: center;
+  padding-bottom: 15px;
+}
+.strategy-box .title { color: #1a73b5; }
+.notice-box   .title { color: #7747a5; }
+.strategy-box a, .notice-box a { color: blue; text-decoration: underline; }
+
+/* "Tables" of Evaluation */
+.operator{border-bottom: solid 1px black; text-align: center;}
+.operator * {text-align: center;}
+td {padding: 0px 10px; font-size: 14px;}
+table.expression {
+    font-family:"Courier New", Monaco, monospace;
+    border:     solid 1px black;
+    font-size:  1px;
+    max-width:  400px;
+    color:      #666666;
+    display:    inline-block;
+}
+table.args {border: none; text-align: center;}
+
+.wescheme-string,     .cm-scheme-string    {color: green;}
+.wescheme-number,     .cm-scheme-number    {color: blue;}
+.wescheme-boolean,    .cm-scheme-boolean   {color: darkred;}
+.wescheme-character,  .cm-scheme-character {color: orange;}
+.wescheme-symbol,     .cm-scheme-symbol    {color: steelblue;}
+.wescheme-comment,    .cm-scheme-comment   {color: orange; }
+
+.racket, .pyret, .studentAnswerCode, .studentAnswer, .pyretkeyword, .keyword_only {
+    font-family:"Courier New", Monaco, monospace !important; 
+    color: black;
+}
+
+/* Design Recipe */
+.recipe_instructions { font-style: italic; }
+table.recipe_title {
+  color:              white;
+  background:         gray;
+  display:            block;
+  padding:            0px;
+  font-size:          1.1rem;
+  font-weight:        bold;
+}</style>
+
+    <script src="../../lib/langtable.js"></script>
+    <script src="../../dependency-graph.js"></script>
+    <script src="../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:window.location.href,
+    filename:"Probability, Inference, and Sample Size",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="article LessonPlan pyret" onload="renderSaveToDrive()">
+<span id="body" onload="renderSaveToDrive()">
+<span id="header">
+<h1>Probability, Inference, and Sample Size</h1>
+
+  <span id="savetodrive-div"></span>
+
+</span>
+<span id="content">
+<span id="preamble_disabled" class="lessonSummary">
+<span class="sectionbody">
+<script>
+function preselect(klass) {
+  const items = document.getElementsByClassName(klass);
+  for (let i = 0; i < items.length; i++) {
+    items[i].style.display = 'none';
+  }
+  if (items.length > 0) {
+    items[0].style.display = 'block';
+  }
+}
+window.onload = function() {
+  preselect('alignedStandards');
+  preselect('alignedTextbooks');
+  preselect('alignedPractices');
+}
+function showStandardsAlignment() {
+  const selectTag = document.getElementsByClassName('standardsAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const stdTables = document.getElementsByClassName('alignedStandards');
+  //const intro = document.getElementsByClassName('alignedStandardsIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < stdTables.length; i++) {
+    const stdTable = stdTables[i];
+    stdTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optStd = opt.value;
+      for (let j = 0; j < stdTables.length; j++) {
+        const stdTable = stdTables[j];
+        if (stdTable.classList.contains(optStd)) {
+          stdTable.style.display = 'block';
+         // introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+function toggleNonPrereqDisplay() {
+  const inputTag = document.getElementsByClassName('sidebarinput')[0];
+  const checkedP = inputTag.checked;
+  const lessonTable = document.getElementsByClassName('sidebarlessons')[0];
+  const lis = lessonTable.getElementsByTagName('li');
+  for (let i = 0; i < lis.length; i++) {
+    const li = lis[i];
+    const lesson = li.getElementsByClassName('prerequisite');
+    if (lesson.length === 0) {
+      li.style.display = checkedP ? 'none' : 'block';
+    }
+  }
+}
+</script>
+<script>
+function showTextbooksAlignment() {
+  const selectTag = document.getElementsByClassName('textbooksAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const textbookTables = document.getElementsByClassName('alignedTextbooks');
+  //const intro = document.getElementsByClassName('alignedTextbooksIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < textbookTables.length; i++) {
+    const textbookTable = textbookTables[i];
+    textbookTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optTextbook = opt.value;
+      for (let j = 0; j < textbookTables.length; j++) {
+        const textbookTable = textbookTables[j];
+        if (textbookTable.classList.contains(optTextbook)) {
+          textbookTable.style.display = 'block';
+          //introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+</script>
+<script>
+function showPracticesAlignment() {
+  const selectTag = document.getElementsByClassName('practicesAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const practiceTables = document.getElementsByClassName('alignedPractices');
+  for (let i = 0; i < practiceTables.length; i++) {
+    const practiceTable = practiceTables[i];
+    practiceTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optPractice = opt.value;
+      for (let j = 0; j < practiceTables.length; j++) {
+        const practiceTable = practiceTables[j];
+        if (practiceTable.classList.contains(optPractice)) {
+          practiceTable.style.display = 'block';
+        }
+      }
+    }
+  }
+}
+</script>
+<span class="paragraph">
+<!-- </p>
+</span>
+--></span><span class="sidebar"><span id="toggle"></span><span class="paragraph"><!--
+<span class="paragraph">
+<p>
+--><span class="sidebarlessons"><strong>Lessons</strong>
+<ul></ul></span>
+</span>
+<table class="tableblock frame-all grid-all stretch sidebarstandards">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p><strong>Standards in this Lesson</strong>
+<select class="standardsAlignmentSelect"  onchange="showStandardsAlignment()"><option selected="selected" value="standards-CCSS-Math">CCSS-Math</option><option value="standards-CSTA">CSTA</option><option value="standards-Oklahoma">Oklahoma</option></select></p>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="dlist standards-CCSS-Math">
+<span class="title"><a href="http://corestandards.org/Math/">Common Core Math Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>7.SP.A</dt>
+<dd>
+<p>Use random sampling to draw inferences about a population.</p>
+</dd>
+<dt class="hdlist1"><br/>7.SP.A.1</dt>
+<dd>
+<p>Understand that statistics can be used to gain information about a population by examining a sample of the population; generalizations about a population from a sample are valid only if the sample is representative of that population. Understand that random sampling tends to produce representative samples and support valid inferences.</p>
+</dd>
+<dt class="hdlist1"><br/>HSS.IC.B.3</dt>
+<dd>
+<p>Recognize the purposes of and differences among sample surveys, experiments, and observational studies; explain how randomization relates to each.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-CSTA">
+<span class="title"><a href="https://csteachers.org/page/standards">CSTA Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>2-DA-08</dt>
+<dd>
+<p>Collect data using computational tools and transform the data to make it more useful and reliable.</p>
+</dd>
+<dt class="hdlist1"><br/>2-DA-09</dt>
+<dd>
+<p>Refine computational models based on the data they have generated.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Oklahoma">
+<span class="title"><a href="https://sde.ok.gov/oklahoma-academic-standards">Oklahoma Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>OK.6.AP.PD.04</dt>
+<dd>
+<p>Break down tasks and follow an individual timeline when developing a computational artifact.</p>
+</dd>
+<dt class="hdlist1"><br/>OK.7.AP.PD.04</dt>
+<dd>
+<p>Distribute tasks and maintain a project timeline when collaboratively developing computational artifacts.</p>
+</dd>
+<dt class="hdlist1"><br/>OK.L1.IC.C.02</dt>
+<dd>
+<p>Test and refine computational artifacts to reduce bias and equity deficits.</p>
+</dd>
+<dt class="hdlist1"><br/>OK.PA.A.2.2</dt>
+<dd>
+<p>Identify, describe, and analyze linear relationships between two variables.</p>
+</dd>
+<dt class="hdlist1"><br/>OK.PA.D.2.2</dt>
+<dd>
+<p>Determine how samples are chosen (random, limited, biased) to draw and support conclusions about generalizing a sample to a population.</p>
+</dd>
+</dl>
+</span></span></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch sidebartextbooks">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p><strong>Textbook Alignment</strong>
+<select class="textbooksAlignmentSelect"  onchange="showTextbooksAlignment()"><option selected="selected" value="textbook-IM_7"><a href="https://illustrativemathematics.org/">IM 7 Math™</a></option><option value="textbook-CMP"><a href="https://connectedmath.msu.edu/">Connected Math</a></option></select></p>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="dlist alignedTextbooks textbook-IM_7">
+<span class="title"><a href="https://illustrativemathematics.org/">IM 7 Math™</a></span>
+<dl>
+<dt class="hdlist1"><br/>IM.7.8.17</dt>
+<dd>
+<p>More about Sampling Variability</p>
+</dd>
+<dt class="hdlist1"><br/>IM.7.8.14</dt>
+<dd>
+<p>Sampling in a Fair Way</p>
+</dd>
+<dt class="hdlist1"><br/>IM.7.8.12</dt>
+<dd>
+<p>Larger Populations</p>
+</dd>
+</dl>
+</span>
+<span class="dlist alignedTextbooks textbook-CMP">
+<span class="title"><a href="https://connectedmath.msu.edu/">Connected Math</a></span>
+<dl>
+<dt class="hdlist1"><br/>CMP.7.8</dt>
+<dd>
+<p>Samples and Populations: Making Comparisons and Predictions</p>
+</dd>
+</dl>
+</span></span></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch sidebarpractices">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p><strong>Practices in this Lesson</strong>
+<select class="practicesAlignmentSelect"  onchange="showPracticesAlignment()"><option selected="selected" value="practices-SJ"><a href="https://www.learningforjustice.org/sites/default/files/2017-06/TT_Social_Justice_Standards_0.pdf">Social Justice</a></option><option value="practices-NGSS"><a href="https://ngss.nsta.org/practicesfull.aspx">Science and Engineering</a></option><option value="practices-MLR"><a href="https://achievethecore.org/peersandpedagogy/developing-math-language-routines/">Math Lang. Routines</a></option><option value="practices-CC"><a href="http://corestandards.org/Math/">Math</a></option></select></p>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="dlist alignedPractices practices-SJ">
+<span class="title"><a href="https://www.learningforjustice.org/sites/default/files/2017-06/TT_Social_Justice_Standards_0.pdf">Social Justice</a></span>
+<dl>
+<dt class="hdlist1"><br/>SJ.13</dt>
+<dd>
+<p>Students will analyze the harmful impact of bias and injustice on the world, historically and today</p>
+</dd>
+</dl>
+</span>
+<span class="dlist alignedPractices practices-NGSS">
+<span class="title"><a href="https://ngss.nsta.org/practicesfull.aspx">Science and Engineering</a></span>
+<dl>
+<dt class="hdlist1"><br/>SEP.3</dt>
+<dd>
+<p>Planning and Carrying Out Investigations</p>
+</dd>
+</dl>
+</span>
+<span class="dlist alignedPractices practices-MLR">
+<span class="title"><a href="https://achievethecore.org/peersandpedagogy/developing-math-language-routines/">Math Lang. Routines</a></span>
+<dl>
+<dt class="hdlist1"><br/>MLR.1</dt>
+<dd>
+<p>Stronger and Clearer Each Time</p>
+</dd>
+</dl>
+</span>
+<span class="dlist alignedPractices practices-CC">
+<span class="title"><a href="http://corestandards.org/Math/">Math</a></span>
+<dl>
+<dt class="hdlist1"><br/>MP.2</dt>
+<dd>
+<p>Reason abstractly and quantitatively</p>
+</dd>
+</dl>
+</span></span></td>
+</tr>
+</tbody>
+</table>
+<span class="paragraph">
+<!-- </p>
+</span>
+--></span><!--
+<span class="paragraph">
+<p>
+-->
+</span>
+<span class="paragraph">
+<p><span class="other-proglang">(Also available in <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/random-samples-codap/index.shtml">CODAP</a>)</span></p>
+</span>
+<span class="paragraph description">
+<p>Students explore sampling and probability as a mechanism for detecting patterns. After exploring this in a binary system (flipping a coin), they consider the role of sampling as it applies to relationships in a dataset.</p>
+</span>
+<table class="tableblock frame-all grid-all stripes-none stretch left-header preamble">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>Lesson Goals</p>
+</span></span></td>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>Students will be able to&#8230;&#8203;</p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p>Understand the connection between probability and inference</p>
+</li>
+<li>
+<p>Understand the need for random samples</p>
+</li>
+<li>
+<p>Understand the role of <span class="vocab">sample size</span></p>
+</li>
+<li>
+<p>Take random samples from a population</p>
+</li>
+</ul>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>Student-facing Lesson Goals</p>
+</span></span></td>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="ulist">
+<ul>
+<li>
+<p>Let&#8217;s explore what random sampling has to do with seeing trends</p>
+</li>
+</ul>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>Materials</p>
+</span></span></td>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="ulist materials-links">
+<ul>
+<li>
+<p><a href="https://docs.google.com/presentation/d/1uQNoGX1_5bZqP77GnM6jLnQX4Vyv602UpaIkblPI2yY/" target="_blank" rel="noopener">Lesson Slides</a></p>
+</li>
+<li>
+<p><span class="StarterFile"><a href="https://code.pyret.org/editor#share=1VpwvnzGS57riIH76_sbdgXojMVIifkrf" target="_blank" rel="noopener">Fair Coins Starter File</a></span></p>
+</li>
+<li>
+<p><span class="StarterFile"><a href="https://code.pyret.org/editor#share=1Iu5I9lJt1oCho-l4xk7FucgtLq6cAUVr&v=6788e10" target="_blank" rel="noopener">Expanded Animals Starter File</a></span></p>
+</li>
+<li>
+<p><span class="materialSectionPlaceholder"> </span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/random-samples/pages/fair-coins.html" target="_blank" rel="noopener">Finding the Trick Coin</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/random-samples/pages/sampling-and-inference.html" target="_blank" rel="noopener">Sampling and Inference</a></span></p>
+</li>
+<li>
+<p><span class="OptProject">[<a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/random-samples/pages/food-habits-project.html" target="_blank" rel="noopener">Food Habits</a>] [<a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/random-samples/pages/rubric-food-habits.html" target="_blank" rel="noopener">rubric</a>]</span></p>
+</li>
+<li>
+<p><span class="OptProject">[<a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/random-samples/pages/time-use-project.html" target="_blank" rel="noopener">Time Use</a>] [<a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/random-samples/pages/rubric-time-use.html" target="_blank" rel="noopener">rubric</a>]</span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/random-samples/pages/predictions-from-samples.html" target="_blank" rel="noopener">Predictions from Samples</a></span></p>
+</li>
+<li>
+<p><strong>Classroom visual:</strong> <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/javascript:showLangTable()">Language Table</a></p>
+</li>
+</ul>
+</span></span></td>
+</tr>
+</tbody>
+</table>
+<span class="dlist glossary">
+<span class="title">Glossary</span>
+<dl>
+<dt class="hdlist1"><br/>bias</dt>
+<dd>
+<p>prejudice in favor of or against one outcome, person, or group compared with another, usually in a way considered to be unfair.</p>
+</dd>
+<dt class="hdlist1"><br/>null hypothesis</dt>
+<dd>
+<p>the hypothesis that there is no significant difference between specified populations, any observed difference being due to sampling or experimental error.</p>
+</dd>
+<dt class="hdlist1"><br/>random sample</dt>
+<dd>
+<p>a subset of individuals chosen from a larger set, such that each individual has the same probability of being chosen</p>
+</dd>
+<dt class="hdlist1"><br/>sample size</dt>
+<dd>
+<p>the number of participants or observations included in a study</p>
+</dd>
+<dt class="hdlist1"><br/>statistical inference</dt>
+<dd>
+<p>using information from a sample to draw conclusions about the larger population from which the sample was taken</p>
+</dd>
+</dl>
+</span>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<table class="grid-none frame-none section-heading"><tr><td width="65%">How to Spot a Scam </td><td width="35%">10 minutes</td></tr></table>
+<span class="sectionbody">
+<span class="sect2 lesson-section-2">
+<h3 id="_overview">Overview</h3>
+<span class="paragraph">
+<p>Students consider a classic randomness scenario: the probability that a coin will land on heads or tails. From a data science perspective, this can be flipped from a discussion of <em>probability</em> to one of <em>inference</em>. Specifically, "how many samples do we need, to determine whether a coin is fair or not?"</p>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_launch">Launch</h3>
+<span class="paragraph">
+<p><span class="right"><span class="image-figure"><span class="image"><img src="images/00aa416421d2888b.png" alt="110" width="A coin" height="showing the heads side" title="110"></span><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/images/00aa416421d2888b.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span> A stranger on the street invites you to a game of chance. They&#8217;ll flip a coin, and you&#8217;ll win money if you can predict whether it lands heads-or-tails. If you guess wrong, however, you pay THEM.</p>
+</span>
+<span class="paragraph">
+<p>"It&#8217;s a pure game of chance", they tell you, "we each have equal odds of winning".</p>
+</span>
+<span class="ulist lesson-instruction">
+<ul>
+<li>
+<p>What do you think? Can you trust them to play fair?</p>
+</li>
+<li>
+<p>For a fair coin, what are the chances of it landing heads? Tails?</p>
+<span class="ulist">
+<ul>
+<li>
+<p><em>A fair coin has a 50% chance of landing heads and a 50% chance of landing tails.</em></p>
+</li>
+</ul>
+</span>
+</li>
+<li>
+<p>How do you know if a coin is fair or not?</p>
+<span class="ulist">
+<ul>
+<li>
+<p><em>Flip it! The more flips you make, the more accurately you can assess if it is fair or not.</em></p>
+</li>
+</ul>
+</span>
+</li>
+</ul>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_investigate">Investigate</h3>
+<div class="paragraph lesson-point">
+<p>A fair coin should land on "heads" about as often as it lands on "tails".</p>
+</div>
+<span class="paragraph">
+<p>When we approach a strange coin, we start out assuming that it&#8217;s not biased towards heads or tails - that it will land on both "heads" and "tails" about 50% of the time. This is called the <span class="vocab">null hypothesis</span>. A weighted coin, on the other hand, might be heavier on one side, creating a <span class="vocab">bias</span> toward heads or tails more often! But how do we test whether a coin is fair or biased? <em>How do we test the <span class="vocab">null hypothesis</span>?</em></p>
+</span>
+<span class="paragraph lesson-instruction">
+<p>Open <a href="https://code.pyret.org/editor#share=1VpwvnzGS57riIH76_sbdgXojMVIifkrf" target="_blank" rel="noopener">Fair Coins Starter File</a>, and complete <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/random-samples/pages/fair-coins.html" target="_blank" rel="noopener">Finding the Trick Coin</a></p>
+</span>
+<span class="paragraph">
+<p>Have students share back their sample results, and their predictions after 5 samples and then 20 samples.</p>
+</span>
+<span class="paragraph">
+<p>Which samples seem to support the null hypothesis? Which ones undermine it?</p>
+</span>
+<span class="paragraph">
+<p>In Statistics and Data Science, samples like these don&#8217;t <strong>prove</strong> any claim about the coins! Instead, they either <em>produce evidence for or against</em> a claim. The larger the sample, the more evidence we have to <em>support or reject the <span class="vocab">null hypothesis</span></em>.</p>
+</span>
+<span class="paragraph">
+<p>The chances of getting tails from a fair coin three times in a row are pretty good: one-in-8! Maybe it was just the luck of the draw, and the coin is still fair.</p>
+</span>
+<span class="paragraph">
+<p>But what are the chances of flipping "head" 10 times in a row? 100 times? We might say "There&#8217;s a one in a million chance of a fair coin coming up heads 100 times. No <em>way</em> is this coin fair!"</p>
+</span>
+<span class="paragraph">
+<p>But of course, there <strong>is</strong> a way. It&#8217;s just&#8230;&#8203;<em>incredibly unlikely</em>.</p>
+</span>
+<table class="tableblock frame-all grid-none stripes-none stretch strategy-box">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p><span class="title">Going Deeper: p-value</span></p>
+</span>
+<span class="paragraph">
+<p>Statisticians would use more formal language to describe this highly unlikely, "one in a million chance". They call it the <strong>p-value</strong>, and use a decimal to represent the chance that a pattern is found in a sample, when no such pattern exists in the population.</p>
+</span>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th style="width: 100%;" class="tableblock halign-left valign-top">Most people say&#8230;&#8203;</th>
+<th style="width: 100%;" class="tableblock halign-left valign-top">Statisticians say&#8230;&#8203;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"There&#8217;s a 1-in-10 chance of this"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"The p-value is 0.1"</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"There&#8217;s a 1-in-100 chance of this"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"The p-value is 0.01"</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"There&#8217;s a 2-in-100 chance of this"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"The p-value is 0.02"</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"There&#8217;s a one-in-a million chance"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"The p-value is 0.000001"</p></td>
+</tr>
+</tbody>
+</table></span></td>
+</tr>
+</tbody>
+</table>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_common_misconceptions">Common Misconceptions</h3>
+<span class="paragraph">
+<p>Students may think that <em>any</em> sample from a fair coin should have an equal number of heads and tails outcomes. That&#8217;s not true at all! A fair coin <em>might</em> land on "tails" three times in a row! The fact that this is possible doesn&#8217;t mean it&#8217;s <em>likely</em>. Landing on "tails" five times in a row? Still possible, but much less likely.</p>
+</span>
+<span class="paragraph">
+<p>This is where arithmetic thinking and statistical thinking diverge: it&#8217;s not a question of what is <em>possible</em>, but rather what is <em>probable</em>.</p>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_synthesize">Synthesize</h3>
+<span class="ulist">
+<ul>
+<li>
+<p>Suppose we are rolling a 6-sided die. How could we tell if it&#8217;s weighted or not?</p>
+<span class="ulist">
+<ul>
+<li>
+<p><em>We could record how many times the die landed on each number. If the die is fair, we should see that it lands on each number approximately equally.</em></p>
+</li>
+</ul>
+</span>
+</li>
+<li>
+<p>Could a coin come up "heads" twice in a row, and still be a fair coin? Why or why not? What about 10 times in a row? 20?</p>
+<span class="ulist">
+<ul>
+<li>
+<p><em>The coin could be fair in all of these intsances! Heads 20 times in a row, however, is extremely unlikely.</em></p>
+</li>
+</ul>
+</span>
+</li>
+<li>
+<p>What is the relationship between how weighted a coin is, and how many samples you need to figure it out?</p>
+<span class="ulist">
+<ul>
+<li>
+<p><em>A fair coin should land on heads about 50% of the time. If a coin landed on heads _100%</em> of the time, it wouldn&#8217;t take long to figure out that something was up! A trick coin that comes up heads 60% of the time, however, would need a much larger sample to be detected. The smaller the bias, the larger the sample we need to see it. A small bias might be enough to guarantee that a casino turn a profit, and be virtually undetectable without a massive sample!_</p>
+</li>
+</ul>
+</span>
+</li>
+</ul>
+</span>
+</span>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<table class="grid-none frame-none section-heading"><tr><td width="65%">Probability v. Inference </td><td width="35%">30 minutes</td></tr></table>
+<span class="sectionbody">
+<span class="sect2 lesson-section-2">
+<h3 id="_overview_2">Overview</h3>
+<span class="paragraph">
+<p>Statistical inference involves looking at a sample and trying to <em>infer something you don’t know</em> about a larger population. This requires a sort of backwards reasoning, kind of like making a guess about a <em>cause</em>, based on the <em>effect</em> that we see.</p>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_launch_2">Launch</h3>
+<span class="paragraph">
+<p>In the coin-flip activity, we took samples of each coin and used our intuition about <em>chance</em> and <em>probability</em> to make <span class="vocab">inferences</span> about whether the coins were fair or weighted.</p>
+</span>
+<span class="paragraph">
+<p>In other words, we <strong>knew how the coin should behave before we even started sampling</strong> coin-flips, and then checked to see if the samples matched our expectation.</p>
+</span>
+<span class="paragraph">
+<p>In statistics, we run the process in reverse: we take a sample and then <strong><em>infer</em> something we didn&#8217;t know to begin with</strong>.</p>
+</span>
+<div class="paragraph lesson-point">
+<p>Inference Reasons Backwards; Probability Reasons Forwards.</p>
+</div>
+<span class="paragraph">
+<p><span class="vocab">Statistical inference</span> is used to gain information in practically every field of study you can imagine: medicine, business, politics, history; even art!</p>
+</span>
+<span class="paragraph">
+<p>Suppose we want to estimate what percentage of all Americans plan to vote for a certain candidate.  We don&#8217;t have time to ask every single person who they’re voting for, so pollsters instead take a <em>sample</em> of Americans, and <em>infer</em> how all Americans feel based on the sample.</p>
+</span>
+<span class="paragraph">
+<p>Just like our coin-flip, we can start out with the null hypothesis: assuming that the vote is split equally. Flipping a coin 10 times isn&#8217;t enough to infer whether it&#8217;s weighted, and polling 10 people isn&#8217;t enough to prove that one candidate is in the lead. <em>But if we survey enough people</em> we can infer something about the whole population.</p>
+</span>
+<div class="paragraph lesson-point">
+<p>Sample size matters!</p>
+</div>
+<span class="ulist lesson-instruction">
+<ul>
+<li>
+<p>We&#8217;re taking a survey of religions in our neighborhood. There&#8217;s a Baptist church right down the street, so we could get a nice big sample by asking everyone there&#8230;&#8203;right?</p>
+<span class="ulist">
+<ul>
+<li>
+<p><em>Sampling this population would reveal to us that everyone in the neighborhood is Baptist, which might not be the case!</em></p>
+</li>
+</ul>
+</span>
+</li>
+<li>
+<p>Taking a sample of whoever is nearby is called a <em>convenience sample</em>. Why is a convenience sample a problem in this example?</p>
+<span class="ulist">
+<ul>
+<li>
+<p><em>Everyone at the church is Baptist, but the entire neighborhood might not be.</em></p>
+</li>
+</ul>
+</span>
+</li>
+<li>
+<p>Would it be problematic to only call voters who are registered Democrats? To only call voters under 25? To only call regular churchgoers? Why or why not?</p>
+<span class="ulist">
+<ul>
+<li>
+<p><em>Calling only certain segments of the population will not reveal the way an entire population will vote.</em></p>
+</li>
+</ul>
+</span>
+</li>
+</ul>
+</span>
+<div class="paragraph lesson-point">
+<p>Bad samples can be an accident - or malice!</p>
+</div>
+<span class="paragraph">
+<p>When designing a survey or collecting data, Data Scientists need to make sure they are working hard to get a good, random sample that reflects the population. Lazy surveys can result in some really bad data! <em>But poor sampling can also happen when someone is trying to hide something, or to oppress or erase a group of people.</em></p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p>A teacher who wants the class to vote for a trip to the dinosaur museum might only call on the students who they know love dinosaurs, and then say "well, everyone I asked wanted that one!"</p>
+</li>
+<li>
+<p>A mayor who wants to claim that they ended homelessness could order census-takers to only talk to people in verified home addresses. Since homeless people don&#8217;t typically have an address, the census would show no homeless people in the city!</p>
+</li>
+<li>
+<p>A city that is worried about childhood depression could survey children to ask about their mood&#8230;&#8203;but only conduct the survey at an amusement park!</p>
+</li>
+</ul>
+</span>
+<span class="paragraph">
+<p>Can you think of other examples where biased sampling has been used - or could be used - to harm people?</p>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_investigate_2">Investigate</h3>
+<span class="paragraph">
+<p>The main reason for doing inference is to guess about something that’s <em>unknown</em> for the whole population.</p>
+</span>
+<span class="paragraph">
+<p>A useful step along the way is to practice with situations where we happen to <em>know</em> what’s true for the whole population. As an exercise, we can keep taking <span class="vocab">random samples</span> from that population and see how close they tend to get us to the truth.</p>
+</span>
+<span class="paragraph">
+<p>The Animals Dataset we&#8217;ve been using is just one <em>sample</em> taken from a very large animal shelter.</p>
+</span>
+<span class="paragraph">
+<p>How much can we infer about the whole population of hundreds of animals, by looking at just this one sample?</p>
+</span>
+<span class="paragraph">
+<p>Let’s see what happens if we switch from smaller to larger sample sizes.</p>
+</span>
+<span class="paragraph">
+<p>Divide the class into groups of 3-5 students.</p>
+</span>
+<span class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Open the <a href="https://code.pyret.org/editor#share=1Iu5I9lJt1oCho-l4xk7FucgtLq6cAUVr&v=6788e10" target="_blank" rel="noopener">Expanded Animals Starter File</a>, save a copy and click "Run".</p>
+</li>
+<li>
+<p>Complete <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/random-samples/pages/sampling-and-inference.html" target="_blank" rel="noopener">Sampling and Inference</a>, sharing their results and discussing with the group.</p>
+</li>
+<li>
+<p>Optional: complete <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/random-samples/pages/predictions-from-samples.html" target="_blank" rel="noopener">Predictions from Samples</a></p>
+</li>
+</ul>
+</span>
+<div class="paragraph lesson-point">
+<p>The most accute samples are random, and large!</p>
+</div>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_common_misconceptions_2">Common Misconceptions</h3>
+<span class="paragraph">
+<p>Many people mistakenly believe that larger populations need to be represented by larger samples. In fact, the formulas that Data Scientists use to assess how good a job the sample does is only based on the <em>sample size</em>, not the population size.</p>
+</span>
+<table class="tableblock frame-all grid-none stripes-none stretch strategy-box">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="title">Extension</span></p>
+<p class="tableblock">In a statistics-focused class, or if appropriate for your learning goals, this is a great place to include more rigorous statistics content on <a href="https://www.khanacademy.org/math/ap-statistics/estimating-confidence-ap/one-sample-z-interval-proportion/v/determining-sample-size-based-on-confidence-and-margin-of-error" target="_blank" rel="noopener">sample size</a>, <a href="https://www.youtube.com/watch?v=SRwMfEmKx3A" target="_blank" rel="noopener">sampling bias</a>, etc.</p></td>
+</tr>
+</tbody>
+</table>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_synthesize_2">Synthesize</h3>
+<span class="ulist">
+<ul>
+<li>
+<p>Were larger samples always better for guessing the truth about the whole population? If so, how much better?</p>
+</li>
+<li>
+<p>Why is taking a <span class="vocab">random sample</span> important for avoiding bias in our analyses?</p>
+</li>
+</ul>
+</span>
+<table class="tableblock frame-all grid-none stripes-none stretch strategy-box">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="title">Project Options: Food Habits / Time Use</span></p>
+<p class="tableblock"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/random-samples/pages/food-habits-project.html" target="_blank" rel="noopener">Food Habits</a> and <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/random-samples/pages/time-use-project.html" target="_blank" rel="noopener">Time Use</a> are both projects in which students gather data about their own lives and use what they&#8217;ve learned in the class so far to analyze it. These projects can be used as a mid-term or formative assessment, or as a capstone for a limited implementation of Bootstrap:Data Science. Both projects also require that students break down tasks and follow a timeline - either individually or in groups. Rubrics for assessing the projects are linked in the materials section at the top of the lesson.</p>
+<p class="tableblock"><span class="center"><em>(Based on the projects of the same name from <a href="https://www.introdatascience.org/" target="_blank" rel="noopener">IDS at UCLA</a>)</em></span></p></td>
+</tr>
+</tbody>
+</table>
+</span>
+</span>
+</span>
+<span class="sect1 acknowledgmentsect">
+<span class="sectionbody">
+<span class="openblock acknowledgment"><hr/>
+<span class="content">
+<span class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</span>
+</span>
+</span>
+</span>
+</span>
+</span>
+<span id="footer">
+<span id="footer-text">
+Last updated 2022-10-17 19:42:17 -0400
+</span>
+</span>
+</span>
+</body>
+</html>

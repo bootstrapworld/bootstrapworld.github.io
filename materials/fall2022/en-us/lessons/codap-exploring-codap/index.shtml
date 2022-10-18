@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Exploring CODAP</title>
+
+  <link rel="stylesheet" href="../../lib/curriculum.css" />
+    <link rel="stylesheet" href="../../lib/codemirror.css" />
+    <script src="../../lib/codemirror.js"></script>
+    <script src="../../lib/runmode.js"></script>
+    <script src="../../lib/scheme2.js"></script>
+    <script src="../../lib/pyret-mode.js"></script>
+      <script src="../../extlib/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML%2Clocal%2Fmathjaxlocal.js"></script>
+      <script>window.status = "not_ready_to_print";</script>
+    <script src="../../lib/langtable.js"></script>
+    <script src="../../lib/bootstraplesson.js"></script>
+    <script src="../../dependency-graph.js"></script>
+    <script src="../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"Exploring CODAP",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="article LessonPlan codap" onload="renderSaveToDrive()">
+<!--#include virtual="/menubar.ssi"-->
+<div id="body" onload="renderSaveToDrive()">
+<div id="header">
+<h1>Exploring CODAP</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<script>
+function preselect(klass) {
+  const items = document.getElementsByClassName(klass);
+  for (let i = 0; i < items.length; i++) {
+    items[i].style.display = 'none';
+  }
+  if (items.length > 0) {
+    items[0].style.display = 'block';
+  }
+}
+window.onload = function() {
+  preselect('alignedStandards');
+  preselect('alignedTextbooks');
+  preselect('alignedPractices');
+}
+function showStandardsAlignment() {
+  const selectTag = document.getElementsByClassName('standardsAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const stdTables = document.getElementsByClassName('alignedStandards');
+  //const intro = document.getElementsByClassName('alignedStandardsIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < stdTables.length; i++) {
+    const stdTable = stdTables[i];
+    stdTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optStd = opt.value;
+      for (let j = 0; j < stdTables.length; j++) {
+        const stdTable = stdTables[j];
+        if (stdTable.classList.contains(optStd)) {
+          stdTable.style.display = 'block';
+         // introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+function toggleNonPrereqDisplay() {
+  const inputTag = document.getElementsByClassName('sidebarinput')[0];
+  const checkedP = inputTag.checked;
+  const lessonTable = document.getElementsByClassName('sidebarlessons')[0];
+  const lis = lessonTable.getElementsByTagName('li');
+  for (let i = 0; i < lis.length; i++) {
+    const li = lis[i];
+    const lesson = li.getElementsByClassName('prerequisite');
+    if (lesson.length === 0) {
+      li.style.display = checkedP ? 'none' : 'block';
+    }
+  }
+}
+</script>
+<script>
+function showTextbooksAlignment() {
+  const selectTag = document.getElementsByClassName('textbooksAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const textbookTables = document.getElementsByClassName('alignedTextbooks');
+  //const intro = document.getElementsByClassName('alignedTextbooksIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < textbookTables.length; i++) {
+    const textbookTable = textbookTables[i];
+    textbookTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optTextbook = opt.value;
+      for (let j = 0; j < textbookTables.length; j++) {
+        const textbookTable = textbookTables[j];
+        if (textbookTable.classList.contains(optTextbook)) {
+          textbookTable.style.display = 'block';
+          //introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+</script>
+<script>
+function showPracticesAlignment() {
+  const selectTag = document.getElementsByClassName('practicesAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const practiceTables = document.getElementsByClassName('alignedPractices');
+  for (let i = 0; i < practiceTables.length; i++) {
+    const practiceTable = practiceTables[i];
+    practiceTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optPractice = opt.value;
+      for (let j = 0; j < practiceTables.length; j++) {
+        const practiceTable = practiceTables[j];
+        if (practiceTable.classList.contains(optPractice)) {
+          practiceTable.style.display = 'block';
+        }
+      }
+    }
+  }
+}
+</script>
+<div class="paragraph">
+<!-- </p>
+</div>
+--></div><div class="sidebar"><div id="toggle"></div><div class="paragraph"><!--
+<div class="paragraph">
+<p>
+--><div class="sidebarlessons"><strong>Lessons</strong>
+<ul></ul></div>
+<div class="sidebarstandards"><strong>Standards in this Lesson</strong>: <em>None</em></div>
+<div class="sidebarpractices"><strong>Practices in this Lesson</strong>: <em>None</em></div>
+<!-- </p>
+</div>
+--></div><!--
+<div class="paragraph">
+<p>
+-->
+</div>
+<div class="paragraph description">
+<p>Students begin to program, explorings how Numbers, Strings, Booleans and operations on those data types work in CODAP.</p>
+</div>
+<table class="tableblock frame-all grid-all stripes-none stretch left-header preamble">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Lesson Goals</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Students will be able to&#8230;&#8203;</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Identify examples of the following data types: Numbers, Strings, and Booleans</p>
+</li>
+<li>
+<p>Practice writing Numbers, Strings, and Booleans</p>
+</li>
+<li>
+<p>Write expressions that produce values of those types</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Student-facing Lesson Goals</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>I can tell if a value is a Number, String or a Boolean</p>
+</li>
+<li>
+<p>I can explain the difference between those types</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Materials</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist materials-links">
+<ul>
+<li>
+<p><a href="https://docs.google.com/presentation/d/15KqhbqmMSuipaXcAtbSPoVpGoEgWb_FsL0eDyWh-OPo/" target="_blank" rel="noopener">Lesson Slides</a></p>
+</li>
+<li>
+<p><span class="StarterFile"><a href="https://codap.concord.org/app/static/dg/en/cert/index.html#shared=https%3A%2F%2Fcfm-shared.concord.org%2FI6zAvad2EELkQxtS0SZG%2Ffile.json" target="_blank" rel="noopener">Animals Starter File</a></span></p>
+</li>
+<li>
+<p><span class="materialSectionPlaceholder"> </span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/codap-exploring-codap/pages/codap-exploration.html" target="_blank" rel="noopener">CODAP Exploration</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/codap-exploring-codap/pages/numbers-n-strings.html" target="_blank" rel="noopener">Numbers and Strings</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/codap-exploring-codap/pages/booleans.html" target="_blank" rel="noopener">Booleans</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/codap-exploring-codap/pages/codap-apply-functions.html" target="_blank" rel="noopener">Expressions &amp; Functions in CODAP</a></span></p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Key Points For The Facilitator</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Error messages are the computer trying to give us a clue that something is wrong.  Model reacting to <span class="vocab">error messages</span> with interest to demonstrate to students that the messages are a helpful tool.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="dlist glossary">
+<div class="title">Glossary</div>
+<dl>
+<dt class="hdlist1">error message</dt>
+<dd>
+<p>information from the computer about errors in code</p>
+</dd>
+<dt class="hdlist1">syntax error</dt>
+<dd>
+<p>errors where the computer cannot make sense of the code (e.g. - missing commas, missing parentheses, unclosed strings)</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_numbers_strings_duration_20_minutes_"><span class="section-link"><a href="#_numbers_strings_duration_20_minutes_"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Numbers &amp; Strings <span class="duration">20 minutes</span></h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_overview">Overview</h3>
+<div class="paragraph">
+<p>Students experiment with CODAP. They explore Number and String data types, and investigate how these data types behave in CODAP.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_launch">Launch</h3>
+<div class="paragraph">
+<p><span class="right"><span class="image-figure"><span class="image"><img src="images/9325adff995e0ec3.png" alt="Driver/Navigator" width="150" title="Driver/Navigator"></span><a href="images/9325adff995e0ec3.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span>
+When programming in this class, you&#8217;ll be working together using the <em>Driver/Navigator</em> model. Each group can only have one "Driver" - their hands are on the keyboard, and their job is to manage the typing, clicking, shortcuts, etc. If you&#8217;re not a Driver, you&#8217;re a "Navigator" - your job is to tell the Driver where to go, what to type, etc. A good Driver types only what the Navigator tells them to, and a good Navigator makes sure to give clear and precise instructions.</p>
+</div>
+<table class="tableblock frame-all grid-none stripes-none stretch strategy-box">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="title">The Driver/Navigator Model</span></p>
+<p class="tableblock">This model of pair programming is extremely useful for teasing apart the "thinking" step from the "typing" one. Students - especially those who are new to text-based programming or typing itself - can struggle to put their thoughts into the programming environment. This model allows them to focus on <em>communicating their ideas</em>, but letting the Driver focus on the coding. Likewise, the Driver has a chance to focus on syntax and programming. Finally, the requirement that ideas are translated through another person&#8217;s hands is an excellent scaffold for getting students talking about their thinking and about code.</p>
+<p class="tableblock"><a href="https://en.wikipedia.org/wiki/Pair_programming" target="_blank" rel="noopener">You can read more about the Driver/Navigator model here&#8230;&#8203;</a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="openblock lesson-instruction">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Open the <a href="https://codap.concord.org/app/static/dg/en/cert/index.html#shared=https%3A%2F%2Fcfm-shared.concord.org%2FI6zAvad2EELkQxtS0SZG%2Ffile.json" target="_blank" rel="noopener">Animals Starter File</a> in CODAP.</p>
+</li>
+<li>
+<p>Play around in our new platform! Record your observations on <a href="../../lessons/codap-exploring-codap/pages/codap-exploration.html" target="_blank" rel="noopener">CODAP Exploration</a>.</p>
+</li>
+<li>
+<p>What did you Notice? What do you Wonder?</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Debrief with students, then ensure that they all have created a blank column titled <code class="pyret">test</code>. They can do so by selecting the grey plus sign (<code class="pyret">+</code>) in the upper right-hand corner of the Animals Table. Note: the plus sign will not appear unless a table or table row is selected.</p>
+</div>
+<div class="paragraph">
+<p><span class="image-figure"><span class="image"><img src="images/f5052caf06ed862b.png" alt="screenshot from CODAP indicating how to add a new column" title="screenshot from CODAP indicating how to add a new column"></span><a href="images/f5052caf06ed862b.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_investigate">Investigate</h3>
+<div class="paragraph">
+<p>In their <code class="pyret">test</code> column, students will experiment with <em>Numbers</em> and <em>Strings</em>. In order to complete the worksheet below, students must click on the <code class="pyret">test</code> cell in the header of their Table, and then choose <code class="pyret">Edit formula</code> from the resulting drop-down menu.</p>
+</div>
+<div class="paragraph">
+<p><span class="image-figure"><span class="image"><img src="images/cd9a63f0355c90eb.png" alt="screenshot from CODAP indicating how to edit a formula" title="screenshot from CODAP indicating how to edit a formula"></span><a href="images/cd9a63f0355c90eb.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></p>
+</div>
+<div class="paragraph">
+<p>As they complete each directive, they will re-open <code class="pyret">Edit Formula</code> (below), delete their previous entry and then input the next entry.</p>
+</div>
+<div class="paragraph">
+<p><span class="centered-image"><span class="image-figure"><span class="image"><img src="images/91ecab496c31ec31.png" alt="screenshot from CODAP showing where to input new formulas" width="450" title="screenshot from CODAP showing where to input new formulas"></span><a href="images/91ecab496c31ec31.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></p>
+</div>
+<div class="openblock lesson-instruction">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Complete <a href="../../lessons/codap-exploring-codap/pages/numbers-n-strings.html" target="_blank" rel="noopener">Numbers and Strings</a>.</p>
+</li>
+<li>
+<p>What did you Notice? What do you Wonder?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>The Synthesize section (below) outlines several of CODAP&#8217;s features that students likely observed.</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Did you get any error messages? What did you learn from them?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Most of the error messages we&#8217;ve just seen were drawing our attention to <span class="vocab">syntax errors</span>: Missing commas, unclosed strings, etc.</em></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_synthesize">Synthesize</h3>
+<div class="paragraph">
+<p>CODAP knows about many kinds of Numbers (like Integers, Reals, etc), and they behave pretty much the way they do in math. Discuss what students have learned:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Numbers and Strings evaluate to themselves.</p>
+</li>
+<li>
+<p>CODAP converts fractions into decimals automatically.</p>
+</li>
+<li>
+<p>Anything in quotes is a String, with one exception: CODAP will convert strings containing only numbers (e.g. “42” but not “42 hello”) into number values.</p>
+</li>
+<li>
+<p>Strings <em>must</em> have quotation marks on both sides.</p>
+</li>
+<li>
+<p>Operators work just like they do in math - with a few exceptions. The <code class="pyret">+</code>, for instance, will join together two strings, or a number and a string.</p>
+</li>
+<li>
+<p>CODAP knows the order of operations.</p>
+</li>
+<li>
+<p>Types matter! We can subtract one number from another, but we can&#8217;t subtract the Number <code class="pyret">4</code> from the String <code class="pyret">"hello"</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Error messages are a way for CODAP to explain what went wrong, and are a helpful way of finding mistakes. Emphasize how useful they can be, and why students should read those messages out loud before asking for help.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_booleans_duration_20_minutes_"><span class="section-link"><a href="#_booleans_duration_20_minutes_"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Booleans <span class="duration">20 minutes</span></h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_overview_2">Overview</h3>
+<div class="paragraph">
+<p>This lesson introduces students to Booleans, a unique data type with only two values: "true" and "false", and why they are useful in both the real world and the programming environment.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_launch_2">Launch</h3>
+<div class="paragraph lesson-instruction">
+<p>What&#8217;s the answer: is 3 greater than 10?</p>
+</div>
+<div class="paragraph">
+<p>Boolean-producing expressions are yes-or-no questions and will always evaluate to either <code class="pyret">true</code> (“yes”) or <code class="pyret">false</code> (“no”).  The ability to separate inputs into two categories is unique and quite useful!</p>
+</div>
+<div class="paragraph">
+<p>For example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Some rollercoasters with loops require passengers to be a minimum height to make sure that riders are safely held in place by the one-size-fits all harnesses. The gate keeper doesn&#8217;t care exactly how tall you are, they just check whether you are as tall as the mark on the pole. If you are tall enough, you can ride, but they don&#8217;t let people on the ride who are shorter than the mark because they can&#8217;t keep them safe.</p>
+</li>
+<li>
+<p>When you log into your email, the computer asks for your password and checks whether it matches what&#8217;s on file. If the match is <code class="pyret">true</code> it takes you to your messages, but, if what you enter doesn&#8217;t match, you get an error message instead.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph lesson-instruction">
+<p>Brainstorm other scenarios where Booleans are useful in and out of the programming environment.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_investigate_2">Investigate</h3>
+<div class="openblock lesson-instruction">
+<div class="content">
+<div class="paragraph">
+<p>In pairs, complete <a href="../../lessons/codap-exploring-codap/pages/booleans.html" target="_blank" rel="noopener">Booleans</a>, making predictions about what a variety of Boolean expressions will return and testing them in the editor.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_synthesize_2">Synthesize</h3>
+<div class="paragraph">
+<p>What sets Booleans apart from other data types?</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_expressions_and_functions_duration_10_minutes_"><span class="section-link"><a href="#_expressions_and_functions_duration_10_minutes_"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Expressions and Functions <span class="duration">10 minutes</span></h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_overview_3">Overview</h3>
+<div class="paragraph">
+<p>Students play with expressions in CODAP, reinforcing concepts from standard Algebra.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_launch_3">Launch</h3>
+<div class="paragraph">
+<p>Students know about Numbers, Strings, Booleans and Operators&#8201;&#8212;&#8201;all of which behave just like they do in math. But what about expressions? Students may remember expressions from algebra: <span class="gdrive-only">x + 1</span><script type="math/tex">\displaystyle x + 1</script>.</p>
+</div>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Turn to <a href="../../lessons/codap-exploring-codap/pages/codap-apply-functions.html" target="_blank" rel="noopener">Expressions &amp; Functions in CODAP</a>.</p>
+</li>
+<li>
+<p>Let&#8217;s complete the first table together, with pencil and paper.</p>
+</li>
+<li>
+<p>You complete the second table on your own.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Now, explain to students that, by using CODAP, they can evaluate expressions much more quickly and efficiently than they might with pencil and paper. Rather than evaluating each expression in their heads, they will provide CODAP with a formula so that CODAP can do the math!</p>
+</div>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>With your partner, open the <a href="https://codap.concord.org/app/static/dg/en/cert/index.html#shared=https%3A%2F%2Fcfm-shared.concord.org%2FI6zAvad2EELkQxtS0SZG%2Ffile.json" target="_blank" rel="noopener">Animals Starter File</a> and use it to finish the questions 1 and 2 on <a href="../../lessons/codap-exploring-codap/pages/codap-apply-functions.html" target="_blank" rel="noopener">Expressions &amp; Functions in CODAP</a>.</p>
+</li>
+<li>
+<p>Note that attribute names that are more than one word need to be entered inside of tick marks.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_investigate_3">Investigate</h3>
+<div class="paragraph">
+<p>CODAP also allows us to insert <em>functions</em> into the formula box! <strong>Arguments</strong> (or "inputs") are the values passed into the function. CODAP has lots of <a href="https://codap.concord.org/help/functions" target="_blank" rel="noopener">built-in functions</a> that we can use to play with our dataset.</p>
+</div>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>With your partner, complete <a href="../../lessons/codap-exploring-codap/pages/codap-apply-functions.html" target="_blank" rel="noopener">Expressions &amp; Functions in CODAP</a>.</p>
+</li>
+<li>
+<p>What did you learn about the two functions <code class="pyret">sqrt</code> and <code class="pyret">stringLength</code>?</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_synthesize_3">Synthesize</h3>
+<div class="paragraph">
+<p>Debrief the activity with the class.</p>
+</div>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Think about the new columns you created. How did the inputs relate to the outputs?</p>
+</li>
+<li>
+<p>Did you encounter any new functions that intrigued you?</p>
+</li>
+<li>
+<p>What kind of error messages did you encounter, if any?</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-17 19:42:12 -0400
+</div>
+</div>
+</div>
+</body>
+</html>

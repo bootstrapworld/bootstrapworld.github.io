@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>CODAP Exploration</title>
+
+  <link rel="stylesheet" href="../../../lib/curriculum.css" />
+    <link rel="stylesheet" href="../../../lib/codemirror.css" />
+    <script src="../../../lib/codemirror.js"></script>
+    <script src="../../../lib/runmode.js"></script>
+    <script src="../../../lib/scheme2.js"></script>
+    <script src="../../../lib/pyret-mode.js"></script>
+    <script src="../../../lib/langtable.js"></script>
+    <script src="../../../lib/bootstraplesson.js"></script>
+    <script src="../../../dependency-graph.js"></script>
+    <script src="../../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"CODAP Exploration",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="workbookpage article codap" onload="renderSaveToDrive()">
+<div id="header">
+<h1>CODAP Exploration</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Make sure you’re logged into the <a href="https://codap.concord.org/app/static/dg/en/cert/index.html#shared=https%3A%2F%2Fcfm-shared.concord.org%2FI6zAvad2EELkQxtS0SZG%2Ffile.json" target="_blank" rel="noopener">Animals Starter File</a> in CODAP. The purpose of this exploration is to familiarize yourself with some of CODAP&#8217;s features. Feel free to experiment and try things out!</p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">1</span> See if you can make a graph. What did you select in order to do so?</p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"><span class="solution">I clicked on the "Graph" icon in the upper left-hand corner of my screen</span></span></p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">2</span> Move the table. Move the graph. How do you move things in CODAP?</p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"><span class="solution">To move tables and graphs, I mouse over the top-most bar until my cursor turns into a hand. Then I can drag.</span></span></p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">3</span> Minimize and maximize the table and the graph. How do you do that?</p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"><span class="solution"> To minimize, I select the <code class="pyret">-</code> in the upper right-hand corner of the graph or table. To maximize, I reselect the <code class="pyret">-</code>.</span></span></p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">4</span> Drag an attribute (like <code class="pyret">weight</code>, <code class="pyret">name</code>, or <code class="pyret">sex</code>) to a graph&#8217;s axis - or use the drop-down menu that appears when you click on an axis. What happens?</p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"><span class="solution"> <em>The randomly positioned points move to the confirguration that matches the data on the animals table.</em></span></span></p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">5</span> Drag a second attribute (like <code class="pyret">weight</code>, <code class="pyret">name</code>, or <code class="pyret">sex</code>) to the graph&#8217;s other axis - or use the drop-down menu that appears when you click on an axis. What happens?</p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"><span class="solution"> The points move again, to the confirguration indicated by the two attributes on the animals table.</span></span></p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">6</span> Select the grey plus sign (+) in the upper right-hand corner of the Animals Table. Doing so will enable you to create a new attribute. Name your new attribute <code class="pyret">test</code>.  Is the column populated or empty?</p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"><span class="solution">The column is empty.</span></span></p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"></span></p>
+</div>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-17 19:41:46 -0400
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Threats to Validity</title>
+<style>
+/* Overall document font */
+* {font-family: Lato, Arial, Helvetica, sans-serif;}
+
+/* document headings */
+h1,.lesson-section-1 {color: #75328A;}
+h1{font-size: 32px; font-family: sans-serif;}
+table.section-heading *, .lesson-section-1 h2{font-size: 32px; font-weight: 100;}
+table.section-heading{width: 100%;}
+table.section-heading td:last-child{text-align: right; color: #d9d2e9;}
+
+/* preamble section */
+table.preamble td {padding: 10px;}
+table.preamble td:first-child{background: #b7d893; width: 25%;}
+table.preamble td:first-child p {font-weight: bold; margin: 5px;}
+
+/* content used throughout the body */
+table{ border-collapse: collapse; border: none; }
+table.grid-all.frame-all {border: solid 1px black;}
+table.grid-none.frame-none {border-width: 0px;}
+
+.big {font-size: 30pt;}
+.vocab{font-weight: bold; font-style: italic;}
+.right{text-align: right;}
+.acknowledgment {
+  border-top: solid 1px black; 
+  font-style: italic; 
+  font-size: 8pt;
+}
+.lesson-point {
+  border-top: solid 1px black; 
+  border-bottom: solid 1px black; 
+  color: black;
+  font-weight: bold;
+}
+
+.web-page-only, #footer { display: none; visibility: hidden; }
+
+/* Callout boxes */
+.strategy-box, .notice-box {
+  background: #efefef;
+  border: solid 5px !important;
+  margin: 15px auto;
+  width: 100%;
+}
+.strategy-box { border-color: #1a73b5 !important; }
+.notice-box   { border-color: #7747a5 !important; }
+.strategy-box td, .notice-box td{ padding: 10px; }
+.strategy-box .title, .notice-box .title{
+  width: 100%;
+  display: block;
+  font-weight: bold;
+  font-size: 24px;
+  clear: both;
+  margin: 100px;
+}
+.strategy-box p.tableblock:first-child, .notice-box p.tableblock:first-child{
+  text-align: center;
+  padding-bottom: 15px;
+}
+.strategy-box .title { color: #1a73b5; }
+.notice-box   .title { color: #7747a5; }
+.strategy-box a, .notice-box a { color: blue; text-decoration: underline; }
+
+/* "Tables" of Evaluation */
+.operator{border-bottom: solid 1px black; text-align: center;}
+.operator * {text-align: center;}
+td {padding: 0px 10px; font-size: 14px;}
+table.expression {
+    font-family:"Courier New", Monaco, monospace;
+    border:     solid 1px black;
+    font-size:  1px;
+    max-width:  400px;
+    color:      #666666;
+    display:    inline-block;
+}
+table.args {border: none; text-align: center;}
+
+.wescheme-string,     .cm-scheme-string    {color: green;}
+.wescheme-number,     .cm-scheme-number    {color: blue;}
+.wescheme-boolean,    .cm-scheme-boolean   {color: darkred;}
+.wescheme-character,  .cm-scheme-character {color: orange;}
+.wescheme-symbol,     .cm-scheme-symbol    {color: steelblue;}
+.wescheme-comment,    .cm-scheme-comment   {color: orange; }
+
+.racket, .pyret, .studentAnswerCode, .studentAnswer, .pyretkeyword, .keyword_only {
+    font-family:"Courier New", Monaco, monospace !important; 
+    color: black;
+}
+
+/* Design Recipe */
+.recipe_instructions { font-style: italic; }
+table.recipe_title {
+  color:              white;
+  background:         gray;
+  display:            block;
+  padding:            0px;
+  font-size:          1.1rem;
+  font-weight:        bold;
+}</style>
+
+    <script src="../../lib/langtable.js"></script>
+    <script src="../../dependency-graph.js"></script>
+    <script src="../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:window.location.href,
+    filename:"Threats to Validity",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="article LessonPlan pyret" onload="renderSaveToDrive()">
+<span id="body" onload="renderSaveToDrive()">
+<span id="header">
+<h1>Threats to Validity</h1>
+
+  <span id="savetodrive-div"></span>
+
+</span>
+<span id="content">
+<span id="preamble_disabled" class="lessonSummary">
+<span class="sectionbody">
+<script>
+function preselect(klass) {
+  const items = document.getElementsByClassName(klass);
+  for (let i = 0; i < items.length; i++) {
+    items[i].style.display = 'none';
+  }
+  if (items.length > 0) {
+    items[0].style.display = 'block';
+  }
+}
+window.onload = function() {
+  preselect('alignedStandards');
+  preselect('alignedTextbooks');
+  preselect('alignedPractices');
+}
+function showStandardsAlignment() {
+  const selectTag = document.getElementsByClassName('standardsAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const stdTables = document.getElementsByClassName('alignedStandards');
+  //const intro = document.getElementsByClassName('alignedStandardsIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < stdTables.length; i++) {
+    const stdTable = stdTables[i];
+    stdTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optStd = opt.value;
+      for (let j = 0; j < stdTables.length; j++) {
+        const stdTable = stdTables[j];
+        if (stdTable.classList.contains(optStd)) {
+          stdTable.style.display = 'block';
+         // introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+function toggleNonPrereqDisplay() {
+  const inputTag = document.getElementsByClassName('sidebarinput')[0];
+  const checkedP = inputTag.checked;
+  const lessonTable = document.getElementsByClassName('sidebarlessons')[0];
+  const lis = lessonTable.getElementsByTagName('li');
+  for (let i = 0; i < lis.length; i++) {
+    const li = lis[i];
+    const lesson = li.getElementsByClassName('prerequisite');
+    if (lesson.length === 0) {
+      li.style.display = checkedP ? 'none' : 'block';
+    }
+  }
+}
+</script>
+<script>
+function showTextbooksAlignment() {
+  const selectTag = document.getElementsByClassName('textbooksAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const textbookTables = document.getElementsByClassName('alignedTextbooks');
+  //const intro = document.getElementsByClassName('alignedTextbooksIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < textbookTables.length; i++) {
+    const textbookTable = textbookTables[i];
+    textbookTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optTextbook = opt.value;
+      for (let j = 0; j < textbookTables.length; j++) {
+        const textbookTable = textbookTables[j];
+        if (textbookTable.classList.contains(optTextbook)) {
+          textbookTable.style.display = 'block';
+          //introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+</script>
+<script>
+function showPracticesAlignment() {
+  const selectTag = document.getElementsByClassName('practicesAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const practiceTables = document.getElementsByClassName('alignedPractices');
+  for (let i = 0; i < practiceTables.length; i++) {
+    const practiceTable = practiceTables[i];
+    practiceTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optPractice = opt.value;
+      for (let j = 0; j < practiceTables.length; j++) {
+        const practiceTable = practiceTables[j];
+        if (practiceTable.classList.contains(optPractice)) {
+          practiceTable.style.display = 'block';
+        }
+      }
+    }
+  }
+}
+</script>
+<span class="paragraph">
+<!-- </p>
+</span>
+--></span><span class="sidebar"><span id="toggle"></span><span class="paragraph"><!--
+<span class="paragraph">
+<p>
+--><span class="sidebarlessons"><strong>Lessons</strong>
+<ul></ul></span>
+</span>
+<table class="tableblock frame-all grid-all stretch sidebarstandards">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p><strong>Standards in this Lesson</strong>
+<select class="standardsAlignmentSelect"  onchange="showStandardsAlignment()"><option selected="selected" value="standards-CCSS-Math">CCSS-Math</option><option value="standards-CSTA">CSTA</option><option value="standards-K12CS">K12CS</option><option value="standards-Oklahoma">Oklahoma</option></select></p>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="dlist standards-CCSS-Math">
+<span class="title"><a href="http://corestandards.org/Math/">Common Core Math Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>HSS.IC.B.6</dt>
+<dd>
+<p>Evaluate reports based on data.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-CSTA">
+<span class="title"><a href="https://csteachers.org/page/standards">CSTA Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>2-IC-21</dt>
+<dd>
+<p>Discuss issues of bias and accessibility in the design of existing technologies</p>
+</dd>
+<dt class="hdlist1"><br/>3B-NI-07</dt>
+<dd>
+<p>Evaluate the ability of models and simulations to test and support the refinement of hypotheses.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-K12CS">
+<span class="title"><a href="https://k12cs.org">K-12CS Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>6-8.Data and Analysis.Collection</dt>
+<dd>
+<p>People design algorithms and tools to automate the collection of data by computers. When data collection is automated, data is sampled and converted into a form that a computer can process. For example, data from an analog sensor must be converted into a digital form. The method used to automate data collection is influenced by the availability of tools and the intended use of the data.</p>
+</dd>
+<dt class="hdlist1"><br/>9-12.Data and Analysis.Inference and Models</dt>
+<dd>
+<p>The accuracy of predictions or inferences depends upon the limitations of the computer model and the data the model is built upon. The amount, quality, and diversity of data and the features chosen can affect the quality of a model and ability to understand a system. Predictions or inferences are tested to validate models.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Oklahoma">
+<span class="title"><a href="https://sde.ok.gov/oklahoma-academic-standards">Oklahoma Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>OK.3.DA.IM.01</dt>
+<dd>
+<p>With guidance, utilize data to make predictions and discuss whether there is adequate data to make reliable predictions.</p>
+</dd>
+<dt class="hdlist1"><br/>OK.8.IC.SI.01</dt>
+<dd>
+<p>Communicate and publish key ideas and details individually or collaboratively in a way that informs, persuades, and/or entertains using a variety of digital tools and media-rich resources. Describe and use safe, appropriate, and responsible practices (netiquette) when participating in online communities (e.g., discussion groups, blogs, social networking sites).</p>
+</dd>
+<dt class="hdlist1"><br/>OK.L1.IC.C.02</dt>
+<dd>
+<p>Test and refine computational artifacts to reduce bias and equity deficits.</p>
+</dd>
+</dl>
+</span></span></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch sidebartextbooks">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p><strong>Textbook Alignment</strong>
+<select class="textbooksAlignmentSelect"  onchange="showTextbooksAlignment()"><option selected="selected" value="textbook-IM_7"><a href="https://illustrativemathematics.org/">IM 7 Math™</a></option><option value="textbook-IM_Alg_1"><a href="https://illustrativemathematics.org/">IM Algebra 1</a></option></select></p>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="dlist alignedTextbooks textbook-IM_7">
+<span class="title"><a href="https://illustrativemathematics.org/">IM 7 Math™</a></span>
+<dl>
+<dt class="hdlist1"><br/>IM.7.8.19</dt>
+<dd>
+<p>Comparing Populations with Friends</p>
+</dd>
+<dt class="hdlist1"><br/>IM.7.8.17</dt>
+<dd>
+<p>More about Sampling Variability</p>
+</dd>
+<dt class="hdlist1"><br/>IM.7.8.14</dt>
+<dd>
+<p>Sampling in a Fair Way</p>
+</dd>
+</dl>
+</span>
+<span class="dlist alignedTextbooks textbook-IM_Alg_1">
+<span class="title"><a href="https://illustrativemathematics.org/">IM Algebra 1</a></span>
+<dl>
+<dt class="hdlist1"><br/>IM.Alg1.3.9</dt>
+<dd>
+<p>Causal Relationships</p>
+</dd>
+</dl>
+</span></span></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch sidebarpractices">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p><strong>Practices in this Lesson</strong>
+<select class="practicesAlignmentSelect"  onchange="showPracticesAlignment()"><option selected="selected" value="practices-NGSS"><a href="https://ngss.nsta.org/practicesfull.aspx">Science and Engineering</a></option><option value="practices-CC"><a href="http://corestandards.org/Math/">Math</a></option><option value="practices-K12CS"><a href="https://k12cs.org">K12CS</a></option></select></p>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="dlist alignedPractices practices-NGSS">
+<span class="title"><a href="https://ngss.nsta.org/practicesfull.aspx">Science and Engineering</a></span>
+<dl>
+<dt class="hdlist1"><br/>SEP.3</dt>
+<dd>
+<p>Planning and Carrying Out Investigations</p>
+</dd>
+</dl>
+</span>
+<span class="dlist alignedPractices practices-CC">
+<span class="title"><a href="http://corestandards.org/Math/">Math</a></span>
+<dl>
+<dt class="hdlist1"><br/>MP.3</dt>
+<dd>
+<p>Construct viable arguments and critique the reasoning of others</p>
+</dd>
+</dl>
+</span>
+<span class="dlist alignedPractices practices-K12CS">
+<span class="title"><a href="https://k12cs.org">K12CS</a></span>
+<dl>
+<dt class="hdlist1"><br/>P1</dt>
+<dd>
+<p>Fostering an Inclusive Computing Culture</p>
+</dd>
+</dl>
+</span></span></td>
+</tr>
+</tbody>
+</table>
+<span class="paragraph">
+<!-- </p>
+</span>
+--></span><!--
+<span class="paragraph">
+<p>
+-->
+</span>
+<span class="paragraph description">
+<p>Students consider possible threats to the validity of their analysis.</p>
+</span>
+<table class="tableblock frame-all grid-all stripes-none stretch left-header preamble">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>Lesson Goals</p>
+</span></span></td>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>Students will be able to&#8230;&#8203;</p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p>Define several types of Threats to Validity</p>
+</li>
+<li>
+<p>Identify those threats by reading the description of an analysis</p>
+</li>
+<li>
+<p>Identify those threats in their own analysis</p>
+</li>
+</ul>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>Student-facing Lesson Goals</p>
+</span></span></td>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="ulist">
+<ul>
+<li>
+<p>Let&#8217;s identify issues that could affect our data analysis.</p>
+</li>
+</ul>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>Materials</p>
+</span></span></td>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph materials-links">
+<p><em><strong>This lesson is unplugged</strong> and does not require a computer.</em></p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p><a href="https://docs.google.com/presentation/d/1x-oK-XOMwibkmn_Olbln9N7CjWowsivKrv12w3db2Qo/" target="_blank" rel="noopener">Lesson Slides</a></p>
+</li>
+<li>
+<p><span class="StarterFile"><a href="https://docs.google.com/document/d/1rSaR8dGEDtZz3NRVsvAjw_W50BiCNrM6zxID5hgkBY8/copy" target="_blank" rel="noopener">Research Paper</a></span></p>
+</li>
+<li>
+<p><span class="materialSectionPlaceholder"> </span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/correlations/pages/correlation-is-not-causation.html" target="_blank" rel="noopener">Correlation Does Not Imply Causation!</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/threats-to-validity/pages/threats-to-validity-1.html" target="_blank" rel="noopener">Identifying Threats to Validity</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/threats-to-validity/pages/threats-to-validity-2.html" target="_blank" rel="noopener">Identifying Threats to Validity (2)</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/threats-to-validity/pages/fake-news.html" target="_blank" rel="noopener">Fake News</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/threats-to-validity/pages/lies-darned-lies-n-statistics.html" target="_blank" rel="noopener">Lies&#x2c; Darned Lies&#x2c; and Statistics</a></span></p>
+</li>
+<li>
+<p><span class="OptProject">[<a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/threats-to-validity/pages/project-threats-to-validity.html" target="_blank" rel="noopener">Threats to Validity</a>] [<a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/threats-to-validity/pages/rubric-threats-to-validity.html" target="_blank" rel="noopener">rubric</a>]</span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/threats-to-validity/pages/selection-bias-v-biased-study.html" target="_blank" rel="noopener">Selection Bias or Biased Study?</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/threats-to-validity/pages/identifying-threats-1.html" target="_blank" rel="noopener">Identifying Threats to Validity (Part 1)</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/threats-to-validity/pages/identifying-threats-2.html" target="_blank" rel="noopener">Identifying Threats to Validity (Part 2)</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/threats-to-validity/pages/identifying-threats-3.html" target="_blank" rel="noopener">Identifying Threats to Validity (Part 3)</a></span></p>
+</li>
+<li>
+<p><strong>Classroom visual:</strong> <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/javascript:showLangTable()">Language Table</a></p>
+</li>
+</ul>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>Supplemental Resources:</p>
+</span></span></td>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p><a href="https://www.geckoboard.com/best-practice/statistical-fallacies/" target="_blank" rel="noopener">Poster Set of Data Fallacies to Avoid</a></p>
+</span></span></td>
+</tr>
+</tbody>
+</table>
+<span class="dlist glossary">
+<span class="title">Glossary</span>
+<dl>
+<dt class="hdlist1"><br/>threats to validity</dt>
+<dd>
+<p>factors that can undermine the conclusion of a study</p>
+</dd>
+</dl>
+</span>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<table class="grid-none frame-none section-heading"><tr><td width="65%">Threats to Validity </td><td width="35%">20 minutes</td></tr></table>
+<span class="sectionbody">
+<span class="sect2 lesson-section-2">
+<h3 id="_overview">Overview</h3>
+<span class="paragraph">
+<p>Students are introduced to the concept of <em>validity</em>, and a number of possible threats that might make an analysis invalid.</p>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_launch">Launch</h3>
+<span class="paragraph">
+<p>Let&#8217;s say a survey says that people prefer cats to dogs&#8230;&#8203;</p>
+</span>
+<span class="paragraph">
+<p>As good Data Scientists, the staff at the animal shelter are constantly gathering data about their animals, their volunteers, and the people who come to visit. But just because they have data doesn’t mean the conclusions they draw from it are correct! For example: suppose they surveyed 1,000 cat-owners and found that 95% of them thought cats were the best pet. Could they really claim that people generally prefer cats to dogs?</p>
+</span>
+<span class="paragraph">
+<p>Have students share back what they think. The issue here is that cat-owners are not a representative sample of the population, so the claim is invalid.</p>
+</span>
+<span class="paragraph">
+<p>There’s more to data analysis than simply collecting data and crunching numbers. In the example of the cat-owning survey, the claim that “people prefer cats to dogs” is <strong>invalid</strong> because the data itself wasn’t representative of the whole population (of course cat-owners are partial to cats!). This is just one example of what are called <span class="vocab">Threats to Validity</span>.</p>
+</span>
+<span class="paragraph">
+<p>There are several major threats to validity you should be on guard against:</p>
+</span>
+<span class="paragraph">
+<p>(1) <strong>Selection bias</strong> - Data was gathered from a biased sample of the population. This is the problem with surveying <em>cat owners</em> to find out which animal is most loved!</p>
+</span>
+<span class="paragraph">
+<p>(2) <strong>Bias in the study design</strong> - Data was gathered using a “loaded” question like “Since annual vet care comes to about $300 for dogs and only about half of that for cats, would you say that owning a cat is less of a burden than owning a dog?” This could easily lead to a misrepresentation of people’s true opinions.</p>
+</span>
+<span class="paragraph">
+<p>(3) <strong>Poor choice of summary data</strong> - Even if the selection is unbiased, sometimes outliers are so extreme that they make the mean completely useless at best - and misleading at worst.</p>
+</span>
+<span class="paragraph">
+<p>(4) <strong>Confounding variables</strong> - A study might find that cat owners are more likely to use public transportation than dog owners. But it&#8217;s not that owning a cat means you drive less: people who live in big cities are more likely to use public transportation, <em>and</em> also more likely to own cats.  More examples of confounding variables can be found in <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/correlations/pages/correlation-is-not-causation.html" target="_blank" rel="noopener">Correlation Does Not Imply Causation!</a>.</p>
+</span>
+<span class="paragraph">
+<p>This is just a small list of different threats to validity. There are plenty more!</p>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_investigate">Investigate</h3>
+<span class="ulist lesson-instruction">
+<ul>
+<li>
+<p>On <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/threats-to-validity/pages/threats-to-validity-1.html" target="_blank" rel="noopener">Identifying Threats to Validity</a> and <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/threats-to-validity/pages/threats-to-validity-2.html" target="_blank" rel="noopener">Identifying Threats to Validity (2)</a>, you’ll find four different claims backed by four different datasets.</p>
+</li>
+<li>
+<p>Each one of those claims suffers from a serious threat to validity. Can you figure out what those threats are?</p>
+</li>
+<li>
+<p>Optional: Respond to <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/threats-to-validity/pages/selection-bias-v-biased-study.html" target="_blank" rel="noopener">Selection Bias or Biased Study?</a></p>
+</li>
+</ul>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_synthesize">Synthesize</h3>
+<span class="paragraph">
+<p>Give students time to discuss and share back.</p>
+</span>
+<span class="paragraph">
+<p>Life is messy, and there are <em>always</em> threats to validity. Data Science is about doing the best you can to minimize those threats, and to be up front about what they are whenever you publish a finding. When you do your own analysis, make sure you include a discussion of the threats to validity!</p>
+</span>
+</span>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<table class="grid-none frame-none section-heading"><tr><td width="65%">Fake News! </td><td width="35%">20 minutes</td></tr></table>
+<span class="sectionbody">
+<span class="sect2 lesson-section-2">
+<h3 id="_overview_2">Overview</h3>
+<span class="paragraph">
+<p>Students are asked to consider the ways in which statistics are misused in popular culture, and become critical consumers of some statistical claims. Finally, they are given the opportunity to misuse their <em>own</em> statistics, to better understand how someone might distort data for their own ends.</p>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_launch_2">Launch</h3>
+<span class="paragraph">
+<p>Students have already seen a number of ways that statistics can be misused:</p>
+</span>
+<span class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Using the mean instead of the median with heavily-skewed data</p>
+</li>
+<li>
+<p>Using the wrong language when describing a Linear Regression</p>
+</li>
+<li>
+<p>Using a correlation to imply causation</p>
+</li>
+</ol>
+</span>
+<span class="paragraph">
+<p>There are other ways to mislead the audience as well:</p>
+</span>
+<span class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Intentionally using the wrong chart</strong> - suppose the census asks for data from different groups of people, and gets <em>none</em> from one group. That would be very suspicious! That group would show up as an empty space on bar chart, making the absence visible. A pie chart, however, would hide that absence completely - making it less likely that anyone would even notice that group had been "erased"!</p>
+</li>
+<li>
+<p><strong>Changing the scale of a chart</strong> - Changing the y-axis of a scatter plot can make the slope of the regression line seem smaller: "look, that line is basically flat anyway!"</p>
+</li>
+</ol>
+</span>
+<span class="paragraph">
+<p>With all the news being shared through newspapers, television, radio, and social media, it’s important to be critical consumers of information!</p>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_investigate_2">Investigate</h3>
+<span class="ulist lesson-instruction">
+<ul>
+<li>
+<p>On <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/threats-to-validity/pages/fake-news.html" target="_blank" rel="noopener">Fake News</a>, you’ll find some deliberately misleading claims made by slimy Data Scientists. <strong>Why shouldn&#8217;t these claims should be trusted?</strong></p>
+</li>
+<li>
+<p>Once you’ve finished, consider your own dataset and analysis: what misleading claims could someone make about your work? Turn to <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/threats-to-validity/pages/lies-darned-lies-n-statistics.html" target="_blank" rel="noopener">Lies&#x2c; Darned Lies&#x2c; and Statistics</a>, and <strong>come up with four misleading claims based on data or displays from your work.</strong></p>
+</li>
+<li>
+<p>Trade papers with another group, and see if you can figure out why each other’s claims are not to be trusted!</p>
+</li>
+</ul>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_synthesize_2">Synthesize</h3>
+<span class="paragraph">
+<p>Have students share back their "lies". Was anyone able to stump the other group?</p>
+</span>
+</span>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<table class="grid-none frame-none section-heading"><tr><td width="65%">Your Analysis </td><td width="35%">flexible</td></tr></table>
+<span class="sectionbody">
+<span class="sect2 lesson-section-2">
+<h3 id="_overview_3">Overview</h3>
+<span class="paragraph">
+<p>Students repeat the previous activity, this time applying it to their own dataset and interpreting their own results. <strong>Note: This activity can be done briefly as a homework assignment, but we recommend giving students an <em>additional class period</em> to work on this.</strong></p>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_launch_3">Launch</h3>
+<span class="paragraph">
+<p>In every analysis, there are always threats to validity. It&#8217;s important to always be upfront about what those threats are, so that anyone who reads your analysis can make their own decision.</p>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_investigate_3">Investigate</h3>
+<span class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Fill in the Findings portion of your <a href="https://docs.google.com/document/d/1rSaR8dGEDtZz3NRVsvAjw_W50BiCNrM6zxID5hgkBY8/copy" target="_blank" rel="noopener">Research Paper</a>, discussing threats to validity and drawing conclusions from their linear regression results.</p>
+</li>
+</ul>
+</span>
+<table class="tableblock frame-all grid-none stripes-none stretch strategy-box">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="title">Mini Project: Be a Bad Data Scientist!</span></p>
+<p class="tableblock">In this <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/threats-to-validity/pages/project-threats-to-validity.html" target="_blank" rel="noopener">Threats to Validity</a>, students pretend to be terrible data scientists who develop and support claims based on faulty sampling techniques (selection bias, bias in the study design, poor choice of summary data, and confounding variables). This is a fun opportunity for your students to demonstrate their understanding of the impact of various threats to validity.</p></td>
+</tr>
+</tbody>
+</table>
+</span>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<h2 id="_additional_exercises"><span class="section-link"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/#_additional_exercises"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Additional Exercises:</h2>
+<span class="sectionbody">
+<span class="ulist">
+<ul>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/threats-to-validity/pages/identifying-threats-1.html" target="_blank" rel="noopener">Identifying Threats to Validity (Part 1)</a></p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/threats-to-validity/pages/identifying-threats-2.html" target="_blank" rel="noopener">Identifying Threats to Validity (Part 2)</a></p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/threats-to-validity/pages/identifying-threats-3.html" target="_blank" rel="noopener">Identifying Threats to Validity (Part 3)</a></p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/threats-to-validity/pages/project-threats-to-validity.html" target="_blank" rel="noopener">Threats to Validity</a></p>
+</li>
+</ul>
+</span>
+</span>
+</span>
+<span class="sect1 acknowledgmentsect">
+<span class="sectionbody">
+<span class="openblock acknowledgment"><hr/>
+<span class="content">
+<span class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</span>
+</span>
+</span>
+</span>
+</span>
+</span>
+<span id="footer">
+<span id="footer-text">
+Last updated 2022-10-17 19:42:17 -0400
+</span>
+</span>
+</span>
+</body>
+</html>

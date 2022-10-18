@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Design Recipe Telephone</title>
+<style>
+/* Overall document font */
+* {font-family: Lato, Arial, Helvetica, sans-serif;}
+
+/* document headings */
+h1,.lesson-section-1 {color: #75328A;}
+h1{font-size: 32px; font-family: sans-serif;}
+table.section-heading *, .lesson-section-1 h2{font-size: 32px; font-weight: 100;}
+table.section-heading{width: 100%;}
+table.section-heading td:last-child{text-align: right; color: #d9d2e9;}
+
+/* preamble section */
+table.preamble td {padding: 10px;}
+table.preamble td:first-child{background: #b7d893; width: 25%;}
+table.preamble td:first-child p {font-weight: bold; margin: 5px;}
+
+/* content used throughout the body */
+table{ border-collapse: collapse; border: none; }
+table.grid-all.frame-all {border: solid 1px black;}
+table.grid-none.frame-none {border-width: 0px;}
+
+.big {font-size: 30pt;}
+.vocab{font-weight: bold; font-style: italic;}
+.right{text-align: right;}
+.acknowledgment {
+  border-top: solid 1px black; 
+  font-style: italic; 
+  font-size: 8pt;
+}
+.lesson-point {
+  border-top: solid 1px black; 
+  border-bottom: solid 1px black; 
+  color: black;
+  font-weight: bold;
+}
+
+.web-page-only, #footer { display: none; visibility: hidden; }
+
+/* Callout boxes */
+.strategy-box, .notice-box {
+  background: #efefef;
+  border: solid 5px !important;
+  margin: 15px auto;
+  width: 100%;
+}
+.strategy-box { border-color: #1a73b5 !important; }
+.notice-box   { border-color: #7747a5 !important; }
+.strategy-box td, .notice-box td{ padding: 10px; }
+.strategy-box .title, .notice-box .title{
+  width: 100%;
+  display: block;
+  font-weight: bold;
+  font-size: 24px;
+  clear: both;
+  margin: 100px;
+}
+.strategy-box p.tableblock:first-child, .notice-box p.tableblock:first-child{
+  text-align: center;
+  padding-bottom: 15px;
+}
+.strategy-box .title { color: #1a73b5; }
+.notice-box   .title { color: #7747a5; }
+.strategy-box a, .notice-box a { color: blue; text-decoration: underline; }
+
+/* "Tables" of Evaluation */
+.operator{border-bottom: solid 1px black; text-align: center;}
+.operator * {text-align: center;}
+td {padding: 0px 10px; font-size: 14px;}
+table.expression {
+    font-family:"Courier New", Monaco, monospace;
+    border:     solid 1px black;
+    font-size:  1px;
+    max-width:  400px;
+    color:      #666666;
+    display:    inline-block;
+}
+table.args {border: none; text-align: center;}
+
+.wescheme-string,     .cm-scheme-string    {color: green;}
+.wescheme-number,     .cm-scheme-number    {color: blue;}
+.wescheme-boolean,    .cm-scheme-boolean   {color: darkred;}
+.wescheme-character,  .cm-scheme-character {color: orange;}
+.wescheme-symbol,     .cm-scheme-symbol    {color: steelblue;}
+.wescheme-comment,    .cm-scheme-comment   {color: orange; }
+
+.racket, .pyret, .studentAnswerCode, .studentAnswer, .pyretkeyword, .keyword_only {
+    font-family:"Courier New", Monaco, monospace !important; 
+    color: black;
+}
+
+/* Design Recipe */
+.recipe_instructions { font-style: italic; }
+table.recipe_title {
+  color:              white;
+  background:         gray;
+  display:            block;
+  padding:            0px;
+  font-size:          1.1rem;
+  font-weight:        bold;
+}</style>
+
+    <script src="../../../lib/langtable.js"></script>
+    <script src="../../../dependency-graph.js"></script>
+    <script src="../../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:window.location.href,
+    filename:"Design Recipe Telephone",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="workbookpage article canBeLongerThanAPage wescheme" onload="renderSaveToDrive()">
+<span id="header">
+<h1>Design Recipe Telephone</h1>
+
+  <span id="savetodrive-div"></span>
+
+</span>
+<span id="content">
+<span id="preamble_disabled" class="lessonSummary">
+<span class="sectionbody">
+<span class="paragraph">
+<p><em>Most computer programs are written by huge teams! It is critical that each team member records their thinking with enough detail for other team members to be able to pick up where they left off. We&#8217;re going to practice collaborative programming through an activity called Design Recipe Telephone.</em></p>
+</span>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<h2 id="_1_prepare_the_class_and_the_materials">1. Prepare the class and the materials</h2>
+<span class="sectionbody">
+<span class="paragraph">
+<p>Choose which set of word problems you are going to start with and print enough copies so that each student will get one word problem.</p>
+</span>
+<span class="paragraph">
+<p>Divide the class into groups of three.</p>
+</span>
+<span class="paragraph">
+<p>Give each student within each group a different word problem from the set.</p>
+</span>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 41.6666%;">
+<col style="width: 25.0001%;">
+</colgroup>
+<thead>
+<tr>
+<th style="width: 33.3333%;" class="tableblock halign-left valign-top">Word Problem Set 1:</th>
+<th style="width: 41.6666%;" class="tableblock halign-left valign-top">Word Problem Set 2:</th>
+<th style="width: 25.0001%;" class="tableblock halign-left valign-top">Option 3:</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/../../../lessons/functions-dr-wescheme/pages/dr-g.html">Design Recipe Telephone Set 1: g</a></p>
+</span>
+<span class="paragraph">
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/../../../lessons/functions-dr-wescheme/pages/dr-h.html">Design Recipe Telephone Set 1: h</a></p>
+</span>
+<span class="paragraph">
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/../../../lessons/functions-dr-wescheme/pages/dr-r.html">Design Recipe Telephone Set 1: r</a></p>
+</span>
+<span class="paragraph">
+<p><em>★ Once completed, the set of functions generated from these word problems can be used to fix the code in this <a href="https://www.wescheme.org/openEditor?publicId=SR2kj0Xt6z" target="_blank" rel="noopener">Collaboration Starter File - For use with Design Recipe Telephone Set 1</a>. If all the functions are defined correctly, the starter file will then generate a cool image!</em></p>
+</span></span></td>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/../../../lessons/functions-dr-wescheme/pages/dr-symmetry.html">Design Recipe Telephone Set 2: symmetry</a></p>
+</span>
+<span class="paragraph">
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/../../../lessons/functions-dr-wescheme/pages/dr-l-rect.html">Design Recipe Telephone Set 2: l-rect</a></p>
+</span>
+<span class="paragraph">
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/../../../lessons/functions-dr-wescheme/pages/dr-right-trapezoid.html">Design Recipe Telephone Set 2: right-trapezoid</a></p>
+</span></span></td>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>Use any of the practice word problems in the workbook that students haven&#8217;t solved before.</p>
+</span>
+<span class="paragraph">
+<p><em>★ There is a large collection of math problems that would work well with the Design Recipe in the Additional Exercises section of our <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/../functions-dr">Solving Word Problems Using the Design Recipe</a> lesson.</em></p>
+</span></span></td>
+</tr>
+</tbody>
+</table>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<h2 id="_2_describe_the_rules_for_the_activity">2. Describe the rules for the activity</h2>
+<span class="sectionbody">
+<span class="ulist">
+<ul>
+<li>
+<p>In this activity, each person in your group will start with a different word problem. You will each be doing <em>one step of each Design Recipe problem</em>. After you complete your step, you will fold your paper to hide the part that you were looking at so that only <em>your work and the rest of the recipe</em> are visible. Then you will pass your work to the person to your right.</p>
+</li>
+<li>
+<p>The person who has received your paper will review your work and complete the next step based solely on what you wrote down for them. If they don&#8217;t have the information they need, they will give the paper back to you for revision.</p>
+</li>
+<li>
+<p>Meanwhile, you will receive a different problem from the person to your left. If at any point your realize that the person before you didn&#8217;t provide enough information, you may hand the paper back to them for revision.</p>
+</li>
+</ul>
+</span>
+<span class="openblock indentedpara">
+<span class="content">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<thead>
+<tr>
+<th style="width: 100%;" class="tableblock halign-left valign-top">Who&#8217;s Doing What During Each Round of Design Recipe Telephone?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p><strong>Round 1 - Writing Contract and Purpose Statements from the Word Problem</strong></p>
+</span>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>Student 1 - Problem A</p>
+</span></span></td>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>Student 2 - Problem B</p>
+</span></span></td>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>Student 3 - Problem C</p>
+</span></span></td>
+</tr>
+</tbody>
+</table></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p><span class="center"><em>everyone folds over the previous section, and passes their paper to the right</em></span></p>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p><strong>Round 2 - Writing Examples <em>based solely on the Contract and Purpose Statement</em></strong></p>
+</span>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>Student 1 - Problem C</p>
+</span></span></td>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>Student 2 - Problem A</p>
+</span></span></td>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>Student 3 - Problem B</p>
+</span></span></td>
+</tr>
+</tbody>
+</table></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p><span class="center"><em>everyone folds over the previous section, and passes their paper to the right</em></span></p>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p><strong>Round 3 - Writing Function Definitions <em>based solely on the Examples</em></strong></p>
+</span>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>Student 1 - Problem B</p>
+</span></span></td>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>Student 2 - Problem C</p>
+</span></span></td>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>Student 3 - Problem A</p>
+</span></span></td>
+</tr>
+</tbody>
+</table></span></td>
+</tr>
+</tbody>
+</table>
+</span>
+</span>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<h2 id="_3_peer_review_and_revision">3. Peer Review and Revision</h2>
+<span class="sectionbody">
+<span class="paragraph">
+<p>Direct students to trade their Design Recipe with another group. In order to engage in the peer review, they should place their Design Recipe and their <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/rubric-dr.html">Design Recipe Rubric</a> side-by-side.</p>
+</span>
+<span class="paragraph">
+<p><span class="autonum">1</span> Go through the checklist in the left-hand column to assess their CONTRACT. Check boxes or leave them blank depending on what you observe.</p>
+</span>
+<span class="paragraph">
+<p><span class="autonum">2</span> Once you have examined and analyzed the CONTRACT, read the descriptive text (either “Wow!” or “Getting there”) and check whichever one more accurately describes the work in front of you.</p>
+</span>
+<span class="paragraph">
+<p><span class="autonum">3</span> If the Design Recipe you’re reviewing is “getting there,” provide some descriptive feedback to help the student fix their work.</p>
+</span>
+<span class="paragraph">
+<p><span class="autonum">4</span> Repeat the process for the remaining sections of the Design Recipe.</p>
+</span>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<h2 id="_4_practice_makes_perfect">4. Practice makes perfect!</h2>
+<span class="sectionbody">
+<span class="paragraph">
+<p>This activity can be repeated several times, or done as a timed competition between teams. The goal is to emphasize that each step - if done correctly - makes the following step incredibly simple.</p>
+</span>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<h2 id="_5_synthesize">5. Synthesize</h2>
+<span class="sectionbody">
+<span class="paragraph">
+<p>The Design Recipe is a way of slowing down and thinking through each step of a problem.</p>
+</span>
+<span class="paragraph">
+<p>If we already know how to get the answer, why would it ever be important to know how to do each step the slow way?</p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p><em>Sample Responses: Someday we won&#8217;t be able to get the answer, and knowing the steps will help. We can help someone else who is stuck. We can work with someone else and share our thinking. We can check our work.</em></p>
+</li>
+</ul>
+</span>
+</span>
+</span>
+<span class="sect1 acknowledgmentsect">
+<span class="sectionbody">
+<span class="openblock acknowledgment"><hr/>
+<span class="content">
+<span class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/algebra-wescheme/mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</span>
+</span>
+</span>
+</span>
+</span>
+</span>
+<span id="footer">
+<span id="footer-text">
+Last updated 2022-10-18 16:15:43 -0400
+</span>
+</span>
+</body>
+</html>

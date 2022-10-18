@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Maya History and Culture</title>
+<style>
+/* Overall document font */
+* {font-family: Lato, Arial, Helvetica, sans-serif;}
+
+/* document headings */
+h1,.lesson-section-1 {color: #75328A;}
+h1{font-size: 32px; font-family: sans-serif;}
+table.section-heading *, .lesson-section-1 h2{font-size: 32px; font-weight: 100;}
+table.section-heading{width: 100%;}
+table.section-heading td:last-child{text-align: right; color: #d9d2e9;}
+
+/* preamble section */
+table.preamble td {padding: 10px;}
+table.preamble td:first-child{background: #b7d893; width: 25%;}
+table.preamble td:first-child p {font-weight: bold; margin: 5px;}
+
+/* content used throughout the body */
+table{ border-collapse: collapse; border: none; }
+table.grid-all.frame-all {border: solid 1px black;}
+table.grid-none.frame-none {border-width: 0px;}
+
+.big {font-size: 30pt;}
+.vocab{font-weight: bold; font-style: italic;}
+.right{text-align: right;}
+.acknowledgment {
+  border-top: solid 1px black; 
+  font-style: italic; 
+  font-size: 8pt;
+}
+.lesson-point {
+  border-top: solid 1px black; 
+  border-bottom: solid 1px black; 
+  color: black;
+  font-weight: bold;
+}
+
+.web-page-only, #footer { display: none; visibility: hidden; }
+
+/* Callout boxes */
+.strategy-box, .notice-box {
+  background: #efefef;
+  border: solid 5px !important;
+  margin: 15px auto;
+  width: 100%;
+}
+.strategy-box { border-color: #1a73b5 !important; }
+.notice-box   { border-color: #7747a5 !important; }
+.strategy-box td, .notice-box td{ padding: 10px; }
+.strategy-box .title, .notice-box .title{
+  width: 100%;
+  display: block;
+  font-weight: bold;
+  font-size: 24px;
+  clear: both;
+  margin: 100px;
+}
+.strategy-box p.tableblock:first-child, .notice-box p.tableblock:first-child{
+  text-align: center;
+  padding-bottom: 15px;
+}
+.strategy-box .title { color: #1a73b5; }
+.notice-box   .title { color: #7747a5; }
+.strategy-box a, .notice-box a { color: blue; text-decoration: underline; }
+
+/* "Tables" of Evaluation */
+.operator{border-bottom: solid 1px black; text-align: center;}
+.operator * {text-align: center;}
+td {padding: 0px 10px; font-size: 14px;}
+table.expression {
+    font-family:"Courier New", Monaco, monospace;
+    border:     solid 1px black;
+    font-size:  1px;
+    max-width:  400px;
+    color:      #666666;
+    display:    inline-block;
+}
+table.args {border: none; text-align: center;}
+
+.wescheme-string,     .cm-scheme-string    {color: green;}
+.wescheme-number,     .cm-scheme-number    {color: blue;}
+.wescheme-boolean,    .cm-scheme-boolean   {color: darkred;}
+.wescheme-character,  .cm-scheme-character {color: orange;}
+.wescheme-symbol,     .cm-scheme-symbol    {color: steelblue;}
+.wescheme-comment,    .cm-scheme-comment   {color: orange; }
+
+.racket, .pyret, .studentAnswerCode, .studentAnswer, .pyretkeyword, .keyword_only {
+    font-family:"Courier New", Monaco, monospace !important; 
+    color: black;
+}
+
+/* Design Recipe */
+.recipe_instructions { font-style: italic; }
+table.recipe_title {
+  color:              white;
+  background:         gray;
+  display:            block;
+  padding:            0px;
+  font-size:          1.1rem;
+  font-weight:        bold;
+}</style>
+
+    <script src="../../lib/langtable.js"></script>
+    <script src="../../dependency-graph.js"></script>
+    <script src="../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:window.location.href,
+    filename:"Maya History and Culture",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="article LessonPlan spreadsheets" onload="renderSaveToDrive()">
+<span id="body" onload="renderSaveToDrive()">
+<span id="header">
+<h1>Maya History and Culture</h1>
+
+  <span id="savetodrive-div"></span>
+
+</span>
+<span id="content">
+<span id="preamble_disabled" class="lessonSummary">
+<span class="sectionbody">
+<script>
+function preselect(klass) {
+  const items = document.getElementsByClassName(klass);
+  for (let i = 0; i < items.length; i++) {
+    items[i].style.display = 'none';
+  }
+  if (items.length > 0) {
+    items[0].style.display = 'block';
+  }
+}
+window.onload = function() {
+  preselect('alignedStandards');
+  preselect('alignedTextbooks');
+  preselect('alignedPractices');
+}
+function showStandardsAlignment() {
+  const selectTag = document.getElementsByClassName('standardsAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const stdTables = document.getElementsByClassName('alignedStandards');
+  //const intro = document.getElementsByClassName('alignedStandardsIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < stdTables.length; i++) {
+    const stdTable = stdTables[i];
+    stdTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optStd = opt.value;
+      for (let j = 0; j < stdTables.length; j++) {
+        const stdTable = stdTables[j];
+        if (stdTable.classList.contains(optStd)) {
+          stdTable.style.display = 'block';
+         // introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+function toggleNonPrereqDisplay() {
+  const inputTag = document.getElementsByClassName('sidebarinput')[0];
+  const checkedP = inputTag.checked;
+  const lessonTable = document.getElementsByClassName('sidebarlessons')[0];
+  const lis = lessonTable.getElementsByTagName('li');
+  for (let i = 0; i < lis.length; i++) {
+    const li = lis[i];
+    const lesson = li.getElementsByClassName('prerequisite');
+    if (lesson.length === 0) {
+      li.style.display = checkedP ? 'none' : 'block';
+    }
+  }
+}
+</script>
+<script>
+function showTextbooksAlignment() {
+  const selectTag = document.getElementsByClassName('textbooksAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const textbookTables = document.getElementsByClassName('alignedTextbooks');
+  //const intro = document.getElementsByClassName('alignedTextbooksIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < textbookTables.length; i++) {
+    const textbookTable = textbookTables[i];
+    textbookTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optTextbook = opt.value;
+      for (let j = 0; j < textbookTables.length; j++) {
+        const textbookTable = textbookTables[j];
+        if (textbookTable.classList.contains(optTextbook)) {
+          textbookTable.style.display = 'block';
+          //introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+</script>
+<script>
+function showPracticesAlignment() {
+  const selectTag = document.getElementsByClassName('practicesAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const practiceTables = document.getElementsByClassName('alignedPractices');
+  for (let i = 0; i < practiceTables.length; i++) {
+    const practiceTable = practiceTables[i];
+    practiceTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optPractice = opt.value;
+      for (let j = 0; j < practiceTables.length; j++) {
+        const practiceTable = practiceTables[j];
+        if (practiceTable.classList.contains(optPractice)) {
+          practiceTable.style.display = 'block';
+        }
+      }
+    }
+  }
+}
+</script>
+<span class="paragraph">
+<!-- </p>
+</span>
+--></span><span class="sidebar"><span id="toggle"></span><span class="paragraph"><!--
+<span class="paragraph">
+<p>
+--><span class="sidebarlessons"><strong>Lessons</strong>
+<ul></ul></span>
+<span class="sidebarstandards"><strong>Standards in this Lesson</strong>: <em>None</em></span>
+<span class="sidebarpractices"><strong>Practices in this Lesson</strong>: <em>None</em></span>
+<!-- </p>
+</span>
+--></span><!--
+<span class="paragraph">
+<p>
+-->
+</span>
+<span class="paragraph description">
+<p>In this lesson students will use human sacrifice as an entry point for learning about Maya society, but will recognize that learning about one practice of the Maya is not enough information to make a broader conclusion about who the Maya were as a people and what led to their downfall.</p>
+</span>
+<table class="tableblock frame-all grid-all stripes-none stretch left-header preamble">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>Lesson Goals</p>
+</span></span></td>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>Students will be able to&#8230;&#8203;</p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p>analyze a variety of sources in order to learn more about Maya society and explore different theories and portrayals of the Maya civilization.</p>
+</li>
+<li>
+<p>predict why the Maya civilization ended based on a variety of primary and secondary sources.</p>
+</li>
+<li>
+<p>use a timeline to grasp chronology of events in history</p>
+</li>
+<li>
+<p>understand that information can be collected with a survey.</p>
+</li>
+</ul>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>Student-facing Lesson Goals</p>
+</span></span></td>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>*</p>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>Materials</p>
+</span></span></td>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="ulist materials-links">
+<ul>
+<li>
+<p><span class="materialSectionPlaceholder"> </span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/maya-1-spreadsheets/pages/map.html" target="_blank" rel="noopener">Geographical Advantages and Disadvantages</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/maya-1-spreadsheets/pages/timeline.html" target="_blank" rel="noopener">Setting the Stage: The Rise &amp; Fall of the Maya</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/maya-1-spreadsheets/pages/spanish-on-maya.html" target="_blank" rel="noopener">Portrayal of the Maya by the Spanish in the 1540s</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/maya-1-spreadsheets/pages/research-on-maya.html" target="_blank" rel="noopener">Current Research about the Maya</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/maya-1-spreadsheets/pages/gods.html" target="_blank" rel="noopener">Maya Gods</a></span></p>
+</li>
+</ul>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>Preparation</p>
+</span></span></td>
+<td class="tableblock halign-left valign-top"><span class="content"></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>Supplemental Resources</p>
+</span></span></td>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="ulist">
+<ul>
+<li>
+<p><a href="https://www.sciencealert.com/guatemala-maya-civilisation-lidar-vast-megalopolis-hidden-for-centuries" target="_blank" rel="noopener">Science Alert: Laser Survey Has Revealed Vast Network of Hidden Maya Structures</a></p>
+</li>
+</ul>
+</span></span></td>
+</tr>
+</tbody>
+</table>
+<span class="dlist glossary">
+<span class="title">Glossary</span>
+<dl>
+<dt class="hdlist1"><br/>archaeology</dt>
+<dd>
+<p>the study of physical remains, and things that people made and used in the past</p>
+</dd>
+<dt class="hdlist1"><br/>hieroglyph</dt>
+<dd>
+<p>stylized picture of an object representing a word, syllable, or sound, as found in ancient Egyptian, the Maya calendar, and other writing systems.</p>
+</dd>
+</dl>
+</span>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<table class="grid-none frame-none section-heading"><tr><td width="65%">What Happened to the Maya? </td><td width="35%">10 minutes</td></tr></table>
+<span class="sectionbody">
+<span class="sect2 lesson-section-2">
+<h3 id="_overview">Overview</h3>
+
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_launch">Launch</h3>
+<span class="paragraph lesson-instruction">
+<p>A few thousand years before Europeans began settling the northeast corner of North America, the highly sophisticated Maya civilization took root throughout most of the region that is now Mexico and Central America. At its peak, around 20 million Maya people lived in highly advance cities&#8230;&#8203; and then, suddenly, about a thousand years ago, they practically disappeared. Imagine if 9 out of every 10 people living in our cities just disappeared! How many people would be left in this classroom?!</p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p><em>Divide the number of the people in the room by 10.</em></p>
+</li>
+<li>
+<p><em>Or, for a quick kinesthetic visualization, have everyone stand. Direct them to count off&#8230;&#8203; and sit down as they say their number unless they are number 10, 20, 30 or 40&#8230;&#8203; eg 1 to 9 sit down&#8230;&#8203; 10 stays standing&#8230;&#8203; 11 to 19 sit down&#8230;&#8203; 20 stays standing&#8230;&#8203;</em></p>
+</li>
+</ul>
+</span>
+<span class="paragraph lesson-instruction">
+<p>Turn to the map on <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/maya-1-spreadsheets/pages/map.html" target="_blank" rel="noopener">Geographical Advantages and Disadvantages</a> and consider the geographical advantages and disadvantages of building a civilization on the Yucatán Peninsula?</p>
+</span>
+<span class="paragraph">
+<p>To get data about Native Americans and settlers in the Northeast, scientists can rely heavily on written sources, such as books containing individual people’s reports on their dealings with the Native Americans, as well as records like ships’ logs and town ledgers about the colonists who came from Europe.</p>
+</span>
+<span class="paragraph lesson-instruction">
+<p>How do we learn about societies like the Maya, whose <span class="vocab">hieroglyphic</span> writings were not only difficult to decipher, but were also almost completely destroyed during the Spanish invasion in the 1500s?</p>
+</span>
+<span class="paragraph">
+<p><span class="vocab">Archaeology</span> is the study of physical remains and the things that people made, used, and left behind. By analyzing data about the Maya provided by archaeologists, we can solve many of the mysteries of their civilization.</p>
+</span>
+<span class="paragraph">
+<p>Before we look at some of these archaeological discoveries, it helps to orient ourselves with a timeline that roughly sketches out the rise and fall of the Maya civilization.</p>
+</span>
+<span class="paragraph lesson-instruction">
+<p>Turn to <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/maya-1-spreadsheets/pages/timeline.html" target="_blank" rel="noopener">Setting the Stage: The Rise &amp; Fall of the Maya</a> and answer the questions.</p>
+</span>
+<span class="paragraph">
+<p>Note that population sizes over the past three thousand years can only be educated guesses because until recently there was no such thing as Census data for the Maya.</p>
+</span>
+</span>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<h2 id="_the_spanish_invasion"><span class="section-link"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/#_the_spanish_invasion"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>The Spanish Invasion</h2>
+<span class="sectionbody">
+<table class="tableblock frame-all grid-none stripes-none stretch strategy-box">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="title">BACKGROUND KNOWLEDGE:</span></p>
+<p class="tableblock">After Cortes conquered the Aztecs in the early 1500s, the Spanish moved to the Yucatán. This created major conflict between the Spanish and the Maya, who, though not nearly as numerous or powerful as they used to be, had a uniquely sophisticated civilization in the Americas, including a written language, a number system, a calendar, an understanding of astronomy (the positions of stars, planets, etc.), and a religion.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">In 1549, a Franciscan friar named Diego de Landa was sent to the Yucatán, as part of Spain’s mission to convert the Maya to Catholicism. In the years to come, he tortured and killed countless Maya in his quest to locate and destroy their idols and temples. He also destroyed thousands of their hieroglyphic books (called codices), so that only three remain in the world today. These three codices give us a glimpse at the wisdom and beauty of the ancient Maya culture. The Maya god of maize (corn) appeared in many of their writings and art. Corn was so important to the Maya that humans are depicted as having been created from an ear of corn!</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">There are different ways to define the word “Historic.” One of its meanings has to do with whether or not there are written records from a time period. This definition explains why experts on the Maya civilization (which starts with “Pre-Classic” in about 1250 BCE) use the word “Historic” for the period beginning in 1520. This is referring to records written by the Spanish, not by the Maya.</p></td>
+</tr>
+</tbody>
+</table>
+<span class="paragraph lesson-instruction">
+<p>Turn to <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/maya-1-spreadsheets/pages/spanish-on-maya.html" target="_blank" rel="noopener">Portrayal of the Maya by the Spanish in the 1540s</a> and read the descriptions of the Maya written by Diego de Landa and Bartolome de Las Casas, two Spanish missionaries who worked in the Yucatán in the 1500s.</p>
+</span>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<h2 id="_discovery_of_remains_of_human_sacrifice_victims"><span class="section-link"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/#_discovery_of_remains_of_human_sacrifice_victims"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Discovery of Remains of Human Sacrifice Victims</h2>
+<span class="sectionbody">
+<span class="paragraph">
+<p>In modern day, archaeologists have learned a lot about the Maya civilization from uncovering human remains in cenotes, which were believed to be holy sites. Archaeologists currently believe that human remains were from human sacrifice to various gods.</p>
+</span>
+<span class="paragraph lesson-instruction">
+<p>Turn to <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/maya-1-spreadsheets/pages/research-on-maya.html" target="_blank" rel="noopener">Current Research about the Maya</a>.</p>
+</span>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<h2 id="_maya_gods"><span class="section-link"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/#_maya_gods"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Maya Gods</h2>
+<span class="sectionbody">
+<span class="paragraph">
+<p>To get a better glimpse at the exotic Maya culture, it helps to understand what was important to them by learning about the gods they worshipped.</p>
+</span>
+<span class="paragraph">
+<p>To avoid confusion, experts assign letter names to the Maya gods. Here are some tips on how to identify the first five gods from their pictures:</p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p>God A typically has a skeletal appearance</p>
+</li>
+<li>
+<p>God B is often associated with a serpent</p>
+</li>
+<li>
+<p>God C is sometimes shown rising out of a turtle or toad</p>
+</li>
+<li>
+<p>God D may be holding a peccary (type of pig)</p>
+</li>
+<li>
+<p>God E usually has some resemblance to an ear of corn</p>
+</li>
+</ul>
+</span>
+<span class="paragraph lesson-instruction">
+<p>Turn to <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/maya-1-spreadsheets/pages/gods.html" target="_blank" rel="noopener">Maya Gods</a> and see if you can match the descriptions to the images.</p>
+</span>
+<span class="paragraph">
+<p>Possible discussion:</p>
+</span>
+<span class="paragraph">
+<p>Before embarking on a study of the Maya civilization with the help of data science tools, have students guess which two of the above symbols (turtle, skeleton, pig, corn, snake) will turn out to represent answers to the Unit&#8217;s two big questions:</p>
+</span>
+<span class="olist arabic">
+<ol class="arabic">
+<li>
+<p>How do we learn about societies like the Maya, whose <span class="vocab">hieroglyphic</span> writings were not only difficult to decipher, but were also almost completely destroyed during the Spanish invasion in the 1500s?</p>
+</li>
+<li>
+<p>What can past civilizations teach us about the environment’s role in a society’s survival?</p>
+</li>
+</ol>
+</span>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<h2 id="_gathering_data"><span class="section-link"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/#_gathering_data"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Gathering Data</h2>
+<span class="sectionbody">
+<span class="paragraph">
+<p>Before the next social studies class period, students are to <a href="https://docs.google.com/document/d/1Rzd4lo4E_sacrSp4qwcrpJ5PhoZl2GL0HZvTGtW4Vfc/edit?usp=sharing" target="_blank" rel="noopener">survey</a> 6 people who are older than them (parents, older siblings, other relatives, neighbors…) to see what they know or think about the Maya, and circle each Respondent’s answer. (The 1st Respondent’s  answers all get circled below R1, the 6th Respondent’s answers all get circled below R6; and so on.) For practice, students get a partner’s responses to complete the first (R1) column. After completing the survey with 5 more respondents for homework, they turn the sheet in to the teacher next time class meets.  The teacher will tally responses by the end of this Unit, so after they try answering all the questions again themselves, the class can discuss the overall results of their survey.  [For example, maybe 75/150 = 0.50 respondents knew that the Maya civilization began about 3,000 years ago…]</p>
+</span>
+<span class="paragraph">
+<p><em>Possible Discussion: To preview data science ideas, imagine that you’ve found Maya necklaces, some made of jade and others made of jaguar teeth. The necklaces have different numbers of beads. In other words, the necklaces vary. In this case, there are two variables of interest: type of bead and how many beads. Type of bead is categorical, summarized by reporting fractions or proportions: for instance, maybe 4/10 = 0.40 of the necklaces are jade and 6/10 = 0.60 are made of jaguar teeth. Number of beads is quantitative, summarized by reporting the average: for instance, maybe the average number of beads on the necklaces is 35.</em></p>
+</span>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<h2 id="_synthesize"><span class="section-link"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/#_synthesize"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Synthesize</h2>
+<span class="sectionbody">
+<span class="paragraph">
+<p>What theories do you have for why the Maya empire collapsed? List at least 3 and star the one you believe in the most!</p>
+</span>
+</span>
+</span>
+<span class="sect1 acknowledgmentsect">
+<span class="sectionbody">
+<span class="openblock acknowledgment"><hr/>
+<span class="content">
+<span class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</span>
+</span>
+</span>
+</span>
+</span>
+</span>
+<span id="footer">
+<span id="footer-text">
+Last updated 2022-10-17 19:42:16 -0400
+</span>
+</span>
+</span>
+</body>
+</html>

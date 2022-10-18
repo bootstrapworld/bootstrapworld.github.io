@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Hour of Code</title>
+
+  <link rel="stylesheet" href="../../lib/curriculum.css" />
+    <script src="../../lib/langtable.js"></script>
+    <script src="../../lib/bootstraplesson.js"></script>
+    <script src="../../dependency-graph.js"></script>
+    <script src="../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"Hour of Code",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="narrativepage article narrative pyret" onload="renderSaveToDrive()">
+<!--#include virtual="/menubar.ssi"-->
+<div id="body" onload="renderSaveToDrive()">
+<div id="header">
+<h1>Hour of Code</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<style>
+	/* Hide the "all the lessons" dd and dt, as well as the "other resources" section */
+	#lesson-list dd:last-child, #lesson-list dt:last-of-type, .sect1 { display: none; }
+	.sect1:nth-child(2), .sect1:nth-child(3), .sect1:nth-child(4) {
+		display: block; clear: both;
+	}
+	img, .image { width: 150px; float: right; margin-left: 10px; }
+</style>
+<div class="paragraph">
+<p>Looking for a gentle, self-paced introduction to Bootstrap? Try the Hours of Code below. No prior programming experience required!
+<span class="blankline"></span></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_intro_to_graphics">Intro to Graphics</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><span class="image-figure"><span class="image"><img src="images/overlay.png" alt="overlay" title="overlay"></span><a href="images/overlay.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span>
+<a href="../../lessons/hoc-wescheme-intro/">This Hour of Code lesson</a> is a great, self-paced activity to introduce students to Bootstrap. Students explore simple function composition and order of operations in WeScheme, and then build on that knowledge to create simple computer graphics.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_build_a_snowman">Build a Snowman!</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><span class="image-figure"><span class="image"><img src="../../lessons/hoc-winter/images/complete-snowman.png" alt="complete snowman" title="complete snowman"></span><a href="../../lessons/hoc-winter/images/complete-snowman.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span>
+<a href="../../lessons/hoc-winter/">This Hour of Code lesson</a> has a winter theme, with the option of students modifying code to build a snowman at the end! More rigorous than the first Hour of Code lesson, it includes videos to support students in learning to code at their own pace in WeScheme.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_hour_of_data">Hour of Data</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><span class="image-figure"><span class="image"><img src="images/moose.png" alt="moose" title="moose"></span><a href="images/moose.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span>
+<a href="https://teacher.desmos.com/activitybuilder/custom/61aeb1da79cd49727623544f">This Hour of Data lesson</a> is a self-guided Desmos activity. Students explore data visualization, introductory programming using The Pyret Programming Language, and the application of Data Science to solve real problems. Students will investigate a data set of vehicle-wildlife collisions in Vermont and make recommendations about where to build wildlife overpasses.</p>
+</div>
+<div class="paragraph">
+<p><span class="blankline"></span></p>
+</div>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-17 19:42:18 -0400
+</div>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Exploring Compound Inequality</title>
+
+  <link rel="stylesheet" href="../../../lib/curriculum.css" />
+    <link rel="stylesheet" href="../../../lib/codemirror.css" />
+    <script src="../../../lib/codemirror.js"></script>
+    <script src="../../../lib/runmode.js"></script>
+    <script src="../../../lib/scheme2.js"></script>
+    <script src="../../../lib/pyret-mode.js"></script>
+      <script src="../../../extlib/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML%2Clocal%2Fmathjaxlocal.js"></script>
+      <script>window.status = "not_ready_to_print";</script>
+    <script src="../../../lib/langtable.js"></script>
+    <script src="../../../lib/bootstraplesson.js"></script>
+    <script src="../../../dependency-graph.js"></script>
+    <script src="../../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"Exploring Compound Inequality",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="workbookpage article wescheme" onload="renderSaveToDrive()">
+<div id="header">
+<h1>Exploring Compound Inequality</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<div class="paragraph">
+<p>This page is designed to accompany <a href="https://www.wescheme.org/openEditor?publicId=yFnDbsSnR7" target="_blank" rel="noopener">Compound Inequalities Starter File</a>. When you click "Run" you will see 4 graphs. The first two are simple inequalities and the second two are compound inequalities.</p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">1</span> What does <code class="racket">and-intersection</code> do?</p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"><span class="solution">It takes in 2 functions and a list of numbers, producing a graph of the shaded intersection of values that make both of the inequalities true.</span></span></p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">2</span> Why is the circle on 5 red and the circle on 15 green?</p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"><span class="solution">Because 5 is not part of the solution - it&#8217;s not bigger than itself. And 15 is part of the solution - it&#8217;s less than or equal to 15.</span></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">3</span> Do you think every graph made with <code class="racket">and-intersection</code> will have different color dots at the ends? Why or why not?</p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"><span class="solution">No. It will depend on whether or not the inequality symbols include an equal sign. </span></span></p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"><span class="solution">Sometimes one will and one won&#8217;t. Sometimes neither will. Sometimes both will.</span></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">4</span> What does <code class="racket">or-union</code> do?</p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"><span class="solution">It takes in two functions and a list of numbers, producing a graph showing the shaded union of values that&#8230;&#8203;</span></span></p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"><span class="solution">make either or both of the inequalities true.</span></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">5</span> Why did the graph of this <code class="racket">or-union</code> result in the whole numberline being shaded blue?</p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"><span class="solution">Because in order to make an <code class="racket">or</code> statement true, a number only has to make one of the inequalities true.</span></span></p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"><span class="solution">Every number in the universe is either greater than 5 or less than or equal to 15. There aren&#8217;t any non-solutions!</span></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">6</span> Not all graphs of <code class="racket">or-union</code> will look like this. Can you think of a pair of inequalities whose union won&#8217;t shade the whole graph?</p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"><span class="solution"><em>Answers will vary! <span class="gdrive-only">x &lt; 1</span><script type="math/tex">\displaystyle x \lt 1</script> <strong>or</strong> <span class="gdrive-only">x &lt; 3</span><script type="math/tex">\displaystyle x \lt 3</script></em></span></span></p>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 1ex"></span></p>
+</div>
+<div class="paragraph">
+<p>Change the function definition on <em>line 8</em> to <span class="gdrive-only">x &lt; 5</span><script type="math/tex">\displaystyle x \lt 5</script> and the definition on <em>line 9</em> to <span class="gdrive-only">x \ge 15</span><script type="math/tex">\displaystyle x \ge 15</script> and, before you click "Run", take a moment to think about what the new graphs of <code class="racket">and-intersection</code> and <code class="racket">or-union</code> will look like. Then click "Run" and take a look.</p>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 1ex"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">7</span> What does the new <code class="racket">and-intersection</code> graph look like?</p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"><span class="solution">It only has red circles, representing non-solutions, as below. None of the graph is shaded because there aren&#8217;t any numbers&#8230;&#8203;</span></span></p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"><span class="solution">that are both smaller than 5 and greater than or equal to 15. A message tells us that no solutions exist in the provided range.</span></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">8</span> What does the new <code class="racket">or-union</code> graph look like?</p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"><span class="solution">There&#8217;s an arrow to the left and an arrow to the right with a break in the middle between 5 and 15!</span></span></p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"><span class="solution">The dot for 5 is red because it&#8217;s not part of the solution. The dot for 15 is green because it&#8217;s part of the solution.</span></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">9</span> Why is the dot for 5 red and the dot for 15 green?</p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"><span class="solution">The dot for 5 is red because it&#8217;s not part of the solution. The dot for 15 is green because it&#8217;s part of the solution.</span></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">10</span> Which of the 8 numbers from the list are part of the solution set? How do you know?</p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"><span class="solution">-5, -2.1, 0, 15, 20&#8230;&#8203; the circles are green.</span></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">11</span> Is 3 part of the solution set? How do you know?</p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"><span class="solution">Yes. It&#8217;s in the blue shaded region.</span></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">12</span> Is 10 part of the solution set? How do you know?</p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"><span class="solution">No. It&#8217;s in the unshaded area.</span></p>
+</div>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-18 16:15:44 -0400
+</div>
+</div>
+</body>
+</html>

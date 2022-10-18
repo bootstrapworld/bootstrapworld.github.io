@@ -1,0 +1,1428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Functions Can Be Linear</title>
+
+  <link rel="stylesheet" href="../../lib/curriculum.css" />
+      <script src="../../extlib/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML%2Clocal%2Fmathjaxlocal.js"></script>
+      <script>window.status = "not_ready_to_print";</script>
+    <script src="../../lib/langtable.js"></script>
+    <script src="../../lib/bootstraplesson.js"></script>
+    <script src="../../dependency-graph.js"></script>
+    <script src="../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"Functions Can Be Linear",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="article LessonPlan pyret" onload="renderSaveToDrive()">
+<!--#include virtual="/menubar.ssi"-->
+<div id="body" onload="renderSaveToDrive()">
+<div id="header">
+<h1>Functions Can Be Linear</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<script>
+function preselect(klass) {
+  const items = document.getElementsByClassName(klass);
+  for (let i = 0; i < items.length; i++) {
+    items[i].style.display = 'none';
+  }
+  if (items.length > 0) {
+    items[0].style.display = 'block';
+  }
+}
+window.onload = function() {
+  preselect('alignedStandards');
+  preselect('alignedTextbooks');
+  preselect('alignedPractices');
+}
+function showStandardsAlignment() {
+  const selectTag = document.getElementsByClassName('standardsAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const stdTables = document.getElementsByClassName('alignedStandards');
+  //const intro = document.getElementsByClassName('alignedStandardsIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < stdTables.length; i++) {
+    const stdTable = stdTables[i];
+    stdTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optStd = opt.value;
+      for (let j = 0; j < stdTables.length; j++) {
+        const stdTable = stdTables[j];
+        if (stdTable.classList.contains(optStd)) {
+          stdTable.style.display = 'block';
+         // introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+function toggleNonPrereqDisplay() {
+  const inputTag = document.getElementsByClassName('sidebarinput')[0];
+  const checkedP = inputTag.checked;
+  const lessonTable = document.getElementsByClassName('sidebarlessons')[0];
+  const lis = lessonTable.getElementsByTagName('li');
+  for (let i = 0; i < lis.length; i++) {
+    const li = lis[i];
+    const lesson = li.getElementsByClassName('prerequisite');
+    if (lesson.length === 0) {
+      li.style.display = checkedP ? 'none' : 'block';
+    }
+  }
+}
+</script>
+<script>
+function showTextbooksAlignment() {
+  const selectTag = document.getElementsByClassName('textbooksAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const textbookTables = document.getElementsByClassName('alignedTextbooks');
+  //const intro = document.getElementsByClassName('alignedTextbooksIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < textbookTables.length; i++) {
+    const textbookTable = textbookTables[i];
+    textbookTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optTextbook = opt.value;
+      for (let j = 0; j < textbookTables.length; j++) {
+        const textbookTable = textbookTables[j];
+        if (textbookTable.classList.contains(optTextbook)) {
+          textbookTable.style.display = 'block';
+          //introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+</script>
+<script>
+function showPracticesAlignment() {
+  const selectTag = document.getElementsByClassName('practicesAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const practiceTables = document.getElementsByClassName('alignedPractices');
+  for (let i = 0; i < practiceTables.length; i++) {
+    const practiceTable = practiceTables[i];
+    practiceTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optPractice = opt.value;
+      for (let j = 0; j < practiceTables.length; j++) {
+        const practiceTable = practiceTables[j];
+        if (practiceTable.classList.contains(optPractice)) {
+          practiceTable.style.display = 'block';
+        }
+      }
+    }
+  }
+}
+</script>
+<div class="paragraph">
+<!-- </p>
+</div>
+--></div><div class="sidebar"><div id="toggle"></div><div class="paragraph"><!--
+<div class="paragraph">
+<p>
+--><div class="sidebarlessons"><strong>Lessons</strong>
+<ul></ul></div>
+</div>
+<table class="tableblock frame-all grid-all stretch sidebarstandards">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Standards in this Lesson</strong>
+<select class="standardsAlignmentSelect"  onchange="showStandardsAlignment()"><option selected="selected" value="standards-CCSS-Math">CCSS-Math</option><option value="standards-Oklahoma">Oklahoma</option></select></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist alignedStandards standards-CCSS-Math">
+<div class="title"><a href="http://corestandards.org/Math/">Common Core Math Standards</a></div>
+<dl>
+<dt class="hdlist1">8.EE.B</dt>
+<dd>
+<p>Understand the connections between proportional relationships, lines, and linear equations.</p>
+</dd>
+<dt class="hdlist1">8.EE.B.5</dt>
+<dd>
+<p>Graph proportional relationships, interpreting the unit rate as the slope of the graph. Compare two different proportional relationships represented in different ways.</p>
+</dd>
+<dt class="hdlist1">8.EE.B.6</dt>
+<dd>
+<p>Use similar triangles to explain why the slope m is the same between any two distinct points on a non-vertical line in the coordinate plane; derive the equation y = mx for a line through the origin and the equation y = mx + b for a line intercepting the vertical axis at b.</p>
+</dd>
+<dt class="hdlist1">8.F.A.2</dt>
+<dd>
+<p>Compare properties of two functions each represented in a different way (algebraically, graphically, numerically in tables, or by verbal descriptions).</p>
+</dd>
+<dt class="hdlist1">8.F.B.4</dt>
+<dd>
+<p>Construct a function to model a linear relationship between two quantities. Determine the rate of change  and initial value of the function from a description of a relationship or from two (x, y) values, including reading these from a table or from a graph. Interpret the rate of change and initial value of a linear function in terms of the situation it models, and in terms of its graph or a table of values.</p>
+</dd>
+<dt class="hdlist1">HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1">HSF.IF.B.5</dt>
+<dd>
+<p>Relate the domain of a function to its graph and, where applicable, to the quantitative relationship it describes.</p>
+</dd>
+<dt class="hdlist1">HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.</p>
+</dd>
+<dt class="hdlist1">HSF.IF.C.9</dt>
+<dd>
+<p>Compare properties of two functions each represented in a different way (algebraically, graphically, numerically in tables, or by verbal descriptions).</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Oklahoma">
+<div class="title"><a href="https://sde.ok.gov/oklahoma-academic-standards">Oklahoma Standards</a></div>
+<dl>
+<dt class="hdlist1">OK.A1.F.2.1</dt>
+<dd>
+<p>Distinguish between linear and nonlinear (including exponential) functions arising from real-world and mathematical situations that are represented in tables, graphs, and equations. Understand that linear functions grow by equal intervals and that exponential functions grow by equal factors over equal intervals.</p>
+</dd>
+<dt class="hdlist1">OK.PA.A.2.1</dt>
+<dd>
+<p>Represent linear functions with tables, verbal descriptions, symbols, and graphs; translate from one representation to another.</p>
+</dd>
+<dt class="hdlist1">OK.PA.A.2.2</dt>
+<dd>
+<p>Identify, describe, and analyze linear relationships between two variables.</p>
+</dd>
+<dt class="hdlist1">OK.PA.A.2.4</dt>
+<dd>
+<p>Predict the effect on the graph of a linear function when the slope or y-intercept changes. Use appropriate tools to examine these effects.</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch sidebarpractices">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Practices in this Lesson</strong>
+<select class="practicesAlignmentSelect"  onchange="showPracticesAlignment()"><option selected="selected" value="practices-CC"><a href="http://corestandards.org/Math/">Math</a></option></select></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist alignedPractices practices-CC">
+<div class="title"><a href="http://corestandards.org/Math/">Math</a></div>
+<dl>
+<dt class="hdlist1">MP.7</dt>
+<dd>
+<p>Look for and make use of structure</p>
+</dd>
+<dt class="hdlist1">MP.1</dt>
+<dd>
+<p>Make sense of problems and persevere in solving them</p>
+</dd>
+<dt class="hdlist1">MP.2</dt>
+<dd>
+<p>Reason abstractly and quantitatively</p>
+</dd>
+<dt class="hdlist1">MP.5</dt>
+<dd>
+<p>Use appropriate tools strategically</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<!-- </p>
+</div>
+--></div><!--
+<div class="paragraph">
+<p>
+-->
+</div>
+<div class="paragraph">
+<p><span class="other-proglang">(Also available in <a href="../../lessons/functions-can-be-linear-wescheme/index.shtml">WeScheme</a>)</span></p>
+</div>
+<style>
+#content .small-table {max-width: 75%}
+#content .graph-table img {width: 33%;}
+</style>
+<div class="paragraph description">
+<p>Students explore the concept of slope and y-intercept in linear relationships, using function definitions as a third representation (alongside tables and graphs).</p>
+</div>
+<table class="tableblock frame-all grid-all stripes-none stretch left-header preamble">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Lesson Goals</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Students will be able to&#8230;&#8203;</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>identify linear and non-linear graphs and tables</p>
+</li>
+<li>
+<p>identify the <span class="vocab">slope</span> and <span class="vocab">y-intercept</span> for a <span class="vocab">linear relationship</span> shown as a <span class="vocab">table</span> or <span class="vocab">graph</span></p>
+</li>
+<li>
+<p>match different representations of the same linear relationship</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Student-facing Lesson Goals</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>I can match <span class="vocab">graphs</span> to <span class="vocab">tables</span>, if they both describe the same <span class="vocab">linear relationship</span></p>
+</li>
+<li>
+<p>I can tell the difference between linear and non-linear relationships in tables and graphs</p>
+</li>
+<li>
+<p>Given a table or graph showing a linear relationship, I can compute the <span class="vocab">slope</span> and <span class="vocab">y-intercept</span></p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Materials</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist materials-links">
+<ul>
+<li>
+<p><a href="https://docs.google.com/presentation/d/1AETvTL07xG5qs7h4l4HAxjC61RkUwdUHk9QBXLpUPZU/" target="_blank" rel="noopener">Lesson Slides</a></p>
+</li>
+<li>
+<p><span class="materialSectionPlaceholder"> </span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/functions-can-be-linear/pages/notice-wonder-linearity.html" target="_blank" rel="noopener">Notice and Wonder (Linearity)</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/functions-can-be-linear/pages/match-tables-graphs.html" target="_blank" rel="noopener">Matching Tables to Graphs</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/functions-can-be-linear/pages/graphs-all-linear.html" target="_blank" rel="noopener">Are All Graphs Linear?</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/functions-can-be-linear/pages/tables-all-linear.html" target="_blank" rel="noopener">Are All Tables Linear?</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/functions-can-be-linear/pages/linear-nonlinear-bust.html" target="_blank" rel="noopener">Linear&#x2c; Non-linear&#x2c; or Bust?</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/functions-can-be-linear/pages/slope-int-tables-intro.html" target="_blank" rel="noopener">Slope &amp; y-Intercept from Tables (Intro)</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/functions-can-be-linear/pages/slope-int-tables-basic.html" target="_blank" rel="noopener">Slope &amp; y-Intercept from Tables (Basic Practice)</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/functions-can-be-linear/pages/slope-and-y-tables.html" target="_blank" rel="noopener">Identifying Slope in Tables</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/functions-can-be-linear/pages/slope-and-y-graphs.html" target="_blank" rel="noopener">Identifying Slope and y-intercept in Graphs</a></span></p>
+</li>
+<li>
+<p><span class="OnlineExercise"><a href="https://teacher.desmos.com/activitybuilder/custom/5fc25d458dcfcf0b92021b13" target="_blank" rel="noopener">Matching Tables to Graphs (Desmos)</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="../../lessons/functions-can-be-linear/pages/match-tables-graphs2.html" target="_blank" rel="noopener">Matching Tables to Graphs (Challenge)</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="../../lessons/functions-can-be-linear/pages/linear-nonlinear-bust-graphs.html" target="_blank" rel="noopener">Graphs: Linear&#x2c; Non-linear&#x2c; or Bust?</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="../../lessons/functions-can-be-linear/pages/linear-nonlinear-bust-graphs-2.html" target="_blank" rel="noopener">Graphs 2: Linear&#x2c; Non-linear&#x2c; or Bust?</a></span></p>
+</li>
+<li>
+<p><strong>Classroom visual:</strong> <a href="javascript:showLangTable()">Language Table</a></p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Key Points for the Facilitator</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Lines are made of points (try to avoid referring to "lines" as much as "collections of points")</p>
+</li>
+<li>
+<p>Linear functions can be represented as straight lines on a graph or as sequences that change at a constant rate in a table.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="dlist glossary">
+<div class="title">Glossary</div>
+<dl>
+<dt class="hdlist1">axis</dt>
+<dd>
+<p>A reference line, used to determine the position of a coordinate</p>
+</dd>
+<dt class="hdlist1">data row</dt>
+<dd>
+<p>a structured piece of data in a dataset that typically reports all the information gathered about a given individual</p>
+</dd>
+<dt class="hdlist1">graph</dt>
+<dd>
+<p>a diagram (such as a series of one or more points, lines, line segments, curves, or areas) that represents the variation of a variable in comparison with that of another variable.</p>
+</dd>
+<dt class="hdlist1">line</dt>
+<dd>
+<p>an infinite collection of points forming a straight one-dimensional figure having no thickness and extending infinitely in both directions</p>
+</dd>
+<dt class="hdlist1">linear relationship</dt>
+<dd>
+<p>sequences that change at a constant rate, or points forming a straight line on a graph</p>
+</dd>
+<dt class="hdlist1">scale</dt>
+<dd>
+<p>resize an image to be larger or smaller while maintaining ratios and proportions</p>
+</dd>
+<dt class="hdlist1">slope</dt>
+<dd>
+<p>the steepness of a straight line on a graph</p>
+</dd>
+<dt class="hdlist1">table</dt>
+<dd>
+<p>a data structure that stores data as rows, with entries in particular columns</p>
+</dd>
+<dt class="hdlist1">y-intercept</dt>
+<dd>
+<p>the point where a line or curve crosses the y-axis of a graph</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_simple_sequences_and_straight_lines_duration_15_minutes_"><span class="section-link"><a href="#_simple_sequences_and_straight_lines_duration_15_minutes_"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Simple Sequences and Straight Lines <span class="duration">15 minutes</span></h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_overview">Overview</h3>
+<div class="paragraph">
+<p>Students explore the concept of <em>linearity</em>, as represented in tables and graphs.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_launch">Launch</h3>
+<div class="paragraph lesson-instruction">
+<p>Complete Part 1 of <a href="../../lessons/functions-can-be-linear/pages/notice-wonder-linearity.html" target="_blank" rel="noopener">Notice and Wonder (Linearity)</a> and notice and wonder about this table and graph.</p>
+</div>
+<table class="tableblock frame-none grid-none stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-middle"><div class="content"><table class="tableblock frame-all grid-all stretch pyret-table first-table">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">x</th>
+<th class="tableblock halign-left valign-top">y</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8</p></td>
+</tr>
+</tbody>
+</table></div></td>
+<td class="tableblock halign-center valign-middle"><div class="content"><div class="paragraph">
+<p><span class="image-figure"><span class="image"><img src="images/8cbce8bfd87da936.png" alt="graph of a line passing through the points (0,0) (1,2) (2,4) (3,6) (4,8)" title="graph of a line passing through the points (0,0) (1,2) (2,4) (3,6) (4,8)"></span><a href="images/8cbce8bfd87da936.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>What do you <strong>Notice?</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Although answers will vary, important observations include: _each (x,y) pair on the table corresponds to a point on the graph; both the x and y values in the table are increasing by consistent intervals; and, the points on the graph are connected by a straight line.</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>What do you <strong>Wonder?</strong></p>
+</li>
+<li>
+<p>Complete Part 2 of <a href="../../lessons/functions-can-be-linear/pages/notice-wonder-linearity.html" target="_blank" rel="noopener">Notice and Wonder (Linearity)</a> and consider the questions about these two data tables.</p>
+</li>
+</ul>
+</div>
+<table class="tableblock frame-none grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-middle"><div class="content"><table class="tableblock frame-all grid-all stretch pyret-table first-table">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">x</th>
+<th class="tableblock halign-center valign-top">y</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">3</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">4</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">5</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">6</p></td>
+</tr>
+</tbody>
+</table></div></td>
+<td class="tableblock halign-center valign-middle"><div class="content"><table class="tableblock frame-all grid-all stretch pyret-table first-table">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">x</th>
+<th class="tableblock halign-center valign-top">y</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">20</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">17</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">14</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">11</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">8</p></td>
+</tr>
+</tbody>
+</table></div></td>
+</tr>
+</tbody>
+</table>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>What would the next (x,y) pairs be for these tables?</p>
+</li>
+<li>
+<p>What would the y-values be when x is 0?</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>We can think of the "x" column as counting the <em>order in which the y-values appear</em> (1st value, 2nd value, etc). When we notice that x-values change at a <em>constant rate</em> and the y-values also change at a <em>constant rate</em>, we know that if we were to plot those values on a graph, all of the points would fall on a straight line.</p>
+</div>
+<div class="paragraph lesson-point">
+<p><strong>Linear Relationships</strong> are sequences that change at a constant rate, or points forming a straight line on a graph.</p>
+</div>
+<div class="paragraph">
+<p>The <span class="vocab">line</span> representing the <span class="vocab">linear relationship</span> would not only include the points represented in the <span class="vocab">table</span>, but also <strong>all of the coordinate pairs that satisfy the same rule</strong>, including lots of points whose x and y values are fractions and decimals.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_investigate">Investigate</h3>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Let&#8217;s get some practice connecting tables and graphs on <a href="../../lessons/functions-can-be-linear/pages/match-tables-graphs.html" target="_blank" rel="noopener">Matching Tables to Graphs</a>.</p>
+</li>
+<li>
+<p>Another option for additional practice is <a href="https://teacher.desmos.com/activitybuilder/custom/5fc25d458dcfcf0b92021b13" target="_blank" rel="noopener">Matching Tables to Graphs (Desmos)</a>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph lesson-point">
+<p><span class="vocab">Axes</span> on a graph need an order. <span class="vocab">Rows</span> in a table don&#8217;t!</p>
+</div>
+<div class="paragraph">
+<p>The points in a table are <em>discrete</em>. While ordering the rows in a table can make it easier for us to find the function,
+they preserve their meaning if the rows are shuffled into a different order.</p>
+</div>
+<div class="paragraph">
+<p>On a graph, the points on the x-axis <em>cannot</em> be shuffled, because the x-axis must always be ordered. We can stretch the <em>scale</em> of the axes to making the lines <em>look</em> different, but the points will always be in the same order.</p>
+</div>
+<div class="paragraph lesson-instruction">
+<p>For a challenge - matching tables and graphs with shuffled rows - complete <a href="../../lessons/functions-can-be-linear/pages/match-tables-graphs2.html" target="_blank" rel="noopener">Matching Tables to Graphs (Challenge)</a>.</p>
+</div>
+<table class="tableblock frame-all grid-none stripes-none stretch strategy-box">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="title">Pedagogy Note</span></p>
+<p class="tableblock">To encourage students to look at the <em>points</em> in the table and on the graph, it can be useful to change the <span class="vocab">scale</span> of the graphs to prevent students from leaning on visual cues like "steepness" to bypass the learning objective.</p>
+<p class="tableblock">It can also be useful to list the points in the table <em>out of order</em>, both to focus students' attention on the points and to drive home that rows do not have to be ordered!</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_synthesize">Synthesize</h3>
+<div class="paragraph">
+<p>We&#8217;ve seen that linear relationships can be represented as tables and graphs. Tables only show us <em>some points</em> on a line, whereas a line itself is made up of an <em>infinite</em> number of points. While a table represents a <em>sample</em> of some larger trend, the graph is a way of seeing the trend itself.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_linear_non_linear_or_bust_duration_15_minutes_"><span class="section-link"><a href="#_linear_non_linear_or_bust_duration_15_minutes_"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Linear, Non-Linear, or Bust!  <span class="duration">15 minutes</span></h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_overview_2">Overview</h3>
+<div class="paragraph">
+<p>Students deepen their understanding of linearity, by seeing counterexamples (non-linear relationships), as well as tables and graphs for which there is <em>no</em> relationship.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_launch_2">Launch</h3>
+<div class="paragraph">
+<p>Have students turn to <a href="../../lessons/functions-can-be-linear/pages/graphs-all-linear.html" target="_blank" rel="noopener">Are All Graphs Linear?</a>, where they&#8217;ll Notice and Wonder about the six graphs below and consider the question,
+<strong>If all linear relationships can be shown as points on a graph, does that mean all graphs are linear?</strong></p>
+</div>
+<table class="tableblock frame-none grid-all stripes-none stretch graph-table">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image-figure"><span class="image"><img src="images/87bac7035612ca2d.png" alt="horizontal line crossing the y-axis at 48" title="horizontal line crossing the y-axis at 48"></span><a href="images/87bac7035612ca2d.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span>
+  <span class="image-figure"><span class="image"><img src="images/c72a0bd0f247cf88.png" alt="upside-down v-shaped graph with its vertex at the origin" title="upside-down v-shaped graph with its vertex at the origin"></span><a href="images/c72a0bd0f247cf88.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span>
+  <span class="image-figure"><span class="image"><img src="images/066ebbab5a226556.png" alt="two curves meeting at the origin" title="two curves meeting at the origin"></span><a href="images/066ebbab5a226556.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image-figure"><span class="image"><img src="images/424abe58878a54ac.png" alt="a diagonal line, sloping downward from left to right" title="a diagonal line, sloping downward from left to right"></span><a href="images/424abe58878a54ac.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span>
+  <span class="image-figure"><span class="image"><img src="images/8e84cda665692a9f.png" alt="a diagonal line, sloping updward from left to right" title="a diagonal line, sloping updward from left to right"></span><a href="images/8e84cda665692a9f.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span>
+  <span class="image-figure"><span class="image"><img src="images/8a098bce452b8524.png" alt="a u-shaped graph, opening upward, with its vertex at the origin" title="a u-shaped graph, opening upward, with its vertex at the origin"></span><a href="images/8a098bce452b8524.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></p></td>
+</tr>
+</tbody>
+</table>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>What do you <strong>Notice?</strong></p>
+</li>
+<li>
+<p>What do you <strong>Wonder?</strong></p>
+</li>
+</ul>
+</div>
+<div class="paragraph lesson-point">
+<p>Linear relationships in a graph always appear as straight lines</p>
+</div>
+<div class="paragraph">
+<p>Three of the graphs above represent <span class="vocab">linear relationships</span>, and three show other, non-linear relationships. As we can see, the linear graphs can go in lots of directions and non-linear relationships can follow patterns that aren&#8217;t linear!</p>
+</div>
+<div class="paragraph">
+<p>Have students turn to <a href="../../lessons/functions-can-be-linear/pages/tables-all-linear.html" target="_blank" rel="noopener">Are All Tables Linear?</a>, where they&#8217;ll Notice and Wonder about the six tables below and consider the question,
+<strong>If all linear relationships can be shown as tables, does that mean all tables are linear?</strong></p>
+</div>
+<table class="tableblock frame-none grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-middle"><div class="content"><table class="tableblock frame-all grid-all stretch sideways-pyret-table">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.667%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">y</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-6</p></td>
+</tr>
+</tbody>
+</table></div></td>
+<td class="tableblock halign-center valign-middle"><div class="content"><table class="tableblock frame-all grid-all stretch sideways-pyret-table">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.667%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">y</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">9</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">16</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">25</p></td>
+</tr>
+</tbody>
+</table></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><div class="content"><table class="tableblock frame-all grid-all stretch sideways-pyret-table">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.667%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">12</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">13</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">14</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">15</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">16</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">y</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-12</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-14</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-16</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-18</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-20</p></td>
+</tr>
+</tbody>
+</table></div></td>
+<td class="tableblock halign-center valign-middle"><div class="content"><table class="tableblock frame-all grid-all stretch sideways-pyret-table">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.667%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">9</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">y</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+</tr>
+</tbody>
+</table></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><div class="content"><table class="tableblock frame-all grid-all stretch sideways-pyret-table">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.667%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">y</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">84</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">94</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">104</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">114</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">124</p></td>
+</tr>
+</tbody>
+</table></div></td>
+<td class="tableblock halign-center valign-middle"><div class="content"><table class="tableblock frame-all grid-all stretch sideways-pyret-table">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.667%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-10</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-9</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-7</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-6</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">y</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="gdrive-only">-1/10</span><script type="math/tex">\displaystyle \frac{-1}{10}</script></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="gdrive-only">-1/9</span><script type="math/tex">\displaystyle \frac{-1}{9}</script></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="gdrive-only">-1/8</span><script type="math/tex">\displaystyle \frac{-1}{8}</script></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="gdrive-only">-1/7</span><script type="math/tex">\displaystyle \frac{-1}{7}</script></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="gdrive-only">-1/6</span><script type="math/tex">\displaystyle \frac{-1}{6}</script></p></td>
+</tr>
+</tbody>
+</table></div></td>
+</tr>
+</tbody>
+</table>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>What do you <strong>Notice?</strong></p>
+</li>
+<li>
+<p>What do you <strong>Wonder?</strong></p>
+</li>
+<li>
+<p>Can you figure out what the next (x,y) pair should be for each of them?</p>
+</li>
+<li>
+<p>Can you guess what the y-value for each table would be when x is 0?</p>
+</li>
+</ul>
+</div>
+<div class="paragraph lesson-point">
+<p>Linear relationships in a table show up as sequences that change at a constant rate.</p>
+</div>
+<div class="paragraph">
+<p>Three of the tables above show <span class="vocab">linear</span> relationships, and three show other, non-linear relationships. As we can see, the linear tables can have y-values that change by zero (no change), by a positive number (constant increase), or a negative number (constant decrease) as the x-values increase. The other tables may show patterns, but they aren&#8217;t linear!</p>
+</div>
+<div class="paragraph">
+<p>Sometimes there is <em>no function</em> that will give us a particular table or graph! Take a look at the table and graph below. Can you predict the next two rows? Where will the next point be?</p>
+</div>
+<table class="tableblock frame-none grid-none stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-middle"><div class="content"><table class="tableblock frame-all grid-all stretch pyret-table first-table">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">x</th>
+<th class="tableblock halign-left valign-top">y</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">13</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-2</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">16</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">54</p></td>
+</tr>
+</tbody>
+</table></div></td>
+<td class="tableblock halign-center valign-middle"><div class="content"><div class="paragraph">
+<p><span class="image-figure"><span class="image"><img src="images/d1ff77c5e7592cc3.png" alt="scatter plot with no apparent pattern" title="scatter plot with no apparent pattern"></span><a href="images/d1ff77c5e7592cc3.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_investigate_2">Investigate</h3>
+<div class="openblock lesson-instruction">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Can you tell when a relationship is a linear function? A non-linear one? Not a function at all?</p>
+</li>
+<li>
+<p>Can someone remind us how to tell whether or not a graph represents a function? <em>It has to pass the vertical line test!</em></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Have students complete <a href="../../lessons/functions-can-be-linear/pages/linear-nonlinear-bust.html" target="_blank" rel="noopener">Linear&#x2c; Non-linear&#x2c; or Bust?</a>. For more (optional) practice, you can have them work with <a href="../../lessons/functions-can-be-linear/pages/linear-nonlinear-bust-graphs.html" target="_blank" rel="noopener">Graphs: Linear&#x2c; Non-linear&#x2c; or Bust?</a> and <a href="../../lessons/functions-can-be-linear/pages/linear-nonlinear-bust-graphs-2.html" target="_blank" rel="noopener">Graphs 2: Linear&#x2c; Non-linear&#x2c; or Bust?</a>.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_synthesize_2">Synthesize</h3>
+<div class="paragraph">
+<p>Data has a "shape", and this shape can emerge when we look for patterns in that data. A <span class="vocab">linear</span> function is one kind of pattern, and we can see it when viewing data as a table or a graph.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_slope_and_y_intercept_from_tables_duration_20_minutes_"><span class="section-link"><a href="#_slope_and_y_intercept_from_tables_duration_20_minutes_"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Slope and y-Intercept from Tables <span class="duration">20 minutes</span></h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_overview_3">Overview</h3>
+<div class="paragraph">
+<p>Students refine their understanding of linearity, identifying properties like <span class="vocab">slope</span> and <span class="vocab">y-intercept</span> in tables.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_launch_3">Launch</h3>
+<div class="paragraph lesson-point">
+<p>All linear relationships are defined by slope and y-intercept.</p>
+</div>
+<div class="paragraph">
+<p>Every linear relationship has two properties:</p>
+</div>
+<div class="paragraph">
+<p>1) The sequence of y-values always changes at a constant rate - called <span class="vocab">slope</span> - increasing or decreasing by the same amount for each change in the x-value.</p>
+</div>
+<div class="paragraph">
+<p>2) The y-value when <span class="gdrive-only">x = 0</span><script type="math/tex">\displaystyle x = 0</script> is called the <span class="vocab">y-intercept</span>.</p>
+</div>
+<div class="paragraph">
+<p>Have students turn to <a href="../../lessons/functions-can-be-linear/pages/slope-int-tables-intro.html" target="_blank" rel="noopener">Slope &amp; y-Intercept from Tables (Intro)</a> and facilitate a discussion.</p>
+</div>
+<div class="openblock lesson-instruction">
+<div class="content">
+<div class="paragraph">
+<p>Consider the first table on <a href="../../lessons/functions-can-be-linear/pages/slope-int-tables-intro.html" target="_blank" rel="noopener">the page</a>:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch sideways-pyret-table">
+<colgroup>
+<col style="width: 14.2857%;">
+<col style="width: 14.2857%;">
+<col style="width: 14.2857%;">
+<col style="width: 14.2857%;">
+<col style="width: 14.2857%;">
+<col style="width: 14.2857%;">
+<col style="width: 14.2858%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">y</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">9</p></td>
+</tr>
+</tbody>
+</table>
+<div class="ulist">
+<ul>
+<li>
+<p>Compute how much y increases as x increases by 1. We call this the <span class="vocab">slope</span>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>We can see that the y-values increase by 2 each time x increases by 1, giving us a <span class="vocab">slope</span> of 2.</em></p>
+</li>
+<li>
+<p><em>Some students may need an explicit demonstration of subtracting two adjacent y-values in order to recognize that they are changing by 2.</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Identify the <span class="vocab">y-intercept</span> by finding the y-value when <span class="gdrive-only">x = 0</span><script type="math/tex">\displaystyle x = 0</script>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>The <span class="vocab">y-intercept</span> is 1.</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>What strategies did you use to compute the slope and y-intercept?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Leave some time for group discussion of strategies!</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Complete <a href="../../lessons/functions-can-be-linear/pages/slope-int-tables-basic.html" target="_blank" rel="noopener">Slope &amp; y-Intercept from Tables (Basic Practice)</a> for more practice with this before we move on to more complicated tables.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Life isn&#8217;t always so simple!</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>What if the table didn&#8217;t include x = 0?</p>
+</li>
+<li>
+<p>What if the x-values didn&#8217;t increase by 1?</p>
+</li>
+<li>
+<p>What if the x-values were <em>out of order</em>?</p>
+</li>
+<li>
+<p>What if we only had two random coordinate pairs?</p>
+</li>
+</ul>
+</div>
+<div class="openblock lesson-instruction">
+<div class="content">
+<div class="paragraph">
+<p>Consider the second table on <a href="../../lessons/functions-can-be-linear/pages/slope-int-tables-intro.html" target="_blank" rel="noopener">the page</a>:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch sideways-pyret-table">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">y</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">9</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">15</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">21</p></td>
+</tr>
+</tbody>
+</table>
+<div class="ulist">
+<ul>
+<li>
+<p>Try extending the table and filling in the missing points to find the slope and y-intercept.</p>
+</li>
+<li>
+<p>What strategies did you use to extend the table?</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>How do we find the <span class="vocab">slope</span> and <span class="vocab">y-intercept</span> for these functions, <em>without</em> having to sort or extend the table?</p>
+</div>
+<div class="paragraph">
+<p>We can exploit the fact that all linear functions form <em>straight lines</em>, and a straight line can be defined with only <em>two points!</em> That means it is always possible to compute <span class="vocab">slope</span> and <span class="vocab">y-intercept</span>, as long as we have two coordinate pairs!</p>
+</div>
+<div class="paragraph lesson-instruction">
+<p>You can find the y-intercept by expanding the table and following the pattern to figure out the value of <span class="gdrive-only">y</span><script type="math/tex">\displaystyle y</script> when <span class="gdrive-only">x = 0</span><script type="math/tex">\displaystyle x = 0</script>, but sometimes that&#8217;s a lot of work! How might we compute the slope and y-intercept, using only points from the table?</p>
+</div>
+<div class="paragraph">
+<p>Leave some time for group discussion&#8230;&#8203;</p>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 1ex"></span></p>
+</div>
+<div class="paragraph">
+<p><strong>TO FIND THE SLOPE: Find any two pairs of values in the table, and divide the difference in y&#8217;s by the difference in x&#8217;s.</strong></p>
+</div>
+<div class="paragraph">
+<p>This is an easy way to see the change in y <em>as a proportion</em> of the change in x, which gives you the <span class="vocab">slope</span> of the function.</p>
+</div>
+<div class="paragraph">
+<p>This is often described as  <span class="gdrive-only">ChangeInY/ChangeInX</span><script type="math/tex">\displaystyle \frac{ChangeInY}{ChangeInX}</script> or <span class="gdrive-only">rise/run</span><script type="math/tex">\displaystyle \frac{rise}{run}</script>.</p>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 2ex"></span></p>
+</div>
+<table class="tableblock frame-all grid-all stretch sideways-pyret-table">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.667%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>3</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>20</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">9</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">y</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>5</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>56</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">23</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-1</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Taking the first two pairs of values in the the last table on <a href="../../lessons/functions-can-be-linear/pages/slope-int-tables-intro.html" target="_blank" rel="noopener">the page</a>, this gives us <span class="gdrive-only">( 56 - 5 )/( 20 - 3 )</span><script type="math/tex">\displaystyle \frac{56 - 5}{20 - 3}</script>. We can simplify that to <span class="gdrive-only">51/17</span><script type="math/tex">\displaystyle \frac{51}{17}</script>, for a slope of <span class="gdrive-only">3</span><script type="math/tex">\displaystyle 3</script>.</p>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 2ex"></span></p>
+</div>
+<div class="paragraph">
+<p>We would get the same answer if we subtracted the coordinates in the opposite order&#8230;&#8203; <span class="gdrive-only">( 5 - 56 )/( 3 - 20 ) = -51/-17 = 3</span><script type="math/tex">\displaystyle \frac{5 - 56}{3 - 20} = \frac{-51}{-17} = 3</script>.</p>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 2ex"></span></p>
+</div>
+<div class="paragraph lesson-point">
+<p>Order matters!</p>
+</div>
+<div class="paragraph">
+<p>We can use the two points in any order we wish, but we need to use the same order for our x&#8217;s and y&#8217;s. If we mixed up the order for this example, we&#8217;d get <span class="gdrive-only">( 56 - 5 )/( 3 - 20 ) = 51/-17 = -3</span><script type="math/tex">\displaystyle \frac{56 - 5}{3 - 20} = \frac{51}{-17} = -3</script>.</p>
+</div>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Pick two other pairs of values from the third table and compute the <span class="vocab">slope</span>. Did you get the same answer?</p>
+</li>
+<li>
+<p>Are there other strategies we could have used to find the slope?</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 1ex"></span></p>
+</div>
+<div class="paragraph">
+<p><em>We&#8217;ll talk more about how to find the y-intercept in the Defining Linear Functions lesson.</em></p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_investigate_3">Investigate</h3>
+<div class="paragraph">
+<p>Let&#8217;s get some practice identifying the slope of a linear function in a table by completing <a href="../../lessons/functions-can-be-linear/pages/slope-and-y-tables.html" target="_blank" rel="noopener">Identifying Slope in Tables</a></p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_synthesize_3">Synthesize</h3>
+<div class="paragraph">
+<p><span class="vocab">Slope</span> and <span class="vocab">y-intercept</span> form the essence of linear functions. If we can find them in a sample of data, we can make predictions that go outside that sample. For example: If we know a car is moving at a consistent speed, all we need to know is <em>where it is located at two points in time</em> in order to figure out the speed, and to predict where it will be at any other point in time!</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_slope_and_y_intercept_from_graphs_duration_15_minutes_"><span class="section-link"><a href="#_slope_and_y_intercept_from_graphs_duration_15_minutes_"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Slope and y-Intercept from Graphs <span class="duration">15 minutes</span></h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_overview_4">Overview</h3>
+<div class="paragraph">
+<p>Students refine their understanding of linearity, identifying properties like <span class="vocab">slope</span> and <span class="vocab">y-intercept</span> from graphs.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_launch_4">Launch</h3>
+<div class="paragraph">
+<p>On a graph, the y-intercept is the value where the line "intercepts" the y-axis.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="centered-image"><span class="image-figure"><span class="image"><img src="images/0b21803917949d64.png" alt="graph: diagonal line crosses the y-axis at (0,-1.5)" title="graph: diagonal line crosses the y-axis at (0,-1.5)"></span><a href="images/0b21803917949d64.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="centered-image"><span class="image-figure"><span class="image"><img src="images/29798783faa69259.png" alt="graph: horizontal line crosses the y-axis at (0,1)" title="graph: horizontal line crosses the y-axis at (0,1)"></span><a href="images/29798783faa69259.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>On a graph, the slope refers to both the "steepness" and "direction" of the line.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">If it goes up as we go from left to right, the slope is <strong>positive</strong>.</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">If it goes down as we go from left to right, the slope is <strong>negative</strong>.</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">If it stays perfectly horizontal, the slope is <strong>zero</strong>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="centered-image"><span class="image-figure"><span class="image"><img src="images/20ace5cf49f5f1ae.png" alt="graph: diagonal line sloping upwards from left to right" title="graph: diagonal line sloping upwards from left to right"></span><a href="images/20ace5cf49f5f1ae.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="centered-image"><span class="image-figure"><span class="image"><img src="images/0248cc5be267bbb5.png" alt="graph: diagonal line sloping downward from left to right" title="graph: diagonal line sloping downward from left to right"></span><a href="images/0248cc5be267bbb5.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="centered-image"><span class="image-figure"><span class="image"><img src="images/ee8d8f16e25ab483.png" alt="graph: horizontal line" title="graph: horizontal line"></span><a href="images/ee8d8f16e25ab483.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>We can compute the <span class="vocab">slope</span> from a graph the same way we would with a table, by picking two points we know the exact coordinates of.</p>
+</div>
+<div class="paragraph">
+<p><span class="centered-image"><span class="image-figure"><span class="image"><img src="images/827e8b8aac6ac0f7.png" alt="graph of a diagonal line passing through (0,1) and (5,4) showing how to calculate the slope is 3/5" width="600" title="graph of a diagonal line passing through (0,1) and (5,4) showing how to calculate the slope is 3/5"></span><a href="images/827e8b8aac6ac0f7.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_investigate_4">Investigate</h3>
+<div class="paragraph">
+<p>Let&#8217;s get some practice identifying the slope and y-intercept of a linear function in a graph by completing <a href="../../lessons/functions-can-be-linear/pages/slope-and-y-graphs.html" target="_blank" rel="noopener">Identifying Slope and y-intercept in Graphs</a></p>
+</div>
+<table class="tableblock frame-all grid-none stripes-none stretch strategy-box">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="title">Pedagogy Note</span></p>
+<p class="tableblock">Some texts refer to "four ways to draw straight lines on a graph": sloping up and to the right, down and to the left, horizontal, or <em>vertical</em>. When thinking only in terms of straight lines on a graph, this is technically correct! However, just because we can draw those lines doesn&#8217;t make them <em>functions</em>, and it doesn&#8217;t mean they all have a defined slope!</p>
+<p class="tableblock">Once students are comfortable computing slope, try having them compute the slope of a vertical line. They will quickly realize that this results in a zero in the denominator, which makes the slope <em>undefined</em>! This can be a good review of divide-by-zero and another lens for thinking about the vertical line test.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_synthesize_4">Synthesize</h3>
+<div class="paragraph">
+<p>We have learned how to find <span class="vocab">slope</span> and <span class="vocab">y-intercept</span> from tables and graphs of linear relationships. Check in with yourself and what we&#8217;ve learned today.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Which representation do you feel more confident finding the slope from? Why?</p>
+</li>
+<li>
+<p>Which representation do you feel more confident finding the y-intercept from? Why?
+Looking ahead, we will be learning about yet another representation of Linear Functions that you might find to be even more flexible and powerful.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Linear relationships are <em>everywhere</em>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>"As the number of people visiting the amusement park goes up, the time we spend waiting in line tends to go up."</p>
+</li>
+<li>
+<p>"The more we drive, the more gas we tend to use."</p>
+</li>
+<li>
+<p>"The more Carlo babysits, the more money he tends to earn."</p>
+</li>
+<li>
+<p>"As the number of lizards in the house goes up, the number of cockroaches in the house tends to go down."</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>What other linear relationships can you think of?</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-17 19:42:14 -0400
+</div>
+</div>
+</div>
+</body>
+</html>

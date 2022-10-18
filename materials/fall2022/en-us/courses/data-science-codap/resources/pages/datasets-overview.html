@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Working with the Pre-Built Datasets</title>
+
+  <link rel="stylesheet" href="../../../../lib/curriculum.css" />
+    <link rel="stylesheet" href="../../../../lib/codemirror.css" />
+    <script src="../../../../lib/codemirror.js"></script>
+    <script src="../../../../lib/runmode.js"></script>
+    <script src="../../../../lib/scheme2.js"></script>
+    <script src="../../../../lib/pyret-mode.js"></script>
+    <script src="../../../../lib/langtable.js"></script>
+    <script src="../../../../lib/bootstraplesson.js"></script>
+    <script src="../../../../dependency-graph.js"></script>
+    <script src="../../../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"Working with the Pre-Built Datasets",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="workbookpage article codap" onload="renderSaveToDrive()">
+<div id="header">
+<h1>Working with the Pre-Built Datasets</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<style>
+.sect2{ margin-top: 15pt; }
+</style>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_overview">Overview</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Best datasets for wide-range of graphs without lots of effort:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>States</p>
+</li>
+<li>
+<p>Movies</p>
+</li>
+<li>
+<p>Schools</p>
+</li>
+<li>
+<p>Countries</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Datasets requiring calculations to convert data before making graphs:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Schools</p>
+</li>
+<li>
+<p>Countries</p>
+</li>
+<li>
+<p>US Cancer Rates</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Datasets with a limited number of categories:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Police Traffic Stops</p>
+</li>
+<li>
+<p>Presidents</p>
+</li>
+<li>
+<p>Countries</p>
+</li>
+<li>
+<p>Sodas</p>
+</li>
+<li>
+<p>Movies</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Datasets with a huge number of columns</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>MLB</p>
+</li>
+<li>
+<p>U.S. Voter Turnout</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Datasets with fairly little quantitative data (well-suited to simpler analysis, not recommended for scatter plots):</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Video games</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_tips_for_specific_datasets">Tips for Specific Datasets</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_u_s_voter_turnout_1986_2018">U.S. Voter Turnout 1986-2018</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>This dataset looks at demographics of the electorate.  Information is provided on what percentage of the electorate each group represents and how turnout for elections varies across age, educational attainment and race.</p>
+</li>
+<li>
+<p>Column Titles: year, Turnout Rate 18-29, Turnout Rate 30-44, Turnout Rate 45-59, Turnout Rate 60+, Share of Electorate 18-29, Share of Electorate 30-44, Share of Electorate 45-59, Share of Electorate 60+, Turnout Rate Less Than High School, Turnout Rate High School Grad, Turnout RateSome College to College Grad, Turnout Rate Post-Graduate, Share of Electorate Less Than High School, Share of Electorate High School Grad, Share of Electorate Some College to College Grad, Share of Electorate Post-Graduate, Turnout Rate Non-Hispanic White, Turnout Rate Non-Hispanic Black, Turnout Rate Hispanic, Turnout Rate Other, Share of Electorate Non-Hispanic White, Share of Electorate Non-Hispanic Black, Share of Electorate Hispanic, Share of Electorate Other</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_2016_u_s_presidential_elections">2016 U.S. Presidential Elections</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>This dataset summarizes the 2016 presidential election by state.  We can see the margin of victory by which each state was one, which states disenfranchise voters for their felony status, how many people didn’t vote, how states allocate their electoral college delegates, etc.</p>
+</li>
+<li>
+<p>Column Titles: state, state abbreviation, voting-age population (VAP), votes cast for president, ineligible to vote: felon, ineligible to vote: non-citizen, who won?, margin of victory, eligible to vote &amp; didn&#8217;t, votes for candidates other than Clinton &amp; Trump, electoral college votes for Trump, electoral college votes for Clinton, electoral college votes for candidates other than Clinton or Trump, total electoral college reps</p>
+</li>
+<li>
+<p>Have students</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Define a function <code class="pyret">pct-voted</code>, which computes the percent of the voting age population that voted for president.</p>
+</li>
+<li>
+<p>Define a function <code class="pyret">pct-margin</code>, which computes the margin of victory as a percent of the voting age population.</p>
+</li>
+<li>
+<p>Define a function <code class="pyret">pct-eligible</code> to vote, which computes the percent of the voting age population that is not disenfranchised by citizenship status or felony convictions.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_r_i_schools">R.I. Schools</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>This is data from 271 Rhode Island public &amp; charter schools.</p>
+</li>
+<li>
+<p>Column titles: District Name, School Name, % passing ELA in 2018, % passing Math in 2018, Charter School (yes/no?), Number of students free lunch eligible, Number of students reduced lunch eligible, Number of students by racial/ethnic group (American Indian/Alaska Native, Asian/Pacific Islander, Hispanic, Black, White, 2 or more races), male, female, total population.</p>
+</li>
+<li>
+<p>Have students:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Define a function <code class="pyret">pct-black</code>, which computes the percent of black students at a school.</p>
+</li>
+<li>
+<p>Define a function <code class="pyret">pct-hispanic</code>, which computes the percent of black students at a school. </p>
+</li>
+<li>
+<p>Define a function <code class="pyret">high-math</code>, which returns true if a school has more than 60% of students passing the state math test.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Heads up!</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Other than ELA and Math Passing Percentages, columns list the number of students.  In order to compare between schools, percentages would need to be calculated.</p>
+</li>
+<li>
+<p>Free and Reduced lunch students are listed as two separate quantities. Usually we combine these numbers as a measure of poverty (e.g. - "free or reduced lunch") for analysis.</p>
+</li>
+<li>
+<p>Outlier to be aware of: Classical High School</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_police_traffic_stops_durham_nc_2002_2013">Police Traffic Stops, Durham, NC  2002-2013:</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>This dataset looks at how many traffic stops in Durham, NC between 2002 and 2013 resulted in searches of the person stopped. Data is broken down by age, race and sex.</p>
+</li>
+<li>
+<p>Column Titles: group, age, race, sex, stops, searches</p>
+</li>
+<li>
+<p>Have students:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Define a function <code class="pyret">search-rate</code>, which computes the percent of stops that result in searches.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_mlb_hitting_stats_2018">MLB Hitting Stats (2018)</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>This dataset includes 30 teams.</p>
+</li>
+<li>
+<p>Column Titles: Team, League, 28 Columns of Baseball stats!, Salary</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_state_demographics">State Demographics</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>This dataset includes all 50 states and the District of Columbia.</p>
+</li>
+<li>
+<p>Column Titles: state, region, population 2010, population 2014, % bachelors or higher, % hs or higher, % homeowners, # of households, # of housing units, land area (square miles), % non-English at home, mean commute times (minutes), median household income (US$), per capita income (US$), % older than 65, % female, % under 18, % under 5, % in poverty, number of veterans</p>
+</li>
+<li>
+<p>Have students:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Define a function <code class="pyret">pop-density</code>, which computes the people per square mile.</p>
+</li>
+<li>
+<p>Define a function <code class="pyret">pct-change-pop</code>, which computes the percent change in the population from 2010 to 2014.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_movies">Movies</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>100 top-grossing movies (as of 2018)</p>
+</li>
+<li>
+<p>Column titles: Rank, Movie Title, Studio Name, Female-lead, POC-lead, Total Gross Income (million dollars), Domestic Income (million $), Overseas Income (million $), Year</p>
+</li>
+<li>
+<p>Have students:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Define a function <code class="pyret">return-on-investment</code> (or <code class="pyret">roi</code>), which computes the ratio of the Total Gross Income to the budget.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Outliers to be aware of</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Only a few films are from before 2000</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_countries_of_the_world">Countries of the World</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>This dataset includes 192 countries.
+Column Titles: Country, Life-expectancy in years, GDP (in US$), population, continent, has universal healthcare? (yes/no)</p>
+</li>
+<li>
+<p>Have students:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Define a function <code class="pyret">gdp-per-capita</code>, which divides the gdp by the population.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_u_s_income">U.S. Income</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>This dataset covers the years 1967- 2015.</p>
+</li>
+<li>
+<p>Column titles: Year, Number of Families, Percent in each income group (&lt;15k, 15k-25k, 25k-35k, 35k-50k, 50k-75k, 75k-100k, 100k-150k, 150k-200k, &gt;200k), median income, mean income</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_u_s_presidents">U.S. Presidents</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>This dataset includes all 45 presidents.</p>
+</li>
+<li>
+<p>Column titles: Nth, Name, home state, inauguration age, year started, year ended, party</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_music">Music</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>This dataset includes over 10,000 songs. It is a subset of the Million songs database published in 2011.</p>
+</li>
+<li>
+<p>Column titles: artist, song, duration in seconds, loudness, beats per minute, end of fade-in (seconds), start of fade-out (seconds), familiarity, buzz, terms (category of music)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_pokemon_characters">Pokemon Characters</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>There are 800 Pokemon video game characters in this dataset.</p>
+</li>
+<li>
+<p>Column Titles: Number, Name, Type 1, Type 2, Total (Sum of Attack, Sp. Atk, Defense, Sp. Def, Speed and HP), hp (hit points), attack strength, defense strength, special-attack strength, special-defense strength, speed, generation number, legendary (T or F?)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ign_video_game_reviews_2019">IGN Video Game Reviews (2019)</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>There are 6984 games included in this dataset.</p>
+</li>
+<li>
+<p>Column Titles: Name, Playstation (T or F?), xbox  (T or F?), nintendo  (T or F?), pc  (T or F?), other  (T or F?), score, genre, editors choice (Y or N?), release year (2008-2018), release month (1-12)</p>
+</li>
+<li>
+<p><strong>Heads up!</strong> Almost no quantitative data.  Not recommended for scatter plots. This would be a good dataset for practicing applying filters.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_u_s_cancer_rates">U.S. Cancer Rates</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>This dataset includes 6496 research studies.</p>
+</li>
+<li>
+<p>Column Titles: State, Count, Event Type (incidence v. mortality), study population, race, year</p>
+</li>
+<li>
+<p>Have students:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Define a function <code class="pyret">pct</code>, which computes the count as a percentage of the study population.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_sodas">Sodas</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>This dataset has 35 entries.</p>
+</li>
+<li>
+<p>Column Titles: Name, manufacturer, calories, sugar (g). caffeine (mg), year-established, top-seller (y or n?)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_cereals">Cereals</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>This dataset has 75 entries.</p>
+</li>
+<li>
+<p>Column Titles: Name, manufacturer, serving size (g), calories, fat (g), sodium (mg), carbs (g), fiber (g), sugars (g), protein (g), mascot (T or F?), gluten-free (T or F?), box-color, main grain, shelf position</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_summer_olympic_medals">Summer Olympic Medals</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>There are 1248 entries in this dataset.</p>
+</li>
+<li>
+<p>Column Titles: id, year, city (where the olympics were held that year), country, # of bronze, # of gold, # of silver, grand total</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_winter_olympic_medals">Winter Olympic Medals</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>There are 1248 entries in this dataset.</p>
+</li>
+<li>
+<p>Column Titles: id, year, city (where the olympics were held that year), country, # of bronze, # of gold, # of silver, grand total</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-17 19:42:18 -0400
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,2074 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Contracts</title>
+
+  <link rel="stylesheet" href="../../lib/curriculum.css" />
+    <link rel="stylesheet" href="../../lib/codemirror.css" />
+    <script src="../../lib/codemirror.js"></script>
+    <script src="../../lib/runmode.js"></script>
+    <script src="../../lib/scheme2.js"></script>
+    <script src="../../lib/pyret-mode.js"></script>
+    <script src="../../lib/langtable.js"></script>
+    <script src="../../lib/bootstraplesson.js"></script>
+    <script src="../../dependency-graph.js"></script>
+    <script src="../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"Contracts",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="article LessonPlan wescheme" onload="renderSaveToDrive()">
+<!--#include virtual="/menubar.ssi"-->
+<div id="body" onload="renderSaveToDrive()">
+<div id="header">
+<h1>Contracts</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<script>
+function preselect(klass) {
+  const items = document.getElementsByClassName(klass);
+  for (let i = 0; i < items.length; i++) {
+    items[i].style.display = 'none';
+  }
+  if (items.length > 0) {
+    items[0].style.display = 'block';
+  }
+}
+window.onload = function() {
+  preselect('alignedStandards');
+  preselect('alignedTextbooks');
+  preselect('alignedPractices');
+}
+function showStandardsAlignment() {
+  const selectTag = document.getElementsByClassName('standardsAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const stdTables = document.getElementsByClassName('alignedStandards');
+  //const intro = document.getElementsByClassName('alignedStandardsIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < stdTables.length; i++) {
+    const stdTable = stdTables[i];
+    stdTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optStd = opt.value;
+      for (let j = 0; j < stdTables.length; j++) {
+        const stdTable = stdTables[j];
+        if (stdTable.classList.contains(optStd)) {
+          stdTable.style.display = 'block';
+         // introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+function toggleNonPrereqDisplay() {
+  const inputTag = document.getElementsByClassName('sidebarinput')[0];
+  const checkedP = inputTag.checked;
+  const lessonTable = document.getElementsByClassName('sidebarlessons')[0];
+  const lis = lessonTable.getElementsByTagName('li');
+  for (let i = 0; i < lis.length; i++) {
+    const li = lis[i];
+    const lesson = li.getElementsByClassName('prerequisite');
+    if (lesson.length === 0) {
+      li.style.display = checkedP ? 'none' : 'block';
+    }
+  }
+}
+</script>
+<script>
+function showTextbooksAlignment() {
+  const selectTag = document.getElementsByClassName('textbooksAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const textbookTables = document.getElementsByClassName('alignedTextbooks');
+  //const intro = document.getElementsByClassName('alignedTextbooksIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < textbookTables.length; i++) {
+    const textbookTable = textbookTables[i];
+    textbookTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optTextbook = opt.value;
+      for (let j = 0; j < textbookTables.length; j++) {
+        const textbookTable = textbookTables[j];
+        if (textbookTable.classList.contains(optTextbook)) {
+          textbookTable.style.display = 'block';
+          //introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+</script>
+<script>
+function showPracticesAlignment() {
+  const selectTag = document.getElementsByClassName('practicesAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const practiceTables = document.getElementsByClassName('alignedPractices');
+  for (let i = 0; i < practiceTables.length; i++) {
+    const practiceTable = practiceTables[i];
+    practiceTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optPractice = opt.value;
+      for (let j = 0; j < practiceTables.length; j++) {
+        const practiceTable = practiceTables[j];
+        if (practiceTable.classList.contains(optPractice)) {
+          practiceTable.style.display = 'block';
+        }
+      }
+    }
+  }
+}
+</script>
+<div class="paragraph">
+<!-- </p>
+</div>
+--></div><div class="sidebar"><div id="toggle"></div><div class="paragraph"><!--
+<div class="paragraph">
+<p>
+--><div class="sidebarlessons"><strong>Lessons</strong>
+<ul></ul></div>
+</div>
+<table class="tableblock frame-all grid-all stretch sidebarstandards">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Standards in this Lesson</strong>
+<select class="standardsAlignmentSelect"  onchange="showStandardsAlignment()"><option selected="selected" value="standards-Alabama">Alabama</option><option value="standards-Arkansas">Arkansas</option><option value="standards-California">California</option><option value="standards-Colorado">Colorado</option><option value="standards-Connecticut">Connecticut</option><option value="standards-Delaware">Delaware</option><option value="standards-Georgia">Georgia</option><option value="standards-Hawaii">Hawaii</option><option value="standards-Idaho">Idaho</option><option value="standards-Illinois">Illinois</option><option value="standards-Iowa">Iowa</option><option value="standards-Kansas">Kansas</option><option value="standards-Kentucky">Kentucky</option><option value="standards-Louisiana">Louisiana</option><option value="standards-Maine">Maine</option><option value="standards-Michigan">Michigan</option><option value="standards-Maryland">Maryland</option><option value="standards-Massachusetts">Massachusetts</option><option value="standards-Mississippi">Mississippi</option><option value="standards-Missouri">Missouri</option><option value="standards-Montana">Montana</option><option value="standards-New Hampshire">New Hampshire</option><option value="standards-Nevada">Nevada</option><option value="standards-New Jersey">New Jersey</option><option value="standards-New Mexico">New Mexico</option><option value="standards-North Carolina">North Carolina</option><option value="standards-North Dakota">North Dakota</option><option value="standards-New York">New York</option><option value="standards-Oklahoma">Oklahoma</option><option value="standards-Ohio">Ohio</option><option value="standards-Oregon">Oregon</option><option value="standards-Pennsylvania">Pennsylvania</option><option value="standards-Rhode Island">Rhode Island</option><option value="standards-South Dakota">South Dakota</option><option value="standards-Tennessee">Tennessee</option><option value="standards-Utah">Utah</option><option value="standards-Vermont">Vermont</option><option value="standards-Washington">Washington</option><option value="standards-West Virginia">West Virginia</option><option value="standards-Wisconsin">Wisconsin</option><option value="standards-Wyoming">Wyoming</option></select></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist alignedStandards standards-Alabama">
+<div class="title"><a href="">Alabama Standards</a></div>
+<dl>
+<dt class="hdlist1">AL.8.F.A.1</dt>
+<dd>
+<p>Understand that a function is a rule that assigns to each input exactly one output. The graph of a function is the set of ordered pairs consisting of an input and the corresponding output.</p>
+</dd>
+<dt class="hdlist1">AL.HSF.IF.A.1</dt>
+<dd>
+<p>Understand that a function from one set (called the domain) to another set (called the range) assigns to each element of the domain exactly one element of the range. If f is a function and x is an element of its domain, then f(x) denotes the output of f corresponding to the input x. The graph of f is the graph of the equation y = f(x).</p>
+</dd>
+<dt class="hdlist1">AL.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Arkansas">
+<div class="title"><a href="">Arkansas Standards</a></div>
+<dl>
+<dt class="hdlist1">AR.8.F.A.1</dt>
+<dd>
+<p>Understand that a function is a rule that assigns to each input exactly one output. The graph of a function is the set of ordered pairs consisting of an input and the corresponding output.</p>
+</dd>
+<dt class="hdlist1">AR.HSF.IF.A.1</dt>
+<dd>
+<p>Understand that a function from one set (called the domain) to another set (called the range) assigns to each element of the domain exactly one element of the range. If f is a function and x is an element of its domain, then f(x) denotes the output of f corresponding to the input x. The graph of f is the graph of the equation y = f(x).</p>
+</dd>
+<dt class="hdlist1">AR.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-California">
+<div class="title"><a href="">California Standards</a></div>
+<dl>
+<dt class="hdlist1">CA.8.F.A.1</dt>
+<dd>
+<p>Understand that a function is a rule that assigns to each input exactly one output. The graph of a function is the set of ordered pairs consisting of an input and the corresponding output.</p>
+</dd>
+<dt class="hdlist1">CA.HSF.IF.A.1</dt>
+<dd>
+<p>Understand that a function from one set (called the domain) to another set (called the range) assigns to each element of the domain exactly one element of the range. If f is a function and x is an element of its domain, then f(x) denotes the output of f corresponding to the input x. The graph of f is the graph of the equation y = f(x).</p>
+</dd>
+<dt class="hdlist1">CA.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Colorado">
+<div class="title"><a href="">Colorado Standards</a></div>
+<dl>
+<dt class="hdlist1">CO.8.F.A.1</dt>
+<dd>
+<p>Understand that a function is a rule that assigns to each input exactly one output. The graph of a function is the set of ordered pairs consisting of an input and the corresponding output.</p>
+</dd>
+<dt class="hdlist1">CO.HSF.IF.A.1</dt>
+<dd>
+<p>Understand that a function from one set (called the domain) to another set (called the range) assigns to each element of the domain exactly one element of the range. If f is a function and x is an element of its domain, then f(x) denotes the output of f corresponding to the input x. The graph of f is the graph of the equation y = f(x).</p>
+</dd>
+<dt class="hdlist1">CO.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Connecticut">
+<div class="title"><a href="">Connecticut Standards</a></div>
+<dl>
+<dt class="hdlist1">CT.8.F.A.1</dt>
+<dd>
+<p>Understand that a function is a rule that assigns to each input exactly one output. The graph of a function is the set of ordered pairs consisting of an input and the corresponding output.</p>
+</dd>
+<dt class="hdlist1">CT.HSF.IF.A.1</dt>
+<dd>
+<p>Understand that a function from one set (called the domain) to another set (called the range) assigns to each element of the domain exactly one element of the range. If f is a function and x is an element of its domain, then f(x) denotes the output of f corresponding to the input x. The graph of f is the graph of the equation y = f(x).</p>
+</dd>
+<dt class="hdlist1">CT.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Delaware">
+<div class="title"><a href="">Delaware Standards</a></div>
+<dl>
+<dt class="hdlist1">DE.8.F.A.1</dt>
+<dd>
+<p>Understand that a function is a rule that assigns to each input exactly one output. The graph of a function is the set of ordered pairs consisting of an input and the corresponding output.</p>
+</dd>
+<dt class="hdlist1">DE.HSF.IF.A.1</dt>
+<dd>
+<p>Understand that a function from one set (called the domain) to another set (called the range) assigns to each element of the domain exactly one element of the range. If f is a function and x is an element of its domain, then f(x) denotes the output of f corresponding to the input x. The graph of f is the graph of the equation y = f(x).</p>
+</dd>
+<dt class="hdlist1">DE.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Georgia">
+<div class="title"><a href="">Delaware Standards</a></div>
+<dl>
+<dt class="hdlist1">GA.8.F.A.1</dt>
+<dd>
+<p>Understand that a function is a rule that assigns to each input exactly one output. The graph of a function is the set of ordered pairs consisting of an input and the corresponding output.</p>
+</dd>
+<dt class="hdlist1">GA.HSF.IF.A.1</dt>
+<dd>
+<p>Understand that a function from one set (called the domain) to another set (called the range) assigns to each element of the domain exactly one element of the range. If f is a function and x is an element of its domain, then f(x) denotes the output of f corresponding to the input x. The graph of f is the graph of the equation y = f(x).</p>
+</dd>
+<dt class="hdlist1">GA.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Hawaii">
+<div class="title"><a href="">Hawaii Standards</a></div>
+<dl>
+<dt class="hdlist1">HI.8.F.A.1</dt>
+<dd>
+<p>Understand that a function is a rule that assigns to each input exactly one output. The graph of a function is the set of ordered pairs consisting of an input and the corresponding output.</p>
+</dd>
+<dt class="hdlist1">HI.HSF.IF.A.1</dt>
+<dd>
+<p>Understand that a function from one set (called the domain) to another set (called the range) assigns to each element of the domain exactly one element of the range. If f is a function and x is an element of its domain, then f(x) denotes the output of f corresponding to the input x. The graph of f is the graph of the equation y = f(x).</p>
+</dd>
+<dt class="hdlist1">HI.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Idaho">
+<div class="title"><a href="">Idaho Standards</a></div>
+<dl>
+<dt class="hdlist1">ID.8.F.A.1</dt>
+<dd>
+<p>Understand that a function is a rule that assigns to each input exactly one output. The graph of a function is the set of ordered pairs consisting of an input and the corresponding output.</p>
+</dd>
+<dt class="hdlist1">ID.HSF.IF.A.1</dt>
+<dd>
+<p>Understand that a function from one set (called the domain) to another set (called the range) assigns to each element of the domain exactly one element of the range. If f is a function and x is an element of its domain, then f(x) denotes the output of f corresponding to the input x. The graph of f is the graph of the equation y = f(x).</p>
+</dd>
+<dt class="hdlist1">ID.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Illinois">
+<div class="title"><a href="">Illinois Standards</a></div>
+<dl>
+<dt class="hdlist1">IL.8.F.A.1</dt>
+<dd>
+<p>Understand that a function is a rule that assigns to each input exactly one output. The graph of a function is the set of ordered pairs consisting of an input and the corresponding output.</p>
+</dd>
+<dt class="hdlist1">IL.HSF.IF.A.1</dt>
+<dd>
+<p>Understand that a function from one set (called the domain) to another set (called the range) assigns to each element of the domain exactly one element of the range. If f is a function and x is an element of its domain, then f(x) denotes the output of f corresponding to the input x. The graph of f is the graph of the equation y = f(x).</p>
+</dd>
+<dt class="hdlist1">IL.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Iowa">
+<div class="title"><a href="https://iowacore.gov/standards/iowa-core-standards">Iowa Standards</a></div>
+<dl>
+<dt class="hdlist1">IA.8.F.A.1</dt>
+<dd>
+<p>Understand that a function is a rule that assigns to each input exactly one output. The graph of a function is the set of ordered pairs consisting of an input and the corresponding output.</p>
+</dd>
+<dt class="hdlist1">IA.HSF.IF.A.1</dt>
+<dd>
+<p>Understand that a function from one set (called the domain) to another set (called the range) assigns to each element of the domain exactly one element of the range. If f is a function and x is an element of its domain, then f(x) denotes the output of f corresponding to the input x. The graph of f is the graph of the equation y = f(x).</p>
+</dd>
+<dt class="hdlist1">IA.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Kansas">
+<div class="title"><a href="">Kansas Standards</a></div>
+<dl>
+<dt class="hdlist1">KS.8.F.A.1</dt>
+<dd>
+<p>Understand that a function is a rule that assigns to each input exactly one output. The graph of a function is the set of ordered pairs consisting of an input and the corresponding output.</p>
+</dd>
+<dt class="hdlist1">KS.HSF.IF.A.1</dt>
+<dd>
+<p>Understand that a function from one set (called the domain) to another set (called the range) assigns to each element of the domain exactly one element of the range. If f is a function and x is an element of its domain, then f(x) denotes the output of f corresponding to the input x. The graph of f is the graph of the equation y = f(x).</p>
+</dd>
+<dt class="hdlist1">KS.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Kentucky">
+<div class="title"><a href="">Kentucky Standards</a></div>
+<dl>
+<dt class="hdlist1">KY.8.F.A.1</dt>
+<dd>
+<p>Understand that a function is a rule that assigns to each input exactly one output. The graph of a function is the set of ordered pairs consisting of an input and the corresponding output.</p>
+</dd>
+<dt class="hdlist1">KY.HSF.IF.A.1</dt>
+<dd>
+<p>Understand that a function from one set (called the domain) to another set (called the range) assigns to each element of the domain exactly one element of the range. If f is a function and x is an element of its domain, then f(x) denotes the output of f corresponding to the input x. The graph of f is the graph of the equation y = f(x).</p>
+</dd>
+<dt class="hdlist1">KY.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Louisiana">
+<div class="title"><a href="">Louisiana Standards</a></div>
+<dl>
+<dt class="hdlist1">LA.8.F.A.1</dt>
+<dd>
+<p>Understand that a function is a rule that assigns to each input exactly one output. The graph of a function is the set of ordered pairs consisting of an input and the corresponding output.</p>
+</dd>
+<dt class="hdlist1">LA.HSF.IF.A.1</dt>
+<dd>
+<p>Understand that a function from one set (called the domain) to another set (called the range) assigns to each element of the domain exactly one element of the range. If f is a function and x is an element of its domain, then f(x) denotes the output of f corresponding to the input x. The graph of f is the graph of the equation y = f(x).</p>
+</dd>
+<dt class="hdlist1">LA.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Maine">
+<div class="title"><a href="">Maine Standards</a></div>
+<dl>
+<dt class="hdlist1">ME.8.F.A.1</dt>
+<dd>
+<p>Understand that a function is a rule that assigns to each input exactly one output. The graph of a function is the set of ordered pairs consisting of an input and the corresponding output.</p>
+</dd>
+<dt class="hdlist1">ME.HSF.IF.A.1</dt>
+<dd>
+<p>Understand that a function from one set (called the domain) to another set (called the range) assigns to each element of the domain exactly one element of the range. If f is a function and x is an element of its domain, then f(x) denotes the output of f corresponding to the input x. The graph of f is the graph of the equation y = f(x).</p>
+</dd>
+<dt class="hdlist1">ME.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Michigan">
+<div class="title"><a href="">Michigan Standards</a></div>
+<dl>
+<dt class="hdlist1">MI.8.F.A.1</dt>
+<dd>
+<p>Understand that a function is a rule that assigns to each input exactly one output. The graph of a function is the set of ordered pairs consisting of an input and the corresponding output.</p>
+</dd>
+<dt class="hdlist1">MI.HSF.IF.A.1</dt>
+<dd>
+<p>Understand that a function from one set (called the domain) to another set (called the range) assigns to each element of the domain exactly one element of the range. If f is a function and x is an element of its domain, then f(x) denotes the output of f corresponding to the input x. The graph of f is the graph of the equation y = f(x).</p>
+</dd>
+<dt class="hdlist1">MI.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Maryland">
+<div class="title"><a href="">Maryland Standards</a></div>
+<dl>
+<dt class="hdlist1">MD.8.F.A.1</dt>
+<dd>
+<p>Understand that a function is a rule that assigns to each input exactly one output. The graph of a function is the set of ordered pairs consisting of an input and the corresponding output.</p>
+</dd>
+<dt class="hdlist1">MD.HSF.IF.A.1</dt>
+<dd>
+<p>Understand that a function from one set (called the domain) to another set (called the range) assigns to each element of the domain exactly one element of the range. If f is a function and x is an element of its domain, then f(x) denotes the output of f corresponding to the input x. The graph of f is the graph of the equation y = f(x).</p>
+</dd>
+<dt class="hdlist1">MD.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Massachusetts">
+<div class="title"><a href="https://www.doe.mass.edu/frameworks/">Massachusetts Standards</a></div>
+<dl>
+<dt class="hdlist1">MA.8.F.A.1</dt>
+<dd>
+<p>Understand that a function is a rule that assigns to each input exactly one output. The graph of a function is the set of ordered pairs consisting of an input and the corresponding output.</p>
+</dd>
+<dt class="hdlist1">MA.HSF.IF.A.1</dt>
+<dd>
+<p>Understand that a function from one set (called the domain) to another set (called the range) assigns to each element of the domain exactly one element of the range. If f is a function and x is an element of its domain, then f(x) denotes the output of f corresponding to the input x. The graph of f is the graph of the equation y = f(x).</p>
+</dd>
+<dt class="hdlist1">MA.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Mississippi">
+<div class="title"><a href="">Mississippi Standards</a></div>
+<dl>
+<dt class="hdlist1">MS.8.F.A.1</dt>
+<dd>
+<p>Understand that a function is a rule that assigns to each input exactly one output. The graph of a function is the set of ordered pairs consisting of an input and the corresponding output.</p>
+</dd>
+<dt class="hdlist1">MS.HSF.IF.A.1</dt>
+<dd>
+<p>Understand that a function from one set (called the domain) to another set (called the range) assigns to each element of the domain exactly one element of the range. If f is a function and x is an element of its domain, then f(x) denotes the output of f corresponding to the input x. The graph of f is the graph of the equation y = f(x).</p>
+</dd>
+<dt class="hdlist1">MS.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Missouri">
+<div class="title"><a href="">Missouri Standards</a></div>
+<dl>
+<dt class="hdlist1">MO.8.F.A.1</dt>
+<dd>
+<p>Understand that a function is a rule that assigns to each input exactly one output. The graph of a function is the set of ordered pairs consisting of an input and the corresponding output.</p>
+</dd>
+<dt class="hdlist1">MO.HSF.IF.A.1</dt>
+<dd>
+<p>Understand that a function from one set (called the domain) to another set (called the range) assigns to each element of the domain exactly one element of the range. If f is a function and x is an element of its domain, then f(x) denotes the output of f corresponding to the input x. The graph of f is the graph of the equation y = f(x).</p>
+</dd>
+<dt class="hdlist1">MO.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Montana">
+<div class="title"><a href="">Montana Standards</a></div>
+<dl>
+<dt class="hdlist1">MT.8.F.A.1</dt>
+<dd>
+<p>Understand that a function is a rule that assigns to each input exactly one output. The graph of a function is the set of ordered pairs consisting of an input and the corresponding output.</p>
+</dd>
+<dt class="hdlist1">MT.HSF.IF.A.1</dt>
+<dd>
+<p>Understand that a function from one set (called the domain) to another set (called the range) assigns to each element of the domain exactly one element of the range. If f is a function and x is an element of its domain, then f(x) denotes the output of f corresponding to the input x. The graph of f is the graph of the equation y = f(x).</p>
+</dd>
+<dt class="hdlist1">MT.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist .alignedStandards.standards-New Hampshire">
+<div class="title"><a href="">New Hampshire Standards</a></div>
+<dl>
+<dt>NH.8.F.A.1</dt>
+<dd>
+<p>Understand that a function is a rule that assigns to each input exactly one output. The graph of a function is the set of ordered pairs consisting of an input and the corresponding output.</p>
+</dd>
+<dt>NH.HSF.IF.A.1</dt>
+<dd>
+<p>Understand that a function from one set (called the domain) to another set (called the range) assigns to each element of the domain exactly one element of the range. If f is a function and x is an element of its domain, then f(x) denotes the output of f corresponding to the input x. The graph of f is the graph of the equation y = f(x).</p>
+</dd>
+<dt>NH.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Nevada">
+<div class="title"><a href="">Nevada Standards</a></div>
+<dl>
+<dt class="hdlist1">NV.8.F.A.1</dt>
+<dd>
+<p>Understand that a function is a rule that assigns to each input exactly one output. The graph of a function is the set of ordered pairs consisting of an input and the corresponding output.</p>
+</dd>
+<dt class="hdlist1">NV.HSF.IF.A.1</dt>
+<dd>
+<p>Understand that a function from one set (called the domain) to another set (called the range) assigns to each element of the domain exactly one element of the range. If f is a function and x is an element of its domain, then f(x) denotes the output of f corresponding to the input x. The graph of f is the graph of the equation y = f(x).</p>
+</dd>
+<dt class="hdlist1">NV.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist .alignedStandards.standards-New Jersey">
+<div class="title"><a href="">New Jersey Standards</a></div>
+<dl>
+<dt>NJ.8.F.A.1</dt>
+<dd>
+<p>Understand that a function is a rule that assigns to each input exactly one output. The graph of a function is the set of ordered pairs consisting of an input and the corresponding output.</p>
+</dd>
+<dt>NJ.HSF.IF.A.1</dt>
+<dd>
+<p>Understand that a function from one set (called the domain) to another set (called the range) assigns to each element of the domain exactly one element of the range. If f is a function and x is an element of its domain, then f(x) denotes the output of f corresponding to the input x. The graph of f is the graph of the equation y = f(x).</p>
+</dd>
+<dt>NJ.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist .alignedStandards.standards-New Mexico">
+<div class="title"><a href="">New Mexico Standards</a></div>
+<dl>
+<dt>NM.8.F.A.1</dt>
+<dd>
+<p>Understand that a function is a rule that assigns to each input exactly one output. The graph of a function is the set of ordered pairs consisting of an input and the corresponding output.</p>
+</dd>
+<dt>NM.HSF.IF.A.1</dt>
+<dd>
+<p>Understand that a function from one set (called the domain) to another set (called the range) assigns to each element of the domain exactly one element of the range. If f is a function and x is an element of its domain, then f(x) denotes the output of f corresponding to the input x. The graph of f is the graph of the equation y = f(x).</p>
+</dd>
+<dt>NM.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist .alignedStandards.standards-North Carolina">
+<div class="title"><a href="">North Carolina Standards</a></div>
+<dl>
+<dt>NC.8.F.A.1</dt>
+<dd>
+<p>Understand that a function is a rule that assigns to each input exactly one output. The graph of a function is the set of ordered pairs consisting of an input and the corresponding output.</p>
+</dd>
+<dt>NC.HSF.IF.A.1</dt>
+<dd>
+<p>Understand that a function from one set (called the domain) to another set (called the range) assigns to each element of the domain exactly one element of the range. If f is a function and x is an element of its domain, then f(x) denotes the output of f corresponding to the input x. The graph of f is the graph of the equation y = f(x).</p>
+</dd>
+<dt>NC.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist .alignedStandards.standards-North Dakota">
+<div class="title"><a href="">North Dakota Standards</a></div>
+<dl>
+<dt>ND.8.F.A.1</dt>
+<dd>
+<p>Understand that a function is a rule that assigns to each input exactly one output. The graph of a function is the set of ordered pairs consisting of an input and the corresponding output.</p>
+</dd>
+<dt>ND.HSF.IF.A.1</dt>
+<dd>
+<p>Understand that a function from one set (called the domain) to another set (called the range) assigns to each element of the domain exactly one element of the range. If f is a function and x is an element of its domain, then f(x) denotes the output of f corresponding to the input x. The graph of f is the graph of the equation y = f(x).</p>
+</dd>
+<dt>ND.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist .alignedStandards.standards-New York">
+<div class="title"><a href="http://www.nysed.gov/curriculum-instruction/new-york-state-next-generation-mathematics-learning-standards">New York Standards</a></div>
+<dl>
+<dt>NY.8.F.A.1</dt>
+<dd>
+<p>Understand that a function is a rule that assigns to each input exactly one output. The graph of a function is the set of ordered pairs consisting of an input and the corresponding output.</p>
+</dd>
+<dt>NY.HSF.IF.A.1</dt>
+<dd>
+<p>Understand that a function from one set (called the domain) to another set (called the range) assigns to each element of the domain exactly one element of the range. If f is a function and x is an element of its domain, then f(x) denotes the output of f corresponding to the input x. The graph of f is the graph of the equation y = f(x).</p>
+</dd>
+<dt>NY.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Oklahoma">
+<div class="title"><a href="https://sde.ok.gov/oklahoma-academic-standards">Oklahoma Standards</a></div>
+<dl>
+<dt class="hdlist1">OK.5.GM.1.1</dt>
+<dd>
+<p>Describe, classify and construct triangles, including equilateral, right, scalene, and isosceles triangles. Recognize triangles in various contexts.</p>
+</dd>
+<dt class="hdlist1">OK.6.GM.2.2</dt>
+<dd>
+<p>Develop and use the fact that the sum of the interior angles of a triangle is 180° to determine missing angle measures in a triangle.</p>
+</dd>
+<dt class="hdlist1">OK.A1.F.1.2</dt>
+<dd>
+<p>Identify the dependent and independent variables as well as the domain and range given a function, equation, or graph. Identify restrictions on the domain and range in real-world contexts.</p>
+</dd>
+<dt class="hdlist1">OK.A1.F.1.3</dt>
+<dd>
+<p>Write linear functions, using function notation, to model real-world and mathematical situations.</p>
+</dd>
+<dt class="hdlist1">OK.A1.F.1.4</dt>
+<dd>
+<p>Given a graph modeling a real-world situation, read and interpret the linear piecewise function (excluding step functions).</p>
+</dd>
+<dt class="hdlist1">OK.G.2D.1.8</dt>
+<dd>
+<p>Construct logical arguments to prove triangle congruence (SSS, SAS, ASA, AAS and HL) and triangle similarity (AA, SSS, SAS).</p>
+</dd>
+<dt class="hdlist1">OK.PA.A.1.1</dt>
+<dd>
+<p>Recognize that a function is a relationship between an independent variable and a dependent variable in which the value of the independent variable determines the value of the dependent variable.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Ohio">
+<div class="title"><a href="">Ohio Standards</a></div>
+<dl>
+<dt class="hdlist1">OH.8.F.A.1</dt>
+<dd>
+<p>Understand that a function is a rule that assigns to each input exactly one output. The graph of a function is the set of ordered pairs consisting of an input and the corresponding output.</p>
+</dd>
+<dt class="hdlist1">OH.HSF.IF.A.1</dt>
+<dd>
+<p>Understand that a function from one set (called the domain) to another set (called the range) assigns to each element of the domain exactly one element of the range. If f is a function and x is an element of its domain, then f(x) denotes the output of f corresponding to the input x. The graph of f is the graph of the equation y = f(x).</p>
+</dd>
+<dt class="hdlist1">OH.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Oregon">
+<div class="title"><a href="">Oregon Standards</a></div>
+<dl>
+<dt class="hdlist1">OR.8.F.A.1</dt>
+<dd>
+<p>Understand that a function is a rule that assigns to each input exactly one output. The graph of a function is the set of ordered pairs consisting of an input and the corresponding output.</p>
+</dd>
+<dt class="hdlist1">OR.HSF.IF.A.1</dt>
+<dd>
+<p>Understand that a function from one set (called the domain) to another set (called the range) assigns to each element of the domain exactly one element of the range. If f is a function and x is an element of its domain, then f(x) denotes the output of f corresponding to the input x. The graph of f is the graph of the equation y = f(x).</p>
+</dd>
+<dt class="hdlist1">OR.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Pennsylvania">
+<div class="title"><a href="">Pennsylvania Standards</a></div>
+<dl>
+<dt class="hdlist1">PA.8.F.A.1</dt>
+<dd>
+<p>Understand that a function is a rule that assigns to each input exactly one output. The graph of a function is the set of ordered pairs consisting of an input and the corresponding output.</p>
+</dd>
+<dt class="hdlist1">PA.HSF.IF.A.1</dt>
+<dd>
+<p>Understand that a function from one set (called the domain) to another set (called the range) assigns to each element of the domain exactly one element of the range. If f is a function and x is an element of its domain, then f(x) denotes the output of f corresponding to the input x. The graph of f is the graph of the equation y = f(x).</p>
+</dd>
+<dt class="hdlist1">PA.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist .alignedStandards.standards-Rhode Island">
+<div class="title"><a href="">Rhode Island Standards</a></div>
+<dl>
+<dt>RI.8.F.A.1</dt>
+<dd>
+<p>Understand that a function is a rule that assigns to each input exactly one output. The graph of a function is the set of ordered pairs consisting of an input and the corresponding output.</p>
+</dd>
+<dt>RI.HSF.IF.A.1</dt>
+<dd>
+<p>Understand that a function from one set (called the domain) to another set (called the range) assigns to each element of the domain exactly one element of the range. If f is a function and x is an element of its domain, then f(x) denotes the output of f corresponding to the input x. The graph of f is the graph of the equation y = f(x).</p>
+</dd>
+<dt>RI.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist .alignedStandards.standards-South Dakota">
+<div class="title"><a href="">South Dakota Standards</a></div>
+<dl>
+<dt>SD.8.F.A.1</dt>
+<dd>
+<p>Understand that a function is a rule that assigns to each input exactly one output. The graph of a function is the set of ordered pairs consisting of an input and the corresponding output.</p>
+</dd>
+<dt>SD.HSF.IF.A.1</dt>
+<dd>
+<p>Understand that a function from one set (called the domain) to another set (called the range) assigns to each element of the domain exactly one element of the range. If f is a function and x is an element of its domain, then f(x) denotes the output of f corresponding to the input x. The graph of f is the graph of the equation y = f(x).</p>
+</dd>
+<dt>SD.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Tennessee">
+<div class="title"><a href="">Tennessee Standards</a></div>
+<dl>
+<dt class="hdlist1">TN.8.F.A.1</dt>
+<dd>
+<p>Understand that a function is a rule that assigns to each input exactly one output. The graph of a function is the set of ordered pairs consisting of an input and the corresponding output.</p>
+</dd>
+<dt class="hdlist1">TN.HSF.IF.A.1</dt>
+<dd>
+<p>Understand that a function from one set (called the domain) to another set (called the range) assigns to each element of the domain exactly one element of the range. If f is a function and x is an element of its domain, then f(x) denotes the output of f corresponding to the input x. The graph of f is the graph of the equation y = f(x).</p>
+</dd>
+<dt class="hdlist1">TN.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Utah">
+<div class="title"><a href="">Utah Standards</a></div>
+<dl>
+<dt class="hdlist1">UT.8.F.A.1</dt>
+<dd>
+<p>Understand that a function is a rule that assigns to each input exactly one output. The graph of a function is the set of ordered pairs consisting of an input and the corresponding output.</p>
+</dd>
+<dt class="hdlist1">UT.HSF.IF.A.1</dt>
+<dd>
+<p>Understand that a function from one set (called the domain) to another set (called the range) assigns to each element of the domain exactly one element of the range. If f is a function and x is an element of its domain, then f(x) denotes the output of f corresponding to the input x. The graph of f is the graph of the equation y = f(x).</p>
+</dd>
+<dt class="hdlist1">UT.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Vermont">
+<div class="title"><a href="">Vermont Standards</a></div>
+<dl>
+<dt class="hdlist1">VT.8.F.A.1</dt>
+<dd>
+<p>Understand that a function is a rule that assigns to each input exactly one output. The graph of a function is the set of ordered pairs consisting of an input and the corresponding output.</p>
+</dd>
+<dt class="hdlist1">VT.HSF.IF.A.1</dt>
+<dd>
+<p>Understand that a function from one set (called the domain) to another set (called the range) assigns to each element of the domain exactly one element of the range. If f is a function and x is an element of its domain, then f(x) denotes the output of f corresponding to the input x. The graph of f is the graph of the equation y = f(x).</p>
+</dd>
+<dt class="hdlist1">VT.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Washington">
+<div class="title"><a href="">Washington Standards</a></div>
+<dl>
+<dt class="hdlist1">WA.8.F.A.1</dt>
+<dd>
+<p>Understand that a function is a rule that assigns to each input exactly one output. The graph of a function is the set of ordered pairs consisting of an input and the corresponding output.</p>
+</dd>
+<dt class="hdlist1">WA.HSF.IF.A.1</dt>
+<dd>
+<p>Understand that a function from one set (called the domain) to another set (called the range) assigns to each element of the domain exactly one element of the range. If f is a function and x is an element of its domain, then f(x) denotes the output of f corresponding to the input x. The graph of f is the graph of the equation y = f(x).</p>
+</dd>
+<dt class="hdlist1">WA.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist .alignedStandards.standards-West Virginia">
+<div class="title"><a href="">West Virginia Standards</a></div>
+<dl>
+<dt>WV.8.F.A.1</dt>
+<dd>
+<p>Understand that a function is a rule that assigns to each input exactly one output. The graph of a function is the set of ordered pairs consisting of an input and the corresponding output.</p>
+</dd>
+<dt>WV.HSF.IF.A.1</dt>
+<dd>
+<p>Understand that a function from one set (called the domain) to another set (called the range) assigns to each element of the domain exactly one element of the range. If f is a function and x is an element of its domain, then f(x) denotes the output of f corresponding to the input x. The graph of f is the graph of the equation y = f(x).</p>
+</dd>
+<dt>WV.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Wisconsin">
+<div class="title"><a href="">Wisconsin Standards</a></div>
+<dl>
+<dt class="hdlist1">WI.8.F.A.1</dt>
+<dd>
+<p>Understand that a function is a rule that assigns to each input exactly one output. The graph of a function is the set of ordered pairs consisting of an input and the corresponding output.</p>
+</dd>
+<dt class="hdlist1">WI.HSF.IF.A.1</dt>
+<dd>
+<p>Understand that a function from one set (called the domain) to another set (called the range) assigns to each element of the domain exactly one element of the range. If f is a function and x is an element of its domain, then f(x) denotes the output of f corresponding to the input x. The graph of f is the graph of the equation y = f(x).</p>
+</dd>
+<dt class="hdlist1">WI.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Wyoming">
+<div class="title"><a href="">Wyoming Standards</a></div>
+<dl>
+<dt class="hdlist1">WY.8.F.A.1</dt>
+<dd>
+<p>Understand that a function is a rule that assigns to each input exactly one output. The graph of a function is the set of ordered pairs consisting of an input and the corresponding output.</p>
+</dd>
+<dt class="hdlist1">WY.HSF.IF.A.1</dt>
+<dd>
+<p>Understand that a function from one set (called the domain) to another set (called the range) assigns to each element of the domain exactly one element of the range. If f is a function and x is an element of its domain, then f(x) denotes the output of f corresponding to the input x. The graph of f is the graph of the equation y = f(x).</p>
+</dd>
+<dt class="hdlist1">WY.HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch sidebartextbooks">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Textbook Alignment</strong>
+<select class="textbooksAlignmentSelect"  onchange="showTextbooksAlignment()"><option selected="selected" value="textbook-IM_Alg_1"><a href="https://illustrativemathematics.org/">IM Algebra 1</a></option><option value="textbook-IM_8"><a href="https://illustrativemathematics.org/">IM 8 Math™</a></option><option value="textbook-IM_7"><a href="https://illustrativemathematics.org/">IM 7 Math™</a></option><option value="textbook-IM_6"><a href="https://illustrativemathematics.org/">IM 6 Math™</a></option></select></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist alignedTextbooks textbook-IM_Alg_1">
+<div class="title"><a href="https://illustrativemathematics.org/">IM Algebra 1</a></div>
+<dl>
+<dt class="hdlist1">IM.Alg1.4.3</dt>
+<dd>
+<p>Interpreting &amp; Using Function Notation</p>
+</dd>
+<dt class="hdlist1">IM.Alg1.4.2</dt>
+<dd>
+<p>Function Notation</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedTextbooks textbook-IM_8">
+<div class="title"><a href="https://illustrativemathematics.org/">IM 8 Math™</a></div>
+<dl>
+<dt class="hdlist1">IM.8.5.2</dt>
+<dd>
+<p>Introduction to Functions</p>
+</dd>
+<dt class="hdlist1">IM.8.5.1</dt>
+<dd>
+<p>Inputs and Outputs</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedTextbooks textbook-IM_7">
+<div class="title"><a href="https://illustrativemathematics.org/">IM 7 Math™</a></div>
+<dl>
+<dt class="hdlist1">IM.7.2.6</dt>
+<dd>
+<p>Using Equations to Solve Problems</p>
+</dd>
+<dt class="hdlist1">IM.7.2.5</dt>
+<dd>
+<p>Two Equations for Each Relationship</p>
+</dd>
+<dt class="hdlist1">IM.7.2.4</dt>
+<dd>
+<p>Proportional Relationships and Equations</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedTextbooks textbook-IM_6">
+<div class="title"><a href="https://illustrativemathematics.org/">IM 6 Math™</a></div>
+<dl>
+<dt class="hdlist1">IM.6.6.18</dt>
+<dd>
+<p>More Relationships</p>
+</dd>
+<dt class="hdlist1">IM.6.6.17</dt>
+<dd>
+<p>Two Related Quantities, Part 2</p>
+</dd>
+<dt class="hdlist1">IM.6.6.16</dt>
+<dd>
+<p>Two Related Quantities, Part 1</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch sidebarpractices">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Practices in this Lesson</strong>
+<select class="practicesAlignmentSelect"  onchange="showPracticesAlignment()"><option selected="selected" value="practices-MLR"><a href="https://achievethecore.org/peersandpedagogy/developing-math-language-routines/">Math Lang. Routines</a></option><option value="practices-NGSS"><a href="https://ngss.nsta.org/practicesfull.aspx">Science and Engineering</a></option></select></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist alignedPractices practices-MLR">
+<div class="title"><a href="https://achievethecore.org/peersandpedagogy/developing-math-language-routines/">Math Lang. Routines</a></div>
+<dl>
+<dt class="hdlist1">MLR.8</dt>
+<dd>
+<p>Discussion Supports</p>
+</dd>
+<dt class="hdlist1">MLR.2</dt>
+<dd>
+<p>Collect and Display</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedPractices practices-NGSS">
+<div class="title"><a href="https://ngss.nsta.org/practicesfull.aspx">Science and Engineering</a></div>
+<dl>
+<dt class="hdlist1">SEP.8</dt>
+<dd>
+<p>Obtaining, Evaluating, and Communicating Information</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<!-- </p>
+</div>
+--></div><!--
+<div class="paragraph">
+<p>
+-->
+</div>
+<div class="paragraph">
+<p><span class="other-proglang">(Also available in <a href="../../lessons/contracts/index.shtml">Pyret</a>)</span></p>
+</div>
+<div class="paragraph description">
+<p>Students learn how to apply Functions in the programming environment and interpret the information contained in Contracts: Name, Domain and Range. Image-producing functions provide an engaging context for this exploration.</p>
+</div>
+<table class="tableblock frame-all grid-all stripes-none stretch left-header preamble">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Lesson Goals</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Students will be able to:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Name and explain the three parts of a Contract</p>
+</li>
+<li>
+<p>Use Contracts to apply functions that produce Numbers, Strings, and Images</p>
+</li>
+<li>
+<p>Demonstrate understanding of <span class="vocab">Domain</span> and <span class="vocab">Range</span> and how they relate to <span class="vocab">Functions</span></p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Student-facing Lesson Goals</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>I can make images</p>
+</li>
+<li>
+<p>I can identify the Domain and Range of a function.</p>
+</li>
+<li>
+<p>I can use a Contract to apply a function</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Materials</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist materials-links">
+<ul>
+<li>
+<p><a href="https://docs.google.com/presentation/d/16dJYofjZNoSzHOhOgf1luU-Ji_Tf63O7T2YO-7r6hRg/" target="_blank" rel="noopener">Lesson Slides</a></p>
+</li>
+<li>
+<p><span class="materialSectionPlaceholder"> </span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/contracts-wescheme/pages/applying-functions.html" target="_blank" rel="noopener">Applying Functions</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/contracts-wescheme/pages/frayer-model.pdf" target="_blank" rel="noopener">Domain and Range Frayer model</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/contracts-wescheme/pages/practicing-contracts.html" target="_blank" rel="noopener">Practicing Contracts: Domain &amp; Range</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/contracts-wescheme/pages/matching-expressions.html" target="_blank" rel="noopener">Matching Expressions and Contracts</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/contracts-wescheme/pages/using-contracts.html" target="_blank" rel="noopener">Using Contracts</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/contracts-wescheme/pages/triangle-contracts.html" target="_blank" rel="noopener">Triangle Contracts</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/contracts-wescheme/pages/radial-star.html" target="_blank" rel="noopener">Radial Star</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="../../lessons/contracts-wescheme/pages/frayer-model-2.pdf" target="_blank" rel="noopener">Function and Variable Frayer model.</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="../../lessons/contracts-wescheme/pages/image-contracts.html" target="_blank" rel="noopener">Contracts</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="../../lessons/contracts-wescheme/pages/using-contracts-cont.html" target="_blank" rel="noopener">Using Contracts (continued)</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="../../lessons/contracts-wescheme/pages/triangle-contracts-cont.html" target="_blank" rel="noopener">Triangle Contracts (SAS &amp; ASA)</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="../../lessons/contracts-wescheme/pages/star-polygon.html" target="_blank" rel="noopener">Star Polygon</a></span></p>
+</li>
+<li>
+<p><span class="Optional OnlineExercise"><a href="https://teacher.desmos.com/activitybuilder/custom/5fecf203a29e040d182be6c6?collections=5fbecc2b40d7aa0d844956f0" target="_blank" rel="noopener">Matching Images to Code (Desmos)</a></span></p>
+</li>
+<li>
+<p><strong>Classroom visual:</strong> <a href="javascript:showLangTable()">Language Table</a></p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Preparation</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>All students should log into <a href="https://www.wescheme.org/openEditor" target="_blank" rel="noopener">WeScheme</a>.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Key Points For The Facilitator</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Check frequently for understanding of <span class="vocab">data types</span> and <span class="vocab">contracts</span> during this lesson and throughout subsequent lessons.</p>
+</li>
+<li>
+<p>Students will use their Contracts page frequently, so it should be kept in an accessible, convenient location.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="dlist glossary">
+<div class="title">Glossary</div>
+<dl>
+<dt class="hdlist1">argument</dt>
+<dd>
+<p>the inputs to a function; the expressions for each argument follow the function name</p>
+</dd>
+<dt class="hdlist1">contract</dt>
+<dd>
+<p>a statement of the name, domain, and range of a function</p>
+</dd>
+<dt class="hdlist1">contract error</dt>
+<dd>
+<p>errors where the code makes sense, but uses a function with the wrong number or type of arguments</p>
+</dd>
+<dt class="hdlist1">data type</dt>
+<dd>
+<p>a way of classifying values, such as: Number, String, Image, Boolean, or any user-defined data structure</p>
+</dd>
+<dt class="hdlist1">domain</dt>
+<dd>
+<p>the type or set of inputs that a function expects</p>
+</dd>
+<dt class="hdlist1">error message</dt>
+<dd>
+<p>information from the computer about errors in code</p>
+</dd>
+<dt class="hdlist1">function</dt>
+<dd>
+<p>a relation from a set of inputs to a set of possible outputs, where each input is related to exactly one output</p>
+</dd>
+<dt class="hdlist1">name</dt>
+<dd>
+<p>how we refer to a function or value defined in a language (examples: +, *, star, circle)</p>
+</dd>
+<dt class="hdlist1">range</dt>
+<dd>
+<p>the type or set of outputs that a function produces</p>
+</dd>
+<dt class="hdlist1">syntax error</dt>
+<dd>
+<p>errors where the computer cannot make sense of the code (e.g. - missing commas, missing parentheses, unclosed strings)</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_applying_functions_duration_10_minutes_"><span class="section-link"><a href="#_applying_functions_duration_10_minutes_"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Applying Functions <span class="duration">10 minutes</span></h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_overview">Overview</h3>
+<div class="paragraph">
+<p>Students learn how to apply functions in
+		WeScheme,
+reinforcing concepts from standard Algebra, and practice reading error messages to diagnose errors in code.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_launch">Launch</h3>
+<div class="paragraph">
+<p>In human languages, verbs <em>do things to nouns</em>. For example, I can "<em>throw</em> a ball", or "<em>eat</em> a sandwich". "Throw" and "Eat" are verbs, and "ball" and "sandwich" are nouns.</p>
+</div>
+<div class="paragraph">
+<p>In programming languages, values are like nouns. You&#8217;ve learned about values in our programming language, like Numbers (<code class="racket">42</code>, <code class="racket">-8.3</code>, etc), Strings (<code class="racket">"hello!"</code>), and Booleans (<code class="racket">true</code> and <code class="racket">false</code>).
+In programming, our verbs are called <span class="vocab">functions</span>. A function is like a machine, and it does three things:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>It takes in some values (called <span class="vocab">arguments</span>)</p>
+</li>
+<li>
+<p>It <em>does something</em> to those values</p>
+</li>
+<li>
+<p>It produces a new value</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s play with a few functions, to get the hang of it.</p>
+</div>
+<div class="openblock lesson-instruction">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Log into <a href="https://www.wescheme.org/openEditor" target="_blank" rel="noopener">WeScheme</a>.</p>
+</li>
+<li>
+<p>Open the editor and press "Run", then type <span class="obeyspaces"><code class="racket">(sqrt 16)</code></span> into the Interactions Area and hit Enter.</p>
+</li>
+<li>
+<p>What part of this expression is the <em>value</em>?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>16</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>What is the name of this function?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><span class="obeyspaces"><code class="racket">sqrt</code></span></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>How many arguments are we giving to this function?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>1</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>What is the type of the argument we are giving to <code class="racket">sqrt</code>?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>A Number</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>What did <span class="obeyspaces"><code class="racket">sqrt</code></span> produce?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>4</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>What type of data did <code class="racket">sqrt</code> produce?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Number</em></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Encourage students to try giving different arguments to <code class="racket">sqrt</code>. Does it only work with Numbers? Does it only take one Number?</p>
+</div>
+<div class="openblock lesson-instruction">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Type <span class="obeyspaces"><code class="racket">(string-length "rainbow")</code></span> into the Interactions Area and hit Enter:</p>
+</li>
+<li>
+<p>What is the name of this function?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>string-length</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>How many arguments does <code class="racket">string-length</code> expect?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>1</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>What type of argument does the function expect?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>String</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>What does the expression evaluate to?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>7</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>What type of data did <code class="racket">string-length</code> produce?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Number</em></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Encourage students to try giving different arguments to <code class="racket">string-length</code>. Does it only work with Strings? Does it only take one String? What does it do?</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_investigation">Investigation</h3>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Complete the first section of <a href="../../lessons/contracts-wescheme/pages/applying-functions.html" target="_blank" rel="noopener">Applying Functions</a> to investigate the <code class="racket">triangle</code> function.</p>
+</li>
+<li>
+<p>Try changing the expression <span class="obeyspaces"><code class="racket">(triangle 50 "solid" "red")</code></span> to use <code class="racket">"outline"</code> for the second argument. Now try changing colors and sizes!</p>
+</li>
+<li>
+<p>Now, take a look at some buggy code in the bottom section. Can you spot the mistakes?</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_synthesize">Synthesize</h3>
+<div class="paragraph">
+<p>Debrief the activity with the class. Be sure to discuss and analyze different error messages encountered.</p>
+</div>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>What are the types of the arguments <code class="racket">triangle</code> was expecting?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>A Number and 2 Strings</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>How does the output relate to the inputs?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>The Number determines the size and the Strings determine the style and color.</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>What kind of value was produced by that expression?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>An Image! New data type!</em></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_contracts_duration_15_minutes_"><span class="section-link"><a href="#_contracts_duration_15_minutes_"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Contracts <span class="duration">15 minutes</span></h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_overview_2">Overview</h3>
+<div class="paragraph">
+<p>This activity introduces the notion of <span class="vocab">Contracts</span>, which are a simple notation for keeping track of the set of all possible inputs and outputs for a function. They are also closely related to the concept of a <em>function machine</em>, which is introduced as well. <em>Note: Contracts are based on the same notation found in Algebra!</em></p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_launch_2">Launch</h3>
+<div class="paragraph">
+<p>When students typed <span class="obeyspaces"><code class="racket">(triangle 50 "solid" "red")</code></span>
+into the editor, they created an example of a new <span class="vocab">data type</span>, called an <em>Image</em>.</p>
+</div>
+<div class="paragraph">
+<p>The <code class="racket">triangle</code> function can make lots of different triangles! The size, style and color are all determined by the specific inputs provided in the code, but, if we don&#8217;t provide the function with a number and two strings to define those parameters, we will get an error message instead of a triangle.</p>
+</div>
+<div class="paragraph">
+<p>As you can imagine, there are many other functions for making images, each with a different set of arguments. For each of these functions, we need to keep track of three things:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Name</strong>&#8201;&#8212;&#8201;the name of the function, which we type in whenever we want to use it</p>
+</li>
+<li>
+<p><strong>Domain</strong>&#8201;&#8212;&#8201;the type(s) of data we give to the function</p>
+</li>
+<li>
+<p><strong>Range</strong>&#8201;&#8212;&#8201;the type of data the function produces</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The <span class="vocab">Name</span>, <span class="vocab">Domain</span> and <span class="vocab">Range</span> are used to write a <span class="vocab">Contract</span>.</p>
+</div>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Where else have you heard the word "contract"?</p>
+</li>
+<li>
+<p>How can you connect that meaning to contracts in programming?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>An actor signs a contract agreeing to perform in a film in exchange for compensation, a contractor makes an agreement with a homeowner to build or repair something in a set amount of time for compensation, or a parent agrees to pizza for dinner in exchange for the child completing their chores. Similarly, a contract in programming is an <strong>agreement</strong> between what the function is given and what it produces.</em></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="vocab">Contracts</span> tell us a lot about how to use a function. In fact, we can figure out how to use functions we&#8217;ve never seen before, just by looking at the contract! Most of the time, error messages occur when we&#8217;ve accidentally broken a contract.</p>
+</div>
+<div class="paragraph">
+<p><span class="vocab">Contracts</span> don&#8217;t tell us <em>specific</em> inputs. They tell us the <em><span class="vocab">data type</span></em> of input a function needs. For example, a Contract wouldn’t say that addition requires "3 and 4". Addition works on more than just those two inputs! Instead, it would tells us that addition requires "two Numbers". When we <em>use</em> a Contract, we plug specific numbers or strings into the expression we are coding.</p>
+</div>
+<div class="paragraph lesson-point">
+<p>Contracts are general. Expressions are specific.</p>
+</div>
+<div class="paragraph">
+<p>Let’s take a look at the Name, Domain, and Range of the functions we&#8217;ve seen before:</p>
+</div>
+<div class="paragraph text-center">
+<p><strong>A Sample Contracts Table</strong></p>
+</div>
+<style>
+.inlineContractTable {width: 80%; margin: auto;}
+.inlineContractTable tbody .tableblock{ padding: 0px; margin: 0px; }
+</style>
+<table class="tableblock frame-all grid-rows stretch inlineContractTable">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 5.5555%;">
+<col style="width: 44.4444%;">
+<col style="width: 5.5555%;">
+<col style="width: 11.1113%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top"></th>
+<th class="tableblock halign-left valign-top">Domain</th>
+<th class="tableblock halign-left valign-top"></th>
+<th class="tableblock halign-left valign-top">Range</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="racket">;</code> <code class="racket">+</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="racket">Number, Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-&gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="racket">Number</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="racket">;</code> <code class="racket">-</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="racket">Number, Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-&gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="racket">Number</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="racket">;</code> <code class="racket">/</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="racket">Number, Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-&gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="racket">Number</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="racket">;</code> <code class="racket">*</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="racket">Number, Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-&gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="racket">Number</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="racket">;</code> <code class="racket">sqr</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="racket">Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-&gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="racket">Number</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="racket">;</code> <code class="racket">sqrt</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="racket">Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-&gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="racket">Number</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="racket">;</code> <code class="racket">&lt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="racket">Number, Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-&gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="racket">Boolean</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="racket">;</code> <code class="racket">&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="racket">Number, Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-&gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="racket">Boolean</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="racket">;</code> <code class="racket">&lt;=</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="racket">Number, Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-&gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="racket">Boolean</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="racket">;</code> <code class="racket">&gt;=</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="racket">Number, Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-&gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="racket">Boolean</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="racket">;</code> <code class="racket">==</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="racket">Number, Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-&gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="racket">Boolean</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="racket">;</code> <code class="racket">&lt;&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="racket">Number, Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-&gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="racket">Boolean</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="racket">;</code> <code class="racket">string=?</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="racket">String, String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-&gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="racket">Boolean</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="racket">;</code> <code class="racket">string-contains?</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="racket">String, String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-&gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="racket">Boolean</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="racket">;</code> <code class="racket">string-length</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="racket">String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-&gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="racket">Number</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="racket">;</code> <code class="racket">triangle</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="racket">Number, String, String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-&gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="racket">Image</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>What do you Notice?</p>
+</li>
+<li>
+<p>What do you Wonder?</p>
+</li>
+</ul>
+</div>
+<div class="paragraph lesson-point">
+<p>When the input matches what the function consumes, the function produces the output we expect.</p>
+</div>
+<div class="paragraph">
+<p><strong>Optional:</strong> Have students make a <a href="../../lessons/contracts-wescheme/pages/frayer-model.pdf" target="_blank" rel="noopener">Domain and Range Frayer model</a> and use the visual organizer to explain the concepts of Domain and Range in their own words. You might also have students complete <a href="../../lessons/contracts-wescheme/pages/frayer-model-2.pdf" target="_blank" rel="noopener">Function and Variable Frayer model.</a></p>
+</div>
+<div class="openblock lesson-instruction">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Here is an example of another function. <span class="obeyspaces"><code class="racket">(string-append "sun" "shine")</code></span></p>
+</li>
+<li>
+<p>Type it into the editor.</p>
+</li>
+<li>
+<p>What is its contract?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code class="racket">string-append :: String, String -&gt; String</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>What do you think <code class="racket">string-apend</code> does?</p>
+<div class="ulist">
+<ul>
+<li>
+<p>It links together two different strings.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_investigate">Investigate</h3>
+<div class="paragraph lesson-instruction">
+<p>Complete <a href="../../lessons/contracts-wescheme/pages/practicing-contracts.html" target="_blank" rel="noopener">Practicing Contracts: Domain &amp; Range</a> and <a href="../../lessons/contracts-wescheme/pages/matching-expressions.html" target="_blank" rel="noopener">Matching Expressions and Contracts</a> to get some practice working with Contracts.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_synthesize_2">Synthesize</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>What is the difference between a value like <code class="racket">17</code> and a type like <code class="racket">Number</code>?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>A value is a specific piece of data, whereas a type is a way of classifying values.</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>For each expression where a function is given inputs, how many outputs are there?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>For each collection of inputs that we give a function there is exactly one output.</em></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_exploring_image_functions_duration_20_minutes_"><span class="section-link"><a href="#_exploring_image_functions_duration_20_minutes_"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Exploring Image Functions <span class="duration">20 minutes</span></h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_overview_3">Overview</h3>
+<div class="paragraph">
+<p>This activity digs deeper into Contracts. Students explore image functions to take ownership of the concept and create an artifact they can refer back to. Making images is highly motivating, and encourages students to get better at both reading error messages and persisting in catching bugs.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_launch_3">Launch</h3>
+<div class="paragraph">
+<p>Suppose we had never seen <code class="racket">star</code> before. How could we figure out how to use it, using the helpful error messages?</p>
+</div>
+<table class="tableblock frame-all grid-none stripes-none stretch strategy-box">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="title">Error Messages</span></p>
+<p class="tableblock">The error messages in this environment are <em>designed</em> to be as student-friendly as possible. Encourage students to read these messages aloud to one another, and ask them what they think the error message <em>means</em>. By explicitly drawing their attention to errors, you will be setting them up to be more independent in the next activity!</p></td>
+</tr>
+</tbody>
+</table>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Type <code class="racket">star</code> into the Interactions Area and hit "Enter". What did you get back? What does that mean?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>There is something called "star", and the computer knows it&#8217;s a function!</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>If it&#8217;s a function, we know that it will need an open parentheses and at least one input. Try <span class="obeyspaces"><code class="racket">(star 50)</code></span></p>
+</li>
+<li>
+<p>What error did we get? What <em>hint</em> does it give us about how to use this function?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em><code class="racket">star</code> has three elements in its Domain</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>What happens if I don&#8217;t give it those things?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>We won&#8217;t get the star we want, we&#8217;ll probably get an error!</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>If I give <code class="racket">star</code> what it needs, what do I get in return?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>An Image of the star that matches the arguments</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>What is the contract for star?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>star : Number String String -&gt; Image</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>The contract for <code class="racket">square</code> also has <code class="racket">Number String String</code> as the Domain and <code class="racket">Image</code> as the Range. Does that mean the functions are the same?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>No! The Domain and Range are the same, but the function name is different&#8230;&#8203; and that&#8217;s important because the <code class="racket">star</code> and <code class="racket">square</code> functions do something very different with those inputs!</em></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_investigate_2">Investigate</h3>
+<div class="paragraph">
+<p>Explain to students that at the back of their workbooks, they&#8217;ll find pages with space to write down a contract and example or other notes for every function in this course. (If your students do not have workbooks, print and copy the <a href="../../lessons/contracts-wescheme/pages/image-contracts.html" target="_blank" rel="noopener">contracts pages</a>.) A few contracts have been completed for them. Tell students that they will be adding to their contract pages and referring back to them for the remainder of this Bootstrap class!</p>
+</div>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Take the next 10 minutes to experiment with the image functions listed in the contracts pages.</p>
+</li>
+<li>
+<p>When you&#8217;ve got working expressions, record the contracts and the code!</p>
+</li>
+</ul>
+</div>
+<table class="tableblock frame-all grid-none stripes-none stretch strategy-box">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="title">Strategies for English Language Learners</span></p>
+<p class="tableblock">MLR 2 - Collect and Display: As students explore, walk the room and record student language relating to functions, domain, range, contracts, or what they perceive from <span class="vocab">error messages</span>.  This output can be used for a concept map, which can be updated and built upon, bridging student language with disciplinary language while increasing sense-making.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_synthesize_3">Synthesize</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Does having the same Domain and Range mean that two functions do the same things?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>No! For instance, <code class="racket">square</code>, <code class="racket">star</code>, <code class="racket">triangle</code> and <code class="racket">circle</code> all have the same Domain and Rnage, yet they make very different images.</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>A lot of the Domains for shape functions are the same, but some are different. Why did some shape functions need more inputs than others?</p>
+</li>
+<li>
+<p>Was it harder to find contracts for some of the functions than others? Why?</p>
+</li>
+<li>
+<p>What error messages did you see? How did you figure out what to do after seeing an error message?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Error messages include: too few / too many arguments given, missing parentheses, etc. Reading the error message and thinking about what the computer is trying to tell me can inform next steps.</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Which input determined the size of the Rhombus?  What did the other number determine?</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_contracts_help_us_write_code_duration_10_minutes_"><span class="section-link"><a href="#_contracts_help_us_write_code_duration_10_minutes_"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Contracts Help Us Write Code <span class="duration">10 minutes</span></h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_overview_4">Overview</h3>
+<div class="paragraph">
+<p>Students are given contracts for some more interesting image functions and see how much more efficient it is to write code when starting with a contract.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_launch_4">Launch</h3>
+<div class="paragraph">
+<p>You just investigated image functions by guessing and checking what the contract might be and responding to error messages until the images built. If you&#8217;d started with contracts, it would have been a lot easier!</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_investigate_3">Investigate</h3>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Complete <a href="../../lessons/contracts-wescheme/pages/using-contracts.html" target="_blank" rel="noopener">Using Contracts</a> and <a href="../../lessons/contracts-wescheme/pages/using-contracts-cont.html" target="_blank" rel="noopener">Using Contracts (continued)</a>, experimenting with your editor.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Once students have discovered how to build a version of each image function that satisfies them, have them record the example code in their contracts table. Encourage students to explore what aspect of the image each of the inputs specifies. It may help students to jot down notes about their discoveries.</p>
+</div>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>What kind of triangle did <code class="racket">triangle</code> build?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>The <code class="racket">triangle</code> function draws equilateral triangles</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Only one of the inputs was a number. What did that number tell the computer?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>The size of the triangle</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>What other numbers did the computer need to already know in order to build the <code class="racket">triangle</code> function?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>All equilateral triangles have three 60 degree angles and 3 equal sides</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>If we wanted to build an isosceles triangle or a right triangle, what additional information would the computer need to be given?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>A right triangle requires the base (Number) and the height (Number). An isosceles triangle requires a leg (Number) and an angle (Number).</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Now, turn to <a href="../../lessons/contracts-wescheme/pages/triangle-contracts.html" target="_blank" rel="noopener">Triangle Contracts</a> and use the contracts that are provided to write example expressions.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>If students are ready to dig into more complex triangles, you can also have them work through <a href="../../lessons/contracts-wescheme/pages/triangle-contracts-cont.html" target="_blank" rel="noopener">Triangle Contracts (SAS &amp; ASA)</a>.</p>
+</div>
+<div class="paragraph lesson-instruction">
+<p>Turn to <a href="../../lessons/contracts-wescheme/pages/radial-star.html" target="_blank" rel="noopener">Radial Star</a> and use the provided contract to help you match the images to the corresponding expressions.</p>
+</div>
+<div class="paragraph">
+<p>Contracts that tell us more information about the arguments can be helpful, but are not a focal point of our work in this course. The <a href="../../lessons/contracts-wescheme/pages/radial-star.html" target="_blank" rel="noopener">Radial Star</a> worksheet is designed to give students a taste of these more complex contracts. For more practice with detailed contracts, students can also complete  <a href="../../lessons/contracts-wescheme/pages/star-polygon.html" target="_blank" rel="noopener">Star Polygon</a>. Both <code class="racket">star-polygon</code> and <code class="racket">radial-star</code> generate a wide range of interesting shapes!</p>
+</div>
+<div class="paragraph">
+<p>Make sure that all students have completed the shape functions in their contracts pages with both contracts and example code so they have something to refer back to.</p>
+</div>
+<table class="tableblock frame-all grid-none stripes-none stretch strategy-box">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="title">Students as Teachers</span>
+It can be empowering for students to develop expertise on a topic and get to share it with their peers! This section of the lesson could be reframed as an opportunity for students to become experts in an image-producing function and teach their classmates about it. For example, Pair 1 and pair 4 might focus on <code class="racket">radial-star</code>, pair 2 and pair 5 might focus on <code class="racket">polygon-star</code>, pair 3 and pair 6 might focus on <code class="racket">regular-polygon</code>, etc. First, each pair would explore their function. Perhaps each pair could make a poster, starter-file or slide deck about their function including: the contract, an explanation of how it works in their own words, a few images that it can generate illustrating the range of possibilities with the expressions that generate them. Next, they might compare their thinking with another pair that focused on the same contract. Finally, pairs could be grouped with other pairs who focused on different functions and teach each other about what they learned.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_common_misconceptions">Common Misconceptions</h3>
+<div class="paragraph">
+<p>Students are <em>very</em> likely to randomly experiment, rather than to actually use the Contracts. You should plan to ask lots of direct questions to make sure students are making this connection, such as:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>How many items are in this function&#8217;s Domain?</p>
+</li>
+<li>
+<p>What is the <em>name</em> of the 1st item in this function&#8217;s Domain?</p>
+</li>
+<li>
+<p>What is the <em>type</em> of the 1st item in this function&#8217;s Domain?</p>
+</li>
+<li>
+<p>What is the <em>type</em> of the Range?</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_synthesize_4">Synthesize</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>How was it different to code expressions for the shape functions when you started with a contract?</p>
+</li>
+<li>
+<p>For some of you, the word <code class="racket">ellipse</code> was new. How would you describe what an ellipse looks like to someone who has never seen one before?</p>
+</li>
+<li>
+<p>Why did the contract for <code class="racket">ellipse</code> require two numbers? What happened when the two numbers were the same?</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Diagnosing and fixing errors are skills that students will continue developing throughout this course. Some of the errors are <span class="vocab">syntax errors</span>: a missing comma, an unclosed string, etc. All other errors are <span class="vocab">contract errors</span>. If you see an error and you know the syntax is right, ask yourself these three questions:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>What is the function that is generating that error?</p>
+</li>
+<li>
+<p>What is the contract for that function?</p>
+</li>
+<li>
+<p>Is the function getting what it needs, according to its Domain?</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_additional_exercises"><span class="section-link"><a href="#_additional_exercises"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Additional Exercises:</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://teacher.desmos.com/activitybuilder/custom/5fecf203a29e040d182be6c6?collections=5fbecc2b40d7aa0d844956f0" target="_blank" rel="noopener">Matching Images to Code (Desmos)</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-18 16:15:45 -0400
+</div>
+</div>
+</div>
+</body>
+</html>

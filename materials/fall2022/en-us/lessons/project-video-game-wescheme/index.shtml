@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Project: Build a video game</title>
+
+  <link rel="stylesheet" href="../../lib/curriculum.css" />
+    <script src="../../lib/langtable.js"></script>
+    <script src="../../lib/bootstraplesson.js"></script>
+    <script src="../../dependency-graph.js"></script>
+    <script src="../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"Project: Build a video game",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="article LessonPlan wescheme" onload="renderSaveToDrive()">
+<!--#include virtual="/menubar.ssi"-->
+<div id="body" onload="renderSaveToDrive()">
+<div id="header">
+<h1>Project: Build a video game</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<script>
+function preselect(klass) {
+  const items = document.getElementsByClassName(klass);
+  for (let i = 0; i < items.length; i++) {
+    items[i].style.display = 'none';
+  }
+  if (items.length > 0) {
+    items[0].style.display = 'block';
+  }
+}
+window.onload = function() {
+  preselect('alignedStandards');
+  preselect('alignedTextbooks');
+  preselect('alignedPractices');
+}
+function showStandardsAlignment() {
+  const selectTag = document.getElementsByClassName('standardsAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const stdTables = document.getElementsByClassName('alignedStandards');
+  //const intro = document.getElementsByClassName('alignedStandardsIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < stdTables.length; i++) {
+    const stdTable = stdTables[i];
+    stdTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optStd = opt.value;
+      for (let j = 0; j < stdTables.length; j++) {
+        const stdTable = stdTables[j];
+        if (stdTable.classList.contains(optStd)) {
+          stdTable.style.display = 'block';
+         // introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+function toggleNonPrereqDisplay() {
+  const inputTag = document.getElementsByClassName('sidebarinput')[0];
+  const checkedP = inputTag.checked;
+  const lessonTable = document.getElementsByClassName('sidebarlessons')[0];
+  const lis = lessonTable.getElementsByTagName('li');
+  for (let i = 0; i < lis.length; i++) {
+    const li = lis[i];
+    const lesson = li.getElementsByClassName('prerequisite');
+    if (lesson.length === 0) {
+      li.style.display = checkedP ? 'none' : 'block';
+    }
+  }
+}
+</script>
+<script>
+function showTextbooksAlignment() {
+  const selectTag = document.getElementsByClassName('textbooksAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const textbookTables = document.getElementsByClassName('alignedTextbooks');
+  //const intro = document.getElementsByClassName('alignedTextbooksIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < textbookTables.length; i++) {
+    const textbookTable = textbookTables[i];
+    textbookTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optTextbook = opt.value;
+      for (let j = 0; j < textbookTables.length; j++) {
+        const textbookTable = textbookTables[j];
+        if (textbookTable.classList.contains(optTextbook)) {
+          textbookTable.style.display = 'block';
+          //introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+</script>
+<script>
+function showPracticesAlignment() {
+  const selectTag = document.getElementsByClassName('practicesAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const practiceTables = document.getElementsByClassName('alignedPractices');
+  for (let i = 0; i < practiceTables.length; i++) {
+    const practiceTable = practiceTables[i];
+    practiceTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optPractice = opt.value;
+      for (let j = 0; j < practiceTables.length; j++) {
+        const practiceTable = practiceTables[j];
+        if (practiceTable.classList.contains(optPractice)) {
+          practiceTable.style.display = 'block';
+        }
+      }
+    }
+  }
+}
+</script>
+<div class="paragraph">
+<!-- </p>
+</div>
+--></div><div class="sidebar"><div id="toggle"></div><div class="paragraph"><!--
+<div class="paragraph">
+<p>
+--><div class="sidebarlessons"><strong>Lessons</strong>
+<ul></ul></div>
+</div>
+<table class="tableblock frame-all grid-all stretch sidebarstandards">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Standards in this Lesson</strong>
+<select class="standardsAlignmentSelect"  onchange="showStandardsAlignment()"><option selected="selected" value="standards-CSTA">CSTA</option></select></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist alignedStandards standards-CSTA">
+<div class="title"><a href="https://csteachers.org/page/standards">CSTA Standards</a></div>
+<dl>
+<dt class="hdlist1">1B-AP-09</dt>
+<dd>
+<p>Create programs that use variables to store and modify data.</p>
+</dd>
+<dt class="hdlist1">1B-AP-10</dt>
+<dd>
+<p>Create programs that include sequences, events, loops, and conditionals.</p>
+</dd>
+<dt class="hdlist1">1B-AP-11</dt>
+<dd>
+<p>Decompose (break down) problems into smaller, manageable subproblems to facilitate the program development process.</p>
+</dd>
+<dt class="hdlist1">1B-AP-12</dt>
+<dd>
+<p>Modify, remix, or incorporate portions of an existing program into one&#8217;s own work, to develop something new or add more advanced features.</p>
+</dd>
+<dt class="hdlist1">1B-AP-13</dt>
+<dd>
+<p>Use an iterative process to plan the development of a program by including others' perspectives and considering user preferences.</p>
+</dd>
+<dt class="hdlist1">1B-AP-14</dt>
+<dd>
+<p>Observe intellectual property rights and give appropriate attribution when creating or remixing programs.</p>
+</dd>
+<dt class="hdlist1">1B-AP-15</dt>
+<dd>
+<p>Test and debug (identify and fix errors) a program or algorithm to ensure it runs as intended.</p>
+</dd>
+<dt class="hdlist1">1B-AP-16</dt>
+<dd>
+<p>Take on varying roles, with teacher guidance, when collaborating with peers during the design, implementation, and review stages of program development.</p>
+</dd>
+<dt class="hdlist1">1B-IC-21</dt>
+<dd>
+<p>Use public domain or creative commons media, and refrain from copying or using material created by others without permission.</p>
+</dd>
+<dt class="hdlist1">2-AP-11</dt>
+<dd>
+<p>Create clearly named variables that represent different data types and perform operations on their values.</p>
+</dd>
+<dt class="hdlist1">2-AP-13</dt>
+<dd>
+<p>Decompose problems and subproblems into parts to facilitate the design, implementation, and review of programs</p>
+</dd>
+<dt class="hdlist1">2-AP-14</dt>
+<dd>
+<p>Create procedures with parameters to organize code and make it easier to reuse.</p>
+</dd>
+<dt class="hdlist1">2-AP-15</dt>
+<dd>
+<p>Seek and incorporate feedback from team members and users to refine a solution that meets user needs.</p>
+</dd>
+<dt class="hdlist1">2-AP-16</dt>
+<dd>
+<p>Incorporate existing code, media, and libraries into original programs, and give attribution.</p>
+</dd>
+<dt class="hdlist1">2-AP-17</dt>
+<dd>
+<p>Systematically test and refine programs using a range of test cases</p>
+</dd>
+<dt class="hdlist1">2-AP-19</dt>
+<dd>
+<p>Document programs in order to make them easier to follow, test, and debug.</p>
+</dd>
+<dt class="hdlist1">2-DA-07</dt>
+<dd>
+<p>Represent data using multiple encoding schemes.</p>
+</dd>
+<dt class="hdlist1">3A-AP-16</dt>
+<dd>
+<p>Design and iteratively develop computational artifacts for practical intent, personal expression, or to address a societal issue by using events to initiate instructions.</p>
+</dd>
+<dt class="hdlist1">3A-AP-17</dt>
+<dd>
+<p>Decompose problems into smaller components through systematic analysis, using constructs such as procedures, modules, and/or objects.</p>
+</dd>
+<dt class="hdlist1">3A-AP-18</dt>
+<dd>
+<p>Create artifacts by using procedures within a program, combinations of data and procedures, or independent but interrelated programs.</p>
+</dd>
+<dt class="hdlist1">3A-AP-22</dt>
+<dd>
+<p>Design and develop computational artifacts working in team roles using collaborative tools</p>
+</dd>
+<dt class="hdlist1">3B-AP-14</dt>
+<dd>
+<p>Construct solutions to problems using student-created components, such as procedures, modules and/or objects.</p>
+</dd>
+<dt class="hdlist1">3B-AP-16</dt>
+<dd>
+<p>Demonstrate code reuse by creating programming solutions using libraries and APIs.</p>
+</dd>
+<dt class="hdlist1">3B-AP-21</dt>
+<dd>
+<p>Develop and use a series of test cases to verify that a program performs according to its design specifications.</p>
+</dd>
+<dt class="hdlist1">3B-AP-22</dt>
+<dd>
+<p>Modify an existing program to add additional functionality and discuss intended and unintended implications (e.g., breaking other functionality).</p>
+</dd>
+<dt class="hdlist1">3B-AP-23</dt>
+<dd>
+<p>Evaluate key qualities of a program through a process such as a code review</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch sidebarpractices">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Practices in this Lesson</strong>
+<select class="practicesAlignmentSelect"  onchange="showPracticesAlignment()"><option selected="selected" value="practices-K12CS"><a href="https://k12cs.org">K12CS</a></option></select></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist alignedPractices practices-K12CS">
+<div class="title"><a href="https://k12cs.org">K12CS</a></div>
+<dl>
+<dt class="hdlist1">P2</dt>
+<dd>
+<p>Collaborating Around Computing</p>
+</dd>
+<dt class="hdlist1">P6</dt>
+<dd>
+<p>Testing and Refining Computational Artifacts</p>
+</dd>
+<dt class="hdlist1">P5</dt>
+<dd>
+<p>Creating Computational Artifacts</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<!-- </p>
+</div>
+--></div><!--
+<div class="paragraph">
+<p>
+-->
+</div>
+<div class="paragraph">
+<p><span class="other-proglang">(Also available in <a href="../../lessons/project-video-game/index.shtml">Pyret</a>)</span></p>
+</div>
+<style>
+h3 { margin-top: 3ex; }
+.autonum:after { content: '.'; }
+th { text-align: center !important; }
+table * { line-height: 1.2rem; }
+.ulist p { margin: 0; }
+</style>
+<div class="paragraph description">
+<p>Students build a video game of their own design! Every game must have a player (their avatar), a danger (something to avoid), and a target (something to chase). Students build their world using function composition, animate their characters through linear functions, detect boundaries with compound inequalities, and detect collisions with the distance formula. This project can be extended into more complex movement (quadratic, exponential, trigonometric) and "cheat codes" (piecewise/conditional) functions.</p>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_overview"><span class="section-link"><a href="#_overview"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Overview</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This project can be used as the capstone for Bootstrap:Algebra, and is designed to provide real-world and engaging connections to the following mathematical concepts:</p>
+</div>
+<div class="paragraph">
+<p><span class="right"><span class="image-figure"><span class="image"><img src="images/33e083c2f364cef2.png" alt="screenshot" title="screenshot"></span><a href="images/33e083c2f364cef2.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Coordinates</p>
+</li>
+<li>
+<p>Simple and Compound Inequalities</p>
+</li>
+<li>
+<p>Domain and Range</p>
+</li>
+<li>
+<p>Composing Functions</p>
+</li>
+<li>
+<p>Connecting Representations and Defining Functions</p>
+</li>
+<li>
+<p>Rotation, Dilation, and Translation</p>
+</li>
+<li>
+<p>The Distance Formula and Pythagorean Theorem</p>
+</li>
+<li>
+<p>Piecewise Functions</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The project culminates in a completed game that <a href="http://cs.brown.edu/~sk/Publications/Papers/Published/skf-creativity-bootstrap/" target="_blank" rel="noopener">students feel proud of</a>, and can show off to their friends and family. Many Bootstrap teachers arrange "video game launch parties" and some create a science-fair-style event for the math department, complete with tri-fold posters explaining elements of the game and the math at work behind the scenes.</p>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_students_will_be_able_to">Students will be able to&#8230;&#8203;</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Recognize meaningful applications of multiple algebraic concepts, answering the all-important question: <em>"When will I ever use this?!"</em></p>
+</li>
+<li>
+<p>Express their creativity through the design of a game context</p>
+</li>
+<li>
+<p>Take pride in having coded their first video game!</p>
+</li>
+<li>
+<p>Share their completed video game with friends and family to play!</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_structure_of_the_game"><span class="section-link"><a href="#_structure_of_the_game"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Structure of the Game</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The code in the <a href="https://www.wescheme.org/openEditor?publicId=duCnqdg8Re" target="_blank" rel="noopener">Blank Game Starter File</a> is divided into sections. Each section corresponds to a lesson with scaffolded activities and one or more workbook pages, which support them in writing a section of the game code. Students work in groups or pairs to customize and complete the code to make the game their own!</p>
+</div>
+<table class="tableblock frame-all grid-all stripes-none stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-middle"><strong>Game Section</strong></th>
+<th class="tableblock halign-left valign-middle"><strong>Lessons</strong></th>
+<th class="tableblock halign-left valign-middle"><strong>Workbook Pages</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p><strong>0.  Game title</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p><a href="../../lessons/coordinates-wescheme/index.shtml" target="_blank" rel="noopener">Coordinates and Game Design</a></p>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p><a href="../../lessons/coordinates-wescheme/pages/BrainstormGame.html" target="_blank" rel="noopener">Brainstorm Your Own Game</a></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p><strong>1. Making the Danger and the Target Move</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p><a href="../../lessons/functions-for-character-animation-wescheme/index.shtml" target="_blank" rel="noopener">Functions for Character Animation</a></p>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p><a href="../../lessons/functions-for-character-animation-wescheme/pages/character-animation-dr.html" target="_blank" rel="noopener">Danger and Target Movement</a></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p><strong>2. Making the Danger and the Target Come Back Again</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p><a href="../../lessons/inequalities3-sam-wescheme/index.shtml" target="_blank" rel="noopener">Sam the Butterfly - Applying Inequalities</a></p>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p><a href="../../lessons/inequalities3-sam-wescheme/pages/left-and-right.html" target="_blank" rel="noopener">Left and Right</a> and <a href="../../lessons/inequalities3-sam-wescheme/pages/onscreen.html" target="_blank" rel="noopener">onscreen?</a></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p><strong>3. Get our Player moving!</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p><a href="../../lessons/player-animation-wescheme/index.shtml" target="_blank" rel="noopener">Player Animation</a></p>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p><a href="../../lessons/player-animation-wescheme/pages/update-player.html" target="_blank" rel="noopener">update-player</a></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p><strong>4. Collisions</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p><a href="../../lessons/inequalities-collision-wescheme/index.shtml" target="_blank" rel="noopener">Collision Detection - Distance and Inequality</a></p>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p><a href="../../lessons/inequalities-collision-wescheme/pages/collision.html" target="_blank" rel="noopener">Word Problem: collision?</a></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_assessment_and_grading"><span class="section-link"><a href="#_assessment_and_grading"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Assessment and Grading</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We provide a <a href="../../lessons/project-video-game-wescheme/pages/video-game-rubric.html" target="_blank" rel="noopener">rubric for the game</a>, but teachers should always feel free to edit and adapt it for their classroom.</p>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_where_does_it_fit"><span class="section-link"><a href="#_where_does_it_fit"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Where Does it Fit?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The project is constructed over a series of game-focused lessons, which reinforce concepts learned in earlier lessons. Taken together, the game-focused lessons form the scope and sequence for the project. There are two options for implementation:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch implementation-options">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Integrated</th>
+<th class="tableblock halign-left valign-top">All at Once</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>The default lesson order for Bootstrap:Algebra has game-focused lessons sprinkled throughout the curriculum, with students building their games over a long period of time.</p>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 1ex"></span></p>
+</div>
+<div class="paragraph">
+<p><strong>Pros:</strong> Students see each math concept as immediately relevant to their game, the game motivates the learning of additional math, and students have a "hook" for the whole course.</p>
+</div>
+<div class="paragraph">
+<p><strong>Cons:</strong> This approach requires access to computers at multiple points throughout the year, and teachers must work harder to keep the game development visible for impatient students.</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>If students are already comfortable with algebra (including the Pythagorean Theorem), Circles of Evaluation, Simple Datatypes, Contracts, and Functions, they&#8217;ll be able to complete their video games in 1-2 weeks. <em>All game-focused lessons can be saved to the end of the year.</em></p>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 1ex"></span></p>
+</div>
+<div class="paragraph">
+<p><strong>Pros:</strong> Satisfying "capstone" for students, simpler scheduling for computer access, high-engagement activity during a typically low-engagement time of year.</p>
+</div>
+<div class="paragraph">
+<p><strong>Cons:</strong> Without a narrative project to tie everything together, students are less likely to see the "big picture" throughout the year.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-17 19:42:17 -0400
+</div>
+</div>
+</div>
+</body>
+</html>

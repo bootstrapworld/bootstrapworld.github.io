@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Function Composition&#8201;&#8212;&#8201;scale-xy</title>
+
+  <link rel="stylesheet" href="../../../lib/curriculum.css" />
+    <link rel="stylesheet" href="../../../lib/codemirror.css" />
+    <script src="../../../lib/codemirror.js"></script>
+    <script src="../../../lib/runmode.js"></script>
+    <script src="../../../lib/scheme2.js"></script>
+    <script src="../../../lib/pyret-mode.js"></script>
+    <script src="../../../lib/langtable.js"></script>
+    <script src="../../../lib/bootstraplesson.js"></script>
+    <script src="../../../dependency-graph.js"></script>
+    <script src="../../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"Function Composition -- scale-xy",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="workbookpage article pyret" onload="renderSaveToDrive()">
+<div id="header">
+<h1>Function Composition&#8201;&#8212;&#8201;scale-xy</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<style>
+p .editbox { font-size: 9pt; }
+.center {padding: 0;}
+
+.demo td, .demo td>p { padding: 0 !important; margin: 0 !important; }
+
+.contracts td { padding: 0 !important; }
+.contracts .editbox { background: none; }
+.contracts { background-color: #f7f7f8 !important; }
+
+.grid tr td {padding: 0 0.625em; }
+.grid tr:nth-child(1){ height: calc(7in * 0.33); }
+.grid tr:nth-child(2){ height: calc(7in * 0.66); }
+
+/* Necessary rules to force the code solution to the bottom of the row */
+.grid td { position: relative; }
+.grid .content .paragraph:nth-child(3) p { position: absolute; bottom: 0; }
+
+div.circleevalsexp .value {
+  display:            inline-block;
+  margin:             2px 5px;
+  vertical-align:     top;
+}
+table .autonum:after { content: ") "; }
+</style>
+<div class="paragraph">
+<p>You’ll be investigating these two functions with your partner:</p>
+</div>
+<table class="tableblock frame-none grid-none stretch contracts">
+<colgroup>
+<col style="width: 55.5555%;">
+<col style="width: 44.4445%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="obeyspaces"><code class="pyret"># scale-xy :: Number, Number, Image ‑&gt; Image</code></span></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="obeyspaces"><code class="pyret"># overlay :: Image, Image ‑&gt; Image</code></span></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stripes-none stretch demo">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-middle"><strong>The Image:</strong></th>
+<th class="tableblock halign-center valign-middle"><strong>Circle of Evaluation:</strong></th>
+<th class="tableblock halign-center valign-middle"><strong>Code:</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><span class="centered-image"><span class="image-figure"><span class="image"><img src="../images/45838f8223d08928.png" alt="purple rhombus that looks like a square that&#8217;s been rotated 45 degrees." title="purple rhombus that looks like a square that&#8217;s been rotated 45 degrees."></span><a href="../images/45838f8223d08928.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><table class="gdrive-only expression"><tr><td class="operator"><span class="operator"><span class="value">rhombus</span></span></td></tr><tr><td><table class="args"><tr><td class="arg"><span class="value">40</span></td><td class="arg"><span class="value">90</span></td><td class="arg"><span class="value">"solid"</span></td><td class="arg"><span class="value">"purple"</span></td></tr></table></td></tr></table><div class="circleevalsexp"><span class="expression"><span class="lParen">(</span><span class="operator"><span class="value">rhombus</span></span><span class="hspace">&#160;</span><span class="value">40</span><span class="hspace">&#160;</span><span class="value">90</span><span class="hspace">&#160;</span><span class="value">"solid"</span><span class="hspace">&#160;</span><span class="value">"purple"</span><span class="rParen">)</span></span></div></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><span class="obeyspaces"><code class="pyret">rhombus&#8203;(&#8203;40, 90, "solid", "purple"&#8203;)</code></span></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Starting with the image described above, write the Circles of Evaluation and Code for each exercise below. Be sure to test your code in the editor!</p>
+</div>
+<table class="tableblock frame-all grid-all stripes-none stretch grid">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="autonum">1</span> A purple rhombus that is stretched 4 times as wide.</p>
+</div>
+<div class="paragraph">
+<p><table class="gdrive-only expression"><tr><td class="operator"><span class="operator"><span class="value">scale-xy</span></span></td></tr><tr><td><table class="args"><tr><td class="arg"><span class="value">4</span></td><td class="arg"><span class="value">1</span></td><td class="arg"><table class="gdrive-only expression"><tr><td class="operator"><span class="operator"><span class="value">rhombus</span></span></td></tr><tr><td><table class="args"><tr><td class="arg"><span class="value">40</span></td><td class="arg"><span class="value">90</span></td><td class="arg"><span class="value">"solid"</span></td><td class="arg"><span class="value">"purple"</span></td></tr></table></td></tr></table></td></tr></table></td></tr></table><div class="circleevalsexp"><span class="expression"><span class="lParen">(</span><span class="operator"><span class="value">scale-xy</span></span><span class="hspace">&#160;</span><span class="value">4</span><span class="hspace">&#160;</span><span class="value">1</span><span class="hspace">&#160;</span><span class="expression"><span class="lParen">(</span><span class="operator"><span class="value">rhombus</span></span><span class="hspace">&#160;</span><span class="value">40</span><span class="hspace">&#160;</span><span class="value">90</span><span class="hspace">&#160;</span><span class="value">"solid"</span><span class="hspace">&#160;</span><span class="value">"purple"</span><span class="rParen">)</span></span><span class="rParen">)</span></span></div></p>
+</div>
+<div class="paragraph">
+<p><span class="obeyspaces"><code class="pyret">scale-xy&#8203;(&#8203;4, 1, rhombus&#8203;(&#8203;40, 90, "solid", "purple"&#8203;)&#8203;)</code></span></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="autonum">2</span> A purple rhombus that is stretched 4 times as tall</p>
+</div>
+<div class="paragraph">
+<p><table class="gdrive-only expression"><tr><td class="operator"><span class="operator"><span class="value">scale-xy</span></span></td></tr><tr><td><table class="args"><tr><td class="arg"><span class="value">1</span></td><td class="arg"><span class="value">4</span></td><td class="arg"><table class="gdrive-only expression"><tr><td class="operator"><span class="operator"><span class="value">rhombus</span></span></td></tr><tr><td><table class="args"><tr><td class="arg"><span class="value">40</span></td><td class="arg"><span class="value">90</span></td><td class="arg"><span class="value">"solid"</span></td><td class="arg"><span class="value">"purple"</span></td></tr></table></td></tr></table></td></tr></table></td></tr></table><div class="circleevalsexp"><span class="expression"><span class="lParen">(</span><span class="operator"><span class="value">scale-xy</span></span><span class="hspace">&#160;</span><span class="value">1</span><span class="hspace">&#160;</span><span class="value">4</span><span class="hspace">&#160;</span><span class="expression"><span class="lParen">(</span><span class="operator"><span class="value">rhombus</span></span><span class="hspace">&#160;</span><span class="value">40</span><span class="hspace">&#160;</span><span class="value">90</span><span class="hspace">&#160;</span><span class="value">"solid"</span><span class="hspace">&#160;</span><span class="value">"purple"</span><span class="rParen">)</span></span><span class="rParen">)</span></span></div></p>
+</div>
+<div class="paragraph">
+<p><span class="obeyspaces"><code class="pyret">scale-xy&#8203;(&#8203;1, 4, rhombus&#8203;(&#8203;40, 90, "solid", "purple"&#8203;)&#8203;)</code></span></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="autonum">3</span>  The tall rhombus from #1 overlayed on the wide rhombus (#2).</p>
+</div>
+<div class="paragraph">
+<p><table class="gdrive-only expression"><tr><td class="operator"><span class="operator"><span class="value">overlay</span></span></td></tr><tr><td><table class="args"><tr><td class="arg"><table class="gdrive-only expression"><tr><td class="operator"><span class="operator"><span class="value">scale-xy</span></span></td></tr><tr><td><table class="args"><tr><td class="arg"><span class="value">1</span></td><td class="arg"><span class="value">4</span></td><td class="arg"><table class="gdrive-only expression"><tr><td class="operator"><span class="operator"><span class="value">rhombus</span></span></td></tr><tr><td><table class="args"><tr><td class="arg"><span class="value">40</span></td><td class="arg"><span class="value">90</span></td><td class="arg"><span class="value">"solid"</span></td><td class="arg"><span class="value">"purple"</span></td></tr></table></td></tr></table></td></tr></table></td></tr></table></td><td class="arg"><table class="gdrive-only expression"><tr><td class="operator"><span class="operator"><span class="value">scale-xy</span></span></td></tr><tr><td><table class="args"><tr><td class="arg"><span class="value">4</span></td><td class="arg"><span class="value">1</span></td><td class="arg"><table class="gdrive-only expression"><tr><td class="operator"><span class="operator"><span class="value">rhombus</span></span></td></tr><tr><td><table class="args"><tr><td class="arg"><span class="value">40</span></td><td class="arg"><span class="value">90</span></td><td class="arg"><span class="value">"solid"</span></td><td class="arg"><span class="value">"purple"</span></td></tr></table></td></tr></table></td></tr></table></td></tr></table></td></tr></table></td></tr></table><div class="circleevalsexp"><span class="expression"><span class="lParen">(</span><span class="operator"><span class="value">overlay</span></span><span class="hspace">&#160;</span><span class="expression"><span class="lParen">(</span><span class="operator"><span class="value">scale-xy</span></span><span class="hspace">&#160;</span><span class="value">1</span><span class="hspace">&#160;</span><span class="value">4</span><span class="hspace">&#160;</span><span class="expression"><span class="lParen">(</span><span class="operator"><span class="value">rhombus</span></span><span class="hspace">&#160;</span><span class="value">40</span><span class="hspace">&#160;</span><span class="value">90</span><span class="hspace">&#160;</span><span class="value">"solid"</span><span class="hspace">&#160;</span><span class="value">"purple"</span><span class="rParen">)</span></span><span class="rParen">)</span></span><span class="hspace">&#160;</span><span class="expression"><span class="lParen">(</span><span class="operator"><span class="value">scale-xy</span></span><span class="hspace">&#160;</span><span class="value">4</span><span class="hspace">&#160;</span><span class="value">1</span><span class="hspace">&#160;</span><span class="expression"><span class="lParen">(</span><span class="operator"><span class="value">rhombus</span></span><span class="hspace">&#160;</span><span class="value">40</span><span class="hspace">&#160;</span><span class="value">90</span><span class="hspace">&#160;</span><span class="value">"solid"</span><span class="hspace">&#160;</span><span class="value">"purple"</span><span class="rParen">)</span></span><span class="rParen">)</span></span><span class="rParen">)</span></span></div></p>
+</div>
+<div class="paragraph">
+<p><span class="obeyspaces"><code class="pyret">overlay&#8203;(&#8203;scale-xy&#8203;(&#8203;1, 4, rhombus&#8203;(&#8203;40, 90, "solid", "purple"&#8203;)&#8203;), scale-xy&#8203;(&#8203;4, 1, rhombus&#8203;(&#8203;40, 90, "solid", "purple"&#8203;)&#8203;)&#8203;)</code></span></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>★ Overlay a red rhombus onto the last image you made in #3.</p>
+</div>
+<div class="paragraph">
+<p><table class="gdrive-only expression"><tr><td class="operator"><span class="operator"><span class="value">overlay</span></span></td></tr><tr><td><table class="args"><tr><td class="arg"><table class="gdrive-only expression"><tr><td class="operator"><span class="operator"><span class="value">rhombus</span></span></td></tr><tr><td><table class="args"><tr><td class="arg"><span class="value">40</span></td><td class="arg"><span class="value">90</span></td><td class="arg"><span class="value">"solid"</span></td><td class="arg"><span class="value">"red"</span></td></tr></table></td></tr></table></td><td class="arg"><table class="gdrive-only expression"><tr><td class="operator"><span class="operator"><span class="value">overlay</span></span></td></tr><tr><td><table class="args"><tr><td class="arg"><table class="gdrive-only expression"><tr><td class="operator"><span class="operator"><span class="value">scale-xy</span></span></td></tr><tr><td><table class="args"><tr><td class="arg"><span class="value">1</span></td><td class="arg"><span class="value">4</span></td><td class="arg"><table class="gdrive-only expression"><tr><td class="operator"><span class="operator"><span class="value">rhombus</span></span></td></tr><tr><td><table class="args"><tr><td class="arg"><span class="value">40</span></td><td class="arg"><span class="value">90</span></td><td class="arg"><span class="value">"solid"</span></td><td class="arg"><span class="value">"purple"</span></td></tr></table></td></tr></table></td></tr></table></td></tr></table></td><td class="arg"><table class="gdrive-only expression"><tr><td class="operator"><span class="operator"><span class="value">scale-xy</span></span></td></tr><tr><td><table class="args"><tr><td class="arg"><span class="value">4</span></td><td class="arg"><span class="value">1</span></td><td class="arg"><table class="gdrive-only expression"><tr><td class="operator"><span class="operator"><span class="value">rhombus</span></span></td></tr><tr><td><table class="args"><tr><td class="arg"><span class="value">40</span></td><td class="arg"><span class="value">90</span></td><td class="arg"><span class="value">"solid"</span></td><td class="arg"><span class="value">"purple"</span></td></tr></table></td></tr></table></td></tr></table></td></tr></table></td></tr></table></td></tr></table></td></tr></table></td></tr></table><div class="circleevalsexp"><span class="expression"><span class="lParen">(</span><span class="operator"><span class="value">overlay</span></span><span class="hspace">&#160;</span><span class="expression"><span class="lParen">(</span><span class="operator"><span class="value">rhombus</span></span><span class="hspace">&#160;</span><span class="value">40</span><span class="hspace">&#160;</span><span class="value">90</span><span class="hspace">&#160;</span><span class="value">"solid"</span><span class="hspace">&#160;</span><span class="value">"red"</span><span class="rParen">)</span></span><span class="hspace">&#160;</span><span class="expression"><span class="lParen">(</span><span class="operator"><span class="value">overlay</span></span><span class="hspace">&#160;</span><span class="expression"><span class="lParen">(</span><span class="operator"><span class="value">scale-xy</span></span><span class="hspace">&#160;</span><span class="value">1</span><span class="hspace">&#160;</span><span class="value">4</span><span class="hspace">&#160;</span><span class="expression"><span class="lParen">(</span><span class="operator"><span class="value">rhombus</span></span><span class="hspace">&#160;</span><span class="value">40</span><span class="hspace">&#160;</span><span class="value">90</span><span class="hspace">&#160;</span><span class="value">"solid"</span><span class="hspace">&#160;</span><span class="value">"purple"</span><span class="rParen">)</span></span><span class="rParen">)</span></span><span class="hspace">&#160;</span><span class="expression"><span class="lParen">(</span><span class="operator"><span class="value">scale-xy</span></span><span class="hspace">&#160;</span><span class="value">4</span><span class="hspace">&#160;</span><span class="value">1</span><span class="hspace">&#160;</span><span class="expression"><span class="lParen">(</span><span class="operator"><span class="value">rhombus</span></span><span class="hspace">&#160;</span><span class="value">40</span><span class="hspace">&#160;</span><span class="value">90</span><span class="hspace">&#160;</span><span class="value">"solid"</span><span class="hspace">&#160;</span><span class="value">"purple"</span><span class="rParen">)</span></span><span class="rParen">)</span></span><span class="rParen">)</span></span><span class="rParen">)</span></span></div></p>
+</div>
+<div class="paragraph">
+<p><span class="obeyspaces"><code class="pyret">overlay&#8203;(&#8203;rhombus&#8203;(&#8203;40, 90, "solid", "red"&#8203;), overlay&#8203;(&#8203;scale-xy&#8203;(&#8203;1, 4, rhombus&#8203;(&#8203;40, 90, "solid", "purple"&#8203;)&#8203;), scale-xy&#8203;(&#8203;4, 1, rhombus&#8203;(&#8203;40, 90, "solid", "purple"&#8203;)&#8203;)&#8203;)&#8203;)</code></span></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-17 19:41:53 -0400
+</div>
+</div>
+</body>
+</html>

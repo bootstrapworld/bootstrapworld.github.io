@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Teacher Resources for Data Science</title>
+
+  <link rel="stylesheet" href="../../../lib/curriculum.css" />
+    <link rel="stylesheet" href="../../../lib/codemirror.css" />
+    <script src="../../../lib/codemirror.js"></script>
+    <script src="../../../lib/runmode.js"></script>
+    <script src="../../../lib/scheme2.js"></script>
+    <script src="../../../lib/pyret-mode.js"></script>
+    <script src="../../../lib/langtable.js"></script>
+    <script src="../../../lib/bootstraplesson.js"></script>
+    <script src="../../../dependency-graph.js"></script>
+    <script src="../../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"Teacher Resources for Data Science",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="TeacherResources article codap" onload="renderSaveToDrive()">
+<!--#include virtual="/menubar.ssi"-->
+<div id="body" onload="renderSaveToDrive()">
+<div id="header">
+<h1>Teacher Resources for Data Science</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="../index.shtml">Click here to return to lessons</a></p>
+</div>
+<style>
+.sect1 { border-top: 1px solid #efefed; }
+</style>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Online Community (Discourse)</strong> [<a href="https://discourse.bootstrapworld.org/" target="_blank" rel="noopener">link</a>] - Want to ask a question or pose a lesson idea for other Bootstrap teachers? Want to be kept up-to-date about Bootstrap events, workshops, and curricular changes? Our new discussion forum is the place to do it.</p>
+</li>
+<li>
+<p><strong>Collection of Bootstrap:Data Science Desmos Activities</strong> [<a href="https://teacher.desmos.com/collection/5fc9250afcaa3f30f4946746" target="_blank" rel="noopener">link</a>] - Love Desmos as much as we do? We have plenty of Desmos activities infused throughout our Data Science lessons, and you can explore all of them in one place.</p>
+</li>
+<li>
+<p><strong>What&#8217;s Going on in this Graph?</strong> [<a href="https://www.nytimes.com/column/whats-going-on-in-this-graph" target="_blank" rel="noopener">nytimes.com</a>] - Once a week, the NYTimes posts an interesting data visualization. This is a great resource to spark the curiosity of young data scientists, and make for a perfect Notice &amp; Wonder activity!</p>
+</li>
+<li>
+<p><strong>The Pudding</strong> [<a href="https://pudding.cool/" target="_blank" rel="noopener">link</a>] - Terrific deep dives into data analysis for interesting topics. Another wonderful resource for students, with great animations showing the transformation of how data is visualized as the research questions evolve.</p>
+</li>
+<li>
+<p><strong>"How Not To"</strong> [<a href="https://discourse.bootstrapworld.org/t/something-fun-for-the-classroom-hownotto/1459/9" target="_blank" rel="noopener">Discourse.org</a>] - We regularly post to social media under the hashtag <code class="pyret">#HowNotTo</code>, taking a few friendly potshots are examples of terrible Data Science out there. Over on our teacher discussion board, we&#8217;ve kept a running tally of all of them!</p>
+</li>
+<li>
+<p><strong>"Same Stats, Different Graphs"</strong> - [<a href="https://www.autodesk.com/research/publications/same-stats-different-graphs" target="<em>blank">autodesk.com</a>] - A wonderful illustration of why it&#8217;s so important to see the _shape</em> of data, and not just focus on the descriptive statistics.</p>
+</li>
+<li>
+<p><strong>Guess the Correlation</strong> [<a href="http://guessthecorrelation.com/" target="_blank" rel="noopener">link</a>] - a game-ified resource for building intuition for correlation, based on randomly-generated scatterplots.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_workshop_files">Workshop Files</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://docs.google.com/forms/d/e/1FAIpQLScaKOQ1L0Ni-sVuMY9tRhbAFcAcSFLA28lqPXQAJ03cUkSYYg/viewform" target="_blank" rel="noopener">Pre-PD Survey</a> - Please fill out this survey prior to your first day.</p>
+</li>
+<li>
+<p><a href="https://docs.google.com/forms/d/1Jawbr4NMpSTAb6O-Bn-dPL17_0uZt55NZqf8Z9C555E/viewform" target="_blank" rel="noopener">Post-PD Survey</a> - Give us some feedback!</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_exercises_and_solutions">Exercises and Solutions</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Most exercises are part of the <strong><a href="../workbook/workbook.pdf">Student Workbook</a></strong>,
+and we provide password-protected <strong><a href="./protected/workbook-sols.pdf.html">Workbook Solutions</a></strong> as well.</p>
+</div>
+<div class="paragraph">
+<p>You can find the 'exercise' and 'solution' versions of all supplemental materials as well, in the lists below.</p>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 1ex"></span></p>
+</div>
+<div class="paragraph">
+<p><strong><a href="../../../lessons/ds-intro-codap/index.shtml">Introduction to Data Science
+</a></strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Opening Questions [ <a href="../../../lessons/ds-intro-codap/pages/OpeningQuestions.html">exercise</a> : <a href="../../../lessons/ds-intro-codap/solution-pages/OpeningQuestions.html">solution</a> ]</p>
+</li>
+<li>
+<p>What Questions Can You Answer with the Given Data? [ <a href="../../../lessons/ds-intro-codap/pages/what-can-you-answer.html">exercise</a> : <a href="../../../lessons/ds-intro-codap/solution-pages/what-can-you-answer.html">solution</a> ]</p>
+</li>
+<li>
+<p>The Animals Dataset [ <a href="../../../lessons/ds-intro-codap/pages/animals-dataset.html">exercise</a> : <a href="../../../lessons/ds-intro-codap/solution-pages/animals-dataset.html">solution</a> ]</p>
+</li>
+<li>
+<p>Questions and Column Descriptions [ <a href="../../../lessons/ds-intro-codap/pages/questions-and-column-descriptions.html">exercise</a> : <a href="../../../lessons/ds-intro-codap/solution-pages/questions-and-column-descriptions.html">solution</a> ]</p>
+</li>
+<li>
+<p>Categorical or Quantitative? [ <a href="../../../lessons/ds-intro-codap/pages/categorical-or-quantitative.html">exercise</a> : <a href="../../../lessons/ds-intro-codap/solution-pages/categorical-or-quantitative.html">solution</a> ]</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong><a href="../../../lessons/codap-exploring-codap/index.shtml">Exploring CODAP
+</a></strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>CODAP Exploration [ <a href="../../../lessons/codap-exploring-codap/pages/codap-exploration.html">exercise</a> : <a href="../../../lessons/codap-exploring-codap/solution-pages/codap-exploration.html">solution</a> ]</p>
+</li>
+<li>
+<p>Numbers and Strings [ <a href="../../../lessons/codap-exploring-codap/pages/numbers-n-strings.html">exercise</a> : <a href="../../../lessons/codap-exploring-codap/solution-pages/numbers-n-strings.html">solution</a> ]</p>
+</li>
+<li>
+<p>Booleans [ <a href="../../../lessons/codap-exploring-codap/pages/booleans.html">exercise</a> : <a href="../../../lessons/codap-exploring-codap/solution-pages/booleans.html">solution</a> ]</p>
+</li>
+<li>
+<p>Expressions &amp; Functions in CODAP [ <a href="../../../lessons/codap-exploring-codap/pages/codap-apply-functions.html">exercise</a> : <a href="../../../lessons/codap-exploring-codap/solution-pages/codap-apply-functions.html">solution</a> ]</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong><a href="../../../lessons/codap-bar-charts-codap/index.shtml">Bar Charts
+</a></strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Data Displays in CODAP [ <a href="../../../lessons/codap-bar-charts-codap/pages/codap-displays-intro.html">exercise</a> : <a href="../../../lessons/codap-bar-charts-codap/solution-pages/codap-displays-intro.html">solution</a> ]</p>
+</li>
+<li>
+<p>Bar Chart - Notice and Wonder [ <a href="../../../lessons/codap-bar-charts-codap/pages/bar-chart-notice.html">exercise</a> : <a href="../../../lessons/codap-bar-charts-codap/solution-pages/bar-chart-notice.html">solution</a> ]</p>
+</li>
+<li>
+<p>Practice Plotting [ <a href="../../../lessons/codap-bar-charts-codap/pages/plot-practice.html">exercise</a> : <a href="../../../lessons/codap-bar-charts-codap/solution-pages/plot-practice.html">solution</a> ]</p>
+</li>
+<li>
+<p>Practice Plotting 2 [ <a href="../../../lessons/codap-bar-charts-codap/pages/plot-practice-2.html">exercise</a> : <a href="../../../lessons/codap-bar-charts-codap/solution-pages/plot-practice-2.html">solution</a> ]</p>
+</li>
+<li>
+<p>Practice Plotting - Challenge [ <a href="../../../lessons/codap-bar-charts-codap/pages/plot-practice-3.html">exercise</a> : <a href="../../../lessons/codap-bar-charts-codap/solution-pages/plot-practice-3.html">solution</a> ]</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong><a href="../../../lessons/data-cycle-codap/index.shtml">The Data Cycle
+</a></strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Which Question Type? [ <a href="../../../lessons/data-cycle-codap/pages/which-question-type.html">exercise</a> : <a href="../../../lessons/data-cycle-codap/solution-pages/which-question-type.html">solution</a> ]</p>
+</li>
+<li>
+<p>Question Types: Animals [ <a href="../../../lessons/data-cycle-codap/pages/question-types-animals.html">exercise</a> : <a href="../../../lessons/data-cycle-codap/solution-pages/question-types-animals.html">solution</a> ]</p>
+</li>
+<li>
+<p>Data Cycle: Consider Data [ <a href="../../../lessons/data-cycle-codap/pages/which-rows-which-columns.html">exercise</a> : <a href="../../../lessons/data-cycle-codap/solution-pages/which-rows-which-columns.html">solution</a> ]</p>
+</li>
+<li>
+<p>Data Cycle: Analyzing with Displays [ <a href="../../../lessons/data-cycle-codap/pages/analyzing-with-displays.html">exercise</a> : <a href="../../../lessons/data-cycle-codap/solution-pages/analyzing-with-displays.html">solution</a> ]</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong><a href="../../../lessons/codap-transformers-1-codap/index.shtml">Introduction to Transformers: Sort
+</a></strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Sort Transformer [ <a href="../../../lessons/codap-transformers-1-codap/pages/codap-sort-transformer.html">exercise</a> : <a href="../../../lessons/codap-transformers-1-codap/solution-pages/codap-sort-transformer.html">solution</a> ]</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong><a href="../../../lessons/codap-transformers-2-codap/index.shtml">More Transformers: Filter&#x2c; Transform&#x2c; Build
+</a></strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Expression Cards [ <a href="../../../lessons/codap-transformers-2-codap/pages/expression-cards.html">exercise</a> : <a href="../../../lessons/codap-transformers-2-codap/solution-pages/expression-cards.html">solution</a> ]</p>
+</li>
+<li>
+<p>Filter [ <a href="../../../lessons/codap-transformers-2-codap/pages/codap-filter.html">exercise</a> : <a href="../../../lessons/codap-transformers-2-codap/solution-pages/codap-filter.html">solution</a> ]</p>
+</li>
+<li>
+<p>Transform [ <a href="../../../lessons/codap-transformers-2-codap/pages/codap-transform.html">exercise</a> : <a href="../../../lessons/codap-transformers-2-codap/solution-pages/codap-transform.html">solution</a> ]</p>
+</li>
+<li>
+<p>Build Attribute [ <a href="../../../lessons/codap-transformers-2-codap/pages/codap-build.html">exercise</a> : <a href="../../../lessons/codap-transformers-2-codap/solution-pages/codap-build.html">solution</a> ]</p>
+</li>
+<li>
+<p>What Table Do We Get? [ <a href="../../../lessons/codap-transformers-2-codap/pages/what-table-do-we-get.html">exercise</a> : <a href="../../../lessons/codap-transformers-2-codap/solution-pages/what-table-do-we-get.html">solution</a> ]</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong><a href="../../../lessons/method-chaining-codap/index.shtml">Method Chaining
+</a></strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Design Recipe [ <a href="../../../lessons/method-chaining-codap/pages/design-recipe-1.html">exercise</a> : <a href="../../../lessons/method-chaining-codap/solution-pages/design-recipe-1.html">solution</a> ]</p>
+</li>
+<li>
+<p>Design Recipe 2 [ <a href="../../../lessons/method-chaining-codap/pages/design-recipe-2.html">exercise</a> : <a href="../../../lessons/method-chaining-codap/solution-pages/design-recipe-2.html">solution</a> ]</p>
+</li>
+<li>
+<p>Chaining [ <a href="../../../lessons/method-chaining-codap/pages/chaining-methods.html">exercise</a> : <a href="../../../lessons/method-chaining-codap/solution-pages/chaining-methods.html">solution</a> ]</p>
+</li>
+<li>
+<p>Chaining 2: Order Matters [ <a href="../../../lessons/method-chaining-codap/pages/chaining-methods-order-matters.html">exercise</a> : <a href="../../../lessons/method-chaining-codap/solution-pages/chaining-methods-order-matters.html">solution</a> ]</p>
+</li>
+<li>
+<p>Table Transformations with Chaining [ <a href="../../../lessons/method-chaining-codap/pages/chaining-methods-table-transformations.html">exercise</a> : <a href="../../../lessons/method-chaining-codap/solution-pages/chaining-methods-table-transformations.html">solution</a> ]</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong><a href="../../../lessons/random-samples-codap/index.shtml">Probability&#x2c; Inference&#x2c; and Sample Size
+</a></strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Finding the Trick Coin [ <a href="../../../lessons/random-samples-codap/pages/fair-coins.html">exercise</a> : <a href="../../../lessons/random-samples-codap/solution-pages/fair-coins.html">solution</a> ]</p>
+</li>
+<li>
+<p>Sampling and Inference [ <a href="../../../lessons/random-samples-codap/pages/sampling-and-inference.html">exercise</a> : <a href="../../../lessons/random-samples-codap/solution-pages/sampling-and-inference.html">solution</a> ]</p>
+</li>
+<li>
+<p>Predictions from Samples [ <a href="../../../lessons/random-samples-codap/pages/predictions-from-samples.html">exercise</a> : <a href="../../../lessons/random-samples-codap/solution-pages/predictions-from-samples.html">solution</a> ]</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong><a href="../../../lessons/grouped-samples-codap/index.shtml">Grouped Samples
+</a></strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Grouped Samples from the Animals Dataset [ <a href="../../../lessons/grouped-samples-codap/pages/samples-from-animals-dataset.html">exercise</a> : <a href="../../../lessons/grouped-samples-codap/solution-pages/samples-from-animals-dataset.html">solution</a> ]</p>
+</li>
+<li>
+<p>Displaying Data [ <a href="../../../lessons/grouped-samples-codap/pages/data-displays2.html">exercise</a> : <a href="../../../lessons/grouped-samples-codap/solution-pages/data-displays2.html">solution</a> ]</p>
+</li>
+<li>
+<p>Data Cycle: Analyzing Categorical Data [ <a href="../../../lessons/grouped-samples-codap/pages/analyzing-categorical-data2.html">exercise</a> : <a href="../../../lessons/grouped-samples-codap/solution-pages/analyzing-categorical-data2.html">solution</a> ]</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_other_facilitation_resources">Other Facilitation Resources</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://docs.google.com/forms/d/e/1FAIpQLSfj24nCBA18zvjK19OwS_DZfwFZpHoPtPcd-2ADiUDfevkaSA/viewform" target="_blank" rel="noopener">Homework Submission Template</a></p>
+</li>
+<li>
+<p><strong>Broadening Participation</strong> [<a href="https://docs.google.com/presentation/d/17uEl-yS2smjSuOdDLJPzMWWffeXTqBsENjAaZe_qkso/view" target="_blank" rel="noopener">Google Slides</a>] - Making computing relevant, accessible and welcoming to all students isn&#8217;t a pipe-dream. Like anything else worth doing, it takes some good practice and a desire to do it right and keep improving. We&#8217;ve put together some pointers based on best-practices from the CS-Education literature, for Bootstrap teachers or anyone looking to broaden participation in Computer Science.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-17 19:42:18 -0400
+</div>
+</div>
+</div>
+</body>
+</html>

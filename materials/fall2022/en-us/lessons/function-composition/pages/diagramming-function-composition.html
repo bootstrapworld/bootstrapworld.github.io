@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Diagramming Function Composition</title>
+
+  <link rel="stylesheet" href="../../../lib/curriculum.css" />
+    <link rel="stylesheet" href="../../../lib/codemirror.css" />
+    <script src="../../../lib/codemirror.js"></script>
+    <script src="../../../lib/runmode.js"></script>
+    <script src="../../../lib/scheme2.js"></script>
+    <script src="../../../lib/pyret-mode.js"></script>
+      <script src="../../../extlib/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML%2Clocal%2Fmathjaxlocal.js"></script>
+      <script>window.status = "not_ready_to_print";</script>
+    <script src="../../../lib/langtable.js"></script>
+    <script src="../../../lib/bootstraplesson.js"></script>
+    <script src="../../../dependency-graph.js"></script>
+    <script src="../../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"Diagramming Function Composition",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="workbookpage article pyret" onload="renderSaveToDrive()">
+<div id="header">
+<h1>Diagramming Function Composition</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<style>
+#content .listingblock pre {padding: 0;}
+#content .autonum::after { content: ')'; }
+#content .topTable tr:first-child td * { background-color: #f7f7f8; }
+table table { border: none !important; }
+table table td { height: 4rem; }
+</style>
+<table class="tableblock frame-all grid-all stripes-none stretch topTable">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
+<div class="content">
+<pre><code class="pyret">f :: Number -&gt; Number
+Consumes a number, multiplies by 3 to produce the result</code></pre>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
+<div class="content">
+<pre><code class="pyret">g :: Number -&gt; Number
+Consumes a number, adds six to produce the result</code></pre>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
+<div class="content">
+<pre><code class="pyret">h :: Number -&gt; Number
+Consumes a number, subtracts one to produce the result</code></pre>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="gdrive-only">fx = 3x</span><script type="math/tex">\displaystyle f(x) = 3x</script></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="gdrive-only">gx = x + 6</span><script type="math/tex">\displaystyle g(x) = x + 6</script></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="gdrive-only">hx = x - 1</span><script type="math/tex">\displaystyle h(x) = x - 1</script></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>For each function composition diagrammed below, translate it into the equivalent Circle of Evaluation for Order of Operations. Then write expressions for <em>both</em> versions of the Circles of Evaluation, and evaluate them for <span class="gdrive-only">x = 4</span><script type="math/tex">\displaystyle x = 4</script>. The first one has been completed for you.</p>
+</div>
+<table class="tableblock frame-all grid-all stripes-none stretch">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">Function Composition</th>
+<th class="tableblock halign-center valign-top">Order of Operations</th>
+<th class="tableblock halign-center valign-top">Translate &amp; Evaluate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="autonum">1</span>  <table class="gdrive-only expression"><tr><td class="operator"><span class="operator"><span class="value">h</span></span></td></tr><tr><td><table class="args"><tr><td class="arg"><table class="gdrive-only expression"><tr><td class="operator"><span class="operator"><span class="value">g</span></span></td></tr><tr><td><table class="args"><tr><td class="arg"><table class="gdrive-only expression"><tr><td class="operator"><span class="operator"><span class="value">f</span></span></td></tr><tr><td><table class="args"><tr><td class="arg"><span class="value">x</span></td></tr></table></td></tr></table></td></tr></table></td></tr></table></td></tr></table></td></tr></table><div class="circleevalsexp"><span class="expression"><span class="lParen">(</span><span class="operator"><span class="value">h</span></span><span class="hspace">&#160;</span><span class="expression"><span class="lParen">(</span><span class="operator"><span class="value">g</span></span><span class="hspace">&#160;</span><span class="expression"><span class="lParen">(</span><span class="operator"><span class="value">f</span></span><span class="hspace">&#160;</span><span class="value">x</span><span class="rParen">)</span></span><span class="rParen">)</span></span><span class="rParen">)</span></span></div></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><table class="gdrive-only expression"><tr><td class="operator"><span class="operator"><span class="value">&#8203;-</span></span></td></tr><tr><td><table class="args"><tr><td class="arg"><table class="gdrive-only expression"><tr><td class="operator"><span class="operator"><span class="value">&#43;</span></span></td></tr><tr><td><table class="args"><tr><td class="arg"><table class="gdrive-only expression"><tr><td class="operator"><span class="operator"><span class="value">&#8203;*</span></span></td></tr><tr><td><table class="args"><tr><td class="arg"><span class="value">3</span></td><td class="arg"><span class="value">x</span></td></tr></table></td></tr></table></td><td class="arg"><span class="value">6</span></td></tr></table></td></tr></table></td><td class="arg"><span class="value">1</span></td></tr></table></td></tr></table><div class="circleevalsexp"><span class="expression"><span class="lParen">(</span><span class="operator"><span class="value">&#8203;-</span></span><span class="hspace">&#160;</span><span class="expression"><span class="lParen">(</span><span class="operator"><span class="value">&#43;</span></span><span class="hspace">&#160;</span><span class="expression"><span class="lParen">(</span><span class="operator"><span class="value">&#8203;*</span></span><span class="hspace">&#160;</span><span class="value">3</span><span class="hspace">&#160;</span><span class="value">x</span><span class="rParen">)</span></span><span class="hspace">&#160;</span><span class="value">6</span><span class="rParen">)</span></span><span class="hspace">&#160;</span><span class="value">1</span><span class="rParen">)</span></span></div></p></td>
+<td class="tableblock halign-center valign-top"><div class="content"><table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 44.4444%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Composition:</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><span class="obeyspaces"><code class="pyret">h&#8203;(&#8203;g&#8203;(&#8203;f&#8203;(&#8203;x&#8203;)&#8203;)&#8203;)</code></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Operations:</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><span class="obeyspaces"><code class="pyret">(&#8203;(&#8203;3 * x&#8203;) + 6&#8203;) - 1</code></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Evaluate for x = 4</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><span class="gdrive-only">h(g(f4)) = 17</span><script type="math/tex">\displaystyle h(g(f(4))) = 17</script></p></td>
+</tr>
+</tbody>
+</table></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="autonum">2</span>  <table class="gdrive-only expression"><tr><td class="operator"><span class="operator"><span class="value">g</span></span></td></tr><tr><td><table class="args"><tr><td class="arg"><table class="gdrive-only expression"><tr><td class="operator"><span class="operator"><span class="value">f</span></span></td></tr><tr><td><table class="args"><tr><td class="arg"><table class="gdrive-only expression"><tr><td class="operator"><span class="operator"><span class="value">h</span></span></td></tr><tr><td><table class="args"><tr><td class="arg"><span class="value">x</span></td></tr></table></td></tr></table></td></tr></table></td></tr></table></td></tr></table></td></tr></table><div class="circleevalsexp"><span class="expression"><span class="lParen">(</span><span class="operator"><span class="value">g</span></span><span class="hspace">&#160;</span><span class="expression"><span class="lParen">(</span><span class="operator"><span class="value">f</span></span><span class="hspace">&#160;</span><span class="expression"><span class="lParen">(</span><span class="operator"><span class="value">h</span></span><span class="hspace">&#160;</span><span class="value">x</span><span class="rParen">)</span></span><span class="rParen">)</span></span><span class="rParen">)</span></span></div></p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"><div class="content"><table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 44.4444%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Composition:</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Operations:</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Evaluate for x = 4</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+</tbody>
+</table></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="autonum">3</span>  <table class="gdrive-only expression"><tr><td class="operator"><span class="operator"><span class="value">h</span></span></td></tr><tr><td><table class="args"><tr><td class="arg"><table class="gdrive-only expression"><tr><td class="operator"><span class="operator"><span class="value">f</span></span></td></tr><tr><td><table class="args"><tr><td class="arg"><table class="gdrive-only expression"><tr><td class="operator"><span class="operator"><span class="value">g</span></span></td></tr><tr><td><table class="args"><tr><td class="arg"><span class="value">x</span></td></tr></table></td></tr></table></td></tr></table></td></tr></table></td></tr></table></td></tr></table><div class="circleevalsexp"><span class="expression"><span class="lParen">(</span><span class="operator"><span class="value">h</span></span><span class="hspace">&#160;</span><span class="expression"><span class="lParen">(</span><span class="operator"><span class="value">f</span></span><span class="hspace">&#160;</span><span class="expression"><span class="lParen">(</span><span class="operator"><span class="value">g</span></span><span class="hspace">&#160;</span><span class="value">x</span><span class="rParen">)</span></span><span class="rParen">)</span></span><span class="rParen">)</span></span></div></p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"><div class="content"><table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 44.4444%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Composition:</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Operations:</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Evaluate for x = 4</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+</tbody>
+</table></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="autonum">4</span>  <table class="gdrive-only expression"><tr><td class="operator"><span class="operator"><span class="value">f</span></span></td></tr><tr><td><table class="args"><tr><td class="arg"><table class="gdrive-only expression"><tr><td class="operator"><span class="operator"><span class="value">h</span></span></td></tr><tr><td><table class="args"><tr><td class="arg"><table class="gdrive-only expression"><tr><td class="operator"><span class="operator"><span class="value">g</span></span></td></tr><tr><td><table class="args"><tr><td class="arg"><span class="value">x</span></td></tr></table></td></tr></table></td></tr></table></td></tr></table></td></tr></table></td></tr></table><div class="circleevalsexp"><span class="expression"><span class="lParen">(</span><span class="operator"><span class="value">f</span></span><span class="hspace">&#160;</span><span class="expression"><span class="lParen">(</span><span class="operator"><span class="value">h</span></span><span class="hspace">&#160;</span><span class="expression"><span class="lParen">(</span><span class="operator"><span class="value">g</span></span><span class="hspace">&#160;</span><span class="value">x</span><span class="rParen">)</span></span><span class="rParen">)</span></span><span class="rParen">)</span></span></div></p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"><div class="content"><table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 44.4444%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Composition:</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Operations:</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Evaluate for x = 4</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+</tbody>
+</table></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-17 19:41:53 -0400
+</div>
+</div>
+</body>
+</html>

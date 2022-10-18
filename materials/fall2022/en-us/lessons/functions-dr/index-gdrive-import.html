@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Solving Word Problems with the Design Recipe</title>
+<style>
+/* Overall document font */
+* {font-family: Lato, Arial, Helvetica, sans-serif;}
+
+/* document headings */
+h1,.lesson-section-1 {color: #75328A;}
+h1{font-size: 32px; font-family: sans-serif;}
+table.section-heading *, .lesson-section-1 h2{font-size: 32px; font-weight: 100;}
+table.section-heading{width: 100%;}
+table.section-heading td:last-child{text-align: right; color: #d9d2e9;}
+
+/* preamble section */
+table.preamble td {padding: 10px;}
+table.preamble td:first-child{background: #b7d893; width: 25%;}
+table.preamble td:first-child p {font-weight: bold; margin: 5px;}
+
+/* content used throughout the body */
+table{ border-collapse: collapse; border: none; }
+table.grid-all.frame-all {border: solid 1px black;}
+table.grid-none.frame-none {border-width: 0px;}
+
+.big {font-size: 30pt;}
+.vocab{font-weight: bold; font-style: italic;}
+.right{text-align: right;}
+.acknowledgment {
+  border-top: solid 1px black; 
+  font-style: italic; 
+  font-size: 8pt;
+}
+.lesson-point {
+  border-top: solid 1px black; 
+  border-bottom: solid 1px black; 
+  color: black;
+  font-weight: bold;
+}
+
+.web-page-only, #footer { display: none; visibility: hidden; }
+
+/* Callout boxes */
+.strategy-box, .notice-box {
+  background: #efefef;
+  border: solid 5px !important;
+  margin: 15px auto;
+  width: 100%;
+}
+.strategy-box { border-color: #1a73b5 !important; }
+.notice-box   { border-color: #7747a5 !important; }
+.strategy-box td, .notice-box td{ padding: 10px; }
+.strategy-box .title, .notice-box .title{
+  width: 100%;
+  display: block;
+  font-weight: bold;
+  font-size: 24px;
+  clear: both;
+  margin: 100px;
+}
+.strategy-box p.tableblock:first-child, .notice-box p.tableblock:first-child{
+  text-align: center;
+  padding-bottom: 15px;
+}
+.strategy-box .title { color: #1a73b5; }
+.notice-box   .title { color: #7747a5; }
+.strategy-box a, .notice-box a { color: blue; text-decoration: underline; }
+
+/* "Tables" of Evaluation */
+.operator{border-bottom: solid 1px black; text-align: center;}
+.operator * {text-align: center;}
+td {padding: 0px 10px; font-size: 14px;}
+table.expression {
+    font-family:"Courier New", Monaco, monospace;
+    border:     solid 1px black;
+    font-size:  1px;
+    max-width:  400px;
+    color:      #666666;
+    display:    inline-block;
+}
+table.args {border: none; text-align: center;}
+
+.wescheme-string,     .cm-scheme-string    {color: green;}
+.wescheme-number,     .cm-scheme-number    {color: blue;}
+.wescheme-boolean,    .cm-scheme-boolean   {color: darkred;}
+.wescheme-character,  .cm-scheme-character {color: orange;}
+.wescheme-symbol,     .cm-scheme-symbol    {color: steelblue;}
+.wescheme-comment,    .cm-scheme-comment   {color: orange; }
+
+.racket, .pyret, .studentAnswerCode, .studentAnswer, .pyretkeyword, .keyword_only {
+    font-family:"Courier New", Monaco, monospace !important; 
+    color: black;
+}
+
+/* Design Recipe */
+.recipe_instructions { font-style: italic; }
+table.recipe_title {
+  color:              white;
+  background:         gray;
+  display:            block;
+  padding:            0px;
+  font-size:          1.1rem;
+  font-weight:        bold;
+}</style>
+
+    <script src="../../lib/langtable.js"></script>
+    <script src="../../dependency-graph.js"></script>
+    <script src="../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:window.location.href,
+    filename:"Solving Word Problems with the Design Recipe",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="article LessonPlan pyret" onload="renderSaveToDrive()">
+<span id="body" onload="renderSaveToDrive()">
+<span id="header">
+<h1>Solving Word Problems with the Design Recipe</h1>
+
+  <span id="savetodrive-div"></span>
+
+</span>
+<span id="content">
+<span id="preamble_disabled" class="lessonSummary">
+<span class="sectionbody">
+<script>
+function preselect(klass) {
+  const items = document.getElementsByClassName(klass);
+  for (let i = 0; i < items.length; i++) {
+    items[i].style.display = 'none';
+  }
+  if (items.length > 0) {
+    items[0].style.display = 'block';
+  }
+}
+window.onload = function() {
+  preselect('alignedStandards');
+  preselect('alignedTextbooks');
+  preselect('alignedPractices');
+}
+function showStandardsAlignment() {
+  const selectTag = document.getElementsByClassName('standardsAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const stdTables = document.getElementsByClassName('alignedStandards');
+  //const intro = document.getElementsByClassName('alignedStandardsIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < stdTables.length; i++) {
+    const stdTable = stdTables[i];
+    stdTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optStd = opt.value;
+      for (let j = 0; j < stdTables.length; j++) {
+        const stdTable = stdTables[j];
+        if (stdTable.classList.contains(optStd)) {
+          stdTable.style.display = 'block';
+         // introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+function toggleNonPrereqDisplay() {
+  const inputTag = document.getElementsByClassName('sidebarinput')[0];
+  const checkedP = inputTag.checked;
+  const lessonTable = document.getElementsByClassName('sidebarlessons')[0];
+  const lis = lessonTable.getElementsByTagName('li');
+  for (let i = 0; i < lis.length; i++) {
+    const li = lis[i];
+    const lesson = li.getElementsByClassName('prerequisite');
+    if (lesson.length === 0) {
+      li.style.display = checkedP ? 'none' : 'block';
+    }
+  }
+}
+</script>
+<script>
+function showTextbooksAlignment() {
+  const selectTag = document.getElementsByClassName('textbooksAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const textbookTables = document.getElementsByClassName('alignedTextbooks');
+  //const intro = document.getElementsByClassName('alignedTextbooksIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < textbookTables.length; i++) {
+    const textbookTable = textbookTables[i];
+    textbookTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optTextbook = opt.value;
+      for (let j = 0; j < textbookTables.length; j++) {
+        const textbookTable = textbookTables[j];
+        if (textbookTable.classList.contains(optTextbook)) {
+          textbookTable.style.display = 'block';
+          //introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+</script>
+<script>
+function showPracticesAlignment() {
+  const selectTag = document.getElementsByClassName('practicesAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const practiceTables = document.getElementsByClassName('alignedPractices');
+  for (let i = 0; i < practiceTables.length; i++) {
+    const practiceTable = practiceTables[i];
+    practiceTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optPractice = opt.value;
+      for (let j = 0; j < practiceTables.length; j++) {
+        const practiceTable = practiceTables[j];
+        if (practiceTable.classList.contains(optPractice)) {
+          practiceTable.style.display = 'block';
+        }
+      }
+    }
+  }
+}
+</script>
+<span class="paragraph">
+<!-- </p>
+</span>
+--></span><span class="sidebar"><span id="toggle"></span><span class="paragraph"><!--
+<span class="paragraph">
+<p>
+--><span class="sidebarlessons"><strong>Lessons</strong>
+<ul></ul></span>
+</span>
+<table class="tableblock frame-all grid-all stretch sidebarstandards">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p><strong>Standards in this Lesson</strong>
+<select class="standardsAlignmentSelect"  onchange="showStandardsAlignment()"><option selected="selected" value="standards-CCSS-Math">CCSS-Math</option><option value="standards-Oklahoma">Oklahoma</option></select></p>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="dlist standards-CCSS-Math">
+<span class="title"><a href="http://corestandards.org/Math/">Common Core Math Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1"><br/>7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1"><br/>7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.</p>
+</dd>
+<dt class="hdlist1"><br/>8.F.B</dt>
+<dd>
+<p>Use functions to model relationships between quantities.</p>
+</dd>
+<dt class="hdlist1"><br/>HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1"><br/>HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Oklahoma">
+<span class="title"><a href="https://sde.ok.gov/oklahoma-academic-standards">Oklahoma Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>OK.3.AP.PD.01</dt>
+<dd>
+<p>Use an iterative process to plan the development of a program while solving simple problems.</p>
+</dd>
+<dt class="hdlist1"><br/>OK.3.AP.PD.04</dt>
+<dd>
+<p>Communicate and explain your program development using comments, presentations and demonstrations.</p>
+</dd>
+<dt class="hdlist1"><br/>OK.4.AP.PD.04</dt>
+<dd>
+<p>Communicate and explain your program development using comments, presentations and demonstrations.</p>
+</dd>
+<dt class="hdlist1"><br/>OK.5.AP.PD.04</dt>
+<dd>
+<p>Communicate and explain your program development using comments, presentations and demonstrations.</p>
+</dd>
+<dt class="hdlist1"><br/>OK.6.AP.A.01</dt>
+<dd>
+<p>Use an existing algorithm in natural language or pseudocode to solve complex problems.</p>
+</dd>
+<dt class="hdlist1"><br/>OK.6.AP.PD.05</dt>
+<dd>
+<p>Document text-based programs in order to make them easier to follow, test, and debug.</p>
+</dd>
+<dt class="hdlist1"><br/>OK.7.AP.A.01</dt>
+<dd>
+<p>Select and modify an existing algorithm in natural language or pseudocode to solve complex problems.</p>
+</dd>
+<dt class="hdlist1"><br/>OK.7.AP.PD.05</dt>
+<dd>
+<p>Document text-based programs of increasing complexity in order to make them easier to follow, test, and debug.</p>
+</dd>
+<dt class="hdlist1"><br/>OK.8.AP.A.01</dt>
+<dd>
+<p>Design algorithms in natural language, flow and control diagrams, comments within code, and/or pseudocode to solve complex problems.</p>
+</dd>
+<dt class="hdlist1"><br/>OK.8.AP.PD.04</dt>
+<dd>
+<p>Explain how effective communication between participants is required for successful collaboration when developing computational artifacts.</p>
+</dd>
+<dt class="hdlist1"><br/>OK.8.AP.PD.05</dt>
+<dd>
+<p>Document text-based programs of increasing complexity in order to make them easier to follow, test, and debug.</p>
+</dd>
+<dt class="hdlist1"><br/>OK.L2.AP.PD.05</dt>
+<dd>
+<p>Develop and use a series of test cases to verify that a program performs according to its design specifications.</p>
+</dd>
+<dt class="hdlist1"><br/>OK.MAP.7</dt>
+<dd>
+<p>Develop the ability to communicate mathematically.</p>
+</dd>
+<dt class="hdlist1"><br/>OK.PA.A.1.2</dt>
+<dd>
+<p>Use linear functions to represent and explain real-world and mathematical situations.</p>
+</dd>
+<dt class="hdlist1"><br/>OK.PA.A.1.3</dt>
+<dd>
+<p>Identify a function as linear if it can be expressed in the form y = mx + b or if its graph is a straight line.</p>
+</dd>
+<dt class="hdlist1"><br/>OK.PA.A.2</dt>
+<dd>
+<p>Recognize linear functions in real-world and mathematical situations; represent linear functions and other functions with tables, verbal descriptions, symbols, and graphs; solve problems involving linear functions and interpret results in the original context.</p>
+</dd>
+<dt class="hdlist1"><br/>OK.PA.A.2.1</dt>
+<dd>
+<p>Represent linear functions with tables, verbal descriptions, symbols, and graphs; translate from one representation to another.</p>
+</dd>
+</dl>
+</span></span></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch sidebarpractices">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p><strong>Practices in this Lesson</strong>
+<select class="practicesAlignmentSelect"  onchange="showPracticesAlignment()"><option selected="selected" value="practices-MLR"><a href="https://achievethecore.org/peersandpedagogy/developing-math-language-routines/">Math Lang. Routines</a></option><option value="practices-CC"><a href="http://corestandards.org/Math/">Math</a></option></select></p>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="dlist alignedPractices practices-MLR">
+<span class="title"><a href="https://achievethecore.org/peersandpedagogy/developing-math-language-routines/">Math Lang. Routines</a></span>
+<dl>
+<dt class="hdlist1"><br/>MLR.7</dt>
+<dd>
+<p>Compare and Connect</p>
+</dd>
+<dt class="hdlist1"><br/>MLR.6</dt>
+<dd>
+<p>Three Reads</p>
+</dd>
+<dt class="hdlist1"><br/>MLR.1</dt>
+<dd>
+<p>Stronger and Clearer Each Time</p>
+</dd>
+</dl>
+</span>
+<span class="dlist alignedPractices practices-CC">
+<span class="title"><a href="http://corestandards.org/Math/">Math</a></span>
+<dl>
+<dt class="hdlist1"><br/>MP.4</dt>
+<dd>
+<p>Model with mathematics</p>
+</dd>
+<dt class="hdlist1"><br/>MP.7</dt>
+<dd>
+<p>Look for and make use of structure</p>
+</dd>
+<dt class="hdlist1"><br/>MP.1</dt>
+<dd>
+<p>Make sense of problems and persevere in solving them</p>
+</dd>
+<dt class="hdlist1"><br/>MP.3</dt>
+<dd>
+<p>Construct viable arguments and critique the reasoning of others</p>
+</dd>
+</dl>
+</span></span></td>
+</tr>
+</tbody>
+</table>
+<span class="paragraph">
+<!-- </p>
+</span>
+--></span><!--
+<span class="paragraph">
+<p>
+-->
+</span>
+<span class="paragraph">
+<p><span class="other-proglang">(Also available in <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/functions-dr-wescheme/index.shtml">WeScheme</a>)</span></p>
+</span>
+<span class="paragraph description">
+<p>Students are introduced to the Design Recipe as a scaffold for breaking down word problems into smaller steps. They apply the Design Recipe to fixing a file that launches a rocket!</p>
+</span>
+<table class="tableblock frame-all grid-all stripes-none stretch left-header preamble">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>Lesson Goals</p>
+</span></span></td>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>Students will be able to:</p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p>Understand how to use the Design Recipe to break down word problems.</p>
+</li>
+<li>
+<p>Create a strong purpose statement that details in their own words what the function should do.</p>
+</li>
+</ul>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>Student-Facing Lesson Goals</p>
+</span></span></td>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="ulist">
+<ul>
+<li>
+<p>I can write my own function in Pyret.</p>
+</li>
+<li>
+<p>I can use the Design Recipe to break down word problems when writing a function.</p>
+</li>
+</ul>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>Materials</p>
+</span></span></td>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="ulist materials-links">
+<ul>
+<li>
+<p><a href="https://docs.google.com/presentation/d/1Jw0xh0UTRu_Iw_uv1-IShZaEtHN4TM8csKJP9yhr-dk/" target="_blank" rel="noopener">Lesson Slides</a></p>
+</li>
+<li>
+<p><span class="StarterFile"><a href="https://code.pyret.org/editor#share=1Wvu39Uf0vmlA6s2HO5nOmGm-PtnTvfCf" target="_blank" rel="noopener">Rocket Height Starter File</a></span></p>
+</li>
+<li>
+<p><span class="materialSectionPlaceholder"> </span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/functions-dr/pages/matching-wp-purpose.html" target="_blank" rel="noopener">Matching Word Problems and Purpose Statements</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/functions-dr/pages/create-examples-contracts-purpose-1.html" target="_blank" rel="noopener">Writing Examples from Purpose Statements</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/functions-dr/pages/fixing-purpose.html" target="_blank" rel="noopener">Fixing Purpose Statements</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/functions-dr/pages/rocket-height.html" target="_blank" rel="noopener">Word Problem: rocket-height</a></span></p>
+</li>
+<li>
+<p><span class="OptProject">[<a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/functions-dr/pages/dr-telephone.html" target="_blank" rel="noopener">Design Recipe Telephone</a>] [<a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/functions-dr/pages/rubric-dr.html" target="_blank" rel="noopener">rubric</a>]</span></p>
+</li>
+<li>
+<p><span class="StarterFile Optional"><a href="https://code.pyret.org/editor#share=1_IQ5bKqbQujDU9NvLyvU_YFFyVAXWa6k" target="_blank" rel="noopener">Collaboration Starter File - For use with Design Recipe Telephone Set 1</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/functions-dr/pages/create-examples-contracts-purpose-2.html" target="_blank" rel="noopener">Writing Examples from Purpose Statements 2</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/functions-dr/pages/rocket-challenges.html" target="_blank" rel="noopener">Rocket Height Challenges</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/functions-dr/pages/dr-blank.html" target="_blank" rel="noopener">Blank Design Recipe</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/functions-dr/pages/dr-restaurants.html" target="_blank" rel="noopener">The Design Recipe (Restaurants)</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/functions-dr/pages/dr-direct-variation.html" target="_blank" rel="noopener">The Design Recipe (Direct Variation)</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/functions-dr/pages/dr-slope-intercept-1.html" target="_blank" rel="noopener">The Design Recipe (Slope/Intercept 1)</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/functions-dr/pages/dr-neg-slope.html" target="_blank" rel="noopener">The Design Recipe (Negative Slope/Intercept)</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/functions-dr/pages/dr-geometry-rectangles.html" target="_blank" rel="noopener">The Design Recipe (Geometry - Rectangles)</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/functions-dr/pages/dr-geometry-rect-prism.html" target="_blank" rel="noopener">The Design Recipe (Geometry - Rectangular Prisms)</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/functions-dr/pages/dr-geometry-circles.html" target="_blank" rel="noopener">The Design Recipe (Geometry - Circles)</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/functions-dr/pages/dr-geometry-cylinder.html" target="_blank" rel="noopener">The Design Recipe (Geometry - Cylinders)</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/functions-dr/pages/dr-breaking-even.html" target="_blank" rel="noopener">The Design Recipe (Breaking Even)</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/functions-dr/pages/dr-marquee.html" target="_blank" rel="noopener">The Design Recipe (Marquee &amp; Cubing)</a></span></p>
+</li>
+<li>
+<p><strong>Classroom visual:</strong> <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/javascript:showLangTable()">Language Table</a></p>
+</li>
+</ul>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>Key Points for the Facilitator</p>
+</span></span></td>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="ulist">
+<ul>
+<li>
+<p>Code should be easy to read! There may be other people looking at your code who could use a hint about what it does, and even the person who wrote the code could benefit from a note here and there. <span class="vocab">Comments</span> are parts of a program that the computer ignores - they are for human eyes only!</p>
+</li>
+<li>
+<p>The <span class="vocab">Purpose Statement</span> is a structured way of restating the problem. In a computer program, it&#8217;s written as a comment in the code - something the computer doesn&#8217;t read.</p>
+</li>
+<li>
+<p>Remind students that the <span class="vocab">Domain</span> and <span class="vocab">Range</span> of a function must be a <em>set</em> of possible inputs and outputs. In math, some of these sets have shorthands like Integers, Rationals, etc. In programming, we have shorthands for <span class="vocab">data types</span> like Number, String, Image, Boolean, etc.</p>
+</li>
+<li>
+<p>If students struggle with creating the examples, use the Circle of Evaluation mapping activity or use role-playing to help students build up their understanding around the concept.</p>
+</li>
+</ul>
+</span></span></td>
+</tr>
+</tbody>
+</table>
+<span class="dlist glossary">
+<span class="title">Glossary</span>
+<dl>
+<dt class="hdlist1"><br/>comments</dt>
+<dd>
+<p>messages in the code, generally ignored by the computer, to help people interacting with the code understand what it is doing</p>
+</dd>
+<dt class="hdlist1"><br/>data type</dt>
+<dd>
+<p>a way of classifying values, such as: Number, String, Image, Boolean, or any user-defined data structure</p>
+</dd>
+<dt class="hdlist1"><br/>domain</dt>
+<dd>
+<p>the type or set of inputs that a function expects</p>
+</dd>
+<dt class="hdlist1"><br/>example</dt>
+<dd>
+<p>shows the use of a function on specific inputs and the computation the function should perform on those inputs</p>
+</dd>
+<dt class="hdlist1"><br/>function definition</dt>
+<dd>
+<p>code that names a function, lists its variables, and states the expression to compute when the function is used</p>
+</dd>
+<dt class="hdlist1"><br/>purpose statement</dt>
+<dd>
+<p>a concise, detailed description of what a function does with its inputs</p>
+</dd>
+<dt class="hdlist1"><br/>range</dt>
+<dd>
+<p>the type or set of outputs that a function produces</p>
+</dd>
+<dt class="hdlist1"><br/>variable</dt>
+<dd>
+<p>a name or symbol that stands for some value or expression, often a value or expression that changes</p>
+</dd>
+</dl>
+</span>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<table class="grid-none frame-none section-heading"><tr><td width="65%">The Design Recipe </td><td width="35%">10 minutes</td></tr></table>
+<span class="sectionbody">
+<span class="sect2 lesson-section-2">
+<h3 id="_overview">Overview</h3>
+<span class="paragraph">
+<p>In this lesson students build on what they already know about multiple representations of functions (contracts, examples and definitions) to write purpose statements and gain fluency with the Design Recipe.</p>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_launch">Launch</h3>
+<span class="paragraph">
+<p>A word problem is a description of a situation, but seeing the math behind the words can be challenging!</p>
+</span>
+<span class="paragraph">
+<p>In this lesson, students are going to learn a strategy for breaking down word problems, called the <strong>Design Recipe</strong>. They have actually seen most of the steps of the Design Recipe, but they <em>haven&#8217;t</em> seen how to put them together. There&#8217;s also one part of the Design Recipe that they haven&#8217;t seen yet: <em>writing a purpose statement</em>.</p>
+</span>
+<span class="paragraph">
+<p>On its own, a contract is not enough information to generate examples and write a <span class="vocab">function definition</span>. For example, the contract for <code class="pyret">circle</code> says it needs a Number and two Strings, but that&#8217;s not the whole story! We can&#8217;t use negative numbers for the radius, we can only use <code class="pyret">"solid"</code> or <code class="pyret">"outline"</code> for the first String, and the last String has to be a color!</p>
+</span>
+<span class="paragraph">
+<p>Contracts are great, but we need more detail! Programmers and Mathematicians alike find it helpful to restate a problem in their own words. After all, if you can&#8217;t explain a problem to someone else, you probably don&#8217;t understand it yourself!</p>
+</span>
+<span class="ulist lesson-instruction">
+<ul>
+<li>
+<p>On <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/functions-dr/pages/matching-wp-purpose.html" target="_blank" rel="noopener">Matching Word Problems and Purpose Statements</a>, we see four word problems and four <span class="vocab">purpose statements</span>.</p>
+</li>
+<li>
+<p>Take 2 minutes to read them and see if you can find any that describe the same thing and should be matched to each other.</p>
+</li>
+<li>
+<p>What pairs did you come up with?</p>
+</li>
+<li>
+<p>What do you Notice about those purpose statements? Do they have anything in common?</p>
+</li>
+</ul>
+</span>
+<div class="paragraph lesson-point">
+<p>Purpose statements should have enough details to allow us to write examples without looking at the word problem!</p>
+</div>
+<span class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Turn to <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/functions-dr/pages/create-examples-contracts-purpose-1.html" target="_blank" rel="noopener">Writing Examples from Purpose Statements</a>, read the purpose statements, and write examples that satisfy each of the contracts and purpose statements.</p>
+</li>
+<li>
+<p>For more practice, complete <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/functions-dr/pages/create-examples-contracts-purpose-2.html" target="_blank" rel="noopener">Writing Examples from Purpose Statements 2</a>.</p>
+</li>
+</ul>
+</span>
+<span class="paragraph">
+<p>A good <span class="vocab">purpose statement</span> must have three things:</p>
+</span>
+<span class="olist arabic">
+<ol class="arabic">
+<li>
+<p>A description of what the function <em>consumes</em></p>
+</li>
+<li>
+<p>A description of what the function <em>produces</em></p>
+</li>
+<li>
+<p>All the <em>relevant information</em> about how to produce that output</p>
+</li>
+</ol>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_investigate">Investigate</h3>
+<span class="paragraph">
+<p>Have students turn to <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/functions-dr/pages/fixing-purpose.html" target="_blank" rel="noopener">Fixing Purpose Statements</a> and identify (1) what important information got left out of each of the purpose statements, and (2) what unnecessary information got included!</p>
+</span>
+<span class="ulist lesson-instruction">
+<ul>
+<li>
+<p>What important information was missing from each purpose statement that you would need to solve the problem?</p>
+</li>
+<li>
+<p>What extra information was included, that wasn&#8217;t needed to solve the problem?</p>
+</li>
+</ul>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_synthesize">Synthesize</h3>
+<span class="paragraph">
+<p>What are the important elements of purpose statements?
+Why are purpose statements useful?</p>
+</span>
+<table class="tableblock frame-all grid-none stripes-none stretch strategy-box">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="title">The Design Recipe in your Classroom</span></p>
+<p class="tableblock">The three steps of the Design Recipe are designed to mirror best practices that you may <em>already be using in your classroom</em>. It&#8217;s merely a collection of those practices, assembled in a structured way with great care taken to connecting each practice with the others.</p>
+<p class="tableblock"><strong>Writing the Contract and Purpose Statement is where students <em>understand</em> the word problem.</strong> If you have your students restate the problem in their own words, draw pictures, or underline the inputs and outputs in the word problem, <em>you&#8217;re already using this practice!</em></p>
+<p class="tableblock"><strong>Writing examples and circling-and-labeling what changes is where students <em>apply</em> their understanding</strong> to concrete inputs. If you have your students work through some concrete examples before jumping straight to variables and formulas, and ask them "what&#8217;s the rule?" or "what&#8217;s the pattern?", <em>you&#8217;re already using this practice!</em>.</p>
+<p class="tableblock"><strong>Writing the definition is where students <em>formalize and abstract</em> this understanding</strong> to work with <em>any input</em>. This is where they identify the structure of the rule or pattern, independently of any specific inputs.</p>
+<p class="tableblock">The order of the recipe is a recommendation based on 20+ years of research about what works for most students, but that doesn&#8217;t mean this order works best for <em>every</em> student! Some may find it easier to work through a concrete example or two before thinking about Domain and Range, and there&#8217;s nothing wrong with that. We encourage you to use the Recipe in your classroom as often as possible, teaching students to be flexible with the tools and representations it includes.</p></td>
+</tr>
+</tbody>
+</table>
+</span>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<table class="grid-none frame-none section-heading"><tr><td width="65%">Rocket Height! </td><td width="35%">25 minutes</td></tr></table>
+<span class="sectionbody">
+<span class="sect2 lesson-section-2">
+<h3 id="_overview_2">Overview</h3>
+<span class="paragraph">
+<p>Students are given a non-working program, which uses a linear function to determine the height of a rocket after a given length of time. The "broken" code is provided to lower cognitive load, allowing students to focus on comprehension (reading the code) and making use of structure (identifying where it&#8217;s broken).</p>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_launch_2">Launch</h3>
+<span class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Open the <a href="https://code.pyret.org/editor#share=1Wvu39Uf0vmlA6s2HO5nOmGm-PtnTvfCf" target="_blank" rel="noopener">Rocket Height Starter File</a> and look at the code.</p>
+</li>
+<li>
+<p>What do you Notice? What do you Wonder?</p>
+</li>
+</ul>
+</span>
+<span class="paragraph">
+<p>Have students click "Run" to see the simulation start running on their computer.</p>
+</span>
+<span class="ulist lesson-instruction">
+<ul>
+<li>
+<p>What happens when you press the space bar?</p>
+<span class="ulist">
+<ul>
+<li>
+<p><em>The seconds change, but the rocket doesn&#8217;t move!</em></p>
+</li>
+</ul>
+</span>
+</li>
+<li>
+<p>What were you expecting to happen?</p>
+<span class="ulist">
+<ul>
+<li>
+<p><em>The rocket would move!</em></p>
+</li>
+</ul>
+</span>
+</li>
+<li>
+<p>What happens when you press <code class="pyret">b</code>?</p>
+<span class="ulist">
+<ul>
+<li>
+<p><em>The seconds go back down, but the rocket height stays at 0</em></p>
+</li>
+</ul>
+</span>
+</li>
+<li>
+<p>Is <code class="pyret">rocket-height</code> working?</p>
+<span class="ulist">
+<ul>
+<li>
+<p><em>No.</em></p>
+</li>
+</ul>
+</span>
+</li>
+</ul>
+</span>
+<span class="paragraph">
+<p>Direct students to close the window with the rocket, so that they can see the code.</p>
+</span>
+<span class="paragraph">
+<p>It would be nice to get a warning when a function doesn&#8217;t work right! Let&#8217;s investigate why we weren&#8217;t alerted to the problem when the computer checked the function definition against the examples.</p>
+</span>
+<span class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Type <span class="obeyspaces"><code class="pyret">rocket-height&#8203;(&#8203;0&#8203;)</code></span> into the Interactions Area.</p>
+</li>
+<li>
+<p>As the program is currently written, what happens when we give the <code class="pyret">rocket-height</code> function an input of 0?</p>
+<span class="ulist">
+<ul>
+<li>
+<p><em>It returns 0.</em></p>
+</li>
+</ul>
+</span>
+</li>
+<li>
+<p>Is that what we want it to do?</p>
+<span class="ulist">
+<ul>
+<li>
+<p><em>Yes!</em></p>
+</li>
+</ul>
+</span>
+</li>
+<li>
+<p>As the program is currently written, what happens when we give the <code class="pyret">rocket-height</code> function an input of 10?</p>
+<span class="ulist">
+<ul>
+<li>
+<p><em>It returns 0.</em></p>
+</li>
+</ul>
+</span>
+</li>
+<li>
+<p>Is that what we want it to do?</p>
+<span class="ulist">
+<ul>
+<li>
+<p><em>No!</em></p>
+</li>
+</ul>
+</span>
+</li>
+<li>
+<p>Why did the examples pass?</p>
+<span class="ulist">
+<ul>
+<li>
+<p><em>The programmer only gave one example! We should always provide at least two examples. More complex functions will require us to think about what range of examples will be necessary to test that our function does what we want it to!</em></p>
+</li>
+</ul>
+</span>
+</li>
+</ul>
+</span>
+<div class="paragraph lesson-point">
+<p>We should always test a function definition against at least 2 examples!</p>
+</div>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_investigate_2">Investigate</h3>
+<span class="paragraph">
+<p>Let&#8217;s use the Design Recipe to fix <code class="pyret">rocket-height</code> and get comfortable with writing <span class="vocab">purpose statements</span>.</p>
+</span>
+<span class="paragraph lesson-instruction">
+<p>Complete <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/functions-dr/pages/rocket-height.html" target="_blank" rel="noopener">Word Problem: rocket-height</a>.</p>
+</span>
+<span class="paragraph">
+<p>As students work, circle the room and make sure that their <span class="vocab">purpose statements</span> are strong enough that they could write <span class="vocab">examples</span> without looking at the original word problem. Encourage students to circle what&#8217;s changing in their examples and label with descriptive <span class="vocab">variables</span>.</p>
+</span>
+<span class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Once you&#8217;ve completed the Design Recipe page for <code class="pyret">rocket-height</code>, type the code into Definitions Area, replacing any missing and incorrect code with your own.</p>
+</li>
+<li>
+<p>When it&#8217;s working correctly, explore the other functions in the file.</p>
+</li>
+</ul>
+</span>
+<span class="paragraph">
+<p>For students needing more specific instructions about exploring the file, try the following:</p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p>Remove the comment from before the <code class="pyret">(start rocket-height)</code> and test the program.</p>
+</li>
+<li>
+<p>Put the comment back in front of <code class="pyret">(start rocket-height)</code>, remove the comment from <code class="pyret">(graph rocket-height)</code>, and test the program.</p>
+</li>
+<li>
+<p>Try out <code class="pyret">(space rocket-height)</code></p>
+</li>
+<li>
+<p>Try out <code class="pyret">(everything rocket-height)</code></p>
+</li>
+</ul>
+</span>
+<table class="tableblock frame-all grid-none stripes-none stretch strategy-box">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p><span class="title">Teacher Tool: "Where&#8217;d You Get That?"</span></p>
+</span>
+<span class="paragraph">
+<p>This is a powerful tool that forces students to explain their thinking, making deeper connections between steps, and helps teachers guide students to find their own mistakes. It requires two people: the Challenger, and the Defender. Most of the time, the teacher is in the role of Challenger.</p>
+</span>
+<span class="paragraph">
+<p>The Challenger starts at the <strong>bottom</strong> of the page, physically pointing to one part of the <em>Definition</em> and asking "Where&#8217;d you get that?" The Defender has to <em>physically point</em> somewhere in the Examples, and explain what they&#8217;re pointing to supports their Definition.</p>
+</span>
+<span class="paragraph">
+<p>Next, the Challenger starts asking about the <em>Examples</em> and the Defender needs to show how their <em>Contract and Purpose</em> support them. This is repeated for every other step in the recipe, as students work their way back to the original word problem:</p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p><strong>Challenger</strong> (pointing at the <code class="pyret">seconds</code> variable in the Definition): Where&#8217;d you get that?</p>
+</li>
+<li>
+<p><strong>Defender</strong> (pointing at label in the Examples): Well, I circled the parts of the Examples that change, and labeled them as "seconds".</p>
+</li>
+<li>
+<p><strong>Challenger</strong> (pointing at the label): OK, but where did you get that label?</p>
+</li>
+<li>
+<p><strong>Defender</strong> (pointing at Purpose Statement): I used "seconds" in the Purpose Statement.</p>
+</li>
+<li>
+<p><strong>Challenger</strong> (pointing at Purpose Statement): Where&#8217;d you get that term?</p>
+</li>
+<li>
+<p><strong>Defender</strong> (pointing to Word Problem): I got it from reading the Word Problem.</p>
+</li>
+</ul>
+</span></span></td>
+</tr>
+</tbody>
+</table>
+<span class="paragraph">
+<p><strong>For teachers who cover quadratic and exponential functions, or have students who need more of a challenge</strong>, checkout the <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/functions-dr/pages/rocket-challenges.html" target="_blank" rel="noopener">Rocket Height Challenges</a>:</p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p><strong>Changing slope:</strong> Can you make the rocket fly faster? Slower?</p>
+</li>
+<li>
+<p><strong>Changing sign:</strong> Can you make the rocket sink down instead of fly up?</p>
+</li>
+<li>
+<p><strong>Motivating Quadratic Functions:</strong> Can you make the rocket <em>accelerate over time</em>, so that it moves faster the longer it flies?</p>
+</li>
+<li>
+<p><strong>Practicing the Quadratic Formula:</strong> Can you make the rocket blast off <em>and then land again</em>?</p>
+</li>
+<li>
+<p><strong>More practice:</strong> Can you make the rocket blast off, <em>reach a maximum height of exactly 1000 meters</em>, and then land?</p>
+</li>
+<li>
+<p><strong>More practice:</strong> Can you make the rocket blast off, reach a maximum height of exactly 1000 meters, and then land after exactly 100 seconds?</p>
+</li>
+<li>
+<p><strong>Motivating Exponential Functions:</strong> Can you make the rocket fly to the edge of the the universe?</p>
+</li>
+</ul>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_synthesize_2">Synthesize</h3>
+<span class="ulist">
+<ul>
+<li>
+<p>What problems did you fix in the starter file?</p>
+</li>
+<li>
+<p>What did the other functions do?</p>
+</li>
+<li>
+<p>Which step in the Design Recipe are you feeling the most confident about? The least? <em>At this stage, it is normal for students to feel most confident about the Contract and Examples, and the least confident about Purpose Statements and Definitions.</em></p>
+</li>
+</ul>
+</span>
+<table class="tableblock frame-all grid-none stripes-none stretch strategy-box">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p><span class="title">Project Idea: Design Recipe Telephone</span></p>
+</span>
+<span class="paragraph">
+<p>Most computer programs are written by huge teams! It is critical that each team member records their thinking with enough detail for other team members to be able to pick up where they left off. In <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/functions-dr/pages/dr-telephone.html" target="_blank" rel="noopener">Design Recipe Telephone</a>, students collaborate to complete a series of Design Recipe Problems, with each student being responsible for only one part of each problem in the set.</p>
+</span>
+<span class="paragraph">
+<p>You can use any word problems you like, but we have provided two sets that lend themselves particularly well to the activity. One set can be used to collaboratively update the functions in <a href="https://code.pyret.org/editor#share=1_IQ5bKqbQujDU9NvLyvU_YFFyVAXWa6k" target="_blank" rel="noopener">Collaboration Starter File - For use with Design Recipe Telephone Set 1</a>, which generates a cool mystery image if all three problems are solved correctly!</p>
+</span></span></td>
+</tr>
+</tbody>
+</table>
+</span>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<h2 id="_additional_exercises"><span class="section-link"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/#_additional_exercises"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Additional Exercises</h2>
+<span class="sectionbody">
+<span class="paragraph">
+<p>For more practice connecting Examples and Contracts, have students complete <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/functions-dr/pages/create-examples-contracts-purpose-2.html" target="_blank" rel="noopener">Writing Examples from Purpose Statements 2</a>.</p>
+</span>
+<span class="paragraph">
+<p>While most problems in a math book ask students to <em>solve</em> something, the actual challenge is figuring out <em>what the equation is that needs to be solved:</em> setting it up is where the thinking happens, and solving it is just arithmentic. You can use the Design Recipe with any word problem where students need to figure out a functional relationship, and we&#8217;ve provided a <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/functions-dr/pages/dr-blank.html" target="_blank" rel="noopener">Blank Design Recipe</a> that you can use for any problem you like.</p>
+</span>
+<span class="paragraph">
+<p><strong>Optional:</strong> Ask students to create their own appropriately challenging word problem (with a solution) and collect the responses for later use as "Do Now" tasks or formative assessment.</p>
+</span>
+<span class="paragraph">
+<p>To help you apply the Design Recipe to more of your scope and sequence, we&#8217;ve provided a library of Design Recipe worksheets which connect to various curricular goals. We hope that you will be inspired by this library, and begin using the Design Recipe with more of the problems in your book!</p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/functions-dr/pages/dr-restaurants.html" target="_blank" rel="noopener">The Design Recipe (Restaurants)</a></p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/functions-dr/pages/dr-direct-variation.html" target="_blank" rel="noopener">The Design Recipe (Direct Variation)</a></p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/functions-dr/pages/dr-slope-intercept-1.html" target="_blank" rel="noopener">The Design Recipe (Slope/Intercept 1)</a></p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/functions-dr/pages/dr-neg-slope.html" target="_blank" rel="noopener">The Design Recipe (Negative Slope/Intercept)</a></p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/functions-dr/pages/dr-geometry-rectangles.html" target="_blank" rel="noopener">The Design Recipe (Geometry - Rectangles)</a></p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/functions-dr/pages/dr-geometry-rect-prism.html" target="_blank" rel="noopener">The Design Recipe (Geometry - Rectangular Prisms)</a></p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/functions-dr/pages/dr-geometry-circles.html" target="_blank" rel="noopener">The Design Recipe (Geometry - Circles)</a></p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/functions-dr/pages/dr-geometry-cylinder.html" target="_blank" rel="noopener">The Design Recipe (Geometry - Cylinders)</a></p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/functions-dr/pages/dr-breaking-even.html" target="_blank" rel="noopener">The Design Recipe (Breaking Even)</a></p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/functions-dr/pages/dr-marquee.html" target="_blank" rel="noopener">The Design Recipe (Marquee &amp; Cubing)</a></p>
+</li>
+</ul>
+</span>
+</span>
+</span>
+<span class="sect1 acknowledgmentsect">
+<span class="sectionbody">
+<span class="openblock acknowledgment"><hr/>
+<span class="content">
+<span class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</span>
+</span>
+</span>
+</span>
+</span>
+</span>
+<span id="footer">
+<span id="footer-text">
+Last updated 2022-10-17 19:42:15 -0400
+</span>
+</span>
+</span>
+</body>
+</html>

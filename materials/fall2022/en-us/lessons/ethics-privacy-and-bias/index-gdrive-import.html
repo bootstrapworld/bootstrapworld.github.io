@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Ethics, Privacy, and Bias</title>
+<style>
+/* Overall document font */
+* {font-family: Lato, Arial, Helvetica, sans-serif;}
+
+/* document headings */
+h1,.lesson-section-1 {color: #75328A;}
+h1{font-size: 32px; font-family: sans-serif;}
+table.section-heading *, .lesson-section-1 h2{font-size: 32px; font-weight: 100;}
+table.section-heading{width: 100%;}
+table.section-heading td:last-child{text-align: right; color: #d9d2e9;}
+
+/* preamble section */
+table.preamble td {padding: 10px;}
+table.preamble td:first-child{background: #b7d893; width: 25%;}
+table.preamble td:first-child p {font-weight: bold; margin: 5px;}
+
+/* content used throughout the body */
+table{ border-collapse: collapse; border: none; }
+table.grid-all.frame-all {border: solid 1px black;}
+table.grid-none.frame-none {border-width: 0px;}
+
+.big {font-size: 30pt;}
+.vocab{font-weight: bold; font-style: italic;}
+.right{text-align: right;}
+.acknowledgment {
+  border-top: solid 1px black; 
+  font-style: italic; 
+  font-size: 8pt;
+}
+.lesson-point {
+  border-top: solid 1px black; 
+  border-bottom: solid 1px black; 
+  color: black;
+  font-weight: bold;
+}
+
+.web-page-only, #footer { display: none; visibility: hidden; }
+
+/* Callout boxes */
+.strategy-box, .notice-box {
+  background: #efefef;
+  border: solid 5px !important;
+  margin: 15px auto;
+  width: 100%;
+}
+.strategy-box { border-color: #1a73b5 !important; }
+.notice-box   { border-color: #7747a5 !important; }
+.strategy-box td, .notice-box td{ padding: 10px; }
+.strategy-box .title, .notice-box .title{
+  width: 100%;
+  display: block;
+  font-weight: bold;
+  font-size: 24px;
+  clear: both;
+  margin: 100px;
+}
+.strategy-box p.tableblock:first-child, .notice-box p.tableblock:first-child{
+  text-align: center;
+  padding-bottom: 15px;
+}
+.strategy-box .title { color: #1a73b5; }
+.notice-box   .title { color: #7747a5; }
+.strategy-box a, .notice-box a { color: blue; text-decoration: underline; }
+
+/* "Tables" of Evaluation */
+.operator{border-bottom: solid 1px black; text-align: center;}
+.operator * {text-align: center;}
+td {padding: 0px 10px; font-size: 14px;}
+table.expression {
+    font-family:"Courier New", Monaco, monospace;
+    border:     solid 1px black;
+    font-size:  1px;
+    max-width:  400px;
+    color:      #666666;
+    display:    inline-block;
+}
+table.args {border: none; text-align: center;}
+
+.wescheme-string,     .cm-scheme-string    {color: green;}
+.wescheme-number,     .cm-scheme-number    {color: blue;}
+.wescheme-boolean,    .cm-scheme-boolean   {color: darkred;}
+.wescheme-character,  .cm-scheme-character {color: orange;}
+.wescheme-symbol,     .cm-scheme-symbol    {color: steelblue;}
+.wescheme-comment,    .cm-scheme-comment   {color: orange; }
+
+.racket, .pyret, .studentAnswerCode, .studentAnswer, .pyretkeyword, .keyword_only {
+    font-family:"Courier New", Monaco, monospace !important; 
+    color: black;
+}
+
+/* Design Recipe */
+.recipe_instructions { font-style: italic; }
+table.recipe_title {
+  color:              white;
+  background:         gray;
+  display:            block;
+  padding:            0px;
+  font-size:          1.1rem;
+  font-weight:        bold;
+}</style>
+
+    <script src="../../lib/langtable.js"></script>
+    <script src="../../dependency-graph.js"></script>
+    <script src="../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:window.location.href,
+    filename:"Ethics, Privacy, and Bias",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="article LessonPlan pyret" onload="renderSaveToDrive()">
+<span id="body" onload="renderSaveToDrive()">
+<span id="header">
+<h1>Ethics, Privacy, and Bias</h1>
+
+  <span id="savetodrive-div"></span>
+
+</span>
+<span id="content">
+<span id="preamble_disabled" class="lessonSummary">
+<span class="sectionbody">
+<script>
+function preselect(klass) {
+  const items = document.getElementsByClassName(klass);
+  for (let i = 0; i < items.length; i++) {
+    items[i].style.display = 'none';
+  }
+  if (items.length > 0) {
+    items[0].style.display = 'block';
+  }
+}
+window.onload = function() {
+  preselect('alignedStandards');
+  preselect('alignedTextbooks');
+  preselect('alignedPractices');
+}
+function showStandardsAlignment() {
+  const selectTag = document.getElementsByClassName('standardsAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const stdTables = document.getElementsByClassName('alignedStandards');
+  //const intro = document.getElementsByClassName('alignedStandardsIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < stdTables.length; i++) {
+    const stdTable = stdTables[i];
+    stdTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optStd = opt.value;
+      for (let j = 0; j < stdTables.length; j++) {
+        const stdTable = stdTables[j];
+        if (stdTable.classList.contains(optStd)) {
+          stdTable.style.display = 'block';
+         // introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+function toggleNonPrereqDisplay() {
+  const inputTag = document.getElementsByClassName('sidebarinput')[0];
+  const checkedP = inputTag.checked;
+  const lessonTable = document.getElementsByClassName('sidebarlessons')[0];
+  const lis = lessonTable.getElementsByTagName('li');
+  for (let i = 0; i < lis.length; i++) {
+    const li = lis[i];
+    const lesson = li.getElementsByClassName('prerequisite');
+    if (lesson.length === 0) {
+      li.style.display = checkedP ? 'none' : 'block';
+    }
+  }
+}
+</script>
+<script>
+function showTextbooksAlignment() {
+  const selectTag = document.getElementsByClassName('textbooksAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const textbookTables = document.getElementsByClassName('alignedTextbooks');
+  //const intro = document.getElementsByClassName('alignedTextbooksIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < textbookTables.length; i++) {
+    const textbookTable = textbookTables[i];
+    textbookTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optTextbook = opt.value;
+      for (let j = 0; j < textbookTables.length; j++) {
+        const textbookTable = textbookTables[j];
+        if (textbookTable.classList.contains(optTextbook)) {
+          textbookTable.style.display = 'block';
+          //introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+</script>
+<script>
+function showPracticesAlignment() {
+  const selectTag = document.getElementsByClassName('practicesAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const practiceTables = document.getElementsByClassName('alignedPractices');
+  for (let i = 0; i < practiceTables.length; i++) {
+    const practiceTable = practiceTables[i];
+    practiceTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optPractice = opt.value;
+      for (let j = 0; j < practiceTables.length; j++) {
+        const practiceTable = practiceTables[j];
+        if (practiceTable.classList.contains(optPractice)) {
+          practiceTable.style.display = 'block';
+        }
+      }
+    }
+  }
+}
+</script>
+<span class="paragraph">
+<!-- </p>
+</span>
+--></span><span class="sidebar"><span id="toggle"></span><span class="paragraph"><!--
+<span class="paragraph">
+<p>
+--><span class="sidebarlessons"><strong>Lessons</strong>
+<ul></ul></span>
+</span>
+<table class="tableblock frame-all grid-all stretch sidebarstandards">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p><strong>Standards in this Lesson</strong>
+<select class="standardsAlignmentSelect"  onchange="showStandardsAlignment()"><option selected="selected" value="standards-CSTA">CSTA</option><option value="standards-K12CS">K12CS</option><option value="standards-Oklahoma">Oklahoma</option></select></p>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="dlist standards-CSTA">
+<span class="title"><a href="https://csteachers.org/page/standards">CSTA Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>2-IC-23</dt>
+<dd>
+<p>Describe tradeoffs between allowing information to be public and keeping information private and secure.</p>
+</dd>
+<dt class="hdlist1"><br/>3A-AP-16</dt>
+<dd>
+<p>Design and iteratively develop computational artifacts for practical intent, personal expression, or to address a societal issue by using events to initiate instructions.</p>
+</dd>
+<dt class="hdlist1"><br/>3A-IC-24</dt>
+<dd>
+<p>Evaluate the ways computing impacts personal, ethical, social, economic, and cultural practices</p>
+</dd>
+<dt class="hdlist1"><br/>3A-IC-29</dt>
+<dd>
+<p>Explain the privacy concerns related to the collection and generation of data through automated processes that may not be evident to users.</p>
+</dd>
+<dt class="hdlist1"><br/>3A-IC-30</dt>
+<dd>
+<p>Evaluate the social and economic implications of privacy in the context of safety, law, or ethics.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-K12CS">
+<span class="title"><a href="https://k12cs.org">K-12CS Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>9-12.Data and Analysis.Collection</dt>
+<dd>
+<p>Data is constantly collected or generated through automated processes that are not always evident, raising privacy concerns. The different collection methods and tools that are used influence the amount and quality of the data that is observed and recorded.</p>
+</dd>
+<dt class="hdlist1"><br/>9-12.Impacts of Computing.Culture</dt>
+<dd>
+<p>The design and use of computing technologies and artifacts can improve, worsen, or maintain inequitable access to information and opportunities.</p>
+</dd>
+<dt class="hdlist1"><br/>9-12.Impacts of Computing.Safety, Law, and Ethics</dt>
+<dd>
+<p>Laws govern many aspects of computing, such as privacy, data, property, information, and identity. These laws can have beneficial and harmful effects, such as expediting or delaying advancements in computing and protecting or infringing upon people’s rights. International differences in laws and ethics have implications for computing.</p>
+</dd>
+</dl>
+</span>
+<span class="dlist standards-Oklahoma">
+<span class="title"><a href="https://sde.ok.gov/oklahoma-academic-standards">Oklahoma Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>OK.L1.IC.C.01</dt>
+<dd>
+<p>Evaluate the ways computing impacts personal, ethical, social, economic, and cultural practices.</p>
+</dd>
+<dt class="hdlist1"><br/>OK.L1.IC.SLE.02</dt>
+<dd>
+<p>Explain the privacy concerns related to the large-scale collection and analysis of information about individuals (e.g., how businesses, social media, and the government collects and uses data) that may not be evident to users.</p>
+</dd>
+<dt class="hdlist1"><br/>OK.L1.IC.SLE.03</dt>
+<dd>
+<p>Evaluate the social and economic consequences of how law and ethics interact with digital aspects of privacy, data, property, information, and identity.</p>
+</dd>
+<dt class="hdlist1"><br/>OK.L2.IC.C.01</dt>
+<dd>
+<p>Evaluate the beneficial and harmful effects that computational artifacts and innovations have on society.</p>
+</dd>
+<dt class="hdlist1"><br/>OK.L2.IC.SLE.01</dt>
+<dd>
+<p>Debate laws and regulations that impact the development and use of software.</p>
+</dd>
+</dl>
+</span></span></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch sidebarpractices">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p><strong>Practices in this Lesson</strong>
+<select class="practicesAlignmentSelect"  onchange="showPracticesAlignment()"><option selected="selected" value="practices-SJ"><a href="https://www.learningforjustice.org/sites/default/files/2017-06/TT_Social_Justice_Standards_0.pdf">Social Justice</a></option><option value="practices-CC"><a href="http://corestandards.org/Math/">Math</a></option><option value="practices-K12CS"><a href="https://k12cs.org">K12CS</a></option></select></p>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="dlist alignedPractices practices-SJ">
+<span class="title"><a href="https://www.learningforjustice.org/sites/default/files/2017-06/TT_Social_Justice_Standards_0.pdf">Social Justice</a></span>
+<dl>
+<dt class="hdlist1"><br/>SJ.12</dt>
+<dd>
+<p>Students will recognize unfairness on the individual level (e.g., biased speech) and injustice at the institutional or systemic level (e.g., discrimination).</p>
+</dd>
+<dt class="hdlist1"><br/>SJ.13</dt>
+<dd>
+<p>Students will analyze the harmful impact of bias and injustice on the world, historically and today</p>
+</dd>
+</dl>
+</span>
+<span class="dlist alignedPractices practices-CC">
+<span class="title"><a href="http://corestandards.org/Math/">Math</a></span>
+<dl>
+<dt class="hdlist1"><br/>MP.3</dt>
+<dd>
+<p>Construct viable arguments and critique the reasoning of others</p>
+</dd>
+</dl>
+</span>
+<span class="dlist alignedPractices practices-K12CS">
+<span class="title"><a href="https://k12cs.org">K12CS</a></span>
+<dl>
+<dt class="hdlist1"><br/>P1</dt>
+<dd>
+<p>Fostering an Inclusive Computing Culture</p>
+</dd>
+</dl>
+</span></span></td>
+</tr>
+</tbody>
+</table>
+<span class="paragraph">
+<!-- </p>
+</span>
+--></span><!--
+<span class="paragraph">
+<p>
+-->
+</span>
+<span class="paragraph description">
+<p>Students consider ethical issues and privacy in the context of data science.</p>
+</span>
+<table class="tableblock frame-all grid-all stripes-none stretch left-header preamble">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>Lesson Goals</p>
+</span></span></td>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>Students will be able to&#8230;&#8203;</p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p>Describe ethical and privacy considerations when it comes to data science</p>
+</li>
+</ul>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>Student-facing Lesson Goals</p>
+</span></span></td>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="ulist">
+<ul>
+<li>
+<p>Let&#8217;s discuss ethical concerns surrounding data science.</p>
+</li>
+</ul>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>Materials</p>
+</span></span></td>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph materials-links">
+<p><em><strong>This lesson is unplugged</strong> and does not require a computer.</em></p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p><a href="https://docs.google.com/presentation/d/1tsGfR9gmRDB2R_dAFB7F5G0z_oAJkvmyoKctugiuZ8A/" target="_blank" rel="noopener">Lesson Slides</a></p>
+</li>
+<li>
+<p><span class="materialSectionPlaceholder"> </span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/ethics-privacy-and-bias/pages/CaseStudy.html" target="_blank" rel="noopener">Case Study: Ethics&#x2c; Privacy&#x2c; and Bias</a></span></p>
+</li>
+<li>
+<p><span class="OnlineExercise"><a href="https://www.forbes.com/sites/kashmirhill/2012/02/16/how-target-figured-out-a-teen-girl-was-pregnant-before-her-father-did/#68ca57a66686" target="_blank" rel="noopener">How Target Figured Out A Teen Girl Was Pregnant Before Her Father Did (Forbes)</a></span></p>
+</li>
+<li>
+<p><span class="OnlineExercise"><a href="https://www.cnn.com/2013/03/11/tech/social-media/facebook-likes-study/index.html" target="_blank" rel="noopener">Facebook 'likes' can Reveal Your Secrets (Cnn)</a></span></p>
+</li>
+<li>
+<p><span class="OnlineExercise"><a href="https://www.propublica.org/article/machine-bias-risk-assessments-in-criminal-sentencing" target="_blank" rel="noopener">Algorithmic Bias in Criminal Sentencing (Propublica)</a></span></p>
+</li>
+<li>
+<p><span class="Optional OnlineExercise"><a href="https://www.statnews.com/2020/06/17/racial-bias-skews-algorithms-widely-used-to-guide-patient-care/" target="_blank" rel="noopener">Racial Bias in Algorithms used to determine Medical Care (Statnews)</a></span></p>
+</li>
+<li>
+<p><span class="Optional OnlineExercise"><a href="https://www.cbsnews.com/news/microsoft-shuts-down-ai-chatbot-after-it-turned-into-racist-nazi/" target="_blank" rel="noopener">Microsoft Shut Down its AI Teen Chatbot after it made Racist Tweets (Cbsnews)</a></span></p>
+</li>
+<li>
+<p><strong>Classroom visual:</strong> <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/javascript:showLangTable()">Language Table</a></p>
+</li>
+</ul>
+</span></span></td>
+</tr>
+</tbody>
+</table>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<table class="grid-none frame-none section-heading"><tr><td width="65%">Case Studies </td><td width="35%">40 minutes</td></tr></table>
+<span class="sectionbody">
+<span class="sect2 lesson-section-2">
+<h3 id="_overview">Overview</h3>
+<span class="paragraph">
+<p>Students break into groups and read one of three case studies, each dealing with a different issue in Data Science. They discuss the implications of each, then share back.</p>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_launch">Launch</h3>
+<span class="paragraph">
+<p><span class="right"><span class="image-figure"><span class="image"><img src="images/87323dd148bbcb61.png" alt="Mushroom cloud from an atomic bomb" width="150" title="Mushroom cloud from an atomic bomb"></span><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/images/87323dd148bbcb61.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></p>
+</span>
+<span class="paragraph">
+<p><strong>1. Should scientists be bound by any ethical rules? If so, what rules?</strong></p>
+</span>
+<span class="paragraph">
+<p>During World War II, scientists were engaged in a race to develop new weapons, more powerful than anything the world had ever seen. While the immediate goal was "win the war", many of the scientists realized that the weapons they were developing could be used for all sorts of things <em>after the war was over</em> - and not all of them were good.</p>
+</span>
+<span class="paragraph">
+<p><strong>2. Should doctors be bound by any ethical rules? If so, what rules?</strong></p>
+</span>
+<span class="paragraph">
+<p>Between 1932 and 1972, doctors in the US <a href="https://en.wikipedia.org/wiki/Tuskegee_Syphilis_Study" target="_blank" rel="noopener">gave syphillis to unknowing African-American citizens</a> as part of an experiment. In 1971, researchers at Stanford conducted an <a href="https://en.wikipedia.org/wiki/Stanford_prison_experiment" target="_blank" rel="noopener">experiment in human behavior that went horribly wrong, causing tremendous damage to their participants</a>.</p>
+</span>
+<span class="paragraph">
+<p>History is filled with examples of those who study science - be it medicine, human behavior, psychology, etc. - ignoring their ethical responsibility as humans.</p>
+</span>
+<span class="paragraph">
+<p><strong>3. Should data scientists be bound by any ethical rules? If so, what rules?</strong></p>
+</span>
+<span class="paragraph">
+<p>With tech companies hiring Data Scientists at a staggering rate and collecting massive datasets on users for those scientists to mine, there&#8217;s a <em>new</em> arms race happening right now. Search engines tailor their results based on what they know about the customer doing the search, and social media networks want to recommend friends based on what they know about all of us.</p>
+</span>
+<span class="paragraph">
+<p>Both goals require building profiles on everyone, figuring out what their preferences are and where they tend to spend their time. They might require figuring out whether each of us is young or old, more likely to go to a movie or a play, or about to buy sneakers or a phone.</p>
+</span>
+<span class="paragraph">
+<p>But these datasets and profiles could be used for far more than that. What if the FBI used them to try and figure out who is likely to commit a crime, or a company tries to learn their employees' religion or sexual orientation?</p>
+</span>
+<span class="paragraph">
+<p>As they build ever-more sophisticated models based on ever-more accurate datasets, Data Scientists need to think about the ethics of what they&#8217;re doing as well!</p>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_investigate">Investigate</h3>
+<span class="ulist lesson-instruction">
+<ul>
+<li>
+<p>In your group of 3-4 students, complete <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/ethics-privacy-and-bias/pages/CaseStudy.html" target="_blank" rel="noopener">Case Study: Ethics&#x2c; Privacy&#x2c; and Bias</a> on one of the articles below.</p>
+<span class="ulist">
+<ul>
+<li>
+<p><a href="https://www.forbes.com/sites/kashmirhill/2012/02/16/how-target-figured-out-a-teen-girl-was-pregnant-before-her-father-did/#68ca57a66686" target="_blank" rel="noopener">How Target Figured Out A Teen Girl Was Pregnant Before Her Father Did (Forbes)</a></p>
+</li>
+<li>
+<p><a href="https://www.cnn.com/2013/03/11/tech/social-media/facebook-likes-study/index.html" target="_blank" rel="noopener">Facebook 'likes' can Reveal Your Secrets (Cnn)</a></p>
+</li>
+<li>
+<p><a href="https://www.propublica.org/article/machine-bias-risk-assessments-in-criminal-sentencing" target="_blank" rel="noopener">Algorithmic Bias in Criminal Sentencing (Propublica)</a></p>
+</li>
+</ul>
+</span>
+</li>
+<li>
+<p>After your group completes the worksheet, one person from each group will share back with the class what your group learned.</p>
+</li>
+</ul>
+</span>
+<span class="paragraph">
+<p>Note: The third article is quite long, but only the first half is needed for students to complete this activity.</p>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_synthesize">Synthesize</h3>
+<span class="paragraph">
+<p>Give students time to discuss and share back. Encourage students to share back differing views on the articles.</p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p>What are some commonalities and differences among the issues raised by these articles?</p>
+</li>
+<li>
+<p><strong>Should data scientists be bound by any ethical rules? If so, what rules?</strong></p>
+</li>
+</ul>
+</span>
+</span>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<h2 id="_additional_exercises"><span class="section-link"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/#_additional_exercises"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Additional Exercises</h2>
+<span class="sectionbody">
+<span class="ulist">
+<ul>
+<li>
+<p>Have students generate a list of "Rules for Ethical Data Science"?</p>
+</li>
+<li>
+<p>Have students write a one-page essay about their thoughts on the future of AI.</p>
+</li>
+<li>
+<p>Read this article on <a href="https://www.statnews.com/2020/06/17/racial-bias-skews-algorithms-widely-used-to-guide-patient-care/" target="_blank" rel="noopener">Racial Bias in Algorithms used to determine Medical Care (Statnews)</a>. Write arguments for or against health care providers using algorithms to make medical decisions. You may even want to host a debate, giving students a chance to make "opening" and "closing" arguments, taking turns so that the closer for each side can respond to what the other side said.</p>
+</li>
+<li>
+<p>Watch or read CBS News Coverage from when <a href="https://www.cbsnews.com/news/microsoft-shuts-down-ai-chatbot-after-it-turned-into-racist-nazi/" target="_blank" rel="noopener">Microsoft Shut Down its AI Teen Chatbot after it made Racist Tweets (Cbsnews)</a> and write a response.</p>
+</li>
+</ul>
+</span>
+</span>
+</span>
+<span class="sect1 acknowledgmentsect">
+<span class="sectionbody">
+<span class="openblock acknowledgment"><hr/>
+<span class="content">
+<span class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</span>
+</span>
+</span>
+</span>
+</span>
+</span>
+<span id="footer">
+<span id="footer-text">
+Last updated 2022-10-17 19:42:14 -0400
+</span>
+</span>
+</span>
+</body>
+</html>

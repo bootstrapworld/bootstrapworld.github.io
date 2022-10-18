@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Triangle Contracts (SAS &amp; ASA)</title>
+
+  <link rel="stylesheet" href="../../../lib/curriculum.css" />
+    <link rel="stylesheet" href="../../../lib/codemirror.css" />
+    <script src="../../../lib/codemirror.js"></script>
+    <script src="../../../lib/runmode.js"></script>
+    <script src="../../../lib/scheme2.js"></script>
+    <script src="../../../lib/pyret-mode.js"></script>
+    <script src="../../../lib/langtable.js"></script>
+    <script src="../../../lib/bootstraplesson.js"></script>
+    <script src="../../../dependency-graph.js"></script>
+    <script src="../../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"Triangle Contracts (SAS %INSERTGDRIVELESSONTITLE ASA)",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="workbookpage article pyret" onload="renderSaveToDrive()">
+<div id="header">
+<h1>Triangle Contracts (SAS &amp; ASA)</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<style>
+td, #content .forceShading { font-size: 1rem !important; }
+#content p { font-size: 0.9rem; margin: 0;}
+#content .listingblock .highlight { padding: 0; }
+.forceShading { background: #f7f7f8; }
+</style>
+<div class="paragraph">
+<p>Type each expression (left) below into the editor and match it to the image it creates (right).</p>
+</div>
+<table class="tableblock frame-none grid-none stripes-none stretch">
+<colgroup>
+<col style="width: 60.606%;">
+<col style="width: 3.0303%;">
+<col style="width: 9.0909%;">
+<col style="width: 3.0303%;">
+<col style="width: 24.2425%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-middle">Expression</th>
+<th class="tableblock halign-center valign-middle"></th>
+<th class="tableblock halign-left valign-top"></th>
+<th class="tableblock halign-center valign-middle"></th>
+<th class="tableblock halign-center valign-middle">Image</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-middle"><div class="content"><div class="paragraph">
+<p><span class="obeyspaces"><code class="pyret">triangle-sas&#8203;(&#8203;120, 45, 70, "solid", "black"&#8203;)</code></span></p>
+</div></div></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><strong><span class="autonum">1</span></strong></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>A</strong></p></td>
+<td class="tableblock halign-center valign-middle"><div class="content"><div class="paragraph">
+<p><span class="centered-image"><span class="image-figure"><span class="image"><img src="../images/5424a96c956a064c.png" alt="solid black right scalene triangle" title="solid black right scalene triangle"></span><a href="../images/5424a96c956a064c.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><div class="content"><div class="paragraph">
+<p><span class="obeyspaces"><code class="pyret">triangle-sas&#8203;(&#8203;120, 90, 70, "solid", "black"&#8203;)</code></span></p>
+</div></div></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><strong><span class="autonum">2</span></strong></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>B</strong></p></td>
+<td class="tableblock halign-center valign-middle"><div class="content"><div class="paragraph">
+<p><span class="centered-image"><span class="image-figure"><span class="image"><img src="../images/843b48ab578d83e6.png" alt="solid black obtuse scalene triangle. short leg on top. mid-length leg angling out toward the lower right." title="solid black obtuse scalene triangle. short leg on top. mid-length leg angling out toward the lower right."></span><a href="../images/843b48ab578d83e6.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><div class="content"><div class="paragraph">
+<p><span class="obeyspaces"><code class="pyret">triangle-sas&#8203;(&#8203;120, 135, 70, "solid", "black"&#8203;)</code></span></p>
+</div></div></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><strong><span class="autonum">3</span></strong></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>C</strong></p></td>
+<td class="tableblock halign-center valign-middle"><div class="content"><div class="paragraph">
+<p><span class="centered-image"><span class="image-figure"><span class="image"><img src="../images/f2175ba00eb548a5.png" alt="solid black obtuse scalene triangle. mid-length leg on top. short leg angling out toward the lower right" title="solid black obtuse scalene triangle. mid-length leg on top. short leg angling out toward the lower right"></span><a href="../images/f2175ba00eb548a5.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><div class="content"><div class="paragraph">
+<p><span class="obeyspaces"><code class="pyret">triangle-sas&#8203;(&#8203;70, 135, 120, "solid", "black"&#8203;)</code></span></p>
+</div></div></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><strong><span class="autonum">4</span></strong></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>D</strong></p></td>
+<td class="tableblock halign-center valign-middle"><div class="content"><div class="paragraph">
+<p><span class="centered-image"><span class="image-figure"><span class="image"><img src="../images/c798ee88f141f222.png" alt="solid black obtuse scalene triagle. legs and hypotenuse are closer in length than the other triangles. shortes leg on top. mid-size leg angling off to the lower left." title="solid black obtuse scalene triagle. legs and hypotenuse are closer in length than the other triangles. shortes leg on top. mid-size leg angling off to the lower left."></span><a href="../images/c798ee88f141f222.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Think about how you would describe each of the arguments that <span class="obeyspaces"><code class="pyret">triangle-sas</code></span> takes in to someone who&#8217;d never used the function before and annotate the contract below using descriptive variable names.</p>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 1ex"></span></p>
+</div>
+<div class="openblock forceShading">
+<div class="content">
+<div class="paragraph">
+<p><span class="obeyspaces"><code class="pyret">triangle-sas</code></span><code class="pyret">:: (</code></p>
+</div>
+<div class="paragraph indentedpara">
+<p><span class="fitb" style="width: 30em"><span class="solution"><code class="pyret">side1</code></span></span> <code class="pyret">:: Number,</code>
+<span class="fitb" style="width: 30em"><span class="solution"><code class="pyret">angle</code></span></span> <code class="pyret">:: Number,</code>
+<span class="fitb" style="width: 30em"><span class="solution"><code class="pyret">side2</code></span></span> <code class="pyret">:: Number,</code>
+<span class="fitb" style="width: 30em"><span class="solution"><code class="pyret">style</code></span></span> <code class="pyret">:: String,</code>
+<span class="fitb" style="width: 30em"><span class="solution"><code class="pyret">color</code></span></span> <code class="pyret">:: String</code></p>
+</div>
+<div class="paragraph">
+<p><code class="pyret">) -&gt; Image</code></p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 1ex"></span></p>
+</div>
+<div class="paragraph">
+<p>Add examples of each of the triangle functions we&#8217;ve explored to your contracts page.</p>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 1ex"></span></p>
+</div>
+<div class="paragraph">
+<p>If you have time, experiment with the <span class="obeyspaces"><code class="pyret">triangle-asa</code></span> function.</p>
+</div>
+<div class="openblock forceShading">
+<div class="content">
+<div class="paragraph">
+<p><span class="obeyspaces"><code class="pyret">triangle-asa</code></span><code class="pyret">:: (</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="pyret">	left-angle :: Number,
+	left-side :: Number,
+	bottom-angle :: Number,
+	style :: String
+	color :: String
+) -&gt; Image</code></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-17 19:41:48 -0400
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,1388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Teacher Resources for Data Science</title>
+
+  <link rel="stylesheet" href="../../../lib/curriculum.css" />
+    <link rel="stylesheet" href="../../../lib/codemirror.css" />
+    <script src="../../../lib/codemirror.js"></script>
+    <script src="../../../lib/runmode.js"></script>
+    <script src="../../../lib/scheme2.js"></script>
+    <script src="../../../lib/pyret-mode.js"></script>
+    <script src="../../../lib/langtable.js"></script>
+    <script src="../../../lib/bootstraplesson.js"></script>
+    <script src="../../../dependency-graph.js"></script>
+    <script src="../../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"Teacher Resources for Data Science",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="TeacherResources article pyret" onload="renderSaveToDrive()">
+<!--#include virtual="/menubar.ssi"-->
+<div id="body" onload="renderSaveToDrive()">
+<div id="header">
+<h1>Teacher Resources for Data Science</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="../index.shtml">Click here to return to lessons</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_essentials">Essentials</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Implementation Options</strong> [<a href="pages/implementation-options.html" target="_blank" rel="noopener">link</a>] Bootstrap:Data Science was designed to be flexible, allowing for implementations in Middle and High School ranging from 1-week exposures to full-year courses! Find recommendations for the course structure that&#8217;s right for you.</p>
+</li>
+<li>
+<p><strong>Online Community (Discourse)</strong> [<a href="https://discourse.bootstrapworld.org/" target="_blank" rel="noopener">link</a>] - Talk with other Bootstrap teachers, ask questions, and share out ideas!</p>
+</li>
+<li>
+<p><strong>Collection of Bootstrap:Data Science Desmos Activities</strong> [<a href="https://teacher.desmos.com/collection/5fc9250afcaa3f30f4946746" target="_blank" rel="noopener">link</a>] - All of our Desmos Data Science lessons, in one place.</p>
+</li>
+<li>
+<p><strong>Contracts</strong> [<a href="solution-pages/contracts.pdf" target="_blank" rel="noopener">link</a>] - A PDF of the contracts pages from the back of the student workbook.</p>
+</li>
+<li>
+<p><strong>Glossary</strong> [<a href="../pathway-glossary.shtml" target="_blank" rel="noopener">link</a>] - All of the vocabulary words (and their definitions) used in this pathway.</p>
+</li>
+<li>
+<p><strong>Bilingual Glossary of Bootstrap Terms (English-Spanish)</strong> [<a href="../../../lib/bilingual-glossary.html" target="_blank" rel="noopener">PDF</a>] - For teachers with ELL/ESL students, we provide a bilingual glossary for all of the terms used across our curriculum library.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_starter_files">Starter Files</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Many of our lessons have their own starter files, linked from the materials section of each lesson plan. Below is a collated list of all the starter files from across the curriculum.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://docs.google.com/spreadsheets/d/1VeR2_bhpLvnRUZslmCAcSRKfZWs_5RNVujtZgEl6umA/" target="_blank" rel="noopener">Animals Dataset</a></p>
+</li>
+<li>
+<p><a href="https://code.pyret.org/editor#share=1lGjndLCWSEoIrV3ErZMXSn_-xakqGvrK" target="_blank" rel="noopener">Animals Starter File</a></p>
+</li>
+<li>
+<p><a href="https://code.pyret.org/editor#share=1VpwvnzGS57riIH76_sbdgXojMVIifkrf" target="_blank" rel="noopener">Fair Coins Starter File</a></p>
+</li>
+<li>
+<p><a href="https://code.pyret.org/editor#share=1Iu5I9lJt1oCho-l4xk7FucgtLq6cAUVr&v=6788e10" target="_blank" rel="noopener">Expanded Animals Starter File</a></p>
+</li>
+<li>
+<p><a href="https://code.pyret.org/editor#share=1wvO-su91pFXQJcsIAa5IUOVcUea06YuY" target="_blank" rel="noopener">gt Starter File</a></p>
+</li>
+<li>
+<p><a href="https://code.pyret.org/editor#share=1_FBRxM-CzjOaCEj7XCe7J9zk27fd11l0" target="_blank" rel="noopener">bc Starter File</a></p>
+</li>
+<li>
+<p><a href="https://code.pyret.org/editor#share=1zjYggoFxpreTalJdDvlFPnQtcQNMyJiH" target="_blank" rel="noopener">Custom Animals Starter File</a></p>
+</li>
+<li>
+<p><a href="https://code.pyret.org/editor#share=1OUuVCsm320LzZtwsrS4TLTt_Gp7tQD2A" target="_blank" rel="noopener">Dots for Value Ranges Starter File</a></p>
+</li>
+<li>
+<p><a href="https://code.pyret.org/editor#share=1zYnONDaJ5jn3i1uY9velUGScaP4uFl7T" target="_blank" rel="noopener">Custom Scatter Plot Starter File</a></p>
+</li>
+<li>
+<p><a href="https://code.pyret.org/editor#share=1SOLAau653CYFY05x45NustZ0-ejKGQF0" target="_blank" rel="noopener">Custom Scatter Plot with Piecewise Functions Starter File</a></p>
+</li>
+<li>
+<p><a href="https://code.pyret.org/editor#share=1NVVlQpCKWmLJqz87iRb6IXssIB_68jVM" target="_blank" rel="noopener">Table Methods Starter File</a></p>
+</li>
+<li>
+<p><a href="https://code.pyret.org/editor#share=1-YuAea2oTVZcEyUNvEb-cg5qIB6n5V7n" target="_blank" rel="noopener">Row Functions Starter File</a></p>
+</li>
+<li>
+<p><a href="https://code.pyret.org/editor#share=1-6Wc9OI6HZLl38BExnAtBdZZI5D-VgWM" target="_blank" rel="noopener">New Animals! Starter File</a></p>
+</li>
+<li>
+<p><a href="https://code.pyret.org/editor#share=1PUGloc440ZjdGf3jT9grWHQ__VgYrfWI" target="_blank" rel="noopener">Age vs. Height Starter File</a></p>
+</li>
+<li>
+<p><a href="https://code.pyret.org/editor#share=1DBYGJDOlIARaWI3pBVzjPp6eewkQJGHW" target="_blank" rel="noopener">Trust but Verify Starter File</a></p>
+</li>
+<li>
+<p><a href="https://www.geogebra.org/m/ZcVIxKtF" target="_blank" rel="noopener">Playing with Predictors</a></p>
+</li>
+<li>
+<p><a href="https://code.pyret.org/editor#share=1q_yHgXVUHMeqVfdEuWotGXy4k149ecqZ&v=1904b2c" target="_blank" rel="noopener">Box Plots and Histograms Starter File</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_projects">Projects</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Working in pairs, students complete different projects as they explore their own datasets. These datasets can be collected by students themselves, or chosen from our library.</p>
+</div>
+<div class="paragraph">
+<p><strong>Single-Lesson Projects</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong><a href="../../../lessons/bar-and-pie-charts/pages/infographic.html" target="_blank" rel="noopener">Making an Infographic</a></strong> [<a href="../../../lessons/bar-and-pie-charts/pages/rubric-infographic.html" target="_blank" rel="noopener">rubric</a>]
+Students develop a ratio statement from a dataset of their choice, and then illustrate it via a compelling infographic.</p>
+</li>
+<li>
+<p><strong><a href="../../../lessons/random-samples/pages/food-habits-project.html" target="_blank" rel="noopener">Food Habits</a></strong> [<a href="../../../lessons/random-samples/pages/rubric-food-habits.html" target="_blank" rel="noopener">rubric</a>]
+Students analyze their snacking habits in comparison with data on childhood obesity in the U.S.</p>
+</li>
+<li>
+<p><strong><a href="../../../lessons/random-samples/pages/time-use-project.html" target="_blank" rel="noopener">Time Use</a></strong> [<a href="../../../lessons/random-samples/pages/rubric-time-use.html" target="_blank" rel="noopener">rubric</a>]
+Students investigate the amount of time they spend interacting with technology and doing homework as compared with other Americans.</p>
+</li>
+<li>
+<p><strong><a href="../../../lessons/data-collection/pages/survey-design.html" target="_blank" rel="noopener">Design a Survey</a></strong> [<a href="../../../lessons/data-collection/pages/rubric-survey-design.html" target="_blank" rel="noopener">rubric</a>]
+Students come up with a research question and design a survey to gather data to answer it. They exchange surveys to get some hands-on practice with clean and dirty data and incorporate what they learn to polish their surveys.</p>
+</li>
+<li>
+<p><strong><a href="../../../lessons/functions-dr/pages/dr-telephone.html" target="_blank" rel="noopener">Design Recipe Telephone</a></strong> [<a href="../../../lessons/functions-dr/pages/rubric-dr.html" target="_blank" rel="noopener">rubric</a>]</p>
+</li>
+<li>
+<p><strong><a href="../../../lessons/linear-regression/pages/olympics-project.html" target="_blank" rel="noopener">Olympic Records</a></strong> [<a href="../../../lessons/linear-regression/pages/olympics-project-rubric.html" target="_blank" rel="noopener">rubric</a>]
+Students use scatter plots and linear regression to analyze data about olympic records in running, swimming, or speed skating.</p>
+</li>
+<li>
+<p><strong><a href="../../../lessons/threats-to-validity/pages/project-threats-to-validity.html" target="_blank" rel="noopener">Threats to Validity</a></strong> [<a href="../../../lessons/threats-to-validity/pages/rubric-threats-to-validity.html" target="_blank" rel="noopener">rubric</a>]
+Students pretend to be terrible data scientists who develop and support claims based on faulty sampling techniques (selection bias, bias in the study design, poor choice of summary data, and confounding variables).</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Multi-Lesson, Capstone Projects</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Exploration Paper</strong> - Students begin by exploring their dataset, generating charts and coming up with possible research questions. The end product is the <a href="https://docs.google.com/document/d/1eBYMjAxrn0rPp0Mqd52cRjmwyXSz51RfBWe67DR93es/copy" target="_blank" rel="noopener">Dataset Exploration</a>. You can find the description of this project (and the grading rubric!) at <a href="../../../lessons/project-exploration-paper/index.shtml">the Exploration Paper page</a>.</p>
+</li>
+<li>
+<p><strong>Research Paper</strong> - Once students have come up with a research question, they can continue on to the complete <a href="https://docs.google.com/document/d/1rSaR8dGEDtZz3NRVsvAjw_W50BiCNrM6zxID5hgkBY8/copy" target="_blank" rel="noopener">Research Paper</a>. You can find the description of this project (and the grading rubric!) at <a href="../../../lessons/project-research-paper/index.shtml">the Research Paper page</a>.</p>
+</li>
+<li>
+<p><strong>Datasets to Choose From</strong> - Students can import their own data into a <a href="https://code.pyret.org/editor#share=1hsALf5oOrWqrolayPIgIlYXrqk3i-vD5" target="_blank" rel="noopener">Blank Starter File</a> following instruction in <a href="https://www.youtube.com/watch?v=K4n9hTSqcyw" target="_blank" rel="noopener">this tutorial video</a> or choose from one of the many provided datasets below:</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 1ex"></span></p>
+</div>
+<style>
+
+/*
+* Two Column Layout that spans page width, using DT and DD tags
+* Every other row is shaded for readability
+*/
+.TwoColumnDD_DT dl {width: 100%; clear: both; overflow: hidden; padding-left: 1em;}
+.TwoColumnDD_DT dl > * {padding: 0; margin: 0; float: left; width: 50%; clear: left; line-height:1.7rem;}
+.TwoColumnDD_DT dd {float: right; text-align: right; clear: none;}
+.TwoColumnDD_DT dd * {display: inline; }
+.TwoColumnDD_DT dd::before {content: '['; }
+.TwoColumnDD_DT dd::after  {content: ']'; }
+.TwoColumnDD_DT dd a:first-child::after {
+  content:            '  |';
+  white-space:        pre-wrap;
+  display:            inline-block;
+ }
+ .TwoColumnDD_DT dl > *:nth-of-type(odd){ background: #75328912;}
+
+.TwoColumnDD_DT * { font-size: 0.9rem !important; font-weight: normal; }
+.TwoColumnDD_DT strong {
+  font-size: 1rem !important;
+  font-weight: normal;
+}
+</style>
+<div class="paragraph">
+<p><em>Looking for a shorter list? We&#8217;ve starred a few good beginner datasets.</em></p>
+</div>
+<div class="openblock TwoColumnDD_DT">
+<div class="content">
+<div class="paragraph">
+<p><strong>The Environment &amp; Health</strong></p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Global Waste by Country 2019</dt>
+<dd>
+<p><a href="https://docs.google.com/spreadsheets/d/1TOzs9GqIJIF9P6LVsGnt3Q6rueG43CYKQMoJrigJy-c/" target="_blank" rel="noopener">Dataset</a>
+<a href="https://code.pyret.org/editor#share=1KazKZ8hQX4XIvPGrZUs19wVQpiNt_ujH&amp;v=6788e10" target="_blank" rel="noopener">Starter File</a></p>
+</dd>
+<dt class="hdlist1">World Cities' Proximity to the Ocean</dt>
+<dd>
+<p><a href="https://docs.google.com/spreadsheets/d/166F2V0uPtAIiU4BkITu8pDmU2hnPIWJaM3yDoOHyon0/" target="_blank" rel="noopener">Dataset</a>
+<a href="https://code.pyret.org/editor#share=1TEzngZkXM8KF_QhfkoRhJEzjl8bbJ0GC&amp;v=6788e10" target="_blank" rel="noopener">Starter File</a></p>
+</dd>
+<dt class="hdlist1">Earthquakes</dt>
+<dd>
+<p><a href="https://docs.google.com/spreadsheets/d/1ffJpn6BlAzN51XFd9nZ_CcTUmNqkp1DoNMOcn3ebcIk/" target="_blank" rel="noopener">Dataset</a>
+<a href="https://code.pyret.org/editor#share=1bJD0Cl4t4HjXslkF-n6y6fYoUdj19zTy&amp;v=6788e10" target="_blank" rel="noopener">Starter File</a></p>
+</dd>
+<dt class="hdlist1">Air Quality, Pollution Sources &amp; Health in the U.S.</dt>
+<dd>
+<p><a href="https://docs.google.com/spreadsheets/d/1IWfFqS3Lrpj43rH1BwXeUmNm452rlU9_n07bWpxpv9U/" target="_blank" rel="noopener">Dataset</a>
+<a href="https://code.pyret.org/editor#share=1Q053UONH2ZPw-ukipW_fXT3wVJu-Ichx&amp;v=6788e10" target="_blank" rel="noopener">Starter File</a></p>
+</dd>
+<dt class="hdlist1">Health by U.S. County</dt>
+<dd>
+<p><a href="https://docs.google.com/spreadsheets/d/1iMsqeVJz0h28mk79N6rlkcU1BWqaeKDGF6APh4L9sdM/" target="_blank" rel="noopener">Dataset</a>
+<a href="https://code.pyret.org/editor#share=1goLIL79pzjcuS3JuFgeTF73MvY_wPx3B&amp;v=6788e10" target="_blank" rel="noopener">Starter File</a></p>
+</dd>
+<dt class="hdlist1">COVID in the U.S. by County</dt>
+<dd>
+<p><a href="https://docs.google.com/spreadsheets/d/12RKQIJEKl6768IjgccSokrg1sWXOEAHDoP71x4c1294/" target="_blank" rel="noopener">Dataset</a>
+<a href="https://code.pyret.org/editor#share=1t07HbDnN9NruvWX9_6rRUxMqYbcKe5oR&amp;v=6788e10" target="_blank" rel="noopener">Starter File</a></p>
+</dd>
+<dt class="hdlist1">Arctic Sea Ice</dt>
+<dd>
+<p><a href="https://docs.google.com/spreadsheets/d/1gg8qh72MrW-GZ5_vB8scCYlgDRGfGMAqv_9Sofsf9gs/" target="_blank" rel="noopener">Dataset</a>
+<a href="https://code.pyret.org/editor#share=19_l81e1jBjwuLjaVVh8gZZtB9K24ioR8&amp;v=6788e10" target="_blank" rel="noopener">Starter File</a></p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="openblock TwoColumnDD_DT">
+<div class="content">
+<div class="paragraph">
+<p><strong>Politics</strong></p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Countries of the World</dt>
+<dd>
+<p><a href="https://docs.google.com/spreadsheets/d/19VoYxPw0tmuSViN1qFIkyUoepjNSRsuQCe0TZZDmrZs" target="_blank" rel="noopener">Dataset</a>
+<a href="https://code.pyret.org/editor#share=1StX6mmWMYPQOpH8ab1WiAlvPYeMlMEAD&amp;v=6788e10" target="_blank" rel="noopener">Starter File</a></p>
+</dd>
+<dt class="hdlist1">Gerry Mandering</dt>
+<dd>
+<p><a href="https://docs.google.com/spreadsheets/d/1L7hf0llI8dl8okVuat2fa1K4lqD5O301IFPi81vG7fc/" target="_blank" rel="noopener">Dataset</a>
+<a href="https://code.pyret.org/editor#share=14L2FDUqXQuBQuclOkFjPtWwcYHDaNLij&amp;v=6788e10" target="_blank" rel="noopener">Starter File</a></p>
+</dd>
+<dt class="hdlist1">Marijuana Laws &amp; Arrests by State 2018</dt>
+<dd>
+<p><a href="https://docs.google.com/spreadsheets/d/1TB0Lj88IH1bdAAKAxwsFMW-x-B-JtnLate4ArmSWDzk/" target="_blank" rel="noopener">Dataset</a>
+<a href="https://code.pyret.org/editor#share=1W6DWQ1V0Md-HF6gSLbOdo-5oqNFmJEJn&amp;v=6788e10" target="_blank" rel="noopener">Starter File</a></p>
+</dd>
+<dt class="hdlist1">LAPD Arrests 2010-2019</dt>
+<dd>
+<p><a href="https://docs.google.com/spreadsheets/d/1FqfDZAFdK7ZwegotvkTRgRfo30N2S3IqhDb1-WTwOjE/edit?usp=sharing" target="_blank" rel="noopener">Dataset</a>
+<a href="https://code.pyret.org/editor#share=1MunuROtXkaHU5BRm3W29hRH6Dg3JK2HD&amp;v=6788e10" target="_blank" rel="noopener">Starter File</a></p>
+</dd>
+<dt class="hdlist1">NYPD Stop, Search &amp; Frisk 2019</dt>
+<dd>
+<p><a href="https://docs.google.com/spreadsheets/d/1XrJPOeIJCavRjP1nHbWYKcGo79dO-x_XidLplJabGko/" target="_blank" rel="noopener">Dataset</a>
+<a href="https://code.pyret.org/editor#share=1MunuROtXkaHU5BRm3W29hRH6Dg3JK2HD&amp;v=6788e10" target="_blank" rel="noopener">Starter File</a></p>
+</dd>
+<dt class="hdlist1">Refugees 2018</dt>
+<dd>
+<p><a href="https://docs.google.com/spreadsheets/d/1mDSr7CcpSO4aL-iV2oEfYLecssvis2Je6hN3vsomYuc/" target="_blank" rel="noopener">Dataset</a>
+<a href="https://code.pyret.org/editor#share=17ztmud-3pVeZm-OcxAyzoRYmGnAkoEsD&amp;v=6788e10" target="_blank" rel="noopener">Starter File</a></p>
+</dd>
+<dt class="hdlist1">State Demographics</dt>
+<dd>
+<p><a href="https://docs.google.com/spreadsheets/d/14fRmjAiCqGNI5Zr5kGSDjMavln7ILqhSX3N3zGd8CAU" target="_blank" rel="noopener">Dataset</a>
+<a href="https://code.pyret.org/editor#share=1_bWyvw075AbS8ZXXdwpPw5J7t6U9ML-g&amp;v=6788e10" target="_blank" rel="noopener">Starter File</a></p>
+</dd>
+<dt class="hdlist1">U.S. Income</dt>
+<dd>
+<p><a href="https://docs.google.com/spreadsheets/d/1cIxBSQebGejWK7S_Iy6cDFSIpD-60x8oG7IvrfCtHbw" target="_blank" rel="noopener">Dataset</a>
+<a href="https://code.pyret.org/editor#share=1V_6wCSXN1Mb-L5Ts0xz0MwC4BzoXvzsY&amp;v=6788e10" target="_blank" rel="noopener">Starter File</a></p>
+</dd>
+<dt class="hdlist1">U.S. Jobs</dt>
+<dd>
+<p><a href="https://docs.google.com/spreadsheets/d/1fAzyoVgtSMl9ja-JMpou_Y5RRyoTOPh2umR_mkJYQyU/" target="_blank" rel="noopener">Dataset</a>
+<a href="https://code.pyret.org/editor#share=1b_Yt04yYsUB4TkFY2zfOZKYCM16T7nzU&amp;v=6788e10" target="_blank" rel="noopener">Starter File</a></p>
+</dd>
+<dt class="hdlist1">U.S. Voter Turnout 2016</dt>
+<dd>
+<p><a href="https://docs.google.com/spreadsheets/d/1uhnZVz9OFsnI8rNpdIiw5ZcxnstaKMAE8BQ285KZxfQ/" target="_blank" rel="noopener">Dataset</a>
+<a href="https://code.pyret.org/editor#share=1_4c59xjJKPnOBkD257PcVGRrWedSozYW&amp;v=6788e10" target="_blank" rel="noopener">Starter File</a></p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="openblock TwoColumnDD_DT">
+<div class="content">
+<div class="paragraph">
+<p><strong>Sports</strong></p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Esports Earnings</dt>
+<dd>
+<p><a href="https://docs.google.com/spreadsheets/d/1SqK3BP-RKrN9adFQz2XvZUMHCAPsm530XT1hC96L6w0/" target="_blank" rel="noopener">Dataset</a>
+<a href="https://code.pyret.org/editor#share=1Brnu1OjiPSDla3n1ZeDhZLRtWjitECUu&amp;v=31c9aaf" target="_blank" rel="noopener">Starter File</a></p>
+</dd>
+<dt class="hdlist1">MLB Hitting Stats</dt>
+<dd>
+<p><a href="https://docs.google.com/spreadsheets/d/1svCf5aGzV6wdrJBdA30ZGgIxm2jNgLOs72MoukacpBE/" target="_blank" rel="noopener">Dataset</a>
+<a href="https://code.pyret.org/editor#share=1T-0vjJK0BFiwClI-O6hvUCMCAd5CAl9X&amp;v=5f98106" target="_blank" rel="noopener">Starter File</a></p>
+</dd>
+<dt class="hdlist1">NBA Players</dt>
+<dd>
+<p><a href="https://docs.google.com/spreadsheets/d/1NQbLNeV5ezuAJnLNirVOb9ls8Firk4YXLzksG5RaUgA/" target="_blank" rel="noopener">Dataset</a>
+<a href="https://code.pyret.org/editor#share=1oIyXJKONRVIzvsQM4C7j_8dNtZH0A9dt&amp;v=6788e10" target="_blank" rel="noopener">Starter File</a></p>
+</dd>
+<dt class="hdlist1">NFL Passing</dt>
+<dd>
+<p><a href="https://docs.google.com/spreadsheets/d/1tpHZdUZQ0Fzuy1G1qqPPoKS0p6PkG3hb_P_013kcVIo/" target="_blank" rel="noopener">Dataset</a>
+<a href="https://code.pyret.org/editor#share=1g_CRyNroiUZlCUgsCjTV_wFq9MowKwab&amp;v=1904b2c" target="_blank" rel="noopener">Starter File</a></p>
+</dd>
+<dt class="hdlist1">NFL Rushing</dt>
+<dd>
+<p><a href="https://docs.google.com/spreadsheets/d/1o8d0k46L8mkIIIpgYHXtMLxDzjXE6l1epN5tWLHyG6o/" target="_blank" rel="noopener">Dataset</a>
+<a href="https://code.pyret.org/editor#share=1IJAjOHEutLq40OBT788uv-RsWypQ_CHb&amp;v=1904b2c" target="_blank" rel="noopener">Starter File</a></p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="openblock TwoColumnDD_DT">
+<div class="content">
+<div class="paragraph">
+<p><strong>Entertainment</strong></p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">★Movies</dt>
+<dd>
+<p><a href="https://docs.google.com/spreadsheets/d/1xd1Egg6x3ZmqzsqQodNvxfSyhLgVnX2bJtQt8hzVjo0/" target="_blank" rel="noopener">Dataset</a>
+<a href="https://code.pyret.org/editor#share=1CUza8tsxDscC1YUgp3FPM-52nAkLzaPy&amp;v=5f98106" target="_blank" rel="noopener">Starter File</a></p>
+</dd>
+<dt class="hdlist1">IGN video game Reviews</dt>
+<dd>
+<p><a href="https://docs.google.com/spreadsheets/d/1Ss221kjz2WJUsTlxK7TcnsXLPoSbnfUKv-JP8gCiGRw" target="_blank" rel="noopener">Dataset</a>
+<a href="https://code.pyret.org/editor#share=1oZTRU_i34MHv7xXPvPUbCAWq_8U0LWk6&amp;v=6788e10" target="_blank" rel="noopener">Starter File</a></p>
+</dd>
+<dt class="hdlist1">International Exhibition of Modern Art</dt>
+<dd>
+<p><a href="https://docs.google.com/spreadsheets/d/108ZnfCy3V2WkpSmjYpane6gmogM3EtBLL1sD-9h0Acc/" target="_blank" rel="noopener">Dataset</a>
+<a href="https://code.pyret.org/editor#share=1vqfNqaE6IpC3TA11kT-MQZxX_n7fTKCe&amp;v=6788e10" target="_blank" rel="noopener">Starter File</a></p>
+</dd>
+<dt class="hdlist1">North American Pipe Organs</dt>
+<dd>
+<p><a href="https://docs.google.com/spreadsheets/d/1IlR9rvo4gQzcynhj4rjf_6mm2gwt5bl34j-__PgL7L0/" target="_blank" rel="noopener">Dataset</a>
+<a href="https://code.pyret.org/editor#share=1VHihEKm-p5U3jlB2a9FtvGXBWuo5FCyy&amp;v=6788e10" target="_blank" rel="noopener">Starter File</a></p>
+</dd>
+<dt class="hdlist1">Pokemon</dt>
+<dd>
+<p><a href="https://docs.google.com/spreadsheets/d/1S8jf4Qf94TJKGLCcTA-Fqn4YXE7dGf_PIxv5MUeUPVo/edit?usp=sharing" target="_blank" rel="noopener">Dataset</a>
+<a href="https://code.pyret.org/editor#share=1QZXjo9IGbHAh-UX-VVgyfrXpdvioQnv3&amp;v=1904b2c" target="_blank" rel="noopener">Starter File</a></p>
+</dd>
+<dt class="hdlist1">Music</dt>
+<dd>
+<p><a href="https://docs.google.com/spreadsheets/d/13OFoNwVJZiKr1fWjKO912lr2RXxUiCakNJmeZT4JzHE/edit?usp=sharing" target="_blank" rel="noopener">Dataset</a>
+<a href="https://code.pyret.org/editor#share=1QcHM_sXxR6r9lGDvR41MDb5PTp_A4vYE&amp;v=6788e10" target="_blank" rel="noopener">Starter File</a></p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="openblock TwoColumnDD_DT">
+<div class="content">
+<div class="paragraph">
+<p><strong>Education</strong></p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">College Majors</dt>
+<dd>
+<p><a href="https://docs.google.com/spreadsheets/d/1wIpbDIBQMjAwaLGNK-e5snmzui0DuWFdrkoSNVv9m5c/" target="_blank" rel="noopener">Dataset</a>
+<a href="https://code.pyret.org/editor#share=16AVqy-aSJLDGtf7-0IMctjsGuudprYda&amp;v=6788e10" target="_blank" rel="noopener">Starter File</a></p>
+</dd>
+<dt class="hdlist1">U.S. Colleges 2019-2020</dt>
+<dd>
+<p><a href="https://docs.google.com/spreadsheets/d/1_gUN2vm1q3ifckJhah6TKllJuDwsnWcMTwJUcp2SaxA/edit" target="_blank" rel="noopener">Dataset</a>
+<a href="https://code.pyret.org/editor#share=11dmSzZcjB1B_uZwvro9dC1o3VFU75EJf&amp;v=6788e10" target="_blank" rel="noopener">Starter File</a></p>
+</dd>
+<dt class="hdlist1">★R.I. Schools</dt>
+<dd>
+<p><a href="https://docs.google.com/spreadsheets/d/1XeeyAuF_mtpeCw2HVCKjvwW1rreNvztoQ3WeBlEaDl0/" target="_blank" rel="noopener">Dataset</a>
+<a href="https://code.pyret.org/editor#share=1jifBfMXZUMal8UAZI7Fq2WR-jwooxDjB&amp;v=6788e10" target="_blank" rel="noopener">Starter File</a></p>
+</dd>
+<dt class="hdlist1">Evolution of College Admissions in California</dt>
+<dd>
+<p><a href="https://docs.google.com/spreadsheets/d/16U0kPYf8u-bPWOkF805zGRAYpSnCWbMHFTpWxPvXh7Q/" target="_blank" rel="noopener">Dataset</a>
+<a href="https://code.pyret.org/editor#share=1Y9xYNib82QNIGW2Pi30aaBk6RZZ9fYgB&amp;v=6788e10" target="_blank" rel="noopener">Starter File</a></p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="openblock TwoColumnDD_DT">
+<div class="content">
+<div class="paragraph">
+<p><strong>Nutrition</strong></p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Soda, Coffee &amp; Other Drinks</dt>
+<dd>
+<p><a href="https://docs.google.com/spreadsheets/d/1QcPosMRFMrgayav6W3SfRjdtCn5oF_CSvoJPMmA2fJM/" target="_blank" rel="noopener">Dataset</a>
+<a href="https://code.pyret.org/editor#share=11p7Wd9skDeijVnL-9tdKZoRz0mG-hVqm&amp;v=6788e10" target="_blank" rel="noopener">Starter File</a></p>
+</dd>
+<dt class="hdlist1">Fast Food Nutrition</dt>
+<dd>
+<p><a href="https://docs.google.com/spreadsheets/d/12yhGT-p1yMXXig27pvMEkC_E5a3tLRlXA1sXopHgwzI/" target="_blank" rel="noopener">Dataset</a>
+<a href="https://code.pyret.org/editor#share=1j8NR1B22B_l1ocDSsAota7ZyO-HHciBV&amp;v=6788e10" target="_blank" rel="noopener">Starter File</a></p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="../../../lessons/choosing-your-dataset/pages/contributing-a-dataset.html">Would you like to contribute a dataset of your own, or is there something you&#8217;d like to change about one of ours?</a></p>
+</div>
+<div class="paragraph">
+<p><em>We have compiled some <a href="../../../lessons/choosing-your-dataset/about-datasets/for-teachers-about-datasets.html">Notes on our provided datasets</a>, to help you decide which might be most useful in your classroom.</em></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_exercises_and_solutions">Exercises and Solutions</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Most exercises are part of the <strong><a href="../workbook/workbook.pdf">Student Workbook</a></strong>,
+and we provide password-protected <strong><a href="./protected/workbook-sols.pdf.html">Workbook Solutions</a></strong> as well.</p>
+</div>
+<div class="paragraph">
+<p>You can find the 'exercise' and 'solution' versions of all supplemental materials as well, in the lists below.</p>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 1ex"></span></p>
+</div>
+<div class="paragraph">
+<p><strong><a href="../../../lessons/computing-needs-all-voices/index.shtml">Computing Needs All Voices
+</a></strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Computing Needs All Voices! [ <a href="../../../lessons/computing-needs-all-voices/pages/computing-pioneers.html">exercise</a> : <a href="../../../lessons/computing-needs-all-voices/solution-pages/computing-pioneers.html">solution</a> ]</p>
+</li>
+<li>
+<p>Notice and Wonder [ <a href="../../../lessons/computing-needs-all-voices/pages/NoticeAndWonder.html">exercise</a> : <a href="../../../lessons/computing-needs-all-voices/solution-pages/NoticeAndWonder.html">solution</a> ]</p>
+</li>
+<li>
+<p>Windows and Mirrors [ <a href="../../../lessons/computing-needs-all-voices/pages/windows-mirrors.html">exercise</a> : <a href="../../../lessons/computing-needs-all-voices/solution-pages/windows-mirrors.html">solution</a> ]</p>
+</li>
+<li>
+<p>Reflection: Problem Solving Advantages of Diverse Teams [ <a href="../../../lessons/computing-needs-all-voices/pages/advantages-of-diverse-teams.html">exercise</a> : <a href="../../../lessons/computing-needs-all-voices/solution-pages/advantages-of-diverse-teams.html">solution</a> ]</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong><a href="../../../lessons/ds-intro/index.shtml">Introduction to Data Science
+</a></strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Opening Questions [ <a href="../../../lessons/ds-intro/pages/OpeningQuestions.html">exercise</a> : <a href="../../../lessons/ds-intro/solution-pages/OpeningQuestions.html">solution</a> ]</p>
+</li>
+<li>
+<p>What Questions Can You Answer with the Given Data? [ <a href="../../../lessons/ds-intro/pages/what-can-you-answer.html">exercise</a> : <a href="../../../lessons/ds-intro/solution-pages/what-can-you-answer.html">solution</a> ]</p>
+</li>
+<li>
+<p>The Animals Dataset [ <a href="../../../lessons/ds-intro/pages/animals-dataset.html">exercise</a> : <a href="../../../lessons/ds-intro/solution-pages/animals-dataset.html">solution</a> ]</p>
+</li>
+<li>
+<p>Questions and Column Descriptions [ <a href="../../../lessons/ds-intro/pages/questions-and-column-descriptions.html">exercise</a> : <a href="../../../lessons/ds-intro/solution-pages/questions-and-column-descriptions.html">solution</a> ]</p>
+</li>
+<li>
+<p>Categorical or Quantitative? [ <a href="../../../lessons/ds-intro/pages/categorical-or-quantitative.html">exercise</a> : <a href="../../../lessons/ds-intro/solution-pages/categorical-or-quantitative.html">solution</a> ]</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong><a href="../../../lessons/simple-data-types/index.shtml">Simple Data Types
+</a></strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Numbers and Strings [ <a href="../../../lessons/simple-data-types/pages/numbers-n-strings.html">exercise</a> : <a href="../../../lessons/simple-data-types/solution-pages/numbers-n-strings.html">solution</a> ]</p>
+</li>
+<li>
+<p>Booleans [ <a href="../../../lessons/simple-data-types/pages/booleans.html">exercise</a> : <a href="../../../lessons/simple-data-types/solution-pages/booleans.html">solution</a> ]</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong><a href="../../../lessons/contracts/index.shtml">Contracts
+</a></strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Applying Functions [ <a href="../../../lessons/contracts/pages/applying-functions.html">exercise</a> : <a href="../../../lessons/contracts/solution-pages/applying-functions.html">solution</a> ]</p>
+</li>
+<li>
+<p>Domain and Range Frayer model [ <a href="../../../lessons/contracts/pages/frayer-model.pdf">exercise</a> : <a href="../../../lessons/contracts/solution-pages/frayer-model.pdf">solution</a> ]</p>
+</li>
+<li>
+<p>Function and Variable Frayer model. [ <a href="../../../lessons/contracts/pages/frayer-model-2.pdf">exercise</a> : <a href="../../../lessons/contracts/solution-pages/frayer-model-2.pdf">solution</a> ]</p>
+</li>
+<li>
+<p>Practicing Contracts: Domain &amp; Range [ <a href="../../../lessons/contracts/pages/practicing-contracts.html">exercise</a> : <a href="../../../lessons/contracts/solution-pages/practicing-contracts.html">solution</a> ]</p>
+</li>
+<li>
+<p>Matching Expressions and Contracts [ <a href="../../../lessons/contracts/pages/matching-expressions.html">exercise</a> : <a href="../../../lessons/contracts/solution-pages/matching-expressions.html">solution</a> ]</p>
+</li>
+<li>
+<p>Contracts [ <a href="../../../lessons/contracts/pages/image-contracts.html">exercise</a> : <a href="../../../lessons/contracts/solution-pages/image-contracts.html">solution</a> ]</p>
+</li>
+<li>
+<p>Using Contracts [ <a href="../../../lessons/contracts/pages/using-contracts.html">exercise</a> : <a href="../../../lessons/contracts/solution-pages/using-contracts.html">solution</a> ]</p>
+</li>
+<li>
+<p>Using Contracts (continued) [ <a href="../../../lessons/contracts/pages/using-contracts-cont.html">exercise</a> : <a href="../../../lessons/contracts/solution-pages/using-contracts-cont.html">solution</a> ]</p>
+</li>
+<li>
+<p>Triangle Contracts [ <a href="../../../lessons/contracts/pages/triangle-contracts.html">exercise</a> : <a href="../../../lessons/contracts/solution-pages/triangle-contracts.html">solution</a> ]</p>
+</li>
+<li>
+<p>Triangle Contracts (SAS &amp; ASA) [ <a href="../../../lessons/contracts/pages/triangle-contracts-cont.html">exercise</a> : <a href="../../../lessons/contracts/solution-pages/triangle-contracts-cont.html">solution</a> ]</p>
+</li>
+<li>
+<p>Radial Star [ <a href="../../../lessons/contracts/pages/radial-star.html">exercise</a> : <a href="../../../lessons/contracts/solution-pages/radial-star.html">solution</a> ]</p>
+</li>
+<li>
+<p>Star Polygon [ <a href="../../../lessons/contracts/pages/star-polygon.html">exercise</a> : <a href="../../../lessons/contracts/solution-pages/star-polygon.html">solution</a> ]</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong><a href="../../../lessons/bar-and-pie-charts/index.shtml">Bar and Pie Charts
+</a></strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Bar &amp; Pie Chart - Notice and Wonder [ <a href="../../../lessons/bar-and-pie-charts/pages/bar-and-pie-notice.html">exercise</a> : <a href="../../../lessons/bar-and-pie-charts/solution-pages/bar-and-pie-notice.html">solution</a> ]</p>
+</li>
+<li>
+<p>Pie Chart - Notice and Wonder [ <a href="../../../lessons/bar-and-pie-charts/pages/pie-chart-notice.html">exercise</a> : <a href="../../../lessons/bar-and-pie-charts/solution-pages/pie-chart-notice.html">solution</a> ]</p>
+</li>
+<li>
+<p>Bar Chart - Notice and Wonder [ <a href="../../../lessons/bar-and-pie-charts/pages/bar-chart-notice.html">exercise</a> : <a href="../../../lessons/bar-and-pie-charts/solution-pages/bar-chart-notice.html">solution</a> ]</p>
+</li>
+<li>
+<p>Matching Bar Charts to Pie Charts [ <a href="../../../lessons/bar-and-pie-charts/pages/matching-bar-to-pie.html">exercise</a> : <a href="../../../lessons/bar-and-pie-charts/solution-pages/matching-bar-to-pie.html">solution</a> ]</p>
+</li>
+<li>
+<p>Exploring Displays [ <a href="../../../lessons/bar-and-pie-charts/pages/exploring-displays-1.html">exercise</a> : <a href="../../../lessons/bar-and-pie-charts/solution-pages/exploring-displays-1.html">solution</a> ]</p>
+</li>
+<li>
+<p>(More) Exploring Displays [ <a href="../../../lessons/bar-and-pie-charts/pages/exploring-displays-2.html">exercise</a> : <a href="../../../lessons/bar-and-pie-charts/solution-pages/exploring-displays-2.html">solution</a> ]</p>
+</li>
+<li>
+<p>What Display Goes with Which Kind of Data? [ <a href="../../../lessons/bar-and-pie-charts/pages/kind-v-display.html">exercise</a> : <a href="../../../lessons/bar-and-pie-charts/solution-pages/kind-v-display.html">solution</a> ]</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong><a href="../../../lessons/data-cycle/index.shtml">The Data Cycle
+</a></strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Which Question Type? [ <a href="../../../lessons/data-cycle/pages/which-question-type.html">exercise</a> : <a href="../../../lessons/data-cycle/solution-pages/which-question-type.html">solution</a> ]</p>
+</li>
+<li>
+<p>Question Types: Animals [ <a href="../../../lessons/data-cycle/pages/question-types-animals.html">exercise</a> : <a href="../../../lessons/data-cycle/solution-pages/question-types-animals.html">solution</a> ]</p>
+</li>
+<li>
+<p>Data Cycle: Consider Data [ <a href="../../../lessons/data-cycle/pages/which-rows-which-columns.html">exercise</a> : <a href="../../../lessons/data-cycle/solution-pages/which-rows-which-columns.html">solution</a> ]</p>
+</li>
+<li>
+<p>Data Cycle: Analyzing with Displays [ <a href="../../../lessons/data-cycle/pages/analyzing-with-displays.html">exercise</a> : <a href="../../../lessons/data-cycle/solution-pages/analyzing-with-displays.html">solution</a> ]</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong><a href="../../../lessons/random-samples/index.shtml">Probability&#x2c; Inference&#x2c; and Sample Size
+</a></strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Finding the Trick Coin [ <a href="../../../lessons/random-samples/pages/fair-coins.html">exercise</a> : <a href="../../../lessons/random-samples/solution-pages/fair-coins.html">solution</a> ]</p>
+</li>
+<li>
+<p>Sampling and Inference [ <a href="../../../lessons/random-samples/pages/sampling-and-inference.html">exercise</a> : <a href="../../../lessons/random-samples/solution-pages/sampling-and-inference.html">solution</a> ]</p>
+</li>
+<li>
+<p>Predictions from Samples [ <a href="../../../lessons/random-samples/pages/predictions-from-samples.html">exercise</a> : <a href="../../../lessons/random-samples/solution-pages/predictions-from-samples.html">solution</a> ]</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong><a href="../../../lessons/choosing-your-dataset/index.shtml">Choosing Your Dataset
+</a></strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Consider and Analyze [ <a href="../../../lessons/choosing-your-dataset/pages/consider-and-analyze.html">exercise</a> : <a href="../../../lessons/choosing-your-dataset/solution-pages/consider-and-analyze.html">solution</a> ]</p>
+</li>
+<li>
+<p>My Dataset [ <a href="../../../lessons/choosing-your-dataset/pages/my-dataset.html">exercise</a> : <a href="../../../lessons/choosing-your-dataset/solution-pages/my-dataset.html">solution</a> ]</p>
+</li>
+<li>
+<p>Data Cycle: Shape of My Dataset [ <a href="../../../lessons/choosing-your-dataset/pages/data-cycle-categorical.html">exercise</a> : <a href="../../../lessons/choosing-your-dataset/solution-pages/data-cycle-categorical.html">solution</a> ]</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong><a href="../../../lessons/histograms/index.shtml">Histograms
+</a></strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Summarizing Columns [ <a href="../../../lessons/histograms/pages/summarizing-columns.html">exercise</a> : <a href="../../../lessons/histograms/solution-pages/summarizing-columns.html">solution</a> ]</p>
+</li>
+<li>
+<p>Making Histograms [ <a href="../../../lessons/histograms/pages/making-histograms.html">exercise</a> : <a href="../../../lessons/histograms/solution-pages/making-histograms.html">solution</a> ]</p>
+</li>
+<li>
+<p>Reading Histograms [ <a href="../../../lessons/histograms/pages/reading-histograms.html">exercise</a> : <a href="../../../lessons/histograms/solution-pages/reading-histograms.html">solution</a> ]</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong><a href="../../../lessons/histograms2/index.shtml">Visualizing the “Shape” of Data
+</a></strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Identifying Shape - Histograms [ <a href="../../../lessons/histograms2/pages/identifying-shape-histograms.html">exercise</a> : <a href="../../../lessons/histograms2/solution-pages/identifying-shape-histograms.html">solution</a> ]</p>
+</li>
+<li>
+<p>Data Cycle: Shape of the Animals Dataset [ <a href="../../../lessons/histograms2/pages/shape-of-animals-dataset.html">exercise</a> : <a href="../../../lessons/histograms2/solution-pages/shape-of-animals-dataset.html">solution</a> ]</p>
+</li>
+<li>
+<p>Outliers: Should they Stay or Should they Go? [ <a href="../../../lessons/histograms2/pages/outliers-discussion.html">exercise</a> : <a href="../../../lessons/histograms2/solution-pages/outliers-discussion.html">solution</a> ]</p>
+</li>
+<li>
+<p>Data Cycle: Shape of My Dataset [ <a href="../../../lessons/histograms2/pages/data-cycle-quantitative.html">exercise</a> : <a href="../../../lessons/histograms2/solution-pages/data-cycle-quantitative.html">solution</a> ]</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong><a href="../../../lessons/measures-of-center/index.shtml">Measures of Center
+</a></strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Summarizing Columns in the Animals Dataset [ <a href="../../../lessons/measures-of-center/pages/summarizing-columns-in-animals.html">exercise</a> : <a href="../../../lessons/measures-of-center/solution-pages/summarizing-columns-in-animals.html">solution</a> ]</p>
+</li>
+<li>
+<p>Data Cycle: Measures of Center [ <a href="../../../lessons/measures-of-center/pages/data-cycle-practice.html">exercise</a> : <a href="../../../lessons/measures-of-center/solution-pages/data-cycle-practice.html">solution</a> ]</p>
+</li>
+<li>
+<p>Critiquing Written Findings [ <a href="../../../lessons/measures-of-center/pages/critiquing-findings.html">exercise</a> : <a href="../../../lessons/measures-of-center/solution-pages/critiquing-findings.html">solution</a> ]</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong><a href="../../../lessons/box-plots/index.shtml">Box Plots
+</a></strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Box Plot Vocab Concept Map [ <a href="../../../lessons/box-plots/pages/boxplot-vocab-map.pdf">exercise</a> : <a href="../../../lessons/box-plots/solution-pages/boxplot-vocab-map.pdf">solution</a> ]</p>
+</li>
+<li>
+<p>Identifying Shape - Box Plots [ <a href="../../../lessons/box-plots/pages/identifying-shape-boxplots.html">exercise</a> : <a href="../../../lessons/box-plots/solution-pages/identifying-shape-boxplots.html">solution</a> ]</p>
+</li>
+<li>
+<p>Matching Box Plots to Histograms [ <a href="../../../lessons/box-plots/pages/matching-boxplots-to-histograms.html">exercise</a> : <a href="../../../lessons/box-plots/solution-pages/matching-boxplots-to-histograms.html">solution</a> ]</p>
+</li>
+<li>
+<p>Matching Box Plots to Histograms [ <a href="../../../lessons/box-plots/pages/matching-boxplots-to-histograms-2.html">exercise</a> : <a href="../../../lessons/box-plots/solution-pages/matching-boxplots-to-histograms-2.html">solution</a> ]</p>
+</li>
+<li>
+<p>Data Cycle: Shape of My Dataset [ <a href="../../../lessons/box-plots/pages/data-cycle-quantitative.html">exercise</a> : <a href="../../../lessons/box-plots/solution-pages/data-cycle-quantitative.html">solution</a> ]</p>
+</li>
+<li>
+<p>Shape of My Dataset [ <a href="../../../lessons/box-plots/pages/shape-of-my-dataset.html">exercise</a> : <a href="../../../lessons/box-plots/solution-pages/shape-of-my-dataset.html">solution</a> ]</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong><a href="../../../lessons/standard-deviation/index.shtml">Standard Deviation
+</a></strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Computing Standard Deviation [ <a href="../../../lessons/standard-deviation/pages/computing-stdev.html">exercise</a> : <a href="../../../lessons/standard-deviation/solution-pages/computing-stdev.html">solution</a> ]</p>
+</li>
+<li>
+<p>Computing Standard Deviation (2) [ <a href="../../../lessons/standard-deviation/pages/computing-stdev-2.html">exercise</a> : <a href="../../../lessons/standard-deviation/solution-pages/computing-stdev-2.html">solution</a> ]</p>
+</li>
+<li>
+<p>The Effect of an Outlier [ <a href="../../../lessons/standard-deviation/pages/effect-of-an-outlier.html">exercise</a> : <a href="../../../lessons/standard-deviation/solution-pages/effect-of-an-outlier.html">solution</a> ]</p>
+</li>
+<li>
+<p>Matching Mean &amp; Standard Deviation to Data [ <a href="../../../lessons/standard-deviation/pages/match-mean-stdev-to-dataset.html">exercise</a> : <a href="../../../lessons/standard-deviation/solution-pages/match-mean-stdev-to-dataset.html">solution</a> ]</p>
+</li>
+<li>
+<p>Data Cycle: Standard Deviation in the Animals Dataset [ <a href="../../../lessons/standard-deviation/pages/analysis-stdev-animals.html">exercise</a> : <a href="../../../lessons/standard-deviation/solution-pages/analysis-stdev-animals.html">solution</a> ]</p>
+</li>
+<li>
+<p>Data Cycle: Standard Deviation in My Dataset [ <a href="../../../lessons/standard-deviation/pages/analysis-stdev-my-dataset.html">exercise</a> : <a href="../../../lessons/standard-deviation/solution-pages/analysis-stdev-my-dataset.html">solution</a> ]</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong><a href="../../../lessons/scatter-plots/index.shtml">Scatter Plots
+</a></strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Creating a Scatter Plot [ <a href="../../../lessons/scatter-plots/pages/creating-scatterplot.html">exercise</a> : <a href="../../../lessons/scatter-plots/solution-pages/creating-scatterplot.html">solution</a> ]</p>
+</li>
+<li>
+<p>Data Cycle: Relationships in the Animals Dataset [ <a href="../../../lessons/scatter-plots/pages/data-cycle-scatter-plot-animals.html">exercise</a> : <a href="../../../lessons/scatter-plots/solution-pages/data-cycle-scatter-plot-animals.html">solution</a> ]</p>
+</li>
+<li>
+<p>Data Cycle: Relationships in Your Dataset [ <a href="../../../lessons/scatter-plots/pages/data-cycle-scatter-plot.html">exercise</a> : <a href="../../../lessons/scatter-plots/solution-pages/data-cycle-scatter-plot.html">solution</a> ]</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong><a href="../../../lessons/ethics-privacy-and-bias/index.shtml">Ethics&#x2c; Privacy&#x2c; and Bias
+</a></strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Case Study: Ethics, Privacy, and Bias [ <a href="../../../lessons/ethics-privacy-and-bias/pages/CaseStudy.html">exercise</a> : <a href="../../../lessons/ethics-privacy-and-bias/solution-pages/CaseStudy.html">solution</a> ]</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong><a href="../../../lessons/data-collection/index.shtml">Collecting Data
+</a></strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Analyzing Survey Results When Data is Dirty [ <a href="../../../lessons/data-collection/pages/survey-analysis.html">exercise</a> : <a href="../../../lessons/data-collection/solution-pages/survey-analysis.html">solution</a> ]</p>
+</li>
+<li>
+<p>Dirty Data! [ <a href="../../../lessons/data-collection/pages/dirty-data.html">exercise</a> : <a href="../../../lessons/data-collection/solution-pages/dirty-data.html">solution</a> ]</p>
+</li>
+<li>
+<p>Bad Questions Make Dirty Data [ <a href="../../../lessons/data-collection/pages/bad-survey.html">exercise</a> : <a href="../../../lessons/data-collection/solution-pages/bad-survey.html">solution</a> ]</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong><a href="../../../lessons/lookups/index.shtml">Row and Column Lookups
+</a></strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Defining Rows [ <a href="../../../lessons/lookups/pages/defining-rows.html">exercise</a> : <a href="../../../lessons/lookups/solution-pages/defining-rows.html">solution</a> ]</p>
+</li>
+<li>
+<p>Lookup Questions [ <a href="../../../lessons/lookups/pages/lookup-questions.html">exercise</a> : <a href="../../../lessons/lookups/solution-pages/lookup-questions.html">solution</a> ]</p>
+</li>
+<li>
+<p>More Practice with Lookups [ <a href="../../../lessons/lookups/pages/more-practice-w-lookups.html">exercise</a> : <a href="../../../lessons/lookups/solution-pages/more-practice-w-lookups.html">solution</a> ]</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong><a href="../../../lessons/functions-make-life-easier/index.shtml">Functions Make Life Easier!
+</a></strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The Great gt domain debate! [ <a href="../../../lessons/functions-make-life-easier/pages/gt-domain-debate.html">exercise</a> : <a href="../../../lessons/functions-make-life-easier/solution-pages/gt-domain-debate.html">solution</a> ]</p>
+</li>
+<li>
+<p>Let&#8217;s Define Some New Functions! [ <a href="../../../lessons/functions-make-life-easier/pages/rs.html">exercise</a> : <a href="../../../lessons/functions-make-life-easier/solution-pages/rs.html">solution</a> ]</p>
+</li>
+<li>
+<p>Let&#8217;s Define Some More New Functions! [ <a href="../../../lessons/functions-make-life-easier/pages/sun.html">exercise</a> : <a href="../../../lessons/functions-make-life-easier/solution-pages/sun.html">solution</a> ]</p>
+</li>
+<li>
+<p>Describe and Define Your Own Functions! [ <a href="../../../lessons/functions-make-life-easier/pages/define-your-own.html">exercise</a> : <a href="../../../lessons/functions-make-life-easier/solution-pages/define-your-own.html">solution</a> ]</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong><a href="../../../lessons/functions-examples-definitions/index.shtml">Functions: Contracts&#x2c; Examples &amp; Definitions
+</a></strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Mapping Examples with Circles of Evaluation [ <a href="../../../lessons/functions-examples-definitions/pages/MappingExamplesWithCoE.html">exercise</a> : <a href="../../../lessons/functions-examples-definitions/solution-pages/MappingExamplesWithCoE.html">solution</a> ]</p>
+</li>
+<li>
+<p>Matching Examples and Contracts [ <a href="../../../lessons/functions-examples-definitions/pages/match-examples-contracts.html">exercise</a> : <a href="../../../lessons/functions-examples-definitions/solution-pages/match-examples-contracts.html">solution</a> ]</p>
+</li>
+<li>
+<p>Matching Examples and Function Definitions [ <a href="../../../lessons/functions-examples-definitions/pages/match-examples-definitions.html">exercise</a> : <a href="../../../lessons/functions-examples-definitions/solution-pages/match-examples-definitions.html">solution</a> ]</p>
+</li>
+<li>
+<p>Creating Contracts From Examples [ <a href="../../../lessons/functions-examples-definitions/pages/create-contracts-examples.html">exercise</a> : <a href="../../../lessons/functions-examples-definitions/solution-pages/create-contracts-examples.html">solution</a> ]</p>
+</li>
+<li>
+<p>Contracts, Examples &amp; Definitions - bc [ <a href="../../../lessons/functions-examples-definitions/pages/contracts-examples-definitions.html">exercise</a> : <a href="../../../lessons/functions-examples-definitions/solution-pages/contracts-examples-definitions.html">solution</a> ]</p>
+</li>
+<li>
+<p>Contracts, Examples &amp; Definitions - Stars [ <a href="../../../lessons/functions-examples-definitions/pages/contracts-examples-definitions-stars.html">exercise</a> : <a href="../../../lessons/functions-examples-definitions/solution-pages/contracts-examples-definitions-stars.html">solution</a> ]</p>
+</li>
+<li>
+<p>Contracts, Examples &amp; Definitions - Name [ <a href="../../../lessons/functions-examples-definitions/pages/contracts-examples-definitions-name.html">exercise</a> : <a href="../../../lessons/functions-examples-definitions/solution-pages/contracts-examples-definitions-name.html">solution</a> ]</p>
+</li>
+<li>
+<p>Do The Examples Have the Same Contracts? [ <a href="../../../lessons/functions-examples-definitions/pages/examples-same-contracts1.html">exercise</a> : <a href="../../../lessons/functions-examples-definitions/solution-pages/examples-same-contracts1.html">solution</a> ]</p>
+</li>
+<li>
+<p>Do The Examples Have the Same Contracts? (2) [ <a href="../../../lessons/functions-examples-definitions/pages/examples-same-contracts2.html">exercise</a> : <a href="../../../lessons/functions-examples-definitions/solution-pages/examples-same-contracts2.html">solution</a> ]</p>
+</li>
+<li>
+<p>Matching Contracts and Examples [ <a href="../../../lessons/functions-examples-definitions/pages/match-contracts-examples1.html">exercise</a> : <a href="../../../lessons/functions-examples-definitions/solution-pages/match-contracts-examples1.html">solution</a> ]</p>
+</li>
+<li>
+<p>Matching Contracts and Examples 2 [ <a href="../../../lessons/functions-examples-definitions/pages/match-contracts-examples2.html">exercise</a> : <a href="../../../lessons/functions-examples-definitions/solution-pages/match-contracts-examples2.html">solution</a> ]</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong><a href="../../../lessons/custom-scatter-plots/index.shtml">Custom Scatter Plots
+</a></strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Defining Row-Consuming Functions [ <a href="../../../lessons/custom-scatter-plots/pages/defining-row-functions.html">exercise</a> : <a href="../../../lessons/custom-scatter-plots/solution-pages/defining-row-functions.html">solution</a> ]</p>
+</li>
+<li>
+<p>Custom Scatter Plot - Explore [ <a href="../../../lessons/custom-scatter-plots/pages/custom-scatter-plot-explore.html">exercise</a> : <a href="../../../lessons/custom-scatter-plots/solution-pages/custom-scatter-plot-explore.html">solution</a> ]</p>
+</li>
+<li>
+<p>species-dot - Explore [ <a href="../../../lessons/custom-scatter-plots/pages/species-dot-explore.html">exercise</a> : <a href="../../../lessons/custom-scatter-plots/solution-pages/species-dot-explore.html">solution</a> ]</p>
+</li>
+<li>
+<p>Word Problem: species-dot [ <a href="../../../lessons/custom-scatter-plots/pages/species-dot-dr.html">exercise</a> : <a href="../../../lessons/custom-scatter-plots/solution-pages/species-dot-dr.html">solution</a> ]</p>
+</li>
+<li>
+<p>Word Problem: sex-dot [ <a href="../../../lessons/custom-scatter-plots/pages/sex-dot-dr.html">exercise</a> : <a href="../../../lessons/custom-scatter-plots/solution-pages/sex-dot-dr.html">solution</a> ]</p>
+</li>
+<li>
+<p>Animal-Image - Explore [ <a href="../../../lessons/custom-scatter-plots/pages/animal-image-explore.html">exercise</a> : <a href="../../../lessons/custom-scatter-plots/solution-pages/animal-image-explore.html">solution</a> ]</p>
+</li>
+<li>
+<p>Word Problem: fixed-dot [ <a href="../../../lessons/custom-scatter-plots/pages/fixed-dot-dr.html">exercise</a> : <a href="../../../lessons/custom-scatter-plots/solution-pages/fixed-dot-dr.html">solution</a> ]</p>
+</li>
+<li>
+<p>Dots for Value Ranges - Explore [ <a href="../../../lessons/custom-scatter-plots/pages/value-range-dot-explore.html">exercise</a> : <a href="../../../lessons/custom-scatter-plots/solution-pages/value-range-dot-explore.html">solution</a> ]</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong><a href="../../../lessons/table-methods/index.shtml">Table Methods
+</a></strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Reading Row and Function Definitions [ <a href="../../../lessons/table-methods/pages/row-and-function-definitions.html">exercise</a> : <a href="../../../lessons/table-methods/solution-pages/row-and-function-definitions.html">solution</a> ]</p>
+</li>
+<li>
+<p>Function Cards [ <a href="../../../lessons/table-methods/pages/function-cards.html">exercise</a> : <a href="../../../lessons/table-methods/solution-pages/function-cards.html">solution</a> ]</p>
+</li>
+<li>
+<p>Exploring Methods [ <a href="../../../lessons/table-methods/pages/exploring-methods.html">exercise</a> : <a href="../../../lessons/table-methods/solution-pages/exploring-methods.html">solution</a> ]</p>
+</li>
+<li>
+<p>What Table Do We Get? [ <a href="../../../lessons/table-methods/pages/what-table-do-we-get.html">exercise</a> : <a href="../../../lessons/table-methods/solution-pages/what-table-do-we-get.html">solution</a> ]</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong><a href="../../../lessons/functions-dr/index.shtml">Solving Word Problems with the Design Recipe
+</a></strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Matching Word Problems and Purpose Statements [ <a href="../../../lessons/functions-dr/pages/matching-wp-purpose.html">exercise</a> : <a href="../../../lessons/functions-dr/solution-pages/matching-wp-purpose.html">solution</a> ]</p>
+</li>
+<li>
+<p>Writing Examples from Purpose Statements [ <a href="../../../lessons/functions-dr/pages/create-examples-contracts-purpose-1.html">exercise</a> : <a href="../../../lessons/functions-dr/solution-pages/create-examples-contracts-purpose-1.html">solution</a> ]</p>
+</li>
+<li>
+<p>Writing Examples from Purpose Statements 2 [ <a href="../../../lessons/functions-dr/pages/create-examples-contracts-purpose-2.html">exercise</a> : <a href="../../../lessons/functions-dr/solution-pages/create-examples-contracts-purpose-2.html">solution</a> ]</p>
+</li>
+<li>
+<p>Fixing Purpose Statements [ <a href="../../../lessons/functions-dr/pages/fixing-purpose.html">exercise</a> : <a href="../../../lessons/functions-dr/solution-pages/fixing-purpose.html">solution</a> ]</p>
+</li>
+<li>
+<p>Word Problem: rocket-height [ <a href="../../../lessons/functions-dr/pages/rocket-height.html">exercise</a> : <a href="../../../lessons/functions-dr/solution-pages/rocket-height.html">solution</a> ]</p>
+</li>
+<li>
+<p>Rocket Height Challenges [ <a href="../../../lessons/functions-dr/pages/rocket-challenges.html">exercise</a> : <a href="../../../lessons/functions-dr/solution-pages/rocket-challenges.html">solution</a> ]</p>
+</li>
+<li>
+<p>Blank Design Recipe [ <a href="../../../lessons/functions-dr/pages/dr-blank.html">exercise</a> : <a href="../../../lessons/functions-dr/solution-pages/dr-blank.html">solution</a> ]</p>
+</li>
+<li>
+<p>The Design Recipe (Restaurants) [ <a href="../../../lessons/functions-dr/pages/dr-restaurants.html">exercise</a> : <a href="../../../lessons/functions-dr/solution-pages/dr-restaurants.html">solution</a> ]</p>
+</li>
+<li>
+<p>The Design Recipe (Direct Variation) [ <a href="../../../lessons/functions-dr/pages/dr-direct-variation.html">exercise</a> : <a href="../../../lessons/functions-dr/solution-pages/dr-direct-variation.html">solution</a> ]</p>
+</li>
+<li>
+<p>The Design Recipe (Slope/Intercept 1) [ <a href="../../../lessons/functions-dr/pages/dr-slope-intercept-1.html">exercise</a> : <a href="../../../lessons/functions-dr/solution-pages/dr-slope-intercept-1.html">solution</a> ]</p>
+</li>
+<li>
+<p>The Design Recipe (Negative Slope/Intercept) [ <a href="../../../lessons/functions-dr/pages/dr-neg-slope.html">exercise</a> : <a href="../../../lessons/functions-dr/solution-pages/dr-neg-slope.html">solution</a> ]</p>
+</li>
+<li>
+<p>The Design Recipe (Geometry - Rectangles) [ <a href="../../../lessons/functions-dr/pages/dr-geometry-rectangles.html">exercise</a> : <a href="../../../lessons/functions-dr/solution-pages/dr-geometry-rectangles.html">solution</a> ]</p>
+</li>
+<li>
+<p>The Design Recipe (Geometry - Rectangular Prisms) [ <a href="../../../lessons/functions-dr/pages/dr-geometry-rect-prism.html">exercise</a> : <a href="../../../lessons/functions-dr/solution-pages/dr-geometry-rect-prism.html">solution</a> ]</p>
+</li>
+<li>
+<p>The Design Recipe (Geometry - Circles) [ <a href="../../../lessons/functions-dr/pages/dr-geometry-circles.html">exercise</a> : <a href="../../../lessons/functions-dr/solution-pages/dr-geometry-circles.html">solution</a> ]</p>
+</li>
+<li>
+<p>The Design Recipe (Geometry - Cylinders) [ <a href="../../../lessons/functions-dr/pages/dr-geometry-cylinder.html">exercise</a> : <a href="../../../lessons/functions-dr/solution-pages/dr-geometry-cylinder.html">solution</a> ]</p>
+</li>
+<li>
+<p>The Design Recipe (Breaking Even) [ <a href="../../../lessons/functions-dr/pages/dr-breaking-even.html">exercise</a> : <a href="../../../lessons/functions-dr/solution-pages/dr-breaking-even.html">solution</a> ]</p>
+</li>
+<li>
+<p>The Design Recipe (Marquee &amp; Cubing) [ <a href="../../../lessons/functions-dr/pages/dr-marquee.html">exercise</a> : <a href="../../../lessons/functions-dr/solution-pages/dr-marquee.html">solution</a> ]</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong><a href="../../../lessons/method-chaining/index.shtml">Method Chaining
+</a></strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The Design Recipe: is-dog / is-female [ <a href="../../../lessons/method-chaining/pages/design-recipe-1.html">exercise</a> : <a href="../../../lessons/method-chaining/solution-pages/design-recipe-1.html">solution</a> ]</p>
+</li>
+<li>
+<p>The Design Recipe: is-old / name-has-s [ <a href="../../../lessons/method-chaining/pages/design-recipe-2.html">exercise</a> : <a href="../../../lessons/method-chaining/solution-pages/design-recipe-2.html">solution</a> ]</p>
+</li>
+<li>
+<p>Chaining Methods [ <a href="../../../lessons/method-chaining/pages/chaining-methods.html">exercise</a> : <a href="../../../lessons/method-chaining/solution-pages/chaining-methods.html">solution</a> ]</p>
+</li>
+<li>
+<p>Chaining Methods 2: Order Matters [ <a href="../../../lessons/method-chaining/pages/chaining-methods-order-matters.html">exercise</a> : <a href="../../../lessons/method-chaining/solution-pages/chaining-methods-order-matters.html">solution</a> ]</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong><a href="../../../lessons/defining-table-functions/index.shtml">Defining Table Functions
+</a></strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Making Connections [ <a href="../../../lessons/defining-table-functions/pages/making-connections.html">exercise</a> : <a href="../../../lessons/defining-table-functions/solution-pages/making-connections.html">solution</a> ]</p>
+</li>
+<li>
+<p>Design Recipe Telephone Set 1: is-dog [ <a href="../../../lessons/defining-table-functions/pages/is-dog.html">exercise</a> : <a href="../../../lessons/defining-table-functions/solution-pages/is-dog.html">solution</a> ]</p>
+</li>
+<li>
+<p>Design Recipe Telephone Set 1: days-to-adopt [ <a href="../../../lessons/defining-table-functions/pages/days.html">exercise</a> : <a href="../../../lessons/defining-table-functions/solution-pages/days.html">solution</a> ]</p>
+</li>
+<li>
+<p>Design Recipe Telephone Set 1: is-young [ <a href="../../../lessons/defining-table-functions/pages/is-young.html">exercise</a> : <a href="../../../lessons/defining-table-functions/solution-pages/is-young.html">solution</a> ]</p>
+</li>
+<li>
+<p>Design Recipe Telephone Set 2: is-old [ <a href="../../../lessons/defining-table-functions/pages/is-old.html">exercise</a> : <a href="../../../lessons/defining-table-functions/solution-pages/is-old.html">solution</a> ]</p>
+</li>
+<li>
+<p>Design Recipe Telephone Set 2: kilos [ <a href="../../../lessons/defining-table-functions/pages/kilos.html">exercise</a> : <a href="../../../lessons/defining-table-functions/solution-pages/kilos.html">solution</a> ]</p>
+</li>
+<li>
+<p>Design Recipe Telephone Set 2: is-cat [ <a href="../../../lessons/defining-table-functions/pages/is-cat.html">exercise</a> : <a href="../../../lessons/defining-table-functions/solution-pages/is-cat.html">solution</a> ]</p>
+</li>
+<li>
+<p>Design Recipe [ <a href="../../../lessons/defining-table-functions/pages/2-blank-recipes.html">exercise</a> : <a href="../../../lessons/defining-table-functions/solution-pages/2-blank-recipes.html">solution</a> ]</p>
+</li>
+<li>
+<p>Data Cycle: Analyzing Dogs [ <a href="../../../lessons/defining-table-functions/pages/data-cycle-1.html">exercise</a> : <a href="../../../lessons/defining-table-functions/solution-pages/data-cycle-1.html">solution</a> ]</p>
+</li>
+<li>
+<p>Data Cycle: Analyzing Cats [ <a href="../../../lessons/defining-table-functions/pages/data-cycle-2.html">exercise</a> : <a href="../../../lessons/defining-table-functions/solution-pages/data-cycle-2.html">solution</a> ]</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong><a href="../../../lessons/grouped-samples/index.shtml">Grouped Samples
+</a></strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Grouped Samples from the Animals Dataset [ <a href="../../../lessons/grouped-samples/pages/samples-from-animals-dataset.html">exercise</a> : <a href="../../../lessons/grouped-samples/solution-pages/samples-from-animals-dataset.html">solution</a> ]</p>
+</li>
+<li>
+<p>Displaying Data [ <a href="../../../lessons/grouped-samples/pages/data-displays2.html">exercise</a> : <a href="../../../lessons/grouped-samples/solution-pages/data-displays2.html">solution</a> ]</p>
+</li>
+<li>
+<p>Data Cycle: Analyzing Categorical Data [ <a href="../../../lessons/grouped-samples/pages/analyzing-categorical-data2.html">exercise</a> : <a href="../../../lessons/grouped-samples/solution-pages/analyzing-categorical-data2.html">solution</a> ]</p>
+</li>
+<li>
+<p>Samples from My Dataset [ <a href="../../../lessons/grouped-samples/pages/samples-from-my-dataset.html">exercise</a> : <a href="../../../lessons/grouped-samples/solution-pages/samples-from-my-dataset.html">solution</a> ]</p>
+</li>
+<li>
+<p>The Design Recipe [ <a href="../../../lessons/grouped-samples/pages/design-recipe-helper-funs.html">exercise</a> : <a href="../../../lessons/grouped-samples/solution-pages/design-recipe-helper-funs.html">solution</a> ]</p>
+</li>
+<li>
+<p>The Design Recipe [ <a href="../../../lessons/grouped-samples/pages/design-recipe-helper-funs-2.html">exercise</a> : <a href="../../../lessons/grouped-samples/solution-pages/design-recipe-helper-funs-2.html">solution</a> ]</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong><a href="../../../lessons/correlations/index.shtml">Correlations
+</a></strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Identifying Form, Direction and Strength [ <a href="../../../lessons/correlations/pages/identifying-form.html">exercise</a> : <a href="../../../lessons/correlations/solution-pages/identifying-form.html">solution</a> ]</p>
+</li>
+<li>
+<p>Reflection on Form, Direction and Strength [ <a href="../../../lessons/correlations/pages/reflection-correlations.html">exercise</a> : <a href="../../../lessons/correlations/solution-pages/reflection-correlations.html">solution</a> ]</p>
+</li>
+<li>
+<p>Identifying Form, Direction and Strength (Matching) [ <a href="../../../lessons/correlations/pages/identifying-form-matching.html">exercise</a> : <a href="../../../lessons/correlations/solution-pages/identifying-form-matching.html">solution</a> ]</p>
+</li>
+<li>
+<p>Identifying Form and r-Values [ <a href="../../../lessons/correlations/pages/identifying-form-open-ended.html">exercise</a> : <a href="../../../lessons/correlations/solution-pages/identifying-form-open-ended.html">solution</a> ]</p>
+</li>
+<li>
+<p>Correlation Does Not Imply Causation! [ <a href="../../../lessons/correlations/pages/correlation-is-not-causation.html">exercise</a> : <a href="../../../lessons/correlations/solution-pages/correlation-is-not-causation.html">solution</a> ]</p>
+</li>
+<li>
+<p>Correlations in the Animals Dataset [ <a href="../../../lessons/correlations/pages/correlations-animals.html">exercise</a> : <a href="../../../lessons/correlations/solution-pages/correlations-animals.html">solution</a> ]</p>
+</li>
+<li>
+<p>Correlations in My Dataset [ <a href="../../../lessons/correlations/pages/correlations-in-my-dataset.html">exercise</a> : <a href="../../../lessons/correlations/solution-pages/correlations-in-my-dataset.html">solution</a> ]</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong><a href="../../../lessons/linear-regression/index.shtml">Linear Regression
+</a></strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Drawing Predictors [ <a href="../../../lessons/linear-regression/pages/drawing-predictors.html">exercise</a> : <a href="../../../lessons/linear-regression/solution-pages/drawing-predictors.html">solution</a> ]</p>
+</li>
+<li>
+<p>Which Questions Make Sense to Ask? [ <a href="../../../lessons/linear-regression/pages/which-questions-make-sense.html">exercise</a> : <a href="../../../lessons/linear-regression/solution-pages/which-questions-make-sense.html">solution</a> ]</p>
+</li>
+<li>
+<p>Age vs. Height Explore [ <a href="../../../lessons/linear-regression/pages/age-v-height-explore.html">exercise</a> : <a href="../../../lessons/linear-regression/solution-pages/age-v-height-explore.html">solution</a> ]</p>
+</li>
+<li>
+<p>Interpreting Regression Lines &amp; r-Values [ <a href="../../../lessons/linear-regression/pages/interpreting-regression-lines-n-rvalues.html">exercise</a> : <a href="../../../lessons/linear-regression/solution-pages/interpreting-regression-lines-n-rvalues.html">solution</a> ]</p>
+</li>
+<li>
+<p>Data Cycle: Regression Analysis (Example) [ <a href="../../../lessons/linear-regression/pages/regression-analysis-example.html">exercise</a> : <a href="../../../lessons/linear-regression/solution-pages/regression-analysis-example.html">solution</a> ]</p>
+</li>
+<li>
+<p>Describing Relationships [ <a href="../../../lessons/linear-regression/pages/describing-relationships-1.html">exercise</a> : <a href="../../../lessons/linear-regression/solution-pages/describing-relationships-1.html">solution</a> ]</p>
+</li>
+<li>
+<p>Describing Relationships (2) [ <a href="../../../lessons/linear-regression/pages/describing-relationships-2.html">exercise</a> : <a href="../../../lessons/linear-regression/solution-pages/describing-relationships-2.html">solution</a> ]</p>
+</li>
+<li>
+<p>Data Cycle: Regression Analysis [ <a href="../../../lessons/linear-regression/pages/regression-analysis-1.html">exercise</a> : <a href="../../../lessons/linear-regression/solution-pages/regression-analysis-1.html">solution</a> ]</p>
+</li>
+<li>
+<p>Data Cycle: Regression Analysis 2 [ <a href="../../../lessons/linear-regression/pages/regression-analysis-2.html">exercise</a> : <a href="../../../lessons/linear-regression/solution-pages/regression-analysis-2.html">solution</a> ]</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong><a href="../../../lessons/checking-your-work/index.shtml">Checking Your Work
+</a></strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>“Trust, but verify &#8230;&#8203;” [ <a href="../../../lessons/checking-your-work/pages/trust-but-verify.html">exercise</a> : <a href="../../../lessons/checking-your-work/solution-pages/trust-but-verify.html">solution</a> ]</p>
+</li>
+<li>
+<p>“Trust, but verify…” (2) [ <a href="../../../lessons/checking-your-work/pages/trust-but-verify-2.html">exercise</a> : <a href="../../../lessons/checking-your-work/solution-pages/trust-but-verify-2.html">solution</a> ]</p>
+</li>
+<li>
+<p>this article [ <a href="../../../lessons/checking-your-work/pages/ai-article-register.pdf">exercise</a> : <a href="../../../lessons/checking-your-work/solution-pages/ai-article-register.pdf">solution</a> ]</p>
+</li>
+<li>
+<p>Can Software be Biased? [ <a href="../../../lessons/checking-your-work/pages/ai-reflection.html">exercise</a> : <a href="../../../lessons/checking-your-work/solution-pages/ai-reflection.html">solution</a> ]</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong><a href="../../../lessons/threats-to-validity/index.shtml">Threats to Validity
+</a></strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Identifying Threats to Validity [ <a href="../../../lessons/threats-to-validity/pages/threats-to-validity-1.html">exercise</a> : <a href="../../../lessons/threats-to-validity/solution-pages/threats-to-validity-1.html">solution</a> ]</p>
+</li>
+<li>
+<p>Identifying Threats to Validity (2) [ <a href="../../../lessons/threats-to-validity/pages/threats-to-validity-2.html">exercise</a> : <a href="../../../lessons/threats-to-validity/solution-pages/threats-to-validity-2.html">solution</a> ]</p>
+</li>
+<li>
+<p>Selection Bias or Biased Study? [ <a href="../../../lessons/threats-to-validity/pages/selection-bias-v-biased-study.html">exercise</a> : <a href="../../../lessons/threats-to-validity/solution-pages/selection-bias-v-biased-study.html">solution</a> ]</p>
+</li>
+<li>
+<p>Fake News [ <a href="../../../lessons/threats-to-validity/pages/fake-news.html">exercise</a> : <a href="../../../lessons/threats-to-validity/solution-pages/fake-news.html">solution</a> ]</p>
+</li>
+<li>
+<p>Lies, Darned Lies, and Statistics [ <a href="../../../lessons/threats-to-validity/pages/lies-darned-lies-n-statistics.html">exercise</a> : <a href="../../../lessons/threats-to-validity/solution-pages/lies-darned-lies-n-statistics.html">solution</a> ]</p>
+</li>
+<li>
+<p>Identifying Threats to Validity (Part 1) [ <a href="../../../lessons/threats-to-validity/pages/identifying-threats-1.html">exercise</a> : <a href="../../../lessons/threats-to-validity/solution-pages/identifying-threats-1.html">solution</a> ]</p>
+</li>
+<li>
+<p>Identifying Threats to Validity (Part 2) [ <a href="../../../lessons/threats-to-validity/pages/identifying-threats-2.html">exercise</a> : <a href="../../../lessons/threats-to-validity/solution-pages/identifying-threats-2.html">solution</a> ]</p>
+</li>
+<li>
+<p>Identifying Threats to Validity (Part 3) [ <a href="../../../lessons/threats-to-validity/pages/identifying-threats-3.html">exercise</a> : <a href="../../../lessons/threats-to-validity/solution-pages/identifying-threats-3.html">solution</a> ]</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_all_lesson_notes">All Lesson Notes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The student workbook includes notes for various lessons. You can access all of these notes by clicking the links below:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="../../../lessons/ds-intro/pages/notes-intro-to-computational-ds.html">Introduction to Computational Data Science</a></p>
+</li>
+<li>
+<p><a href="../../../lessons/simple-data-types/pages/notes-intro-to-programming.html">Introduction to Programming</a></p>
+</li>
+<li>
+<p><a href="../../../lessons/bar-and-pie-charts/pages/notes-plotting-and-displaying-data.html">Displaying Categorical Data</a></p>
+</li>
+<li>
+<p><a href="../../../lessons/data-cycle/pages/notes-data-cycle.html">The Data Cycle</a></p>
+</li>
+<li>
+<p><a href="../../../lessons/random-samples/pages/notes-randomness-and-sample-size.html">Probability&#x2c; Inference&#x2c; and Sample Size</a></p>
+</li>
+<li>
+<p><a href="../../../lessons/choosing-your-dataset/pages/notes-choosing-your-dataset.html">Choosing Your Dataset</a></p>
+</li>
+<li>
+<p><a href="../../../lessons/histograms/pages/notes-histograms.html">Histograms</a></p>
+</li>
+<li>
+<p><a href="../../../lessons/measures-of-center/pages/notes-measures-of-center-and-spread.html">Measures of Center and Spread</a></p>
+</li>
+<li>
+<p><a href="../../../lessons/measures-of-center/pages/notes-measures-of-center-and-spread-cont.html">Measures of Center and Spread (continued)</a></p>
+</li>
+<li>
+<p><a href="../../../lessons/lookups/pages/notes-lookups.html">Looking up Rows and Columns</a></p>
+</li>
+<li>
+<p><a href="../../../lessons/functions-examples-definitions/pages/notes-defining-functions.html">Defining Functions</a></p>
+</li>
+<li>
+<p><a href="../../../lessons/custom-scatter-plots/pages/notes-piecewise-functions.html">Piecewise Functions</a></p>
+</li>
+<li>
+<p><a href="../../../lessons/table-methods/pages/notes-table-methods.html">Defining Row Functions &amp; Using Table Methods</a></p>
+</li>
+<li>
+<p><a href="../../../lessons/functions-dr/pages/notes-solving-word-problems.html">Solving Word Problems</a></p>
+</li>
+<li>
+<p><a href="../../../lessons/method-chaining/pages/notes-method-chaining.html">Method Chaining</a></p>
+</li>
+<li>
+<p><a href="../../../lessons/defining-table-functions/pages/notes-defining-table-functions.html">Defining Table Functions</a></p>
+</li>
+<li>
+<p><a href="../../../lessons/correlations/pages/notes-correlations.html">Correlations in Scatter Plots</a></p>
+</li>
+<li>
+<p><a href="../../../lessons/linear-regression/pages/notes-computing-relationships.html">Linear Regression</a></p>
+</li>
+<li>
+<p><a href="../../../lessons/checking-your-work/pages/notes-checking-your-work.html">Checking Your Work</a></p>
+</li>
+<li>
+<p><a href="../../../lessons/threats-to-validity/pages/notes-threats-to-validity.html">Threats to Validity</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_printables_for_classroom_walls">Printables for Classroom Walls</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="../../../lessons/computing-needs-all-voices/pages/computing-pioneers.html">Computing Needs All Voices!</a></p>
+</li>
+<li>
+<p><a href="https://www.geckoboard.com/best-practice/statistical-fallacies/" target="_blank" rel="noopener">Statistical Fallacies to Avoid</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_resources_that_pair_well_with_bootstrapdata_science">Resources that Pair Well with Bootstrap:Data Science</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.nytimes.com/column/whats-going-on-in-this-graph" target="_blank" rel="noopener">What&#8217;s Going on in this Graph?</a> - weekly intriguing data visualizations by the New York Times</p>
+</li>
+<li>
+<p><a href="https://pudding.cool/" target="_blank" rel="noopener">The Pudding</a> - fascinating, data-rich visual essays explaining ideas debated in culture</p>
+</li>
+<li>
+<p><a href="https://discourse.bootstrapworld.org/t/something-fun-for-the-classroom-hownotto/1459/9" target="_blank" rel="noopener">How Not To</a> - friendly potshots at terrible Data Science, regularly posted to social media under the hashtag "HowNotTo"</p>
+</li>
+<li>
+<p><a href="https://www.autodesk.com/research/publications/same-stats-different-graphs" target="_blank" rel="noopener">Same Stats, Different Graphs</a> - an illustration from Autodesk of why we must see the shape of data and not just focus on the descriptive statistics</p>
+</li>
+<li>
+<p><a href="http://guessthecorrelation.com/" target="_blank" rel="noopener">Guess the Correlation</a> - a game-ified resource (built by Omar Wagih) for building intuition for correlation, based on randomly-generated scatterplots</p>
+</li>
+<li>
+<p><a href="https://www.geogebra.org/m/ZcVIxKtF" target="_blank" rel="noopener">Sensitive r</a> - an applet from Geogebra that shows how changing a single point can change the correlation coefficient <code class="pyret">r</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_other_facilitation_resources">Other Facilitation Resources</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Implementation Options</strong> [<a href="pages/implementation-options.html" target="_blank" rel="noopener">link</a>] - This guide includes suggestions for teachers looking spend a week, a month, or a semester teaching Bootstrap:Data Science.</p>
+</li>
+<li>
+<p><strong>Homework Submission Template</strong> [<a href="https://docs.google.com/forms/d/e/1FAIpQLSfj24nCBA18zvjK19OwS_DZfwFZpHoPtPcd-2ADiUDfevkaSA/viewform" target="_blank" rel="noopener">google form</a>] - Efficiently collect hyperlinks to student work.</p>
+</li>
+<li>
+<p><strong>Broadening Participation</strong> [<a href="https://docs.google.com/presentation/d/17uEl-yS2smjSuOdDLJPzMWWffeXTqBsENjAaZe_qkso/view" target="_blank" rel="noopener">slides</a>] - This compilation of best-practices from the CS-Education literature offers guidance on broadening student participation.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_standalone_hour_of_code_activities_from_bootstrap">Standalone Hour of Code Activities from Bootstrap</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Hour of Data</strong> [<a href="../../../lessons/hoc-data/index.shtml">link</a>] - A self-guided Desmos activity for exploring a real dataset, and using it to make sense of a real-world problem.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-17 19:42:18 -0400
+</div>
+</div>
+</div>
+</body>
+</html>

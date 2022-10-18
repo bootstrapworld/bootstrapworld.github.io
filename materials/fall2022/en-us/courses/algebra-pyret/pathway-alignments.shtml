@@ -1,0 +1,1517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Alignments</title>
+
+  <link rel="stylesheet" href="../../lib/curriculum.css" />
+    <script src="../../lib/langtable.js"></script>
+    <script src="../../lib/bootstraplesson.js"></script>
+    <script src="../../dependency-graph.js"></script>
+    <script src="../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+</head>
+<body class="narrativepage article">
+<!--#include virtual="/menubar.ssi"-->
+<div id="body">
+<div id="header">
+<h1>Alignments</h1>
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<script>
+function preselect(klass) {
+  const items = document.getElementsByClassName(klass);
+  for (let i = 0; i < items.length; i++) {
+    items[i].style.display = 'none';
+  }
+  if (items.length > 0) {
+    items[0].style.display = 'block';
+  }
+}
+window.onload = function() {
+  preselect('coverageElement');
+}
+function showCoverageAlignment() {
+  const selectTag = document.getElementsByClassName('coverageAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const stdTables = document.getElementsByClassName('coverageElement');
+  for (let i = 0; i < stdTables.length; i++) {
+    const stdTable = stdTables[i];
+    stdTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optStd = opt.value;
+      for (let j = 0; j < stdTables.length; j++) {
+        const stdTable = stdTables[j];
+        if (stdTable.classList.contains(optStd)) {
+          stdTable.style.display = 'block';
+        }
+      }
+    }
+  }
+}
+</script>
+<div class="paragraph">
+<p><div class="standard-menu-container"><div>
+Bootstrap lessons align with several important teaching standards, textbooks, and practices.
+Select from the following menu to see
+which lessons meet those alignments.
+</div><div><select class="coverageAlignmentSelect" onchange="showCoverageAlignment()"><optgroup label="Standards"><option value="standards-CCSS-Math">CCSS-Math</option><option value="standards-CSTA">CSTA</option><option value="standards-K12CS">K12CS</option><option value="standards-Oklahoma">Oklahoma</option><option value="standards-Iowa">Iowa</option></optgroup><optgroup label="Textbooks"><option value="textbook-CMP">CMP</option><option value="textbook-IM_6">IM.6</option><option value="textbook-IM_7">IM.7</option><option value="textbook-IM_8">IM.8</option><option value="textbook-IM_Alg_1">IM.Alg.1</option></optgroup><optgroup label="Practices"><option value="practices-NGSS">NGSS</option><option value="practices-MLR">MLR</option><option value="practices-CC">CC</option><option value="practices-K12CS">K12CS</option><option value="practices-SJ">SJ</option></optgroup></select>
+</div></div></p>
+</div>
+</div>
+</div>
+<div class="sect1 coverageElement standards-CCSS-Math">
+<h2 id="_common_core_math_standards"><a href="http://corestandards.org/Math/">Common Core Math Standards</a></h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">5.G.A.1</dt>
+<dd>
+<p>Use a pair of perpendicular number lines, called axes, to define a coordinate system, with the intersection of the lines (the origin) arranged to coincide with the 0 on each line and a given point in the plane located by using an ordered pair of numbers, called its coordinates. Understand that the first number indicates how far to travel from the origin in the direction of one axis, and the second number indicates how far to travel in the direction of the second axis, with the convention that the names of the two axes and the coordinates correspond (e.g., x-axis and x-coordinate, y-axis and y-coordinate).
+[See:  <a href="./../../lessons/coordinates/index.shtml?pathway=algebra-pyret">Coordinates and Game Design</a>.]</p>
+</dd>
+<dt class="hdlist1">6.EE.B.5</dt>
+<dd>
+<p>Understand solving an equation or inequality as a process of answering a question: which values from a specified set, if any, make the equation or inequality true? Use substitution to determine whether a given number in a specified set makes an equation or inequality true.
+[See:  <a href="./../../lessons/inequalities1-simple/index.shtml?pathway=algebra-pyret">Simple Inequalities</a>.]</p>
+</dd>
+<dt class="hdlist1">6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.
+[See:  <a href="./../../lessons/function-composition/index.shtml?pathway=algebra-pyret">Function Composition</a>; <a href="./../../lessons/defining-values/index.shtml?pathway=algebra-pyret">Defining Values</a>; <a href="./../../lessons/functions-make-life-easier/index.shtml?pathway=algebra-pyret">Functions Make Life Easier!</a>; <a href="./../../lessons/functions-examples-definitions/index.shtml?pathway=algebra-pyret">Functions: Contracts&#x2c; Examples &amp; Definitions</a>; <a href="./../../lessons/function-definition-linear/index.shtml?pathway=algebra-pyret">Defining Linear Functions</a>; <a href="./../../lessons/functions-dr/index.shtml?pathway=algebra-pyret">Solving Word Problems with the Design Recipe</a>; <a href="./../../lessons/functions-for-character-animation/index.shtml?pathway=algebra-pyret">Functions for Character Animation</a>; <a href="./../../lessons/surface-area-rect-prism/index.shtml?pathway=algebra-pyret">Surface Area of a Rectangular Prism</a>; <a href="./../../lessons/problem-decomposition/index.shtml?pathway=algebra-pyret">Problem Decomposition</a>; <a href="./../../lessons/inequalities3-sam/index.shtml?pathway=algebra-pyret">Sam the Butterfly - Applying Inequalities</a>; <a href="./../../lessons/piecewise-functions-conditionals/index.shtml?pathway=algebra-pyret">Piecewise Functions and Conditionals</a>; <a href="./../../lessons/player-animation/index.shtml?pathway=algebra-pyret">Player Animation</a>; <a href="./../../lessons/distance-formula/index.shtml?pathway=algebra-pyret">The Distance Formula</a>; <a href="./../../lessons/inequalities-collision/index.shtml?pathway=algebra-pyret">Collision Detection - Distance and Inequality</a>.]</p>
+</dd>
+<dt class="hdlist1">6.EE.B.8</dt>
+<dd>
+<p>Write an inequality of the form x &gt; c or x &lt; c to represent a constraint or condition in a real-world or mathematical problem. Recognize that inequalities of the form x &gt; c or x &lt; c have infinitely many solutions; represent solutions of such inequalities on number line diagrams.
+[See:  <a href="./../../lessons/inequalities1-simple/index.shtml?pathway=algebra-pyret">Simple Inequalities</a>; <a href="./../../lessons/inequalities3-sam/index.shtml?pathway=algebra-pyret">Sam the Butterfly - Applying Inequalities</a>.]</p>
+</dd>
+<dt class="hdlist1">6.G.A.4</dt>
+<dd>
+<p>Represent three-dimensional figures using nets made up of rectangles and triangles, and use the nets to find the surface area of these figures. Apply these techniques in the context of solving real-world and mathematical problems.
+[See:  <a href="./../../lessons/surface-area-rect-prism/index.shtml?pathway=algebra-pyret">Surface Area of a Rectangular Prism</a>.]</p>
+</dd>
+<dt class="hdlist1">6.RP.A</dt>
+<dd>
+<p>Understand ratio concepts and use ratio reasoning to solve problems.
+[See:  <a href="./../../lessons/flags/index.shtml?pathway=algebra-pyret">Making Flags</a>.]</p>
+</dd>
+<dt class="hdlist1">6.RP.A.3.D</dt>
+<dd>
+<p>Use ratio reasoning to convert measurement units; manipulate and transform units appropriately when multiplying or dividing quantities.
+[See:  <a href="./../../lessons/flags/index.shtml?pathway=algebra-pyret">Making Flags</a>.]</p>
+</dd>
+<dt class="hdlist1">7.EE.A.2</dt>
+<dd>
+<p>Understand that rewriting an expression in different forms in a problem context can shed light on the problem and how the quantities in it are related.
+[See:  <a href="./../../lessons/problem-decomposition/index.shtml?pathway=algebra-pyret">Problem Decomposition</a>.]</p>
+</dd>
+<dt class="hdlist1">7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.
+[See:  <a href="./../../lessons/functions-dr/index.shtml?pathway=algebra-pyret">Solving Word Problems with the Design Recipe</a>; <a href="./../../lessons/problem-decomposition/index.shtml?pathway=algebra-pyret">Problem Decomposition</a>; <a href="./../../lessons/inequalities3-sam/index.shtml?pathway=algebra-pyret">Sam the Butterfly - Applying Inequalities</a>; <a href="./../../lessons/piecewise-functions-conditionals/index.shtml?pathway=algebra-pyret">Piecewise Functions and Conditionals</a>; <a href="./../../lessons/player-animation/index.shtml?pathway=algebra-pyret">Player Animation</a>; <a href="./../../lessons/distance-formula/index.shtml?pathway=algebra-pyret">The Distance Formula</a>.]</p>
+</dd>
+<dt class="hdlist1">7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.
+[See:  <a href="./../../lessons/defining-values/index.shtml?pathway=algebra-pyret">Defining Values</a>; <a href="./../../lessons/functions-make-life-easier/index.shtml?pathway=algebra-pyret">Functions Make Life Easier!</a>; <a href="./../../lessons/functions-dr/index.shtml?pathway=algebra-pyret">Solving Word Problems with the Design Recipe</a>; <a href="./../../lessons/inequalities1-simple/index.shtml?pathway=algebra-pyret">Simple Inequalities</a>; <a href="./../../lessons/inequalities2-compound/index.shtml?pathway=algebra-pyret">Compound Inequalities: Solutions &amp; Non-Solutions</a>.]</p>
+</dd>
+<dt class="hdlist1">7.G.B.6</dt>
+<dd>
+<p>Solve real-world and mathematical problems involving area, volume and surface area of two- and three-dimensional objects composed of triangles, quadrilaterals, polygons, cubes, and right prisms.
+[See:  <a href="./../../lessons/surface-area-rect-prism/index.shtml?pathway=algebra-pyret">Surface Area of a Rectangular Prism</a>.]</p>
+</dd>
+<dt class="hdlist1">7.RP.A.1</dt>
+<dd>
+<p>Compute unit rates associated with ratios of fractions, including ratios of lengths, areas and other quantities measured in like or different units.
+[See:  <a href="./../../lessons/making-game-images/index.shtml?pathway=algebra-pyret">Making Game Images</a>.]</p>
+</dd>
+<dt class="hdlist1">8.EE.B</dt>
+<dd>
+<p>Understand the connections between proportional relationships, lines, and linear equations.
+[See:  <a href="./../../lessons/functions-can-be-linear/index.shtml?pathway=algebra-pyret">Functions Can Be Linear</a>; <a href="./../../lessons/function-definition-linear/index.shtml?pathway=algebra-pyret">Defining Linear Functions</a>.]</p>
+</dd>
+<dt class="hdlist1">8.EE.B.5</dt>
+<dd>
+<p>Graph proportional relationships, interpreting the unit rate as the slope of the graph. Compare two different proportional relationships represented in different ways.
+[See:  <a href="./../../lessons/functions-can-be-linear/index.shtml?pathway=algebra-pyret">Functions Can Be Linear</a>; <a href="./../../lessons/function-definition-linear/index.shtml?pathway=algebra-pyret">Defining Linear Functions</a>.]</p>
+</dd>
+<dt class="hdlist1">8.EE.B.6</dt>
+<dd>
+<p>Use similar triangles to explain why the slope m is the same between any two distinct points on a non-vertical line in the coordinate plane; derive the equation y = mx for a line through the origin and the equation y = mx + b for a line intercepting the vertical axis at b.
+[See:  <a href="./../../lessons/functions-can-be-linear/index.shtml?pathway=algebra-pyret">Functions Can Be Linear</a>.]</p>
+</dd>
+<dt class="hdlist1">8.F.A.1</dt>
+<dd>
+<p>Understand that a function is a rule that assigns to each input exactly one output. The graph of a function is the set of ordered pairs consisting of an input and the corresponding output.
+[See:  <a href="./../../lessons/contracts/index.shtml?pathway=algebra-pyret">Contracts</a>.]</p>
+</dd>
+<dt class="hdlist1">8.F.A.2</dt>
+<dd>
+<p>Compare properties of two functions each represented in a different way (algebraically, graphically, numerically in tables, or by verbal descriptions).
+[See:  <a href="./../../lessons/functions-can-be-linear/index.shtml?pathway=algebra-pyret">Functions Can Be Linear</a>.]</p>
+</dd>
+<dt class="hdlist1">8.F.B</dt>
+<dd>
+<p>Use functions to model relationships between quantities.
+[See:  <a href="./../../lessons/functions-make-life-easier/index.shtml?pathway=algebra-pyret">Functions Make Life Easier!</a>; <a href="./../../lessons/functions-dr/index.shtml?pathway=algebra-pyret">Solving Word Problems with the Design Recipe</a>; <a href="./../../lessons/functions-for-character-animation/index.shtml?pathway=algebra-pyret">Functions for Character Animation</a>.]</p>
+</dd>
+<dt class="hdlist1">8.F.B.4</dt>
+<dd>
+<p>Construct a function to model a linear relationship between two quantities. Determine the rate of change  and initial value of the function from a description of a relationship or from two (x, y) values, including reading these from a table or from a graph. Interpret the rate of change and initial value of a linear function in terms of the situation it models, and in terms of its graph or a table of values.
+[See:  <a href="./../../lessons/functions-can-be-linear/index.shtml?pathway=algebra-pyret">Functions Can Be Linear</a>.]</p>
+</dd>
+<dt class="hdlist1">8.G.A.1</dt>
+<dd>
+<p>Verify experimentally the properties of rotations, reflections, and translations.
+[See:  <a href="./../../lessons/making-game-images/index.shtml?pathway=algebra-pyret">Making Game Images</a>.]</p>
+</dd>
+<dt class="hdlist1">8.G.B</dt>
+<dd>
+<p>Understand and apply the Pythagorean Theorem.
+[See:  <a href="./../../lessons/distance-formula/index.shtml?pathway=algebra-pyret">The Distance Formula</a>.]</p>
+</dd>
+<dt class="hdlist1">8.G.B.7</dt>
+<dd>
+<p>Apply the Pythagorean Theorem to determine unknown side lengths in right triangles in real-world and mathematical problems in two and three dimensions.
+[See:  <a href="./../../lessons/distance-formula/index.shtml?pathway=algebra-pyret">The Distance Formula</a>.]</p>
+</dd>
+<dt class="hdlist1">8.G.B.8</dt>
+<dd>
+<p>Apply the Pythagorean Theorem to find the distance between two points in a coordinate system.
+[See:  <a href="./../../lessons/distance-formula/index.shtml?pathway=algebra-pyret">The Distance Formula</a>.]</p>
+</dd>
+<dt class="hdlist1">HSA.CED.A.1</dt>
+<dd>
+<p>Create equations and inequalities in one variable and use them to solve problems.
+[See:  <a href="./../../lessons/inequalities3-sam/index.shtml?pathway=algebra-pyret">Sam the Butterfly - Applying Inequalities</a>.]</p>
+</dd>
+<dt class="hdlist1">HSA.CED.A.3</dt>
+<dd>
+<p>Represent constraints by equations or inequalities, and by systems of equations and/or inequalities, and interpret solutions as viable or nonviable options in a modeling context.
+[See:  <a href="./../../lessons/inequalities3-sam/index.shtml?pathway=algebra-pyret">Sam the Butterfly - Applying Inequalities</a>.]</p>
+</dd>
+<dt class="hdlist1">HSA.SSE.A.1</dt>
+<dd>
+<p>Interpret expressions that represent a quantity in terms of its context.
+[See:  <a href="./../../lessons/defining-values/index.shtml?pathway=algebra-pyret">Defining Values</a>; <a href="./../../lessons/functions-make-life-easier/index.shtml?pathway=algebra-pyret">Functions Make Life Easier!</a>.]</p>
+</dd>
+<dt class="hdlist1">HSA.SSE.A.1.A</dt>
+<dd>
+<p>Interpret parts of an expression, such as terms, factors, and coefficients.
+[See:  <a href="./../../lessons/piecewise-functions-conditionals/index.shtml?pathway=algebra-pyret">Piecewise Functions and Conditionals</a>; <a href="./../../lessons/player-animation/index.shtml?pathway=algebra-pyret">Player Animation</a>.]</p>
+</dd>
+<dt class="hdlist1">HSA.SSE.A.1.B</dt>
+<dd>
+<p>Interpret complicated expressions by viewing one or more of their parts as a single entity.
+[See:  <a href="./../../lessons/piecewise-functions-conditionals/index.shtml?pathway=algebra-pyret">Piecewise Functions and Conditionals</a>; <a href="./../../lessons/player-animation/index.shtml?pathway=algebra-pyret">Player Animation</a>.]</p>
+</dd>
+<dt class="hdlist1">HSA.SSE.A.2</dt>
+<dd>
+<p>Use the structure of an expression to identify ways to rewrite it.
+[See:  <a href="./../../lessons/order-of-operations/index.shtml?pathway=algebra-pyret">Order of Operations</a>.]</p>
+</dd>
+<dt class="hdlist1">HSA.SSE.B</dt>
+<dd>
+<p>Write expressions in equivalent forms to solve problems.
+[See:  <a href="./../../lessons/order-of-operations/index.shtml?pathway=algebra-pyret">Order of Operations</a>.]</p>
+</dd>
+<dt class="hdlist1">HSF.BF.A</dt>
+<dd>
+<p>Build a function that models a relationship between two quantities.
+[See:  <a href="./../../lessons/function-composition/index.shtml?pathway=algebra-pyret">Function Composition</a>; <a href="./../../lessons/problem-decomposition/index.shtml?pathway=algebra-pyret">Problem Decomposition</a>.]</p>
+</dd>
+<dt class="hdlist1">HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.
+[See:  <a href="./../../lessons/functions-vertical-line-test/index.shtml?pathway=algebra-pyret">The Vertical Line Test</a>; <a href="./../../lessons/functions-can-be-linear/index.shtml?pathway=algebra-pyret">Functions Can Be Linear</a>; <a href="./../../lessons/functions-dr/index.shtml?pathway=algebra-pyret">Solving Word Problems with the Design Recipe</a>; <a href="./../../lessons/problem-decomposition/index.shtml?pathway=algebra-pyret">Problem Decomposition</a>; <a href="./../../lessons/inequalities-collision/index.shtml?pathway=algebra-pyret">Collision Detection - Distance and Inequality</a>.]</p>
+</dd>
+<dt class="hdlist1">HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.
+[See:  <a href="./../../lessons/function-composition/index.shtml?pathway=algebra-pyret">Function Composition</a>; <a href="./../../lessons/problem-decomposition/index.shtml?pathway=algebra-pyret">Problem Decomposition</a>; <a href="./../../lessons/inequalities3-sam/index.shtml?pathway=algebra-pyret">Sam the Butterfly - Applying Inequalities</a>.]</p>
+</dd>
+<dt class="hdlist1">HSF.BF.B</dt>
+<dd>
+<p>Build new functions from existing functions.
+[See:  <a href="./../../lessons/problem-decomposition/index.shtml?pathway=algebra-pyret">Problem Decomposition</a>; <a href="./../../lessons/inequalities3-sam/index.shtml?pathway=algebra-pyret">Sam the Butterfly - Applying Inequalities</a>; <a href="./../../lessons/inequalities-collision/index.shtml?pathway=algebra-pyret">Collision Detection - Distance and Inequality</a>.]</p>
+</dd>
+<dt class="hdlist1">HSF.IF.A</dt>
+<dd>
+<p>Understand the concept of a function and use function notation.
+[See:  <a href="./../../lessons/function-notation/index.shtml?pathway=algebra-pyret">Function Notation</a>.]</p>
+</dd>
+<dt class="hdlist1">HSF.IF.A.1</dt>
+<dd>
+<p>Understand that a function from one set (called the domain) to another set (called the range) assigns to each element of the domain exactly one element of the range. If f is a function and x is an element of its domain, then f(x) denotes the output of f corresponding to the input x. The graph of f is the graph of the equation y = f(x).
+[See:  <a href="./../../lessons/contracts/index.shtml?pathway=algebra-pyret">Contracts</a>; <a href="./../../lessons/function-definition-linear/index.shtml?pathway=algebra-pyret">Defining Linear Functions</a>.]</p>
+</dd>
+<dt class="hdlist1">HSF.IF.A.2</dt>
+<dd>
+<p>Use function notation, evaluate functions for inputs in their domains, and interpret statements that use function notation in terms of a context.
+[See:  <a href="./../../lessons/contracts/index.shtml?pathway=algebra-pyret">Contracts</a>; <a href="./../../lessons/flags/index.shtml?pathway=algebra-pyret">Making Flags</a>; <a href="./../../lessons/function-notation/index.shtml?pathway=algebra-pyret">Function Notation</a>; <a href="./../../lessons/function-definition-linear/index.shtml?pathway=algebra-pyret">Defining Linear Functions</a>; <a href="./../../lessons/inequalities1-simple/index.shtml?pathway=algebra-pyret">Simple Inequalities</a>; <a href="./../../lessons/inequalities2-compound/index.shtml?pathway=algebra-pyret">Compound Inequalities: Solutions &amp; Non-Solutions</a>.]</p>
+</dd>
+<dt class="hdlist1">HSF.IF.B</dt>
+<dd>
+<p>Interpret functions that arise in applications in terms of the context.
+[See:  <a href="./../../lessons/flags/index.shtml?pathway=algebra-pyret">Making Flags</a>; <a href="./../../lessons/functions-make-life-easier/index.shtml?pathway=algebra-pyret">Functions Make Life Easier!</a>.]</p>
+</dd>
+<dt class="hdlist1">HSF.IF.B.5</dt>
+<dd>
+<p>Relate the domain of a function to its graph and, where applicable, to the quantitative relationship it describes.
+[See:  <a href="./../../lessons/function-notation/index.shtml?pathway=algebra-pyret">Function Notation</a>; <a href="./../../lessons/functions-can-be-linear/index.shtml?pathway=algebra-pyret">Functions Can Be Linear</a>.]</p>
+</dd>
+<dt class="hdlist1">HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.
+[See:  <a href="./../../lessons/functions-vertical-line-test/index.shtml?pathway=algebra-pyret">The Vertical Line Test</a>; <a href="./../../lessons/functions-examples-definitions/index.shtml?pathway=algebra-pyret">Functions: Contracts&#x2c; Examples &amp; Definitions</a>; <a href="./../../lessons/functions-can-be-linear/index.shtml?pathway=algebra-pyret">Functions Can Be Linear</a>; <a href="./../../lessons/function-definition-linear/index.shtml?pathway=algebra-pyret">Defining Linear Functions</a>; <a href="./../../lessons/functions-dr/index.shtml?pathway=algebra-pyret">Solving Word Problems with the Design Recipe</a>.]</p>
+</dd>
+<dt class="hdlist1">HSF.IF.C.9</dt>
+<dd>
+<p>Compare properties of two functions each represented in a different way (algebraically, graphically, numerically in tables, or by verbal descriptions).
+[See:  <a href="./../../lessons/functions-can-be-linear/index.shtml?pathway=algebra-pyret">Functions Can Be Linear</a>; <a href="./../../lessons/function-definition-linear/index.shtml?pathway=algebra-pyret">Defining Linear Functions</a>.]</p>
+</dd>
+<dt class="hdlist1">HSF.LE.B</dt>
+<dd>
+<p>Interpret expressions for functions in terms of the situation they model.
+[See:  <a href="./../../lessons/functions-for-character-animation/index.shtml?pathway=algebra-pyret">Functions for Character Animation</a>.]</p>
+</dd>
+<dt class="hdlist1">HSN.Q.A</dt>
+<dd>
+<p>Reason quantitatively and use units to solve problems.
+[See:  <a href="./../../lessons/flags/index.shtml?pathway=algebra-pyret">Making Flags</a>.]</p>
+</dd>
+<dt class="hdlist1">HSS.CP.A.1</dt>
+<dd>
+<p>Describe events as subsets of a sample space (the set of outcomes) using characteristics (or categories) of the outcomes, or as unions, intersections, or complements of other events ('or', 'and', 'not').
+[See:  <a href="./../../lessons/inequalities2-compound/index.shtml?pathway=algebra-pyret">Compound Inequalities: Solutions &amp; Non-Solutions</a>.]</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1 coverageElement standards-CSTA">
+<h2 id="_csta_standards"><a href="https://csteachers.org/page/standards">CSTA Standards</a></h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">1B-AP-09</dt>
+<dd>
+<p>Create programs that use variables to store and modify data.
+[See:  <a href="./../../lessons/defining-values/index.shtml?pathway=algebra-pyret">Defining Values</a>.]</p>
+</dd>
+<dt class="hdlist1">1B-AP-10</dt>
+<dd>
+<p>Create programs that include sequences, events, loops, and conditionals.
+[See:  <a href="./../../lessons/functions-for-character-animation/index.shtml?pathway=algebra-pyret">Functions for Character Animation</a>; <a href="./../../lessons/piecewise-functions-conditionals/index.shtml?pathway=algebra-pyret">Piecewise Functions and Conditionals</a>; <a href="./../../lessons/player-animation/index.shtml?pathway=algebra-pyret">Player Animation</a>.]</p>
+</dd>
+<dt class="hdlist1">1B-AP-11</dt>
+<dd>
+<p>Decompose (break down) problems into smaller, manageable subproblems to facilitate the program development process.
+[See:  <a href="./../../lessons/problem-decomposition/index.shtml?pathway=algebra-pyret">Problem Decomposition</a>.]</p>
+</dd>
+<dt class="hdlist1">1B-AP-12</dt>
+<dd>
+<p>Modify, remix, or incorporate portions of an existing program into one&#8217;s own work, to develop something new or add more advanced features.
+[See:  <a href="./../../lessons/making-game-images/index.shtml?pathway=algebra-pyret">Making Game Images</a>; <a href="./../../lessons/piecewise-functions-conditionals/index.shtml?pathway=algebra-pyret">Piecewise Functions and Conditionals</a>; <a href="./../../lessons/player-animation/index.shtml?pathway=algebra-pyret">Player Animation</a>.]</p>
+</dd>
+<dt class="hdlist1">1B-AP-14</dt>
+<dd>
+<p>Observe intellectual property rights and give appropriate attribution when creating or remixing programs.
+[See:  <a href="./../../lessons/making-game-images/index.shtml?pathway=algebra-pyret">Making Game Images</a>.]</p>
+</dd>
+<dt class="hdlist1">1B-AP-15</dt>
+<dd>
+<p>Test and debug (identify and fix errors) a program or algorithm to ensure it runs as intended.
+[See:  <a href="./../../lessons/functions-make-life-easier/index.shtml?pathway=algebra-pyret">Functions Make Life Easier!</a>.]</p>
+</dd>
+<dt class="hdlist1">1B-IC-21</dt>
+<dd>
+<p>Use public domain or creative commons media, and refrain from copying or using material created by others without permission.
+[See:  <a href="./../../lessons/making-game-images/index.shtml?pathway=algebra-pyret">Making Game Images</a>.]</p>
+</dd>
+<dt class="hdlist1">2-AP-11</dt>
+<dd>
+<p>Create clearly named variables that represent different data types and perform operations on their values.
+[See:  <a href="./../../lessons/simple-data-types/index.shtml?pathway=algebra-pyret">Simple Data Types</a>; <a href="./../../lessons/function-composition/index.shtml?pathway=algebra-pyret">Function Composition</a>; <a href="./../../lessons/defining-values/index.shtml?pathway=algebra-pyret">Defining Values</a>; <a href="./../../lessons/functions-make-life-easier/index.shtml?pathway=algebra-pyret">Functions Make Life Easier!</a>; <a href="./../../lessons/functions-for-character-animation/index.shtml?pathway=algebra-pyret">Functions for Character Animation</a>; <a href="./../../lessons/surface-area-rect-prism/index.shtml?pathway=algebra-pyret">Surface Area of a Rectangular Prism</a>; <a href="./../../lessons/problem-decomposition/index.shtml?pathway=algebra-pyret">Problem Decomposition</a>; <a href="./../../lessons/piecewise-functions-conditionals/index.shtml?pathway=algebra-pyret">Piecewise Functions and Conditionals</a>; <a href="./../../lessons/player-animation/index.shtml?pathway=algebra-pyret">Player Animation</a>; <a href="./../../lessons/distance-formula/index.shtml?pathway=algebra-pyret">The Distance Formula</a>; <a href="./../../lessons/inequalities-collision/index.shtml?pathway=algebra-pyret">Collision Detection - Distance and Inequality</a>.]</p>
+</dd>
+<dt class="hdlist1">2-AP-13</dt>
+<dd>
+<p>Decompose problems and subproblems into parts to facilitate the design, implementation, and review of programs
+[See:  <a href="./../../lessons/problem-decomposition/index.shtml?pathway=algebra-pyret">Problem Decomposition</a>.]</p>
+</dd>
+<dt class="hdlist1">2-AP-14</dt>
+<dd>
+<p>Create procedures with parameters to organize code and make it easier to reuse.
+[See:  <a href="./../../lessons/functions-make-life-easier/index.shtml?pathway=algebra-pyret">Functions Make Life Easier!</a>.]</p>
+</dd>
+<dt class="hdlist1">2-AP-16</dt>
+<dd>
+<p>Incorporate existing code, media, and libraries into original programs, and give attribution.
+[See:  <a href="./../../lessons/making-game-images/index.shtml?pathway=algebra-pyret">Making Game Images</a>.]</p>
+</dd>
+<dt class="hdlist1">2-AP-17</dt>
+<dd>
+<p>Systematically test and refine programs using a range of test cases
+[See:  <a href="./../../lessons/function-composition/index.shtml?pathway=algebra-pyret">Function Composition</a>; <a href="./../../lessons/functions-make-life-easier/index.shtml?pathway=algebra-pyret">Functions Make Life Easier!</a>; <a href="./../../lessons/functions-for-character-animation/index.shtml?pathway=algebra-pyret">Functions for Character Animation</a>; <a href="./../../lessons/surface-area-rect-prism/index.shtml?pathway=algebra-pyret">Surface Area of a Rectangular Prism</a>; <a href="./../../lessons/problem-decomposition/index.shtml?pathway=algebra-pyret">Problem Decomposition</a>; <a href="./../../lessons/piecewise-functions-conditionals/index.shtml?pathway=algebra-pyret">Piecewise Functions and Conditionals</a>; <a href="./../../lessons/player-animation/index.shtml?pathway=algebra-pyret">Player Animation</a>; <a href="./../../lessons/distance-formula/index.shtml?pathway=algebra-pyret">The Distance Formula</a>; <a href="./../../lessons/inequalities-collision/index.shtml?pathway=algebra-pyret">Collision Detection - Distance and Inequality</a>.]</p>
+</dd>
+<dt class="hdlist1">2-AP-19</dt>
+<dd>
+<p>Document programs in order to make them easier to follow, test, and debug.
+[See:  <a href="./../../lessons/function-composition/index.shtml?pathway=algebra-pyret">Function Composition</a>; <a href="./../../lessons/functions-make-life-easier/index.shtml?pathway=algebra-pyret">Functions Make Life Easier!</a>; <a href="./../../lessons/functions-for-character-animation/index.shtml?pathway=algebra-pyret">Functions for Character Animation</a>; <a href="./../../lessons/surface-area-rect-prism/index.shtml?pathway=algebra-pyret">Surface Area of a Rectangular Prism</a>; <a href="./../../lessons/problem-decomposition/index.shtml?pathway=algebra-pyret">Problem Decomposition</a>; <a href="./../../lessons/piecewise-functions-conditionals/index.shtml?pathway=algebra-pyret">Piecewise Functions and Conditionals</a>; <a href="./../../lessons/player-animation/index.shtml?pathway=algebra-pyret">Player Animation</a>; <a href="./../../lessons/distance-formula/index.shtml?pathway=algebra-pyret">The Distance Formula</a>; <a href="./../../lessons/inequalities-collision/index.shtml?pathway=algebra-pyret">Collision Detection - Distance and Inequality</a>.]</p>
+</dd>
+<dt class="hdlist1">3A-AP-16</dt>
+<dd>
+<p>Design and iteratively develop computational artifacts for practical intent, personal expression, or to address a societal issue by using events to initiate instructions.
+[See:  <a href="./../../lessons/functions-for-character-animation/index.shtml?pathway=algebra-pyret">Functions for Character Animation</a>; <a href="./../../lessons/player-animation/index.shtml?pathway=algebra-pyret">Player Animation</a>.]</p>
+</dd>
+<dt class="hdlist1">3A-AP-17</dt>
+<dd>
+<p>Decompose problems into smaller components through systematic analysis, using constructs such as procedures, modules, and/or objects.
+[See:  <a href="./../../lessons/problem-decomposition/index.shtml?pathway=algebra-pyret">Problem Decomposition</a>.]</p>
+</dd>
+<dt class="hdlist1">3A-AP-18</dt>
+<dd>
+<p>Create artifacts by using procedures within a program, combinations of data and procedures, or independent but interrelated programs.
+[See:  <a href="./../../lessons/flags/index.shtml?pathway=algebra-pyret">Making Flags</a>; <a href="./../../lessons/making-game-images/index.shtml?pathway=algebra-pyret">Making Game Images</a>.]</p>
+</dd>
+<dt class="hdlist1">3A-AP-20</dt>
+<dd>
+<p>Evaluate licenses that limit or restrict use of computational artifacts when using resources such as libraries
+[See:  <a href="./../../lessons/making-game-images/index.shtml?pathway=algebra-pyret">Making Game Images</a>.]</p>
+</dd>
+<dt class="hdlist1">3B-AP-10</dt>
+<dd>
+<p>Use and adapt classic algorithms to solve computational problems.
+[See:  <a href="./../../lessons/inequalities1-simple/index.shtml?pathway=algebra-pyret">Simple Inequalities</a>; <a href="./../../lessons/inequalities2-compound/index.shtml?pathway=algebra-pyret">Compound Inequalities: Solutions &amp; Non-Solutions</a>; <a href="./../../lessons/inequalities3-sam/index.shtml?pathway=algebra-pyret">Sam the Butterfly - Applying Inequalities</a>; <a href="./../../lessons/distance-formula/index.shtml?pathway=algebra-pyret">The Distance Formula</a>.]</p>
+</dd>
+<dt class="hdlist1">3B-AP-14</dt>
+<dd>
+<p>Construct solutions to problems using student-created components, such as procedures, modules and/or objects.
+[See:  <a href="./../../lessons/functions-make-life-easier/index.shtml?pathway=algebra-pyret">Functions Make Life Easier!</a>; <a href="./../../lessons/functions-for-character-animation/index.shtml?pathway=algebra-pyret">Functions for Character Animation</a>; <a href="./../../lessons/problem-decomposition/index.shtml?pathway=algebra-pyret">Problem Decomposition</a>; <a href="./../../lessons/piecewise-functions-conditionals/index.shtml?pathway=algebra-pyret">Piecewise Functions and Conditionals</a>; <a href="./../../lessons/player-animation/index.shtml?pathway=algebra-pyret">Player Animation</a>; <a href="./../../lessons/distance-formula/index.shtml?pathway=algebra-pyret">The Distance Formula</a>; <a href="./../../lessons/inequalities-collision/index.shtml?pathway=algebra-pyret">Collision Detection - Distance and Inequality</a>.]</p>
+</dd>
+<dt class="hdlist1">3B-AP-21</dt>
+<dd>
+<p>Develop and use a series of test cases to verify that a program performs according to its design specifications.
+[See:  <a href="./../../lessons/function-composition/index.shtml?pathway=algebra-pyret">Function Composition</a>; <a href="./../../lessons/functions-make-life-easier/index.shtml?pathway=algebra-pyret">Functions Make Life Easier!</a>; <a href="./../../lessons/functions-for-character-animation/index.shtml?pathway=algebra-pyret">Functions for Character Animation</a>; <a href="./../../lessons/problem-decomposition/index.shtml?pathway=algebra-pyret">Problem Decomposition</a>; <a href="./../../lessons/piecewise-functions-conditionals/index.shtml?pathway=algebra-pyret">Piecewise Functions and Conditionals</a>; <a href="./../../lessons/player-animation/index.shtml?pathway=algebra-pyret">Player Animation</a>; <a href="./../../lessons/distance-formula/index.shtml?pathway=algebra-pyret">The Distance Formula</a>; <a href="./../../lessons/inequalities-collision/index.shtml?pathway=algebra-pyret">Collision Detection - Distance and Inequality</a>.]</p>
+</dd>
+<dt class="hdlist1">3B-AP-22</dt>
+<dd>
+<p>Modify an existing program to add additional functionality and discuss intended and unintended implications (e.g., breaking other functionality).
+[See:  <a href="./../../lessons/player-animation/index.shtml?pathway=algebra-pyret">Player Animation</a>.]</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1 coverageElement standards-K12CS">
+<h2 id="_k_12cs_standards"><a href="https://k12cs.org">K-12CS Standards</a></h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">6-8.Algorithms and Programming.Modularity</dt>
+<dd>
+<p>Programs use procedures to organize code, hide implementation details, and make code easier to reuse. Procedures can be repurposed in new programs. Defining parameters for procedures can generalize behavior and increase reusability.
+[See:  <a href="./../../lessons/functions-make-life-easier/index.shtml?pathway=algebra-pyret">Functions Make Life Easier!</a>.]</p>
+</dd>
+<dt class="hdlist1">6-8.Algorithms and Programming.Variables</dt>
+<dd>
+<p>Programmers create variables to store data values of selected types. A meaningful identifier is assigned to each variable to access and perform operations on the value by name. Variables enable the flexibility to represent different situations, process different sets of data, and produce varying outputs.
+[See:  <a href="./../../lessons/defining-values/index.shtml?pathway=algebra-pyret">Defining Values</a>; <a href="./../../lessons/functions-make-life-easier/index.shtml?pathway=algebra-pyret">Functions Make Life Easier!</a>.]</p>
+</dd>
+<dt class="hdlist1">9-12.Algorithms and Programming.Control</dt>
+<dd>
+<p>Programmers consider tradeoffs related to implementation, readability, and program performance when selecting and combining control structures.
+[See:  <a href="./../../lessons/piecewise-functions-conditionals/index.shtml?pathway=algebra-pyret">Piecewise Functions and Conditionals</a>.]</p>
+</dd>
+<dt class="hdlist1">9-12.Algorithms and Programming.Modularity</dt>
+<dd>
+<p>Complex programs are designed as systems of interacting modules, each with a specific role, coordinating for a common overall purpose. These modules can be procedures within a program; combinations of data and procedures; or independent, but interrelated, programs. Modules allow for better management of complex tasks.
+[See:  <a href="./../../lessons/functions-make-life-easier/index.shtml?pathway=algebra-pyret">Functions Make Life Easier!</a>.]</p>
+</dd>
+<dt class="hdlist1">9-12.Impacts of Computing.Social Interactions</dt>
+<dd>
+<p>Many aspects of society, especially careers, have been affected by the degree of communication afforded by computing. The increased connectivity between people in different cultures and in different career fields has changed the nature and content of many careers.
+[See:  <a href="./../../lessons/computing-needs-all-voices/index.shtml?pathway=algebra-pyret">Computing Needs All Voices</a>.]</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1 coverageElement standards-Oklahoma">
+<h2 id="_oklahoma_standards"><a href="https://sde.ok.gov/oklahoma-academic-standards">Oklahoma Standards</a></h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">OK.3.A.V.01</dt>
+<dd>
+<p>Create programs that use variables to store and modify grade level appropriate data.
+[See:  <a href="./../../lessons/defining-values/index.shtml?pathway=algebra-pyret">Defining Values</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.3.AP.A.01</dt>
+<dd>
+<p>Compare multiple algorithms for the same task.
+[See:  <a href="./../../lessons/flags/index.shtml?pathway=algebra-pyret">Making Flags</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.3.AP.M.01</dt>
+<dd>
+<p>Decompose the steps needed to solve a problem into a precise sequence of instructions.
+[See:  <a href="./../../lessons/flags/index.shtml?pathway=algebra-pyret">Making Flags</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.3.AP.M.02</dt>
+<dd>
+<p>With grade appropriate complexity, modify, remix, or incorporate portions of an existing program into one&#8217;s own work, to develop something new or add more advanced features.
+[See:  <a href="./../../lessons/making-game-images/index.shtml?pathway=algebra-pyret">Making Game Images</a>; <a href="./../../lessons/functions-for-character-animation/index.shtml?pathway=algebra-pyret">Functions for Character Animation</a>; <a href="./../../lessons/player-animation/index.shtml?pathway=algebra-pyret">Player Animation</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.3.AP.PD.01</dt>
+<dd>
+<p>Use an iterative process to plan the development of a program while solving simple problems.
+[See:  <a href="./../../lessons/functions-make-life-easier/index.shtml?pathway=algebra-pyret">Functions Make Life Easier!</a>; <a href="./../../lessons/functions-dr/index.shtml?pathway=algebra-pyret">Solving Word Problems with the Design Recipe</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.3.AP.PD.02</dt>
+<dd>
+<p>Observe intellectual property rights and give appropriate credit when creating or remixing programs.
+[See:  <a href="./../../lessons/making-game-images/index.shtml?pathway=algebra-pyret">Making Game Images</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.3.AP.PD.03</dt>
+<dd>
+<p>Analyze and debug a program that includes sequencing, repetition and variables in a programming language.
+[See:  <a href="./../../lessons/flags/index.shtml?pathway=algebra-pyret">Making Flags</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.3.AP.PD.04</dt>
+<dd>
+<p>Communicate and explain your program development using comments, presentations and demonstrations.
+[See:  <a href="./../../lessons/functions-dr/index.shtml?pathway=algebra-pyret">Solving Word Problems with the Design Recipe</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.4.AP.A.01</dt>
+<dd>
+<p>Compare and refine multiple algorithms for the same task.
+[See:  <a href="./../../lessons/flags/index.shtml?pathway=algebra-pyret">Making Flags</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.4.AP.C.01</dt>
+<dd>
+<p>Create programs using a programming language that utilize sequencing, repetition, conditionals and variables using math operations manipulate values to solve a problem or express ideas both independently and collaboratively.
+[See:  <a href="./../../lessons/flags/index.shtml?pathway=algebra-pyret">Making Flags</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.4.AP.M.01</dt>
+<dd>
+<p>Decompose large problems into smaller, manageable subproblems to facilitate the program development process.
+[See:  <a href="./../../lessons/problem-decomposition/index.shtml?pathway=algebra-pyret">Problem Decomposition</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.4.AP.M.02</dt>
+<dd>
+<p>With grade appropriate complexity, modify, remix, or incorporate portions of an existing program into one&#8217;s own work, to develop something new or add more advanced features.
+[See:  <a href="./../../lessons/making-game-images/index.shtml?pathway=algebra-pyret">Making Game Images</a>; <a href="./../../lessons/functions-for-character-animation/index.shtml?pathway=algebra-pyret">Functions for Character Animation</a>; <a href="./../../lessons/player-animation/index.shtml?pathway=algebra-pyret">Player Animation</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.4.AP.PD.02</dt>
+<dd>
+<p>Observe intellectual property rights and give appropriate credit when creating or remixing programs.
+[See:  <a href="./../../lessons/making-game-images/index.shtml?pathway=algebra-pyret">Making Game Images</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.4.AP.PD.04</dt>
+<dd>
+<p>Communicate and explain your program development using comments, presentations and demonstrations.
+[See:  <a href="./../../lessons/functions-dr/index.shtml?pathway=algebra-pyret">Solving Word Problems with the Design Recipe</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.4.AP.V.01</dt>
+<dd>
+<p>Create programs that use variables to store and modify grade level appropriate data.
+[See:  <a href="./../../lessons/defining-values/index.shtml?pathway=algebra-pyret">Defining Values</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.5.AP.A.01</dt>
+<dd>
+<p>Compare and refine multiple algorithms for the same task and determine which is the most efficient.
+[See:  <a href="./../../lessons/function-composition/index.shtml?pathway=algebra-pyret">Function Composition</a>; <a href="./../../lessons/flags/index.shtml?pathway=algebra-pyret">Making Flags</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.5.AP.M.01</dt>
+<dd>
+<p>Decompose large problems into smaller, manageable subproblems and then into a precise sequence of instructions.
+[See:  <a href="./../../lessons/problem-decomposition/index.shtml?pathway=algebra-pyret">Problem Decomposition</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.5.AP.M.02</dt>
+<dd>
+<p>With grade appropriate complexity, modify, remix, or incorporate portions of an existing program into one&#8217;s own work, to develop something new or add more advanced features.
+[See:  <a href="./../../lessons/making-game-images/index.shtml?pathway=algebra-pyret">Making Game Images</a>; <a href="./../../lessons/functions-for-character-animation/index.shtml?pathway=algebra-pyret">Functions for Character Animation</a>; <a href="./../../lessons/player-animation/index.shtml?pathway=algebra-pyret">Player Animation</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.5.AP.PD.02</dt>
+<dd>
+<p>Observe intellectual property rights and give appropriate credit when creating or remixing programs.
+[See:  <a href="./../../lessons/making-game-images/index.shtml?pathway=algebra-pyret">Making Game Images</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.5.AP.PD.04</dt>
+<dd>
+<p>Communicate and explain your program development using comments, presentations and demonstrations.
+[See:  <a href="./../../lessons/functions-dr/index.shtml?pathway=algebra-pyret">Solving Word Problems with the Design Recipe</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.5.AP.V.01</dt>
+<dd>
+<p>Create programs that use variables to store and modify grade level appropriate data.
+[See:  <a href="./../../lessons/defining-values/index.shtml?pathway=algebra-pyret">Defining Values</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.5.GM.1.1</dt>
+<dd>
+<p>Describe, classify and construct triangles, including equilateral, right, scalene, and isosceles triangles. Recognize triangles in various contexts.
+[See:  <a href="./../../lessons/contracts/index.shtml?pathway=algebra-pyret">Contracts</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.6.A.1.1</dt>
+<dd>
+<p>Plot integer- and rational-valued (limited to halves and fourths) ordered-pairs as coordinates in all four quadrants and recognize the reflective relationships among coordinates that differ only by their signs.
+[See:  <a href="./../../lessons/coordinates/index.shtml?pathway=algebra-pyret">Coordinates and Game Design</a>; <a href="./../../lessons/flags/index.shtml?pathway=algebra-pyret">Making Flags</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.6.A.1.3</dt>
+<dd>
+<p>Use and evaluate variables in expressions, equations, and inequalities that arise from various contexts, including determining when or if, for a given value of the variable, an equation or inequality involving a variable is true or false.
+[See:  <a href="./../../lessons/simple-data-types/index.shtml?pathway=algebra-pyret">Simple Data Types</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.6.A.3.1</dt>
+<dd>
+<p>Represent real-world or mathematical situations using expressions, equations and inequalities involving variables and rational numbers.
+[See:  <a href="./../../lessons/inequalities1-simple/index.shtml?pathway=algebra-pyret">Simple Inequalities</a>; <a href="./../../lessons/inequalities2-compound/index.shtml?pathway=algebra-pyret">Compound Inequalities: Solutions &amp; Non-Solutions</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.6.AP.A.01</dt>
+<dd>
+<p>Use an existing algorithm in natural language or pseudocode to solve complex problems.
+[See:  <a href="./../../lessons/functions-dr/index.shtml?pathway=algebra-pyret">Solving Word Problems with the Design Recipe</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.6.AP.C.01</dt>
+<dd>
+<p>Develop programs that utilize combinations of repetition, conditionals, and the manipulation of variables representing different data types.
+[See:  <a href="./../../lessons/inequalities3-sam/index.shtml?pathway=algebra-pyret">Sam the Butterfly - Applying Inequalities</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.6.AP.M.01</dt>
+<dd>
+<p>Decompose problems into parts to facilitate the design, implementation, and review of programs.
+[See:  <a href="./../../lessons/flags/index.shtml?pathway=algebra-pyret">Making Flags</a>; <a href="./../../lessons/problem-decomposition/index.shtml?pathway=algebra-pyret">Problem Decomposition</a>; <a href="./../../lessons/inequalities3-sam/index.shtml?pathway=algebra-pyret">Sam the Butterfly - Applying Inequalities</a>; <a href="./../../lessons/inequalities-collision/index.shtml?pathway=algebra-pyret">Collision Detection - Distance and Inequality</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.6.AP.PD.01</dt>
+<dd>
+<p>Seek and incorporate feedback from team members to refine a solution to a problem.
+[See:  <a href="./../../lessons/flags/index.shtml?pathway=algebra-pyret">Making Flags</a>; <a href="./../../lessons/making-game-images/index.shtml?pathway=algebra-pyret">Making Game Images</a>; <a href="./../../lessons/functions-for-character-animation/index.shtml?pathway=algebra-pyret">Functions for Character Animation</a>; <a href="./../../lessons/player-animation/index.shtml?pathway=algebra-pyret">Player Animation</a>; <a href="./../../lessons/inequalities-collision/index.shtml?pathway=algebra-pyret">Collision Detection - Distance and Inequality</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.6.AP.PD.02</dt>
+<dd>
+<p>Incorporate existing code, media, and libraries into original programs and give attribution.
+[See:  <a href="./../../lessons/making-game-images/index.shtml?pathway=algebra-pyret">Making Game Images</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.6.AP.PD.05</dt>
+<dd>
+<p>Document text-based programs in order to make them easier to follow, test, and debug.
+[See:  <a href="./../../lessons/functions-dr/index.shtml?pathway=algebra-pyret">Solving Word Problems with the Design Recipe</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.6.GM.2.2</dt>
+<dd>
+<p>Develop and use the fact that the sum of the interior angles of a triangle is 180° to determine missing angle measures in a triangle.
+[See:  <a href="./../../lessons/contracts/index.shtml?pathway=algebra-pyret">Contracts</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.6.IC.C.01</dt>
+<dd>
+<p>Explain how computing impacts people&#8217;s everyday activities.
+[See:  <a href="./../../lessons/computing-needs-all-voices/index.shtml?pathway=algebra-pyret">Computing Needs All Voices</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.7.A.3.3</dt>
+<dd>
+<p>Represent real-world or mathematical situations using equations and inequalities involving variables and rational numbers.
+[See:  <a href="./../../lessons/defining-values/index.shtml?pathway=algebra-pyret">Defining Values</a>; <a href="./../../lessons/inequalities1-simple/index.shtml?pathway=algebra-pyret">Simple Inequalities</a>; <a href="./../../lessons/inequalities2-compound/index.shtml?pathway=algebra-pyret">Compound Inequalities: Solutions &amp; Non-Solutions</a>; <a href="./../../lessons/inequalities3-sam/index.shtml?pathway=algebra-pyret">Sam the Butterfly - Applying Inequalities</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.7.A.4.2</dt>
+<dd>
+<p>Apply understanding of order of operations and grouping symbols when using calculators and other technologies
+[See:  <a href="./../../lessons/order-of-operations/index.shtml?pathway=algebra-pyret">Order of Operations</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.7.AP.A.01</dt>
+<dd>
+<p>Select and modify an existing algorithm in natural language or pseudocode to solve complex problems.
+[See:  <a href="./../../lessons/simple-data-types/index.shtml?pathway=algebra-pyret">Simple Data Types</a>; <a href="./../../lessons/functions-dr/index.shtml?pathway=algebra-pyret">Solving Word Problems with the Design Recipe</a>; <a href="./../../lessons/surface-area-rect-prism/index.shtml?pathway=algebra-pyret">Surface Area of a Rectangular Prism</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.7.AP.C.01</dt>
+<dd>
+<p>Develop programs that utilize combinations of repetition, compound conditionals, and the manipulation of variables representing different data types.
+[See:  <a href="./../../lessons/inequalities3-sam/index.shtml?pathway=algebra-pyret">Sam the Butterfly - Applying Inequalities</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.7.AP.M.01</dt>
+<dd>
+<p>Decompose problems into parts to facilitate the design, implementation, and review of increasingly complex programs.
+[See:  <a href="./../../lessons/problem-decomposition/index.shtml?pathway=algebra-pyret">Problem Decomposition</a>; <a href="./../../lessons/inequalities3-sam/index.shtml?pathway=algebra-pyret">Sam the Butterfly - Applying Inequalities</a>; <a href="./../../lessons/inequalities-collision/index.shtml?pathway=algebra-pyret">Collision Detection - Distance and Inequality</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.7.AP.PD.01</dt>
+<dd>
+<p>Seek and incorporate feedback from team members and users to refine a solution to a problem.
+[See:  <a href="./../../lessons/making-game-images/index.shtml?pathway=algebra-pyret">Making Game Images</a>; <a href="./../../lessons/functions-for-character-animation/index.shtml?pathway=algebra-pyret">Functions for Character Animation</a>; <a href="./../../lessons/player-animation/index.shtml?pathway=algebra-pyret">Player Animation</a>; <a href="./../../lessons/inequalities-collision/index.shtml?pathway=algebra-pyret">Collision Detection - Distance and Inequality</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.7.AP.PD.02</dt>
+<dd>
+<p>Incorporate existing code, media, and libraries into original programs of increasing complexity and give attribution.
+[See:  <a href="./../../lessons/making-game-images/index.shtml?pathway=algebra-pyret">Making Game Images</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.7.AP.PD.05</dt>
+<dd>
+<p>Document text-based programs of increasing complexity in order to make them easier to follow, test, and debug.
+[See:  <a href="./../../lessons/functions-dr/index.shtml?pathway=algebra-pyret">Solving Word Problems with the Design Recipe</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.7.CS.T.01</dt>
+<dd>
+<p>Identify and fix increasingly complex software and hardware problems with computing devices and their components.
+[See:  <a href="./../../lessons/problem-decomposition/index.shtml?pathway=algebra-pyret">Problem Decomposition</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.7.GM.1.1</dt>
+<dd>
+<p>Using a variety of tools and strategies, develop the concept that surface area of a rectangular prism with rational-valued edge lengths can be found by wrapping the figure with samesized square units without gaps or overlap. Use appropriate measurements such as cm^2
+[See:  <a href="./../../lessons/surface-area-rect-prism/index.shtml?pathway=algebra-pyret">Surface Area of a Rectangular Prism</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.7.GM.4.1</dt>
+<dd>
+<p>Describe the properties of similarity, compare geometric figures for similarity, and determine scale factors resulting from dilations.
+[See:  <a href="./../../lessons/flags/index.shtml?pathway=algebra-pyret">Making Flags</a>; <a href="./../../lessons/making-game-images/index.shtml?pathway=algebra-pyret">Making Game Images</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.7.GM.4.2</dt>
+<dd>
+<p>Apply proportions, ratios, and scale factors to solve problems involving scale drawings and determine side lengths and areas of similar triangles and rectangles.
+[See:  <a href="./../../lessons/flags/index.shtml?pathway=algebra-pyret">Making Flags</a>; <a href="./../../lessons/making-game-images/index.shtml?pathway=algebra-pyret">Making Game Images</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.7.N.1.1</dt>
+<dd>
+<p>Know that every rational number can be written as the ratio of two integers or as a terminating or repeating decimal.
+[See:  <a href="./../../lessons/simple-data-types/index.shtml?pathway=algebra-pyret">Simple Data Types</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.7.N.1.2</dt>
+<dd>
+<p>Compare and order rational numbers expressed in various forms using the symbols &lt;, &gt;, and =.
+[See:  <a href="./../../lessons/simple-data-types/index.shtml?pathway=algebra-pyret">Simple Data Types</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.7.N.1.3</dt>
+<dd>
+<p>Recognize and generate equivalent representations of rational numbers, including equivalent fractions.
+[See:  <a href="./../../lessons/simple-data-types/index.shtml?pathway=algebra-pyret">Simple Data Types</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.8.AP.A.01</dt>
+<dd>
+<p>Design algorithms in natural language, flow and control diagrams, comments within code, and/or pseudocode to solve complex problems.
+[See:  <a href="./../../lessons/flags/index.shtml?pathway=algebra-pyret">Making Flags</a>; <a href="./../../lessons/making-game-images/index.shtml?pathway=algebra-pyret">Making Game Images</a>; <a href="./../../lessons/functions-dr/index.shtml?pathway=algebra-pyret">Solving Word Problems with the Design Recipe</a>; <a href="./../../lessons/functions-for-character-animation/index.shtml?pathway=algebra-pyret">Functions for Character Animation</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.8.AP.C.01</dt>
+<dd>
+<p>Develop programs that utilize combinations of nested repetition, compound conditionals, procedures without parameters, and the manipulation of variables representing different data types.
+[See:  <a href="./../../lessons/simple-data-types/index.shtml?pathway=algebra-pyret">Simple Data Types</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.8.AP.M.01</dt>
+<dd>
+<p>Decompose problems and subproblems into parts to facilitate the design, implementation, and review of complex programs.
+[See:  <a href="./../../lessons/problem-decomposition/index.shtml?pathway=algebra-pyret">Problem Decomposition</a>; <a href="./../../lessons/inequalities3-sam/index.shtml?pathway=algebra-pyret">Sam the Butterfly - Applying Inequalities</a>; <a href="./../../lessons/inequalities-collision/index.shtml?pathway=algebra-pyret">Collision Detection - Distance and Inequality</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.8.AP.PD.02</dt>
+<dd>
+<p>Incorporate existing code, media, and libraries into original programs of increasing complexity and give attribution.
+[See:  <a href="./../../lessons/functions-make-life-easier/index.shtml?pathway=algebra-pyret">Functions Make Life Easier!</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.8.AP.PD.04</dt>
+<dd>
+<p>Explain how effective communication between participants is required for successful collaboration when developing computational artifacts.
+[See:  <a href="./../../lessons/functions-dr/index.shtml?pathway=algebra-pyret">Solving Word Problems with the Design Recipe</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.8.AP.PD.05</dt>
+<dd>
+<p>Document text-based programs of increasing complexity in order to make them easier to follow, test, and debug.
+[See:  <a href="./../../lessons/functions-dr/index.shtml?pathway=algebra-pyret">Solving Word Problems with the Design Recipe</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.8.CS.T.01</dt>
+<dd>
+<p>Systematically identify, fix, and document increasingly complex software and hardware problems with computing devices and their components.
+[See:  <a href="./../../lessons/problem-decomposition/index.shtml?pathway=algebra-pyret">Problem Decomposition</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.A1.A.1.1</dt>
+<dd>
+<p>Use knowledge of solving equations with rational values to represent and solve mathematical and real-world problems (e.g., angle measures, geometric formulas, science, or statistics) and interpret the solutions in the original context.
+[See:  <a href="./../../lessons/functions-make-life-easier/index.shtml?pathway=algebra-pyret">Functions Make Life Easier!</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.A1.A.2</dt>
+<dd>
+<p>Represent and solve real-world and mathematical problems using linear inequalities, compound inequalities and systems of linear inequalities; interpret solutions in the original context.
+[See:  <a href="./../../lessons/inequalities3-sam/index.shtml?pathway=algebra-pyret">Sam the Butterfly - Applying Inequalities</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.A1.A.2.2</dt>
+<dd>
+<p>Represent relationships in various contexts with compound and absolute value inequalities and solve the resulting inequalities by graphing and interpreting the solutions on a number line.
+[See:  <a href="./../../lessons/inequalities2-compound/index.shtml?pathway=algebra-pyret">Compound Inequalities: Solutions &amp; Non-Solutions</a>; <a href="./../../lessons/inequalities3-sam/index.shtml?pathway=algebra-pyret">Sam the Butterfly - Applying Inequalities</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.A1.A.3</dt>
+<dd>
+<p>Generate equivalent algebraic expressions and use algebraic properties to evaluate expressions and arithmetic and geometric sequences.
+[See:  <a href="./../../lessons/order-of-operations/index.shtml?pathway=algebra-pyret">Order of Operations</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.A1.A.3.1</dt>
+<dd>
+<p>Solve equations involving several variables for one variable in terms of the others.
+[See:  <a href="./../../lessons/problem-decomposition/index.shtml?pathway=algebra-pyret">Problem Decomposition</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.A1.A.4</dt>
+<dd>
+<p>Analyze mathematical change involving linear equations in real-world and mathematical problems.
+[See:  <a href="./../../lessons/function-definition-linear/index.shtml?pathway=algebra-pyret">Defining Linear Functions</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.A1.A.4.1</dt>
+<dd>
+<p>Calculate and interpret slope and the x- and y-intercepts of a line using a graph, an equation, two points, or a set of data points to solve realworld and mathematical problems.
+[See:  <a href="./../../lessons/function-definition-linear/index.shtml?pathway=algebra-pyret">Defining Linear Functions</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.A1.D.2.2</dt>
+<dd>
+<p>Describe the concepts of intersections, unions, and complements using Venn diagrams to evaluate probabilities. Understand the relationships between these concepts and the words AND, OR, and NOT.
+[See:  <a href="./../../lessons/inequalities2-compound/index.shtml?pathway=algebra-pyret">Compound Inequalities: Solutions &amp; Non-Solutions</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.A1.F.1.2</dt>
+<dd>
+<p>Identify the dependent and independent variables as well as the domain and range given a function, equation, or graph. Identify restrictions on the domain and range in real-world contexts.
+[See:  <a href="./../../lessons/contracts/index.shtml?pathway=algebra-pyret">Contracts</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.A1.F.1.3</dt>
+<dd>
+<p>Write linear functions, using function notation, to model real-world and mathematical situations.
+[See:  <a href="./../../lessons/contracts/index.shtml?pathway=algebra-pyret">Contracts</a>; <a href="./../../lessons/function-composition/index.shtml?pathway=algebra-pyret">Function Composition</a>; <a href="./../../lessons/functions-make-life-easier/index.shtml?pathway=algebra-pyret">Functions Make Life Easier!</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.A1.F.1.4</dt>
+<dd>
+<p>Given a graph modeling a real-world situation, read and interpret the linear piecewise function (excluding step functions).
+[See:  <a href="./../../lessons/contracts/index.shtml?pathway=algebra-pyret">Contracts</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.A1.F.2.1</dt>
+<dd>
+<p>Distinguish between linear and nonlinear (including exponential) functions arising from real-world and mathematical situations that are represented in tables, graphs, and equations. Understand that linear functions grow by equal intervals and that exponential functions grow by equal factors over equal intervals.
+[See:  <a href="./../../lessons/functions-can-be-linear/index.shtml?pathway=algebra-pyret">Functions Can Be Linear</a>; <a href="./../../lessons/function-definition-linear/index.shtml?pathway=algebra-pyret">Defining Linear Functions</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.A1.F.3</dt>
+<dd>
+<p>Represent functions in multiple ways and use the representation to interpret real-world and mathematical problems.
+[See:  <a href="./../../lessons/function-composition/index.shtml?pathway=algebra-pyret">Function Composition</a>; <a href="./../../lessons/defining-values/index.shtml?pathway=algebra-pyret">Defining Values</a>; <a href="./../../lessons/function-definition-linear/index.shtml?pathway=algebra-pyret">Defining Linear Functions</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.A1.F.3.1</dt>
+<dd>
+<p>Identify and generate equivalent representations of linear equations, graphs, tables, and real-world situations.
+[See:  <a href="./../../lessons/defining-values/index.shtml?pathway=algebra-pyret">Defining Values</a>; <a href="./../../lessons/function-definition-linear/index.shtml?pathway=algebra-pyret">Defining Linear Functions</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.A1.F.3.2</dt>
+<dd>
+<p>Use function notation; evaluate a function, including nonlinear, at a given point in its domain algebraically and graphically. Interpret the results in terms of real-world and mathematical problems.
+[See:  <a href="./../../lessons/function-composition/index.shtml?pathway=algebra-pyret">Function Composition</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.A1.F.3.3</dt>
+<dd>
+<p>Add, subtract, and multiply functions using function notation.
+[See:  <a href="./../../lessons/function-composition/index.shtml?pathway=algebra-pyret">Function Composition</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.G.2D.1.5</dt>
+<dd>
+<p>Use coordinate geometry to represent and analyze line segments and polygons, including determining lengths, midpoints, and slopes of line segments.
+[See:  <a href="./../../lessons/distance-formula/index.shtml?pathway=algebra-pyret">The Distance Formula</a>; <a href="./../../lessons/inequalities-collision/index.shtml?pathway=algebra-pyret">Collision Detection - Distance and Inequality</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.G.2D.1.8</dt>
+<dd>
+<p>Construct logical arguments to prove triangle congruence (SSS, SAS, ASA, AAS and HL) and triangle similarity (AA, SSS, SAS).
+[See:  <a href="./../../lessons/contracts/index.shtml?pathway=algebra-pyret">Contracts</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.G.3D.1.1</dt>
+<dd>
+<p>Solve real-world and mathematical problems
+       using the surface area and volume of prisms, cylinders,
+       pyramids, cones, spheres, and composites of these
+       figures. Use nets, measuring devices, or formulas as
+       appropriate.
+[See:  <a href="./../../lessons/surface-area-rect-prism/index.shtml?pathway=algebra-pyret">Surface Area of a Rectangular Prism</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.G.RT.1.1</dt>
+<dd>
+<p>Apply the distance formula and the Pythagorean Theorem and its
+        converse to solve real-world and mathematical problems, as approximate
+        and exact values, using algebraic and logical reasoning (include Pythagorean
+                                                                         Triples).
+[See:  <a href="./../../lessons/distance-formula/index.shtml?pathway=algebra-pyret">The Distance Formula</a>; <a href="./../../lessons/inequalities-collision/index.shtml?pathway=algebra-pyret">Collision Detection - Distance and Inequality</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.L1.AP.A.01</dt>
+<dd>
+<p>Create a prototype that uses algorithms (e.g., searching, sorting, finding shortest distance) to provide a possible solution for a real-world problem.
+[See:  <a href="./../../lessons/surface-area-rect-prism/index.shtml?pathway=algebra-pyret">Surface Area of a Rectangular Prism</a>; <a href="./../../lessons/inequalities3-sam/index.shtml?pathway=algebra-pyret">Sam the Butterfly - Applying Inequalities</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.L1.AP.M.01</dt>
+<dd>
+<p>Break down a solution into procedures using systematic analysis and design.
+[See:  <a href="./../../lessons/problem-decomposition/index.shtml?pathway=algebra-pyret">Problem Decomposition</a>; <a href="./../../lessons/piecewise-functions-conditionals/index.shtml?pathway=algebra-pyret">Piecewise Functions and Conditionals</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.L1.AP.M.02</dt>
+<dd>
+<p>Create computational artifacts by systematically organizing, manipulating and/or processing data.
+[See:  <a href="./../../lessons/piecewise-functions-conditionals/index.shtml?pathway=algebra-pyret">Piecewise Functions and Conditionals</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.L1.CS.D.01</dt>
+<dd>
+<p>Explain how abstractions hide the underlying implementation details of computing systems embedded in everyday objects.
+[See:  <a href="./../../lessons/coordinates/index.shtml?pathway=algebra-pyret">Coordinates and Game Design</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.L2.AP.M.03</dt>
+<dd>
+<p>Create programming solutions by reusing existing code (e.g., libraries, Application Programming Interface (APIs), code repositories).
+[See:  <a href="./../../lessons/inequalities3-sam/index.shtml?pathway=algebra-pyret">Sam the Butterfly - Applying Inequalities</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.L2.AP.PD.03</dt>
+<dd>
+<p>Develop programs for multiple computing platforms.
+[See:  <a href="./../../lessons/functions-make-life-easier/index.shtml?pathway=algebra-pyret">Functions Make Life Easier!</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.L2.AP.PD.05</dt>
+<dd>
+<p>Develop and use a series of test cases to verify that a program performs according to its design specifications.
+[See:  <a href="./../../lessons/functions-dr/index.shtml?pathway=algebra-pyret">Solving Word Problems with the Design Recipe</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.L2.AP.PD.07</dt>
+<dd>
+<p>Modify an existing program to add additional functionality and discuss intended and unintended implications (e.g., breaking other functionality).
+[See:  <a href="./../../lessons/player-animation/index.shtml?pathway=algebra-pyret">Player Animation</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.MAP.1</dt>
+<dd>
+<p>Develop a deep and flexible conceptual understanding.
+[See:  <a href="./../../lessons/flags/index.shtml?pathway=algebra-pyret">Making Flags</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.MAP.2</dt>
+<dd>
+<p>Develop accurate and appropriate procedural fluency.
+[See:  <a href="./../../lessons/order-of-operations/index.shtml?pathway=algebra-pyret">Order of Operations</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.MAP.3</dt>
+<dd>
+<p>Develop strategies for problem solving.
+[See:  <a href="./../../lessons/functions-for-character-animation/index.shtml?pathway=algebra-pyret">Functions for Character Animation</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.MAP.4</dt>
+<dd>
+<p>Develop mathematical reasoning.
+[See:  <a href="./../../lessons/flags/index.shtml?pathway=algebra-pyret">Making Flags</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.MAP.5</dt>
+<dd>
+<p>Develop a productive mathematical disposition.
+[See:  <a href="./../../lessons/functions-make-life-easier/index.shtml?pathway=algebra-pyret">Functions Make Life Easier!</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.MAP.6</dt>
+<dd>
+<p>Develop the ability to make conjectures, model, and generalize.
+[See:  <a href="./../../lessons/functions-make-life-easier/index.shtml?pathway=algebra-pyret">Functions Make Life Easier!</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.MAP.7</dt>
+<dd>
+<p>Develop the ability to communicate mathematically.
+[See:  <a href="./../../lessons/functions-dr/index.shtml?pathway=algebra-pyret">Solving Word Problems with the Design Recipe</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.PA.A.1.1</dt>
+<dd>
+<p>Recognize that a function is a relationship between an independent variable and a dependent variable in which the value of the independent variable determines the value of the dependent variable.
+[See:  <a href="./../../lessons/contracts/index.shtml?pathway=algebra-pyret">Contracts</a>; <a href="./../../lessons/functions-make-life-easier/index.shtml?pathway=algebra-pyret">Functions Make Life Easier!</a>; <a href="./../../lessons/piecewise-functions-conditionals/index.shtml?pathway=algebra-pyret">Piecewise Functions and Conditionals</a>; <a href="./../../lessons/player-animation/index.shtml?pathway=algebra-pyret">Player Animation</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.PA.A.1.2</dt>
+<dd>
+<p>Use linear functions to represent and explain real-world and mathematical situations.
+[See:  <a href="./../../lessons/functions-make-life-easier/index.shtml?pathway=algebra-pyret">Functions Make Life Easier!</a>; <a href="./../../lessons/functions-dr/index.shtml?pathway=algebra-pyret">Solving Word Problems with the Design Recipe</a>; <a href="./../../lessons/functions-for-character-animation/index.shtml?pathway=algebra-pyret">Functions for Character Animation</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.PA.A.1.3</dt>
+<dd>
+<p>Identify a function as linear if it can be expressed in the form y = mx + b or if its graph is a straight line.
+[See:  <a href="./../../lessons/functions-dr/index.shtml?pathway=algebra-pyret">Solving Word Problems with the Design Recipe</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.PA.A.2</dt>
+<dd>
+<p>Recognize linear functions in real-world and mathematical situations; represent linear functions and other functions with tables, verbal descriptions, symbols, and graphs; solve problems involving linear functions and interpret results in the original context.
+[See:  <a href="./../../lessons/functions-dr/index.shtml?pathway=algebra-pyret">Solving Word Problems with the Design Recipe</a>; <a href="./../../lessons/functions-for-character-animation/index.shtml?pathway=algebra-pyret">Functions for Character Animation</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.PA.A.2.1</dt>
+<dd>
+<p>Represent linear functions with tables, verbal descriptions, symbols, and graphs; translate from one representation to another.
+[See:  <a href="./../../lessons/functions-can-be-linear/index.shtml?pathway=algebra-pyret">Functions Can Be Linear</a>; <a href="./../../lessons/function-definition-linear/index.shtml?pathway=algebra-pyret">Defining Linear Functions</a>; <a href="./../../lessons/functions-dr/index.shtml?pathway=algebra-pyret">Solving Word Problems with the Design Recipe</a>; <a href="./../../lessons/functions-for-character-animation/index.shtml?pathway=algebra-pyret">Functions for Character Animation</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.PA.A.2.2</dt>
+<dd>
+<p>Identify, describe, and analyze linear relationships between two variables.
+[See:  <a href="./../../lessons/functions-can-be-linear/index.shtml?pathway=algebra-pyret">Functions Can Be Linear</a>; <a href="./../../lessons/function-definition-linear/index.shtml?pathway=algebra-pyret">Defining Linear Functions</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.PA.A.2.3</dt>
+<dd>
+<p>Identify graphical properties of linear functions including slope and intercepts. Know that the slope equals the rate of change, and that the yintercept is zero when the function represents a proportional relationship.
+[See:  <a href="./../../lessons/function-definition-linear/index.shtml?pathway=algebra-pyret">Defining Linear Functions</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.PA.A.2.4</dt>
+<dd>
+<p>Predict the effect on the graph of a linear function when the slope or y-intercept changes. Use appropriate tools to examine these effects.
+[See:  <a href="./../../lessons/functions-can-be-linear/index.shtml?pathway=algebra-pyret">Functions Can Be Linear</a>; <a href="./../../lessons/function-definition-linear/index.shtml?pathway=algebra-pyret">Defining Linear Functions</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.PA.A.3</dt>
+<dd>
+<p>Generate equivalent numerical and algebraic expressions and use algebraic properties to evaluate expressions.
+[See:  <a href="./../../lessons/order-of-operations/index.shtml?pathway=algebra-pyret">Order of Operations</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.PA.A.3.1</dt>
+<dd>
+<p>Use substitution to simplify and evaluate algebraic expressions.
+[See:  <a href="./../../lessons/function-composition/index.shtml?pathway=algebra-pyret">Function Composition</a>; <a href="./../../lessons/defining-values/index.shtml?pathway=algebra-pyret">Defining Values</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.PA.A.4</dt>
+<dd>
+<p>Represent real-world and mathematical problems using equations and inequalities involving linear expressions. Solve and graph equations and inequalities symbolically and graphically. Interpret solutions in the original context.
+[See:  <a href="./../../lessons/flags/index.shtml?pathway=algebra-pyret">Making Flags</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.PA.A.4.3</dt>
+<dd>
+<p>Represent real-world situations using equations and inequalities involving one variable.
+[See:  <a href="./../../lessons/inequalities1-simple/index.shtml?pathway=algebra-pyret">Simple Inequalities</a>; <a href="./../../lessons/inequalities2-compound/index.shtml?pathway=algebra-pyret">Compound Inequalities: Solutions &amp; Non-Solutions</a>; <a href="./../../lessons/inequalities3-sam/index.shtml?pathway=algebra-pyret">Sam the Butterfly - Applying Inequalities</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.PA.GM.1</dt>
+<dd>
+<p>Solve problems involving right triangles using the Pythagorean Theorem.
+[See:  <a href="./../../lessons/distance-formula/index.shtml?pathway=algebra-pyret">The Distance Formula</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.PA.GM.1.1</dt>
+<dd>
+<p>Informally justify the Pythagorean Theorem using measurements, diagrams, or dynamic software and use the Pythagorean Theorem to solve problems in two and three dimensions involving right triangles.
+[See:  <a href="./../../lessons/distance-formula/index.shtml?pathway=algebra-pyret">The Distance Formula</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.PA.GM.1.2</dt>
+<dd>
+<p>Use the Pythagorean Theorem to find the distance between any two points in a coordinate plane.
+[See:  <a href="./../../lessons/distance-formula/index.shtml?pathway=algebra-pyret">The Distance Formula</a>; <a href="./../../lessons/inequalities-collision/index.shtml?pathway=algebra-pyret">Collision Detection - Distance and Inequality</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.PA.GM.2</dt>
+<dd>
+<p>Calculate surface area and volume of three-dimensional figures.
+[See:  <a href="./../../lessons/surface-area-rect-prism/index.shtml?pathway=algebra-pyret">Surface Area of a Rectangular Prism</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.PA.GM.2.1</dt>
+<dd>
+<p>Calculate the surface area of a rectangular prism using decomposition or nets. Use appropriate units of measure, such as square centimeters.
+[See:  <a href="./../../lessons/surface-area-rect-prism/index.shtml?pathway=algebra-pyret">Surface Area of a Rectangular Prism</a>.]</p>
+</dd>
+<dt class="hdlist1">OK.PA.GM.2.2</dt>
+<dd>
+<p>Calculate the surface area of a cylinder, in terms of pi and using approximations for pi, using decomposition or nets. Use appropriate units of measure, such as square centimeters.
+[See:  <a href="./../../lessons/surface-area-rect-prism/index.shtml?pathway=algebra-pyret">Surface Area of a Rectangular Prism</a>.]</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1 coverageElement standards-Iowa">
+<h2 id="_iowa_standards"><a href="https://iowacore.gov/standards/iowa-core-standards">Iowa Standards</a></h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">IA.5.G.A.1</dt>
+<dd>
+<p>Use a pair of perpendicular number lines, called axes, to define a coordinate system, with the intersection of the lines (the origin) arranged to coincide with the 0 on each line and a given point in the plane located by using an ordered pair of numbers, called its coordinates. Understand that the first number indicates how far to travel from the origin in the direction of one axis, and the second number indicates how far to travel in the direction of the second axis, with the convention that the names of the two axes and the coordinates correspond (e.g., x-axis and x-coordinate, y-axis and y-coordinate).
+[See:  <a href="./../../lessons/coordinates/index.shtml?pathway=algebra-pyret">Coordinates and Game Design</a>.]</p>
+</dd>
+<dt class="hdlist1">IA.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.
+[See:  <a href="./../../lessons/defining-values/index.shtml?pathway=algebra-pyret">Defining Values</a>.]</p>
+</dd>
+<dt class="hdlist1">IA.HSF.BF.A.1.B</dt>
+<dd>
+<p>Combine standard function types using arithmetic operations.
+[See:  <a href="./../../lessons/function-composition/index.shtml?pathway=algebra-pyret">Function Composition</a>.]</p>
+</dd>
+<dt class="hdlist1">IA.HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.
+[See:  <a href="./../../lessons/function-composition/index.shtml?pathway=algebra-pyret">Function Composition</a>.]</p>
+</dd>
+<dt class="hdlist1">IA.HSF.IF.A.1</dt>
+<dd>
+<p>Understand that a function from one set (called the domain) to another set (called the range) assigns to each element of the domain exactly one element of the range. If f is a function and x is an element of its domain, then f(x) denotes the output of f corresponding to the input x. The graph of f is the graph of the equation y = f(x).
+[See:  <a href="./../../lessons/contracts/index.shtml?pathway=algebra-pyret">Contracts</a>.]</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1 coverageElement textbook-CMP">
+<h2 id="_connected_math"><a href="https://connectedmath.msu.edu/">Connected Math</a></h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">CMP.8.2</dt>
+<dd>
+<p>Looking for Pythagoras: The Pythagorean Theorem. [See:  <a href="./../../lessons/distance-formula/index.shtml?pathway=algebra-pyret">The Distance Formula</a>.]</p>
+</dd>
+<dt class="hdlist1">CMP.6.4</dt>
+<dd>
+<p>Covering and Surrounding: Two Dimensional Measurement. [See:  <a href="./../../lessons/surface-area-rect-prism/index.shtml?pathway=algebra-pyret">Surface Area of a Rectangular Prism</a>.]</p>
+</dd>
+<dt class="hdlist1">CMP.7.7</dt>
+<dd>
+<p>Filling and Wrapping: Three Dimensional Measurement. [See:  <a href="./../../lessons/surface-area-rect-prism/index.shtml?pathway=algebra-pyret">Surface Area of a Rectangular Prism</a>.]</p>
+</dd>
+<dt class="hdlist1">CMP.6.6</dt>
+<dd>
+<p>Variables and Patterns: Focus on Algebra. [See:  <a href="./../../lessons/defining-values/index.shtml?pathway=algebra-pyret">Defining Values</a>.]</p>
+</dd>
+<dt class="hdlist1">CMP.6.1</dt>
+<dd>
+<p>Prime Time: Factors &amp; Multiples. [See:  <a href="./../../lessons/order-of-operations/index.shtml?pathway=algebra-pyret">Order of Operations</a>.]</p>
+</dd>
+<dt class="hdlist1">CMP.7.2</dt>
+<dd>
+<p>Accentuate the Negative: Integers and Rational Numbers. [See:  <a href="./../../lessons/order-of-operations/index.shtml?pathway=algebra-pyret">Order of Operations</a>.]</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1 coverageElement textbook-IM_6">
+<h2 id="_im_6_math"><a href="https://illustrativemathematics.org/">IM 6 Math™</a></h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">IM.6.6.8</dt>
+<dd>
+<p>Equal and Equivalent. [See:  <a href="./../../lessons/problem-decomposition/index.shtml?pathway=algebra-pyret">Problem Decomposition</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.6.1.12</dt>
+<dd>
+<p>What is Surface Area?. [See:  <a href="./../../lessons/surface-area-rect-prism/index.shtml?pathway=algebra-pyret">Surface Area of a Rectangular Prism</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.6.1.13</dt>
+<dd>
+<p>Polyhedra. [See:  <a href="./../../lessons/surface-area-rect-prism/index.shtml?pathway=algebra-pyret">Surface Area of a Rectangular Prism</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.6.1.14</dt>
+<dd>
+<p>Nets and Surface Area. [See:  <a href="./../../lessons/surface-area-rect-prism/index.shtml?pathway=algebra-pyret">Surface Area of a Rectangular Prism</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.6.1.15</dt>
+<dd>
+<p>More Nets, More Surface Area. [See:  <a href="./../../lessons/surface-area-rect-prism/index.shtml?pathway=algebra-pyret">Surface Area of a Rectangular Prism</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.6.3.8</dt>
+<dd>
+<p>More about Constant Speed. [See:  <a href="./../../lessons/functions-for-character-animation/index.shtml?pathway=algebra-pyret">Functions for Character Animation</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.6.6.6</dt>
+<dd>
+<p>Write Expressions Where Letters Stand for Numbers. [See:  <a href="./../../lessons/functions-for-character-animation/index.shtml?pathway=algebra-pyret">Functions for Character Animation</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.6.5.5</dt>
+<dd>
+<p>Decimal Points in Products. [See:  <a href="./../../lessons/making-game-images/index.shtml?pathway=algebra-pyret">Making Game Images</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.6.1.3</dt>
+<dd>
+<p>Reasoning to Find Area. [See:  <a href="./../../lessons/flags/index.shtml?pathway=algebra-pyret">Making Flags</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.6.2.14</dt>
+<dd>
+<p>Solving Equivalent Ratio Problems. [See:  <a href="./../../lessons/flags/index.shtml?pathway=algebra-pyret">Making Flags</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.6.7.14</dt>
+<dd>
+<p>Distances on the Coordinate Plane. [See:  <a href="./../../lessons/flags/index.shtml?pathway=algebra-pyret">Making Flags</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.6.7.15</dt>
+<dd>
+<p>Shapes on the Coordinate Plane. [See:  <a href="./../../lessons/flags/index.shtml?pathway=algebra-pyret">Making Flags</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.6.6.2</dt>
+<dd>
+<p>Truth and Equations. [See:  <a href="./../../lessons/defining-values/index.shtml?pathway=algebra-pyret">Defining Values</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.6.6.16</dt>
+<dd>
+<p>Two Related Quantities, Part 1. [See:  <a href="./../../lessons/contracts/index.shtml?pathway=algebra-pyret">Contracts</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.6.6.17</dt>
+<dd>
+<p>Two Related Quantities, Part 2. [See:  <a href="./../../lessons/contracts/index.shtml?pathway=algebra-pyret">Contracts</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.6.6.18</dt>
+<dd>
+<p>More Relationships. [See:  <a href="./../../lessons/contracts/index.shtml?pathway=algebra-pyret">Contracts</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.6.7.9</dt>
+<dd>
+<p>Solutions of Inequalities. [See:  <a href="./../../lessons/simple-data-types/index.shtml?pathway=algebra-pyret">Simple Data Types</a>; <a href="./../../lessons/inequalities1-simple/index.shtml?pathway=algebra-pyret">Simple Inequalities</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.6.7.10</dt>
+<dd>
+<p>Interpreting Inequalities. [See:  <a href="./../../lessons/simple-data-types/index.shtml?pathway=algebra-pyret">Simple Data Types</a>; <a href="./../../lessons/inequalities1-simple/index.shtml?pathway=algebra-pyret">Simple Inequalities</a>; <a href="./../../lessons/inequalities3-sam/index.shtml?pathway=algebra-pyret">Sam the Butterfly - Applying Inequalities</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.6.6.13</dt>
+<dd>
+<p>Expressions with Exponents. [See:  <a href="./../../lessons/order-of-operations/index.shtml?pathway=algebra-pyret">Order of Operations</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.6.6.14</dt>
+<dd>
+<p>Evaluating Expressions with Exponents. [See:  <a href="./../../lessons/order-of-operations/index.shtml?pathway=algebra-pyret">Order of Operations</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.6.6.15</dt>
+<dd>
+<p>Equivalent Exponential Expressions. [See:  <a href="./../../lessons/order-of-operations/index.shtml?pathway=algebra-pyret">Order of Operations</a>.]</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1 coverageElement textbook-IM_7">
+<h2 id="_im_7_math"><a href="https://illustrativemathematics.org/">IM 7 Math™</a></h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">IM.7.6.17</dt>
+<dd>
+<p>Modeling with Inequalities. [See:  <a href="./../../lessons/inequalities3-sam/index.shtml?pathway=algebra-pyret">Sam the Butterfly - Applying Inequalities</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.7.7.14</dt>
+<dd>
+<p>Surface Area of Right Prisms. [See:  <a href="./../../lessons/surface-area-rect-prism/index.shtml?pathway=algebra-pyret">Surface Area of a Rectangular Prism</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.7.1.1</dt>
+<dd>
+<p>What are Scaled Copies?. [See:  <a href="./../../lessons/flags/index.shtml?pathway=algebra-pyret">Making Flags</a>; <a href="./../../lessons/making-game-images/index.shtml?pathway=algebra-pyret">Making Game Images</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.7.1.5</dt>
+<dd>
+<p>The Size of the Scale Factor. [See:  <a href="./../../lessons/flags/index.shtml?pathway=algebra-pyret">Making Flags</a>; <a href="./../../lessons/making-game-images/index.shtml?pathway=algebra-pyret">Making Game Images</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.7.4.1</dt>
+<dd>
+<p>Lots of Flags. [See:  <a href="./../../lessons/flags/index.shtml?pathway=algebra-pyret">Making Flags</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.7.6.11</dt>
+<dd>
+<p>Using Equations to Solve Problems. [See:  <a href="./../../lessons/defining-values/index.shtml?pathway=algebra-pyret">Defining Values</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.7.2.4</dt>
+<dd>
+<p>Proportional Relationships and Equations. [See:  <a href="./../../lessons/contracts/index.shtml?pathway=algebra-pyret">Contracts</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.7.2.5</dt>
+<dd>
+<p>Two Equations for Each Relationship. [See:  <a href="./../../lessons/contracts/index.shtml?pathway=algebra-pyret">Contracts</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.7.2.6</dt>
+<dd>
+<p>Using Equations to Solve Problems. [See:  <a href="./../../lessons/contracts/index.shtml?pathway=algebra-pyret">Contracts</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.7.6.13</dt>
+<dd>
+<p>Reintroducing Inequalities. [See:  <a href="./../../lessons/simple-data-types/index.shtml?pathway=algebra-pyret">Simple Data Types</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.7.5.13</dt>
+<dd>
+<p>Expressions with Rational Numbers. [See:  <a href="./../../lessons/order-of-operations/index.shtml?pathway=algebra-pyret">Order of Operations</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.7.5.14</dt>
+<dd>
+<p>Solving Problems with Rational Numbers. [See:  <a href="./../../lessons/order-of-operations/index.shtml?pathway=algebra-pyret">Order of Operations</a>.]</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1 coverageElement textbook-IM_8">
+<h2 id="_im_8_math"><a href="https://illustrativemathematics.org/">IM 8 Math™</a></h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">IM.8.8.11</dt>
+<dd>
+<p>Finding Distances in the Coordinate Plane. [See:  <a href="./../../lessons/inequalities-collision/index.shtml?pathway=algebra-pyret">Collision Detection - Distance and Inequality</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.8.8.6</dt>
+<dd>
+<p>Finding Side Lengths of Triangles. [See:  <a href="./../../lessons/distance-formula/index.shtml?pathway=algebra-pyret">The Distance Formula</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.8.8.7</dt>
+<dd>
+<p>A Proof of the Pythagorean Theorem. [See:  <a href="./../../lessons/distance-formula/index.shtml?pathway=algebra-pyret">The Distance Formula</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.8.8.8</dt>
+<dd>
+<p>Finding Unknown Side Lengths. [See:  <a href="./../../lessons/distance-formula/index.shtml?pathway=algebra-pyret">The Distance Formula</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.8.8.10</dt>
+<dd>
+<p>Applications of the Pythagorean Theorem. [See:  <a href="./../../lessons/distance-formula/index.shtml?pathway=algebra-pyret">The Distance Formula</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.8.5.10</dt>
+<dd>
+<p>Piecewise Linear Functions. [See:  <a href="./../../lessons/player-animation/index.shtml?pathway=algebra-pyret">Player Animation</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.8.3.11</dt>
+<dd>
+<p>Equations of All Kinds of Lines. [See:  <a href="./../../lessons/functions-for-character-animation/index.shtml?pathway=algebra-pyret">Functions for Character Animation</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.8.1.2</dt>
+<dd>
+<p>Naming the moves. [See:  <a href="./../../lessons/flags/index.shtml?pathway=algebra-pyret">Making Flags</a>; <a href="./../../lessons/making-game-images/index.shtml?pathway=algebra-pyret">Making Game Images</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.8.1.3</dt>
+<dd>
+<p>Grid Moves. [See:  <a href="./../../lessons/flags/index.shtml?pathway=algebra-pyret">Making Flags</a>; <a href="./../../lessons/making-game-images/index.shtml?pathway=algebra-pyret">Making Game Images</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.8.2.1</dt>
+<dd>
+<p>Projecting and Scaling. [See:  <a href="./../../lessons/flags/index.shtml?pathway=algebra-pyret">Making Flags</a>; <a href="./../../lessons/making-game-images/index.shtml?pathway=algebra-pyret">Making Game Images</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.8.5.1</dt>
+<dd>
+<p>Inputs and Outputs. [See:  <a href="./../../lessons/contracts/index.shtml?pathway=algebra-pyret">Contracts</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.8.5.2</dt>
+<dd>
+<p>Introduction to Functions. [See:  <a href="./../../lessons/contracts/index.shtml?pathway=algebra-pyret">Contracts</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.8.7.7</dt>
+<dd>
+<p>Practice with Rational Bases. [See:  <a href="./../../lessons/order-of-operations/index.shtml?pathway=algebra-pyret">Order of Operations</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.8.1.1</dt>
+<dd>
+<p>Moving in the Plane. [See:  <a href="./../../lessons/coordinates/index.shtml?pathway=algebra-pyret">Coordinates and Game Design</a>; <a href="./../../lessons/flags/index.shtml?pathway=algebra-pyret">Making Flags</a>; <a href="./../../lessons/making-game-images/index.shtml?pathway=algebra-pyret">Making Game Images</a>.]</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1 coverageElement textbook-IM_Alg_1">
+<h2 id="_im_algebra_1"><a href="https://illustrativemathematics.org/">IM Algebra 1</a></h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">IM.Alg1.2.9</dt>
+<dd>
+<p>Which Variable to Solve for? (Part 2). [See:  <a href="./../../lessons/distance-formula/index.shtml?pathway=algebra-pyret">The Distance Formula</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.Alg1.4.12</dt>
+<dd>
+<p>Piecewise Functions. [See:  <a href="./../../lessons/player-animation/index.shtml?pathway=algebra-pyret">Player Animation</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.Alg1.2.20</dt>
+<dd>
+<p>Writing and Solving Inequalities in One Variable. [See:  <a href="./../../lessons/inequalities3-sam/index.shtml?pathway=algebra-pyret">Sam the Butterfly - Applying Inequalities</a>; <a href="./../../lessons/inequalities-collision/index.shtml?pathway=algebra-pyret">Collision Detection - Distance and Inequality</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.Alg1.2.18</dt>
+<dd>
+<p>Representing Situations with Inequalities. [See:  <a href="./../../lessons/inequalities1-simple/index.shtml?pathway=algebra-pyret">Simple Inequalities</a>; <a href="./../../lessons/inequalities2-compound/index.shtml?pathway=algebra-pyret">Compound Inequalities: Solutions &amp; Non-Solutions</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.Alg1.2.8</dt>
+<dd>
+<p>Which Variable to Solve for? (Part 1). [See:  <a href="./../../lessons/problem-decomposition/index.shtml?pathway=algebra-pyret">Problem Decomposition</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.Alg1.2.2</dt>
+<dd>
+<p>Writing Equations to Model Relationships (Part 1). [See:  <a href="./../../lessons/surface-area-rect-prism/index.shtml?pathway=algebra-pyret">Surface Area of a Rectangular Prism</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.Alg1.2.3</dt>
+<dd>
+<p>Writing Equations to Model Relationships (Part 2). [See:  <a href="./../../lessons/surface-area-rect-prism/index.shtml?pathway=algebra-pyret">Surface Area of a Rectangular Prism</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.Alg1.4.6</dt>
+<dd>
+<p>Features of Graphs. [See:  <a href="./../../lessons/functions-for-character-animation/index.shtml?pathway=algebra-pyret">Functions for Character Animation</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.Alg1.4.10</dt>
+<dd>
+<p>Domain and Range (Part 1). [See:  <a href="./../../lessons/functions-for-character-animation/index.shtml?pathway=algebra-pyret">Functions for Character Animation</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.Alg1.4.2</dt>
+<dd>
+<p>Function Notation. [See:  <a href="./../../lessons/contracts/index.shtml?pathway=algebra-pyret">Contracts</a>; <a href="./../../lessons/defining-values/index.shtml?pathway=algebra-pyret">Defining Values</a>; <a href="./../../lessons/making-game-images/index.shtml?pathway=algebra-pyret">Making Game Images</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.Alg1.4.3</dt>
+<dd>
+<p>Interpreting &amp; Using Function Notation. [See:  <a href="./../../lessons/contracts/index.shtml?pathway=algebra-pyret">Contracts</a>; <a href="./../../lessons/flags/index.shtml?pathway=algebra-pyret">Making Flags</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.Alg1.1.6</dt>
+<dd>
+<p>Mystery Computations. [See:  <a href="./../../lessons/simple-data-types/index.shtml?pathway=algebra-pyret">Simple Data Types</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.Alg1.2.6</dt>
+<dd>
+<p>Equivalent Equations. [See:  <a href="./../../lessons/order-of-operations/index.shtml?pathway=algebra-pyret">Order of Operations</a>; <a href="./../../lessons/problem-decomposition/index.shtml?pathway=algebra-pyret">Problem Decomposition</a>.]</p>
+</dd>
+<dt class="hdlist1">IM.Alg1.4.1</dt>
+<dd>
+<p>Describing and Graphing Situations. [See:  <a href="./../../lessons/coordinates/index.shtml?pathway=algebra-pyret">Coordinates and Game Design</a>.]</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1 coverageElement practices-NGSS">
+<h2 id="_science_and_engineering"><a href="https://ngss.nsta.org/practicesfull.aspx">Science and Engineering</a></h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">SEP.7</dt>
+<dd>
+<p>Engaging in Argument from Evidence. [See:  <a href="./../../lessons/defining-values/index.shtml?pathway=algebra-pyret">Defining Values</a>.]</p>
+</dd>
+<dt class="hdlist1">SEP.5</dt>
+<dd>
+<p>Using Mathematics and Computational Thinking. [See:  <a href="./../../lessons/function-composition/index.shtml?pathway=algebra-pyret">Function Composition</a>; <a href="./../../lessons/flags/index.shtml?pathway=algebra-pyret">Making Flags</a>; <a href="./../../lessons/distance-formula/index.shtml?pathway=algebra-pyret">The Distance Formula</a>.]</p>
+</dd>
+<dt class="hdlist1">SEP.8</dt>
+<dd>
+<p>Obtaining, Evaluating, and Communicating Information. [See:  <a href="./../../lessons/contracts/index.shtml?pathway=algebra-pyret">Contracts</a>.]</p>
+</dd>
+<dt class="hdlist1">SEP.2</dt>
+<dd>
+<p>Developing and Using Models. [See:  <a href="./../../lessons/order-of-operations/index.shtml?pathway=algebra-pyret">Order of Operations</a>.]</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1 coverageElement practices-MLR">
+<h2 id="_math_lang_routines"><a href="https://achievethecore.org/peersandpedagogy/developing-math-language-routines/">Math Lang. Routines</a></h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">MLR.6</dt>
+<dd>
+<p>Three Reads. [See:  <a href="./../../lessons/functions-dr/index.shtml?pathway=algebra-pyret">Solving Word Problems with the Design Recipe</a>; <a href="./../../lessons/player-animation/index.shtml?pathway=algebra-pyret">Player Animation</a>.]</p>
+</dd>
+<dt class="hdlist1">MLR.5</dt>
+<dd>
+<p>Co-Craft Questions and Problems. [See:  <a href="./../../lessons/defining-values/index.shtml?pathway=algebra-pyret">Defining Values</a>; <a href="./../../lessons/inequalities1-simple/index.shtml?pathway=algebra-pyret">Simple Inequalities</a>; <a href="./../../lessons/inequalities2-compound/index.shtml?pathway=algebra-pyret">Compound Inequalities: Solutions &amp; Non-Solutions</a>.]</p>
+</dd>
+<dt class="hdlist1">MLR.1</dt>
+<dd>
+<p>Stronger and Clearer Each Time. [See:  <a href="./../../lessons/function-composition/index.shtml?pathway=algebra-pyret">Function Composition</a>; <a href="./../../lessons/functions-dr/index.shtml?pathway=algebra-pyret">Solving Word Problems with the Design Recipe</a>.]</p>
+</dd>
+<dt class="hdlist1">MLR.3</dt>
+<dd>
+<p>Clarify, Critique and Correct. [See:  <a href="./../../lessons/function-composition/index.shtml?pathway=algebra-pyret">Function Composition</a>; <a href="./../../lessons/flags/index.shtml?pathway=algebra-pyret">Making Flags</a>.]</p>
+</dd>
+<dt class="hdlist1">MLR.2</dt>
+<dd>
+<p>Collect and Display. [See:  <a href="./../../lessons/contracts/index.shtml?pathway=algebra-pyret">Contracts</a>.]</p>
+</dd>
+<dt class="hdlist1">MLR.8</dt>
+<dd>
+<p>Discussion Supports. [See:  <a href="./../../lessons/contracts/index.shtml?pathway=algebra-pyret">Contracts</a>; <a href="./../../lessons/defining-values/index.shtml?pathway=algebra-pyret">Defining Values</a>; <a href="./../../lessons/making-game-images/index.shtml?pathway=algebra-pyret">Making Game Images</a>; <a href="./../../lessons/distance-formula/index.shtml?pathway=algebra-pyret">The Distance Formula</a>.]</p>
+</dd>
+<dt class="hdlist1">MLR.4</dt>
+<dd>
+<p>Information Gap. [See:  <a href="./../../lessons/simple-data-types/index.shtml?pathway=algebra-pyret">Simple Data Types</a>.]</p>
+</dd>
+<dt class="hdlist1">MLR.7</dt>
+<dd>
+<p>Compare and Connect. [See:  <a href="./../../lessons/order-of-operations/index.shtml?pathway=algebra-pyret">Order of Operations</a>; <a href="./../../lessons/function-composition/index.shtml?pathway=algebra-pyret">Function Composition</a>; <a href="./../../lessons/defining-values/index.shtml?pathway=algebra-pyret">Defining Values</a>; <a href="./../../lessons/flags/index.shtml?pathway=algebra-pyret">Making Flags</a>; <a href="./../../lessons/functions-dr/index.shtml?pathway=algebra-pyret">Solving Word Problems with the Design Recipe</a>; <a href="./../../lessons/problem-decomposition/index.shtml?pathway=algebra-pyret">Problem Decomposition</a>; <a href="./../../lessons/inequalities-collision/index.shtml?pathway=algebra-pyret">Collision Detection - Distance and Inequality</a>.]</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1 coverageElement practices-CC">
+<h2 id="_math"><a href="http://corestandards.org/Math/">Math</a></h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">MP.8</dt>
+<dd>
+<p>Look for and express regularity in repeated reasoning. [See:  <a href="./../../lessons/defining-values/index.shtml?pathway=algebra-pyret">Defining Values</a>; <a href="./../../lessons/flags/index.shtml?pathway=algebra-pyret">Making Flags</a>; <a href="./../../lessons/functions-make-life-easier/index.shtml?pathway=algebra-pyret">Functions Make Life Easier!</a>; <a href="./../../lessons/functions-vertical-line-test/index.shtml?pathway=algebra-pyret">The Vertical Line Test</a>; <a href="./../../lessons/functions-examples-definitions/index.shtml?pathway=algebra-pyret">Functions: Contracts&#x2c; Examples &amp; Definitions</a>; <a href="./../../lessons/piecewise-functions-conditionals/index.shtml?pathway=algebra-pyret">Piecewise Functions and Conditionals</a>.]</p>
+</dd>
+<dt class="hdlist1">MP.7</dt>
+<dd>
+<p>Look for and make use of structure. [See:  <a href="./../../lessons/defining-values/index.shtml?pathway=algebra-pyret">Defining Values</a>; <a href="./../../lessons/flags/index.shtml?pathway=algebra-pyret">Making Flags</a>; <a href="./../../lessons/functions-make-life-easier/index.shtml?pathway=algebra-pyret">Functions Make Life Easier!</a>; <a href="./../../lessons/function-notation/index.shtml?pathway=algebra-pyret">Function Notation</a>; <a href="./../../lessons/functions-examples-definitions/index.shtml?pathway=algebra-pyret">Functions: Contracts&#x2c; Examples &amp; Definitions</a>; <a href="./../../lessons/functions-can-be-linear/index.shtml?pathway=algebra-pyret">Functions Can Be Linear</a>; <a href="./../../lessons/function-definition-linear/index.shtml?pathway=algebra-pyret">Defining Linear Functions</a>; <a href="./../../lessons/functions-dr/index.shtml?pathway=algebra-pyret">Solving Word Problems with the Design Recipe</a>.]</p>
+</dd>
+<dt class="hdlist1">MP.5</dt>
+<dd>
+<p>Use appropriate tools strategically. [See:  <a href="./../../lessons/function-composition/index.shtml?pathway=algebra-pyret">Function Composition</a>; <a href="./../../lessons/functions-can-be-linear/index.shtml?pathway=algebra-pyret">Functions Can Be Linear</a>; <a href="./../../lessons/function-definition-linear/index.shtml?pathway=algebra-pyret">Defining Linear Functions</a>.]</p>
+</dd>
+<dt class="hdlist1">MP.6</dt>
+<dd>
+<p>Attend to precision. [See:  <a href="./../../lessons/simple-data-types/index.shtml?pathway=algebra-pyret">Simple Data Types</a>; <a href="./../../lessons/flags/index.shtml?pathway=algebra-pyret">Making Flags</a>; <a href="./../../lessons/making-game-images/index.shtml?pathway=algebra-pyret">Making Game Images</a>; <a href="./../../lessons/functions-make-life-easier/index.shtml?pathway=algebra-pyret">Functions Make Life Easier!</a>; <a href="./../../lessons/function-notation/index.shtml?pathway=algebra-pyret">Function Notation</a>; <a href="./../../lessons/functions-examples-definitions/index.shtml?pathway=algebra-pyret">Functions: Contracts&#x2c; Examples &amp; Definitions</a>; <a href="./../../lessons/problem-decomposition/index.shtml?pathway=algebra-pyret">Problem Decomposition</a>; <a href="./../../lessons/inequalities1-simple/index.shtml?pathway=algebra-pyret">Simple Inequalities</a>; <a href="./../../lessons/player-animation/index.shtml?pathway=algebra-pyret">Player Animation</a>.]</p>
+</dd>
+<dt class="hdlist1">MP.3</dt>
+<dd>
+<p>Construct viable arguments and critique the reasoning of others. [See:  <a href="./../../lessons/order-of-operations/index.shtml?pathway=algebra-pyret">Order of Operations</a>; <a href="./../../lessons/function-definition-linear/index.shtml?pathway=algebra-pyret">Defining Linear Functions</a>; <a href="./../../lessons/functions-dr/index.shtml?pathway=algebra-pyret">Solving Word Problems with the Design Recipe</a>; <a href="./../../lessons/problem-decomposition/index.shtml?pathway=algebra-pyret">Problem Decomposition</a>; <a href="./../../lessons/player-animation/index.shtml?pathway=algebra-pyret">Player Animation</a>; <a href="./../../lessons/distance-formula/index.shtml?pathway=algebra-pyret">The Distance Formula</a>; <a href="./../../lessons/inequalities-collision/index.shtml?pathway=algebra-pyret">Collision Detection - Distance and Inequality</a>.]</p>
+</dd>
+<dt class="hdlist1">MP.1</dt>
+<dd>
+<p>Make sense of problems and persevere in solving them. [See:  <a href="./../../lessons/order-of-operations/index.shtml?pathway=algebra-pyret">Order of Operations</a>; <a href="./../../lessons/function-composition/index.shtml?pathway=algebra-pyret">Function Composition</a>; <a href="./../../lessons/flags/index.shtml?pathway=algebra-pyret">Making Flags</a>; <a href="./../../lessons/functions-can-be-linear/index.shtml?pathway=algebra-pyret">Functions Can Be Linear</a>; <a href="./../../lessons/function-definition-linear/index.shtml?pathway=algebra-pyret">Defining Linear Functions</a>; <a href="./../../lessons/functions-dr/index.shtml?pathway=algebra-pyret">Solving Word Problems with the Design Recipe</a>; <a href="./../../lessons/problem-decomposition/index.shtml?pathway=algebra-pyret">Problem Decomposition</a>; <a href="./../../lessons/inequalities1-simple/index.shtml?pathway=algebra-pyret">Simple Inequalities</a>; <a href="./../../lessons/inequalities2-compound/index.shtml?pathway=algebra-pyret">Compound Inequalities: Solutions &amp; Non-Solutions</a>.]</p>
+</dd>
+<dt class="hdlist1">MP.2</dt>
+<dd>
+<p>Reason abstractly and quantitatively. [See:  <a href="./../../lessons/numbers-inside-video-games/index.shtml?pathway=algebra-pyret">The Numbers Inside Video Games</a>; <a href="./../../lessons/coordinates/index.shtml?pathway=algebra-pyret">Coordinates and Game Design</a>; <a href="./../../lessons/order-of-operations/index.shtml?pathway=algebra-pyret">Order of Operations</a>; <a href="./../../lessons/defining-values/index.shtml?pathway=algebra-pyret">Defining Values</a>; <a href="./../../lessons/flags/index.shtml?pathway=algebra-pyret">Making Flags</a>; <a href="./../../lessons/functions-vertical-line-test/index.shtml?pathway=algebra-pyret">The Vertical Line Test</a>; <a href="./../../lessons/functions-can-be-linear/index.shtml?pathway=algebra-pyret">Functions Can Be Linear</a>; <a href="./../../lessons/function-definition-linear/index.shtml?pathway=algebra-pyret">Defining Linear Functions</a>; <a href="./../../lessons/functions-for-character-animation/index.shtml?pathway=algebra-pyret">Functions for Character Animation</a>; <a href="./../../lessons/distance-formula/index.shtml?pathway=algebra-pyret">The Distance Formula</a>.]</p>
+</dd>
+<dt class="hdlist1">MP.4</dt>
+<dd>
+<p>Model with mathematics. [See:  <a href="./../../lessons/numbers-inside-video-games/index.shtml?pathway=algebra-pyret">The Numbers Inside Video Games</a>; <a href="./../../lessons/order-of-operations/index.shtml?pathway=algebra-pyret">Order of Operations</a>; <a href="./../../lessons/flags/index.shtml?pathway=algebra-pyret">Making Flags</a>; <a href="./../../lessons/functions-vertical-line-test/index.shtml?pathway=algebra-pyret">The Vertical Line Test</a>; <a href="./../../lessons/function-notation/index.shtml?pathway=algebra-pyret">Function Notation</a>; <a href="./../../lessons/functions-dr/index.shtml?pathway=algebra-pyret">Solving Word Problems with the Design Recipe</a>; <a href="./../../lessons/functions-for-character-animation/index.shtml?pathway=algebra-pyret">Functions for Character Animation</a>; <a href="./../../lessons/surface-area-rect-prism/index.shtml?pathway=algebra-pyret">Surface Area of a Rectangular Prism</a>; <a href="./../../lessons/problem-decomposition/index.shtml?pathway=algebra-pyret">Problem Decomposition</a>; <a href="./../../lessons/inequalities1-simple/index.shtml?pathway=algebra-pyret">Simple Inequalities</a>; <a href="./../../lessons/inequalities3-sam/index.shtml?pathway=algebra-pyret">Sam the Butterfly - Applying Inequalities</a>; <a href="./../../lessons/player-animation/index.shtml?pathway=algebra-pyret">Player Animation</a>.]</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1 coverageElement practices-K12CS">
+<h2 id="_k12cs"><a href="https://k12cs.org">K12CS</a></h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">P4</dt>
+<dd>
+<p>Developing and Using Abstractions. [See:  <a href="./../../lessons/functions-make-life-easier/index.shtml?pathway=algebra-pyret">Functions Make Life Easier!</a>.]</p>
+</dd>
+<dt class="hdlist1">P1</dt>
+<dd>
+<p>Fostering an Inclusive Computing Culture. [See:  <a href="./../../lessons/computing-needs-all-voices/index.shtml?pathway=algebra-pyret">Computing Needs All Voices</a>.]</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1 coverageElement practices-SJ">
+<h2 id="_social_justice"><a href="https://www.learningforjustice.org/sites/default/files/2017-06/TT_Social_Justice_Standards_0.pdf">Social Justice</a></h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">SJ.10</dt>
+<dd>
+<p>Students will examine diversity in social, cultural, political and historical contexts rather than in ways that are superficial or oversimplified.. [See:  <a href="./../../lessons/computing-needs-all-voices/index.shtml?pathway=algebra-pyret">Computing Needs All Voices</a>.]</p>
+</dd>
+<dt class="hdlist1">SJ.8</dt>
+<dd>
+<p>Students will respectfully express curiosity about the history and lived experiences of others and will exchange ideas and beliefs in an open-minded way. [See:  <a href="./../../lessons/computing-needs-all-voices/index.shtml?pathway=algebra-pyret">Computing Needs All Voices</a>.]</p>
+</dd>
+<dt class="hdlist1">SJ.7</dt>
+<dd>
+<p>Students will develop language and knowledge to accurately and respectfully describe how people (including themselves) are both similar to and different from each other and others in their identity groups.. [See:  <a href="./../../lessons/computing-needs-all-voices/index.shtml?pathway=algebra-pyret">Computing Needs All Voices</a>.]</p>
+</dd>
+<dt class="hdlist1">SJ.4</dt>
+<dd>
+<p>Students will express pride, confidence and healthy self-esteem without denying the value and dignity of other people.. [See:  <a href="./../../lessons/computing-needs-all-voices/index.shtml?pathway=algebra-pyret">Computing Needs All Voices</a>.]</p>
+</dd>
+<dt class="hdlist1">SJ.2</dt>
+<dd>
+<p>Students will develop language and historical and cultural knowledge that affirm and accurately describe their membership in multiple identity groups. [See:  <a href="./../../lessons/computing-needs-all-voices/index.shtml?pathway=algebra-pyret">Computing Needs All Voices</a>.]</p>
+</dd>
+<dt class="hdlist1">SJ.1</dt>
+<dd>
+<p>Students will develop positive social identities based on their membership in multiple groups in society. [See:  <a href="./../../lessons/computing-needs-all-voices/index.shtml?pathway=algebra-pyret">Computing Needs All Voices</a>.]</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-17 19:42:18 -0400
+</div>
+</div>
+</div>
+</body>
+</html>

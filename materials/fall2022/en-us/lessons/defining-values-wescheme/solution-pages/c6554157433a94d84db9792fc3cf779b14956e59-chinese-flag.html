@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Defining Values - Chinese Flag</title>
+
+  <link rel="stylesheet" href="../../../lib/curriculum.css" />
+    <link rel="stylesheet" href="../../../lib/codemirror.css" />
+    <script src="../../../lib/codemirror.js"></script>
+    <script src="../../../lib/runmode.js"></script>
+    <script src="../../../lib/scheme2.js"></script>
+    <script src="../../../lib/pyret-mode.js"></script>
+    <script src="../../../lib/langtable.js"></script>
+    <script src="../../../lib/bootstraplesson.js"></script>
+    <script src="../../../dependency-graph.js"></script>
+    <script src="../../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"Defining Values - Chinese Flag",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="workbookpage article wescheme" onload="renderSaveToDrive()">
+<div id="header">
+<h1>Defining Values - Chinese Flag</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<style>
+  img { max-width: 400px; }
+</style>
+<div class="paragraph">
+<p><span class="centered-image"><span class="image-figure"><span class="image"><img src="../images/6727de9cb3392aed.png" alt="Chinese Flag. Red rectangle with a large yellow star in the top left corner and an arc of 4 smaller yellow stars to the right of the big star" title="Chinese Flag. Red rectangle with a large yellow star in the top left corner and an arc of 4 smaller yellow stars to the right of the big star"></span><a href="../images/6727de9cb3392aed.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">1</span> What image do you see repeated in the flag? <span class="fitb stretch"><span class="solution">small yellow stars</span></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">2</span> In the code below, highlight or circle all instances of the expression that makes the repeated image.<br>
+  <span class="solution">students should highlight or circle:</span> <span class="obeyspaces"><code class="racket">(star 15 "solid" "yellow")</code></span></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><code class="racket">(define China
+  (put-image (
+   rotate 40 (star 15 "solid" "yellow"))
+   120 175
+       (put-image (
+        rotate 80 (star 15 "solid" "yellow"))
+        140 150
+            (put-image (
+             rotate 60 (star 15 "solid" "yellow"))
+             140 120
+                 (put-image (
+                  rotate 40 (star 15 "solid" "yellow"))
+                  120 90
+                      (put-image (
+                       scale 3 (star 15 "solid" "yellow"))
+                       60 140
+                          (rectangle 300 200 "solid" "red")))))))</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><span class="autonum">3</span> Write the code to define a value for the repeated expression.</p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"><span class="obeyspaces"><code class="racket">(define yellow-star (star 15 "solid" "yellow"))</code></span></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">4</span> Open the <a href="https://www.wescheme.org/openEditor?publicId=Vl5yocVoU4" target="_blank" rel="noopener">Chinese Flag Starter File</a> and click "Run".<br></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Type <code class="racket">china</code> into the Interactions Area and click <strong>Enter</strong>.</p>
+</li>
+<li>
+<p><strong>Save a copy</strong> of the file, and simplify the flag code using the value you defined.</p>
+</li>
+<li>
+<p>Click "Run", and confirm that you still get the same image as the original.</p>
+</li>
+<li>
+<p>Now change the color of all of the stars to black, in both files.</p>
+</li>
+<li>
+<p>Then change the size of the stars.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="autonum">5</span> Why is it helpful to define values for repeated images?</p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"><span class="solution">More efficient. Avoids mistakes. Easier to make changes. Easier to read the code.</span></span></p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 1ex"></span></p>
+</div>
+<div class="paragraph">
+<p><strong>Challenge:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>This file uses a function we haven’t seen before! What is it? <span class="fitb stretch"><em>put-image</em></span></p>
+</li>
+<li>
+<p>Can you figure out its contract? <em>Hint: Focus on the last instance of the function.</em></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"><em>put-image :: Image, Number, Number, Image -&gt; Image</em></span></p>
+</div>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-18 16:15:40 -0400
+</div>
+</div>
+</body>
+</html>

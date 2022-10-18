@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Practicing Contracts: Domain &amp; Range</title>
+
+  <link rel="stylesheet" href="../../../lib/curriculum.css" />
+    <link rel="stylesheet" href="../../../lib/codemirror.css" />
+    <script src="../../../lib/codemirror.js"></script>
+    <script src="../../../lib/runmode.js"></script>
+    <script src="../../../lib/scheme2.js"></script>
+    <script src="../../../lib/pyret-mode.js"></script>
+    <script src="../../../lib/langtable.js"></script>
+    <script src="../../../lib/bootstraplesson.js"></script>
+    <script src="../../../dependency-graph.js"></script>
+    <script src="../../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"Practicing Contracts: Domain %INSERTGDRIVELESSONTITLE Range",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="workbookpage article pyret" onload="renderSaveToDrive()">
+<div id="header">
+<h1>Practicing Contracts: Domain &amp; Range</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<style>
+#content .forceShadedBlockWTF { background-color: #f7f7f8 !important; }
+#content .forceShadedBlockWTF * { font-size: 1rem !important; }
+}
+</style>
+<div class="paragraph">
+<p><span class="vspace" style="height: 1ex"></span></p>
+</div>
+<div class="paragraph">
+<p>Consider the following contract:</p>
+</div>
+<div class="listingblock forceShadedBlockWTF">
+<div class="content">
+<pre><code class="pyret">is-beach-weather :: Number, String -&gt; Boolean</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><span class="autonum">1</span> What is the <strong>Name</strong> of this function? <span class="fitb stretch"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">2</span> How many arguments are in this function&#8217;s <strong>Domain</strong>? <span class="fitb stretch"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">3</span> What is the <strong>Type</strong> of this function&#8217;s <strong>first argument</strong>? <span class="fitb stretch"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">4</span> What is the <strong>Type</strong> of this function&#8217;s <strong>second argument</strong>? <span class="fitb stretch"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">5</span> What is the <strong>Range</strong> of this function? <span class="fitb stretch"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 1ex"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">6</span> Circle the expression below that shows the correct application of this function, based on its contract.</p>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 1ex"></span></p>
+</div>
+<div class="olist upperalpha">
+<ol class="upperalpha">
+<li>
+<p><span class="obeyspaces"><code class="pyret">is-beach-weather&#8203;(&#8203;70, 90&#8203;)</code></span></p>
+</li>
+<li>
+<p><span class="obeyspaces"><code class="pyret">is-beach-weather&#8203;(&#8203;80, 100, "cloudy"&#8203;)</code></span></p>
+</li>
+<li>
+<p><span class="obeyspaces"><code class="pyret">is-beach-weather&#8203;(&#8203;"sunny", 90&#8203;)</code></span></p>
+</li>
+<li>
+<p><span class="obeyspaces"><code class="pyret">is-beach-weather&#8203;(&#8203;90, "stormy weather"&#8203;)</code></span></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 1ex"></span></p>
+</div>
+<div class="paragraph">
+<p>Consider the following contract:</p>
+</div>
+<div class="listingblock forceShadedBlockWTF">
+<div class="content">
+<pre><code class="pyret">cylinder :: Number, Number, String -&gt; Image</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><span class="autonum">7</span> What is the <strong>Name</strong> of this function? <span class="fitb stretch"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">8</span> How many arguments are in this function&#8217;s <strong>Domain</strong>? <span class="fitb stretch"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">9</span> What is the <strong>Type</strong> of this function&#8217;s <strong>first argument</strong>? <span class="fitb stretch"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">10</span> What is the <strong>Type</strong> of this function&#8217;s <strong>second argument</strong>? <span class="fitb stretch"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">11</span> What is the <strong>Type</strong> of this function&#8217;s <strong>third argument</strong>? <span class="fitb stretch"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">12</span> What is the <strong>Range</strong> of this function? <span class="fitb stretch"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 1ex"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">13</span> Circle the expression below that shows the correct application of this function, based on its contract.</p>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 1ex"></span></p>
+</div>
+<div class="olist upperalpha">
+<ol class="upperalpha">
+<li>
+<p><span class="obeyspaces"><code class="pyret">cylinder&#8203;(&#8203;"red", 10, 60&#8203;)</code></span></p>
+</li>
+<li>
+<p><span class="obeyspaces"><code class="pyret">cylinder&#8203;(&#8203;30, "green"&#8203;)</code></span></p>
+</li>
+<li>
+<p><span class="obeyspaces"><code class="pyret">cylinder&#8203;(&#8203;10, 25, "blue"&#8203;)</code></span></p>
+</li>
+<li>
+<p><span class="obeyspaces"><code class="pyret">cylinder&#8203;(&#8203;14, "orange", 25&#8203;)</code></span></p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-17 19:41:47 -0400
+</div>
+</div>
+</body>
+</html>

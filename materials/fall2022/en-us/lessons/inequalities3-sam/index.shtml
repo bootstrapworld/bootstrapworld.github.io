@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Sam the Butterfly - Applying Inequalities</title>
+
+  <link rel="stylesheet" href="../../lib/curriculum.css" />
+    <link rel="stylesheet" href="../../lib/codemirror.css" />
+    <script src="../../lib/codemirror.js"></script>
+    <script src="../../lib/runmode.js"></script>
+    <script src="../../lib/scheme2.js"></script>
+    <script src="../../lib/pyret-mode.js"></script>
+      <script src="../../extlib/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML%2Clocal%2Fmathjaxlocal.js"></script>
+      <script>window.status = "not_ready_to_print";</script>
+    <script src="../../lib/langtable.js"></script>
+    <script src="../../lib/bootstraplesson.js"></script>
+    <script src="../../dependency-graph.js"></script>
+    <script src="../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"Sam the Butterfly - Applying Inequalities",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="article LessonPlan pyret" onload="renderSaveToDrive()">
+<!--#include virtual="/menubar.ssi"-->
+<div id="body" onload="renderSaveToDrive()">
+<div id="header">
+<h1>Sam the Butterfly - Applying Inequalities</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<script>
+function preselect(klass) {
+  const items = document.getElementsByClassName(klass);
+  for (let i = 0; i < items.length; i++) {
+    items[i].style.display = 'none';
+  }
+  if (items.length > 0) {
+    items[0].style.display = 'block';
+  }
+}
+window.onload = function() {
+  preselect('alignedStandards');
+  preselect('alignedTextbooks');
+  preselect('alignedPractices');
+}
+function showStandardsAlignment() {
+  const selectTag = document.getElementsByClassName('standardsAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const stdTables = document.getElementsByClassName('alignedStandards');
+  //const intro = document.getElementsByClassName('alignedStandardsIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < stdTables.length; i++) {
+    const stdTable = stdTables[i];
+    stdTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optStd = opt.value;
+      for (let j = 0; j < stdTables.length; j++) {
+        const stdTable = stdTables[j];
+        if (stdTable.classList.contains(optStd)) {
+          stdTable.style.display = 'block';
+         // introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+function toggleNonPrereqDisplay() {
+  const inputTag = document.getElementsByClassName('sidebarinput')[0];
+  const checkedP = inputTag.checked;
+  const lessonTable = document.getElementsByClassName('sidebarlessons')[0];
+  const lis = lessonTable.getElementsByTagName('li');
+  for (let i = 0; i < lis.length; i++) {
+    const li = lis[i];
+    const lesson = li.getElementsByClassName('prerequisite');
+    if (lesson.length === 0) {
+      li.style.display = checkedP ? 'none' : 'block';
+    }
+  }
+}
+</script>
+<script>
+function showTextbooksAlignment() {
+  const selectTag = document.getElementsByClassName('textbooksAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const textbookTables = document.getElementsByClassName('alignedTextbooks');
+  //const intro = document.getElementsByClassName('alignedTextbooksIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < textbookTables.length; i++) {
+    const textbookTable = textbookTables[i];
+    textbookTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optTextbook = opt.value;
+      for (let j = 0; j < textbookTables.length; j++) {
+        const textbookTable = textbookTables[j];
+        if (textbookTable.classList.contains(optTextbook)) {
+          textbookTable.style.display = 'block';
+          //introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+</script>
+<script>
+function showPracticesAlignment() {
+  const selectTag = document.getElementsByClassName('practicesAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const practiceTables = document.getElementsByClassName('alignedPractices');
+  for (let i = 0; i < practiceTables.length; i++) {
+    const practiceTable = practiceTables[i];
+    practiceTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optPractice = opt.value;
+      for (let j = 0; j < practiceTables.length; j++) {
+        const practiceTable = practiceTables[j];
+        if (practiceTable.classList.contains(optPractice)) {
+          practiceTable.style.display = 'block';
+        }
+      }
+    }
+  }
+}
+</script>
+<div class="paragraph">
+<!-- </p>
+</div>
+--></div><div class="sidebar"><div id="toggle"></div><div class="paragraph"><!--
+<div class="paragraph">
+<p>
+--><div class="sidebarlessons"><strong>Lessons</strong>
+<ul></ul></div>
+</div>
+<table class="tableblock frame-all grid-all stretch sidebarstandards">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Standards in this Lesson</strong>
+<select class="standardsAlignmentSelect"  onchange="showStandardsAlignment()"><option selected="selected" value="standards-CCSS-Math">CCSS-Math</option><option value="standards-CSTA">CSTA</option><option value="standards-Oklahoma">Oklahoma</option></select></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist alignedStandards standards-CCSS-Math">
+<div class="title"><a href="http://corestandards.org/Math/">Common Core Math Standards</a></div>
+<dl>
+<dt class="hdlist1">6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1">6.EE.B.8</dt>
+<dd>
+<p>Write an inequality of the form x &gt; c or x &lt; c to represent a constraint or condition in a real-world or mathematical problem. Recognize that inequalities of the form x &gt; c or x &lt; c have infinitely many solutions; represent solutions of such inequalities on number line diagrams.</p>
+</dd>
+<dt class="hdlist1">7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1">HSA.CED.A.1</dt>
+<dd>
+<p>Create equations and inequalities in one variable and use them to solve problems.</p>
+</dd>
+<dt class="hdlist1">HSA.CED.A.3</dt>
+<dd>
+<p>Represent constraints by equations or inequalities, and by systems of equations and/or inequalities, and interpret solutions as viable or nonviable options in a modeling context.</p>
+</dd>
+<dt class="hdlist1">HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.</p>
+</dd>
+<dt class="hdlist1">HSF.BF.B</dt>
+<dd>
+<p>Build new functions from existing functions.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-CSTA">
+<div class="title"><a href="https://csteachers.org/page/standards">CSTA Standards</a></div>
+<dl>
+<dt class="hdlist1">3B-AP-10</dt>
+<dd>
+<p>Use and adapt classic algorithms to solve computational problems.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Oklahoma">
+<div class="title"><a href="https://sde.ok.gov/oklahoma-academic-standards">Oklahoma Standards</a></div>
+<dl>
+<dt class="hdlist1">OK.6.AP.C.01</dt>
+<dd>
+<p>Develop programs that utilize combinations of repetition, conditionals, and the manipulation of variables representing different data types.</p>
+</dd>
+<dt class="hdlist1">OK.6.AP.M.01</dt>
+<dd>
+<p>Decompose problems into parts to facilitate the design, implementation, and review of programs.</p>
+</dd>
+<dt class="hdlist1">OK.7.A.3.3</dt>
+<dd>
+<p>Represent real-world or mathematical situations using equations and inequalities involving variables and rational numbers.</p>
+</dd>
+<dt class="hdlist1">OK.7.AP.C.01</dt>
+<dd>
+<p>Develop programs that utilize combinations of repetition, compound conditionals, and the manipulation of variables representing different data types.</p>
+</dd>
+<dt class="hdlist1">OK.7.AP.M.01</dt>
+<dd>
+<p>Decompose problems into parts to facilitate the design, implementation, and review of increasingly complex programs.</p>
+</dd>
+<dt class="hdlist1">OK.8.AP.M.01</dt>
+<dd>
+<p>Decompose problems and subproblems into parts to facilitate the design, implementation, and review of complex programs.</p>
+</dd>
+<dt class="hdlist1">OK.A1.A.2</dt>
+<dd>
+<p>Represent and solve real-world and mathematical problems using linear inequalities, compound inequalities and systems of linear inequalities; interpret solutions in the original context.</p>
+</dd>
+<dt class="hdlist1">OK.A1.A.2.2</dt>
+<dd>
+<p>Represent relationships in various contexts with compound and absolute value inequalities and solve the resulting inequalities by graphing and interpreting the solutions on a number line.</p>
+</dd>
+<dt class="hdlist1">OK.L1.AP.A.01</dt>
+<dd>
+<p>Create a prototype that uses algorithms (e.g., searching, sorting, finding shortest distance) to provide a possible solution for a real-world problem.</p>
+</dd>
+<dt class="hdlist1">OK.L2.AP.M.03</dt>
+<dd>
+<p>Create programming solutions by reusing existing code (e.g., libraries, Application Programming Interface (APIs), code repositories).</p>
+</dd>
+<dt class="hdlist1">OK.PA.A.4.3</dt>
+<dd>
+<p>Represent real-world situations using equations and inequalities involving one variable.</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch sidebartextbooks">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Textbook Alignment</strong>
+<select class="textbooksAlignmentSelect"  onchange="showTextbooksAlignment()"><option selected="selected" value="textbook-IM_7"><a href="https://illustrativemathematics.org/">IM 7 Math™</a></option><option value="textbook-IM_Alg_1"><a href="https://illustrativemathematics.org/">IM Algebra 1</a></option><option value="textbook-IM_6"><a href="https://illustrativemathematics.org/">IM 6 Math™</a></option></select></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist alignedTextbooks textbook-IM_7">
+<div class="title"><a href="https://illustrativemathematics.org/">IM 7 Math™</a></div>
+<dl>
+<dt class="hdlist1">IM.7.6.17</dt>
+<dd>
+<p>Modeling with Inequalities</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedTextbooks textbook-IM_Alg_1">
+<div class="title"><a href="https://illustrativemathematics.org/">IM Algebra 1</a></div>
+<dl>
+<dt class="hdlist1">IM.Alg1.2.20</dt>
+<dd>
+<p>Writing and Solving Inequalities in One Variable</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedTextbooks textbook-IM_6">
+<div class="title"><a href="https://illustrativemathematics.org/">IM 6 Math™</a></div>
+<dl>
+<dt class="hdlist1">IM.6.7.10</dt>
+<dd>
+<p>Interpreting Inequalities</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch sidebarpractices">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Practices in this Lesson</strong>
+<select class="practicesAlignmentSelect"  onchange="showPracticesAlignment()"><option selected="selected" value="practices-CC"><a href="http://corestandards.org/Math/">Math</a></option></select></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist alignedPractices practices-CC">
+<div class="title"><a href="http://corestandards.org/Math/">Math</a></div>
+<dl>
+<dt class="hdlist1">MP.4</dt>
+<dd>
+<p>Model with mathematics</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<!-- </p>
+</div>
+--></div><!--
+<div class="paragraph">
+<p>
+-->
+</div>
+<div class="paragraph">
+<p><span class="other-proglang">(Also available in <a href="../../lessons/inequalities3-sam-wescheme/index.shtml">WeScheme</a>)</span></p>
+</div>
+<div class="paragraph description">
+<p>Students discover that inequalities have an important application in video games: keeping game characters on the screen! Students apply their understanding to edit code so that it will keep Sam the Butterfly safely in view.</p>
+</div>
+<table class="tableblock frame-all grid-all stripes-none stretch left-header preamble">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Lesson Goals</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Students will be able to:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>apply their understanding of inequalities to keep a game character on the screen</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Student-Facing Lesson Goals</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>I can use what I know about inequalities to define the boundaries that will keep a character on the screen.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Materials</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist materials-links">
+<ul>
+<li>
+<p><a href="https://docs.google.com/presentation/d/1u67MHJmR6WpX0hydI9alJ_iUR2NsIEkf9PZl-VrAiS4/" target="_blank" rel="noopener">Lesson Slides</a></p>
+</li>
+<li>
+<p><span class="StarterFile"><a href="https://code.pyret.org/editor#share=13d5j4CAfaHu1Y1DzPBvqapzO-Gpr9BrH" target="_blank" rel="noopener">Sam the Butterfly Starter File</a></span></p>
+</li>
+<li>
+<p><span class="materialSectionPlaceholder"> </span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/inequalities3-sam/pages/sam-intro.html" target="_blank" rel="noopener">Sam the Butterfly</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/inequalities3-sam/pages/left-and-right.html" target="_blank" rel="noopener">Left and Right</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/inequalities3-sam/pages/onscreen.html" target="_blank" rel="noopener">Word Problem: is-onscreen</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="../../lessons/inequalities3-sam/pages/onscreen-discussion.html" target="_blank" rel="noopener">Onscreen - More than One Way</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="../../lessons/inequalities3-sam/pages/keeping-ninjacat-in-the-game.html" target="_blank" rel="noopener">Keeping NinjaCat in the Game</a></span></p>
+</li>
+<li>
+<p><strong>Classroom visual:</strong> <a href="javascript:showLangTable()">Language Table</a></p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="dlist glossary">
+<div class="title">Glossary</div>
+<dl>
+<dt class="hdlist1">inequality</dt>
+<dd>
+<p>a mathematical description of the relationship between two variables or quantities, in which they are not necessarily equal</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_introducing_sam_duration_15_minutes_"><span class="section-link"><a href="#_introducing_sam_duration_15_minutes_"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Introducing Sam <span class="duration">15 minutes</span></h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_overview">Overview</h3>
+<div class="paragraph">
+<p>Students are introduced to Sam the Butterfly, a simple activity in which they must write simple <span class="vocab">inequalities</span> to detect when Sam has gone too far in one dimension.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_launch">Launch</h3>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Open the <a href="https://code.pyret.org/editor#share=13d5j4CAfaHu1Y1DzPBvqapzO-Gpr9BrH" target="_blank" rel="noopener">Sam the Butterfly Starter File</a> in a new tab and save a copy of your own.</p>
+</li>
+<li>
+<p>Complete <a href="../../lessons/inequalities3-sam/pages/sam-intro.html" target="_blank" rel="noopener">Introducing Sam</a>, clicking "Run" and using the arrow keys to investigate the program with your partner.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>As students complete the worksheet and explore the program, they should notice that Sam&#8217;s coordinates are displayed at the top of the screen. When Sam is at (0,0), we only see a part of Sam&#8217;s wing because Sam&#8217;s position is based on the <em>center</em> of the butterfly image. Students should observe that Sam can go up to, but not beyond, an x of -50. Students can represent this algebraically as <span class="gdrive-only">x &gt; -50</span><script type="math/tex">\displaystyle x \gt -50</script>, or (for students who notice that Sam only moves in increments of 10) <span class="gdrive-only">x &ge; -40</span><script type="math/tex">\displaystyle x \geq -40</script>.</p>
+</div>
+<div class="paragraph lesson-point">
+<p>Every time Sam moves, we want to check and see if Sam is safe.</p>
+</div>
+<div class="paragraph">
+<p>To further support students, consider asking what three functions are defined in their starter files. Then, ask students what each function <em>should</em> do, when working properly.</p>
+</div>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>What <em>should</em> our left-checking function do?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Check to see if x is greater than -50.</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>What <em>should</em> our right-checking function do?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Check to see if x is less than 690.</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>What should <code class="pyret">onscreen?</code> do?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Answers may vary. Let students drive the discussion, and don&#8217;t give away the answer!</em></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_investigate">Investigate</h3>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Complete <a href="../../lessons/inequalities3-sam/pages/left-and-right.html" target="_blank" rel="noopener">Left and Right</a> with your partner.</p>
+</li>
+<li>
+<p>Once finished, fix the corresponding functions in your Sam the Butterfly file, and test them out.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Students will notice that fixing <span class="obeyspaces"><code class="pyret">is-safe-left</code></span> keeps Sam from disappearing off the left side, but fixing <span class="obeyspaces"><code class="pyret">is-safe-right</code></span> doesn&#8217;t seem to keep Sam from disappearing off the right side!  When students encounter this, encourage them to look through the code to try and figure out why.</p>
+</div>
+<table class="tableblock frame-all grid-none stripes-none stretch strategy-box">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="title">"False" doesn&#8217;t mean "Wrong"!</span></p>
+</div>
+<div class="paragraph">
+<p>A lot of students - especially confident ones - may struggle to come up with an example where <span class="obeyspaces"><code class="pyret">is-safe-left</code></span> returns <code class="pyret">false</code>:</p>
+</div>
+<div class="paragraph">
+<p><span class="obeyspaces"><code class="pyret"># Students hate writing the second one!
+examples:
+is-safe-left&#8203;(&#8203;189&#8203;) is 189 &gt; -50
+is-safe-left&#8203;(&#8203;-65&#8203;) is -65 &gt; -50
+end</code></span></p>
+</div>
+<div class="paragraph">
+<p>This misconception comes from confusing a statement that is "false" with a program that is "wrong". In the second example, above, the result of <span class="obeyspaces"><code class="pyret">is-safe-left&#8203;(&#8203;-65&#8203;)</code></span> <em>is</em> <code class="pyret">false</code>, because "65 is greater than -50" <em>is a false statement</em>. Remind your students that you want one example that&#8217;s true, and a second that&#8217;s false!</p>
+</div>
+<div class="paragraph">
+<p>Pyret includes some functionality that makes this more explicit, and can help resolve the misconception:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><code class="pyret">examples:
+  is-safe-left( 89) is true  because  89 &gt; -50
+  is-safe-left(-65) is false because -65 &gt; -50
+end</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>By writing the answer first ( <code class="pyret">is-safe-left(-65) is false</code> ), it reduces anxiety about code being "wrong". Students can think of the <code class="pyret">because</code> as <em>an explanation of why the answer is false</em>.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Emphasize to students that they cannot trust the behavior of a complex system! After looking closely at examples and observing that they all pass, students should suspect that the bug is elsewhere.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_synthesize">Synthesize</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Does <span class="obeyspaces"><code class="pyret">is-safe-left</code></span> work correctly? How do you know?</p>
+</li>
+<li>
+<p>Does <span class="obeyspaces"><code class="pyret">is-safe-right</code></span> work correctly? How do you know?</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_protecting_sam_on_both_sides_duration_30_minutes_"><span class="section-link"><a href="#_protecting_sam_on_both_sides_duration_30_minutes_"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Protecting Sam on Both Sides <span class="duration">30 minutes</span></h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_overview_2">Overview</h3>
+<div class="paragraph">
+<p>Students solve a word problem involving compound inequalities, using <code class="pyret">and</code> to compose the simpler Boundary-checking functions from the previous lesson.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_launch_2">Launch</h3>
+<div class="openblock lesson-roleplay">
+<div class="content">
+<div class="paragraph">
+<p>Recruit three student volunteers to roleplay the functions <span class="obeyspaces"><code class="pyret">is-safe-left</code></span>, <span class="obeyspaces"><code class="pyret">is-safe-right</code></span>, and <span class="obeyspaces"><code class="pyret">is-onscreen</code></span>. Give them 1 minute to read the contract and code, as written in the program.</p>
+</div>
+<div class="paragraph">
+<p>Ask the volunteers what their name, Domain and Range are. Explain that you, the facilitator, will be providing a coordinate input. The functions <span class="obeyspaces"><code class="pyret">is-safe-left</code></span> and <span class="obeyspaces"><code class="pyret">is-safe-right</code></span> will respond with either "true" or "false".</p>
+</div>
+<div class="paragraph">
+<p>The function <span class="obeyspaces"><code class="pyret">is-onscreen</code></span>, however, will call the <span class="obeyspaces"><code class="pyret">is-safe-left</code></span> function! So the student roleplaying <span class="obeyspaces"><code class="pyret">is-onscreen</code></span> should turn to <span class="obeyspaces"><code class="pyret">is-safe-left</code></span> and give the input to them.</p>
+</div>
+<div class="paragraph">
+<p>For example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Facilitator: "is-onscreen 70"</p>
+</li>
+<li>
+<p>is-onscreen (turns to is-safe-left): "is-safe-left 70"</p>
+</li>
+<li>
+<p>is-safe-left: "true"</p>
+</li>
+<li>
+<p>is-onscreen (turns back to facilitator): "true"<br>
+<br></p>
+</li>
+<li>
+<p>Facilitator: "is-onscreen -100"</p>
+</li>
+<li>
+<p>is-onscreen (turns to is-safe-left): "is-safe-left -100"</p>
+</li>
+<li>
+<p>is-safe-left: "false"</p>
+</li>
+<li>
+<p>is-onscreen (turns back to facilitator): "false"<br>
+<br></p>
+</li>
+<li>
+<p>Facilitator: "is-onscreen 900"</p>
+</li>
+<li>
+<p>is-onscreen (turns to is-safe-left): "is-safe-left 900"</p>
+</li>
+<li>
+<p>is-safe-left: "true"</p>
+</li>
+<li>
+<p>is-onscreen (turns back to facilitator): "true"</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Hopefully your students will notice that <code class="pyret">is-safe-right</code> did not participate in this roleplay scenario at all!</p>
+</div>
+</div>
+</div>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>What is the problem with <code class="pyret">is-onscreen</code>?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>It&#8217;s only talking to <code class="pyret">is-safe-left</code>, it&#8217;s not checking with <code class="pyret">is-safe-right</code></em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>How can <code class="pyret">is-onscreen</code> check with both?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>It needs to talk to <code class="pyret">is-safe-left</code> AND <code class="pyret">is-safe-right</code></em>.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_investigate_2">Investigate</h3>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Complete <a href="../../lessons/inequalities3-sam/pages/onscreen.html" target="_blank" rel="noopener">Word Problem: is-onscreen</a>.</p>
+</li>
+<li>
+<p>When this function is entered into the editor, students should now see that Sam is protected on <em>both</em> sides of the screen.</p>
+</li>
+</ul>
+</div>
+<table class="tableblock frame-all grid-none stripes-none stretch strategy-box">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="title">Extension Option</span>
+What if we wanted to keep Sam safe on the top and bottom edges of the screen as well?  What additional functions would we need?  What functions would need to change? <em>We recommend that students tackling this challenge define a new function <code class="pyret">is-onscreen-2</code>.</em></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_synthesize_2">Synthesize</h3>
+<div class="paragraph">
+<p>Bring back the three new student volunteers to roleplay those functions, with the onscreen function now working properly. Make sure students provide correct answers, testing both <code class="pyret">true</code> and <code class="pyret">false</code> conditions using coordinates where Sam is onscreen and offscreen.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>How did it feel when you saw Sam hit both walls?</p>
+</li>
+<li>
+<p>Are there multiple solutions for <span class="obeyspaces"><code class="pyret">is-onscreen</code></span>?</p>
+</li>
+<li>
+<p>Is this <em>Top-Down</em> or <em>Bottom-Up</em> design?</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_boundary_detection_in_the_game_duration_10_minutes_"><span class="section-link"><a href="#_boundary_detection_in_the_game_duration_10_minutes_"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Boundary Detection in the Game <span class="duration">10 minutes</span></h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_overview_3">Overview</h3>
+<div class="paragraph">
+<p>Students identify common patterns between two-dimensional Boundary detection and detecting whether a player is onscreen. They apply the same problem-solving and narrow mathematical concept from the previous lesson to a more general problem.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_launch_3">Launch</h3>
+<div class="paragraph">
+<p>Have students open their in-progress game file and click "Run". Invite them to analyze the movement of the danger and the target</p>
+</div>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>How are the <code class="pyret">TARGET</code> and <code class="pyret">DANGER</code> behaving right now?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>They move across the screen.</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>What do we want to change?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>We want them to come back after they leave one side of the screen.</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>What happens to an image&#8217;s x-coordinate when it moves off the screen?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>An image is entirely off-screen if its x-coordinate is less than -50 and greater than 690.</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>How can we make the computer understand when an image has moved off the screen?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>We can teach the computer to compare the image&#8217;s coordinates to a boundary on the number line, just like we did with Sam the Butterfly!</em></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_investigate_3">Investigate</h3>
+<div class="paragraph lesson-instruction">
+<p>Apply what you learned from Sam the Butterly to fix the <span class="obeyspaces"><code class="pyret">is-safe-left</code></span>, <span class="obeyspaces"><code class="pyret">is-safe-right</code></span>, and <span class="obeyspaces"><code class="pyret">is-onscreen</code></span> functions in your own code.</p>
+</div>
+<div class="paragraph">
+<p>Since the screen dimensions for their game are 640x480, just like Sam, they can use their code from Sam as a starting point.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_common_misconceptions">Common Misconceptions</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Students will need to test their code with their images to see if the boundaries are correct for them.  Students with large images may need to use slightly wider boundaries, or vice versa for small images.  In some cases, students may have to go back and rescale their images if they are too large or too small for the game.</p>
+</li>
+<li>
+<p>Students may be surprised that the same code that "traps Sam" also "resets the <code class="pyret">DANGER</code> and <code class="pyret">TARGET</code> ". It&#8217;s critical to explain that these functions do <em>neither</em> of those things! All they do is test if a coordinate is within a certain range on the x-axis. There is other code (hidden in the teachpack) that determines <em>what to do if the coordinate is offscreen</em>. The ability to re-use function is one of the most powerful features of mathematics - and programming!</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_synthesize_3">Synthesize</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>The same code that "trapped" Sam also "resets" the <code class="pyret">DANGER</code> and the <code class="pyret">TARGET</code>. What is actually going on?</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_additional_exercises"><span class="section-link"><a href="#_additional_exercises"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Additional Exercises</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="../../lessons/inequalities3-sam/pages/onscreen-discussion.html" target="_blank" rel="noopener">Onscreen - More than One Way</a></p>
+</li>
+<li>
+<p><a href="../../lessons/inequalities3-sam/pages/keeping-ninjacat-in-the-game.html" target="_blank" rel="noopener">Keeping NinjaCat in the Game</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-17 19:42:16 -0400
+</div>
+</div>
+</div>
+</body>
+</html>

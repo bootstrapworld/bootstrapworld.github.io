@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Defining Table Functions</title>
+
+  <link rel="stylesheet" href="../../lib/curriculum.css" />
+    <link rel="stylesheet" href="../../lib/codemirror.css" />
+    <script src="../../lib/codemirror.js"></script>
+    <script src="../../lib/runmode.js"></script>
+    <script src="../../lib/scheme2.js"></script>
+    <script src="../../lib/pyret-mode.js"></script>
+    <script src="../../lib/langtable.js"></script>
+    <script src="../../lib/bootstraplesson.js"></script>
+    <script src="../../dependency-graph.js"></script>
+    <script src="../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"Defining Table Functions",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="article LessonPlan pyret" onload="renderSaveToDrive()">
+<!--#include virtual="/menubar.ssi"-->
+<div id="body" onload="renderSaveToDrive()">
+<div id="header">
+<h1>Defining Table Functions</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<script>
+function preselect(klass) {
+  const items = document.getElementsByClassName(klass);
+  for (let i = 0; i < items.length; i++) {
+    items[i].style.display = 'none';
+  }
+  if (items.length > 0) {
+    items[0].style.display = 'block';
+  }
+}
+window.onload = function() {
+  preselect('alignedStandards');
+  preselect('alignedTextbooks');
+  preselect('alignedPractices');
+}
+function showStandardsAlignment() {
+  const selectTag = document.getElementsByClassName('standardsAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const stdTables = document.getElementsByClassName('alignedStandards');
+  //const intro = document.getElementsByClassName('alignedStandardsIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < stdTables.length; i++) {
+    const stdTable = stdTables[i];
+    stdTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optStd = opt.value;
+      for (let j = 0; j < stdTables.length; j++) {
+        const stdTable = stdTables[j];
+        if (stdTable.classList.contains(optStd)) {
+          stdTable.style.display = 'block';
+         // introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+function toggleNonPrereqDisplay() {
+  const inputTag = document.getElementsByClassName('sidebarinput')[0];
+  const checkedP = inputTag.checked;
+  const lessonTable = document.getElementsByClassName('sidebarlessons')[0];
+  const lis = lessonTable.getElementsByTagName('li');
+  for (let i = 0; i < lis.length; i++) {
+    const li = lis[i];
+    const lesson = li.getElementsByClassName('prerequisite');
+    if (lesson.length === 0) {
+      li.style.display = checkedP ? 'none' : 'block';
+    }
+  }
+}
+</script>
+<script>
+function showTextbooksAlignment() {
+  const selectTag = document.getElementsByClassName('textbooksAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const textbookTables = document.getElementsByClassName('alignedTextbooks');
+  //const intro = document.getElementsByClassName('alignedTextbooksIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < textbookTables.length; i++) {
+    const textbookTable = textbookTables[i];
+    textbookTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optTextbook = opt.value;
+      for (let j = 0; j < textbookTables.length; j++) {
+        const textbookTable = textbookTables[j];
+        if (textbookTable.classList.contains(optTextbook)) {
+          textbookTable.style.display = 'block';
+          //introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+</script>
+<script>
+function showPracticesAlignment() {
+  const selectTag = document.getElementsByClassName('practicesAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const practiceTables = document.getElementsByClassName('alignedPractices');
+  for (let i = 0; i < practiceTables.length; i++) {
+    const practiceTable = practiceTables[i];
+    practiceTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optPractice = opt.value;
+      for (let j = 0; j < practiceTables.length; j++) {
+        const practiceTable = practiceTables[j];
+        if (practiceTable.classList.contains(optPractice)) {
+          practiceTable.style.display = 'block';
+        }
+      }
+    }
+  }
+}
+</script>
+<div class="paragraph">
+<!-- </p>
+</div>
+--></div><div class="sidebar"><div id="toggle"></div><div class="paragraph"><!--
+<div class="paragraph">
+<p>
+--><div class="sidebarlessons"><strong>Lessons</strong>
+<ul></ul></div>
+</div>
+<table class="tableblock frame-all grid-all stretch sidebarstandards">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Standards in this Lesson</strong>
+<select class="standardsAlignmentSelect"  onchange="showStandardsAlignment()"><option selected="selected" value="standards-CCSS-Math">CCSS-Math</option><option value="standards-CSTA">CSTA</option><option value="standards-K12CS">K12CS</option><option value="standards-Oklahoma">Oklahoma</option></select></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist alignedStandards standards-CCSS-Math">
+<div class="title"><a href="http://corestandards.org/Math/">Common Core Math Standards</a></div>
+<dl>
+<dt class="hdlist1">6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-CSTA">
+<div class="title"><a href="https://csteachers.org/page/standards">CSTA Standards</a></div>
+<dl>
+<dt class="hdlist1">2-AP-13</dt>
+<dd>
+<p>Decompose problems and subproblems into parts to facilitate the design, implementation, and review of programs</p>
+</dd>
+<dt class="hdlist1">2-AP-14</dt>
+<dd>
+<p>Create procedures with parameters to organize code and make it easier to reuse.</p>
+</dd>
+<dt class="hdlist1">2-AP-17</dt>
+<dd>
+<p>Systematically test and refine programs using a range of test cases</p>
+</dd>
+<dt class="hdlist1">3A-AP-17</dt>
+<dd>
+<p>Decompose problems into smaller components through systematic analysis, using constructs such as procedures, modules, and/or objects.</p>
+</dd>
+<dt class="hdlist1">3A-AP-18</dt>
+<dd>
+<p>Create artifacts by using procedures within a program, combinations of data and procedures, or independent but interrelated programs.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-K12CS">
+<div class="title"><a href="https://k12cs.org">K-12CS Standards</a></div>
+<dl>
+<dt class="hdlist1">6-8.Algorithms and Programming.Modularity</dt>
+<dd>
+<p>Programs use procedures to organize code, hide implementation details, and make code easier to reuse. Procedures can be repurposed in new programs. Defining parameters for procedures can generalize behavior and increase reusability.</p>
+</dd>
+<dt class="hdlist1">9-12.Algorithms and Programming.Modularity</dt>
+<dd>
+<p>Complex programs are designed as systems of interacting modules, each with a specific role, coordinating for a common overall purpose. These modules can be procedures within a program; combinations of data and procedures; or independent, but interrelated, programs. Modules allow for better management of complex tasks.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Oklahoma">
+<div class="title"><a href="https://sde.ok.gov/oklahoma-academic-standards">Oklahoma Standards</a></div>
+<dl>
+<dt class="hdlist1">OK.3.AP.PD.01</dt>
+<dd>
+<p>Use an iterative process to plan the development of a program while solving simple problems.</p>
+</dd>
+<dt class="hdlist1">OK.A1.D.2.1</dt>
+<dd>
+<p>Select and apply counting procedures, such as the multiplication and addition principles and tree diagrams, to determine the size of a sample space (the number of possible outcomes) and to calculate probabilities.</p>
+</dd>
+<dt class="hdlist1">OK.L1.AP.M.01</dt>
+<dd>
+<p>Break down a solution into procedures using systematic analysis and design.</p>
+</dd>
+<dt class="hdlist1">OK.L1.AP.M.02</dt>
+<dd>
+<p>Create computational artifacts by systematically organizing, manipulating and/or processing data.</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch sidebartextbooks">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Textbook Alignment</strong>
+<select class="textbooksAlignmentSelect"  onchange="showTextbooksAlignment()"><option selected="selected" value="textbook-IM_Alg_1"><a href="https://illustrativemathematics.org/">IM Algebra 1</a></option><option value="textbook-IM_8"><a href="https://illustrativemathematics.org/">IM 8 Math™</a></option></select></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist alignedTextbooks textbook-IM_Alg_1">
+<div class="title"><a href="https://illustrativemathematics.org/">IM Algebra 1</a></div>
+<dl>
+<dt class="hdlist1">IM.Alg1.4.10</dt>
+<dd>
+<p>Domain and Range (Part 1)</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedTextbooks textbook-IM_8">
+<div class="title"><a href="https://illustrativemathematics.org/">IM 8 Math™</a></div>
+<dl>
+<dt class="hdlist1">IM.8.5.3</dt>
+<dd>
+<p>Equations for Functions</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch sidebarpractices">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Practices in this Lesson</strong>
+<select class="practicesAlignmentSelect"  onchange="showPracticesAlignment()"><option selected="selected" value="practices-K12CS"><a href="https://k12cs.org">K12CS</a></option><option value="practices-CC"><a href="http://corestandards.org/Math/">Math</a></option></select></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist alignedPractices practices-K12CS">
+<div class="title"><a href="https://k12cs.org">K12CS</a></div>
+<dl>
+<dt class="hdlist1">P4</dt>
+<dd>
+<p>Developing and Using Abstractions</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedPractices practices-CC">
+<div class="title"><a href="http://corestandards.org/Math/">Math</a></div>
+<dl>
+<dt class="hdlist1">MP.6</dt>
+<dd>
+<p>Attend to precision</p>
+</dd>
+<dt class="hdlist1">MP.8</dt>
+<dd>
+<p>Look for and express regularity in repeated reasoning</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<!-- </p>
+</div>
+--></div><!--
+<div class="paragraph">
+<p>
+-->
+</div>
+<div class="paragraph description">
+<p>Students use the Design Recipe to define operations on tables, developing a structured approach to answering questions by transforming tables.</p>
+</div>
+<table class="tableblock frame-all grid-all stripes-none stretch left-header preamble">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Lesson Goals</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Students will be able to&#8230;&#8203;</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>write functions that consume a Row and perform a <em>lookup</em> to produce a column</p>
+</li>
+<li>
+<p>write functions that consume a Row and <em>compute</em> to produce an Image</p>
+</li>
+<li>
+<p>write functions that consume a Row and <em>compute</em> to produce a Boolean</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Student-facing Lesson Goals</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>I can define functions that look up values from a Row.</p>
+</li>
+<li>
+<p>I can define functions that produce Images from a Row.</p>
+</li>
+<li>
+<p>I can define functions that compute a Boolean from a Row.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Materials</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist materials-links">
+<ul>
+<li>
+<p><a href="https://docs.google.com/presentation/d/1X_ec5w2ECCWmDZLx1vymVb38jkTVUBC5RQac1E_1lmM/" target="_blank" rel="noopener">Lesson Slides</a></p>
+</li>
+<li>
+<p><span class="StarterFile"><a href="https://code.pyret.org/editor#share=1-YuAea2oTVZcEyUNvEb-cg5qIB6n5V7n" target="_blank" rel="noopener">Row Functions Starter File</a></span></p>
+</li>
+<li>
+<p><span class="materialSectionPlaceholder"> </span></p>
+</li>
+<li>
+<p><span class="handout"><a href="../../lessons/defining-table-functions/pages/is-dog.html" target="_blank" rel="noopener">Design Recipe Telephone Set 1: is-dog</a></span></p>
+</li>
+<li>
+<p><span class="handout"><a href="../../lessons/defining-table-functions/pages/days.html" target="_blank" rel="noopener">Design Recipe Telephone Set 1: days-to-adopt</a></span></p>
+</li>
+<li>
+<p><span class="handout"><a href="../../lessons/defining-table-functions/pages/is-young.html" target="_blank" rel="noopener">Design Recipe Telephone Set 1: is-young</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/defining-table-functions/pages/making-connections.html" target="_blank" rel="noopener">Making Connections</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="../../lessons/defining-table-functions/pages/is-old.html" target="_blank" rel="noopener">Design Recipe Telephone Set 2: is-old</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="../../lessons/defining-table-functions/pages/kilos.html" target="_blank" rel="noopener">Design Recipe Telephone Set 2: kilos</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="../../lessons/defining-table-functions/pages/is-cat.html" target="_blank" rel="noopener">Design Recipe Telephone Set 2: is-cat</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="../../lessons/defining-table-functions/pages/2-blank-recipes.html" target="_blank" rel="noopener">Design Recipe</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="../../lessons/defining-table-functions/pages/data-cycle-1.html" target="_blank" rel="noopener">Data Cycle: Analyzing Dogs</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="../../lessons/defining-table-functions/pages/data-cycle-2.html" target="_blank" rel="noopener">Data Cycle: Analyzing Cats</a></span></p>
+</li>
+<li>
+<p><strong>Classroom visual:</strong> <a href="javascript:showLangTable()">Language Table</a></p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Preparation</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>To do the Design Recipe Telephone activity, you will need to decide on groups of 3 and print copies of the word problems that you will be using. (A class of 30 will only need 10 copies of each Design Recipe problem.)</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_reviewing_function_definition_duration_15_minutes_"><span class="section-link"><a href="#_reviewing_function_definition_duration_15_minutes_"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Reviewing Function Definition <span class="duration">15 minutes</span></h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_overview">Overview</h3>
+<div class="paragraph">
+<p>Primary: Students use different representations of functions to define <strong>Row-based functions</strong>.</p>
+</div>
+<div class="paragraph">
+<p>Secondary: Students discover <em>functions that consume other functions</em>, and compose a scatter plot function with a function they&#8217;ve defined.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_launch">Launch</h3>
+<div class="paragraph">
+<p>By now students have had a chance to explore functions on their own, thinking of them in terms of several different representations:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A mapping between <em>Domain</em> and <em>Range</em></p>
+</li>
+<li>
+<p>A list of discrete <em>input values</em> and <em>output values</em></p>
+</li>
+<li>
+<p>A symbolic <em>definition</em></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Now it&#8217;s time to use those representations to help us work with Tables!</p>
+</div>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Open the <a href="https://code.pyret.org/editor#share=1-YuAea2oTVZcEyUNvEb-cg5qIB6n5V7n" target="_blank" rel="noopener">Row Functions Starter File</a>, save a copy, and click "Run".</p>
+</li>
+<li>
+<p>Scroll until you see the definition for <code class="pyret">cat-row</code>. What will you get back if you evaluate <code class="pyret">cat-row</code> in the Interactions Area?</p>
+</li>
+<li>
+<p>What species is the animal?</p>
+</li>
+<li>
+<p>What is its name?</p>
+</li>
+<li>
+<p>How old is it?</p>
+</li>
+<li>
+<p>Complete questions 1-3 on <a href="../../lessons/defining-table-functions/pages/making-connections.html" target="_blank" rel="noopener">Making Connections</a>.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_investigate">Investigate</h3>
+<div class="paragraph">
+<p>The Design Recipe uses multiple representations of functions in a specific order to help us solve problems. Let&#8217;s look at an example to see how this works!</p>
+</div>
+<div class="paragraph lesson-instruction">
+<p>Complete the rest of <a href="../../lessons/defining-table-functions/pages/making-connections.html" target="_blank" rel="noopener">Making Connections</a>.</p>
+</div>
+<div class="paragraph">
+<p>Review student answers, paying particular attention to the connections between "Contract and Purpose" and "Examples".</p>
+</div>
+<div class="paragraph">
+<p>Take a closer look at the four examples in this file:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="pyret"># weeks-dot :: Row -&gt; Image
+# consumes an animal, and draws a solid purple circle whose
+# radius is 5x the number of weeks it took to be adopted
+examples:
+  weeks-dot(cat-row)   is circle(5 *          4,         "solid", "green")
+  weeks-dot(young-row) is circle(5 *          1,         "solid", "green")
+
+  weeks-dot(cat-row)   is circle(5 *   cat-row["weeks"], "solid", "green")
+  weeks-dot(young-row) is circle(5 * young-row["weeks"], "solid", "green")
+end</code></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>These examples show us exactly what should be produced for <code class="pyret">cat-row</code> and <code class="pyret">young-row</code> - the two Rows representing "Miaulis" and "Nori", based on their <code class="pyret">weeks</code> to adoption. But these examples only tell us part of the story!</p>
+</div>
+<div class="paragraph lesson-instruction">
+<p>In those first examples, where are the number <code class="pyret">4</code> and <code class="pyret">1</code> coming from?</p>
+</div>
+<div class="paragraph">
+<p>The first two examples are <em>correct</em>, but they don&#8217;t show all of their work. The last two examples show how those values are looked up from the example rows. If you&#8217;re stuck on the examples step, here&#8217;s a useful trick to get you started: "Complete the following sentence: <em>For this Row, I&#8230;&#8203;</em>" Whatever you answer is the precise description of what to do for your example!</p>
+</div>
+<div class="paragraph">
+<p><strong>You can use both kinds of examples in your code!</strong> Sometimes we want to use real, concrete numbers to make sure our work is correct. And sometimes we need to show all of our work, to make sure we are defining the function correctly! Programmers often use a mix of the two.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_synthesize">Synthesize</h3>
+<div class="paragraph">
+<p>Each step in the Design Recipe helps us write the next one.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If we can&#8217;t write our Contract and Purpose, it means we haven&#8217;t thought through the problem enough. Better to find this out <em>before</em> we write the rest of our function!</p>
+</li>
+<li>
+<p>If we&#8217;re having trouble writing our Examples, <strong>we can check our Contract and Purpose for hints</strong>.</p>
+</li>
+<li>
+<p>If we&#8217;re having trouble writing the Definition, <strong>we can check our Examples to see the pattern.</strong></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>These steps also help us <em>check our work</em>. If any two representations don&#8217;t match, it means there&#8217;s likely a bug somewhere.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_design_recipe_telephone_duration_40_minutes_"><span class="section-link"><a href="#_design_recipe_telephone_duration_40_minutes_"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Design Recipe Telephone <span class="duration">40 minutes</span></h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_overview_2">Overview</h3>
+<div class="paragraph">
+<p>Students work in teams to collaboratively define multiple Table Functions. When these functions are composed in different ways, they can be used to do much more sophisticated analysis!</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_launch_2">Launch</h3>
+<div class="paragraph">
+<p>Most computer programs are written by huge teams! It is critical that each team member records their thinking with enough detail for other team members to be able to pick up where they left off.  We&#8217;re going to practice collaborative programming and try writing some other Table Functions using the Design Recipe, through an activity called Design Recipe Telephone.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_investigate_2">Investigate</h3>
+<div class="paragraph">
+<p><span class="autonum">1</span> Divide the class into groups of three.</p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">2</span> Choose which set of word problems you are going to start with and give each student within each group a different word problem from the set.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Word Problem Set 1:</th>
+<th class="tableblock halign-left valign-top">Word Problem Set 2:</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a href="../../lessons/defining-table-functions/pages/is-dog.html" target="_blank" rel="noopener">Design Recipe Telephone Set 1: is-dog</a></p>
+</div>
+<div class="paragraph">
+<p><a href="../../lessons/defining-table-functions/pages/days.html" target="_blank" rel="noopener">Design Recipe Telephone Set 1: days-to-adopt</a></p>
+</div>
+<div class="paragraph">
+<p><a href="../../lessons/defining-table-functions/pages/is-young.html" target="_blank" rel="noopener">Design Recipe Telephone Set 1: is-young</a></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a href="../../lessons/defining-table-functions/pages/is-old.html" target="_blank" rel="noopener">Design Recipe Telephone Set 2: is-old</a></p>
+</div>
+<div class="paragraph">
+<p><a href="../../lessons/defining-table-functions/pages/kilos.html" target="_blank" rel="noopener">Design Recipe Telephone Set 2: kilos</a></p>
+</div>
+<div class="paragraph">
+<p><a href="../../lessons/defining-table-functions/pages/is-cat.html" target="_blank" rel="noopener">Design Recipe Telephone Set 2: is-cat</a></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><em>★ When a team has completed these three Design Recipes, they can use <a href="../../lessons/method-chaining/index.shtml" target="_blank" rel="noopener">Method Chaining</a>.</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><em>★ When a team has completed these three Design Recipes, they can use <a href="../../lessons/method-chaining/index.shtml" target="_blank" rel="noopener">Method Chaining</a>.</em></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="openblock lesson-instruction">
+<div class="content">
+<div class="paragraph">
+<p>In this activity, each person in your group will start with a different word problem.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>You will each be doing one step of each Design Recipe problem.</p>
+</li>
+<li>
+<p>The student who continues working the problem that you start will be dependent on your work, so pay careful attention to making your part as precisely as possible. If they don&#8217;t have the information they need, they will give it back to you for revision.</p>
+</li>
+<li>
+<p>When you complete your step, you will fold your paper to hide the part that you were looking at so that only your work and the rest of the recipe is visible.</p>
+</li>
+<li>
+<p>Then you will pass your work to the person to your right.</p>
+</li>
+<li>
+<p>The person who has received your paper will review your work, and complete the next step based solely on what you wrote down for them.</p>
+</li>
+<li>
+<p>You will receive a different problem from the person to your left.</p>
+</li>
+<li>
+<p>If at any point your realize that the person before you didn&#8217;t provide enough information, you may hand the paper back to them for revision.</p>
+</li>
+<li>
+<p>When you&#8217;ve finished all three Design Recipes, turn to the Data Cycle for your set and work as a team to complete it!</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="openblock indentedpara">
+<div class="content">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Who&#8217;s Doing What During Each Round of Design Recipe Telephone?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Round 1 - Writing Contract and Purpose Statements from the Word Problem</strong></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Student 1 - Problem A</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Student 2 - Problem B</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Student 3 - Problem C</p>
+</div></div></td>
+</tr>
+</tbody>
+</table></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="center"><em>everyone folds over the previous section, and passes their paper to the right</em></span></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Round 2 - Writing Examples <em>based solely on the Contract and Purpose Statement</em></strong></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Student 1 - Problem C</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Student 2 - Problem A</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Student 3 - Problem B</p>
+</div></div></td>
+</tr>
+</tbody>
+</table></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="center"><em>everyone folds over the previous section, and passes their paper to the right</em></span></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Round 3 - Writing Function Definitions <em>based solely on the Examples</em></strong></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Student 1 - Problem B</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Student 2 - Problem C</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Student 3 - Problem A</p>
+</div></div></td>
+</tr>
+</tbody>
+</table></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="paragraph">
+<p>This activity can be repeated several times, or done as a timed competition between teams. The goal is to emphasize that each step - if done correctly - makes the following step incredibly simple.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_synthesize_2">Synthesize</h3>
+<div class="paragraph">
+<p>The Design Recipe is a way of slowing down and thinking through each step of a problem.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If we already know how to get the answer, why would it ever be important to know how to do each step the slow way?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Sample Responses:</em></p>
+</li>
+<li>
+<p>Someday we won&#8217;t be able to get the answer, and knowing the steps will help</p>
+</li>
+<li>
+<p>So we can help someone else who is stuck</p>
+</li>
+<li>
+<p>So we can work with someone else and share our thinking</p>
+</li>
+<li>
+<p>So we can check our work</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Why is it helpful to use each of these steps in the Design Recipe?</p>
+</li>
+<li>
+<p>What step do you find the most challenging right now? The easiest?</p>
+</li>
+<li>
+<p>What are some functions you might want to define for your <em>own</em> analysis?</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_additional_exercises"><span class="section-link"><a href="#_additional_exercises"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Additional Exercises</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>To support students in writing table functions, the student workbook includes a page with <a href="../../lessons/defining-table-functions/pages/2-blank-recipes.html" target="_blank" rel="noopener">two blank Design Recipes</a>, as well as pages with <a href="../../lessons/defining-table-functions/pages/data-cycle-1.html" target="_blank" rel="noopener">blank</a> and <a href="../../lessons/defining-table-functions/pages/data-cycle-2.html" target="_blank" rel="noopener">data cycles</a>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-17 19:42:13 -0400
+</div>
+</div>
+</div>
+</body>
+</html>

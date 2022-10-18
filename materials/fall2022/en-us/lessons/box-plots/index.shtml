@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Box Plots</title>
+
+  <link rel="stylesheet" href="../../lib/curriculum.css" />
+    <link rel="stylesheet" href="../../lib/codemirror.css" />
+    <script src="../../lib/codemirror.js"></script>
+    <script src="../../lib/runmode.js"></script>
+    <script src="../../lib/scheme2.js"></script>
+    <script src="../../lib/pyret-mode.js"></script>
+    <script src="../../lib/langtable.js"></script>
+    <script src="../../lib/bootstraplesson.js"></script>
+    <script src="../../dependency-graph.js"></script>
+    <script src="../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"Box Plots",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="article LessonPlan pyret" onload="renderSaveToDrive()">
+<!--#include virtual="/menubar.ssi"-->
+<div id="body" onload="renderSaveToDrive()">
+<div id="header">
+<h1>Box Plots</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<script>
+function preselect(klass) {
+  const items = document.getElementsByClassName(klass);
+  for (let i = 0; i < items.length; i++) {
+    items[i].style.display = 'none';
+  }
+  if (items.length > 0) {
+    items[0].style.display = 'block';
+  }
+}
+window.onload = function() {
+  preselect('alignedStandards');
+  preselect('alignedTextbooks');
+  preselect('alignedPractices');
+}
+function showStandardsAlignment() {
+  const selectTag = document.getElementsByClassName('standardsAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const stdTables = document.getElementsByClassName('alignedStandards');
+  //const intro = document.getElementsByClassName('alignedStandardsIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < stdTables.length; i++) {
+    const stdTable = stdTables[i];
+    stdTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optStd = opt.value;
+      for (let j = 0; j < stdTables.length; j++) {
+        const stdTable = stdTables[j];
+        if (stdTable.classList.contains(optStd)) {
+          stdTable.style.display = 'block';
+         // introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+function toggleNonPrereqDisplay() {
+  const inputTag = document.getElementsByClassName('sidebarinput')[0];
+  const checkedP = inputTag.checked;
+  const lessonTable = document.getElementsByClassName('sidebarlessons')[0];
+  const lis = lessonTable.getElementsByTagName('li');
+  for (let i = 0; i < lis.length; i++) {
+    const li = lis[i];
+    const lesson = li.getElementsByClassName('prerequisite');
+    if (lesson.length === 0) {
+      li.style.display = checkedP ? 'none' : 'block';
+    }
+  }
+}
+</script>
+<script>
+function showTextbooksAlignment() {
+  const selectTag = document.getElementsByClassName('textbooksAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const textbookTables = document.getElementsByClassName('alignedTextbooks');
+  //const intro = document.getElementsByClassName('alignedTextbooksIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < textbookTables.length; i++) {
+    const textbookTable = textbookTables[i];
+    textbookTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optTextbook = opt.value;
+      for (let j = 0; j < textbookTables.length; j++) {
+        const textbookTable = textbookTables[j];
+        if (textbookTable.classList.contains(optTextbook)) {
+          textbookTable.style.display = 'block';
+          //introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+</script>
+<script>
+function showPracticesAlignment() {
+  const selectTag = document.getElementsByClassName('practicesAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const practiceTables = document.getElementsByClassName('alignedPractices');
+  for (let i = 0; i < practiceTables.length; i++) {
+    const practiceTable = practiceTables[i];
+    practiceTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optPractice = opt.value;
+      for (let j = 0; j < practiceTables.length; j++) {
+        const practiceTable = practiceTables[j];
+        if (practiceTable.classList.contains(optPractice)) {
+          practiceTable.style.display = 'block';
+        }
+      }
+    }
+  }
+}
+</script>
+<div class="paragraph">
+<!-- </p>
+</div>
+--></div><div class="sidebar"><div id="toggle"></div><div class="paragraph"><!--
+<div class="paragraph">
+<p>
+--><div class="sidebarlessons"><strong>Lessons</strong>
+<ul></ul></div>
+</div>
+<table class="tableblock frame-all grid-all stretch sidebarstandards">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Standards in this Lesson</strong>
+<select class="standardsAlignmentSelect"  onchange="showStandardsAlignment()"><option selected="selected" value="standards-CCSS-Math">CCSS-Math</option><option value="standards-CSTA">CSTA</option><option value="standards-K12CS">K12CS</option><option value="standards-Oklahoma">Oklahoma</option></select></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist alignedStandards standards-CCSS-Math">
+<div class="title"><a href="http://corestandards.org/Math/">Common Core Math Standards</a></div>
+<dl>
+<dt class="hdlist1">6.SP.A</dt>
+<dd>
+<p>Develop understanding of statistical variability.</p>
+</dd>
+<dt class="hdlist1">6.SP.A.2</dt>
+<dd>
+<p>Understand that a set of data collected to answer a statistical question has a distribution which can be described by its center, spread, and overall shape.</p>
+</dd>
+<dt class="hdlist1">6.SP.B.4</dt>
+<dd>
+<p>Display numerical data in plots on a number line, including dot plots, histograms, and box plots.</p>
+</dd>
+<dt class="hdlist1">6.SP.B.5</dt>
+<dd>
+<p>Summarize numerical data sets in relation to their context.</p>
+</dd>
+<dt class="hdlist1">6.SP.B.5.C</dt>
+<dd>
+<p>Summarize numerical data sets in relation to their context by giving quantitative measures of center (median and/or mean) and variability (interquartile range and/or mean absolute deviation), as well as describing any overall pattern and any striking deviations from the overall pattern with reference to the context in which the data were gathered.</p>
+</dd>
+<dt class="hdlist1">HSS.ID.A.1</dt>
+<dd>
+<p>Represent data with plots on the real number line (dot plots, histograms, and box plots).</p>
+</dd>
+<dt class="hdlist1">HSS.ID.A.2</dt>
+<dd>
+<p>Use statistics appropriate to the shape of the data distribution to compare center (median, mean) and spread (interquartile range, standard deviation) of two or more different data sets.</p>
+</dd>
+<dt class="hdlist1">HSS.ID.A.3</dt>
+<dd>
+<p>Interpret differences in shape, center, and spread in the context of the data sets, accounting for possible effects of extreme data points (outliers).</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-CSTA">
+<div class="title"><a href="https://csteachers.org/page/standards">CSTA Standards</a></div>
+<dl>
+<dt class="hdlist1">1B-DA-06</dt>
+<dd>
+<p>Organize and present collected data visually to highlight relationships and support a claim.</p>
+</dd>
+<dt class="hdlist1">3A-DA-11</dt>
+<dd>
+<p>Create interactive data visualizations using software tools to help others better understand real-world phenomena.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-K12CS">
+<div class="title"><a href="https://k12cs.org">K-12CS Standards</a></div>
+<dl>
+<dt class="hdlist1">6-8.Data and Analysis.Inference and Models</dt>
+<dd>
+<p>People transform, generalize, simplify, and present large data sets in different ways to influence how other people interpret and understand the underlying information. Examples include visualization, aggregation, rearrangement, and application of mathematical operations.</p>
+</dd>
+<dt class="hdlist1">9-12.Data and Analysis.Visualization and Transformation</dt>
+<dd>
+<p>Data can be transformed to remove errors, highlight or expose relationships, and/or make it easier for computers to process.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Oklahoma">
+<div class="title"><a href="https://sde.ok.gov/oklahoma-academic-standards">Oklahoma Standards</a></div>
+<dl>
+<dt class="hdlist1">OK.6.D.1.3</dt>
+<dd>
+<p>Create and analyze box and whisker plots observing how each segment contains one quarter of the data.</p>
+</dd>
+<dt class="hdlist1">OK.6.DA.CVT.01</dt>
+<dd>
+<p>Collect data using computational tools and transform the data to make it more useful.</p>
+</dd>
+<dt class="hdlist1">OK.7.D.1.2</dt>
+<dd>
+<p>Use reasoning with proportions to display and interpret data in circle graphs (pie charts) and histograms. Choose the appropriate data display and know how to create the display using a spreadsheet or other graphing technology.</p>
+</dd>
+<dt class="hdlist1">OK.7.DA.CVT.01</dt>
+<dd>
+<p>Collect data using computational tools and transform the data to make it more useful and reliable.</p>
+</dd>
+<dt class="hdlist1">OK.8.DA.S.01</dt>
+<dd>
+<p>Analyze multiple methods of representing data and choose the most appropriate method for representing data.</p>
+</dd>
+<dt class="hdlist1">OK.L2.DA.CVT.02</dt>
+<dd>
+<p>Generate data sets that use a variety of data collection tools and analysis techniques to support a claim and/or communicate information.</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch sidebartextbooks">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Textbook Alignment</strong>
+<select class="textbooksAlignmentSelect"  onchange="showTextbooksAlignment()"><option selected="selected" value="textbook-IM_7"><a href="https://illustrativemathematics.org/">IM 7 Math™</a></option><option value="textbook-IM_6"><a href="https://illustrativemathematics.org/">IM 6 Math™</a></option><option value="textbook-CMP"><a href="https://connectedmath.msu.edu/">Connected Math</a></option><option value="textbook-IM_Alg_1"><a href="https://illustrativemathematics.org/">IM Algebra 1</a></option></select></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist alignedTextbooks textbook-IM_7">
+<div class="title"><a href="https://illustrativemathematics.org/">IM 7 Math™</a></div>
+<dl>
+<dt class="hdlist1">IM.7.8.15</dt>
+<dd>
+<p>Estimating Populations Measures of Center</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedTextbooks textbook-IM_6">
+<div class="title"><a href="https://illustrativemathematics.org/">IM 6 Math™</a></div>
+<dl>
+<dt class="hdlist1">IM.6.8.17</dt>
+<dd>
+<p>Using Box Plots</p>
+</dd>
+<dt class="hdlist1">IM.6.8.16</dt>
+<dd>
+<p>Box Plots</p>
+</dd>
+<dt class="hdlist1">IM.6.8.15</dt>
+<dd>
+<p>Quartiles and Interquartile Range</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedTextbooks textbook-CMP">
+<div class="title"><a href="https://connectedmath.msu.edu/">Connected Math</a></div>
+<dl>
+<dt class="hdlist1">CMP.6.7</dt>
+<dd>
+<p>Data About Us: Statistics and Data Analysis</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedTextbooks textbook-IM_Alg_1">
+<div class="title"><a href="https://illustrativemathematics.org/">IM Algebra 1</a></div>
+<dl>
+<dt class="hdlist1">IM.Alg1.1.11</dt>
+<dd>
+<p>Comparing and Contrasting Data Distributions</p>
+</dd>
+<dt class="hdlist1">IM.Alg1.1.15</dt>
+<dd>
+<p>Comparing Data Sets</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch sidebarpractices">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Practices in this Lesson</strong>
+<select class="practicesAlignmentSelect"  onchange="showPracticesAlignment()"><option selected="selected" value="practices-NGSS"><a href="https://ngss.nsta.org/practicesfull.aspx">Science and Engineering</a></option><option value="practices-MLR"><a href="https://achievethecore.org/peersandpedagogy/developing-math-language-routines/">Math Lang. Routines</a></option><option value="practices-CC"><a href="http://corestandards.org/Math/">Math</a></option></select></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist alignedPractices practices-NGSS">
+<div class="title"><a href="https://ngss.nsta.org/practicesfull.aspx">Science and Engineering</a></div>
+<dl>
+<dt class="hdlist1">SEP.3</dt>
+<dd>
+<p>Planning and Carrying Out Investigations</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedPractices practices-MLR">
+<div class="title"><a href="https://achievethecore.org/peersandpedagogy/developing-math-language-routines/">Math Lang. Routines</a></div>
+<dl>
+<dt class="hdlist1">MLR.7</dt>
+<dd>
+<p>Compare and Connect</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedPractices practices-CC">
+<div class="title"><a href="http://corestandards.org/Math/">Math</a></div>
+<dl>
+<dt class="hdlist1">MP.4</dt>
+<dd>
+<p>Model with mathematics</p>
+</dd>
+<dt class="hdlist1">MP.3</dt>
+<dd>
+<p>Construct viable arguments and critique the reasoning of others</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<!-- </p>
+</div>
+--></div><!--
+<div class="paragraph">
+<p>
+-->
+</div>
+<div class="paragraph description">
+<p>Students are introduced to box plots, learn to evaluate the spread of a quantitative column, and deepen their perspective on shape by matching box plots to histogram.</p>
+</div>
+<table class="tableblock frame-all grid-all stripes-none stretch left-header preamble">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Lesson Goals</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Students will be able to&#8230;&#8203;</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>apply one approach to measuring and displaying spread of a dataset</p>
+</li>
+<li>
+<p>compare and contrast information displayed in a box plot and a histogram</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Student-facing Lesson Goals</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Let&#8217;s compare different uses for box plots and histograms when talking about data.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Materials</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist materials-links">
+<ul>
+<li>
+<p><a href="https://docs.google.com/presentation/d/1HAbyCKXnWNYsDfVm-OX2rdVMx698YAN5165MheYZdw0/" target="_blank" rel="noopener">Lesson Slides</a></p>
+</li>
+<li>
+<p><span class="StarterFile"><a href="https://code.pyret.org/editor#share=1lGjndLCWSEoIrV3ErZMXSn_-xakqGvrK" target="_blank" rel="noopener">Animals Starter File</a></span></p>
+</li>
+<li>
+<p><span class="StarterFile"><a href="https://docs.google.com/document/d/1eBYMjAxrn0rPp0Mqd52cRjmwyXSz51RfBWe67DR93es/copy" target="_blank" rel="noopener">Dataset Exploration</a></span></p>
+</li>
+<li>
+<p><span class="materialSectionPlaceholder"> </span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/measures-of-center/pages/summarizing-columns-in-animals.html" target="_blank" rel="noopener">Summarizing Columns in the Animals Dataset</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/box-plots/pages/identifying-shape-boxplots.html" target="_blank" rel="noopener">Identifying Shape - Box Plots</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/box-plots/pages/matching-boxplots-to-histograms.html" target="_blank" rel="noopener">Matching Box Plots to Histograms</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/box-plots/pages/data-cycle-quantitative.html" target="_blank" rel="noopener">Data Cycle: Shape of My Dataset</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/box-plots/pages/shape-of-my-dataset.html" target="_blank" rel="noopener">Shape of My Dataset</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="../../lessons/box-plots/pages/boxplot-vocab-map.pdf" target="_blank" rel="noopener">Box Plot Vocab Concept Map</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="../../lessons/box-plots/pages/matching-boxplots-to-histograms-2.html" target="_blank" rel="noopener">Matching Box Plots to Histograms</a></span></p>
+</li>
+<li>
+<p><span class="Optional OnlineExercise"><a href="https://teacher.desmos.com/activitybuilder/custom/601974faad8cb40d1c603324" target="_blank" rel="noopener">Matching Box Plots to Histograms (Desmos)</a></span></p>
+</li>
+<li>
+<p><span class="Optional OnlineExercise"><a href="https://teacher.desmos.com/activitybuilder/custom/601c35a8e9fd103e94acee2b" target="_blank" rel="noopener">Card Sort: What Information does the Box &amp; Whisker Plot tell us? (Desmos)</a></span></p>
+</li>
+<li>
+<p><span class="Optional OnlineExercise"><a href="https://teacher.desmos.com/activitybuilder/custom/5fe89eeaaef67d0cea85ba5e" target="_blank" rel="noopener">Matching Vocabulary to Definitions (Desmos)</a></span></p>
+</li>
+<li>
+<p><strong>Classroom visual:</strong> <a href="javascript:showLangTable()">Language Table</a></p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Preparation</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>All students should log into <a href="https://code.pyret.org/" target="_blank" rel="noopener">code.pyret.org (CPO)</a> and open their saved "Animals Starter File". If they don&#8217;t have the file, they can open a new one from <a href="https://code.pyret.org/editor#share=1lGjndLCWSEoIrV3ErZMXSn_-xakqGvrK" target="_blank" rel="noopener">Animals Starter File</a>.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="dlist glossary">
+<div class="title">Glossary</div>
+<dl>
+<dt class="hdlist1">box plot</dt>
+<dd>
+<p>the box plot (a.k.a. box-and whisker-plot) is a way of displaying a distribution of data based on the five-number summary: minimum, first quartile, median, third quartile, and maximum</p>
+</dd>
+<dt class="hdlist1">interquartile range</dt>
+<dd>
+<p>(IQR) is one possible measure of spread, based on dividing a dataset into four parts. The values that divide each part are called the first quartile (Q1), the median, and third quartile (Q3). IQR is calculated as Q3 minus Q1.</p>
+</dd>
+<dt class="hdlist1">maximum</dt>
+<dd>
+<p>the largest value in a dataset</p>
+</dd>
+<dt class="hdlist1">median</dt>
+<dd>
+<p>the middle element of a quantitative dataset</p>
+</dd>
+<dt class="hdlist1">minimum</dt>
+<dd>
+<p>the smallest value in a dataset</p>
+</dd>
+<dt class="hdlist1">quartile</dt>
+<dd>
+<p>each of four equal groups into which a population can be divided according to the distribution of values of a particular variable.</p>
+</dd>
+<dt class="hdlist1">range</dt>
+<dd>
+<p>the type or set of outputs that a function produces</p>
+</dd>
+<dt class="hdlist1">range of a dataset</dt>
+<dd>
+<p>the distance between minimum and maximum values</p>
+</dd>
+<dt class="hdlist1">sample</dt>
+<dd>
+<p>a set of individuals or objects collected or selected from a statistical population by a defined procedure</p>
+</dd>
+<dt class="hdlist1">shape</dt>
+<dd>
+<p>The aspect of a dataset - visible in a histogram or box plot - that describes which values are more or less common.</p>
+</dd>
+<dt class="hdlist1">spread</dt>
+<dd>
+<p>the extent to which values in a dataset vary, either from one another or from the center</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_making_box_plots_duration_30_minutes_"><span class="section-link"><a href="#_making_box_plots_duration_30_minutes_"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Making Box Plots <span class="duration">30 minutes</span></h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_overview">Overview</h3>
+<div class="paragraph">
+<p>Students are introduced to the notion of <em>spread</em> in a dataset. They learn about quartiles, box plots, and how to use them to talk about spread.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_launch">Launch</h3>
+<div class="paragraph">
+<p>When we explored measures of center, we tried to answer a question about "typical" values. We considered a fact - that <em>the Animal Shelter Bureau says the average pet weighs almost 41 pounds</em>.</p>
+</div>
+<div class="paragraph">
+<p>How useful is this fact, really? Maybe all the pets weigh between 35 and 45 pounds, with every pet close to the mean. But maybe all the pets are super small or huge, and no one is even <em>near</em> to the mean!</p>
+</div>
+<div class="paragraph">
+<p>So once we have our summary for a "normal value", it&#8217;s likely we&#8217;ll ask another question: <em>If the average pet is 41 pounds, just <strong>how typical</strong> is that?</em></p>
+</div>
+<div class="paragraph">
+<p>There are differences in every class of students. Not everyone likes the same music, not everyone dresses the same, etc. So we&#8217;d expect some deviation - or <span class="vocab">spread</span> - in any class of students! Some classes are more different than others. How do we measure the <span class="vocab">spread</span> of a population?</p>
+</div>
+<div class="paragraph">
+<p><span class="center"><span class="image-figure"><span class="image"><img src="images/28e8848004c98166.png" alt="A sample box-and-whisker plot" width="500" title="A sample box-and-whisker plot"></span><a href="images/28e8848004c98166.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></p>
+</div>
+<div class="paragraph">
+<p>Suppose we lined up all animals' weights from smallest to largest, and then split them in half by taking the <span class="vocab">median</span>. We can learn something about the <span class="vocab">spread</span> of the dataset by taking the <em>median of each half</em>, splitting the population into four equal-sized <span class="vocab">quartiles</span>.</p>
+</div>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>The first quartile (Q1) is the value for which 25% of the animals weighed that amount or less.</p>
+</li>
+<li>
+<p>What animals does the <strong>third</strong> quartile represent?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>The third quartile is the value for which 75% of the animals weighed that amount or less.</em></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Besides looking at the median as center, and the spread between Q1 and Q3, we also gain valuable information from the spread of the entire dataset—that is, the distance between minimum and maximum. This is called the <span class="vocab">range of a dataset</span>. (<strong>Note</strong>: the term “Range” means something different in statistics than it does in algebra and programming!)</p>
+</div>
+<div class="paragraph">
+<p>Splitting a dataset into <span class="vocab">quartiles</span> gives us five numbers that we can play with to measure spread. To summarize what we&#8217;ve seen so far:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><span class="vocab">Minimum</span>: <em>the smallest value in a dataset</em></p>
+</li>
+<li>
+<p>Q1: <em>the median that falls between the minimum and Q2</em></p>
+</li>
+<li>
+<p>Q2: <span class="vocab">Median</span>: <em>the middle value (median) in a dataset</em></p>
+</li>
+<li>
+<p>Q3: <em>the median that falls between and Q2 and the maximum</em></p>
+</li>
+<li>
+<p><span class="vocab">Maximum</span>: <em>the largest value in a dataset</em></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Taken together these are called the <strong>5 Number Summary</strong> of a dataset, and this summary is one tool for calculating spread. We can use these numbers to calculate two new values:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Maximum - Minimum = <em><span class="vocab">Range</span></em> :  <em>the distance spanned by the extreme values in the dataset</em></p>
+</li>
+<li>
+<p>Q3 - Q1 = <span class="vocab">IQR</span>:  <em>the <span class="vocab">Interquartile Range</span>, or the distance spanned by the middle half of the data</em></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_investigate">Investigate</h3>
+<div class="paragraph">
+<p>We can use <span class="vocab">box plots</span> to visualize the 5 number summary, the Range, and the Interquartile Range. Below is the contract for <code class="pyret">box-plot</code>, along with an example that will make a box plot for the <code class="pyret">pounds</code> column in the <code class="pyret">animals-table</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="pyret">box-plot :: (t::Table, col::String) -&gt; Image
+# Consumes a table and the name of the column
+# to plot, and produces a box plot"
+box-plot(animals-table, "pounds")</code></code></pre>
+</div>
+</div>
+<div class="paragraph lesson-point">
+<p>Box plots divide our sample into equally-sized groups, and show where those groups are spread thin or clumped together.</p>
+</div>
+<div class="paragraph lesson-instruction">
+<p>Type <code class="pyret">box-plot(animals-table, "pounds")</code> into the Interactions Area, and see the resulting plot.</p>
+</div>
+<div class="paragraph">
+<p><span class="center"><span class="image-figure"><span class="image"><img src="images/661c45b48ad8ecb3.png" alt="5 plot" width="400" title="5 plot"></span><a href="images/661c45b48ad8ecb3.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></p>
+</div>
+<div class="paragraph">
+<p>This plot shows us the center and spread in our dataset according to those five numbers.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Minimum</strong> (the left “whisker”) - the smallest value in the dataset . In our dataset, that’s just 0.1 pounds.</p>
+</li>
+<li>
+<p><strong>Q1</strong> (the left edge of the box) - computed by taking the <em>median of the lower half of the values</em>. In the pounds column, that’s 3.9 pounds.</p>
+</li>
+<li>
+<p><strong>Q2</strong> / Median value (the line in the middle), which is the middle Quartile of the whole dataset. We already computed this to be 11.3 pounds.</p>
+</li>
+<li>
+<p><strong>Q3</strong> (the right edge of the box), which is computed by taking the <em>median of the upper half of the values</em>. That’s 60.4 pounds in our dataset.</p>
+</li>
+<li>
+<p><strong>Maximum</strong> (the right “whisker”) - the largest value in the dataset . In our dataset, that’s 172 pounds.</p>
+</li>
+</ul>
+</div>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Turn to <a href="../../lessons/measures-of-center/pages/summarizing-columns-in-animals.html" target="_blank" rel="noopener">Summarizing Columns in the Animals Dataset</a></p>
+</li>
+<li>
+<p>Fill in the five-number summary for the <code class="pyret">pounds</code> column, and sketch the box plot.</p>
+</li>
+<li>
+<p>What conclusions can you draw about the distribution of values in this column?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>While the animals' weights range from 0.1 pounds to 172 pounds, 50% of the animals weigh 11.3 pounds or less. The animal that weighs 172 pounds may be an outlier.</em></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_common_misconceptions">Common Misconceptions</h3>
+<div class="paragraph">
+<p>It is extremely common for students to forget that every quartile <em>always</em> includes 25% of the dataset. This will need to be heavily reinforced.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_synthesize">Synthesize</h3>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>What percentage of points make up the Q1?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>25%</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>What percentage of points make up Q2?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>25%</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>What percentage of points make up Q3?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>25%</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>What percentage of points make up Q4?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>25%</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>What percentage of points make up the Interquartile Range (IQR)?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>50%</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>What percentage of points make up the Range?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>100%</em></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Optional: Have students work in pairs to complete this <a href="../../lessons/box-plots/pages/boxplot-vocab-map.pdf" target="_blank" rel="noopener">Box Plot Vocab Concept Map</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_interpreting_box_plots_duration_30_minutes_"><span class="section-link"><a href="#_interpreting_box_plots_duration_30_minutes_"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Interpreting Box Plots <span class="duration">30 minutes</span></h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_overview_2">Overview</h3>
+<div class="paragraph">
+<p>Students learn how to read a box plot, and consider spread and variability. They connect this visualization of spread to what they learned about histograms.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_launch_2">Launch</h3>
+<div class="paragraph">
+<p>Just as pie and bar charts are ways of visualizing categorical data, box plots and histograms are both ways of visualizing the shape of quantitative data.</p>
+</div>
+<div class="paragraph">
+<p>Box plots make it easy to see the 5-number summary, and compare the Range and Interquartile Range. Histograms make it easier to see skewness and more details of the shape, and offer more granularity when using smaller bins.</p>
+</div>
+<div class="paragraph">
+<p>Left-skewness is seen as a long tail in a histogram. In a box plot, it&#8217;s seen as a longer left "whisker" or more spread in the left part of the box. Likewise, right skewness is shown as a longer right "whisker" or more spread in the right part of the box.</p>
+</div>
+<div class="paragraph lesson-point">
+<p>Box plots and histograms give us two different views on the concept of shape.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch cols="^1">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"></th>
+<th class="tableblock halign-left valign-top">Intervals</th>
+<th class="tableblock halign-left valign-top">Points-per-Interval</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Box Plots</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Variable</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Fixed</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Histograms</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Fixed</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Variable</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Histograms:</strong> fixed intervals (“bins”) with variable numbers of data points in each one. Points “pile up in bins”, so we can see how many are in each. <em>Larger bars show where the clusters are.</em></p>
+</div>
+<div class="paragraph">
+<p><strong>Box plots:</strong> variable intervals (“quartiles”) with a fixed number of data points in each one. Treats data more like “pizza dough”, dividing it into four equal quarters showing where the data is tightly clumped or spread thin. <em>Smaller intervals show where the clusters are.</em></p>
+</div>
+<table class="tableblock frame-all grid-none stripes-none stretch strategy-box">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="title">Kinesthetic Activity</span></p>
+<p class="tableblock">Divide the class into groups, and give each group a ruler and a ball of playdough. Have them draw a number line from 0-6 with the ruler, marking off the points at 0, 3, 4, 4.5 and 6 inches. Have the groups roll the dough into a thick cylinder, divide that cylinder in half, and then split each half to form four <em>equally-sized cylinders</em>. The playdough represents a <span class="vocab">sample</span>, with values divided into four <span class="vocab">quartiles</span>.</p>
+<p class="tableblock">Box plots stretch and squeeze these equal quartiles across a number line, so that each quartile fills up an interval in that quartile. On their number line, students have intervals from 0-3, 3-4, 4-4.5, and 4.5-6. Have students roll their cylinders so that they fill each of these intervals, retaining a uniform thickness.</p>
+<p class="tableblock">They should notice that shorter intervals have <em>thicker cylinders</em>, and longer ones have skinny ones. Even though a box plot doesn&#8217;t show us the thickness of the datapoints, we can tell that a small intervals has the same amount of data "squeezed" into it as a large interval.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_investigate_2">Investigate</h3>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Complete <a href="../../lessons/box-plots/pages/identifying-shape-boxplots.html" target="_blank" rel="noopener">Identifying Shape - Box Plots</a> and see if you can describe box plots using what you know about skewness.</p>
+</li>
+<li>
+<p>To make connections between histograms and box plots, complete <a href="../../lessons/box-plots/pages/matching-boxplots-to-histograms.html" target="_blank" rel="noopener">Matching Box Plots to Histograms</a></p>
+</li>
+<li>
+<p>Optional: Complete <a href="../../lessons/box-plots/pages/matching-boxplots-to-histograms-2.html" target="_blank" rel="noopener">Matching Box Plots to Histograms</a> and/or <a href="https://teacher.desmos.com/activitybuilder/custom/601974faad8cb40d1c603324" target="_blank" rel="noopener">Matching Box Plots to Histograms (Desmos)</a></p>
+</li>
+</ul>
+</div>
+<table class="tableblock frame-all grid-none stripes-none stretch strategy-box">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="title">Modified Box Plots</span>
+More Statistics- or Math-oriented classes will also be familiar with <em>modified box plots</em> (<a href="https://www.youtube.com/watch?v=Cm_852R8JPw" target="_blank" rel="noopener">video explanation</a>), which remove outliers from the box-and-whisker and draw them as asterisks outside of the plot. Modified box plots are also available in Bootstrap:Data Science, using the following contract:</p>
+</div>
+<div class="paragraph">
+<p><span class="obeyspaces"><code class="pyret"># modified-box-plot :: (t :: Table, col :: String) ‑&gt; Image</code></span></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_synthesize_2">Synthesize</h3>
+<div class="paragraph">
+<p>Histograms, box plots, and measures of center and spread are all different ways to get at the <span class="vocab">shape</span> of our data. It&#8217;s important to get comfortable using every tool in the toolbox when discussing shape!</p>
+</div>
+<div class="paragraph">
+<p>We started talking about measures of center with a single question: <em>is "average" the right measure to use when talking about animals' weights?</em> Now that we&#8217;ve explored the spread of the dataset, do you agree or disagree that average is the right summary?</p>
+</div>
+<table class="tableblock frame-all grid-none stripes-none stretch strategy-box">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="title">Project Option: Stress or Chill?</span></p>
+<p class="tableblock">Students can gather data about their own lives, and use what they&#8217;ve learned in the class so far to analyze it. This project can be used as a mid-term or formative assessment, or as a capstone for a limited implementation of Bootstrap:Data Science. The project description is <a href="pages/stress-project.html" target="_blank" rel="noopener">available here</a>  (You will also need the <a href="pages/personality-colors.pdf" target="_blank" rel="noopener">Personality True Colors assessment</a>)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_your_own_analysis_duration_flexible_"><span class="section-link"><a href="#_your_own_analysis_duration_flexible_"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Your Own Analysis <span class="duration">flexible</span></h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_overview_3">Overview</h3>
+<div class="paragraph">
+<p>Students apply what they&#8217;ve learned to their own dataset.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_launch_3">Launch</h3>
+<div class="paragraph">
+<p>What are the quantitative columns in <em>your</em> dataset? How are they distributed?</p>
+</div>
+<div class="paragraph">
+<p>Are all the values pretty close together, or really spread out?</p>
+</div>
+<div class="paragraph">
+<p>Are they clumped on the right, with a few outliers skewing to the left? Or are they clumped on the left, with a few outliers skewing to the right?</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_investigate_3">Investigate</h3>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>How are the quantitative columns in your dataset distributed?
+<a href="../../lessons/box-plots/pages/data-cycle-quantitative.html" target="_blank" rel="noopener">Data Cycle: Shape of My Dataset</a>, and use the Data Cycle to <strong>explore two quantitative columns with box plots</strong>.</p>
+</li>
+<li>
+<p>Then add these displays - and your interpretations! - to the "Making Displays" section.</p>
+</li>
+<li>
+<p>Do these displays bring up any interesting questions? If so, add them to the end of the document.</p>
+</li>
+<li>
+<p>Complete <a href="../../lessons/box-plots/pages/shape-of-my-dataset.html" target="_blank" rel="noopener">Shape of My Dataset</a>, and <strong>explain the connection between measures of center and your box plots</strong>.</p>
+</li>
+<li>
+<p>Complete the "Measures of Center and Spread" section of the <a href="https://docs.google.com/document/d/1eBYMjAxrn0rPp0Mqd52cRjmwyXSz51RfBWe67DR93es/copy" target="_blank" rel="noopener">Dataset Exploration</a>.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_synthesize_3">Synthesize</h3>
+<div class="paragraph">
+<p>Have students share their findings.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Were any of them surprising?</p>
+</li>
+<li>
+<p>What, if any, outliers did they discover when making box plots?</p>
+</li>
+<li>
+<p>What measures of center makes the most sense for one column or another?</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_additional_exercises"><span class="section-link"><a href="#_additional_exercises"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Additional Exercises</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://teacher.desmos.com/activitybuilder/custom/601c35a8e9fd103e94acee2b" target="_blank" rel="noopener">Card Sort: What Information does the Box &amp; Whisker Plot tell us? (Desmos)</a></p>
+</li>
+<li>
+<p><a href="https://teacher.desmos.com/activitybuilder/custom/5fe89eeaaef67d0cea85ba5e" target="_blank" rel="noopener">Matching Vocabulary to Definitions (Desmos)</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-17 19:42:12 -0400
+</div>
+</div>
+</div>
+</body>
+</html>

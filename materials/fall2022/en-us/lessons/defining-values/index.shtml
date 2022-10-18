@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Defining Values</title>
+
+  <link rel="stylesheet" href="../../lib/curriculum.css" />
+    <link rel="stylesheet" href="../../lib/codemirror.css" />
+    <script src="../../lib/codemirror.js"></script>
+    <script src="../../lib/runmode.js"></script>
+    <script src="../../lib/scheme2.js"></script>
+    <script src="../../lib/pyret-mode.js"></script>
+      <script src="../../extlib/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML%2Clocal%2Fmathjaxlocal.js"></script>
+      <script>window.status = "not_ready_to_print";</script>
+    <script src="../../lib/langtable.js"></script>
+    <script src="../../lib/bootstraplesson.js"></script>
+    <script src="../../dependency-graph.js"></script>
+    <script src="../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"Defining Values",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="article LessonPlan pyret" onload="renderSaveToDrive()">
+<!--#include virtual="/menubar.ssi"-->
+<div id="body" onload="renderSaveToDrive()">
+<div id="header">
+<h1>Defining Values</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<script>
+function preselect(klass) {
+  const items = document.getElementsByClassName(klass);
+  for (let i = 0; i < items.length; i++) {
+    items[i].style.display = 'none';
+  }
+  if (items.length > 0) {
+    items[0].style.display = 'block';
+  }
+}
+window.onload = function() {
+  preselect('alignedStandards');
+  preselect('alignedTextbooks');
+  preselect('alignedPractices');
+}
+function showStandardsAlignment() {
+  const selectTag = document.getElementsByClassName('standardsAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const stdTables = document.getElementsByClassName('alignedStandards');
+  //const intro = document.getElementsByClassName('alignedStandardsIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < stdTables.length; i++) {
+    const stdTable = stdTables[i];
+    stdTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optStd = opt.value;
+      for (let j = 0; j < stdTables.length; j++) {
+        const stdTable = stdTables[j];
+        if (stdTable.classList.contains(optStd)) {
+          stdTable.style.display = 'block';
+         // introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+function toggleNonPrereqDisplay() {
+  const inputTag = document.getElementsByClassName('sidebarinput')[0];
+  const checkedP = inputTag.checked;
+  const lessonTable = document.getElementsByClassName('sidebarlessons')[0];
+  const lis = lessonTable.getElementsByTagName('li');
+  for (let i = 0; i < lis.length; i++) {
+    const li = lis[i];
+    const lesson = li.getElementsByClassName('prerequisite');
+    if (lesson.length === 0) {
+      li.style.display = checkedP ? 'none' : 'block';
+    }
+  }
+}
+</script>
+<script>
+function showTextbooksAlignment() {
+  const selectTag = document.getElementsByClassName('textbooksAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const textbookTables = document.getElementsByClassName('alignedTextbooks');
+  //const intro = document.getElementsByClassName('alignedTextbooksIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < textbookTables.length; i++) {
+    const textbookTable = textbookTables[i];
+    textbookTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optTextbook = opt.value;
+      for (let j = 0; j < textbookTables.length; j++) {
+        const textbookTable = textbookTables[j];
+        if (textbookTable.classList.contains(optTextbook)) {
+          textbookTable.style.display = 'block';
+          //introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+</script>
+<script>
+function showPracticesAlignment() {
+  const selectTag = document.getElementsByClassName('practicesAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const practiceTables = document.getElementsByClassName('alignedPractices');
+  for (let i = 0; i < practiceTables.length; i++) {
+    const practiceTable = practiceTables[i];
+    practiceTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optPractice = opt.value;
+      for (let j = 0; j < practiceTables.length; j++) {
+        const practiceTable = practiceTables[j];
+        if (practiceTable.classList.contains(optPractice)) {
+          practiceTable.style.display = 'block';
+        }
+      }
+    }
+  }
+}
+</script>
+<div class="paragraph">
+<!-- </p>
+</div>
+--></div><div class="sidebar"><div id="toggle"></div><div class="paragraph"><!--
+<div class="paragraph">
+<p>
+--><div class="sidebarlessons"><strong>Lessons</strong>
+<ul></ul></div>
+</div>
+<table class="tableblock frame-all grid-all stretch sidebarstandards">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Standards in this Lesson</strong>
+<select class="standardsAlignmentSelect"  onchange="showStandardsAlignment()"><option selected="selected" value="standards-CCSS-Math">CCSS-Math</option><option value="standards-CSTA">CSTA</option><option value="standards-K12CS">K12CS</option><option value="standards-Oklahoma">Oklahoma</option><option value="standards-Iowa">Iowa</option></select></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist alignedStandards standards-CCSS-Math">
+<div class="title"><a href="http://corestandards.org/Math/">Common Core Math Standards</a></div>
+<dl>
+<dt class="hdlist1">6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1">7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.</p>
+</dd>
+<dt class="hdlist1">HSA.SSE.A.1</dt>
+<dd>
+<p>Interpret expressions that represent a quantity in terms of its context.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-CSTA">
+<div class="title"><a href="https://csteachers.org/page/standards">CSTA Standards</a></div>
+<dl>
+<dt class="hdlist1">1B-AP-09</dt>
+<dd>
+<p>Create programs that use variables to store and modify data.</p>
+</dd>
+<dt class="hdlist1">2-AP-11</dt>
+<dd>
+<p>Create clearly named variables that represent different data types and perform operations on their values.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-K12CS">
+<div class="title"><a href="https://k12cs.org">K-12CS Standards</a></div>
+<dl>
+<dt class="hdlist1">6-8.Algorithms and Programming.Variables</dt>
+<dd>
+<p>Programmers create variables to store data values of selected types. A meaningful identifier is assigned to each variable to access and perform operations on the value by name. Variables enable the flexibility to represent different situations, process different sets of data, and produce varying outputs.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Oklahoma">
+<div class="title"><a href="https://sde.ok.gov/oklahoma-academic-standards">Oklahoma Standards</a></div>
+<dl>
+<dt class="hdlist1">OK.3.A.V.01</dt>
+<dd>
+<p>Create programs that use variables to store and modify grade level appropriate data.</p>
+</dd>
+<dt class="hdlist1">OK.4.AP.V.01</dt>
+<dd>
+<p>Create programs that use variables to store and modify grade level appropriate data.</p>
+</dd>
+<dt class="hdlist1">OK.5.AP.V.01</dt>
+<dd>
+<p>Create programs that use variables to store and modify grade level appropriate data.</p>
+</dd>
+<dt class="hdlist1">OK.7.A.3.3</dt>
+<dd>
+<p>Represent real-world or mathematical situations using equations and inequalities involving variables and rational numbers.</p>
+</dd>
+<dt class="hdlist1">OK.A1.F.3</dt>
+<dd>
+<p>Represent functions in multiple ways and use the representation to interpret real-world and mathematical problems.</p>
+</dd>
+<dt class="hdlist1">OK.A1.F.3.1</dt>
+<dd>
+<p>Identify and generate equivalent representations of linear equations, graphs, tables, and real-world situations.</p>
+</dd>
+<dt class="hdlist1">OK.PA.A.3.1</dt>
+<dd>
+<p>Use substitution to simplify and evaluate algebraic expressions.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Iowa">
+<div class="title"><a href="https://iowacore.gov/standards/iowa-core-standards">Iowa Standards</a></div>
+<dl>
+<dt class="hdlist1">IA.6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch sidebartextbooks">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Textbook Alignment</strong>
+<select class="textbooksAlignmentSelect"  onchange="showTextbooksAlignment()"><option selected="selected" value="textbook-IM_7"><a href="https://illustrativemathematics.org/">IM 7 Math™</a></option><option value="textbook-IM_6"><a href="https://illustrativemathematics.org/">IM 6 Math™</a></option><option value="textbook-CMP"><a href="https://connectedmath.msu.edu/">Connected Math</a></option><option value="textbook-IM_Alg_1"><a href="https://illustrativemathematics.org/">IM Algebra 1</a></option></select></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist alignedTextbooks textbook-IM_7">
+<div class="title"><a href="https://illustrativemathematics.org/">IM 7 Math™</a></div>
+<dl>
+<dt class="hdlist1">IM.7.6.11</dt>
+<dd>
+<p>Using Equations to Solve Problems</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedTextbooks textbook-IM_6">
+<div class="title"><a href="https://illustrativemathematics.org/">IM 6 Math™</a></div>
+<dl>
+<dt class="hdlist1">IM.6.6.2</dt>
+<dd>
+<p>Truth and Equations</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedTextbooks textbook-CMP">
+<div class="title"><a href="https://connectedmath.msu.edu/">Connected Math</a></div>
+<dl>
+<dt class="hdlist1">CMP.6.6</dt>
+<dd>
+<p>Variables and Patterns: Focus on Algebra</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedTextbooks textbook-IM_Alg_1">
+<div class="title"><a href="https://illustrativemathematics.org/">IM Algebra 1</a></div>
+<dl>
+<dt class="hdlist1">IM.Alg1.4.2</dt>
+<dd>
+<p>Function Notation</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch sidebarpractices">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Practices in this Lesson</strong>
+<select class="practicesAlignmentSelect"  onchange="showPracticesAlignment()"><option selected="selected" value="practices-NGSS"><a href="https://ngss.nsta.org/practicesfull.aspx">Science and Engineering</a></option><option value="practices-CC"><a href="http://corestandards.org/Math/">Math</a></option><option value="practices-MLR"><a href="https://achievethecore.org/peersandpedagogy/developing-math-language-routines/">Math Lang. Routines</a></option></select></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist alignedPractices practices-NGSS">
+<div class="title"><a href="https://ngss.nsta.org/practicesfull.aspx">Science and Engineering</a></div>
+<dl>
+<dt class="hdlist1">SEP.7</dt>
+<dd>
+<p>Engaging in Argument from Evidence</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedPractices practices-CC">
+<div class="title"><a href="http://corestandards.org/Math/">Math</a></div>
+<dl>
+<dt class="hdlist1">MP.7</dt>
+<dd>
+<p>Look for and make use of structure</p>
+</dd>
+<dt class="hdlist1">MP.8</dt>
+<dd>
+<p>Look for and express regularity in repeated reasoning</p>
+</dd>
+<dt class="hdlist1">MP.2</dt>
+<dd>
+<p>Reason abstractly and quantitatively</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedPractices practices-MLR">
+<div class="title"><a href="https://achievethecore.org/peersandpedagogy/developing-math-language-routines/">Math Lang. Routines</a></div>
+<dl>
+<dt class="hdlist1">MLR.8</dt>
+<dd>
+<p>Discussion Supports</p>
+</dd>
+<dt class="hdlist1">MLR.7</dt>
+<dd>
+<p>Compare and Connect</p>
+</dd>
+<dt class="hdlist1">MLR.5</dt>
+<dd>
+<p>Co-Craft Questions and Problems</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<!-- </p>
+</div>
+--></div><!--
+<div class="paragraph">
+<p>
+-->
+</div>
+<div class="paragraph">
+<p><span class="other-proglang">(Also available in <a href="../../lessons/defining-values-wescheme/index.shtml">WeScheme</a>)</span></p>
+</div>
+<div class="paragraph description">
+<p>Students learn to improve readability, performance and maintanability of code by defining values that repeat in code, just as we would define variables in math.</p>
+</div>
+<table class="tableblock frame-all grid-all stripes-none stretch left-header preamble">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Lesson Goals</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Students will be able to:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Define <span class="vocab">values</span> of various types</p>
+</li>
+<li>
+<p>Simplify a complex expression by replacing repeated parts with defined names,</p>
+</li>
+<li>
+<p>Explain why <span class="vocab">variable</span>s are useful in math and programming</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Student-facing Goals</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>I can define names for <span class="vocab">values</span>, generated by computed expressions</p>
+</li>
+<li>
+<p>I can clean up complex code by defining repeated expressions</p>
+</li>
+<li>
+<p>I can explain why <span class="vocab">variables</span> are important</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Materials</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist materials-links">
+<ul>
+<li>
+<p><a href="https://docs.google.com/presentation/d/1uy8MxWosnjJ6_jcM24rZ3uSOt_vDVNAlD-6YaXzfVSQ/" target="_blank" rel="noopener">Lesson Slides</a></p>
+</li>
+<li>
+<p><span class="StarterFile"><a href="https://code.pyret.org/editor#share=1nHYxDhgOsbQ-jI7OMZLcgcTJ8HFxPWCL" target="_blank" rel="noopener">Defining Values Starter File</a></span></p>
+</li>
+<li>
+<p><span class="StarterFile"><a href="https://code.pyret.org/editor#share=1pi0API2gERKokehisGvg7717xaHHPEui" target="_blank" rel="noopener">Chinese Flag Starter File</a></span></p>
+</li>
+<li>
+<p><span class="materialSectionPlaceholder"> </span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/defining-values/pages/defining-values-explore.html" target="_blank" rel="noopener">Defining Values - Explore</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/defining-values/pages/chinese-flag.html" target="_blank" rel="noopener">Defining Values - Chinese Flag</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/defining-values/pages/coe-why-define-values.html" target="_blank" rel="noopener">Why Define Values?</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/defining-values/pages/which-value-to-define.html" target="_blank" rel="noopener">Which Value(s) Would it Make Sense to Define?</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/defining-values/pages/writing-code-using-defined-values.html" target="_blank" rel="noopener">Writing Code using Defined Values</a></span></p>
+</li>
+<li>
+<p><span class="Optional OnlineExercise"><a href="https://teacher.desmos.com/activitybuilder/custom/5fc90f1289c78e0d2a5bccfc" target="_blank" rel="noopener">Matching Code to Images using overlay &amp; put-image (Desmos)</a></span></p>
+</li>
+<li>
+<p><strong>Classroom visual:</strong> <a href="javascript:showLangTable()">Language Table</a></p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Key Points For The Facilitator</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Learning how to define values is a big milestone! It will be used consistently throughout other lessons, so be sure to give students plenty of time to practice this new skill.</p>
+</li>
+<li>
+<p>Check frequently for understanding of <span class="vocab">data types</span> and <span class="vocab">contract</span>s during this lesson and throughout subsequent lessons.</p>
+</li>
+<li>
+<p>Students will use their Contracts page frequently, so it should be kept in an accessible, convenient location.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="dlist glossary">
+<div class="title">Glossary</div>
+<dl>
+<dt class="hdlist1">contract</dt>
+<dd>
+<p>a statement of the name, domain, and range of a function</p>
+</dd>
+<dt class="hdlist1">data type</dt>
+<dd>
+<p>a way of classifying values, such as: Number, String, Image, Boolean, or any user-defined data structure</p>
+</dd>
+<dt class="hdlist1">value</dt>
+<dd>
+<p>a specific piece of data, like 5 or "hello"</p>
+</dd>
+<dt class="hdlist1">variable</dt>
+<dd>
+<p>a name or symbol that stands for some value or expression, often a value or expression that changes</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_whats_in_common_duration_30_minutes_"><span class="section-link"><a href="#_whats_in_common_duration_30_minutes_"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>What&#8217;s in Common? <span class="duration">30 minutes</span></h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_overview">Overview</h3>
+<div class="paragraph">
+<p>This activity introduces the problem with duplicate code, leveraging <strong>Mathematical Practice 7 - Identify and Make Use of Structure</strong>. Students identify a common structure in a series of expressions, and discover how to bind that expression to a name that can be re-used.</p>
+</div>
+<div class="paragraph">
+<p>Note that in Pyret definitions work the way variable substitution does in math, as opposed to variable assignment you may have seen in other programming languages.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_launch">Launch</h3>
+<div class="paragraph">
+<p>Invite students to take a look at the expressions below:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="pyret">star(50, "solid", "green")
+scale(3, star(50, "solid", "green"))
+scale(0.5, star(50, "solid", "green"))
+rotate(45, star(50, "solid", "green"))
+rotate(45, scale(3, star(50, "solid", "green")))</code></code></pre>
+</div>
+</div>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>What code do they all have in common?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code class="pyret">star(50, "solid", "green")</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>What would happen if you were asked to change the color of all the stars to gold?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>We&#8217;d have to change the color everywhere it appeared.</em></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph lesson-point">
+<p>Duplicate code is almost always bad!</p>
+</div>
+<div class="paragraph">
+<p>There are lots of potential problems with duplicate code:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Readability:</strong> The more code there is, the harder it can be to read.</p>
+</li>
+<li>
+<p><strong>Performance:</strong> Why re-evaluate the same code a dozen times, when we can evaluate it <em>once</em> and use the result as many times as we need?</p>
+</li>
+<li>
+<p><strong>Maintainability:</strong> Suppose we needed to change the size of the stars in the examples above. We would have to make sure every line is changed, which leaves a lot of room for error.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Since we&#8217;re using that star over and over again, wouldn&#8217;t it be nice if we could define a "nickname" for that code, and then use the nickname over and over in place of the expression? And then, if we wanted to change something about all of the stars, we would only have to make the change once, in the definition.</p>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>You already know how to do this in math:</p>
+</div>
+<div class="paragraph indentedpara">
+<p><span class="gdrive-only">x = 4</span><script type="math/tex">\displaystyle x = 4</script> <em>defines</em> the nickname <span class="gdrive-only">x</span><script type="math/tex">\displaystyle x</script> to be the value 4.</p>
+</div>
+</div>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>Pyret is no different!</p>
+</div>
+<div class="paragraph indentedpara">
+<p>We type <code class="pyret">x = 4</code> to define <code class="pyret">x</code> to be the value 4.</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Once we&#8217;ve defined <code class="pyret">x</code> to be the value 4 and clicked "Run", anytime we use <code class="pyret">x</code>, the computer will remember that it is <em>defined</em> as 4.  We can <em>use</em> that definition to get an answer. For example, <span class="gdrive-only">x + 2</span><script type="math/tex">\displaystyle x + 2</script> will evaluate to 6.</p>
+</div>
+<div class="paragraph">
+<p>Of course, the whole point of defining a value is so that it sticks around and can be used later! That&#8217;s why programmers put their definitions on the <em>left-hand side</em>, known as the <strong>Definitions Area</strong>.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_investigate">Investigate</h3>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Open the <a href="https://code.pyret.org/editor#share=1nHYxDhgOsbQ-jI7OMZLcgcTJ8HFxPWCL" target="_blank" rel="noopener">Defining Values Starter File</a> and complete <a href="../../lessons/defining-values/pages/defining-values-explore.html" target="_blank" rel="noopener">Defining Values - Explore</a> with your partner.</p>
+</li>
+<li>
+<p>Add some definitions of your own in the Definitions Area. Be sure to click "Run" again before you try testing them out.</p>
+</li>
+<li>
+<p>Complete <a href="../../lessons/defining-values/pages/which-value-to-define.html" target="_blank" rel="noopener">Which Value(s) Would it Make Sense to Define?</a>.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_synthesize">Synthesize</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>What data types can we define values for?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>All of them - Number, String, Image</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>What values did you decide to define? When might they be useful?</p>
+</li>
+</ul>
+</div>
+<table class="tableblock frame-all grid-none stripes-none stretch strategy-box">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="title">Support for English Language Learners</span></p>
+<p class="tableblock">MLR 8 - Discussion Supports: As students discuss, rephrase responses as questions and encourage precision in the words being used to reinforce the meanings behind some of the programming-specific language, such as "define" and "value".</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_using_defined_values"><span class="section-link"><a href="#_using_defined_values"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Using Defined Values</h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_overview_2">Overview</h3>
+<div class="paragraph">
+<p>Now that we know <em>how</em> to define values, we&#8217;ve got two more things to consider:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>When it would be <em>useful</em> to define them?</p>
+</li>
+<li>
+<p>How do we <em>use</em> them once we&#8217;ve defined them?</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_launch_2">Launch</h3>
+<div class="paragraph lesson-instruction">
+<p>Complete <a href="../../lessons/defining-values/pages/chinese-flag.html" target="_blank" rel="noopener">Defining Values - Chinese Flag</a>.</p>
+</div>
+<div class="paragraph">
+<p>Note: The above worksheet will direct students to open the <a href="https://code.pyret.org/editor#share=1pi0API2gERKokehisGvg7717xaHHPEui" target="_blank" rel="noopener">Chinese Flag Starter File</a> once they complete the first half of the questions.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_investigate_2">Investigate</h3>
+<div class="openblock lesson-instruction">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Open a new file in <a href="https://code.pyret.org/editor" target="_blank" rel="noopener">code.pyret.org (CPO)</a> and name it <code class="pyret">sunny</code>, then turn to <a href="../../lessons/defining-values/pages/coe-why-define-values.html" target="_blank" rel="noopener">Why Define Values?</a></p>
+</li>
+<li>
+<p>The first row of the table has been completed for you. What is happening in that first row?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>The original Circle of Evaluation has been simplified by using a defined value <code class="pyret">sunny</code>.</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>What code is being replaced by <code class="pyret">sunny</code>?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><span class="obeyspaces"><code class="pyret">radial-star&#8203;(&#8203;30, 20, 50, "solid", "yellow"&#8203;)</code></span></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Write the code on the line provided in question 2. Then type it into the Interactions Area and click "Run".</p>
+</li>
+<li>
+<p>Define the value <code class="pyret">sunny</code> in the definitions area.</p>
+</li>
+<li>
+<p>Complete the page and test your code in the editor.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_synthesize_2">Synthesize</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Why is defining values useful?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Defining values allows the programmer to reuse code and make changes easily. It allows us to more easily use elements inside other functions, and it saves time!</em></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_additional_exercises"><span class="section-link"><a href="#_additional_exercises"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Additional Exercises:</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="../../lessons/defining-values/pages/writing-code-using-defined-values.html" target="_blank" rel="noopener">Writing Code using Defined Values</a></p>
+</li>
+<li>
+<p><a href="https://teacher.desmos.com/activitybuilder/custom/5fc90f1289c78e0d2a5bccfc" target="_blank" rel="noopener">Matching Code to Images using overlay &amp; put-image (Desmos)</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-17 19:42:13 -0400
+</div>
+</div>
+</div>
+</body>
+</html>

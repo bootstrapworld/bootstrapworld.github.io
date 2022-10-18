@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Are All Graphs Linear?</title>
+
+  <link rel="stylesheet" href="../../../lib/curriculum.css" />
+    <script src="../../../lib/langtable.js"></script>
+    <script src="../../../lib/bootstraplesson.js"></script>
+    <script src="../../../dependency-graph.js"></script>
+    <script src="../../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"Are All Graphs Linear?",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="workbookpage article pyret" onload="renderSaveToDrive()">
+<div id="header">
+<h1>Are All Graphs Linear?</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<style>
+#content .graph-table img { width: 28%; }
+#content table .MathJax * { font-size: 0.7rem; }
+#content .sideways-pyret-table td, .sideways-pyret-table th {
+	padding: 0px !important;
+	vertical-align: middle !important;
+	text-align: center !important;
+	min-height: 3rem;
+}
+</style>
+<div class="paragraph">
+<p>If all linear relationships can be shown as points on a graph, does that mean all graphs are linear?</p>
+</div>
+<div class="paragraph">
+<p>Beneath each graph write <strong>linear</strong> or <strong>not linear</strong>.</p>
+</div>
+<table class="tableblock frame-none grid-all stripes-none stretch graph-table">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>A</strong> <span class="image-figure"><span class="image"><img src="../images/87bac7035612ca2d.png" alt="horizontal line crossing the y-axis at 48" title="horizontal line crossing the y-axis at 48"></span><a href="../images/87bac7035612ca2d.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span>
+  <strong>B</strong> <span class="image-figure"><span class="image"><img src="../images/c72a0bd0f247cf88.png" alt="upside-down v-shaped graph with its vertex at the origin" title="upside-down v-shaped graph with its vertex at the origin"></span><a href="../images/c72a0bd0f247cf88.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span>
+  <strong>C</strong> <span class="image-figure"><span class="image"><img src="../images/066ebbab5a226556.png" alt="two curves meeting at the origin" title="two curves meeting at the origin"></span><a href="../images/066ebbab5a226556.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="vspace" style="height: 2ex"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>D</strong> <span class="image-figure"><span class="image"><img src="../images/424abe58878a54ac.png" alt="a diagonal line, sloping downward from left to right" title="a diagonal line, sloping downward from left to right"></span><a href="../images/424abe58878a54ac.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span>
+  <strong>E</strong> <span class="image-figure"><span class="image"><img src="../images/8e84cda665692a9f.png" alt="a diagonal line, sloping updward from left to right" title="a diagonal line, sloping updward from left to right"></span><a href="../images/8e84cda665692a9f.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span>
+  <strong>F</strong> <span class="image-figure"><span class="image"><img src="../images/8a098bce452b8524.png" alt="a u-shaped graph, opening upward, with its vertex at the origin" title="a u-shaped graph, opening upward, with its vertex at the origin"></span><a href="../images/8a098bce452b8524.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="vspace" style="height: 2ex"></span></p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">What do you <strong>Notice?</strong></th>
+<th class="tableblock halign-center valign-top">What do you <strong>Wonder?</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="vspace" style="height: 50ex"></span><span class="gdrive-only"><p>&#xa0;</p></span><span class="gdrive-only"><p>&#xa0;</p></span><span class="gdrive-only"><p>&#xa0;</p></span><span class="gdrive-only"><p>&#xa0;</p></span><span class="gdrive-only"><p>&#xa0;</p></span><span class="gdrive-only"><p>&#xa0;</p></span><span class="gdrive-only"><p>&#xa0;</p></span><span class="gdrive-only"><p>&#xa0;</p></span><span class="gdrive-only"><p>&#xa0;</p></span><span class="gdrive-only"><p>&#xa0;</p></span><span class="gdrive-only"><p>&#xa0;</p></span><span class="gdrive-only"><p>&#xa0;</p></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="vspace" style="height: 50ex"></span><span class="gdrive-only"><p>&#xa0;</p></span><span class="gdrive-only"><p>&#xa0;</p></span><span class="gdrive-only"><p>&#xa0;</p></span><span class="gdrive-only"><p>&#xa0;</p></span><span class="gdrive-only"><p>&#xa0;</p></span><span class="gdrive-only"><p>&#xa0;</p></span><span class="gdrive-only"><p>&#xa0;</p></span><span class="gdrive-only"><p>&#xa0;</p></span><span class="gdrive-only"><p>&#xa0;</p></span><span class="gdrive-only"><p>&#xa0;</p></span><span class="gdrive-only"><p>&#xa0;</p></span><span class="gdrive-only"><p>&#xa0;</p></span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-17 19:41:57 -0400
+</div>
+</div>
+</body>
+</html>

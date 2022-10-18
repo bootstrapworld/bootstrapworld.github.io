@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Introduction to Programming</title>
+
+  <link rel="stylesheet" href="../../../lib/curriculum.css" />
+    <link rel="stylesheet" href="../../../lib/codemirror.css" />
+    <script src="../../../lib/codemirror.js"></script>
+    <script src="../../../lib/runmode.js"></script>
+    <script src="../../../lib/scheme2.js"></script>
+    <script src="../../../lib/pyret-mode.js"></script>
+      <script src="../../../extlib/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML%2Clocal%2Fmathjaxlocal.js"></script>
+      <script>window.status = "not_ready_to_print";</script>
+    <script src="../../../lib/langtable.js"></script>
+    <script src="../../../lib/bootstraplesson.js"></script>
+    <script src="../../../dependency-graph.js"></script>
+    <script src="../../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"Introduction to Programming",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="LessonNotes workbookpage article pyret" onload="renderSaveToDrive()">
+<div id="header">
+<h1>Introduction to Programming</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <strong>Editor</strong> is a software program we use to write Code. Our Editor allows us to experiment with Code on the right-hand side, in the <strong>Interactions Area</strong>. For Code that we want to <em>keep</em>, we can put it on the left-hand side in the <strong>Definitions Area</strong>. Clicking the "Run" button causes the computer to re-read everything in the Definitions Area and erase anything that was typed into the Interactions Area.</p>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_data_types">Data Types</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Programming languages involve different <span class="vocab">data types</span>, such as Numbers, Strings, Booleans, and even Images.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Numbers are values like <code class="pyret">1</code>, <code class="pyret">0.4</code>, <code class="pyret">1/3</code>, and <code class="pyret">-8261.003</code>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Numbers are <em>usually</em>  used for quantitative data and other values are <em>usually</em>  used as categorical data.</p>
+</li>
+<li>
+<p>In Pyret, any decimal <em>must</em>  start with a 0. For example, <code class="pyret">0.22</code> is valid, but <code class="pyret">.22</code> is not.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Strings are values like <code class="pyret">"Emma"</code>, <code class="pyret">"Rosanna"</code>, <code class="pyret">"Jen and Ed"</code>, or even <code class="pyret">"08/28/1980"</code>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>All strings <em>must</em> be surrounded in quotation marks.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Booleans are either <code class="pyret">true</code> or <code class="pyret">false</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>All values evaluate to themselves. The program <code class="pyret">42</code> will evaluate to <code class="pyret">42</code>, the String <code class="pyret">"Hello"</code> will evaluate to <code class="pyret">"Hello"</code>, and the Boolean <code class="pyret">false</code> will evaluate to <code class="pyret">false</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_operators">Operators</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Operators (like <code class="pyret">+</code>, <code class="pyret">-</code>, <code class="pyret">*</code>, <code class="pyret">&lt;</code>, etc.) work the same way in Pyret that they do in math.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Operators are written between values, for example: <code class="pyret">4 + 2</code>.</p>
+</li>
+<li>
+<p>In Pyret, operators must always have a space around them. <code class="pyret">4 + 2</code> is valid, but <code class="pyret">4+2</code> is not.</p>
+</li>
+<li>
+<p>If an expression has different operators, parentheses must be used to show order of operations. <code class="pyret">4 + 2 + 6</code> and <code class="pyret">4 + (2 * 6)</code> are valid, but <code class="pyret">4 + 2 * 6</code> is not.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_applying_functions">Applying Functions</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Applying functions works much the way it does in math. Every function has a name, takes some inputs, and produces some output. The function name is written first, followed by a list of <span class="vocab">arguments</span> in parentheses.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>In math this could look like <span class="gdrive-only">f5</span><script type="math/tex">\displaystyle f(5)</script> or <span class="gdrive-only">g(10, 4)</span><script type="math/tex">\displaystyle g(10, 4)</script>.</p>
+</li>
+<li>
+<p>In Pyret , these examples would be written as <span class="obeyspaces"><code class="pyret">f&#8203;(&#8203;5&#8203;)</code></span> and <span class="obeyspaces"><code class="pyret">g&#8203;(&#8203;10, 4&#8203;)</code></span>.</p>
+</li>
+<li>
+<p>Applying a function to make images would look like <span class="obeyspaces"><code class="pyret">star&#8203;(&#8203;50, "solid", "red"&#8203;)</code></span>.</p>
+</li>
+<li>
+<p>There are many other functions, for example <span class="obeyspaces"><code class="pyret">num-sqr</code></span>, <span class="obeyspaces"><code class="pyret">num-sqrt</code></span>, <span class="obeyspaces"><code class="pyret">triangle</code></span>, <span class="obeyspaces"><code class="pyret">square</code></span>, <span class="obeyspaces"><code class="pyret">string-repeat</code></span>, etc.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 1ex"></span></p>
+</div>
+<div class="paragraph">
+<p>Functions have <span class="vocab">contracts</span>, which help explain how a function should be used. Every contract has three parts:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The <em>Name</em> of the function - literally, what it&#8217;s called.</p>
+</li>
+<li>
+<p>The <em>Domain</em> of the function - what <em>types of values</em> the function consumes, and in what order.</p>
+</li>
+<li>
+<p>The <em>Range</em> of the function - what <em>type of value</em> the function produces.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-17 19:42:11 -0400
+</div>
+</div>
+</body>
+</html>

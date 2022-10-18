@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Logic Errors 2</title>
+
+  <link rel="stylesheet" href="../../../lib/curriculum.css" />
+    <link rel="stylesheet" href="../../../lib/codemirror.css" />
+    <script src="../../../lib/codemirror.js"></script>
+    <script src="../../../lib/runmode.js"></script>
+    <script src="../../../lib/scheme2.js"></script>
+    <script src="../../../lib/pyret-mode.js"></script>
+    <script src="../../../lib/langtable.js"></script>
+    <script src="../../../lib/bootstraplesson.js"></script>
+    <script src="../../../dependency-graph.js"></script>
+    <script src="../../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"lessons/debugging-wescheme/solution-pages/logic-errors-2",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="workbookpage pyret article" onload="renderSaveToDrive()">
+<div id="header">
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div class="sect1 wescheme">
+<h2 id="_logic_errors_2">Logic Errors 2</h2>
+<div class="sectionbody">
+<style>
+.recipe_word_problem, .recipe_instructions { display: none; }
+.test { line-height: 1.6rem; text-decoration: underline; }
+</style>
+<div class="paragraph">
+<p><strong>Word Problem:</strong> <em>All students are given five (5) pencils at the beginning of the school year. Write a function called calc-pencils that takes in the number of students in the school and calculates the number of pencils needed for that school.</em></p>
+</div>
+<div class="paragraph">
+<p>To solve this word problem, Louis defined the following function, <strong>which runs without any errors</strong>:
+<span class="center">
+	<span class="obeyspaces"><code class="racket">(define (calc-pencils p) (/ p 5))</code></span>
+</span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">1</span> Can you see what is wrong with this definition?</p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch">
+	<span class="solution">The word problem is supposed to take in the number of students and compute the number of pencils, but this does the opposite.</span>
+</span>
+<span class="fitb stretch"></span></p>
+</div>
+<div class="paragraph">
+<p>To explain their thinking, they filled out the following Design Recipe:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph recipe_word_problem headless-design-recipe FORpyret">
+<p><strong>Directions</strong>: All students are given five (5) pencils at the beginning of the school year. Write a function called calc-pencils that takes in the number of students in the school and calculates the number of pencils needed for that school.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch recipe_title">
+<colgroup>
+<col style="width: 99.0099%;">
+<col style="width: 0.9901%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Contract and Purpose Statement</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph recipe recipe_instructions">
+<p>Every contract has three parts&#8230;&#8203;</p>
+</div>
+<div class="paragraph recipe recipe_contract">
+<p><span class="studentAnswer studentAnswerCode solution recipe_name">calc-pencils</span>::<span class="studentAnswer studentAnswerCode solution recipe_domain">Number</span>-&gt;<span class="studentAnswer studentAnswerCode solution recipe_range">Number</span></p>
+</div>
+<div class="paragraph recipe recipe_purpose_statement">
+<p><span class="studentAnswer solution recipe_purpose">There are five pencils for every student</span></p>
+</div>
+<table class="tableblock frame-all grid-all stretch recipe_title">
+<colgroup>
+<col style="width: 99.0099%;">
+<col style="width: 0.9901%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Examples</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph recipe recipe_instructions">
+<p>Write some examples, then circle and label what changes&#8230;&#8203;</p>
+</div>
+<div class="openblock wrapper recipe recipe_example_line keyword_only">
+<div class="content">
+<div class="paragraph">
+<p><span class="clear"> </span><span class="pyretkeyword">examples:</span></p>
+</div>
+</div>
+</div>
+<div class="openblock wrapper recipe recipe_example_line">
+<div class="content">
+<div class="paragraph">
+<p><span class="clear"> </span><span class="studentAnswerCode blank">&#x5f;&#x5f;</span><span class="studentAnswer studentAnswerCode solution recipe_name">calc-pencils</span> <span class="studentAnswerCode">(</span><span class="studentAnswer studentAnswerCode solution recipe_example_inputs">100</span><span class="studentAnswerCode">)</span><span class="studentAnswerCode blank">&#x5f;&#x5f;</span> <span class="pyretkeyword">is</span> <span class="studentAnswer studentAnswerCode solution recipe_example_body">100 / 5</span></p>
+</div>
+</div>
+</div>
+<div class="openblock wrapper recipe recipe_example_line">
+<div class="content">
+<div class="paragraph">
+<p><span class="clear"> </span><span class="studentAnswerCode blank">&#x5f;&#x5f;</span><span class="studentAnswer studentAnswerCode solution recipe_name">calc-pencils</span> <span class="studentAnswerCode">(</span><span class="studentAnswer studentAnswerCode solution recipe_example_inputs">40</span><span class="studentAnswerCode">)</span><span class="studentAnswerCode blank">&#x5f;&#x5f;</span> <span class="pyretkeyword">is</span> <span class="studentAnswer studentAnswerCode solution recipe_example_body">40 / 5</span></p>
+</div>
+</div>
+</div>
+<div class="openblock wrapper recipe recipe_example_line keyword_only">
+<div class="content">
+<div class="paragraph">
+<p><span class="clear"> </span><span class="pyretkeyword">end</span></p>
+</div>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch recipe_title">
+<colgroup>
+<col style="width: 99.0099%;">
+<col style="width: 0.9901%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Definition</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph recipe recipe_instructions">
+<p>Write the definition, giving variable names to all your input values&#8230;&#8203;</p>
+</div>
+<div class="openblock wrapper recipe recipe_line">
+<div class="content">
+<div class="paragraph">
+<p><span class="clear"> </span><span class="pyretkeyword">fun</span> <span class="studentAnswer studentAnswerCode solution recipe_name">calculate-pencils</span><span class="studentAnswerCode">(</span><span class="studentAnswer studentAnswerCode solution recipe_variables">p</span><span class="studentAnswerCode">):</span></p>
+</div>
+</div>
+</div>
+<div class="openblock wrapper recipe recipe_line">
+<div class="content">
+<div class="paragraph">
+<p><span class="clear"> </span><span class="studentAnswerCode blank">&#x5f;&#x5f;</span><span class="studentAnswer studentAnswerCode solution recipe_definition_body">p / 5</span></p>
+</div>
+</div>
+</div>
+<div class="openblock wrapper recipe recipe_line keyword_only">
+<div class="content">
+<div class="paragraph">
+<p><span class="clear"> </span><span class="pyretkeyword">end</span></p>
+</div>
+</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><span class="autonum">2</span> Read each step in the recipe carefully. In which step did their thinking first go wrong? (circle one)</p>
+</div>
+<table class="tableblock frame-none grid-none stripes-none stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="solution"><strong><em>Contract & Purpose</em></strong></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Examples & Labels</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Definition</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><span class="vspace" style="height: 1ex"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">3</span> What could they have done to find or avoid the mistake in the first place?
+<span class="fitb stretch">
+	<span class="solution">Their purpose was incomplete, and did not match the word problem.</span>
+</span></p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"><span class="solution">Thinking through a simple example with 1 student would have helped.</span></span></p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"></span>
+<span class="fitb stretch"></span></p>
+</div>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-17 19:41:51 -0400
+</div>
+</div>
+</body>
+</html>

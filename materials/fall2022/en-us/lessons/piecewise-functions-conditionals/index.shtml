@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Piecewise Functions and Conditionals</title>
+
+  <link rel="stylesheet" href="../../lib/curriculum.css" />
+    <link rel="stylesheet" href="../../lib/codemirror.css" />
+    <script src="../../lib/codemirror.js"></script>
+    <script src="../../lib/runmode.js"></script>
+    <script src="../../lib/scheme2.js"></script>
+    <script src="../../lib/pyret-mode.js"></script>
+    <script src="../../lib/langtable.js"></script>
+    <script src="../../lib/bootstraplesson.js"></script>
+    <script src="../../dependency-graph.js"></script>
+    <script src="../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"Piecewise Functions and Conditionals",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="article LessonPlan pyret" onload="renderSaveToDrive()">
+<!--#include virtual="/menubar.ssi"-->
+<div id="body" onload="renderSaveToDrive()">
+<div id="header">
+<h1>Piecewise Functions and Conditionals</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<script>
+function preselect(klass) {
+  const items = document.getElementsByClassName(klass);
+  for (let i = 0; i < items.length; i++) {
+    items[i].style.display = 'none';
+  }
+  if (items.length > 0) {
+    items[0].style.display = 'block';
+  }
+}
+window.onload = function() {
+  preselect('alignedStandards');
+  preselect('alignedTextbooks');
+  preselect('alignedPractices');
+}
+function showStandardsAlignment() {
+  const selectTag = document.getElementsByClassName('standardsAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const stdTables = document.getElementsByClassName('alignedStandards');
+  //const intro = document.getElementsByClassName('alignedStandardsIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < stdTables.length; i++) {
+    const stdTable = stdTables[i];
+    stdTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optStd = opt.value;
+      for (let j = 0; j < stdTables.length; j++) {
+        const stdTable = stdTables[j];
+        if (stdTable.classList.contains(optStd)) {
+          stdTable.style.display = 'block';
+         // introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+function toggleNonPrereqDisplay() {
+  const inputTag = document.getElementsByClassName('sidebarinput')[0];
+  const checkedP = inputTag.checked;
+  const lessonTable = document.getElementsByClassName('sidebarlessons')[0];
+  const lis = lessonTable.getElementsByTagName('li');
+  for (let i = 0; i < lis.length; i++) {
+    const li = lis[i];
+    const lesson = li.getElementsByClassName('prerequisite');
+    if (lesson.length === 0) {
+      li.style.display = checkedP ? 'none' : 'block';
+    }
+  }
+}
+</script>
+<script>
+function showTextbooksAlignment() {
+  const selectTag = document.getElementsByClassName('textbooksAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const textbookTables = document.getElementsByClassName('alignedTextbooks');
+  //const intro = document.getElementsByClassName('alignedTextbooksIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < textbookTables.length; i++) {
+    const textbookTable = textbookTables[i];
+    textbookTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optTextbook = opt.value;
+      for (let j = 0; j < textbookTables.length; j++) {
+        const textbookTable = textbookTables[j];
+        if (textbookTable.classList.contains(optTextbook)) {
+          textbookTable.style.display = 'block';
+          //introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+</script>
+<script>
+function showPracticesAlignment() {
+  const selectTag = document.getElementsByClassName('practicesAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const practiceTables = document.getElementsByClassName('alignedPractices');
+  for (let i = 0; i < practiceTables.length; i++) {
+    const practiceTable = practiceTables[i];
+    practiceTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optPractice = opt.value;
+      for (let j = 0; j < practiceTables.length; j++) {
+        const practiceTable = practiceTables[j];
+        if (practiceTable.classList.contains(optPractice)) {
+          practiceTable.style.display = 'block';
+        }
+      }
+    }
+  }
+}
+</script>
+<div class="paragraph">
+<!-- </p>
+</div>
+--></div><div class="sidebar"><div id="toggle"></div><div class="paragraph"><!--
+<div class="paragraph">
+<p>
+--><div class="sidebarlessons"><strong>Lessons</strong>
+<ul></ul></div>
+</div>
+<table class="tableblock frame-all grid-all stretch sidebarstandards">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Standards in this Lesson</strong>
+<select class="standardsAlignmentSelect"  onchange="showStandardsAlignment()"><option selected="selected" value="standards-CCSS-Math">CCSS-Math</option><option value="standards-CSTA">CSTA</option><option value="standards-K12CS">K12CS</option><option value="standards-Oklahoma">Oklahoma</option></select></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist alignedStandards standards-CCSS-Math">
+<div class="title"><a href="http://corestandards.org/Math/">Common Core Math Standards</a></div>
+<dl>
+<dt class="hdlist1">6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1">7.EE.B</dt>
+<dd>
+<p>Solve real-life and mathematical problems using numerical and algebraic expressions and equations.</p>
+</dd>
+<dt class="hdlist1">HSA.SSE.A.1.A</dt>
+<dd>
+<p>Interpret parts of an expression, such as terms, factors, and coefficients.</p>
+</dd>
+<dt class="hdlist1">HSA.SSE.A.1.B</dt>
+<dd>
+<p>Interpret complicated expressions by viewing one or more of their parts as a single entity.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-CSTA">
+<div class="title"><a href="https://csteachers.org/page/standards">CSTA Standards</a></div>
+<dl>
+<dt class="hdlist1">1B-AP-10</dt>
+<dd>
+<p>Create programs that include sequences, events, loops, and conditionals.</p>
+</dd>
+<dt class="hdlist1">1B-AP-12</dt>
+<dd>
+<p>Modify, remix, or incorporate portions of an existing program into one&#8217;s own work, to develop something new or add more advanced features.</p>
+</dd>
+<dt class="hdlist1">2-AP-11</dt>
+<dd>
+<p>Create clearly named variables that represent different data types and perform operations on their values.</p>
+</dd>
+<dt class="hdlist1">2-AP-17</dt>
+<dd>
+<p>Systematically test and refine programs using a range of test cases</p>
+</dd>
+<dt class="hdlist1">2-AP-19</dt>
+<dd>
+<p>Document programs in order to make them easier to follow, test, and debug.</p>
+</dd>
+<dt class="hdlist1">3B-AP-14</dt>
+<dd>
+<p>Construct solutions to problems using student-created components, such as procedures, modules and/or objects.</p>
+</dd>
+<dt class="hdlist1">3B-AP-21</dt>
+<dd>
+<p>Develop and use a series of test cases to verify that a program performs according to its design specifications.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-K12CS">
+<div class="title"><a href="https://k12cs.org">K-12CS Standards</a></div>
+<dl>
+<dt class="hdlist1">9-12.Algorithms and Programming.Control</dt>
+<dd>
+<p>Programmers consider tradeoffs related to implementation, readability, and program performance when selecting and combining control structures.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Oklahoma">
+<div class="title"><a href="https://sde.ok.gov/oklahoma-academic-standards">Oklahoma Standards</a></div>
+<dl>
+<dt class="hdlist1">OK.L1.AP.M.01</dt>
+<dd>
+<p>Break down a solution into procedures using systematic analysis and design.</p>
+</dd>
+<dt class="hdlist1">OK.L1.AP.M.02</dt>
+<dd>
+<p>Create computational artifacts by systematically organizing, manipulating and/or processing data.</p>
+</dd>
+<dt class="hdlist1">OK.PA.A.1.1</dt>
+<dd>
+<p>Recognize that a function is a relationship between an independent variable and a dependent variable in which the value of the independent variable determines the value of the dependent variable.</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch sidebarpractices">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Practices in this Lesson</strong>
+<select class="practicesAlignmentSelect"  onchange="showPracticesAlignment()"><option selected="selected" value="practices-CC"><a href="http://corestandards.org/Math/">Math</a></option></select></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist alignedPractices practices-CC">
+<div class="title"><a href="http://corestandards.org/Math/">Math</a></div>
+<dl>
+<dt class="hdlist1">MP.8</dt>
+<dd>
+<p>Look for and express regularity in repeated reasoning</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<!-- </p>
+</div>
+--></div><!--
+<div class="paragraph">
+<p>
+-->
+</div>
+<div class="paragraph">
+<p><span class="other-proglang">(Also available in <a href="../../lessons/piecewise-functions-conditionals-wescheme/index.shtml">WeScheme</a>)</span></p>
+</div>
+<div class="paragraph description">
+<p>Students learn how to define a function so that it behaves differently depending on the input.</p>
+</div>
+<table class="tableblock frame-all grid-all stripes-none stretch left-header preamble">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Lesson Goals</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Students will be able to:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Explain what a piecewise function - or <em>conditional</em> - is.</p>
+</li>
+<li>
+<p>Give examples of inputs and outputs of a given <span class="vocab">piecewise function</span>.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Student-Facing Lesson Goals</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>I can describe how piecewise functions work in math.</p>
+</li>
+<li>
+<p>I can describe how conditionals work in programming.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Materials</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist materials-links">
+<ul>
+<li>
+<p><a href="https://docs.google.com/presentation/d/14YhLY3FViib1eBWSowsFIFhf1mPx32kNIOtISwR7qMM/" target="_blank" rel="noopener">Lesson Slides</a></p>
+</li>
+<li>
+<p><a href="https://code.pyret.org/editor#share=1QW7KtZHbAPdP1vjyI9-jXx7pSXrwzWJN" target="_blank" rel="noopener">Red Shape Starter File</a></p>
+</li>
+<li>
+<p><a href="../../lessons/piecewise-functions-conditionals/pages/red-shape-explore.html" target="_blank" rel="noopener">Red Shape - Explore</a></p>
+</li>
+<li>
+<p><a href="../../lessons/piecewise-functions-conditionals/pages/red-shape-dr.html" target="_blank" rel="noopener">Word Problem: red-shape</a></p>
+</li>
+<li>
+<p><em>Optional:</em> <a href="../../lessons/piecewise-functions-conditionals/pages/decide-defend-onto.html" target="_blank" rel="noopener">Decide &amp; Defend - Piecewise Onto Functions</a></p>
+</li>
+<li>
+<p><em>Optional:</em> <a href="https://code.pyret.org/editor#share=1nTf5h4SJ3KCz2KxqH-0wsYU9cCbu5RkZ" target="_blank" rel="noopener">Mood Generator Starter File</a></p>
+</li>
+<li>
+<p><em>Optional:</em> <a href="../../lessons/piecewise-functions-conditionals/pages/mood-generator-explore.html" target="_blank" rel="noopener">Mood Generator - Explore</a></p>
+</li>
+<li>
+<p><em>Optional:</em> <a href="../../lessons/piecewise-functions-conditionals/pages/mood-generator-dr.html" target="_blank" rel="noopener">Word Problem: Mood Generator</a></p>
+</li>
+<li>
+<p><em>Optional:</em> <a href="https://code.pyret.org/editor#share=1YkCJ8k1zYqdhwk8R1BGUk0hWS0HXxc_e" target="_blank" rel="noopener">Alternate Version of the Mood Generator Starter File</a></p>
+</li>
+<li>
+<p><em>Optional:</em> <a href="https://code.pyret.org/editor#share=1GScGyigfRPJDdCiGKGnISTXoVBm9f7aE" target="_blank" rel="noopener">Alice&#8217;s Restaurant Starter File</a></p>
+</li>
+<li>
+<p><em>Optional:</em> <a href="../../lessons/piecewise-functions-conditionals/pages/restaurant-intro.html" target="_blank" rel="noopener">Welcome to Alice’s Restaurant!</a></p>
+</li>
+<li>
+<p><em>Optional:</em> <a href="../../lessons/piecewise-functions-conditionals/pages/restaurant-explore.html" target="_blank" rel="noopener">Alice&#8217;s Restaurant - Explore</a></p>
+</li>
+<li>
+<p><em>Optional:</em> <a href="../../lessons/piecewise-functions-conditionals/pages/restaurant-dr.html" target="_blank" rel="noopener">Word Problem: Alice&#8217;s Restaurant</a></p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Key Points for the Facilitator</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>The Design Recipe looks a bit different for piecewise, or <span class="vocab">conditional</span>, <span class="vocab">functions</span>.  Check that students are taking time to write examples and circle what is changing.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="dlist glossary">
+<div class="title">Glossary</div>
+<dl>
+<dt class="hdlist1">conditional</dt>
+<dd>
+<p>a code expression made of questions and answers</p>
+</dd>
+<dt class="hdlist1">contract</dt>
+<dd>
+<p>a statement of the name, domain, and range of a function</p>
+</dd>
+<dt class="hdlist1">design recipe</dt>
+<dd>
+<p>a sequence of steps that helps people document, test, and write functions</p>
+</dd>
+<dt class="hdlist1">domain</dt>
+<dd>
+<p>the type or set of inputs that a function expects</p>
+</dd>
+<dt class="hdlist1">function</dt>
+<dd>
+<p>a relation from a set of inputs to a set of possible outputs, where each input is related to exactly one output</p>
+</dd>
+<dt class="hdlist1">piecewise function</dt>
+<dd>
+<p>a function that computes different expressions based on its input</p>
+</dd>
+<dt class="hdlist1">purpose statement</dt>
+<dd>
+<p>a concise, detailed description of what a function does with its inputs</p>
+</dd>
+<dt class="hdlist1">range</dt>
+<dd>
+<p>the type or set of outputs that a function produces</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_intro_to_piecewise_functions_duration_15_minutes_"><span class="section-link"><a href="#_intro_to_piecewise_functions_duration_15_minutes_"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Intro to Piecewise Functions <span class="duration">15 minutes</span></h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_overview">Overview</h3>
+<div class="paragraph">
+<p>Students are introduced to piecewise functions through a kinesthetic activity, and then brainstorm real world applications of piecewise functions.</p>
+</div>
+<div class="paragraph">
+<p>Decide whether this activity would work better for your class if students stand up and spread out around the classroom or stay in their seats.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_launch">Launch</h3>
+<div class="paragraph lesson-instruction">
+<p>How would you explain a <em>function</em> to someone else? What are some rules that all functions follow?</p>
+</div>
+<div class="paragraph lesson-point">
+<p>A function has exactly one output for each input.</p>
+</div>
+<div class="openblock lesson-roleplay">
+<div class="content">
+<div class="paragraph">
+<p>Explain to students that today, we are going to act out a special kind of function. Give directions to distinct groups of students so that every student ends up with an activity to perform.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If your birthday is in the summer, make an O with your arms.</p>
+</li>
+<li>
+<p>If your birthday is in the fall, make an X with your arms or body.</p>
+</li>
+<li>
+<p>If your birthday is in the winter, put your hand on your head.</p>
+</li>
+<li>
+<p>If your birthday is in the spring, flap your arms like a chicken.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Debrief how students decided what to do. You might do this while students are still in motion or it might work better with your class to stop the activity before discussing it. Example questions:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Ask a student with their hands on their head why they aren&#8217;t flapping their arms like a chicken.</p>
+</li>
+<li>
+<p>Ask a student making an O with their arms how they knew what to do.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>What is the input of the function we just acted out?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Student.</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>What is the output of the function we just acted out?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Action.</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>How do we know that you just acted out a function?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Since each student ("input") has only one action ("output"), it is still a function</em>.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Up until now, all of the functions students have seen can be described by a single rule. In this activity their behavior followed a <em>set of rules</em> for which each input still had exactly one output. Make a big deal about this, so they recognize how big of a shift this is!</p>
+</div>
+<div class="paragraph">
+<p>Explain that students have just acted out what is called a <span class="vocab">piecewise function</span> in math, and a <span class="vocab">conditional</span> in programming. The world is full of piecewise functions and conditionals!</p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s try acting out another set of rules.</p>
+</div>
+<div class="openblock lesson-roleplay">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Everyone wearing sneakers put your hands on your head.</p>
+</li>
+<li>
+<p>Everyone wearing a T-shirt make a T with your arms.</p>
+</li>
+<li>
+<p>Everyone wearing pants put your hands on your hips.</p>
+</li>
+<li>
+<p>Everyone wearing a T-shirt make an O with your arms.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Some students should have nothing to do. Others should look confused as to what to do. They may be wearing sneakers and pants and not be able to put their hands on their head and on their hips at the same time. They may be wearing a T-shirt and not be able to make a T and an O with their arms simultaneously.</p>
+</div>
+<div class="paragraph">
+<p>Observe that this set of rules doesn&#8217;t seem to have worked quite as well as the last. Debrief how students decided what to do. Example Questions:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Ask a student wearing a T-shirt with their arms making an O&#8230;&#8203; I see that you&#8217;re wearing a T-shirt - why aren&#8217;t you making a T with your arms?</p>
+</li>
+<li>
+<p>Ask a student wearing pants and sneakers why they don&#8217;t have their hands on their head and on their hips?</p>
+</li>
+<li>
+<p>Ask a student who isn&#8217;t doing anything, Why aren&#8217;t you doing anything?</p>
+</li>
+</ul>
+</div>
+<div class="paragraph lesson-instruction">
+<p>A function has exactly one output for each input. Why doesn&#8217;t this set of directions represent a function?
+** <em>Because people wearing a T-shirt were told to do two conflicting things! And people wearing sneakers and pants were told to do two conflicting things!</em></p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_investigate">Investigate</h3>
+<div class="paragraph">
+<p>Have students work with their partner to think of examples of piecewise functions. Here are a few examples to get you started:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Places like movie theaters and museums often have different ticket prices for students, children, and senior citizens. That means the total price can&#8217;t be determined simply by asking how many tickets there are&#8201;&#8212;&#8201;the price-per-person is conditioned on what kind of ticket is being purchased!</p>
+</li>
+<li>
+<p>The US Postal Service charges a different rate for differently-sized letters and packages. That means the total price can&#8217;t be determined just by asking how many things are being mailed&#8201;&#8212;&#8201;the price is conditioned on what kind of things are shipped!</p>
+</li>
+<li>
+<p>Many phone plans include a certain price-per-gigabyte for data, but only up to a maximum cutoff amout. After that, the price-per-gigabyte gets a lot higher. That means we can&#8217;t calculate the cost simply by knowing how many gigabytes there are&#8201;&#8212;&#8201;the cost is conditioned on what the cutoff is!</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_synthesize">Synthesize</h3>
+<div class="paragraph">
+<p>Share your findings as a class. You may also want to discuss whether square root and absolute values are piecewise functions.</p>
+</div>
+<table class="tableblock frame-all grid-none stripes-none stretch strategy-box">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="title">Partial Functions</span></p>
+<p class="tableblock">Piecewise functions apply different rules over different "pieces" of their domains. But what happens if there&#8217;s an "empty piece", for which there is no rule?</p>
+<p class="tableblock">For Algebra 2 or pre-calculus teachers, this is a useful time to address <em>partial functions</em>. These are functions which are undefined over parts of their domain (like division, which is undefined when the denominator is zero). These definitions are independent from one another: a function can be piecewise <em>and</em> partial, just piecewise, or just partial. But partiality comes up much more frequently when defining piecewise functions, because students need to think through all the possible inputs.</p>
+<p class="tableblock">In the USPS example, the cost to mail tiny cards is <em>undefined</em> because the postal service doesn&#8217;t ship packages that are too small.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_conditionals_in_programming_duration_20_minutes_"><span class="section-link"><a href="#_conditionals_in_programming_duration_20_minutes_"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Conditionals in Programming <span class="duration">20 minutes</span></h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_overview_2">Overview</h3>
+<div class="paragraph">
+<p>Having acted out a piecewise function, students take the first step towards writing one, by exploring one or two programs that make use of piecewise functions, developing their own understanding, and modifying the programs.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_launch_2">Launch</h3>
+<div class="paragraph">
+<p>So far, all of the functions we&#8217;ve written had a <em>single rule</em>. The rule for <code class="pyret">gt</code> was to take a number and make a solid, green triangle of that size. The rule for <code class="pyret">bc</code> was to take a number and make a solid, blue circle of that size.</p>
+</div>
+<div class="paragraph">
+<p>What if we want to write functions that apply different rules, based on certain conditions?</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_investigate_2">Investigate</h3>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Open the <a href="https://code.pyret.org/editor#share=1QW7KtZHbAPdP1vjyI9-jXx7pSXrwzWJN" target="_blank" rel="noopener">Red Shape Starter File</a>.</p>
+</li>
+<li>
+<p>Complete <a href="../../lessons/piecewise-functions-conditionals/pages/red-shape-explore.html" target="_blank" rel="noopener">Red Shape - Explore</a> in your student workbooks.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>If you have more time to devote to piecewise functions, we have two more starter files (as well as pages to support independent student exploration) in <a href="#_additional_resources" target="_blank" rel="noopener">Additional Resources</a>.</p>
+</div>
+<div class="paragraph">
+<p>Optional: Not all piecewise functions are one-to-one! If you&#8217;re ready to think about Onto Functions, have your students complete <a href="../../lessons/piecewise-functions-conditionals/pages/decide-defend-onto.html" target="_blank" rel="noopener">Decide &amp; Defend - Piecewise Onto Functions</a>.</p>
+</div>
+<table class="tableblock frame-all grid-none stripes-none stretch strategy-box">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="title">More than one Way to Define Piecewise Functions!</span></p>
+<p class="tableblock">There are several conditional expessions in Pyret. For those who are curious, check out this <a href="https://code.pyret.org/editor#share=1YkCJ8k1zYqdhwk8R1BGUk0hWS0HXxc_e" target="_blank" rel="noopener">Alternate Version of the Mood Generator Starter File</a>, which makes use of <code class="pyret">ask</code> instead of <code class="pyret">if</code>. Pyret&#8217;s <code class="pyret">ask</code> construct is similar to the <code class="pyret">switch</code> or <code class="pyret">case</code> statements in other languages. Writing a second Red Shape program using <code class="pyret">ask</code> could be a good extension for some students.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_synthesize_2">Synthesize</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>What happened when you gave <code class="pyret">red-shape</code> a shape that wasn&#8217;t defined in the program?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>The program told us that the shape was unknown. Think about other functions that don&#8217;t work when we give them an invalid input, like dividing by zero!</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>What is the syntax for writing piecewise functions?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Pyret allows us to write if-expressions, which contain:</em></p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><em>the keyword <code class="pyret">if</code>, followed by a condition.</em></p>
+</li>
+<li>
+<p><em>a colon (<code class="pyret">:</code>), followed by a rule for what the function should do if the condition is</em> <code class="pyret">true</code></p>
+</li>
+<li>
+<p><em>an <code class="pyret">else:</code>, followed by a rule for what to do if the condition is</em> <code class="pyret">false</code></p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p><em>We can chain them together to create multiple rules, with the last <code class="pyret">else:</code> being our fallback in case every other condition is <code class="pyret">false</code>.</em></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_extending_the_design_recipe_duration_20_minutes_"><span class="section-link"><a href="#_extending_the_design_recipe_duration_20_minutes_"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Extending the Design Recipe <span class="duration">20 minutes</span></h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_overview_3">Overview</h3>
+<div class="paragraph">
+<p>Students think through how much of the Red Shape program we could have written using the Design Recipe.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_launch_3">Launch</h3>
+<div class="paragraph">
+<p>Let&#8217;s see how the <span class="vocab">Design Recipe</span> could help us to write a piecewise function.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_investigate_3">Investigate</h3>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Turn to <a href="../../lessons/piecewise-functions-conditionals/pages/red-shape-dr.html" target="_blank" rel="noopener">Word Problem: red-shape</a>.</p>
+</li>
+<li>
+<p>How do the <span class="vocab">Contract</span> and <span class="vocab">Purpose Statement</span> compare to other Contracts we&#8217;ve seen?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>The Contract and Purpose Statements don&#8217;t change: we still write down the name, <span class="vocab">Domain</span> and <span class="vocab">Range</span> of our function, and we still write down all the information we need in our Purpose Statement (of course, now we have more important information to write - like our condition(s)!).</em></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<table class="tableblock frame-all grid-none stripes-none stretch strategy-box">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="title">Pedagogy Note</span></p>
+<p class="tableblock">Up until now, there&#8217;s been a pattern that students may not have noticed: the number of things in the Domain of a function was <em>always</em> equal to the number of labels in the example step, which was <em>always</em> equal to the number of variables in the definition. Make sure you explicitly draw students' attention to this here, and point out that this pattern <strong>no longer holds</strong> when it comes to piecewise functions. When it doesn&#8217;t hold, that&#8217;s how we <em>know</em> we need a piecewise function!</p></td>
+</tr>
+</tbody>
+</table>
+<div class="openblock lesson-instruction">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>How are the examples similar to other examples we&#8217;ve seen?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>The examples are also pretty similar: we write the name of the function, followed by some example inputs, and then we write what the function produces with those inputs.</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>How are these examples different from other examples we&#8217;ve seen?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Instead of every example being the same, each one is different</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Circle and label everything that is <em>change</em>-able.</p>
+</li>
+<li>
+<p>What changes? What did you label?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>In this case, there are more things to circle-and-label in the examples than there are things in our Domain.</em></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph lesson-point">
+<p>If there are more unique labels in the examples than there are things in the Domain, we&#8217;re probably looking at a piecewise function. And if the examples cannot be explained by a single pattern or rule, it&#8217;s definitely a piecewise function!</p>
+</div>
+<div class="paragraph">
+<p>Think back to our examples of piecewise functions (ticket sales, postage, cell-phone data plans, etc)&#8230;&#8203; knowing the input isn&#8217;t enough - we also need to know the conditions, and all the possible patterns!</p>
+</div>
+<div class="paragraph">
+<p>Once we know that we&#8217;re dealing with multiple patterns, we&#8217;re ready to define them as a piecewise function!</p>
+</div>
+<div class="paragraph">
+<p><strong>In this example, we have four patterns:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>sometimes we produce <code class="pyret">(circle 20 "solid" "red")</code></p>
+</li>
+<li>
+<p>sometimes we produce <code class="pyret">(triangle 20 "solid" "red")</code></p>
+</li>
+<li>
+<p>sometimes we produce <code class="pyret">(rectangle 20 20 "solid" "red")</code></p>
+</li>
+<li>
+<p>sometimes we produce <code class="pyret">(star 20 "solid" "red")</code></p>
+</li>
+<li>
+<p>sometimes we produce <code class="pyret">(text "Unknown shape name!" 20 "red")</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>To define a piecewise function, each condition has both a result ("what should we do") and a question ("when should we do it?").</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>When should we make circles?</p>
+<div class="ulist">
+<ul>
+<li>
+<p>When <code class="pyret">shape == "circle"</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>When should we make triangles?</p>
+<div class="ulist">
+<ul>
+<li>
+<p>When <code class="pyret">shape == "triangle"</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>When should we make rectangles?</p>
+<div class="ulist">
+<ul>
+<li>
+<p>When <code class="pyret">shape == "rectangle"</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>When should we make stars?</p>
+<div class="ulist">
+<ul>
+<li>
+<p>When <code class="pyret">shape == "star"</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>When should we draw the "Unknown shape name" text?</p>
+<div class="ulist">
+<ul>
+<li>
+<p>When <code class="pyret">shape</code> is&#8230;&#8203;.anything <code class="pyret">else</code></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Adding the questions to our pattern gives us:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>When <code class="pyret">shape == "circle"</code>&#8230;&#8203;we produce <code class="pyret">(circle 20 "solid" "red")</code></p>
+</li>
+<li>
+<p>When <code class="pyret">shape == "triangle"</code>&#8230;&#8203;we produce <code class="pyret">(triangle 20 "solid" "red")</code></p>
+</li>
+<li>
+<p>When <code class="pyret">shape == "rectangle"</code>&#8230;&#8203;we produce <code class="pyret">(rectangle 20 20 "solid" "red")</code></p>
+</li>
+<li>
+<p>When <code class="pyret">shape == "star"</code>&#8230;&#8203;we produce <code class="pyret">(star 20 "solid" "red")</code></p>
+</li>
+<li>
+<p>When <code class="pyret">shape</code> is anything <code class="pyret">else</code>&#8230;&#8203;we produce <code class="pyret">(text "Unknown shape name!" 20 "red")</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>This practically gives away the body of our function definition!</strong></p>
+</div>
+<div class="paragraph">
+<p><span class="obeyspaces"><code class="pyret">fun red-shape&#8203;(&#8203;shape&#8203;):
+  if shape == "circle": circle&#8203;(&#8203;20, "solid", "red"&#8203;)
+  else if shape == "triangle": triangle&#8203;(&#8203;20, "solid", "red"&#8203;)
+  else if shape == "rectangle": rectangle&#8203;(&#8203;20, 20, "solid", "red"&#8203;)
+  else if shape == "star": star&#8203;(&#8203;20, "solid", "red"&#8203;)
+  else: text&#8203;(&#8203;"Unknown shape name!", 20, "red"&#8203;)
+  end
+end</code></span></p>
+</div>
+<div class="paragraph">
+<p>Optional: For additional practice, you can have students turn to <a href="../../lessons/piecewise-functions-conditionals/pages/mood-generator-dr.html" target="_blank" rel="noopener">Word Problem: Mood Generator</a>. Note: this file uses emojis. Although they look like images, they are actually characters in a string.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_synthesize_3">Synthesize</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>How many examples are needed to fully test a piecewise function with four "pieces"?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>More than two! In fact, we need an example for every option - every "piece"! (And in some cases there is a "default" <code class="pyret">else</code> or <code class="pyret">otherwise</code> option, which we should write an example to test, too!)</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>What changes in a piecewise function?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>The input, and also the <strong>rule the function applies to the input</strong></em></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_additional_resources"><span class="section-link"><a href="#_additional_resources"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Additional Resources:</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you have more time for working with Piecewise Functions, you may want to have students create a <em>visual representation</em> of how the computer moves through a conditional function.</p>
+</div>
+<div class="paragraph">
+<p>Students will enjoy getting more practice with piecewise functions while using emojis!</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://code.pyret.org/editor#share=1nTf5h4SJ3KCz2KxqH-0wsYU9cCbu5RkZ" target="_blank" rel="noopener">Mood Generator Starter File</a></p>
+</li>
+<li>
+<p><a href="../../lessons/piecewise-functions-conditionals/pages/mood-generator-explore.html" target="_blank" rel="noopener">Mood Generator - Explore</a></p>
+</li>
+<li>
+<p><strong>Note: Even though emojis look like images, they are actually characters in a string! They can be accessed from your keyboard, just like any other character.</strong></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>We have one program for your students to explore and scaffolded pages to support them through the process!</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://code.pyret.org/editor#share=1GScGyigfRPJDdCiGKGnISTXoVBm9f7aE" target="_blank" rel="noopener">Alice&#8217;s Restaurant Starter File</a></p>
+</li>
+<li>
+<p><a href="../../lessons/piecewise-functions-conditionals/pages/restaurant-intro.html" target="_blank" rel="noopener">Welcome to Alice’s Restaurant!</a></p>
+</li>
+<li>
+<p><a href="../../lessons/piecewise-functions-conditionals/pages/restaurant-explore.html" target="_blank" rel="noopener">Alice&#8217;s Restaurant - Explore</a></p>
+</li>
+<li>
+<p><a href="../../lessons/piecewise-functions-conditionals/pages/restaurant-dr.html" target="_blank" rel="noopener">Word Problem: Alice&#8217;s Restaurant</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-17 19:42:16 -0400
+</div>
+</div>
+</div>
+</body>
+</html>

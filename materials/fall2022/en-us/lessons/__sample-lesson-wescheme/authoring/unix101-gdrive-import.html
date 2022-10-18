@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Unix 101</title>
+<style>
+/* Overall document font */
+* {font-family: Lato, Arial, Helvetica, sans-serif;}
+
+/* document headings */
+h1,.lesson-section-1 {color: #75328A;}
+h1{font-size: 32px; font-family: sans-serif;}
+table.section-heading *, .lesson-section-1 h2{font-size: 32px; font-weight: 100;}
+table.section-heading{width: 100%;}
+table.section-heading td:last-child{text-align: right; color: #d9d2e9;}
+
+/* preamble section */
+table.preamble td {padding: 10px;}
+table.preamble td:first-child{background: #b7d893; width: 25%;}
+table.preamble td:first-child p {font-weight: bold; margin: 5px;}
+
+/* content used throughout the body */
+table{ border-collapse: collapse; border: none; }
+table.grid-all.frame-all {border: solid 1px black;}
+table.grid-none.frame-none {border-width: 0px;}
+
+.big {font-size: 30pt;}
+.vocab{font-weight: bold; font-style: italic;}
+.right{text-align: right;}
+.acknowledgment {
+  border-top: solid 1px black; 
+  font-style: italic; 
+  font-size: 8pt;
+}
+.lesson-point {
+  border-top: solid 1px black; 
+  border-bottom: solid 1px black; 
+  color: black;
+  font-weight: bold;
+}
+
+.web-page-only, #footer { display: none; visibility: hidden; }
+
+/* Callout boxes */
+.strategy-box, .notice-box {
+  background: #efefef;
+  border: solid 5px !important;
+  margin: 15px auto;
+  width: 100%;
+}
+.strategy-box { border-color: #1a73b5 !important; }
+.notice-box   { border-color: #7747a5 !important; }
+.strategy-box td, .notice-box td{ padding: 10px; }
+.strategy-box .title, .notice-box .title{
+  width: 100%;
+  display: block;
+  font-weight: bold;
+  font-size: 24px;
+  clear: both;
+  margin: 100px;
+}
+.strategy-box p.tableblock:first-child, .notice-box p.tableblock:first-child{
+  text-align: center;
+  padding-bottom: 15px;
+}
+.strategy-box .title { color: #1a73b5; }
+.notice-box   .title { color: #7747a5; }
+.strategy-box a, .notice-box a { color: blue; text-decoration: underline; }
+
+/* "Tables" of Evaluation */
+.operator{border-bottom: solid 1px black; text-align: center;}
+.operator * {text-align: center;}
+td {padding: 0px 10px; font-size: 14px;}
+table.expression {
+    font-family:"Courier New", Monaco, monospace;
+    border:     solid 1px black;
+    font-size:  1px;
+    max-width:  400px;
+    color:      #666666;
+    display:    inline-block;
+}
+table.args {border: none; text-align: center;}
+
+.wescheme-string,     .cm-scheme-string    {color: green;}
+.wescheme-number,     .cm-scheme-number    {color: blue;}
+.wescheme-boolean,    .cm-scheme-boolean   {color: darkred;}
+.wescheme-character,  .cm-scheme-character {color: orange;}
+.wescheme-symbol,     .cm-scheme-symbol    {color: steelblue;}
+.wescheme-comment,    .cm-scheme-comment   {color: orange; }
+
+.racket, .pyret, .studentAnswerCode, .studentAnswer, .pyretkeyword, .keyword_only {
+    font-family:"Courier New", Monaco, monospace !important; 
+    color: black;
+}
+
+/* Design Recipe */
+.recipe_instructions { font-style: italic; }
+table.recipe_title {
+  color:              white;
+  background:         gray;
+  display:            block;
+  padding:            0px;
+  font-size:          1.1rem;
+  font-weight:        bold;
+}</style>
+
+    <script src="../../../lib/langtable.js"></script>
+    <script src="../../../dependency-graph.js"></script>
+    <script src="../../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:window.location.href,
+    filename:"Unix 101",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="workbookpage article wescheme" onload="renderSaveToDrive()">
+<span id="header">
+<h1>Unix 101</h1>
+
+  <span id="savetodrive-div"></span>
+
+</span>
+<span id="content">
+<span id="preamble_disabled" class="lessonSummary">
+<span class="sectionbody">
+<span class="paragraph">
+<p>The window (whether on a bonafide Linux system, macOS, or WSL on
+Windows) in which you&#8217;ve been using various commands, including
+Git commands on the curriculum repository, is called a
+<em>terminal</em>.</p>
+</span>
+<span class="paragraph">
+<p>The terminal is like a listener that listens to your commands and
+does something appropriate, and listens for more.</p>
+</span>
+<span class="paragraph">
+<p>Each time it listens, it issues a <em>prompt</em> such as</p>
+</span>
+<span class="literalblock">
+<span class="content">
+<pre><code class="pyret">retabak@ABC-XYZ:~/src/curriculum$</code></pre>
+</span>
+</span>
+<span class="paragraph">
+<p>You enter your command at this prompt.</p>
+</span>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<h2 id="_files_and_directories">Files and directories</h2>
+<span class="sectionbody">
+<span class="paragraph">
+<p>The prompt contains some
+information, some of it useful so you know where you are in your
+system. For instance,</p>
+</span>
+<span class="literalblock">
+<span class="content">
+<pre><code class="pyret">~/src/curriculum</code></pre>
+</span>
+</span>
+<span class="paragraph">
+<p>in the prompt is a <em>pathname</em>, and it tells you that your
+<em>current directory</em> is <code class="pyret">~/src/curriculum</code>, which means you are in
+the <code class="pyret">curriculum</code> directory, which is in the <code class="pyret">src</code> directory,
+which is in your <code class="pyret">~</code> or <em>HOME</em> directory.</p>
+</span>
+<span class="paragraph">
+<p>You can explicitly find out your current directory (in case the
+prompt isn&#8217;t completely visible) with the command <code class="pyret">pwd</code> (for
+Print Working Directory):</p>
+</span>
+<span class="literalblock">
+<span class="content">
+<pre><code class="pyret">pwd</code></pre>
+</span>
+</span>
+<span class="paragraph">
+<p>All your data are in <em>files</em>, which are arranged in
+<em>directories</em>.  A directory is a file whose sole purpose is to
+contain other files (some of which may be directories).</p>
+</span>
+<span class="paragraph">
+<p>You are currently in
+some directory, and you can navigate to other directories using
+the command <code class="pyret">cd</code> (for Change Directory).</p>
+</span>
+<span class="paragraph">
+<p>The command <code class="pyret">ls</code> lists all the files in the current directory.
+You will notice that the files displayed by <code class="pyret">ls</code> are color-coded.
+Files colored blue are directories.  You can use <code class="pyret">cd</code> to go to
+any of these. E.g.,</p>
+</span>
+<span class="literalblock">
+<span class="content">
+<pre><code class="pyret">cd pathways</code></pre>
+</span>
+</span>
+<span class="paragraph">
+<p>moves you in the file system so that you are currently in the
+directory called <code class="pyret">pathways</code>. You can do <code class="pyret">ls</code> in your new current
+directory, and go to further directories, which may be called
+<em>subdirectories</em> to show that they&#8217;re directories within
+directories.</p>
+</span>
+<span class="paragraph">
+<p>If after doing <code class="pyret">cd</code> to a subdirectory, you want to
+go back up to your original directory, do</p>
+</span>
+<span class="literalblock">
+<span class="content">
+<pre><code class="pyret">cd ..</code></pre>
+</span>
+</span>
+<span class="paragraph">
+<p>You can leap into nested subdirectories in a single bound, using
+the directory separator <code class="pyret">/</code>. Thus, if your current directory
+contains the subdirectory <code class="pyret">pathways</code>, and the latter contains
+another subdirectory <code class="pyret">algebra</code>, you can do</p>
+</span>
+<span class="literalblock">
+<span class="content">
+<pre><code class="pyret">cd pathways/algebra</code></pre>
+</span>
+</span>
+<span class="paragraph">
+<p>instead of typing</p>
+</span>
+<span class="literalblock">
+<span class="content">
+<pre><code class="pyret">cd pathways</code></pre>
+</span>
+</span>
+<span class="paragraph">
+<p>followed by</p>
+</span>
+<span class="literalblock">
+<span class="content">
+<pre><code class="pyret">cd algebra</code></pre>
+</span>
+</span>
+<span class="paragraph">
+<p>You can use the directory separator to get back up multiple
+directories too. Thus,</p>
+</span>
+<span class="literalblock">
+<span class="content">
+<pre><code class="pyret">cd ../..</code></pre>
+</span>
+</span>
+<span class="paragraph">
+<p>is the same as typing</p>
+</span>
+<span class="literalblock">
+<span class="content">
+<pre><code class="pyret">cd ..</code></pre>
+</span>
+</span>
+<span class="paragraph">
+<p>twice, and gets you back up two levels in the directory <em>tree</em>.</p>
+</span>
+<span class="paragraph">
+<p>Note that your terminal prompt already used the directory
+separator <code class="pyret">/</code> to show you where you currently are, by listing the
+containing directories in order, e.g.,</p>
+</span>
+<span class="literalblock">
+<span class="content">
+<pre><code class="pyret">~/src/curriculum/pathways</code></pre>
+</span>
+</span>
+<span class="paragraph">
+<p>You can create a new subdirectory in your current directory with
+the command <code class="pyret">mkdir</code>. E.g.,</p>
+</span>
+<span class="literalblock">
+<span class="content">
+<pre><code class="pyret">mkdir blue</code></pre>
+</span>
+</span>
+<span class="paragraph">
+<p>creates a new, empty, subdirectory called <code class="pyret">blue</code>. You can <code class="pyret">cd</code> to
+it with <code class="pyret">cd blue</code>, and typing <code class="pyret">ls</code> will show you that it
+currently has nothing.</p>
+</span>
+<span class="paragraph">
+<p>You can remove a file with the <code class="pyret">rm</code> command. E.g.,</p>
+</span>
+<span class="literalblock">
+<span class="content">
+<pre><code class="pyret">rm discard.txt</code></pre>
+</span>
+</span>
+<span class="paragraph">
+<p>removes the file <code class="pyret">discard.txt</code>.</p>
+</span>
+<span class="paragraph">
+<p>This only works for files that aren&#8217;t directories. To remove a
+directory, add the option <code class="pyret">-r</code>. E.g.,</p>
+</span>
+<span class="literalblock">
+<span class="content">
+<pre><code class="pyret">rm -r blue</code></pre>
+</span>
+</span>
+<span class="paragraph">
+<p>removes the directory <code class="pyret">blue</code>. Be careful with <code class="pyret">rm</code> and <code class="pyret">rm -r</code>.
+<em>Files and directories once removed can&#8217;t be retrieved!</em></p>
+</span>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<h2 id="_editing_files">Editing files</h2>
+<span class="sectionbody">
+<span class="paragraph">
+<p>You can create new files using a text editor. The text editor
+you&#8217;ll be using is invoked with the command <code class="pyret">nvim</code>.  Type</p>
+</span>
+<span class="literalblock">
+<span class="content">
+<pre><code class="pyret">nvim sample.adoc</code></pre>
+</span>
+</span>
+<span class="paragraph">
+<p>to open up the editor pointing to a new file called
+<code class="pyret">sample.adoc</code>.</p>
+</span>
+<span class="paragraph">
+<p>The <code class="pyret">nvim</code> editor has two main modes, Normal and Insert. When you
+start <code class="pyret">nvim</code>, it&#8217;s initially in Normal mode. You need to be in
+Insert mode in order to actually <em>insert</em> anything in your file.
+To do this use the <em>editor command</em> <code class="pyret">i</code>, and type whatever you
+please.</p>
+</span>
+<span class="paragraph">
+<p>After you&#8217;re done, type <code class="pyret">ESC</code> (the escape key on the top left of
+your keyboard) to get back into Normal mode. Type <code class="pyret">:</code> to put you
+in the editor&#8217;s command line at the bottom of the screen, and <code class="pyret">w</code>
+to write (i.e., save) your edits.  Type <code class="pyret">:</code> followd <code class="pyret">q</code> to quit.
+You will now be back at the terminal prompt, and typing <code class="pyret">ls</code> will
+show you the newly created file <code class="pyret">sample.adoc</code>.</p>
+</span>
+<span class="paragraph">
+<p>Get to know <code class="pyret">i</code> and <code class="pyret">ESC</code> very well. <code class="pyret">i</code> gets you into Insert
+mode, and <code class="pyret">ESC</code> gets you back into Normal mode. You mostly want
+to be in Normal mode unless you really want to insert text. As a
+visual aid, the editor will show <code class="pyret">-- INSERT --</code> on the bottom
+line whenever you&#8217;re in Insert mode.</p>
+</span>
+<span class="paragraph">
+<p>You can look at the contents of the file using the pager command
+<code class="pyret">less</code>.</p>
+</span>
+<span class="literalblock">
+<span class="content">
+<pre><code class="pyret">less sample.adoc</code></pre>
+</span>
+</span>
+<span class="paragraph">
+<p>You can exit the pager with <code class="pyret">q</code>.</p>
+</span>
+<span class="paragraph">
+<p>You can re-edit the file by calling <code class="pyret">nvim sample.adoc</code> again. Do
+so.</p>
+</span>
+<span class="paragraph">
+<p>Normal mode commands are used to move around in and perform large
+scale edits on files that aren&#8217;t covered by simple insertion of
+text, which is done in Insert mode as we saw before.  Here are
+some important Normal mode commands:</p>
+</span>
+<span class="paragraph">
+<p><code class="pyret">h</code>, <code class="pyret">j</code>, <code class="pyret">k</code>, <code class="pyret">l</code> move the cursor left, down, up, and right. You
+can also use the arrow keys, although you will find it easier to
+use <code class="pyret">hjkl</code> as they are the <em>home row</em> of your keyboard.</p>
+</span>
+<span class="paragraph">
+<p><code class="pyret">v</code> opens up a submode of Normal mode called Visual mode. Typing
+<code class="pyret">hjkl</code> after <code class="pyret">v</code> highlights the text covered. You can use <code class="pyret">d</code> to
+delete it, then <code class="pyret">i</code> to enter Insert mode and write replacement
+text.</p>
+</span>
+<span class="paragraph">
+<p><code class="pyret">:</code> opens up an editor command line at the bottom of your editor
+screen.</p>
+</span>
+<span class="paragraph">
+<p><code class="pyret">:e</code> can be used to open a new file to edit.</p>
+</span>
+<span class="paragraph">
+<p><code class="pyret">:w</code> writes ("saves") the changes you made recently.</p>
+</span>
+<span class="paragraph">
+<p><code class="pyret">:q</code> exits editing the file.</p>
+</span>
+<span class="paragraph">
+<p><code class="pyret">:e!</code> discards the changes you made to the current file,
+restoring the file as it was before the last save.</p>
+</span>
+<span class="paragraph">
+<p>There is clearly a lot more to the editor than these basics, but
+you will learn them as you need them. Here&#8217;s a helpful Normal
+mode command you can use to learn the editor at your own pace:
+Type</p>
+</span>
+<span class="literalblock">
+<span class="content">
+<pre><code class="pyret">:Tutor</code></pre>
+</span>
+</span>
+<span class="paragraph">
+<p>and follow what it says. Don&#8217;t worry about messing up the file
+that&#8217;s offered by the tutor. Each time you start the tutor you&#8217;ll
+get a clean uncorrupted file.</p>
+</span>
+</span>
+</span>
+<span class="sect1 acknowledgmentsect">
+<span class="sectionbody">
+<span class="openblock acknowledgment"><hr/>
+<span class="content">
+<span class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</span>
+</span>
+</span>
+</span>
+</span>
+</span>
+<span id="footer">
+<span id="footer-text">
+Last updated 2022-10-16 11:54:55 -0400
+</span>
+</span>
+</body>
+</html>

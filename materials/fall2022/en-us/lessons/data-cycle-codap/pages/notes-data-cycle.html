@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>The Data Cycle</title>
+
+  <link rel="stylesheet" href="../../../lib/curriculum.css" />
+    <script src="../../../lib/langtable.js"></script>
+    <script src="../../../lib/bootstraplesson.js"></script>
+    <script src="../../../dependency-graph.js"></script>
+    <script src="../../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"The Data Cycle",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="LessonNotes workbookpage article codap" onload="renderSaveToDrive()">
+<div id="header">
+<h1>The Data Cycle</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<style>
+img {margin-left: 7em !important; }
+</style>
+<div class="paragraph">
+<p><span class="right"><span class="image-figure"><span class="image"><img src="../images/129e0201e1ce0e8a.png" alt="A circular progression: (1) Ask Questions, (2) Consider Data, (3) Analyze Data, (4) Interpret Data, and starting over" width="200" title="A circular progression: (1) Ask Questions, (2) Consider Data, (3) Analyze Data, (4) Interpret Data, and starting over"></span><a href="../images/129e0201e1ce0e8a.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span> Data Science is all about <em>asking questions of data</em>. Sometimes the answer is easy to compute. Sometimes the answer to a question is <em>already in the dataset</em> - no computation needed.  And sometimes the answer just sparks more questions! Data Scientists ask a lot of questions, and each one adds a chapter to the story of their research. Even if a question is a "dead-end", it&#8217;s valuable to share what the question was and what work you did to answer it!</p>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 3ex"></span></p>
+</div>
+<div class="paragraph">
+<p>We start by <strong>Asking Questions</strong> - questions that can be answered with data. It&#8217;s useful to think of all questions as falling into four categories:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Lookup questions</strong> can be answered simply by looking up a single value in the table. Examples of lookup questions might be “How many legs does Felix have?” or "What species is Sheba?"</p>
+</li>
+<li>
+<p><strong>Arithmetic questions</strong> can be answered by computing an answer across a single column. Examples of arithemetic questions might be “How much does the heaviest animal weigh?” or “What is the average age of animals from the shelter?”</p>
+</li>
+<li>
+<p><strong>Statistical questions</strong> are where things get interesting! The answers are never black-and-white. If we asked, "How old are animals at the shelter?" we could report back the average age, the age that shows up most frequently or the range of the ages. There are also some statistical questions that deal with <em>relationships between <strong>two</strong> columns</em>: “Do cats tend to be adopted faster than dogs?” or “Are older animals heavier than young ones?”</p>
+</li>
+<li>
+<p><strong>Questions we can&#8217;t answer</strong> are pretty common, too! We might wonder where the animal shelter is located, or what time of year the data was gathered! But the data in the table won&#8217;t help us answer that question, so as Data Scientists we might need to do some research <em>beyond the data</em>. And if nothing turns up, we simply recognize that there are limits to what we can analyze.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 3ex"></span></p>
+</div>
+<div class="paragraph">
+<p>Next, we <strong>Consider Data</strong>. This could be done by conducting a survey, observing and recording data, or finding a dataset that meets our needs. Since our data is contained in a table, it&#8217;s useful to start by asking two questions:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>What rows do we care about? - Is it all the animals? Just the lizards?</p>
+</li>
+<li>
+<p>What columns do we need? - Are we examining the ages of the animals? Their weights?</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 3ex"></span></p>
+</div>
+<div class="paragraph">
+<p>Then, we <strong>Analyze the Data</strong>, by producing data displays and new tables of filtered or transformed data and using them to identify patterns and relationships.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Are we making a pie chart? A bar chart? Something else?</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 3ex"></span></p>
+</div>
+<div class="paragraph">
+<p>Finally, we <strong>Interpret the Data</strong>, by answering our questions and summarizing the results. As we&#8217;ve already seen from the Animals Dataset, these interpretations often lead to <em>new</em> questions&#8230;&#8203; and the cycle begins again.</p>
+</div>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-17 19:41:50 -0400
+</div>
+</div>
+</body>
+</html>

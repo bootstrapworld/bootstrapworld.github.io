@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Your Own Drawing Functions</title>
+
+  <link rel="stylesheet" href="../../lib/curriculum.css" />
+    <link rel="stylesheet" href="../../lib/codemirror.css" />
+    <script src="../../lib/codemirror.js"></script>
+    <script src="../../lib/runmode.js"></script>
+    <script src="../../lib/scheme2.js"></script>
+    <script src="../../lib/pyret-mode.js"></script>
+    <script src="../../lib/langtable.js"></script>
+    <script src="../../lib/bootstraplesson.js"></script>
+    <script src="../../dependency-graph.js"></script>
+    <script src="../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"Your Own Drawing Functions",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="article LessonPlan pyret" onload="renderSaveToDrive()">
+<!--#include virtual="/menubar.ssi"-->
+<div id="body" onload="renderSaveToDrive()">
+<div id="header">
+<h1>Your Own Drawing Functions</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<script>
+function preselect(klass) {
+  const items = document.getElementsByClassName(klass);
+  for (let i = 0; i < items.length; i++) {
+    items[i].style.display = 'none';
+  }
+  if (items.length > 0) {
+    items[0].style.display = 'block';
+  }
+}
+window.onload = function() {
+  preselect('alignedStandards');
+  preselect('alignedTextbooks');
+  preselect('alignedPractices');
+}
+function showStandardsAlignment() {
+  const selectTag = document.getElementsByClassName('standardsAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const stdTables = document.getElementsByClassName('alignedStandards');
+  //const intro = document.getElementsByClassName('alignedStandardsIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < stdTables.length; i++) {
+    const stdTable = stdTables[i];
+    stdTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optStd = opt.value;
+      for (let j = 0; j < stdTables.length; j++) {
+        const stdTable = stdTables[j];
+        if (stdTable.classList.contains(optStd)) {
+          stdTable.style.display = 'block';
+         // introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+function toggleNonPrereqDisplay() {
+  const inputTag = document.getElementsByClassName('sidebarinput')[0];
+  const checkedP = inputTag.checked;
+  const lessonTable = document.getElementsByClassName('sidebarlessons')[0];
+  const lis = lessonTable.getElementsByTagName('li');
+  for (let i = 0; i < lis.length; i++) {
+    const li = lis[i];
+    const lesson = li.getElementsByClassName('prerequisite');
+    if (lesson.length === 0) {
+      li.style.display = checkedP ? 'none' : 'block';
+    }
+  }
+}
+</script>
+<script>
+function showTextbooksAlignment() {
+  const selectTag = document.getElementsByClassName('textbooksAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const textbookTables = document.getElementsByClassName('alignedTextbooks');
+  //const intro = document.getElementsByClassName('alignedTextbooksIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < textbookTables.length; i++) {
+    const textbookTable = textbookTables[i];
+    textbookTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optTextbook = opt.value;
+      for (let j = 0; j < textbookTables.length; j++) {
+        const textbookTable = textbookTables[j];
+        if (textbookTable.classList.contains(optTextbook)) {
+          textbookTable.style.display = 'block';
+          //introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+</script>
+<script>
+function showPracticesAlignment() {
+  const selectTag = document.getElementsByClassName('practicesAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const practiceTables = document.getElementsByClassName('alignedPractices');
+  for (let i = 0; i < practiceTables.length; i++) {
+    const practiceTable = practiceTables[i];
+    practiceTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optPractice = opt.value;
+      for (let j = 0; j < practiceTables.length; j++) {
+        const practiceTable = practiceTables[j];
+        if (practiceTable.classList.contains(optPractice)) {
+          practiceTable.style.display = 'block';
+        }
+      }
+    }
+  }
+}
+</script>
+<div class="paragraph">
+<!-- </p>
+</div>
+--></div><div class="sidebar"><div id="toggle"></div><div class="paragraph"><!--
+<div class="paragraph">
+<p>
+--><div class="sidebarlessons"><strong>Lessons</strong>
+<ul></ul></div>
+</div>
+<table class="tableblock frame-all grid-all stretch sidebarstandards">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Standards in this Lesson</strong>
+<select class="standardsAlignmentSelect"  onchange="showStandardsAlignment()"><option selected="selected" value="standards-CSTA">CSTA</option></select></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist alignedStandards standards-CSTA">
+<div class="title"><a href="https://csteachers.org/page/standards">CSTA Standards</a></div>
+<dl>
+<dt class="hdlist1">1B-AP-09</dt>
+<dd>
+<p>Create programs that use variables to store and modify data.</p>
+</dd>
+<dt class="hdlist1">2-AP-14</dt>
+<dd>
+<p>Create procedures with parameters to organize code and make it easier to reuse.</p>
+</dd>
+<dt class="hdlist1">3A-AP-16</dt>
+<dd>
+<p>Design and iteratively develop computational artifacts for practical intent, personal expression, or to address a societal issue by using events to initiate instructions.</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<div class="sidebarpractices"><strong>Practices in this Lesson</strong>: <em>None</em></div>
+<!-- </p>
+</div>
+--></div><!--
+<div class="paragraph">
+<p>
+-->
+</div>
+<div class="paragraph description">
+<p>This lesson removes earlier scaffolding from working with Reactors, having students brainstorm an original animation of their own and implement it from start-to-finish. This requires them to plan out what kind of data structure they will need, and how it will be drawn and updated.</p>
+</div>
+<table class="tableblock frame-all grid-all stripes-none stretch left-header preamble">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Product Outcomes</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Students write the draw-state function for a reactor using a single number</p>
+</li>
+<li>
+<p>Students write the draw-state function for a reactor using a state containing two numbers</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Materials</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist materials-links">
+<ul>
+<li>
+<p><a href="https://docs.google.com/presentation/d/Intentionally-left-blank-as-this-lesson-does-not-have-any-slides/" target="_blank" rel="noopener">Lesson Slides</a></p>
+</li>
+<li>
+<p><span class="StarterFile"><a href="https://code.pyret.org/editor#share=1p4oviyUQ-EGuo12Y3wHeAdG8xJjOKtkE" target="_blank" rel="noopener">Single-Number State Starter File</a></span></p>
+</li>
+<li>
+<p><span class="StarterFile"><a href="https://code.pyret.org/editor#share=1Az8Xd4ZcMwqezo8vAldQOrfQkRvi2H8N" target="_blank" rel="noopener">Two-Number State Starter File</a></span></p>
+</li>
+<li>
+<p><span class="materialSectionPlaceholder"> </span></p>
+</li>
+<li>
+<p><strong>Classroom visual:</strong> <a href="javascript:showLangTable()">Language Table</a></p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_drawing_with_a_single_number_duration_30_minutes_"><span class="section-link"><a href="#_drawing_with_a_single_number_duration_30_minutes_"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Drawing with a Single Number <span class="duration">30 minutes</span></h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_overview">Overview</h3>
+<div class="paragraph">
+<p>Students practice writing a simple function to draw the state of a Reactor, when that state consists of only a single number.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_launch">Launch</h3>
+<div class="paragraph">
+<p>The majority of reactive programs you’ll write in this course will use data structures consisting of multiple pieces of data, whether that be Numbers, Strings, Images, or Booleans. However, it’s not <em>required</em> to have a full data structure in order to use a reactor. In fact, we can create an animation based on just a single number!</p>
+</div>
+<div class="paragraph lesson-instruction">
+<p>Open the <a href="https://code.pyret.org/editor#share=1p4oviyUQ-EGuo12Y3wHeAdG8xJjOKtkE" target="_blank" rel="noopener">Single-Number State Starter File</a> file and take a look at the code. Before hitting "Run", can you guess what this code will do?</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><code class="pyret">include image
+include reactors
+
+# next-state-tick :: Number -&gt; Number
+fun next-state-tick(n):
+  n + 1
+end
+
+# draw-state :: Number -&gt; Image
+fun draw-state(n):
+
+  "fix me!"
+
+end
+
+r = reactor:
+  init: 1,
+  # to-draw: draw-state,
+  on-tick: next-state-tick
+end
+
+r.interact()</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Notice how there is no <code class="pyret">data</code> block in this file. Both the <code class="pyret">next-state-tick</code> and the <code class="pyret">draw-state</code> function consume a single number, and the initial value given to the reactor is also a single number (in this case, 1.)</p>
+</div>
+<div class="paragraph lesson-instruction">
+<p>Click "Run". What do you see?</p>
+</div>
+<div class="paragraph">
+<p>According to the <code class="pyret">next-state-tick</code> function, on every clock tick the state (a single number) will increase by one, which is exactly what happens. Since we didn’t tell the reactor how to draw the state (the <code class="pyret">to-draw</code> part of the reactor is commented out), when the reactor runs we see the state of the reactor (a single number) increasing, instead of an animation.</p>
+</div>
+<div class="paragraph lesson-instruction">
+<p>What do you think would happen if we had a reactor with a complete <code class="pyret">draw-state</code> function, but a <code class="pyret">next-state-tick</code> function that never updated the state? (Consuming and producing the same value.)</p>
+</div>
+<div class="paragraph">
+<p>Reinforce the fact that, although the draw-state and next-state-tick functions work together within a reactor to produce an animation, each function can work without the other. In this example, next-state-tick will update the state even without a function to draw the state.</p>
+</div>
+<div class="paragraph">
+<p>There are much more interesting things we can display using a number as the state of the reactor, however!</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_investigate">Investigate</h3>
+<div class="paragraph lesson-instruction">
+<p>Change the <code class="pyret">draw-state</code> function so that it consumes a Number and produces an image. Then, uncomment the <code class="pyret">to-draw: draw-state</code> line in the reactor to see an animation when the program runs!</p>
+</div>
+<div class="paragraph">
+<p>Encourage students to brainstorm and share ideas for the draw-state function before beginning. Some possible options
+include:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Drawing a star of size n (so that it gets larger on each tick)</p>
+</li>
+<li>
+<p>Display n as an image using the text function.</p>
+</li>
+<li>
+<p>Have students share back the draw-state functions they wrote.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_drawing_with_two_numbers_duration_30_minutes_"><span class="section-link"><a href="#_drawing_with_two_numbers_duration_30_minutes_"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Drawing with Two Numbers <span class="duration">30 minutes</span></h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_overview_2">Overview</h3>
+<div class="paragraph">
+<p>This activity turns up the cognitive load: students practice writing a function to draw the state of a Reactor, when that state consists of a structure containing two numbers.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_launch_2">Launch</h3>
+<div class="paragraph">
+<p>You’ve practiced writing a <code class="pyret">draw-state</code> function using a single number as a state, now let’s look at something a bit more familiar.</p>
+</div>
+<div class="paragraph lesson-instruction">
+<p>Open the <a href="https://code.pyret.org/editor#share=1Az8Xd4ZcMwqezo8vAldQOrfQkRvi2H8N" target="_blank" rel="noopener">Two-Number State Starter File</a> and take a look at the code.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><code class="pyret">include image
+include reactors
+
+data AnimationState:
+  | state(
+      a :: Number,
+      b :: Number)
+end
+
+START = state(1, 100)
+
+# next-state-tick :: AnimationState -&gt; AnimationState
+fun next-state-tick(s):
+  state(s.a + 1, s.b - 1)
+end
+
+# draw-state :: AnimationState -&gt; Image
+fun draw-state(s):
+
+  "fix me!"
+
+end
+
+r = reactor:
+  init: START,
+# to-draw: draw-state,
+  on-tick: next-state-tick
+end
+
+r.interact()</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This code includes a data structure (called <code class="pyret">AnimationState</code>) containing two numbers as its fields, <code class="pyret">a</code> and <code class="pyret">b</code>. As before, the <code class="pyret">draw-state</code> function is incomplete, and commented out from the reactor.</p>
+</div>
+<div class="paragraph lesson-instruction">
+<p>Based on the <code class="pyret">next-state-tick</code> function defined here, what do you think will happen when you hit "Run"? Discuss with your partner, then try it out!</p>
+</div>
+<div class="paragraph">
+<p>With only the <code class="pyret">next-state-tick</code> function, we can see the state updating, increasing the first number by 1 and decreasing the second number by 1 each tick.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_investigate_2">Investigate</h3>
+<div class="paragraph lesson-instruction">
+<p>How could you define a <code class="pyret">draw-state</code> function to show something interesting when the program runs? Branstorm with your partner, then change the existing, broken <code class="pyret">draw-state</code> function to consume an <code class="pyret">AnimationState</code> and produce an image. Then, comment out the <code class="pyret">to-draw: draw-state</code> line in the reactor to see an animation when the program runs!</p>
+</div>
+<div class="paragraph">
+<p>Some possible ideas for this activity:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Display two shapes of size a and b, which get larger and smaller, respectively, as the reactor runs.</p>
+</li>
+<li>
+<p>Make a and b the coordinates of an image, moving down and to the right across a background as the reactor runs.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_synthesize">Synthesize</h3>
+<div class="paragraph">
+<p>Have students share back what they brainstormed before beginning, then share the completed draw-state functions they wrote, and the animations they created!</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-17 19:42:17 -0400
+</div>
+</div>
+</div>
+</body>
+</html>

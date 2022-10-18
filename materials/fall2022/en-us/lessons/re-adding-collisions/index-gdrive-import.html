@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Adding Collisions</title>
+<style>
+/* Overall document font */
+* {font-family: Lato, Arial, Helvetica, sans-serif;}
+
+/* document headings */
+h1,.lesson-section-1 {color: #75328A;}
+h1{font-size: 32px; font-family: sans-serif;}
+table.section-heading *, .lesson-section-1 h2{font-size: 32px; font-weight: 100;}
+table.section-heading{width: 100%;}
+table.section-heading td:last-child{text-align: right; color: #d9d2e9;}
+
+/* preamble section */
+table.preamble td {padding: 10px;}
+table.preamble td:first-child{background: #b7d893; width: 25%;}
+table.preamble td:first-child p {font-weight: bold; margin: 5px;}
+
+/* content used throughout the body */
+table{ border-collapse: collapse; border: none; }
+table.grid-all.frame-all {border: solid 1px black;}
+table.grid-none.frame-none {border-width: 0px;}
+
+.big {font-size: 30pt;}
+.vocab{font-weight: bold; font-style: italic;}
+.right{text-align: right;}
+.acknowledgment {
+  border-top: solid 1px black; 
+  font-style: italic; 
+  font-size: 8pt;
+}
+.lesson-point {
+  border-top: solid 1px black; 
+  border-bottom: solid 1px black; 
+  color: black;
+  font-weight: bold;
+}
+
+.web-page-only, #footer { display: none; visibility: hidden; }
+
+/* Callout boxes */
+.strategy-box, .notice-box {
+  background: #efefef;
+  border: solid 5px !important;
+  margin: 15px auto;
+  width: 100%;
+}
+.strategy-box { border-color: #1a73b5 !important; }
+.notice-box   { border-color: #7747a5 !important; }
+.strategy-box td, .notice-box td{ padding: 10px; }
+.strategy-box .title, .notice-box .title{
+  width: 100%;
+  display: block;
+  font-weight: bold;
+  font-size: 24px;
+  clear: both;
+  margin: 100px;
+}
+.strategy-box p.tableblock:first-child, .notice-box p.tableblock:first-child{
+  text-align: center;
+  padding-bottom: 15px;
+}
+.strategy-box .title { color: #1a73b5; }
+.notice-box   .title { color: #7747a5; }
+.strategy-box a, .notice-box a { color: blue; text-decoration: underline; }
+
+/* "Tables" of Evaluation */
+.operator{border-bottom: solid 1px black; text-align: center;}
+.operator * {text-align: center;}
+td {padding: 0px 10px; font-size: 14px;}
+table.expression {
+    font-family:"Courier New", Monaco, monospace;
+    border:     solid 1px black;
+    font-size:  1px;
+    max-width:  400px;
+    color:      #666666;
+    display:    inline-block;
+}
+table.args {border: none; text-align: center;}
+
+.wescheme-string,     .cm-scheme-string    {color: green;}
+.wescheme-number,     .cm-scheme-number    {color: blue;}
+.wescheme-boolean,    .cm-scheme-boolean   {color: darkred;}
+.wescheme-character,  .cm-scheme-character {color: orange;}
+.wescheme-symbol,     .cm-scheme-symbol    {color: steelblue;}
+.wescheme-comment,    .cm-scheme-comment   {color: orange; }
+
+.racket, .pyret, .studentAnswerCode, .studentAnswer, .pyretkeyword, .keyword_only {
+    font-family:"Courier New", Monaco, monospace !important; 
+    color: black;
+}
+
+/* Design Recipe */
+.recipe_instructions { font-style: italic; }
+table.recipe_title {
+  color:              white;
+  background:         gray;
+  display:            block;
+  padding:            0px;
+  font-size:          1.1rem;
+  font-weight:        bold;
+}</style>
+
+      <script src="../../extlib/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML%2Clocal%2Fmathjaxlocal.js"></script>
+      <script>window.status = "not_ready_to_print";</script>
+    <script src="../../lib/langtable.js"></script>
+    <script src="../../dependency-graph.js"></script>
+    <script src="../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:window.location.href,
+    filename:"Adding Collisions",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="article LessonPlan pyret" onload="renderSaveToDrive()">
+<span id="body" onload="renderSaveToDrive()">
+<span id="header">
+<h1>Adding Collisions</h1>
+
+  <span id="savetodrive-div"></span>
+
+</span>
+<span id="content">
+<span id="preamble_disabled" class="lessonSummary">
+<span class="sectionbody">
+<script>
+function preselect(klass) {
+  const items = document.getElementsByClassName(klass);
+  for (let i = 0; i < items.length; i++) {
+    items[i].style.display = 'none';
+  }
+  if (items.length > 0) {
+    items[0].style.display = 'block';
+  }
+}
+window.onload = function() {
+  preselect('alignedStandards');
+  preselect('alignedTextbooks');
+  preselect('alignedPractices');
+}
+function showStandardsAlignment() {
+  const selectTag = document.getElementsByClassName('standardsAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const stdTables = document.getElementsByClassName('alignedStandards');
+  //const intro = document.getElementsByClassName('alignedStandardsIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < stdTables.length; i++) {
+    const stdTable = stdTables[i];
+    stdTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optStd = opt.value;
+      for (let j = 0; j < stdTables.length; j++) {
+        const stdTable = stdTables[j];
+        if (stdTable.classList.contains(optStd)) {
+          stdTable.style.display = 'block';
+         // introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+function toggleNonPrereqDisplay() {
+  const inputTag = document.getElementsByClassName('sidebarinput')[0];
+  const checkedP = inputTag.checked;
+  const lessonTable = document.getElementsByClassName('sidebarlessons')[0];
+  const lis = lessonTable.getElementsByTagName('li');
+  for (let i = 0; i < lis.length; i++) {
+    const li = lis[i];
+    const lesson = li.getElementsByClassName('prerequisite');
+    if (lesson.length === 0) {
+      li.style.display = checkedP ? 'none' : 'block';
+    }
+  }
+}
+</script>
+<script>
+function showTextbooksAlignment() {
+  const selectTag = document.getElementsByClassName('textbooksAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const textbookTables = document.getElementsByClassName('alignedTextbooks');
+  //const intro = document.getElementsByClassName('alignedTextbooksIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < textbookTables.length; i++) {
+    const textbookTable = textbookTables[i];
+    textbookTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optTextbook = opt.value;
+      for (let j = 0; j < textbookTables.length; j++) {
+        const textbookTable = textbookTables[j];
+        if (textbookTable.classList.contains(optTextbook)) {
+          textbookTable.style.display = 'block';
+          //introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+</script>
+<script>
+function showPracticesAlignment() {
+  const selectTag = document.getElementsByClassName('practicesAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const practiceTables = document.getElementsByClassName('alignedPractices');
+  for (let i = 0; i < practiceTables.length; i++) {
+    const practiceTable = practiceTables[i];
+    practiceTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optPractice = opt.value;
+      for (let j = 0; j < practiceTables.length; j++) {
+        const practiceTable = practiceTables[j];
+        if (practiceTable.classList.contains(optPractice)) {
+          practiceTable.style.display = 'block';
+        }
+      }
+    }
+  }
+}
+</script>
+<span class="paragraph">
+<!-- </p>
+</span>
+--></span><span class="sidebar"><span id="toggle"></span><span class="paragraph"><!--
+<span class="paragraph">
+<p>
+--><span class="sidebarlessons"><strong>Lessons</strong>
+<ul></ul></span>
+</span>
+<table class="tableblock frame-all grid-all stretch sidebarstandards">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p><strong>Standards in this Lesson</strong>
+<select class="standardsAlignmentSelect"  onchange="showStandardsAlignment()"><option selected="selected" value="standards-CSTA">CSTA</option></select></p>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="dlist standards-CSTA">
+<span class="title"><a href="https://csteachers.org/page/standards">CSTA Standards</a></span>
+<dl>
+<dt class="hdlist1"><br/>1B-AP-09</dt>
+<dd>
+<p>Create programs that use variables to store and modify data.</p>
+</dd>
+<dt class="hdlist1"><br/>1B-AP-10</dt>
+<dd>
+<p>Create programs that include sequences, events, loops, and conditionals.</p>
+</dd>
+<dt class="hdlist1"><br/>3B-AP-14</dt>
+<dd>
+<p>Construct solutions to problems using student-created components, such as procedures, modules and/or objects.</p>
+</dd>
+</dl>
+</span></span></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch sidebarpractices">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p><strong>Practices in this Lesson</strong>
+<select class="practicesAlignmentSelect"  onchange="showPracticesAlignment()"><option selected="selected" value="practices-K12CS"><a href="https://k12cs.org">K12CS</a></option></select></p>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="dlist alignedPractices practices-K12CS">
+<span class="title"><a href="https://k12cs.org">K12CS</a></span>
+<dl>
+<dt class="hdlist1"><br/>P4</dt>
+<dd>
+<p>Developing and Using Abstractions</p>
+</dd>
+<dt class="hdlist1"><br/>P3</dt>
+<dd>
+<p>Recognizing and Defining Computational Problems</p>
+</dd>
+</dl>
+</span></span></td>
+</tr>
+</tbody>
+</table>
+<span class="paragraph">
+<!-- </p>
+</span>
+--></span><!--
+<span class="paragraph">
+<p>
+-->
+</span>
+<span class="paragraph description">
+<p>Students use the distance formula and their data structures to determine when two or more characters in their games have collided. They extend their <code class="pyret">update</code> handlers to generate a new structure that represents the game after a collision has occurred.</p>
+</span>
+<table class="tableblock frame-all grid-all stripes-none stretch left-header preamble">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>Product Outcomes</p>
+</span></span></td>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="ulist">
+<ul>
+<li>
+<p>Students add collision-detection to their games</p>
+</li>
+</ul>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p>Materials</p>
+</span></span></td>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="ulist materials-links">
+<ul>
+<li>
+<p><a href="https://docs.google.com/presentation/d/Intentionally-left-blank-as-this-lesson-does-not-have-any-slides/" target="_blank" rel="noopener">Lesson Slides</a></p>
+</li>
+<li>
+<p><span class="StarterFile"><a href="https://code.pyret.org/editor#share=1TGw11fcBMAS0j2CCRWZm5_6GuBWVMBPq" target="_blank" rel="noopener">Ninja Cat Starter File</a></span></p>
+</li>
+<li>
+<p><span class="materialSectionPlaceholder"> </span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/re-adding-collisions/pages/distance-desc.html" target="_blank" rel="noopener">Distance</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/re-adding-collisions/pages/distance.html" target="_blank" rel="noopener">Word Problem: distance</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/re-adding-collisions/pages/is-collision.html" target="_blank" rel="noopener">Word Problem: is-collision</a></span></p>
+</li>
+<li>
+<p><strong>Classroom visual:</strong> <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/javascript:showLangTable()">Language Table</a></p>
+<span class="ulist">
+<ul>
+<li>
+<p>Cutouts of Cat and Dog images</p>
+</li>
+<li>
+<p>Cutouts of Pythagorean Theorem packets [<a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/images/pythag1.png">1</a>, <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/images/pythag2.png">2</a>&#8201;&#8212;&#8201;1 per cluster</p>
+</li>
+</ul>
+</span>
+</li>
+</ul>
+</span></span></td>
+</tr>
+</tbody>
+</table>
+<span class="dlist glossary">
+<span class="title">Glossary</span>
+<dl>
+<dt class="hdlist1"><br/>helper function</dt>
+<dd>
+<p>a small function that handles a specific part of another computation, and gets called from other functions</p>
+</dd>
+<dt class="hdlist1"><br/>hypotenuse</dt>
+<dd>
+<p>the side opposite the 90-degree angle in a right triangle</p>
+</dd>
+</dl>
+</span>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<table class="grid-none frame-none section-heading"><tr><td width="65%">The Distance Formula </td><td width="35%">30 minutes</td></tr></table>
+<span class="sectionbody">
+<span class="sect2 lesson-section-2">
+<h3 id="_overview">Overview</h3>
+<span class="paragraph">
+<p>Students implement the distance formula, to prepare for collision detection in their games.</p>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_launch">Launch</h3>
+<span class="paragraph">
+<p>So far, none of the animations we’ve created included any distance or collision-detection functions. However, if you want to make a game where the player has to hit a target, avoid an enemy, jump onto platforms, or reach a specific part of the screen, we’ll need to account for collisions.</p>
+</span>
+<span class="paragraph">
+<p><span class="right"><span class="centered-image"><span class="image-figure"><span class="image"><img src="images/534be60edb2ce28d.png" alt="cat dog" width="400" title="cat dog"></span><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/images/534be60edb2ce28d.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></span></p>
+</span>
+<span class="paragraph">
+<p><span style="clear: both;display: block"></span></p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p>In the image above, how far apart are the cat and dog?</p>
+</li>
+<li>
+<p>If the cat was moved one space to the right, how far apart would they be?</p>
+</li>
+<li>
+<p>What if the cat and dog switched positions?</p>
+</li>
+</ul>
+</span>
+<span class="paragraph">
+<p>Finding the distance in one dimesion is pretty easy: if the characters are on the same number line, we subtract the <em>smaller</em> coordinate from the larger one, and we have our distance.</p>
+</span>
+<span class="paragraph lesson-instruction">
+<p>When the cat and dog were switched, did you still subtract the dog’s position from the cat’s, or subtract the cat’s position from the dog’s? Why?</p>
+</span>
+<span class="paragraph">
+<p>Unfortunately, most distances aren’t only measured in one dimension. We’ll need some code to calculate the distance between two points in two dimensions.</p>
+</span>
+<span class="paragraph">
+<p><span class="right"><span class="centered-image"><span class="image-figure"><span class="image"><img src="images/8e339be32ba1b382.png" alt="hypotenuse" width="400" title="hypotenuse"></span><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/images/8e339be32ba1b382.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></span></p>
+</span>
+<span class="paragraph">
+<p><span style="clear: both;display: block"></span></p>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_investigate">Investigate</h3>
+<span class="ulist lesson-instruction">
+<ul>
+<li>
+<p>How could you find the distance between the two points shown in this image?</p>
+</li>
+<li>
+<p>How could you find the length of the C, also called the <span class="vocab">Hypotenuse</span>?</p>
+</li>
+</ul>
+</span>
+<span class="paragraph">
+<p>Let’s start with what we do know: if we treat the x- and y-intercepts of C as lines A and B, we have a right triangle.</p>
+</span>
+<span class="paragraph lesson-instruction">
+<p>What is the line-length of A? Would it be different if the triangle pointed downward, and intercepted the point (0, −4)?</p>
+</span>
+<span class="paragraph">
+<p>Ancient civilizations had the same problem: they also struggled to find the distance between points in two dimensions. Let’s work through a way to think about this problem: what expression computes the length of the hypotenuse of a right triangle?</p>
+</span>
+<span class="paragraph">
+<p><span class="right"><span class="centered-image"><span class="image-figure"><span class="image"><img src="images/dca0e9f7a74ef80c.png" alt="4 rt triangles" width="400" title="4 rt triangles"></span><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/images/dca0e9f7a74ef80c.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></span></p>
+</span>
+<span class="paragraph">
+<p>For any right triangle, it is possible to draw a picture where the hypotenuse is used for all four sides of a square. In the diagram shown here, the white square is surrounded by four gray, identical right-triangles, each with sides <span class="gdrive-only">A</span><!--<span class="begin-ignore-for-gdrive"></span><script type="math/tex">\displaystyle A</script><span class="end-ignore-for-gdrive"></span>--> and <span class="gdrive-only">B</span><!--<span class="begin-ignore-for-gdrive"></span><script type="math/tex">\displaystyle B</script><span class="end-ignore-for-gdrive"></span>-->. The square itself has four identical sides of length <span class="gdrive-only">C</span><!--<span class="begin-ignore-for-gdrive"></span><script type="math/tex">\displaystyle C</script><span class="end-ignore-for-gdrive"></span>-->, which are the hypotenuses for the triangles. If the area of a square is expressed by <em>side</em> ∗ <em>side</em>, then the area of the white space is <span class="gdrive-only">C^2</span><!--<span class="begin-ignore-for-gdrive"></span><script type="math/tex">\displaystyle C^2</script><span class="end-ignore-for-gdrive"></span>-->.</p>
+</span>
+<span class="paragraph">
+<p>By moving the gray triangles, it is possible to create two rectangles that fit inside the original square. While the space taken up by the triangles has shifted, it hasn’t gotten any bigger or smaller. Likewise, the white space has been broken into two smaller squares, but in total it remains the same size. By using the side-lengths <span class="gdrive-only">A</span><!--<span class="begin-ignore-for-gdrive"></span><script type="math/tex">\displaystyle A</script><span class="end-ignore-for-gdrive"></span>--> and <span class="gdrive-only">B</span><!--<span class="begin-ignore-for-gdrive"></span><script type="math/tex">\displaystyle B</script><span class="end-ignore-for-gdrive"></span>-->, one can calculate the area of the two squares.</p>
+</span>
+<span class="paragraph lesson-instruction">
+<p>What is the area of the smaller square? The larger square?</p>
+</span>
+<span class="paragraph">
+<p>image</p>
+</span>
+<span class="paragraph">
+<p>The smaller square has an area of <span class="gdrive-only">A^2</span><!--<span class="begin-ignore-for-gdrive"></span><script type="math/tex">\displaystyle A^2</script><span class="end-ignore-for-gdrive"></span>-->, and the larger square has an area of <span class="gdrive-only">B^2</span><!--<span class="begin-ignore-for-gdrive"></span><script type="math/tex">\displaystyle B^2</script><span class="end-ignore-for-gdrive"></span>-->. Since these squares are just the original square broken up into two pieces, we know that the sum of these areas must be equal to the area of the original square:</p>
+</span>
+<span class="paragraph">
+<p><span class="gdrive-only">A^2 + B^2 = C^2</span><!--<span class="begin-ignore-for-gdrive"></span><script type="math/tex">\displaystyle A^2 + B^2 = C^2</script><span class="end-ignore-for-gdrive"></span>--></p>
+</span>
+<span class="paragraph lesson-instruction">
+<p>Does the same equation work for any values of <span class="gdrive-only">A</span><!--<span class="begin-ignore-for-gdrive"></span><script type="math/tex">\displaystyle A</script><span class="end-ignore-for-gdrive"></span>--> and <span class="gdrive-only">B</span><!--<span class="begin-ignore-for-gdrive"></span><script type="math/tex">\displaystyle B</script><span class="end-ignore-for-gdrive"></span>-->?</p>
+</span>
+<span class="paragraph">
+<p>To get <em>C</em> by itself, we take the square-root of the sum of the areas:</p>
+</span>
+<span class="paragraph">
+<p><span class="gdrive-only">&radic;( A^2 + B^2 ) = C</span><!--<span class="begin-ignore-for-gdrive"></span><script type="math/tex">\displaystyle \sqrt{A^2 + B^2} = C</script><span class="end-ignore-for-gdrive"></span>--></p>
+</span>
+<span class="paragraph">
+<p>Pythagoras proved that you can get the square of the hypotenuse by adding the squares of the other two sides. In your games, you’re going to use the horizontal and vertical distance between two characters as the two sides of your triangle, and use the Pythagorean theorem to find the length of that third side.</p>
+</span>
+<span class="paragraph">
+<p>Remind students that <span class="gdrive-only">A</span><!--<span class="begin-ignore-for-gdrive"></span><script type="math/tex">\displaystyle A</script><span class="end-ignore-for-gdrive"></span>--> and <span class="gdrive-only">B</span><!--<span class="begin-ignore-for-gdrive"></span><script type="math/tex">\displaystyle B</script><span class="end-ignore-for-gdrive"></span>--> are the horizontal and vertical lengths, which are calculated by line-length.</p>
+</span>
+<span class="openblock lesson-instruction">
+<span class="content">
+<span class="ulist">
+<ul>
+<li>
+<p>Turn to <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/re-adding-collisions/pages/distance-desc.html" target="_blank" rel="noopener">Distance</a> - you’ll see the formula written out.</p>
+</li>
+<li>
+<p>Draw out the circle of evaluation, starting with the simplest expression you can see first.</p>
+</li>
+<li>
+<p>Once you have the circle of evaluation, translate it into Pyret code at the bottom of the page, starting with</p>
+<span class="listingblock">
+<span class="content">
+<pre><code class="pyret">check:
+  distance(4, 2, 0, 5) is...
+end</code></pre>
+</span>
+</span>
+</li>
+</ul>
+</span>
+</span>
+</span>
+<span class="paragraph">
+<p>Now you’ve got code that tells you the distance between the points (4, 2) and (0, 5). But we want to have it work for <em>any</em> two points. It would be great if we had a function that would just take the x’s and y’s as input, and do the math for us.</p>
+</span>
+<span class="openblock lesson-instruction">
+<span class="content">
+<span class="ulist">
+<ul>
+<li>
+<p>Turn <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/re-adding-collisions/pages/distance.html" target="_blank" rel="noopener">Word Problem: distance</a>, and read the problem statement and function header carefully.</p>
+</li>
+<li>
+<p>Use the Design Recipe to write your distance function. Feel free to use the work from the previous page as your first example, and then come up with a new one of your own.</p>
+</li>
+<li>
+<p>When finished, type your <code class="pyret">distance</code> functions into your game, and see what happens.</p>
+</li>
+<li>
+<p>Does anything happen when things run into each other?</p>
+</li>
+</ul>
+</span>
+</span>
+</span>
+<span class="paragraph">
+<p>You still need a function to check whether or not two things are colliding.</p>
+</span>
+<table class="tableblock frame-all grid-none stripes-none stretch strategy-box">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="title">Watch Out!</span></p>
+<p class="tableblock">Pay careful attention to the order in which the coordinates are given to the distance function. The player’s x-coordinate (px) must be given first, followed by the player’s y (py), character’s x (cx), and character’s y (cy). Just like with making data structures, order matters, and the distance function will not work otherwise. Also be sure to check that students are using num-sqr and num-sqrt in the correct places.</p></td>
+</tr>
+</tbody>
+</table>
+</span>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<table class="grid-none frame-none section-heading"><tr><td width="65%">Collision Detection </td><td width="35%">30 minutes</td></tr></table>
+<span class="sectionbody">
+<span class="sect2 lesson-section-2">
+<h3 id="_overview_2">Overview</h3>
+<span class="paragraph">
+<p>Students implement a simple Boolean-producing function, which composes with the distance function they implemented.</p>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_launch_2">Launch</h3>
+<span class="paragraph">
+<p>So what do we want to do with this distance?</p>
+</span>
+<span class="paragraph lesson-instruction">
+<p>How close should your danger and your player be, before they hit each other?</p>
+</span>
+<span class="paragraph">
+<p>At the top <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/re-adding-collisions/pages/is-collision.html" target="_blank" rel="noopener">Word Problem: is-collision</a> you’ll find the Word Problem for <code class="pyret">is-collision</code>.</p>
+</span>
+<span class="openblock lesson-instruction">
+<span class="content">
+<span class="ulist">
+<ul>
+<li>
+<p>Fill in the Contract, two examples, and then write the code. Remember: you WILL need to make use of the <code class="pyret">distance</code> function you just wrote!</p>
+</li>
+<li>
+<p>When you’re done, type it into your game, underneath <code class="pyret">distance</code>.</p>
+</li>
+</ul>
+</span>
+</span>
+</span>
+<span class="paragraph">
+<p>Now that you have a function which will check whether two things are colliding, you can use it in your game! For extra practice, You can also implement collision detection in this <a href="https://code.pyret.org/editor#share=1TGw11fcBMAS0j2CCRWZm5_6GuBWVMBPq" target="_blank" rel="noopener">Ninja Cat Starter File</a>. This is the program we’ll be altering for this lesson. In Ninja Cat, when the cat collides with the dog, we want to put the dog offscreen so that it can come back to attack again.</p>
+</span>
+</span>
+<span class="sect2 lesson-section-2">
+<h3 id="_investigate_2">Investigate</h3>
+<span class="paragraph lesson-instruction">
+<p>Out of the major functions in the game (<code class="pyret">next-state-tick</code>, <code class="pyret">draw-state</code>, or <code class="pyret">next-state-key</code>), which do you think you’ll need to edit to handle collisions, changing the <code class="pyret">GameState</code> when two characters collide?</p>
+</span>
+<span class="paragraph">
+<p>We’ll need to make some more <code class="pyret">if</code> branches for <code class="pyret">next-state-tick</code>.</p>
+</span>
+<span class="openblock lesson-instruction">
+<span class="content">
+<span class="ulist">
+<ul>
+<li>
+<p>Start with the test: how could you check whether the cat and dog are colliding? Have you written a function to check that?</p>
+</li>
+<li>
+<p>What do the inputs need to be?</p>
+</li>
+<li>
+<p>How do you get the <code class="pyret">playery</code> out of the <code class="pyret">GameState</code>? <code class="pyret">playerx</code>?</p>
+</li>
+<li>
+<p>How do you get the <code class="pyret">dangerx</code> out of the <code class="pyret">GameState</code>? <code class="pyret">dangery</code>?</p>
+</li>
+</ul>
+</span>
+</span>
+</span>
+<span class="listingblock">
+<span class="content">
+<pre><code class="pyret">if is-collision(
+  g.playerx,
+  g.playery,
+  g.dangerx,
+  g.dangery):   ...result...</code></pre>
+</span>
+</span>
+<span class="paragraph">
+<p>Remember that <code class="pyret">next-state-tick</code> produces a GameState, so what function should come first in our result?</p>
+</span>
+<span class="listingblock">
+<span class="content">
+<pre><code class="pyret">if is-collision(
+  g.playerx,
+  g.playery,
+  g.dangerx,
+  g.dangery):
+game(
+  ...playerx...,
+  ...playery...,
+  ...dangerx...,
+  ...dangery...,
+  ...dangerspeed...
+  ...targetx...
+  ...targety...
+  ...targetspeed...)</code></pre>
+</span>
+</span>
+<span class="openblock lesson-instruction">
+<span class="content">
+<span class="paragraph">
+<p>And what should happen when the cat and dog collide? Can you think of a number that puts the dog off the screen on the left side? What about the dog’s y-coordinate? We could choose a number and always place it at the same y-coordinate each time, but then the game would be really easy! To make it more challenging, we’d like the dog to appear at a random y-coordinate each time it collides with the cat. Thankfully, Pyret has a function which produces a random number between zero and its input:</p>
+</span>
+<span class="paragraph">
+<p><span class="obeyspaces"><code class="pyret"># num-random :: Number ‑&gt; Number</code></span></p>
+</span>
+</span>
+</span>
+<span class="listingblock">
+<span class="content">
+<pre><code class="pyret">if is-collision(
+  g.playerx,
+  g.playery,
+  g.dangerx,
+  g.dangery):
+game(
+  g.playerx,
+  200,
+  num-random(480),
+  0,
+  0,
+  g.targetx,
+  g.targety,
+  g.targetspeed)</code></pre>
+</span>
+</span>
+<span class="paragraph">
+<p>Collision detection must be part of the next-state-tick function because the game should be checking for a collision each time the GameState is updated, on every tick. Students may assume that draw-state should handle collision detection, but point out that the Range of draw-state is an Image, and their function must return a new GameState in order to set the locations of the characters after a collision.</p>
+</span>
+<span class="openblock lesson-instruction">
+<span class="content">
+<span class="paragraph">
+<p>Once you’ve finished, write another branch to check whether the player and the target have collided. <strong>Challenges:</strong></p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p>Change your first condition so that the danger gets reset only when the player and danger collide AND the cat is jumping. (What must be true about the player’s y-coordinate for it to be jumping?)</p>
+</li>
+<li>
+<p>Add another condition to check whether the player has collided with the danger while the player is on the ground. This could be a single expression within <code class="pyret">next-state-tick</code>, or you can write a <span class="vocab">helper function</span> called <code class="pyret">game-over</code> to do this work, and use it in other functions as well (maybe the GameState is drawn differently once the game is over.)</p>
+</li>
+</ul>
+</span>
+</span>
+</span>
+</span>
+</span>
+</span>
+<span class="sect1 acknowledgmentsect">
+<span class="sectionbody">
+<span class="openblock acknowledgment"><hr/>
+<span class="content">
+<span class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</span>
+</span>
+</span>
+</span>
+</span>
+</span>
+<span id="footer">
+<span id="footer-text">
+Last updated 2022-10-17 19:42:17 -0400
+</span>
+</span>
+</span>
+</body>
+</html>

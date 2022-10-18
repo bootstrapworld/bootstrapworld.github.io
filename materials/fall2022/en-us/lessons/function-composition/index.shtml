@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Function Composition</title>
+
+  <link rel="stylesheet" href="../../lib/curriculum.css" />
+    <link rel="stylesheet" href="../../lib/codemirror.css" />
+    <script src="../../lib/codemirror.js"></script>
+    <script src="../../lib/runmode.js"></script>
+    <script src="../../lib/scheme2.js"></script>
+    <script src="../../lib/pyret-mode.js"></script>
+      <script src="../../extlib/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML%2Clocal%2Fmathjaxlocal.js"></script>
+      <script>window.status = "not_ready_to_print";</script>
+    <script src="../../lib/langtable.js"></script>
+    <script src="../../lib/bootstraplesson.js"></script>
+    <script src="../../dependency-graph.js"></script>
+    <script src="../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"Function Composition",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="article LessonPlan pyret" onload="renderSaveToDrive()">
+<!--#include virtual="/menubar.ssi"-->
+<div id="body" onload="renderSaveToDrive()">
+<div id="header">
+<h1>Function Composition</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<script>
+function preselect(klass) {
+  const items = document.getElementsByClassName(klass);
+  for (let i = 0; i < items.length; i++) {
+    items[i].style.display = 'none';
+  }
+  if (items.length > 0) {
+    items[0].style.display = 'block';
+  }
+}
+window.onload = function() {
+  preselect('alignedStandards');
+  preselect('alignedTextbooks');
+  preselect('alignedPractices');
+}
+function showStandardsAlignment() {
+  const selectTag = document.getElementsByClassName('standardsAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const stdTables = document.getElementsByClassName('alignedStandards');
+  //const intro = document.getElementsByClassName('alignedStandardsIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < stdTables.length; i++) {
+    const stdTable = stdTables[i];
+    stdTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optStd = opt.value;
+      for (let j = 0; j < stdTables.length; j++) {
+        const stdTable = stdTables[j];
+        if (stdTable.classList.contains(optStd)) {
+          stdTable.style.display = 'block';
+         // introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+function toggleNonPrereqDisplay() {
+  const inputTag = document.getElementsByClassName('sidebarinput')[0];
+  const checkedP = inputTag.checked;
+  const lessonTable = document.getElementsByClassName('sidebarlessons')[0];
+  const lis = lessonTable.getElementsByTagName('li');
+  for (let i = 0; i < lis.length; i++) {
+    const li = lis[i];
+    const lesson = li.getElementsByClassName('prerequisite');
+    if (lesson.length === 0) {
+      li.style.display = checkedP ? 'none' : 'block';
+    }
+  }
+}
+</script>
+<script>
+function showTextbooksAlignment() {
+  const selectTag = document.getElementsByClassName('textbooksAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const textbookTables = document.getElementsByClassName('alignedTextbooks');
+  //const intro = document.getElementsByClassName('alignedTextbooksIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < textbookTables.length; i++) {
+    const textbookTable = textbookTables[i];
+    textbookTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optTextbook = opt.value;
+      for (let j = 0; j < textbookTables.length; j++) {
+        const textbookTable = textbookTables[j];
+        if (textbookTable.classList.contains(optTextbook)) {
+          textbookTable.style.display = 'block';
+          //introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+</script>
+<script>
+function showPracticesAlignment() {
+  const selectTag = document.getElementsByClassName('practicesAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const practiceTables = document.getElementsByClassName('alignedPractices');
+  for (let i = 0; i < practiceTables.length; i++) {
+    const practiceTable = practiceTables[i];
+    practiceTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optPractice = opt.value;
+      for (let j = 0; j < practiceTables.length; j++) {
+        const practiceTable = practiceTables[j];
+        if (practiceTable.classList.contains(optPractice)) {
+          practiceTable.style.display = 'block';
+        }
+      }
+    }
+  }
+}
+</script>
+<div class="paragraph">
+<!-- </p>
+</div>
+--></div><div class="sidebar"><div id="toggle"></div><div class="paragraph"><!--
+<div class="paragraph">
+<p>
+--><div class="sidebarlessons"><strong>Lessons</strong>
+<ul></ul></div>
+</div>
+<table class="tableblock frame-all grid-all stretch sidebarstandards">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Standards in this Lesson</strong>
+<select class="standardsAlignmentSelect"  onchange="showStandardsAlignment()"><option selected="selected" value="standards-CCSS-Math">CCSS-Math</option><option value="standards-CSTA">CSTA</option><option value="standards-Oklahoma">Oklahoma</option><option value="standards-Iowa">Iowa</option></select></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist alignedStandards standards-CCSS-Math">
+<div class="title"><a href="http://corestandards.org/Math/">Common Core Math Standards</a></div>
+<dl>
+<dt class="hdlist1">6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1">HSF.BF.A</dt>
+<dd>
+<p>Build a function that models a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1">HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-CSTA">
+<div class="title"><a href="https://csteachers.org/page/standards">CSTA Standards</a></div>
+<dl>
+<dt class="hdlist1">2-AP-11</dt>
+<dd>
+<p>Create clearly named variables that represent different data types and perform operations on their values.</p>
+</dd>
+<dt class="hdlist1">2-AP-17</dt>
+<dd>
+<p>Systematically test and refine programs using a range of test cases</p>
+</dd>
+<dt class="hdlist1">2-AP-19</dt>
+<dd>
+<p>Document programs in order to make them easier to follow, test, and debug.</p>
+</dd>
+<dt class="hdlist1">3B-AP-21</dt>
+<dd>
+<p>Develop and use a series of test cases to verify that a program performs according to its design specifications.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Oklahoma">
+<div class="title"><a href="https://sde.ok.gov/oklahoma-academic-standards">Oklahoma Standards</a></div>
+<dl>
+<dt class="hdlist1">OK.5.AP.A.01</dt>
+<dd>
+<p>Compare and refine multiple algorithms for the same task and determine which is the most efficient.</p>
+</dd>
+<dt class="hdlist1">OK.A1.F.1.3</dt>
+<dd>
+<p>Write linear functions, using function notation, to model real-world and mathematical situations.</p>
+</dd>
+<dt class="hdlist1">OK.A1.F.3</dt>
+<dd>
+<p>Represent functions in multiple ways and use the representation to interpret real-world and mathematical problems.</p>
+</dd>
+<dt class="hdlist1">OK.A1.F.3.2</dt>
+<dd>
+<p>Use function notation; evaluate a function, including nonlinear, at a given point in its domain algebraically and graphically. Interpret the results in terms of real-world and mathematical problems.</p>
+</dd>
+<dt class="hdlist1">OK.A1.F.3.3</dt>
+<dd>
+<p>Add, subtract, and multiply functions using function notation.</p>
+</dd>
+<dt class="hdlist1">OK.PA.A.3.1</dt>
+<dd>
+<p>Use substitution to simplify and evaluate algebraic expressions.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Iowa">
+<div class="title"><a href="https://iowacore.gov/standards/iowa-core-standards">Iowa Standards</a></div>
+<dl>
+<dt class="hdlist1">IA.HSF.BF.A.1.B</dt>
+<dd>
+<p>Combine standard function types using arithmetic operations.</p>
+</dd>
+<dt class="hdlist1">IA.HSF.BF.A.1.C</dt>
+<dd>
+<p>Compose functions.</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch sidebarpractices">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Practices in this Lesson</strong>
+<select class="practicesAlignmentSelect"  onchange="showPracticesAlignment()"><option selected="selected" value="practices-NGSS"><a href="https://ngss.nsta.org/practicesfull.aspx">Science and Engineering</a></option><option value="practices-MLR"><a href="https://achievethecore.org/peersandpedagogy/developing-math-language-routines/">Math Lang. Routines</a></option><option value="practices-CC"><a href="http://corestandards.org/Math/">Math</a></option></select></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist alignedPractices practices-NGSS">
+<div class="title"><a href="https://ngss.nsta.org/practicesfull.aspx">Science and Engineering</a></div>
+<dl>
+<dt class="hdlist1">SEP.5</dt>
+<dd>
+<p>Using Mathematics and Computational Thinking</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedPractices practices-MLR">
+<div class="title"><a href="https://achievethecore.org/peersandpedagogy/developing-math-language-routines/">Math Lang. Routines</a></div>
+<dl>
+<dt class="hdlist1">MLR.7</dt>
+<dd>
+<p>Compare and Connect</p>
+</dd>
+<dt class="hdlist1">MLR.3</dt>
+<dd>
+<p>Clarify, Critique and Correct</p>
+</dd>
+<dt class="hdlist1">MLR.1</dt>
+<dd>
+<p>Stronger and Clearer Each Time</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedPractices practices-CC">
+<div class="title"><a href="http://corestandards.org/Math/">Math</a></div>
+<dl>
+<dt class="hdlist1">MP.1</dt>
+<dd>
+<p>Make sense of problems and persevere in solving them</p>
+</dd>
+<dt class="hdlist1">MP.5</dt>
+<dd>
+<p>Use appropriate tools strategically</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<!-- </p>
+</div>
+--></div><!--
+<div class="paragraph">
+<p>
+-->
+</div>
+<div class="paragraph">
+<p><span class="other-proglang">(Also available in <a href="../../lessons/function-composition-wescheme/index.shtml">WeScheme</a>)</span></p>
+</div>
+<div class="paragraph description">
+<p>Students learn to combine image transformation functions as well as to describe the order of operations involved in algebraic function compositions such as f(g(h(x))) using Circles of Evaluation.</p>
+</div>
+<table class="tableblock frame-all grid-all stripes-none stretch left-header preamble">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Lesson Goals</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Students will be able to:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Use functions as building-blocks, composing them to achieve a desired affect</p>
+</li>
+<li>
+<p>Diagram function composition using the Circles of Evaluation</p>
+</li>
+<li>
+<p>Compose functions when programming</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Student-facing Goals</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>I can map a path from one number to another by composing functions</p>
+</li>
+<li>
+<p>I can use Circles of Evaluation to show how functions can be composed</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Materials</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist materials-links">
+<ul>
+<li>
+<p><a href="https://docs.google.com/presentation/d/1C7vPYeX55yXSsmLuePIkkkqj1_4Ml5pY6GJc-MOW8g8/" target="_blank" rel="noopener">Lesson Slides</a></p>
+</li>
+<li>
+<p><span class="materialSectionPlaceholder"> </span></p>
+</li>
+<li>
+<p><span class="handout"><a href="../../lessons/function-composition/pages/function-cards.html" target="_blank" rel="noopener">Function Cards</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/function-composition/pages/diagramming-function-composition.html" target="_blank" rel="noopener">Diagramming Function Composition</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/function-composition/pages/function-composition-green-star.html" target="_blank" rel="noopener">Function Composition&#8201;&#8212;&#8201;Green Star</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/function-composition/pages/function-composition-your-name.html" target="_blank" rel="noopener">Function Composition&#8201;&#8212;&#8201;Your Name</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/function-composition/pages/function-composition-scale-xy.html" target="_blank" rel="noopener">Function Composition&#8201;&#8212;&#8201;scale-xy</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/function-composition/pages/more-than-one-way.html" target="_blank" rel="noopener">More than one way to Compose an Image!</a></span></p>
+</li>
+<li>
+<p><span class="Optional OnlineExercise"><a href="https://teacher.desmos.com/activitybuilder/custom/62b8a5cb4b545ec2e57ac76d" target="_blank" rel="noopener">Function Cards (Desmos)</a></span></p>
+</li>
+<li>
+<p><span class="Optional OnlineExercise"><a href="https://teacher.desmos.com/activitybuilder/custom/5fc946c8d135d036ef1edd01" target="_blank" rel="noopener">Function Composition Matching Activity (Desmos)</a></span></p>
+</li>
+<li>
+<p><strong>Classroom visual:</strong> <a href="javascript:showLangTable()">Language Table</a></p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Supplemental Resources</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.google.com/search?q=random+number" target="_blank" rel="noopener">Random Integer Generator</a></p>
+</li>
+<li>
+<p><a href="https://teacher.desmos.com/activitybuilder/custom/5d991a674febfc7e0ff8cb15" target="_blank" rel="noopener">Circles of Evaluation Review - Blank Template</a></p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Key Points For The Facilitator</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Check frequently for understanding of <span class="vocab">data types</span> and <span class="vocab">contracts</span> during this lesson and throughout subsequent lessons.</p>
+</li>
+<li>
+<p>When students encounter errors, encourage them to check their Contracts page and show their work using Circles of Evaluation.</p>
+</li>
+<li>
+<p>Students will use their Contracts page frequently, so it should be kept in an accessible, convenient location.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="dlist glossary">
+<div class="title">Glossary</div>
+<dl>
+<dt class="hdlist1">contract</dt>
+<dd>
+<p>a statement of the name, domain, and range of a function</p>
+</dd>
+<dt class="hdlist1">data type</dt>
+<dd>
+<p>a way of classifying values, such as: Number, String, Image, Boolean, or any user-defined data structure</p>
+</dd>
+<dt class="hdlist1">image</dt>
+<dd>
+<p>a type of data for pictures</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_composing_functions_duration_10_minutes_"><span class="section-link"><a href="#_composing_functions_duration_10_minutes_"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Composing Functions <span class="duration">10 minutes</span></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Students are given a scaffolded activity that forces them to use the output of one function as the input to another - to <em>compose</em> them.</p>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_launch">Launch</h3>
+<div class="paragraph">
+<p>Divide students into groups of 3-4, and distribute a set of <a href="../../lessons/function-composition/pages/function-cards.html" target="_blank" rel="noopener">Function Cards</a> to each group. <em>(If you&#8217;re teaching remotely you can use <a href="https://teacher.desmos.com/activitybuilder/custom/62b8a5cb4b545ec2e57ac76d" target="_blank" rel="noopener">Function Cards (Desmos)</a> instead.)</em> Write down pairs of integers on the board, representing the "starting numbers" and "ending numbers". These integers should range from -50 to +50, but you can change the difficulty of the activity by making that span wider (more difficult) or more narrow (less difficult). You can find a random integer generator <a href="https://www.google.com/search?q=random+number" target="_blank" rel="noopener">here</a>.</p>
+</div>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Each group has a set of functions, each of which takes an input and produces an output. I can start with the number <code class="pyret">4</code>, for example, and give it to the function <code class="pyret">add6</code>. What will the output be?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>10</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>I can also <em>compose</em> functions, meaning that the output of one is immediately passed into another. For example, I could compose <code class="pyret">add6</code> and <code class="pyret">double</code>, so the <code class="pyret">10</code> gets passed into the next function, and doubled to produce <code class="pyret">20</code>. What would happen if I composed <code class="pyret">add6</code> with <code class="pyret">double</code> <em>and</em> with <code class="pyret">half</code>?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>10</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>For each of the starting numbers on the board, your job is to figure out which functions to compose in order to get to the end.</p>
+</li>
+<li>
+<p>You will need to use some functions more than once, and that&#8217;s okay!</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_investigate">Investigate</h3>
+<div class="paragraph">
+<p>Give students time to experiment with this. You can make the activity more challenging by asking them to find the <em>shortest path</em> from start to end, using the smallest number of compositions.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_synthesize">Synthesize</h3>
+<div class="paragraph">
+<p>If two groups come up with different compositions that achieve the same end result, have them share their ideas!</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_diagramming_function_composition_duration_15_minutes_"><span class="section-link"><a href="#_diagramming_function_composition_duration_15_minutes_"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Diagramming Function Composition <span class="duration">15 minutes</span></h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_overview">Overview</h3>
+<div class="paragraph">
+<p>The Circles of Evaluation are extended to provide a visual-spatial metaphor for function composition, in addition to Order of Operations.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_launch_2">Launch</h3>
+<div class="paragraph">
+<p>Three of the function cards we just used were for the functions <code class="pyret">f</code>, <code class="pyret">g</code> and <code class="pyret">h</code>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code class="pyret">f</code> multiplied its input by 3</p>
+</li>
+<li>
+<p><code class="pyret">g</code> added six to its input</p>
+</li>
+<li>
+<p><code class="pyret">h</code> subtracted one from its input</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>We can compose those function in any order. If we composed them as <code class="pyret">f(g(h(x)))</code> and evaluated them for <code class="pyret">x = 4</code> what would happen?</p>
+</div>
+<div class="paragraph">
+<p>We can diagram the function composition using Circles of Evaluation (see first column, below). In the second column, we&#8217;ve replaced the function names in each Circle of Evaluation with <em>what each function does</em>:</p>
+</div>
+<table class="tableblock frame-all grid-all stripes-none stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">Function Composition</th>
+<th class="tableblock halign-center valign-top">Order of Operations</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><table class="gdrive-only expression"><tr><td class="operator"><span class="operator"><span class="value">f</span></span></td></tr><tr><td><table class="args"><tr><td class="arg"><table class="gdrive-only expression"><tr><td class="operator"><span class="operator"><span class="value">g</span></span></td></tr><tr><td><table class="args"><tr><td class="arg"><table class="gdrive-only expression"><tr><td class="operator"><span class="operator"><span class="value">h</span></span></td></tr><tr><td><table class="args"><tr><td class="arg"><span class="value">x</span></td></tr></table></td></tr></table></td></tr></table></td></tr></table></td></tr></table></td></tr></table><div class="circleevalsexp"><span class="expression"><span class="lParen">(</span><span class="operator"><span class="value">f</span></span><span class="hspace">&#160;</span><span class="expression"><span class="lParen">(</span><span class="operator"><span class="value">g</span></span><span class="hspace">&#160;</span><span class="expression"><span class="lParen">(</span><span class="operator"><span class="value">h</span></span><span class="hspace">&#160;</span><span class="value">x</span><span class="rParen">)</span></span><span class="rParen">)</span></span><span class="rParen">)</span></span></div></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><table class="gdrive-only expression"><tr><td class="operator"><span class="operator"><span class="value">&#8203;*</span></span></td></tr><tr><td><table class="args"><tr><td class="arg"><span class="value">3</span></td><td class="arg"><table class="gdrive-only expression"><tr><td class="operator"><span class="operator"><span class="value">&#43;</span></span></td></tr><tr><td><table class="args"><tr><td class="arg"><table class="gdrive-only expression"><tr><td class="operator"><span class="operator"><span class="value">&#8203;-</span></span></td></tr><tr><td><table class="args"><tr><td class="arg"><span class="value">x</span></td><td class="arg"><span class="value">1</span></td></tr></table></td></tr></table></td><td class="arg"><span class="value">6</span></td></tr></table></td></tr></table></td></tr></table></td></tr></table><div class="circleevalsexp"><span class="expression"><span class="lParen">(</span><span class="operator"><span class="value">&#8203;*</span></span><span class="hspace">&#160;</span><span class="value">3</span><span class="hspace">&#160;</span><span class="expression"><span class="lParen">(</span><span class="operator"><span class="value">&#43;</span></span><span class="hspace">&#160;</span><span class="expression"><span class="lParen">(</span><span class="operator"><span class="value">&#8203;-</span></span><span class="hspace">&#160;</span><span class="value">x</span><span class="hspace">&#160;</span><span class="value">1</span><span class="rParen">)</span></span><span class="hspace">&#160;</span><span class="value">6</span><span class="rParen">)</span></span><span class="rParen">)</span></span></div></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The circles show us that in order to evaluate <span class="gdrive-only">f(g(h4)))</span><script type="math/tex">\displaystyle f(g(h(4))))</script></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>First we would have to evaluate <span class="gdrive-only">h4</span><script type="math/tex">\displaystyle h(4)</script>, subtracting <code class="pyret">1</code> from <code class="pyret">4</code> to get <code class="pyret">3</code></p>
+</li>
+<li>
+<p>Then we would evaluate <span class="gdrive-only">g3</span><script type="math/tex">\displaystyle g(3)</script>, adding <code class="pyret">6</code> to <code class="pyret">3</code> to get <code class="pyret">9</code></p>
+</li>
+<li>
+<p>Then we would evaluate <span class="gdrive-only">f27</span><script type="math/tex">\displaystyle f(27)</script>, tripling <code class="pyret">9</code> to get <code class="pyret">27</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_investigate_2">Investigate</h3>
+<div class="paragraph lesson-instruction">
+<p>Turn to <a href="../../lessons/function-composition/pages/diagramming-function-composition.html" target="_blank" rel="noopener">Diagramming Function Composition</a> to practice writing, translating and evaluating Circles of Evaluation of composed functions.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_synthesize_2">Synthesize</h3>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Do <span class="gdrive-only">f(g(hx))</span><script type="math/tex">\displaystyle f(g(h(x)))</script> and <span class="gdrive-only">g(h(fx))</span><script type="math/tex">\displaystyle g(h(f(x)))</script> evaluate to the same thing? Why or why not?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>No, they do not. Order matters!</em></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_composing_functions_in_code_duration_20_minutes_"><span class="section-link"><a href="#_composing_functions_in_code_duration_20_minutes_"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Composing Functions in Code <span class="duration">20 minutes</span></h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_overview_2">Overview</h3>
+<div class="paragraph">
+<p>The Circles of Evaluation are extended to functions that do more than compute values.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_launch_3">Launch</h3>
+<div class="paragraph">
+<p>Explain to students that their contracts page is just like the Function Cards from the activity they just completed. Their job as programmers is to figure out how to compose those functions to get where they want to go, in the most clever or elegant way possible.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_investigate_3">Investigate</h3>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Have students open <a href="https://code.pyret.org/" target="_blank" rel="noopener">code.pyret.org (CPO)</a> in their browser, and "Sign In" using a valid Google account (Gmail, Google Classroom, YouTube, etc.) and their password for that account.</p>
+</li>
+<li>
+<p>This will take them to the "Programs" page. This page is empty - they don’t have any programs yet!</p>
+</li>
+<li>
+<p>Have them open a new program by clicking "File" -&gt; "New" and save it as "Function Composition"</p>
+</li>
+<li>
+<p>Complete <a href="../../lessons/function-composition/pages/function-composition-green-star.html" target="_blank" rel="noopener">Function Composition&#8201;&#8212;&#8201;Green Star</a>, in which you will draw circles of evaluation to help you write expressions to compose a series of images.</p>
+</li>
+<li>
+<p>Be sure to use the <strong>Definitions Area</strong> (left side) for code you want to keep and the <strong>Interactions Area</strong> (right side) to test code or try out new ideas.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>When students are finished, check their work, and ask them to change the color of all of the stars to “gold” or another color of their choosing.</p>
+</div>
+<div class="paragraph lesson-instruction">
+<p>Now, turn to <a href="../../lessons/function-composition/pages/function-composition-your-name.html" target="_blank" rel="noopener">Function Composition&#8201;&#8212;&#8201;Your Name</a> in which you will create a text <span class="vocab">image</span> of your name and experiment with other functions.</p>
+</div>
+<table class="tableblock frame-all grid-none stripes-none stretch strategy-box">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="title">Strategies for Facilitation</span>
+While students are exploring, be available for support but encourage student discussion to solve problems. Many student questions can be addressed with these responses: <em>Did you try drawing the Circle of Evaluation first? Did you check the contract? Have you pressed the "Run" button to save your Definitions changes?</em></p>
+<p class="tableblock">Encourage students to practice writing comments in the code to describe what is being produced, using <code class="pyret">#</code> at the beginning of the line.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>If you have time, you can also have students work with <a href="../../lessons/function-composition/pages/function-composition-scale-xy.html" target="_blank" rel="noopener">Function Composition&#8201;&#8212;&#8201;scale-xy</a> and/or
+<a href="https://teacher.desmos.com/activitybuilder/custom/5fc946c8d135d036ef1edd01" target="_blank" rel="noopener">Function Composition Matching Activity (Desmos)</a></p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_synthesize_3">Synthesize</h3>
+<div class="openblock lesson-instruction">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>What do all of these functions have in common?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>They all produce images, they all change some element of the original image</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Does using one of these functions change the original image?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>No, it creates a whole new image</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>What does the number in <span class="obeyspaces"><code class="pyret">scale</code></span> represent?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>The scale factor by which the image should grow or shrink</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>What does the number in <span class="obeyspaces"><code class="pyret">rotate</code></span> represent?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>The rotation angle, measured counterclockwise</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>The Domain and Range for <span class="obeyspaces"><code class="pyret">flip-horizontal</code></span> is <code class="pyret">Image -&gt; Image</code>.  Why can we use the output of the <span class="obeyspaces"><code class="pyret">text</code></span> function as an <em>input</em> for <span class="obeyspaces"><code class="pyret">flip-horizontal</code></span>?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Because the <span class="obeyspaces"><code class="pyret">text</code></span> function produces an Image, which is then used as the input for <span class="obeyspaces"><code class="pyret">flip-horizontal</code></span>.</em></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<table class="tableblock frame-all grid-none stripes-none stretch strategy-box">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="title">Strategies for English Language Learners</span></p>
+<p class="tableblock">MLR 1 - Stronger and Clearer Each Time: As an alternative, display the discussion questions during the last 5 minutes of the Explore and ask students to discuss the questions with their partner, asking each other for explanation and details and coming up with the clearest, most precise answer they can.
+Student pairs can then share with another pair and compare their responses before moving into a full class discussion.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-none stripes-none stretch strategy-box">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="title">Fun with Images!</span>
+Now that students have learned how to use all of these image-composing functions, you may want to give them a chance to create a design of their own, tasking them with using at least 4 functions to create an image of their choosing.</p>
+<p class="tableblock">Our <a href="../../lessons/flags/index.shtml" target="_blank" rel="noopener">Making Flags</a> also dives deeper into image composition.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_composing_multiple_ways_duration_optional_"><span class="section-link"><a href="#_composing_multiple_ways_duration_optional_"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Composing Multiple Ways <span class="duration">Optional</span></h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_overview_3">Overview</h3>
+<div class="paragraph">
+<p>Students identify multiple expressions that will create the same image, and think about the merits of one expression over another.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_launch_4">Launch</h3>
+<div class="paragraph">
+<p>As is often true with solving math problems, there is more than one way to get the same composed image.</p>
+</div>
+<div class="openblock lesson-instruction">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Suppose I wrote the code: <span class="obeyspaces"><code class="pyret">scale&#8203;(&#8203;3, circle&#8203;(&#8203;50, "solid", "red"&#8203;)&#8203;)</code></span>.</p>
+</li>
+<li>
+<p>What’s another line of code I could write that would produce the exact same image?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><span class="obeyspaces"><code class="pyret">circle&#8203;(&#8203;150, "solid", "red"&#8203;)</code></span></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_investigate_4">Investigate</h3>
+<div class="paragraph lesson-instruction">
+<p>Complete <a href="../../lessons/function-composition/pages/more-than-one-way.html" target="_blank" rel="noopener">More than one way to Compose an Image!</a></p>
+</div>
+<div class="paragraph">
+<p>When students have completed the worksheet, explain that there is a special function that lets us test whether or not two images are equal:</p>
+</div>
+<div class="paragraph">
+<p><span class="obeyspaces"><code class="pyret">images-equal</code></span><code class="pyret">:: Image, Image -&gt; Boolean</code></p>
+</div>
+<div class="paragraph">
+<p>Invite students to use the above function to test whether all of the expressions that they wrote successfully build the same images.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_synthesize_4">Synthesize</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Could we have written more expressions to create the same images?</p>
+</li>
+<li>
+<p>Are all of the ways to write the code equally efficient?</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-17 19:42:14 -0400
+</div>
+</div>
+</div>
+</body>
+</html>

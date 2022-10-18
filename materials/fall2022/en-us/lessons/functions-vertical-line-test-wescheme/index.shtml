@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>The Vertical Line Test</title>
+
+  <link rel="stylesheet" href="../../lib/curriculum.css" />
+    <link rel="stylesheet" href="../../lib/codemirror.css" />
+    <script src="../../lib/codemirror.js"></script>
+    <script src="../../lib/runmode.js"></script>
+    <script src="../../lib/scheme2.js"></script>
+    <script src="../../lib/pyret-mode.js"></script>
+      <script src="../../extlib/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML%2Clocal%2Fmathjaxlocal.js"></script>
+      <script>window.status = "not_ready_to_print";</script>
+    <script src="../../lib/langtable.js"></script>
+    <script src="../../lib/bootstraplesson.js"></script>
+    <script src="../../dependency-graph.js"></script>
+    <script src="../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"The Vertical Line Test",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="article LessonPlan wescheme" onload="renderSaveToDrive()">
+<!--#include virtual="/menubar.ssi"-->
+<div id="body" onload="renderSaveToDrive()">
+<div id="header">
+<h1>The Vertical Line Test</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<script>
+function preselect(klass) {
+  const items = document.getElementsByClassName(klass);
+  for (let i = 0; i < items.length; i++) {
+    items[i].style.display = 'none';
+  }
+  if (items.length > 0) {
+    items[0].style.display = 'block';
+  }
+}
+window.onload = function() {
+  preselect('alignedStandards');
+  preselect('alignedTextbooks');
+  preselect('alignedPractices');
+}
+function showStandardsAlignment() {
+  const selectTag = document.getElementsByClassName('standardsAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const stdTables = document.getElementsByClassName('alignedStandards');
+  //const intro = document.getElementsByClassName('alignedStandardsIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < stdTables.length; i++) {
+    const stdTable = stdTables[i];
+    stdTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optStd = opt.value;
+      for (let j = 0; j < stdTables.length; j++) {
+        const stdTable = stdTables[j];
+        if (stdTable.classList.contains(optStd)) {
+          stdTable.style.display = 'block';
+         // introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+function toggleNonPrereqDisplay() {
+  const inputTag = document.getElementsByClassName('sidebarinput')[0];
+  const checkedP = inputTag.checked;
+  const lessonTable = document.getElementsByClassName('sidebarlessons')[0];
+  const lis = lessonTable.getElementsByTagName('li');
+  for (let i = 0; i < lis.length; i++) {
+    const li = lis[i];
+    const lesson = li.getElementsByClassName('prerequisite');
+    if (lesson.length === 0) {
+      li.style.display = checkedP ? 'none' : 'block';
+    }
+  }
+}
+</script>
+<script>
+function showTextbooksAlignment() {
+  const selectTag = document.getElementsByClassName('textbooksAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const textbookTables = document.getElementsByClassName('alignedTextbooks');
+  //const intro = document.getElementsByClassName('alignedTextbooksIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < textbookTables.length; i++) {
+    const textbookTable = textbookTables[i];
+    textbookTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optTextbook = opt.value;
+      for (let j = 0; j < textbookTables.length; j++) {
+        const textbookTable = textbookTables[j];
+        if (textbookTable.classList.contains(optTextbook)) {
+          textbookTable.style.display = 'block';
+          //introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+</script>
+<script>
+function showPracticesAlignment() {
+  const selectTag = document.getElementsByClassName('practicesAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const practiceTables = document.getElementsByClassName('alignedPractices');
+  for (let i = 0; i < practiceTables.length; i++) {
+    const practiceTable = practiceTables[i];
+    practiceTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optPractice = opt.value;
+      for (let j = 0; j < practiceTables.length; j++) {
+        const practiceTable = practiceTables[j];
+        if (practiceTable.classList.contains(optPractice)) {
+          practiceTable.style.display = 'block';
+        }
+      }
+    }
+  }
+}
+</script>
+<div class="paragraph">
+<!-- </p>
+</div>
+--></div><div class="sidebar"><div id="toggle"></div><div class="paragraph"><!--
+<div class="paragraph">
+<p>
+--><div class="sidebarlessons"><strong>Lessons</strong>
+<ul></ul></div>
+</div>
+<table class="tableblock frame-all grid-all stretch sidebarstandards">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Standards in this Lesson</strong>
+<select class="standardsAlignmentSelect"  onchange="showStandardsAlignment()"><option selected="selected" value="standards-Alabama">Alabama</option><option value="standards-Arkansas">Arkansas</option><option value="standards-California">California</option><option value="standards-Colorado">Colorado</option><option value="standards-Connecticut">Connecticut</option><option value="standards-Delaware">Delaware</option><option value="standards-Georgia">Georgia</option><option value="standards-Hawaii">Hawaii</option><option value="standards-Idaho">Idaho</option><option value="standards-Illinois">Illinois</option><option value="standards-Iowa">Iowa</option><option value="standards-Kansas">Kansas</option><option value="standards-Kentucky">Kentucky</option><option value="standards-Louisiana">Louisiana</option><option value="standards-Maine">Maine</option><option value="standards-Michigan">Michigan</option><option value="standards-Maryland">Maryland</option><option value="standards-Massachusetts">Massachusetts</option><option value="standards-Mississippi">Mississippi</option><option value="standards-Missouri">Missouri</option><option value="standards-Montana">Montana</option><option value="standards-New Hampshire">New Hampshire</option><option value="standards-Nevada">Nevada</option><option value="standards-New Jersey">New Jersey</option><option value="standards-New Mexico">New Mexico</option><option value="standards-North Carolina">North Carolina</option><option value="standards-North Dakota">North Dakota</option><option value="standards-New York">New York</option><option value="standards-Ohio">Ohio</option><option value="standards-Oregon">Oregon</option><option value="standards-Pennsylvania">Pennsylvania</option><option value="standards-Rhode Island">Rhode Island</option><option value="standards-South Dakota">South Dakota</option><option value="standards-Tennessee">Tennessee</option><option value="standards-Utah">Utah</option><option value="standards-Vermont">Vermont</option><option value="standards-Washington">Washington</option><option value="standards-West Virginia">West Virginia</option><option value="standards-Wisconsin">Wisconsin</option><option value="standards-Wyoming">Wyoming</option></select></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist alignedStandards standards-Alabama">
+<div class="title"><a href="">Alabama Standards</a></div>
+<dl>
+<dt class="hdlist1">AL.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1">AL.HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Arkansas">
+<div class="title"><a href="">Arkansas Standards</a></div>
+<dl>
+<dt class="hdlist1">AR.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1">AR.HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-California">
+<div class="title"><a href="">California Standards</a></div>
+<dl>
+<dt class="hdlist1">CA.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1">CA.HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Colorado">
+<div class="title"><a href="">Colorado Standards</a></div>
+<dl>
+<dt class="hdlist1">CO.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1">CO.HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Connecticut">
+<div class="title"><a href="">Connecticut Standards</a></div>
+<dl>
+<dt class="hdlist1">CT.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1">CT.HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Delaware">
+<div class="title"><a href="">Delaware Standards</a></div>
+<dl>
+<dt class="hdlist1">DE.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1">DE.HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Georgia">
+<div class="title"><a href="">Delaware Standards</a></div>
+<dl>
+<dt class="hdlist1">GA.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1">GA.HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Hawaii">
+<div class="title"><a href="">Hawaii Standards</a></div>
+<dl>
+<dt class="hdlist1">HI.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1">HI.HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Idaho">
+<div class="title"><a href="">Idaho Standards</a></div>
+<dl>
+<dt class="hdlist1">ID.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1">ID.HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Illinois">
+<div class="title"><a href="">Illinois Standards</a></div>
+<dl>
+<dt class="hdlist1">IL.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1">IL.HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Iowa">
+<div class="title"><a href="https://iowacore.gov/standards/iowa-core-standards">Iowa Standards</a></div>
+<dl>
+<dt class="hdlist1">IA.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1">IA.HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Kansas">
+<div class="title"><a href="">Kansas Standards</a></div>
+<dl>
+<dt class="hdlist1">KS.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1">KS.HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Kentucky">
+<div class="title"><a href="">Kentucky Standards</a></div>
+<dl>
+<dt class="hdlist1">KY.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1">KY.HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Louisiana">
+<div class="title"><a href="">Louisiana Standards</a></div>
+<dl>
+<dt class="hdlist1">LA.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1">LA.HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Maine">
+<div class="title"><a href="">Maine Standards</a></div>
+<dl>
+<dt class="hdlist1">ME.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1">ME.HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Michigan">
+<div class="title"><a href="">Michigan Standards</a></div>
+<dl>
+<dt class="hdlist1">MI.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1">MI.HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Maryland">
+<div class="title"><a href="">Maryland Standards</a></div>
+<dl>
+<dt class="hdlist1">MD.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1">MD.HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Massachusetts">
+<div class="title"><a href="https://www.doe.mass.edu/frameworks/">Massachusetts Standards</a></div>
+<dl>
+<dt class="hdlist1">MA.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1">MA.HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Mississippi">
+<div class="title"><a href="">Mississippi Standards</a></div>
+<dl>
+<dt class="hdlist1">MS.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1">MS.HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Missouri">
+<div class="title"><a href="">Missouri Standards</a></div>
+<dl>
+<dt class="hdlist1">MO.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1">MO.HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Montana">
+<div class="title"><a href="">Montana Standards</a></div>
+<dl>
+<dt class="hdlist1">MT.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1">MT.HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist .alignedStandards.standards-New Hampshire">
+<div class="title"><a href="">New Hampshire Standards</a></div>
+<dl>
+<dt>NH.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt>NH.HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Nevada">
+<div class="title"><a href="">Nevada Standards</a></div>
+<dl>
+<dt class="hdlist1">NV.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1">NV.HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist .alignedStandards.standards-New Jersey">
+<div class="title"><a href="">New Jersey Standards</a></div>
+<dl>
+<dt>NJ.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt>NJ.HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist .alignedStandards.standards-New Mexico">
+<div class="title"><a href="">New Mexico Standards</a></div>
+<dl>
+<dt>NM.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt>NM.HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist .alignedStandards.standards-North Carolina">
+<div class="title"><a href="">North Carolina Standards</a></div>
+<dl>
+<dt>NC.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt>NC.HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist .alignedStandards.standards-North Dakota">
+<div class="title"><a href="">North Dakota Standards</a></div>
+<dl>
+<dt>ND.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt>ND.HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist .alignedStandards.standards-New York">
+<div class="title"><a href="http://www.nysed.gov/curriculum-instruction/new-york-state-next-generation-mathematics-learning-standards">New York Standards</a></div>
+<dl>
+<dt>NY.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt>NY.HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Ohio">
+<div class="title"><a href="">Ohio Standards</a></div>
+<dl>
+<dt class="hdlist1">OH.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1">OH.HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Oregon">
+<div class="title"><a href="">Oregon Standards</a></div>
+<dl>
+<dt class="hdlist1">OR.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1">OR.HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Pennsylvania">
+<div class="title"><a href="">Pennsylvania Standards</a></div>
+<dl>
+<dt class="hdlist1">PA.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1">PA.HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist .alignedStandards.standards-Rhode Island">
+<div class="title"><a href="">Rhode Island Standards</a></div>
+<dl>
+<dt>RI.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt>RI.HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist .alignedStandards.standards-South Dakota">
+<div class="title"><a href="">South Dakota Standards</a></div>
+<dl>
+<dt>SD.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt>SD.HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Tennessee">
+<div class="title"><a href="">Tennessee Standards</a></div>
+<dl>
+<dt class="hdlist1">TN.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1">TN.HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Utah">
+<div class="title"><a href="">Utah Standards</a></div>
+<dl>
+<dt class="hdlist1">UT.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1">UT.HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Vermont">
+<div class="title"><a href="">Vermont Standards</a></div>
+<dl>
+<dt class="hdlist1">VT.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1">VT.HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Washington">
+<div class="title"><a href="">Washington Standards</a></div>
+<dl>
+<dt class="hdlist1">WA.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1">WA.HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist .alignedStandards.standards-West Virginia">
+<div class="title"><a href="">West Virginia Standards</a></div>
+<dl>
+<dt>WV.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt>WV.HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Wisconsin">
+<div class="title"><a href="">Wisconsin Standards</a></div>
+<dl>
+<dt class="hdlist1">WI.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1">WI.HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Wyoming">
+<div class="title"><a href="">Wyoming Standards</a></div>
+<dl>
+<dt class="hdlist1">WY.HSF.BF.A.1</dt>
+<dd>
+<p>Write a function that describes a relationship between two quantities.</p>
+</dd>
+<dt class="hdlist1">WY.HSF.IF.C</dt>
+<dd>
+<p>Analyze functions using different representations.</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch sidebarpractices">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Practices in this Lesson</strong>
+<select class="practicesAlignmentSelect"  onchange="showPracticesAlignment()"><option selected="selected" value="practices-CC"><a href="http://corestandards.org/Math/">Math</a></option></select></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist alignedPractices practices-CC">
+<div class="title"><a href="http://corestandards.org/Math/">Math</a></div>
+<dl>
+<dt class="hdlist1">MP.4</dt>
+<dd>
+<p>Model with mathematics</p>
+</dd>
+<dt class="hdlist1">MP.8</dt>
+<dd>
+<p>Look for and express regularity in repeated reasoning</p>
+</dd>
+<dt class="hdlist1">MP.2</dt>
+<dd>
+<p>Reason abstractly and quantitatively</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<!-- </p>
+</div>
+--></div><!--
+<div class="paragraph">
+<p>
+-->
+</div>
+<div class="paragraph">
+<p><span class="other-proglang">(Also available in <a href="../../lessons/functions-vertical-line-test/index.shtml">Pyret</a>)</span></p>
+</div>
+<div class="paragraph description">
+<p>Students learn to distinguish functions from other relations.</p>
+</div>
+<table class="tableblock frame-all grid-all stripes-none stretch left-header preamble">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Lesson Goals</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Students will be able to:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Generate points for a graph from a rule.</p>
+</li>
+<li>
+<p>Test whether or not a graph represents a function using the vertical line test.</p>
+</li>
+<li>
+<p>Identify whether or not a table represents a function.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Student-Facing Lesson Goals</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>I can use a rule to generate points for a graph.</p>
+</li>
+<li>
+<p>I can identify which graphs are functions and which aren&#8217;t using the vertical line test.</p>
+</li>
+<li>
+<p>I can identify whether or not a table represents a function.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Materials</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist materials-links">
+<ul>
+<li>
+<p><a href="https://docs.google.com/presentation/d/1t31lCxcnGsYLWQDyQykWg6K2SaE5hXwBYRyZ5l-4UmI/" target="_blank" rel="noopener">Lesson Slides</a></p>
+</li>
+<li>
+<p><span class="materialSectionPlaceholder"> </span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/functions-vertical-line-test-wescheme/pages/functions-graphs.html" target="_blank" rel="noopener">Identifying Functions from Graphs</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/functions-vertical-line-test-wescheme/pages/functions-graphs-2.html" target="_blank" rel="noopener">Identifying Functions from Graphs (continued)</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/functions-vertical-line-test-wescheme/pages/notice-wonder-functions.html" target="_blank" rel="noopener">Notice and Wonder - Functions</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/functions-vertical-line-test-wescheme/pages/how-tables-fail-vertical-line-test.html" target="_blank" rel="noopener">How Tables Fail the Vertical Line Test</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/functions-vertical-line-test-wescheme/pages/functions-tables.html" target="_blank" rel="noopener">Identifying Functions from Tables</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/functions-vertical-line-test-wescheme/pages/functions-tables-graphs.html" target="_blank" rel="noopener">Identifying Functions from Tables &amp; Graphs</a></span></p>
+</li>
+<li>
+<p><span class="OnlineExercise"><a href="https://docs.google.com/presentation/d/1IW5uMg491e33Av_XdGSivsAy28S9QSVivEYonpjTeF8/edit?usp=sharing" target="_blank" rel="noopener">Interactive Function Activity (Google)</a></span></p>
+</li>
+<li>
+<p><strong>Classroom visual:</strong> <a href="javascript:showLangTable()">Language Table</a></p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Preparation</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Decide whether you want to have students interact directly with the <a href="https://docs.google.com/presentation/d/1IW5uMg491e33Av_XdGSivsAy28S9QSVivEYonpjTeF8/edit?usp=sharing" target="_blank" rel="noopener">Interactive Function Activity</a> on their computers or whether it would be easier for your situation to project each graph from the peardeck on the white board and have students come up to add points that satisfy the rules or dictate points that satisfy the rules to a scribe who will add them to the graph.</p>
+</li>
+<li>
+<p>Rulers or straight edges might be useful in supporting students during the section of the lesson that focuses on the vertical line test.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="dlist glossary">
+<div class="title">Glossary</div>
+<dl>
+<dt class="hdlist1">function</dt>
+<dd>
+<p>a relation from a set of inputs to a set of possible outputs, where each input is related to exactly one output</p>
+</dd>
+<dt class="hdlist1">vertical line test</dt>
+<dd>
+<p>a strategy for determining whether or not a graph represents a function by confirming that no vertical line can be drawn to reveal that an x-value corresponds to more than one y-value</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_functions_are_reliable_duration_10_minutes_"><span class="section-link"><a href="#_functions_are_reliable_duration_10_minutes_"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Functions Are Reliable <span class="duration">10 minutes</span></h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_overview">Overview</h3>
+<div class="paragraph">
+<p>Students work collaboratively to generate visual representations of functions, using rules to make coordinate pairs.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_launch">Launch</h3>
+<div class="paragraph">
+<p><span class="vocab">Functions</span> are a way of describing a certain kind of relationship.</p>
+</div>
+<div class="paragraph lesson-point">
+<p>Functions are reliable. If we give them what they need, they produce the same thing with that same collection of inputs every time.</p>
+</div>
+<div class="paragraph">
+<p>You are already familiar with lots of relationships. Time worked is related to money earned. The speed of a car is related to the gas it consumes per miles driven. Not all relationships are functions. What kind of relationships are functions, exactly? That&#8217;s what we&#8217;re going to find out&#8230;&#8203;</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_investigate">Investigate</h3>
+<div class="paragraph">
+<p>Just as we can give the <code class="racket">rectangle</code> function inputs and it will produce an image, we can make @voab{graphs} of functions by feeding inputs (x-values) into a rule that produces outputs (y-values). The resulting x-y pairs describe the location of points that will satisfy the rule. We can repeat the process with an infinite number of inputs, plotting the outputs as a line or curve on a graph.</p>
+</div>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>On each slide of the <a href="https://docs.google.com/presentation/d/1IW5uMg491e33Av_XdGSivsAy28S9QSVivEYonpjTeF8/edit?usp=sharing" target="_blank" rel="noopener">Interactive Function Activity (Google)</a>, we&#8217;ll see a graph and a rule.</p>
+</li>
+<li>
+<p>Each of you will choose an x-value that is within the domain of the graph, apply the rule to your x-value to get a y-value, and then place a dot on the graph whose coordinates are the <span class="gdrive-only">x</span><script type="math/tex">\displaystyle x</script> you put in and the <span class="gdrive-only">y</span><script type="math/tex">\displaystyle y</script> you got back.</p>
+</li>
+<li>
+<p>When all of our dots appear on the screen together, we&#8217;ll end up with a visual representation of the function!</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><em>You might just want to do a few of these slides, or you might do lots of them.</em></p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_synthesize">Synthesize</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>How can we make a graph of a function from its rule?</p>
+</li>
+<li>
+<p>Are there curves or lines that a function could not make? Why or why not?</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_identifying_functions_from_graphs"><span class="section-link"><a href="#_identifying_functions_from_graphs"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Identifying Functions from Graphs</h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_overview_2">Overview</h3>
+<div class="paragraph">
+<p>Students learn to use the <span class="vocab">vertical line test</span> to determine whether or not a graph is a function. Students have already seen all kinds of functions! The subset of functions that are <code class="racket">Number-&gt;Number</code> can be graphed in 2 dimensions, with the Domain along the x-axis and the Range along the y-axis. The Vertical Line Test is a special trick that only works for this subset of functions.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_launch_2">Launch</h3>
+<div class="paragraph">
+<p>We can write functions that take in an x-value and produce a y-value. Different inputs can yield the same outputs. But each input can only be associated with one output.</p>
+</div>
+<div class="paragraph">
+<p>We can test a graph to see whether or not it&#8217;s a function using the "vertical line test". Imagine overlaying a series of vertical lines on the graph. If the graph represents a function, none of the vertical lines will cross the graph at more than one point. If there is any vertical line that can be drawn that would intersect more than one point on the graph, it means the same input can have more than one output and the relationship is not a function.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong>Passes the Vertical Line Test	-&gt; Is a Function</strong></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong>Fails the Vertical Line Test -&gt; Is Not a Function</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="image-figure"><span class="image"><img src="images/2fcd23fb900d762f.png" alt="a squiggly line going from left to right" title="a squiggly line going from left to right"></span><a href="images/2fcd23fb900d762f.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="image-figure"><span class="image"><img src="images/c780505961720630.png" alt="a v opening to the right with a vertical line that intersects the v twice" title="a v opening to the right with a vertical line that intersects the v twice"></span><a href="images/c780505961720630.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_investigate_2">Investigate</h3>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Turn to <a href="../../lessons/functions-vertical-line-test-wescheme/pages/functions-graphs.html" target="_blank" rel="noopener">Identifying Functions from Graphs</a> and use a straight edge and a pencil to draw vertical lines on each of the graphs to help you determine whether or not they are functions.</p>
+</li>
+<li>
+<p>When you finish, go on to <a href="../../lessons/functions-vertical-line-test-wescheme/pages/functions-graphs-2.html" target="_blank" rel="noopener">Identifying Functions from Graphs (continued)</a>.</p>
+</li>
+<li>
+<p>Once everyone has completed the first page, we will turn to <a href="../../lessons/functions-vertical-line-test-wescheme/pages/notice-wonder-functions.html" target="_blank" rel="noopener">Notice and Wonder - Functions</a>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>As students work, circulate around the room and make sure that they are actually drawing vertical lines on the graphs. Some students may benefit from circling the point where each vertical line intersects the graph.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_synthesize_2">Synthesize</h3>
+<div class="paragraph">
+<p>Confirm that students have correctly identified which graphs represent functions.</p>
+</div>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>What did you Notice?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Functions could be lines, curves, v-shaped or scatterplots! Answers will vary.</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>What did you Wonder?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Why might some scatterplots represent functions and others not? Are there other forms that functions can take? How do you end up with a circle on a graph? Answers will vary.</em></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_identifying_functions_from_tables"><span class="section-link"><a href="#_identifying_functions_from_tables"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Identifying Functions from Tables</h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_overview_3">Overview</h3>
+<div class="paragraph">
+<p>Students apply their understanding of how to use the vertical line test on graphs to learn to recognize whether or not tables are functions.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_launch_3">Launch</h3>
+<div class="paragraph lesson-instruction">
+<p>Turn to <a href="../../lessons/functions-vertical-line-test-wescheme/pages/how-tables-fail-vertical-line-test.html" target="_blank" rel="noopener">How Tables Fail the Vertical Line Test</a> and follow the directions.</p>
+</div>
+<div class="paragraph">
+<p>Circulate around the room verifying that students are remembering how to use the vertical line test and correctly identifying which tables represent functions.</p>
+</div>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>How can we identify whether or not a table of values represents a function?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>If a table has more than one y-value (or output) for the same x-value (or input), it cannot represent a function.</em></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_investigate_3">Investigate</h3>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Turn to <a href="../../lessons/functions-vertical-line-test-wescheme/pages/functions-tables.html" target="_blank" rel="noopener">Identifying Functions from Tables</a>.</p>
+</li>
+<li>
+<p>Look at the values in each table carefully to determine whether or not the table represents a function.</p>
+</li>
+<li>
+<p>If it&#8217;s not a function, circle or highlight the points that let you know it can&#8217;t be a function.</p>
+</li>
+<li>
+<p>When you&#8217;re done, turn to <a href="../../lessons/functions-vertical-line-test-wescheme/pages/notice-wonder-functions.html" target="_blank" rel="noopener">Notice and Wonder - Functions</a> and add any new Notices or Wonderings you may have.</p>
+</li>
+<li>
+<p>Then turn to <a href="../../lessons/functions-vertical-line-test-wescheme/pages/functions-tables-graphs.html" target="_blank" rel="noopener">Identifying Functions from Tables &amp; Graphs</a>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>As students work, circulate around the room and make sure that they are actually circling or highlighting the points on the tables that tell them that the table doesn&#8217;t represent a function.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_synthesize_3">Synthesize</h3>
+<div class="paragraph">
+<p>Confirm that students have correctly identified which graphs represent functions, and then lead a discussion on the activities above.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>What did you Notice?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Answers will vary. It can still be a function if y-values repeat. It didn&#8217;t matter whether or not the x-values followed a pattern. It was easier for me to read the tables when the x-values were in order.</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>What did you Wonder?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Answeres will vary. Why weren&#8217;t the x-values always in order? If the points were on a graph, would they be connected? Can there ever be decimal values for x and y? What would these tables look like on a graph?</em></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-18 16:15:45 -0400
+</div>
+</div>
+</div>
+</body>
+</html>

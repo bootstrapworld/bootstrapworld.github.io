@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Permutations</title>
+
+  <link rel="stylesheet" href="../../lib/curriculum.css" />
+    <link rel="stylesheet" href="../../lib/codemirror.css" />
+    <script src="../../lib/codemirror.js"></script>
+    <script src="../../lib/runmode.js"></script>
+    <script src="../../lib/scheme2.js"></script>
+    <script src="../../lib/pyret-mode.js"></script>
+      <script src="../../extlib/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML%2Clocal%2Fmathjaxlocal.js"></script>
+      <script>window.status = "not_ready_to_print";</script>
+    <script src="../../lib/langtable.js"></script>
+    <script src="../../lib/bootstraplesson.js"></script>
+    <script src="../../dependency-graph.js"></script>
+    <script src="../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"Permutations",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="article LessonPlan pyret" onload="renderSaveToDrive()">
+<!--#include virtual="/menubar.ssi"-->
+<div id="body" onload="renderSaveToDrive()">
+<div id="header">
+<h1>Permutations</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<script>
+function preselect(klass) {
+  const items = document.getElementsByClassName(klass);
+  for (let i = 0; i < items.length; i++) {
+    items[i].style.display = 'none';
+  }
+  if (items.length > 0) {
+    items[0].style.display = 'block';
+  }
+}
+window.onload = function() {
+  preselect('alignedStandards');
+  preselect('alignedTextbooks');
+  preselect('alignedPractices');
+}
+function showStandardsAlignment() {
+  const selectTag = document.getElementsByClassName('standardsAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const stdTables = document.getElementsByClassName('alignedStandards');
+  //const intro = document.getElementsByClassName('alignedStandardsIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < stdTables.length; i++) {
+    const stdTable = stdTables[i];
+    stdTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optStd = opt.value;
+      for (let j = 0; j < stdTables.length; j++) {
+        const stdTable = stdTables[j];
+        if (stdTable.classList.contains(optStd)) {
+          stdTable.style.display = 'block';
+         // introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+function toggleNonPrereqDisplay() {
+  const inputTag = document.getElementsByClassName('sidebarinput')[0];
+  const checkedP = inputTag.checked;
+  const lessonTable = document.getElementsByClassName('sidebarlessons')[0];
+  const lis = lessonTable.getElementsByTagName('li');
+  for (let i = 0; i < lis.length; i++) {
+    const li = lis[i];
+    const lesson = li.getElementsByClassName('prerequisite');
+    if (lesson.length === 0) {
+      li.style.display = checkedP ? 'none' : 'block';
+    }
+  }
+}
+</script>
+<script>
+function showTextbooksAlignment() {
+  const selectTag = document.getElementsByClassName('textbooksAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const textbookTables = document.getElementsByClassName('alignedTextbooks');
+  //const intro = document.getElementsByClassName('alignedTextbooksIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < textbookTables.length; i++) {
+    const textbookTable = textbookTables[i];
+    textbookTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optTextbook = opt.value;
+      for (let j = 0; j < textbookTables.length; j++) {
+        const textbookTable = textbookTables[j];
+        if (textbookTable.classList.contains(optTextbook)) {
+          textbookTable.style.display = 'block';
+          //introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+</script>
+<script>
+function showPracticesAlignment() {
+  const selectTag = document.getElementsByClassName('practicesAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const practiceTables = document.getElementsByClassName('alignedPractices');
+  for (let i = 0; i < practiceTables.length; i++) {
+    const practiceTable = practiceTables[i];
+    practiceTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optPractice = opt.value;
+      for (let j = 0; j < practiceTables.length; j++) {
+        const practiceTable = practiceTables[j];
+        if (practiceTable.classList.contains(optPractice)) {
+          practiceTable.style.display = 'block';
+        }
+      }
+    }
+  }
+}
+</script>
+<div class="paragraph">
+<!-- </p>
+</div>
+--></div><div class="sidebar"><div id="toggle"></div><div class="paragraph"><!--
+<div class="paragraph">
+<p>
+--><div class="sidebarlessons"><strong>Lessons</strong>
+<ul></ul></div>
+</div>
+<table class="tableblock frame-all grid-all stretch sidebarstandards">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Standards in this Lesson</strong>
+<select class="standardsAlignmentSelect"  onchange="showStandardsAlignment()"><option selected="selected" value="standards-CCSS-Math">CCSS-Math</option><option value="standards-Oklahoma">Oklahoma</option></select></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist alignedStandards standards-CCSS-Math">
+<div class="title"><a href="http://corestandards.org/Math/">Common Core Math Standards</a></div>
+<dl>
+<dt class="hdlist1">HSS.CP.B.9</dt>
+<dd>
+<p>Use permutations and combinations to compute probabilities of compound events and solve problems.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Oklahoma">
+<div class="title"><a href="https://sde.ok.gov/oklahoma-academic-standards">Oklahoma Standards</a></div>
+<dl>
+<dt class="hdlist1">OK.SP.1.5</dt>
+<dd>
+<p>Use counting techniques including permutations and combinations to solve mathematical and real-world problems, including determining probabilities of compound events.</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch sidebarpractices">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Practices in this Lesson</strong>
+<select class="practicesAlignmentSelect"  onchange="showPracticesAlignment()"><option selected="selected" value="practices-NGSS"><a href="https://ngss.nsta.org/practicesfull.aspx">Science and Engineering</a></option><option value="practices-CC"><a href="http://corestandards.org/Math/">Math</a></option></select></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist alignedPractices practices-NGSS">
+<div class="title"><a href="https://ngss.nsta.org/practicesfull.aspx">Science and Engineering</a></div>
+<dl>
+<dt class="hdlist1">SEP.5</dt>
+<dd>
+<p>Using Mathematics and Computational Thinking</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedPractices practices-CC">
+<div class="title"><a href="http://corestandards.org/Math/">Math</a></div>
+<dl>
+<dt class="hdlist1">MP.4</dt>
+<dd>
+<p>Model with mathematics</p>
+</dd>
+<dt class="hdlist1">MP.7</dt>
+<dd>
+<p>Look for and make use of structure</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<!-- </p>
+</div>
+--></div><!--
+<div class="paragraph">
+<p>
+-->
+</div>
+<div class="paragraph">
+<p><span class="other-proglang">(Also available in <a href="../../lessons/combinatorics-permutation-wescheme/index.shtml">WeScheme</a>)</span></p>
+</div>
+<!--
+
+Visme URLs for tree diagrams:
+- https://my.visme.co/view/epd0w63y-permutation-and-combination-2
+- https://my.visme.co/view/8rerg1ee-permutation-and-combination
+-->
+<div class="paragraph description">
+<p>Students explore the concept of permutations, computing the possible number of outcomes when choosing n items from m possibilities in a variety of real-world situations.</p>
+</div>
+<table class="tableblock frame-all grid-all stripes-none stretch left-header preamble">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Lesson Goals</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Students will be able to&#8230;&#8203;</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Define and explain "permutation" (both with and without replacement)</p>
+</li>
+<li>
+<p>Draw and Interpret a tree diagram</p>
+</li>
+<li>
+<p>Compute the number of permutations for a given situation (both with and without replacement)</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Student-facing Lesson Goals</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>I can explain what permutation means (both with and without replacement)</p>
+</li>
+<li>
+<p>I can list all the outcomes from a tree diagram</p>
+</li>
+<li>
+<p>I can compute the number of permuations from a word problem</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Materials</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist materials-links">
+<ul>
+<li>
+<p><span class="materialSectionPlaceholder"> </span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/combinatorics-permutation/pages/tree-diagrams.html" target="_blank" rel="noopener">Tree Diagrams</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/combinatorics-permutation/pages/permutation.html" target="_blank" rel="noopener">Permutation</a></span></p>
+</li>
+<li>
+<p><span class="StarterFile Optional"><a href="https://code.pyret.org/editor#share=1pOwcDplD2vidTIvBMrBI5fVZ2jmk369Q" target="_blank" rel="noopener">Permutations and Combinations Starter File</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="../../lessons/combinatorics-permutation/pages/tree-diagrams2.html" target="_blank" rel="noopener">Tree Diagrams 2</a></span></p>
+</li>
+<li>
+<p><strong>Classroom visual:</strong> <a href="javascript:showLangTable()">Language Table</a></p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="dlist glossary">
+<div class="title">Glossary</div>
+<dl>
+<dt class="hdlist1">permutation</dt>
+<dd>
+<p>the number of possible arrangements in a collection of items where the order of the selection matters (ABC and CBA would be considered different permutations)</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_permutation_with_replacement"><span class="section-link"><a href="#_permutation_with_replacement"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Permutation with Replacement</h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_overview">Overview</h3>
+<div class="paragraph">
+<p>Students are introduced to the concept of <span class="vocab">permutation</span> (with replacement). They  compute a number of permutations by hand using tree diagrams, then learn the formula for computing permutations with replacement.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_launch">Launch</h3>
+<div class="paragraph">
+<p><span class="right"><span class="image-figure"><span class="image"><img src="images/399c98ac240278cd.png" alt="pizza" title="pizza"></span><a href="images/399c98ac240278cd.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></p>
+</div>
+<div class="paragraph">
+<p>Luigi&#8217;s Family Restaurant is about to open, and it&#8217;s going to be the hottest restaurant in town. They have a menu with six different dishes, and they plan to offer a four-course "Italian Safari" dinner for the low-low price of $9.95 per person. The gimmick is that diners can <em>choose the order of the courses:</em> you might start with Lasagna, but your friend can start with the Chicken Parmesan, and so on. And if your friend happens to really, <strong>really</strong> like Chicken Parmesan, they can choose to eat it for all four courses!</p>
+</div>
+<div class="paragraph">
+<p>They advertise "an almost-endless number of dining experiences". In fact, Luigi himself guarantees free food for life for anyone who can eat every possible configuration. If you ate dinner there every night, how long would it take to try each one? In other words, <em>how many ways can you reshuffle those four courses</em>?</p>
+</div>
+<div class="paragraph lesson-point">
+<p>In Permutations, order matters!</p>
+</div>
+<div class="paragraph">
+<p>Luigi isn&#8217;t going to give away free food just because you order four courses - he wants you to order four courses <em>in every possible order</em>! In situations where order matters, the set of possible options is called <span class="vocab">permutations</span>.</p>
+</div>
+<div class="paragraph lesson-point">
+<p>With or without replacement?</p>
+</div>
+<div class="paragraph">
+<p>In some restaurants, you&#8217;re not allowed to order the same item for more than one course. In other words, <em>once you&#8217;ve picked lasagna, it&#8217;s no longer on the menu for your next course!</em> This is called <strong>permutation <em>without</em> replacement</strong>.</p>
+</div>
+<div class="paragraph">
+<p>Luigi is a nice guy, so once you order lasagna it is "replaced" with the option to order it again for the next course! This is called <strong>permutation <em>with</em> replacement</strong>.</p>
+</div>
+<div class="paragraph">
+<p>With six dishes to choose from and four courses to eat, how many <span class="vocab">permutations</span> are there? How many meals would we have to eat, to get free food for life?</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_investigate">Investigate</h3>
+<div class="openblock lesson-instruction">
+<div class="content">
+<div class="paragraph">
+<p>Luigi has six possible dishes to choose from. Discuss:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>How many permutations could there be for a 1-course dinner?</p>
+</li>
+<li>
+<p>How many permutations could there be for a 2-course dinner?</p>
+</li>
+<li>
+<p>How many permutations could there be for a 3-course dinner?</p>
+</li>
+<li>
+<p>Is there a pattern here?</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>It&#8217;s useful to use <em>tree diagrams</em>, so we can see what our possible choices are. A tree diagram is a way of tracking a series of events. In this case, each course we choose is an event.</p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s diagram all permutations for a 1-course meal. With six menu items, a 1-course meal could be Lasagna, Pizza, Chicken, Ravioli, Soup or Ziti. That means the set of all possible 1-course <span class="vocab">permutations</span> has six different meals. In less than a week, we&#8217;d have tried all the possibilities!</p>
+</div>
+<div class="paragraph">
+<p><span class="center"><span class="image-figure"><span class="image"><img src="images/782d8213c1a855b3.png" alt="a tree diagram showing the 6 meal options" title="a tree diagram showing the 6 meal options"></span><a href="images/782d8213c1a855b3.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></p>
+</div>
+<div class="paragraph">
+<p>But what about a 2-course meal? Each of our 1st-course choices has <em>another tree</em> underneath it! After we&#8217;ve picked our first course, how many options do we have for the second? If we choose Lasagna for our first course&#8230;&#8203; we can choose it again for the second course or we can choose any of the other options, which means we still have six choices. In other words, someone could order Lasagna &amp; Lasagna (L-L), Lasagna &amp; Pizza (L-P), Lasagna &amp; Chicken (L-C), Lasagna &amp; Ravioli (L-R), Lasagna &amp; Soup (L-S), or Lasagna &amp; Ziti (L-Z).  That&#8217;s six possible orders with Lasagna as the first course. Each of the other first course options also comes with six possible second course order options&#8230;&#8203; that&#8217;s <span class="gdrive-only">6 &times; 6</span><script type="math/tex">\displaystyle 6 \times 6</script> ! So, instead of taking six days to try all the permutations, now it takes <em>36 days</em> - more than a month!</p>
+</div>
+<div class="paragraph">
+<p><span class="center"><span class="image-figure"><span class="image"><img src="images/e4537d448d78b958.png" alt="A tree diagram with the top level showing the 6 options and the next level linking each of the initial 6 options to the same 6 options such that in the end there are 36 possible choices" title="A tree diagram with the top level showing the 6 options and the next level linking each of the initial 6 options to the same 6 options such that in the end there are 36 possible choices"></span><a href="images/e4537d448d78b958.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></p>
+</div>
+<div class="paragraph">
+<p>Every time we get to make a choice, each endpoint in our tree sprouts six more branches.</p>
+</div>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>For practice with tree-diagrams and permutations, complete <a href="../../lessons/combinatorics-permutation/pages/tree-diagrams.html" target="_blank" rel="noopener">Tree Diagrams</a>.</p>
+</li>
+<li>
+<p>How many permutations would there be in a 3-course meal?</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>We had 36 possible 2-course meals, so choosing a third course means that each "endpoint" of our 2-course meal tree now has six possible branches! <span class="gdrive-only">6 &times; 6 &times; 6 = 6^3 = 216</span><script type="math/tex">\displaystyle 6 \times 6 \times 6 = 6^3 = 216</script> possible 3-course meals.</p>
+</div>
+<div class="paragraph">
+<p>For a 4-course meal, we have a <em>four-level</em> tree with six branches at every level! That&#8217;s <span class="gdrive-only">6 &times; 6 &times; 6 &times; 6 = 6^4 = 1296</span><script type="math/tex">\displaystyle 6 \times 6 \times 6 \times 6 = 6^4 = 1296</script> possible permutations!</p>
+</div>
+<div class="paragraph">
+<p>The number of <span class="vocab">permutations</span> is computed based on two things:
+. The number of possible menu <em>items</em> (lasagna? Chicken? Soup?)
+. How many times we get to <em>choose</em>. (1-course meal? 3-course meal?)</p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s see this as a function:</p>
+</div>
+<div class="paragraph">
+<p><span class="gdrive-only">permute\mbox-w\mbox-replace(items, choose) = choose^items</span><script type="math/tex">\displaystyle permute\mbox{-}w\mbox{-}replace(items, choose) = choose^{items}</script></p>
+</div>
+<div class="paragraph">
+<p><span class="gdrive-only">permute\mbox-w\mbox-replace(6, 1) = 6^1 = 6</span><script type="math/tex">\displaystyle permute\mbox{-}w\mbox{-}replace(6, 1) = 6^{1} = 6</script>
+We have 6 possible one-course meals&#8230;&#8203;</p>
+</div>
+<div class="paragraph">
+<p><span class="gdrive-only">permute\mbox-w\mbox-replace(6, 2) = 6^2 = 36</span><script type="math/tex">\displaystyle permute\mbox{-}w\mbox{-}replace(6, 2) = 6^{2} = 36</script>
+We have 36 possible two-course meals&#8230;&#8203;</p>
+</div>
+<div class="paragraph">
+<p><span class="gdrive-only">permute\mbox-w\mbox-replace(6, 3) = 6^3 = 216</span><script type="math/tex">\displaystyle permute\mbox{-}w\mbox{-}replace(6, 3) = 6^{3} = 216</script>
+We have 216 possible three-course meals&#8230;&#8203;</p>
+</div>
+<div class="paragraph">
+<p>How many permutations are there for a 4-course meal chosen from Luigi&#8217;s 6-item menu?</p>
+</div>
+<div class="paragraph">
+<p><span class="gdrive-only">permute\mbox-w\mbox-replace(6, 4) = 6^4 = 1296</span><script type="math/tex">\displaystyle permute\mbox{-}w\mbox{-}replace(6, 4) = 6^{4} = 1296</script></p>
+</div>
+<div class="paragraph">
+<p>With four courses, it would take more than <em>3.5 years</em> to try them all&#8201;&#8212;&#8201;if we ate dinner at Luigi&#8217;s every night!</p>
+</div>
+<div class="paragraph lesson-instruction">
+<p>In Pyret, we can raise a 6 to the power of four with the <code class="pyret">num-expt</code> function. For example, <code class="pyret">num-expt(6, 4)</code> will compute <span class="gdrive-only">6^4</span><script type="math/tex">\displaystyle 6^4</script>. In the Definitions Area, use the Design Recipe to define <code class="pyret">num-permute-w-replace</code>, which consumes the number of items and the number of choices and produces the number of possible permutations (with replacement).</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_synthesis">Synthesis</h3>
+<div class="paragraph">
+<p>What are some other examples of permutation? (Password strength, guessing combination locks&#8230;&#8203;)</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_permutation_without_replacement"><span class="section-link"><a href="#_permutation_without_replacement"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Permutation without Replacement</h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_overview_2">Overview</h3>
+<div class="paragraph">
+<p>Students build on their understanding of <span class="vocab">permutation</span>, now extending it to situations <em>without</em> replacement. They compute a number of permutations by hand using tree diagrams, then learn the formula for computing permutations without replacement.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_launch_2">Launch</h3>
+<div class="paragraph">
+<p>After a few months, Luigi realizes that he&#8217;s losing money. He could either raise his prices, or streamline the cooking process. His daughter observes that there&#8217;s no way to predict how many ingredients to buy, since some people might want four courses of Soup and others might want four courses of ziti. Without being able to predict the ingredients, Luigi winds up buying too much of one thing and not enough of another - resulting in a lot of wasted food and unhappy customers!</p>
+</div>
+<div class="paragraph">
+<p>Luigi proposes an important change to his "Italian Safari deal": <strong>No item can be ordered twice.</strong></p>
+</div>
+<div class="paragraph">
+<p>He also decides to simplify his menu even further, down to just <strong>four different options</strong>.</p>
+</div>
+<div class="paragraph">
+<p>With no one ordering four of the same thing and far fewer choices to make, it&#8217;s a lot easier to predict what to buy, so it will waste less food and save Luigi a lot of money.</p>
+</div>
+<div class="paragraph">
+<p>Now how long would it take to try every permutation?</p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s start by drawing the tree diagram for 1st place:</p>
+</div>
+<div class="paragraph">
+<p><span class="center"><span class="image-figure"><span class="image"><img src="images/e2b7da88fbc01d98.png" alt="a tree diagram showing the four initial options" title="a tree diagram showing the four initial options"></span><a href="images/e2b7da88fbc01d98.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></p>
+</div>
+<div class="paragraph">
+<p>There are <strong>four</strong> possible items we could eat for our first course, so we have 4 possible branches. After we eat that course, it&#8217;s time to order the second course! How many branches are there for the second course, under each first course choice?</p>
+</div>
+<div class="paragraph">
+<p><span class="center"><span class="image-figure"><span class="image"><img src="images/640af50de0d85bc6.png" alt="a tree diagram: the top level shows 4 options. The level links each of the initial 4 options to the 3 remaining options" width="for a total of 12 possibilities" title="a tree diagram: the top level shows 4 options. The level links each of the initial 4 options to the 3 remaining options"></span><a href="images/640af50de0d85bc6.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></p>
+</div>
+<div class="paragraph">
+<p>We can&#8217;t order the same thing twice so once we&#8217;ve eaten Pizza for the first course, there are only <em>three</em> possible items left to choose from: Chicken, Ravioli and Soup. If we start with Chicken, we can&#8217;t order Chicken again, but we can choose from Pizza, Ravioli &amp; Soup for our second course. No matter what we choose for our first course, we still have three choices left for our second course. This is called <span class="vocab">permutation</span> <strong>without replacement</strong>. Now there are only <span class="gdrive-only">4 &times; 3 = 12</span><script type="math/tex">\displaystyle 4 \times 3 = 12</script> permutations, instead of the 16 we&#8217;d have with replacement.</p>
+</div>
+<div class="paragraph">
+<p>We can visualize our four courses as a four-level tree, with each set of branches getting smaller and smaller until there&#8217;s only one option left. In the tree diagram below, you can see a <em>partial</em> drawing of all four courses.</p>
+</div>
+<div class="paragraph">
+<p><span class="center"><span class="image-figure"><span class="image"><img src="images/68204929ea03b094.png" alt="A tree diagram: The top level has 4 choices. The next level links each of those to the remaining 3. The next level links each of those to the remaining 2. The final level links each of those to the remaining option" width="for a total of 24 possible 4 course meals." title="A tree diagram: The top level has 4 choices. The next level links each of those to the remaining 3. The next level links each of those to the remaining 2. The final level links each of those to the remaining option"></span><a href="images/68204929ea03b094.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></p>
+</div>
+<div class="paragraph">
+<p>If we start with Chicken, we can order:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Chicken, Pizza, Ravioli &amp; Soup</p>
+</li>
+<li>
+<p>Chicken, Pizza, Soup &amp; Ravioli</p>
+</li>
+<li>
+<p>Chicken, Ravioli, Pizza &amp; Soup</p>
+</li>
+<li>
+<p>Chicken, Ravioli, Soup &amp; Pizza</p>
+</li>
+<li>
+<p>Chicken, Soup, Ravioli &amp; Pizza</p>
+</li>
+<li>
+<p>Chicken, Soup, Pizza &amp; Ravioli</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>That&#8217;s six different permutatons that start with Chicken, and we have four different other possible meals to start with.</p>
+</div>
+<div class="paragraph">
+<p>We can compute the number of permutations-without-replacement by multiplying the number of choices as they shrink after each course: <span class="gdrive-only">4 &times; 3 &times; 2 &times; 1 = 24</span><script type="math/tex">\displaystyle 4 \times 3 \times 2 \times 1 = 24</script>.</p>
+</div>
+<table class="tableblock frame-all grid-none stripes-none stretch strategy-box">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="title">Factorial</span></p>
+<p class="tableblock">This lesson assumes that students are familiar with factorial notation (<span class="gdrive-only">n!</span><script type="math/tex">\displaystyle n!</script>). To teach this lesson <em>without</em> students knowing about factorials, you will need to skip the function notation that follows. This is feasible, but not recommended.</p>
+<p class="tableblock">Reminder: <span class="gdrive-only">0! = 1</span><script type="math/tex">\displaystyle 0! = 1</script> <a href="https://www.chilimath.com/lessons/intermediate-algebra/zero-factorial/" target="_blank" rel="noopener">Click here for an explanation</a>.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Now we could try all the permutations in just under a month!</p>
+</div>
+<div class="paragraph">
+<p><strong>Luigi decides this makes it too easy, and now that his kitchen is running smoothly he decides to bring back the original six-item menu.</strong></p>
+</div>
+<div class="paragraph">
+<p>In this situation, there might be six items on the menu, but we want to <em>stop multiplying after the first four items are chosen</em>.</p>
+</div>
+<div class="paragraph">
+<p><span class="gdrive-only">6 &times; 5 &times; 4 &times; 3 = 360</span><script type="math/tex">\displaystyle 6 \times 5 \times 4 \times 3 = 360</script></p>
+</div>
+<div class="paragraph">
+<p>We can write this by starting with our factorial notation from before (where every number from 6 to 1 is multiplied), and then "undoing" the <span class="gdrive-only">2 &times; 1</span><script type="math/tex">\displaystyle 2 \times 1</script>. This takes the form of <em>dividing</em>:</p>
+</div>
+<div class="paragraph">
+<p><span class="gdrive-only">( 6 &times; 5 &times; 4 &times; 3 &times; 2 &times; 1 )/( 2 &times; 1 ) = 6!/2! = 360</span><script type="math/tex">\displaystyle \frac{6 \times 5 \times 4 \times 3 \times 2 \times 1}{2 \times 1} = \frac{6!}{2!} = 360</script></p>
+</div>
+<div class="paragraph">
+<p>With this number of possible combinations, it would take almost a year to try them all! And with less wasted food and a faster kitchen, Luigi has a lot of happy customers and a lot of money in the bank.</p>
+</div>
+<div class="paragraph">
+<p>We can write this relationship as a function:</p>
+</div>
+<div class="paragraph">
+<p><span class="gdrive-only">permute\mbox-no\mbox-replace(items, choose) = items!/( (items - choose)! )</span><script type="math/tex">\displaystyle permute\mbox{-}no\mbox{-}replace(items, choose) = \frac{items!}{(items - choose)!}</script></p>
+</div>
+<div class="paragraph lesson-instruction">
+<p>For practice, complete the <a href="../../lessons/combinatorics-permutation/pages/permutation.html" target="_blank" rel="noopener">Permutation</a> worksheet.</p>
+</div>
+<div class="paragraph lesson-instruction">
+<p>In Pyret, we can compute the factorial of 6 with the <code class="pyret">factorial</code> function. For example, <code class="pyret">factorial(6)</code> will compute <span class="gdrive-only">6 &times; 5 &times; 4 &times; 3 &times; 2 &times; 1</span><script type="math/tex">\displaystyle 6 \times 5 \times 4 \times 3 \times 2 \times 1</script>. In the Definitions Area, use the Design Recipe to define <code class="pyret">num-permute-wo-replace</code>, which consumes the number of items and the number of choices and produces the number of possible permutations (<em>without</em> replacement).</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_synthesize">Synthesize</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>What is the difference between permutation with or without replacement?</p>
+</li>
+<li>
+<p>What are some real-world examples of each?</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_additional_exercises"><span class="section-link"><a href="#_additional_exercises"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Additional Exercises:</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://code.pyret.org/editor#share=1pOwcDplD2vidTIvBMrBI5fVZ2jmk369Q" target="_blank" rel="noopener">Permutations and Combinations Starter File</a> provides students with a chance to view all the permutations and combinations for Luigi&#8217;s menu.
+}</p>
+</li>
+<li>
+<p><a href="../../lessons/combinatorics-permutation/pages/tree-diagrams2.html" target="_blank" rel="noopener">Tree Diagrams 2</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-17 19:42:12 -0400
+</div>
+</div>
+</div>
+</body>
+</html>

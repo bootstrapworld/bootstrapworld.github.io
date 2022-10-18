@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Describe and Define Your Own Functions!</title>
+
+  <link rel="stylesheet" href="../../../lib/curriculum.css" />
+    <link rel="stylesheet" href="../../../lib/codemirror.css" />
+    <script src="../../../lib/codemirror.js"></script>
+    <script src="../../../lib/runmode.js"></script>
+    <script src="../../../lib/scheme2.js"></script>
+    <script src="../../../lib/pyret-mode.js"></script>
+    <script src="../../../lib/langtable.js"></script>
+    <script src="../../../lib/bootstraplesson.js"></script>
+    <script src="../../../dependency-graph.js"></script>
+    <script src="../../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"Describe and Define Your Own Functions!",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="workbookpage article pyret" onload="renderSaveToDrive()">
+<div id="header">
+<h1>Describe and Define Your Own Functions!</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<div class="paragraph">
+<p><span class="autonum">1</span> <strong>Let&#8217;s define a function</strong> <span class="fitb" style="width: 10em"></span> <strong>to generate&#8230;&#8203;</strong></p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"></span></p>
+</div>
+<div class="paragraph">
+<p>If I say <span class="fitb" style="width: 10em"></span>, what would our actor need to say? <span class="fitb stretch"></span></p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s write a few more examples:</p>
+</div>
+<div class="paragraph">
+<p><span class="obeyspaces"><span class="codetwo"><span class="studentAnswerUnfilled" style="min-width: 5em">&#160;</span>&#8203;(&#8203;<span class="studentAnswerUnfilled" style="min-width: 10em">&#160;</span>&#8203;)</span></span> &rarr; <span class="obeyspaces"><span class="codetwo"><span class="studentAnswerUnfilled" style="min-width: 6em">&#160;</span>&#8203;(&#8203;<span class="studentAnswerUnfilled" style="min-width: 24em">&#160;</span>&#8203;)</span></span></p>
+</div>
+<div class="paragraph">
+<p><span class="obeyspaces"><span class="codetwo"><span class="studentAnswerUnfilled" style="min-width: 5em">&#160;</span>&#8203;(&#8203;<span class="studentAnswerUnfilled" style="min-width: 10em">&#160;</span>&#8203;)</span></span> &rarr; <span class="obeyspaces"><span class="codetwo"><span class="studentAnswerUnfilled" style="min-width: 6em">&#160;</span>&#8203;(&#8203;<span class="studentAnswerUnfilled" style="min-width: 24em">&#160;</span>&#8203;)</span></span></p>
+</div>
+<div class="paragraph">
+<p><span class="obeyspaces"><span class="codetwo"><span class="studentAnswerUnfilled" style="min-width: 5em">&#160;</span>&#8203;(&#8203;<span class="studentAnswerUnfilled" style="min-width: 10em">&#160;</span>&#8203;)</span></span> &rarr; <span class="obeyspaces"><span class="codetwo"><span class="studentAnswerUnfilled" style="min-width: 6em">&#160;</span>&#8203;(&#8203;<span class="studentAnswerUnfilled" style="min-width: 24em">&#160;</span>&#8203;)</span></span></p>
+</div>
+<div class="paragraph">
+<p>What variable changes? <span class="fitb" style="width: 15em"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 1ex"></span></p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s define our function using the variable.</p>
+</div>
+<div class="paragraph">
+<p><code class="pyret"><strong>fun</strong> <span class="fitb" style="width: 5em"></span> (<span class="fitb" style="width: 8em"></span>) <strong>:</strong> <span class="fitb" style="width: 8em"></span>(<span class="fitb" style="width: 22em"></span>) <strong>end</strong></code></p>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 1ex"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">2</span> <strong>Let&#8217;s define a function</strong> <span class="fitb" style="width: 10em"></span> <strong>to generate&#8230;&#8203;</strong></p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"></span></p>
+</div>
+<div class="paragraph">
+<p>If I say <span class="fitb" style="width: 10em"></span>, what would our actor need to say? <span class="fitb stretch"></span></p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s write a few more examples:</p>
+</div>
+<div class="paragraph">
+<p><span class="obeyspaces"><span class="codetwo"><span class="studentAnswerUnfilled" style="min-width: 5em">&#160;</span>&#8203;(&#8203;<span class="studentAnswerUnfilled" style="min-width: 10em">&#160;</span>&#8203;)</span></span> &rarr; <span class="obeyspaces"><span class="codetwo"><span class="studentAnswerUnfilled" style="min-width: 6em">&#160;</span>&#8203;(&#8203;<span class="studentAnswerUnfilled" style="min-width: 24em">&#160;</span>&#8203;)</span></span></p>
+</div>
+<div class="paragraph">
+<p><span class="obeyspaces"><span class="codetwo"><span class="studentAnswerUnfilled" style="min-width: 5em">&#160;</span>&#8203;(&#8203;<span class="studentAnswerUnfilled" style="min-width: 10em">&#160;</span>&#8203;)</span></span> &rarr; <span class="obeyspaces"><span class="codetwo"><span class="studentAnswerUnfilled" style="min-width: 6em">&#160;</span>&#8203;(&#8203;<span class="studentAnswerUnfilled" style="min-width: 24em">&#160;</span>&#8203;)</span></span></p>
+</div>
+<div class="paragraph">
+<p><span class="obeyspaces"><span class="codetwo"><span class="studentAnswerUnfilled" style="min-width: 5em">&#160;</span>&#8203;(&#8203;<span class="studentAnswerUnfilled" style="min-width: 10em">&#160;</span>&#8203;)</span></span> &rarr; <span class="obeyspaces"><span class="codetwo"><span class="studentAnswerUnfilled" style="min-width: 6em">&#160;</span>&#8203;(&#8203;<span class="studentAnswerUnfilled" style="min-width: 24em">&#160;</span>&#8203;)</span></span></p>
+</div>
+<div class="paragraph">
+<p>What variable changes? <span class="fitb" style="width: 15em"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 1ex"></span></p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s define our function using the variable.</p>
+</div>
+<div class="paragraph">
+<p><code class="pyret"><strong>fun</strong> <span class="fitb" style="width: 5em"></span> (<span class="fitb" style="width: 8em"></span>) <strong>:</strong> <span class="fitb" style="width: 8em"></span>(<span class="fitb" style="width: 22em"></span>) <strong>end</strong></code></p>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 1ex"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">3</span> <strong>Let&#8217;s define a function</strong> <span class="fitb" style="width: 10em"></span> <strong>to generate&#8230;&#8203;</strong></p>
+</div>
+<div class="paragraph">
+<p><span class="fitb stretch"></span></p>
+</div>
+<div class="paragraph">
+<p>If I say <span class="fitb" style="width: 10em"></span>, what would our actor need to say? <span class="fitb stretch"></span></p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s write a few more examples:</p>
+</div>
+<div class="paragraph">
+<p><span class="obeyspaces"><span class="codetwo"><span class="studentAnswerUnfilled" style="min-width: 5em">&#160;</span>&#8203;(&#8203;<span class="studentAnswerUnfilled" style="min-width: 10em">&#160;</span>&#8203;)</span></span> &rarr; <span class="obeyspaces"><span class="codetwo"><span class="studentAnswerUnfilled" style="min-width: 6em">&#160;</span>&#8203;(&#8203;<span class="studentAnswerUnfilled" style="min-width: 24em">&#160;</span>&#8203;)</span></span></p>
+</div>
+<div class="paragraph">
+<p><span class="obeyspaces"><span class="codetwo"><span class="studentAnswerUnfilled" style="min-width: 5em">&#160;</span>&#8203;(&#8203;<span class="studentAnswerUnfilled" style="min-width: 10em">&#160;</span>&#8203;)</span></span> &rarr; <span class="obeyspaces"><span class="codetwo"><span class="studentAnswerUnfilled" style="min-width: 6em">&#160;</span>&#8203;(&#8203;<span class="studentAnswerUnfilled" style="min-width: 24em">&#160;</span>&#8203;)</span></span></p>
+</div>
+<div class="paragraph">
+<p><span class="obeyspaces"><span class="codetwo"><span class="studentAnswerUnfilled" style="min-width: 5em">&#160;</span>&#8203;(&#8203;<span class="studentAnswerUnfilled" style="min-width: 10em">&#160;</span>&#8203;)</span></span> &rarr; <span class="obeyspaces"><span class="codetwo"><span class="studentAnswerUnfilled" style="min-width: 6em">&#160;</span>&#8203;(&#8203;<span class="studentAnswerUnfilled" style="min-width: 24em">&#160;</span>&#8203;)</span></span></p>
+</div>
+<div class="paragraph">
+<p>What variable changes? <span class="fitb" style="width: 15em"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 1ex"></span></p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s define our function using the variable.</p>
+</div>
+<div class="paragraph">
+<p><code class="pyret"><strong>fun</strong> <span class="fitb" style="width: 5em"></span> (<span class="fitb" style="width: 8em"></span>) <strong>:</strong> <span class="fitb" style="width: 8em"></span>(<span class="fitb" style="width: 22em"></span>) <strong>end</strong></code></p>
+</div>
+<div class="paragraph">
+<p><em>Add your new function definitions to your <a href="https://code.pyret.org/editor#share=1wvO-su91pFXQJcsIAa5IUOVcUea06YuY" target="_blank" rel="noopener">gt Starter File</a> and test them out!</em></p>
+</div>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-17 19:42:02 -0400
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Functions Make Life Easier!</title>
+
+  <link rel="stylesheet" href="../../lib/curriculum.css" />
+    <link rel="stylesheet" href="../../lib/codemirror.css" />
+    <script src="../../lib/codemirror.js"></script>
+    <script src="../../lib/runmode.js"></script>
+    <script src="../../lib/scheme2.js"></script>
+    <script src="../../lib/pyret-mode.js"></script>
+    <script src="../../lib/langtable.js"></script>
+    <script src="../../lib/bootstraplesson.js"></script>
+    <script src="../../dependency-graph.js"></script>
+    <script src="../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"Functions Make Life Easier!",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="article LessonPlan pyret" onload="renderSaveToDrive()">
+<!--#include virtual="/menubar.ssi"-->
+<div id="body" onload="renderSaveToDrive()">
+<div id="header">
+<h1>Functions Make Life Easier!</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<script>
+function preselect(klass) {
+  const items = document.getElementsByClassName(klass);
+  for (let i = 0; i < items.length; i++) {
+    items[i].style.display = 'none';
+  }
+  if (items.length > 0) {
+    items[0].style.display = 'block';
+  }
+}
+window.onload = function() {
+  preselect('alignedStandards');
+  preselect('alignedTextbooks');
+  preselect('alignedPractices');
+}
+function showStandardsAlignment() {
+  const selectTag = document.getElementsByClassName('standardsAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const stdTables = document.getElementsByClassName('alignedStandards');
+  //const intro = document.getElementsByClassName('alignedStandardsIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < stdTables.length; i++) {
+    const stdTable = stdTables[i];
+    stdTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optStd = opt.value;
+      for (let j = 0; j < stdTables.length; j++) {
+        const stdTable = stdTables[j];
+        if (stdTable.classList.contains(optStd)) {
+          stdTable.style.display = 'block';
+         // introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+function toggleNonPrereqDisplay() {
+  const inputTag = document.getElementsByClassName('sidebarinput')[0];
+  const checkedP = inputTag.checked;
+  const lessonTable = document.getElementsByClassName('sidebarlessons')[0];
+  const lis = lessonTable.getElementsByTagName('li');
+  for (let i = 0; i < lis.length; i++) {
+    const li = lis[i];
+    const lesson = li.getElementsByClassName('prerequisite');
+    if (lesson.length === 0) {
+      li.style.display = checkedP ? 'none' : 'block';
+    }
+  }
+}
+</script>
+<script>
+function showTextbooksAlignment() {
+  const selectTag = document.getElementsByClassName('textbooksAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const textbookTables = document.getElementsByClassName('alignedTextbooks');
+  //const intro = document.getElementsByClassName('alignedTextbooksIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < textbookTables.length; i++) {
+    const textbookTable = textbookTables[i];
+    textbookTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optTextbook = opt.value;
+      for (let j = 0; j < textbookTables.length; j++) {
+        const textbookTable = textbookTables[j];
+        if (textbookTable.classList.contains(optTextbook)) {
+          textbookTable.style.display = 'block';
+          //introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+</script>
+<script>
+function showPracticesAlignment() {
+  const selectTag = document.getElementsByClassName('practicesAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const practiceTables = document.getElementsByClassName('alignedPractices');
+  for (let i = 0; i < practiceTables.length; i++) {
+    const practiceTable = practiceTables[i];
+    practiceTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optPractice = opt.value;
+      for (let j = 0; j < practiceTables.length; j++) {
+        const practiceTable = practiceTables[j];
+        if (practiceTable.classList.contains(optPractice)) {
+          practiceTable.style.display = 'block';
+        }
+      }
+    }
+  }
+}
+</script>
+<div class="paragraph">
+<!-- </p>
+</div>
+--></div><div class="sidebar"><div id="toggle"></div><div class="paragraph"><!--
+<div class="paragraph">
+<p>
+--><div class="sidebarlessons"><strong>Lessons</strong>
+<ul></ul></div>
+</div>
+<table class="tableblock frame-all grid-all stretch sidebarstandards">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Standards in this Lesson</strong>
+<select class="standardsAlignmentSelect"  onchange="showStandardsAlignment()"><option selected="selected" value="standards-CCSS-Math">CCSS-Math</option><option value="standards-CSTA">CSTA</option><option value="standards-K12CS">K12CS</option><option value="standards-Oklahoma">Oklahoma</option></select></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist alignedStandards standards-CCSS-Math">
+<div class="title"><a href="http://corestandards.org/Math/">Common Core Math Standards</a></div>
+<dl>
+<dt class="hdlist1">6.EE.B.6</dt>
+<dd>
+<p>Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.</p>
+</dd>
+<dt class="hdlist1">7.EE.B.4</dt>
+<dd>
+<p>Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities.</p>
+</dd>
+<dt class="hdlist1">8.F.B</dt>
+<dd>
+<p>Use functions to model relationships between quantities.</p>
+</dd>
+<dt class="hdlist1">HSA.SSE.A.1</dt>
+<dd>
+<p>Interpret expressions that represent a quantity in terms of its context.</p>
+</dd>
+<dt class="hdlist1">HSF.IF.B</dt>
+<dd>
+<p>Interpret functions that arise in applications in terms of the context.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-CSTA">
+<div class="title"><a href="https://csteachers.org/page/standards">CSTA Standards</a></div>
+<dl>
+<dt class="hdlist1">1B-AP-15</dt>
+<dd>
+<p>Test and debug (identify and fix errors) a program or algorithm to ensure it runs as intended.</p>
+</dd>
+<dt class="hdlist1">2-AP-11</dt>
+<dd>
+<p>Create clearly named variables that represent different data types and perform operations on their values.</p>
+</dd>
+<dt class="hdlist1">2-AP-14</dt>
+<dd>
+<p>Create procedures with parameters to organize code and make it easier to reuse.</p>
+</dd>
+<dt class="hdlist1">2-AP-17</dt>
+<dd>
+<p>Systematically test and refine programs using a range of test cases</p>
+</dd>
+<dt class="hdlist1">2-AP-19</dt>
+<dd>
+<p>Document programs in order to make them easier to follow, test, and debug.</p>
+</dd>
+<dt class="hdlist1">3B-AP-14</dt>
+<dd>
+<p>Construct solutions to problems using student-created components, such as procedures, modules and/or objects.</p>
+</dd>
+<dt class="hdlist1">3B-AP-21</dt>
+<dd>
+<p>Develop and use a series of test cases to verify that a program performs according to its design specifications.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-K12CS">
+<div class="title"><a href="https://k12cs.org">K-12CS Standards</a></div>
+<dl>
+<dt class="hdlist1">6-8.Algorithms and Programming.Modularity</dt>
+<dd>
+<p>Programs use procedures to organize code, hide implementation details, and make code easier to reuse. Procedures can be repurposed in new programs. Defining parameters for procedures can generalize behavior and increase reusability.</p>
+</dd>
+<dt class="hdlist1">6-8.Algorithms and Programming.Variables</dt>
+<dd>
+<p>Programmers create variables to store data values of selected types. A meaningful identifier is assigned to each variable to access and perform operations on the value by name. Variables enable the flexibility to represent different situations, process different sets of data, and produce varying outputs.</p>
+</dd>
+<dt class="hdlist1">9-12.Algorithms and Programming.Modularity</dt>
+<dd>
+<p>Complex programs are designed as systems of interacting modules, each with a specific role, coordinating for a common overall purpose. These modules can be procedures within a program; combinations of data and procedures; or independent, but interrelated, programs. Modules allow for better management of complex tasks.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Oklahoma">
+<div class="title"><a href="https://sde.ok.gov/oklahoma-academic-standards">Oklahoma Standards</a></div>
+<dl>
+<dt class="hdlist1">OK.3.AP.PD.01</dt>
+<dd>
+<p>Use an iterative process to plan the development of a program while solving simple problems.</p>
+</dd>
+<dt class="hdlist1">OK.8.AP.PD.02</dt>
+<dd>
+<p>Incorporate existing code, media, and libraries into original programs of increasing complexity and give attribution.</p>
+</dd>
+<dt class="hdlist1">OK.A1.A.1.1</dt>
+<dd>
+<p>Use knowledge of solving equations with rational values to represent and solve mathematical and real-world problems (e.g., angle measures, geometric formulas, science, or statistics) and interpret the solutions in the original context.</p>
+</dd>
+<dt class="hdlist1">OK.A1.F.1.3</dt>
+<dd>
+<p>Write linear functions, using function notation, to model real-world and mathematical situations.</p>
+</dd>
+<dt class="hdlist1">OK.L2.AP.PD.03</dt>
+<dd>
+<p>Develop programs for multiple computing platforms.</p>
+</dd>
+<dt class="hdlist1">OK.MAP.5</dt>
+<dd>
+<p>Develop a productive mathematical disposition.</p>
+</dd>
+<dt class="hdlist1">OK.MAP.6</dt>
+<dd>
+<p>Develop the ability to make conjectures, model, and generalize.</p>
+</dd>
+<dt class="hdlist1">OK.PA.A.1.1</dt>
+<dd>
+<p>Recognize that a function is a relationship between an independent variable and a dependent variable in which the value of the independent variable determines the value of the dependent variable.</p>
+</dd>
+<dt class="hdlist1">OK.PA.A.1.2</dt>
+<dd>
+<p>Use linear functions to represent and explain real-world and mathematical situations.</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch sidebarpractices">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Practices in this Lesson</strong>
+<select class="practicesAlignmentSelect"  onchange="showPracticesAlignment()"><option selected="selected" value="practices-K12CS"><a href="https://k12cs.org">K12CS</a></option><option value="practices-CC"><a href="http://corestandards.org/Math/">Math</a></option></select></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist alignedPractices practices-K12CS">
+<div class="title"><a href="https://k12cs.org">K12CS</a></div>
+<dl>
+<dt class="hdlist1">P4</dt>
+<dd>
+<p>Developing and Using Abstractions</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedPractices practices-CC">
+<div class="title"><a href="http://corestandards.org/Math/">Math</a></div>
+<dl>
+<dt class="hdlist1">MP.6</dt>
+<dd>
+<p>Attend to precision</p>
+</dd>
+<dt class="hdlist1">MP.7</dt>
+<dd>
+<p>Look for and make use of structure</p>
+</dd>
+<dt class="hdlist1">MP.8</dt>
+<dd>
+<p>Look for and express regularity in repeated reasoning</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<!-- </p>
+</div>
+--></div><!--
+<div class="paragraph">
+<p>
+-->
+</div>
+<div class="paragraph">
+<p><span class="other-proglang">(Also available in <a href="../../lessons/functions-make-life-easier-wescheme/index.shtml">WeScheme</a>)</span></p>
+</div>
+<div class="paragraph description">
+<p>Students discover that they can make their own functions.</p>
+</div>
+<table class="tableblock frame-all grid-all stripes-none stretch left-header preamble">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Lesson Goals</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Students will be able to:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>identify patterns where a function would be useful</p>
+</li>
+<li>
+<p>define their own function</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Student-Facing Lesson Goals</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>I can explain why a function is useful.</p>
+</li>
+<li>
+<p>I can write my own function.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Materials</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist materials-links">
+<ul>
+<li>
+<p><a href="https://docs.google.com/presentation/d/1GJ_5B6XEfwHgM6mLRkjaAkLssp__W31bJYKPkXggoYI/" target="_blank" rel="noopener">Lesson Slides</a></p>
+</li>
+<li>
+<p><span class="StarterFile"><a href="https://code.pyret.org/editor#share=1wvO-su91pFXQJcsIAa5IUOVcUea06YuY" target="_blank" rel="noopener">gt Starter File</a></span></p>
+</li>
+<li>
+<p><span class="materialSectionPlaceholder"> </span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/functions-make-life-easier/pages/gt-domain-debate.html" target="_blank" rel="noopener">The Great gt domain debate!</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/functions-make-life-easier/pages/rs.html" target="_blank" rel="noopener">Let&#8217;s Define Some New Functions!</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/functions-make-life-easier/pages/sun.html" target="_blank" rel="noopener">Let&#8217;s Define Some More New Functions!</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/functions-make-life-easier/pages/define-your-own.html" target="_blank" rel="noopener">Describe and Define Your Own Functions!</a></span></p>
+</li>
+<li>
+<p><strong>Classroom visual:</strong> <a href="javascript:showLangTable()">Language Table</a></p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Key Points for the Facilitator</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>This lesson represents a <em>big</em> shift in thinking.  After some practice, students will not be limited to pre-existing functions!</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="dlist glossary">
+<div class="title">Glossary</div>
+<dl>
+<dt class="hdlist1">define</dt>
+<dd>
+<p>to associate a descriptive name with a value</p>
+</dd>
+<dt class="hdlist1">domain</dt>
+<dd>
+<p>the type or set of inputs that a function expects</p>
+</dd>
+<dt class="hdlist1">function</dt>
+<dd>
+<p>a relation from a set of inputs to a set of possible outputs, where each input is related to exactly one output</p>
+</dd>
+<dt class="hdlist1">value</dt>
+<dd>
+<p>a specific piece of data, like 5 or "hello"</p>
+</dd>
+<dt class="hdlist1">variable</dt>
+<dd>
+<p>a name or symbol that stands for some value or expression, often a value or expression that changes</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_theres_got_to_be_a_better_way_duration_15_minutes_"><span class="section-link"><a href="#_theres_got_to_be_a_better_way_duration_15_minutes_"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>There&#8217;s Got to Be a Better Way!	 <span class="duration">15 minutes</span></h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_overview">Overview</h3>
+<div class="paragraph">
+<p>In this lesson, students will build their flexibility of thinking by engaging with multiple representations. Students will search for structures that are <em>dynamic</em>, meaning they change in a predictable way. This is the foundation for defining functions.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_launch">Launch</h3>
+<div class="paragraph">
+<p>This is a fun lesson to make silly! Dramatically confess to your students, "I LOVE green triangles!" Challenge them to use the Definitions Area to code as many unique, solid, green triangles as they can in 2 minutes.</p>
+</div>
+<div class="paragraph">
+<p><span class="centered-image"><span class="image-figure"><span class="image"><img src="images/57b3c30fcc52775e.jpg" alt="I Love Green Triangles" width="400"></span><a href="images/57b3c30fcc52775e.jpg" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></p>
+</div>
+<div class="paragraph">
+<p><span class="centered-image"><span class="image-figure"><span class="image"><img src="images/fc08a2b3e6436996.jpg" alt="I Love Green Triangles" width="400"></span><a href="images/fc08a2b3e6436996.jpg" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></p>
+</div>
+<div class="paragraph">
+<p>Walk around the room and give positive feedback on the green triangles. When the time is up, ask for some examples of green triangles that they wrote and copy them to the board.</p>
+</div>
+<div class="openblock indentedpara">
+<div class="content">
+<div class="paragraph">
+<p>For example:</p>
+</div>
+<div class="paragraph">
+<p><span class="obeyspaces"><code class="pyret">triangle&#8203;(&#8203;30, "solid", "green"&#8203;)</code></span></p>
+</div>
+<div class="paragraph">
+<p><span class="obeyspaces"><code class="pyret">triangle&#8203;(&#8203;12, "solid", "green"&#8203;)</code></span></p>
+</div>
+<div class="paragraph">
+<p><span class="obeyspaces"><code class="pyret">triangle&#8203;(&#8203;500, "solid", "green"&#8203;)</code></span></p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Invite students to analyze the examples you recorded by posing the following questions:</p>
+</div>
+<div class="openblock lesson-instruction">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Is there a pattern?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Yes, the code mostly stayed the same with one change each time.</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>What stayed the same?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>The function name <code class="pyret">triangle</code>, "solid", "green".</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>What changed?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>The size of the <code class="pyret">triangle</code>, or the Number input.</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>How many of you typed out the code from scratch each time?</p>
+</li>
+<li>
+<p>How many triangles were you able to code in a minute?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Write this down so that you can compare to it later!</em></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_investigate">Investigate</h3>
+<div class="paragraph">
+<p>Our programming language allows us to define <span class="vocab">values</span>. This lets us create "shortcuts" to reuse the same code over and over.</p>
+</div>
+<div class="paragraph">
+<p>For example:
+<span class="obeyspaces"><code class="pyret">gt = triangle&#8203;(&#8203;65, "solid", "green"&#8203;)</code></span> allows us to make the same solid, green triangle anywhere we want, just by writing <code class="pyret">gt</code> - without having to write all of the code again and again. But&#8230;&#8203; it makes the same green triangle <em>every</em> time.</p>
+</div>
+<div class="paragraph lesson-point">
+<p>To make a shortcut that <em>changes</em> such as creating solid, green triangles of a changing size, we need to define a <span class="vocab">function</span>.</p>
+</div>
+<div class="paragraph">
+<p>Suppose we want to define a function called <code class="pyret">gt</code>. When we give it a number, it makes a solid green triangle of whatever size we give it. What will <em><span class="obeyspaces"><code class="pyret">gt&#8203;(&#8203;5&#8203;)</code></span></em> produce? <em><span class="obeyspaces"><code class="pyret">triangle&#8203;(&#8203;5, "solid", "green"&#8203;)</code></span>!</em></p>
+</div>
+<div class="openblock lesson-roleplay">
+<div class="content">
+<div class="paragraph">
+<p>Select a student to <em>act out</em> <code class="pyret">gt</code>. Make it clear to the class that their Name is "gt", they expect a Number, and they will produce an Image.</p>
+</div>
+<div class="paragraph">
+<p>Just as with any acting career, this one will begin with a rehearsal. When I say, "<strong>gt 5!</strong>", you say, "<strong>triangle 5 solid green!</strong>" Let&#8217;s try it.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Teacher: <strong>gt 5!</strong></p>
+</li>
+<li>
+<p>Student: <em><span class="obeyspaces"><code class="pyret">triangle&#8203;(&#8203;5, "solid", "green"&#8203;)</code></span>!</em> <strong>Note: Have the actor ignore the punctuation, and just say "triangle 5 solid green!"</strong></p>
+</li>
+<li>
+<p>Teacher: <strong>gt 20!</strong></p>
+</li>
+<li>
+<p>Student: <em><span class="obeyspaces"><code class="pyret">triangle&#8203;(&#8203;20, "solid", "green"&#8203;)</code></span>!</em></p>
+</li>
+<li>
+<p>Teacher: <strong>gt 200!</strong></p>
+</li>
+<li>
+<p>Student: <em><span class="obeyspaces"><code class="pyret">triangle&#8203;(&#8203;200, "solid", "green"&#8203;)</code></span>!</em></p>
+</li>
+<li>
+<p>Teacher: <strong>gt 99!</strong></p>
+</li>
+<li>
+<p>Student: <em><span class="obeyspaces"><code class="pyret">triangle&#8203;(&#8203;99, "solid", "green"&#8203;)</code></span>!</em></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>That was a great rehearsal. You&#8217;re ready for the stage! Now it&#8217;s the class' turn to give you cues! Who&#8217;s got a <code class="pyret">gt</code> expression for our actor?</p>
+</div>
+<div class="paragraph">
+<p>Go around the room soliciting <code class="pyret">gt</code> expressions from students until it&#8217;s clear that everyone could run this script in their sleep.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_synthesize">Synthesize</h3>
+<div class="paragraph">
+<p>Thank your volunteer.</p>
+</div>
+<div class="paragraph">
+<p>Assuming they did a wonderful job, ask them: How did you get to be so speedy at building green triangles? You seemed so confident! <em>Ideally they&#8217;ll tell you that they had good instructions and that it was easy to follow the pattern.</em></p>
+</div>
+<div class="paragraph">
+<p>Just as we were able to give our volunteer instructions that let them take in <code class="pyret">gt 20</code> and give us back <span class="obeyspaces"><code class="pyret">triangle&#8203;(&#8203;20, "solid", "green"&#8203;)</code></span>, we can define any <span class="vocab">function</span> we&#8217;d like in the <strong>Definitions Area</strong>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_identifying_and_describing_the_pattern_duration_flexible_"><span class="section-link"><a href="#_identifying_and_describing_the_pattern_duration_flexible_"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Identifying and Describing the Pattern <span class="duration">flexible</span></h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_overview_2">Overview</h3>
+<div class="paragraph">
+<p>Students will look for what&#8217;s changing in the examples, label it with a <span class="vocab">variable</span> and use that information to write a function definition. Students will also think about how the <span class="vocab">Domain</span> of <code class="pyret">gt</code> differs from the <span class="vocab">Domain</span> of <code class="pyret">triangle</code>. By the end of the lesson they will have <span class="vocab">defined</span> functions of their own design.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_launch_2">Launch</h3>
+<div class="paragraph">
+<p>We need to program the computer to be as smart as our volunteer. But how do we do that? In order to define a function, we need to identify what&#8217;s changing and what stays the same. Invite students to take a look at the examples for <code class="pyret">gt</code> below:</p>
+</div>
+<div class="paragraph">
+<p><span class="obeyspaces"><code class="pyret">gt&#8203;(&#8203;5&#8203;)</code></span> &rarr; <span class="obeyspaces"><code class="pyret">triangle&#8203;(&#8203;5, "solid", "green"&#8203;)</code></span></p>
+</div>
+<div class="paragraph">
+<p><span class="obeyspaces"><code class="pyret">gt&#8203;(&#8203;10&#8203;)</code></span> &rarr; <span class="obeyspaces"><code class="pyret">triangle&#8203;(&#8203;10, "solid", "green"&#8203;)</code></span></p>
+</div>
+<div class="paragraph">
+<p><span class="obeyspaces"><code class="pyret">gt&#8203;(&#8203;25&#8203;)</code></span> &rarr; <span class="obeyspaces"><code class="pyret">triangle&#8203;(&#8203;25, "solid", "green"&#8203;)</code></span></p>
+</div>
+<div class="paragraph">
+<p><span class="obeyspaces"><code class="pyret">gt&#8203;(&#8203;100&#8203;)</code></span> &rarr; <span class="obeyspaces"><code class="pyret">triangle&#8203;(&#8203;100, "solid", "green"&#8203;)</code></span></p>
+</div>
+<div class="paragraph">
+<p><span class="obeyspaces"><code class="pyret">gt&#8203;(&#8203;220&#8203;)</code></span> &rarr; <span class="obeyspaces"><code class="pyret">triangle&#8203;(&#8203;220, "solid", "green"&#8203;)</code></span></p>
+</div>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>What&#8217;s changing?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>The size. Everything else is the same in every single example!</em></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Highlight or circle the numbers in the gt column and in the triangle column to help students see that they&#8217;re the only thing changing! Explain that we can define our function by replacing the numbers that change with a variable that describes them. In this case, <code class="pyret">size</code> would be a logical variable.</p>
+</div>
+<div class="paragraph">
+<p>Draw arrows to the two highlighted columns and label them with the word size.</p>
+</div>
+<div class="paragraph">
+<p>If we keep everything that stayed the same and substitute <code class="pyret">size</code> for the numbers that changed, it looks like this:</p>
+</div>
+<div class="paragraph">
+<p><span class="center"><span class="obeyspaces"><code class="pyret">gt&#8203;(&#8203;size&#8203;)</code></span> &rarr; <span class="obeyspaces"><code class="pyret">triangle&#8203;(&#8203;size, "solid", "green"&#8203;)</code></span></span></p>
+</div>
+<div class="paragraph">
+<p>The way we write this in the editor is</p>
+</div>
+<div class="paragraph">
+<p><span class="center"><span class="obeyspaces"><code class="pyret">fun gt&#8203;(&#8203;size&#8203;): triangle&#8203;(&#8203;size, "solid", "green"&#8203;) end</code></span></span></p>
+</div>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Turn to <a href="../../lessons/functions-make-life-easier/pages/gt-domain-debate.html" target="_blank" rel="noopener">The Great gt domain debate!</a>.</p>
+</li>
+<li>
+<p>On this worksheet, you will "decide and defend" whether Kermit&#8217;s assertion that <em>The domain of <code class="pyret">gt</code> is <code class="pyret">Number, String, String</code></em> or Oscar&#8217;s assertion that <em>The domain of <code class="pyret">gt</code> is <code class="pyret">Number</code></em> is correct.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In the case of <code class="pyret">gt</code>, the domain was a number and that number stood for the <code class="pyret">size</code> of the triangle we wanted to make. Whatever number we gave <code class="pyret">gt</code> for the size of the triangle is the number our volunteer substituted into the <code class="pyret">triangle</code> expression. Everything else stayed the same no matter what!</p>
+</div>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Why might someone think the domain for <code class="pyret">gt</code> contains a Number and two Strings?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>The function <code class="pyret">gt</code> only needs one Number input because that&#8217;s the only part that&#8217;s changing. The function <code class="pyret">gt</code> makes use of <code class="pyret">triangle</code>, whose Domain is Number String String, but <code class="pyret">gt</code> already knows what those strings should be.</em></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Next, direct students to open the <a href="https://code.pyret.org/editor#share=1wvO-su91pFXQJcsIAa5IUOVcUea06YuY" target="_blank" rel="noopener">gt Starter File</a>, and save a copy of their own. After clicking "Run" and evaluating <span class="obeyspaces"><code class="pyret">gt&#8203;(&#8203;10&#8203;)</code></span> in the Interactions Area (they will see a little green triangle appear!), challenge them to take one minute to see how many different green triangles they can make using the <code class="pyret">gt</code> function.</p>
+</div>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>How many were you able to make?</p>
+</li>
+<li>
+<p>How did making green triangles with <code class="pyret">gt</code> compare to making them with your previous strategy?</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_investigate_2">Investigate</h3>
+<div class="paragraph">
+<p>Explain to students that they have successfully defined a function to satisfy your love of green triangles&#8230;&#8203; but other people have other favorite shapes and we need to be able to meet their needs, too. Let&#8217;s take what we&#8217;ve learned to define some other functions.</p>
+</div>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>What if we wanted to define a function <code class="pyret">rs</code> to make solid red squares of whatever size we give them? Try it out on <a href="../../lessons/functions-make-life-easier/pages/rs.html" target="_blank" rel="noopener">Let&#8217;s Define Some New Functions!</a>.</p>
+</li>
+<li>
+<p>Add your new function definitions to your <a href="https://code.pyret.org/editor#share=1wvO-su91pFXQJcsIAa5IUOVcUea06YuY" target="_blank" rel="noopener">gt Starter File</a> and test them out.</p>
+</li>
+<li>
+<p>When you&#8217;re ready, move on to <a href="../../lessons/functions-make-life-easier/pages/sun.html" target="_blank" rel="noopener">Let&#8217;s Define Some More New Functions!</a> and <a href="../../lessons/functions-make-life-easier/pages/define-your-own.html" target="_blank" rel="noopener">Describe and Define Your Own Functions!</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>As students work, walk around the room and make sure that they are circling what changes in the examples and labeling it with a <span class="vocab">variable</span> name that reflects what it represents.</p>
+</div>
+<table class="tableblock frame-all grid-none stripes-none stretch strategy-box">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="title">Connecting to Best Practices</span></p>
+<p class="tableblock">Writing examples and identifying the variables lays the groundwork for writing the function, which is especially important as the functions get more complex.  It&#8217;s like "showing your work" in math class. Don&#8217;t skip this step!</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_synthesize_2">Synthesize</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Why is defining functions useful to us as programmers?</p>
+</li>
+<li>
+<p>In math class we mostly see functions that consume numbers and produce numbers, but functions can consume values besides Numbers! What other data types did you see being consumed by these functions?</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-17 19:42:15 -0400
+</div>
+</div>
+</div>
+</body>
+</html>

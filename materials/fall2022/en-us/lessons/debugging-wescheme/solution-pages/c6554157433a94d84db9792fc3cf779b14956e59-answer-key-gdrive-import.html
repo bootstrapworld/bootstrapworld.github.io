@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Design Recipe Exercise Answer Key</title>
+<style>
+/* Overall document font */
+* {font-family: Lato, Arial, Helvetica, sans-serif;}
+
+/* document headings */
+h1,.lesson-section-1 {color: #75328A;}
+h1{font-size: 32px; font-family: sans-serif;}
+table.section-heading *, .lesson-section-1 h2{font-size: 32px; font-weight: 100;}
+table.section-heading{width: 100%;}
+table.section-heading td:last-child{text-align: right; color: #d9d2e9;}
+
+/* preamble section */
+table.preamble td {padding: 10px;}
+table.preamble td:first-child{background: #b7d893; width: 25%;}
+table.preamble td:first-child p {font-weight: bold; margin: 5px;}
+
+/* content used throughout the body */
+table{ border-collapse: collapse; border: none; }
+table.grid-all.frame-all {border: solid 1px black;}
+table.grid-none.frame-none {border-width: 0px;}
+
+.big {font-size: 30pt;}
+.vocab{font-weight: bold; font-style: italic;}
+.right{text-align: right;}
+.acknowledgment {
+  border-top: solid 1px black; 
+  font-style: italic; 
+  font-size: 8pt;
+}
+.lesson-point {
+  border-top: solid 1px black; 
+  border-bottom: solid 1px black; 
+  color: black;
+  font-weight: bold;
+}
+
+.web-page-only, #footer { display: none; visibility: hidden; }
+
+/* Callout boxes */
+.strategy-box, .notice-box {
+  background: #efefef;
+  border: solid 5px !important;
+  margin: 15px auto;
+  width: 100%;
+}
+.strategy-box { border-color: #1a73b5 !important; }
+.notice-box   { border-color: #7747a5 !important; }
+.strategy-box td, .notice-box td{ padding: 10px; }
+.strategy-box .title, .notice-box .title{
+  width: 100%;
+  display: block;
+  font-weight: bold;
+  font-size: 24px;
+  clear: both;
+  margin: 100px;
+}
+.strategy-box p.tableblock:first-child, .notice-box p.tableblock:first-child{
+  text-align: center;
+  padding-bottom: 15px;
+}
+.strategy-box .title { color: #1a73b5; }
+.notice-box   .title { color: #7747a5; }
+.strategy-box a, .notice-box a { color: blue; text-decoration: underline; }
+
+/* "Tables" of Evaluation */
+.operator{border-bottom: solid 1px black; text-align: center;}
+.operator * {text-align: center;}
+td {padding: 0px 10px; font-size: 14px;}
+table.expression {
+    font-family:"Courier New", Monaco, monospace;
+    border:     solid 1px black;
+    font-size:  1px;
+    max-width:  400px;
+    color:      #666666;
+    display:    inline-block;
+}
+table.args {border: none; text-align: center;}
+
+.wescheme-string,     .cm-scheme-string    {color: green;}
+.wescheme-number,     .cm-scheme-number    {color: blue;}
+.wescheme-boolean,    .cm-scheme-boolean   {color: darkred;}
+.wescheme-character,  .cm-scheme-character {color: orange;}
+.wescheme-symbol,     .cm-scheme-symbol    {color: steelblue;}
+.wescheme-comment,    .cm-scheme-comment   {color: orange; }
+
+.racket, .pyret, .studentAnswerCode, .studentAnswer, .pyretkeyword, .keyword_only {
+    font-family:"Courier New", Monaco, monospace !important; 
+    color: black;
+}
+
+/* Design Recipe */
+.recipe_instructions { font-style: italic; }
+table.recipe_title {
+  color:              white;
+  background:         gray;
+  display:            block;
+  padding:            0px;
+  font-size:          1.1rem;
+  font-weight:        bold;
+}</style>
+
+    <script src="../../../lib/langtable.js"></script>
+    <script src="../../../dependency-graph.js"></script>
+    <script src="../../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:window.location.href,
+    filename:"Design Recipe Exercise Answer Key",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="workbookpage article wescheme" onload="renderSaveToDrive()">
+<span id="header">
+<h1>Design Recipe Exercise Answer Key</h1>
+
+  <span id="savetodrive-div"></span>
+
+</span>
+<span id="content">
+<span class="sect1 lesson-section-1"><hr/>
+<h2 id="_target_leap">target-leap</h2>
+<span class="sectionbody">
+<span class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The first example doesn&#8217;t work. It would work better as</p>
+<span class="paragraph">
+<p><code class="pyret">(EXAMPLE (target-leap 100) (* 100 2))</code> or
+<code class="pyret">(EXAMPLE (target-leap 100) (* 2 100))</code></p>
+</span>
+</li>
+<li>
+<p>The second example is incorrect according to the problem
+statement. It could be</p>
+<span class="paragraph">
+<p><code class="pyret">(EXAMPLE (target-leap 40) (* 40 2))</code>  or
+<code class="pyret">(EXAMPLE (target-leap 40) (* 2 40))</code></p>
+</span>
+</li>
+<li>
+<p>In the definition, the name of the function should be
+<code class="pyret">target-leap</code>.</p>
+</li>
+<li>
+<p>The variable name in the definition should be consistent
+(either <code class="pyret">x</code> or <code class="pyret">x-coor</code>).</p>
+</li>
+<li>
+<p>The body of the function definition should be</p>
+<span class="paragraph">
+<p><code class="pyret">(* x-coor 2)</code>.
+.</p>
+</span>
+</li>
+</ol>
+</span>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<h2 id="_offscreen">offscreen?</h2>
+<span class="sectionbody">
+<span class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The Purpose Statement should include “return true if the coordinate is less
+than -50 or greater than 690”.</p>
+</li>
+<li>
+<p>Both examples should show the work, not just the answer:</p>
+<span class="olist loweralpha">
+<ol class="loweralpha">
+<li>
+<p><code class="pyret">(EXAMPLE (offscreen? 60) (or (&lt; 60 -50) (&gt; 60 690)))</code></p>
+</li>
+<li>
+<p><code class="pyret">(EXAMPLE (offscreen? 800) (or (&lt; 8000 -50) (&gt; 800 690)))</code></p>
+</li>
+</ol>
+</span>
+</li>
+<li>
+<p>In the definition, the function name should be
+<code class="pyret">offscreen?</code> instead of <code class="pyret">off-screen</code>.</p>
+</li>
+<li>
+<p>The function definition should use the function <code class="pyret">or</code> instead
+of <code class="pyret">and</code>.</p>
+</li>
+</ol>
+</span>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<h2 id="_calc_pencils">calc-pencils</h2>
+<span class="sectionbody">
+<span class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Both examples should multiply by 5.</p>
+</li>
+<li>
+<p>The variable should be more descriptive: s, or students, to represent the
+number of students.</p>
+</li>
+<li>
+<p>In the definition, the function name should be <code class="pyret">calc-pencils</code>.</p>
+</li>
+</ol>
+</span>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<h2 id="_circle_area">circle-area</h2>
+<span class="sectionbody">
+<span class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code class="pyret">pi</code> is not a built-in value, so it should be replaced with an
+approximation such as <code class="pyret">3.14</code> or
+ <code class="pyret">(/ 22 7)</code>.</p>
+</li>
+<li>
+<p>If using
+<code class="pyret">(/ 22 7)</code>
+for <code class="pyret">pi</code>, the function body could be</p>
+<span class="paragraph">
+<p><code class="pyret">(* (sqr (/ diameter 2)) (/ 22 7))</code></p>
+</span>
+</li>
+</ol>
+</span>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<h2 id="_check_total">check-total</h2>
+<span class="sectionbody">
+<span class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The examples should use the function name <code class="pyret">check-total</code> instead
+of <code class="pyret">total</code>.</p>
+</li>
+<li>
+<p>Both examples have too many parentheses for the function call.</p>
+</li>
+<li>
+<p>The <code class="pyret">\*</code> function must come before its inputs in the examples:</p>
+<span class="paragraph">
+<p><code class="pyret">(+ (* 0.20 56.67) 56.67))</code></p>
+</span>
+</li>
+<li>
+<p>The function body should have the <code class="pyret">\*</code> and <code class="pyret">+</code> functions
+reversed:</p>
+<span class="paragraph">
+<p><code class="pyret">(+ (* 0.20 food-total) food-total)</code></p>
+</span>
+</li>
+</ol>
+</span>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<h2 id="_enough_carpet">enough-carpet?</h2>
+<span class="sectionbody">
+<span class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The range of the function should be a Boolean.</p>
+</li>
+<li>
+<p>The example inputs should not be in an extra set of parentheses.</p>
+</li>
+<li>
+<p>Both the examples and the function definition should use <code class="pyret">&lt;=</code>
+instead of <code class="pyret">&lt;</code>.</p>
+</li>
+</ol>
+</span>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<h2 id="_enough_cash">enough-cash?</h2>
+<span class="sectionbody">
+<span class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The domain of the function should be a Number (representing
+the price), not a String.</p>
+</li>
+<li>
+<p>The two examples should give numbers as an input and test if
+they are less than 1.50. For instance,</p>
+<span class="paragraph">
+<p><code class="pyret">(EXAMPLE (enough-cash? 2.50) (&lt;= 2.50 1.50))</code></p>
+</span>
+</li>
+<li>
+<p>The variable name in the function body can be <code class="pyret">item</code>, but a
+more accurate name would be <code class="pyret">price</code> or <code class="pyret">cost</code>.</p>
+</li>
+</ol>
+</span>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<h2 id="_equal_length">equal-length?</h2>
+<span class="sectionbody">
+<span class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The function body should be:</p>
+<span class="paragraph">
+<p><code class="pyret">(= (string-length string1) (string-length string2))</code></p>
+</span>
+</li>
+</ol>
+</span>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<h2 id="_flower_name">flower-name</h2>
+<span class="sectionbody">
+<span class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The purpose statement should read “Takes in the color and
+returns the name of that flower”.</p>
+</li>
+<li>
+<p>The second example should be</p>
+<span class="paragraph">
+<p><code class="pyret">(EXAMPLE (flower-name "purple") "tulip")</code></p>
+</span>
+</li>
+</ol>
+</span>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<h2 id="_long_name">long-name?</h2>
+<span class="sectionbody">
+<span class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Both examples should use the function <code class="pyret">string-length</code>, not
+<code class="pyret">string=?</code>.</p>
+</li>
+<li>
+<p>The examples should check if the name is longer than 20
+characters, not 10.</p>
+</li>
+<li>
+<p>The function name in the definition should be <code class="pyret">long-name?</code>.</p>
+</li>
+<li>
+<p>The body of the function should be</p>
+<span class="paragraph">
+<p><code class="pyret">(&lt; (string-length name) 20)</code></p>
+</span>
+</li>
+</ol>
+</span>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<h2 id="_scale_image">scale-image</h2>
+<span class="sectionbody">
+<span class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The purpose statement doesn&#8217;t specify which strings matter, or
+how much to scale by.</p>
+<span class="paragraph">
+<p>The examples do not use the <code class="pyret">scale</code> function at all, and instead
+change the parameters of the image. The first example should be:</p>
+</span>
+<span class="listingblock">
+<span class="content">
+<pre><code class="pyret">(EXAMPLE (scale-image (circle 5 "solid" "red") "bigger")
+         (scale 2 (circle 5 "solid" "red"))</code></pre>
+</span>
+</span>
+</li>
+<li>
+<p>The function name in the second example is incorrect.</p>
+</li>
+</ol>
+</span>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<h2 id="_state_tax">state-tax</h2>
+<span class="sectionbody">
+<span class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The domain for the function should be
+ <code class="pyret">String Number</code>
+to account for both
+the state and the price of the item.</p>
+</li>
+<li>
+<p>The function name in both examples should be <code class="pyret">state-tax</code>.</p>
+</li>
+<li>
+<p>The example inputs (<code class="pyret">"Delaware"</code> and <code class="pyret">"Georgia"</code>) should be
+Strings.</p>
+</li>
+<li>
+<p>Examples should include a numerical price instead of the variable name
+<code class="pyret">price</code>.</p>
+</li>
+<li>
+<p>The examples should use <code class="pyret">\*</code> not <code class="pyret">+</code>.</p>
+</li>
+<li>
+<p>The function variable name should not contain spaces and must
+be consistent throughout the function definition. It should
+instead be <code class="pyret">price</code>.</p>
+</li>
+</ol>
+</span>
+</span>
+</span>
+<span class="sect1 lesson-section-1"><hr/>
+<h2 id="_late_to_class">late-to-class?</h2>
+<span class="sectionbody">
+<span class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Both examples should include 4 numbers as inputs.</p>
+</li>
+<li>
+<p>In the first example, <code class="pyret">&lt;</code> should be used in place of <code class="pyret">&gt;</code>.</p>
+</li>
+<li>
+<p>Both examples and the function definition should calculate
+distance based on the 4 inputs, such as:</p>
+<span class="paragraph">
+<p><code class="pyret">late-to-class? 40 55 80 100) (&lt; 25 (distance 40 55 80 100)</code></p>
+</span>
+</li>
+<li>
+<p>The two examples should be different from each other.  Since
+the function returns a Boolean, good practice would be to make
+one example that is true and another that is false.</p>
+</li>
+</ol>
+</span>
+</span>
+</span>
+<span class="sect1 acknowledgmentsect">
+<span class="sectionbody">
+<span class="openblock acknowledgment"><hr/>
+<span class="content">
+<span class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</span>
+</span>
+</span>
+</span>
+</span>
+</span>
+<span id="footer">
+<span id="footer-text">
+Last updated 2022-10-17 19:41:51 -0400
+</span>
+</span>
+</body>
+</html>

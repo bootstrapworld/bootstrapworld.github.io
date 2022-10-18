@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>External teacher resources for pathway P</title>
+
+  <link rel="stylesheet" href="../../../lib/curriculum.css" />
+    <script src="../../../lib/langtable.js"></script>
+    <script src="../../../lib/bootstraplesson.js"></script>
+    <script src="../../../dependency-graph.js"></script>
+    <script src="../../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"External teacher resources for pathway P",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="TeacherResources article wescheme" onload="renderSaveToDrive()">
+<!--#include virtual="/menubar.ssi"-->
+<div id="body" onload="renderSaveToDrive()">
+<div id="header">
+<h1>External teacher resources for pathway P</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="../index.shtml">Click here to return to lessons</a></p>
+</div>
+<div class="paragraph">
+<p>Maiores id quia nihil impedit inventore. Sint possimus quasi et
+aut sit. Repellat vero id ipsum ut accusamus ea. Ut sed quisquam
+ducimus. Molestias sit ut velit nobis facere incidunt et.
+Possimus sed qui et iusto qui sapiente culpa.</p>
+</div>
+<div class="paragraph">
+<p>Most exercises are part of the <strong><a href="../workbook/workbook.pdf">Student Workbook</a></strong>,
+and we provide password-protected <strong><a href="./protected/workbook-sols.pdf">Workbook Solutions</a></strong> as well.</p>
+</div>
+<div class="paragraph">
+<p>You can find the 'exercise' and 'solution' versions of all supplemental materials as well, in the lists below.</p>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 1ex"></span></p>
+</div>
+<div class="paragraph">
+<p><strong><a href="../../../lessons/__sample-lesson-wescheme/index.shtml">Lesson A
+</a></strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Page A 1 (student version!) [ <a href="../../../lessons/<em>sample-lesson-wescheme/pages/pageA1.html">exercise</a> : <a href="../../../lessons/</em>sample-lesson-wescheme/solution-pages/pageA1.html">solution</a> ]</p>
+</li>
+<li>
+<p>Exercise A 2, dont miss this [ <a href="../../../lessons/<em>sample-lesson-wescheme/pages/exerA2.html">exercise</a> : <a href="../../../lessons/</em>sample-lesson-wescheme/solution-pages/exerA2.html">solution</a> ]</p>
+</li>
+<li>
+<p>Exercise A 3 [ <a href="../../../lessons/<em>sample-lesson-wescheme/pages/exerA3.html">exercise</a> : <a href="../../../lessons/</em>sample-lesson-wescheme/solution-pages/exerA3.html">solution</a> ]</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong><a href="../../../lessons/zample-lesson/index.shtml">Problem Decomposition
+</a></strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Zample Page [ <a href="../../../lessons/zample-lesson/pages/zample-page1.html">exercise</a> : <a href="../../../lessons/zample-lesson/solution-pages/zample-page1.html">solution</a> ]</p>
+</li>
+<li>
+<p>Zample Page [ <a href="../../../lessons/zample-lesson/pages/zample-page2.html">exercise</a> : <a href="../../../lessons/zample-lesson/solution-pages/zample-page2.html">solution</a> ]</p>
+</li>
+<li>
+<p>Zample Page [ <a href="../../../lessons/zample-lesson/pages/zample-page3.html">exercise</a> : <a href="../../../lessons/zample-lesson/solution-pages/zample-page3.html">solution</a> ]</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Illo qui sint dolor officia a eum voluptate. Dolore deserunt iure
+modi ad exercitationem. Et occaecati eos vel nesciunt ut enim a
+quod. Sed aut ipsum et cupiditate rerum id.</p>
+</div>
+<div class="paragraph">
+<p>Necessitatibus nihil sunt natus fugiat tempora eos. Officiis
+ducimus laudantium laborum ipsum ut similique quia. Illo atque
+consequatur aut aliquam qui totam.</p>
+</div>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-16 11:55:01 -0400
+</div>
+</div>
+</div>
+</body>
+</html>

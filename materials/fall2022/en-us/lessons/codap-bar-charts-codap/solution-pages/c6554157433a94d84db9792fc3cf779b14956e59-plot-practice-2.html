@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Practice Plotting 2</title>
+
+  <link rel="stylesheet" href="../../../lib/curriculum.css" />
+    <link rel="stylesheet" href="../../../lib/codemirror.css" />
+    <script src="../../../lib/codemirror.js"></script>
+    <script src="../../../lib/runmode.js"></script>
+    <script src="../../../lib/scheme2.js"></script>
+    <script src="../../../lib/pyret-mode.js"></script>
+    <script src="../../../lib/langtable.js"></script>
+    <script src="../../../lib/bootstraplesson.js"></script>
+    <script src="../../../dependency-graph.js"></script>
+    <script src="../../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"Practice Plotting 2",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="workbookpage article codap" onload="renderSaveToDrive()">
+<div id="header">
+<h1>Practice Plotting 2</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<style>
+td, th, .center { padding: 0 !important; vertical-align: middle; }
+p { margin: 0 !important; }
+.checklist li { margin: 0; padding: 0; }
+</style>
+<div class="paragraph">
+<p>Fill in the tables, predict what the graph will look like (a rough sketch is fine!), and then use CODAP to make the following displays.</p>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 1ex"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">1</span> A histogram of the number of <code class="pyret">pounds</code> that animals weigh.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top"><strong>Column / Attribute</strong></th>
+<th class="tableblock halign-center valign-top"><strong>Type of Data</strong></th>
+<th class="tableblock halign-center valign-top"><strong>Configuration</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="paragraph">
+<p><span class="fitbruby" style="width: 100%"><span class="solution">pounds</span><span class="ruby">[column used as x-axis]</span></span>
+<span class="fitbruby" style="width: 100%"><span class="solution">n/a</span><span class="ruby">[column used as y-axis]</span></span></p>
+</div></div></td>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="openblock solution">
+<div class="content">
+<div class="ulist checklist">
+<ul class="checklist">
+<li>
+<p>&#10003; Quantitative</p>
+</li>
+<li>
+<p>&#10063; Categorical</p>
+</li>
+</ul>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="openblock solution">
+<div class="content">
+<div class="ulist checklist">
+<ul class="checklist">
+<li>
+<p>&#10063; Points</p>
+</li>
+<li>
+<p>&#10003; Fuse dots into bars</p>
+</li>
+<li>
+<p>&#10063; Bar for each point</p>
+</li>
+<li>
+<p>&#10003; Group into bins</p>
+</li>
+</ul>
+</div>
+</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top"><strong>Sketch the chart below:</strong></th>
+<th class="tableblock halign-center valign-top"><strong>What do you think the data display tells us?</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="paragraph">
+<p><span class="solution"><span class="image-figure"><span class="image"><img src="../images/1157b7ff317cebf3.png" alt="histogram showing animals' weights" width="150" title="histogram showing animals' weights"></span><a href="../images/1157b7ff317cebf3.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></p>
+</div></div></td>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="openblock solution">
+<div class="content">
+<div class="paragraph">
+<p>The display shows us the distribution of animals' weights into varying increments.
+<span class="vspace" style="height: 5ex"></span><span class="gdrive-only"><p>&#xa0;</p></span></p>
+</div>
+</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><span class="vspace" style="height: 1ex"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="autonum">2</span> A scatter-plot, using the animals <code class="pyret">name</code> as the labels, <code class="pyret">age</code> as the x-axis, and <code class="pyret">pounds</code> as the y-axis, for all the animals from the shelter.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><span class="center"><strong>Column / Attribute</strong></span></th>
+<th class="tableblock halign-left valign-top"><span class="center"><strong>Type of Data</strong></span></th>
+<th class="tableblock halign-left valign-top"><span class="center"><strong>Measure</strong></span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="openblock solution">
+<div class="content">
+<div class="paragraph">
+<p><span class="fitbruby" style="width: 100%"><em>age</em><span class="ruby">[column used as x-axis]</span></span>
+<span class="fitbruby" style="width: 100%"><em>pounds</em><span class="ruby">[column used as y-axis]</span></span>
+<span class="fitbruby" style="width: 100%"><em>name</em><span class="ruby">[(optional) column used for labels]</span></span></p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="openblock solution">
+<div class="content">
+<div class="ulist checklist">
+<ul class="checklist">
+<li>
+<p>&#10003; Quantitative</p>
+</li>
+<li>
+<p>&#10063; Categorical</p>
+</li>
+</ul>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="openblock solution">
+<div class="content">
+<div class="ulist checklist">
+<ul class="checklist">
+<li>
+<p>&#10063; Box plot</p>
+</li>
+<li>
+<p>&#10063; Least squares line</p>
+</li>
+<li>
+<p>&#10003; No need to make a selection</p>
+</li>
+</ul>
+</div>
+</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top"><strong>Sketch the chart below:</strong></th>
+<th class="tableblock halign-center valign-top"><strong>What do you think the data display tells us?</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="openblock solution">
+<div class="content">
+<div class="paragraph">
+<p><span class="image-figure"><span class="image"><img src="../images/d2cb7b8231f1fbc6.png" alt="scatter plot showing animals' weights compared to their age" width="150" title="scatter plot showing animals' weights compared to their age"></span><a href="../images/d2cb7b8231f1fbc6.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="openblock solution">
+<div class="content">
+<div class="paragraph">
+<p>The display shows us the relationship between animals' age and weight.</p>
+</div>
+</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-17 19:41:46 -0400
+</div>
+</div>
+</body>
+</html>

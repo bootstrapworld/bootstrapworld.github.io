@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Bootstrap:Reactive</title>
+
+  <link rel="stylesheet" href="../../lib/curriculum.css" />
+    <link rel="stylesheet" href="../../lib/codemirror.css" />
+    <script src="../../lib/codemirror.js"></script>
+    <script src="../../lib/runmode.js"></script>
+    <script src="../../lib/scheme2.js"></script>
+    <script src="../../lib/pyret-mode.js"></script>
+    <script src="../../lib/langtable.js"></script>
+    <script src="../../lib/bootstraplesson.js"></script>
+    <script src="../../dependency-graph.js"></script>
+    <script src="../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"courses/reactive/index",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="narrativepage article narrative" onload="renderSaveToDrive()">
+<!--#include virtual="/menubar.ssi"-->
+<div id="body" onload="renderSaveToDrive()">
+<div id="header">
+<h1>Bootstrap:Reactive</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<div class="paragraph logo">
+<p><span class="image-figure"><span class="image"><img src="images/Logo.png" alt="Bootstrap:Reactive" title="Bootstrap:Reactive"></span><a href="images/Logo.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lesson_plans">Lesson Plans</h2>
+<div class="sectionbody">
+<div id="lesson-list" class="dlist">
+<dl>
+<dt class="hdlist1"><a href="../../lessons/computing-needs-all-voices/index.shtml?pathway=reactive">Computing Needs All Voices</a> </dt>
+<dd>
+<p>Students learn about a diverse group of programmers through a short film and a gallery walk of our Pioneers in Computing and Mathematics poster series, then consider the problem solving advantages that diverse teams foster.</p>
+</dd>
+<dt class="hdlist1"><a href="../../lessons/simple-data-types/index.shtml?pathway=reactive">Simple Data Types</a> </dt>
+<dd>
+<p>Students begin to program, explorings how Numbers, Strings, Booleans and operations on those data types work in this programming language.</p>
+</dd>
+<dt class="hdlist1"><a href="../../lessons/contracts/index.shtml?pathway=reactive">Contracts</a> </dt>
+<dd>
+<p>Students learn how to apply Functions in the programming environment and interpret the information contained in Contracts: Name, Domain and Range. Image-producing functions provide an engaging context for this exploration.</p>
+</dd>
+<dt class="hdlist1"><a href="../../lessons/function-composition/index.shtml?pathway=reactive">Function Composition</a> </dt>
+<dd>
+<p>Students learn to combine image transformation functions as well as to describe the order of operations involved in algebraic function compositions such as f(g(h(x))) using Circles of Evaluation.</p>
+</dd>
+<dt class="hdlist1"><a href="../../lessons/defining-values/index.shtml?pathway=reactive">Defining Values</a> </dt>
+<dd>
+<p>Students learn to improve readability, performance and maintanability of code by defining values that repeat in code, just as we would define variables in math.</p>
+</dd>
+<dt class="hdlist1"><a href="../../lessons/flags/index.shtml?pathway=reactive">Making Flags</a> </dt>
+<dd>
+<p>Students recreate images of flags of varying complexity by transforming and composing image functions and applying their knowledge of ratios and coordinates to scale and position the shapes precisely.</p>
+</dd>
+<dt class="hdlist1"><a href="../../lessons/functions-dr/index.shtml?pathway=reactive">Solving Word Problems with the Design Recipe</a> </dt>
+<dd>
+<p>Students are introduced to the Design Recipe as a scaffold for breaking down word problems into smaller steps. They apply the Design Recipe to fixing a file that launches a rocket!</p>
+</dd>
+<dt class="hdlist1"><a href="../../lessons/re-intro-to-data-structures/index.shtml?pathway=reactive">Introduction to Data Structures</a> </dt>
+<dd>
+<p>Students encounter Data Structures in the context of using coordinates to model 2D animation. They explore constructors and fields, creating a "digital bakery" using structures to model cakes.</p>
+</dd>
+<dt class="hdlist1"><a href="../../lessons/re-structures-reactors-animations/index.shtml?pathway=reactive">Structures&#x2c; Reactors&#x2c; and Animations</a> </dt>
+<dd>
+<p>Students implement animation using a modified Model-View-Controller paradigm called Reactors. Using a data structure to represent the position of an object, they write <code class="pyret">draw-state</code> functions to draw single frame from instances of that structure and <code class="pyret">next-state-tick</code> functions to generate new instances from previous ones. They learn how to use Reactors to combine their structure and functions into a complete animation.</p>
+</dd>
+<dt class="hdlist1"><a href="../../lessons/re-functions-that-ask-questions/index.shtml?pathway=reactive">Functions That Ask Questions</a> </dt>
+<dd>
+<p>Students are introduced to if-then-else expressions, writing conditionals that deal with simple types (Numbers, Strings, Booleans, etc) and data structures of their own to implement a more complex animation.</p>
+</dd>
+<dt class="hdlist1"><a href="../../lessons/re-key-events/index.shtml?pathway=reactive">Key Events</a> </dt>
+<dd>
+<p>Students are introduced to key events, and use if-then-else expressions to write a key-event handler that moves an image left and right as part of an interactive animation.</p>
+</dd>
+<dt class="hdlist1"><a href="../../lessons/re-refactoring/index.shtml?pathway=reactive">Refactoring</a> </dt>
+<dd>
+<p>This lesson focuses on code quality. Starting from a working program, students refactor the code to be more readable, writing helper functions thinking structurally about a complex program.</p>
+</dd>
+<dt class="hdlist1"><a href="../../lessons/re-your-own-drawing-functions/index.shtml?pathway=reactive">Your Own Drawing Functions</a> </dt>
+<dd>
+<p>This lesson removes earlier scaffolding from working with Reactors, having students brainstorm an original animation of their own and implement it from start-to-finish. This requires them to plan out what kind of data structure they will need, and how it will be drawn and updated.</p>
+</dd>
+<dt class="hdlist1"><a href="../../lessons/re-build-your-own-animation/index.shtml?pathway=reactive">Build Your Own Animation</a> </dt>
+<dd>
+<p>Students create a game of their own design using what they have learned so far.</p>
+</dd>
+<dt class="hdlist1"><a href="../../lessons/re-adding-collisions/index.shtml?pathway=reactive">Adding Collisions</a> </dt>
+<dd>
+<p>Students use the distance formula and their data structures to determine when two or more characters in their games have collided. They extend their <code class="pyret">update</code> handlers to generate a new structure that represents the game after a collision has occurred.</p>
+</dd>
+<dt class="hdlist1"><a href="../../lessons/re-scoring/index.shtml?pathway=reactive">Scoring</a> </dt>
+<dd>
+<p>Students extend the data structure that represents their game to include a score, then modify their helper functions and event handlers to update and display that score.</p>
+</dd>
+<dt class="hdlist1"><a href="../../lessons/re-adding-levels/index.shtml?pathway=reactive">Adding Levels</a> </dt>
+<dd>
+<p>Students parameterize other parts of their game, so that the experience changes as the score increases. This track delves deeper into conditionals and abstraction, offering students a chance to customize their games further while applying those concepts.</p>
+</dd>
+<dt class="hdlist1"><a href="../../lessons/re-making-pong/index.shtml?pathway=reactive">Making Pong</a> </dt>
+<dd>
+<p>Students use the Animation Design Worksheet to decompose a 2-player game of Pong, and implement it as a Reactor-based program.</p>
+</dd>
+<dt class="hdlist1"><a href="../../lessons/re-nested-structures/index.shtml?pathway=reactive">Going Deeper: Nested Structures</a> </dt>
+<dd>
+<p>Students refactor code from a simple animation to include structures within structures, and see how to use nested structures in their own games and animations to manage complexity.</p>
+</dd>
+<dt class="hdlist1"><a href="../../lessons/re-timers/index.shtml?pathway=reactive">Feature: Timers</a> </dt>
+<dd>
+<p>Students parameterize other parts of their game, so that the experience changes as a new data field, a timer, changes. This track delves deeper into conditionals and abstraction, offering students two possible uses for a timer feature, and a chance to customize their games further while applying those concepts.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ordering_student_workbooks">Ordering Student Workbooks?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>While we give our workbooks away as a PDF, we understand that printing them yourself can be expensive!
+You can purchase beautifully-bound copies of the student workbook from Lulu.com.
+<a href="missing-link">Click here to order</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_teaching_remotely">Teaching Remotely?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you&#8217;re teaching remotely, we&#8217;ve assembed an <a href="../../ImplementationNotes.shtml">Implementation Notes</a> page that makes
+specific recommendations for in-person v. remote instruction.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_other_resources">Other Resources</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Of course, there&#8217;s more to a curriculum than software
+and lesson plans! We also provide a number of resources to educators,
+including standards alignment, a complete student workbook, an answer
+key for the programming exercises and a forum where they can ask
+questions and share ideas.</p>
+</div>
+<div class="ulist pathway_external_links">
+<ul>
+<li>
+<p><a href="./pathway-glossary.shtml">Glossary</a>&#8201;&#8212;&#8201;A list of vocabulary words used in this pathway.
+We also provide a <a href="../../lib/bilingual-glossary.html">bilingual glossary</a>,
+which defines all vocabulary words across our lessons in English and Spanish.</p>
+</li>
+<li>
+<p><a href="./pathway-alignments.shtml">Standards Alignment</a>&#8201;&#8212;&#8201;Find out how our materials align with National and State
+Standards, as well as some of the most commonly used math
+ textbooks.</p>
+</li>
+<li>
+<p><a href="./workbook/workbook.pdf">Workbook</a>&#8201;&#8212;&#8201;Sometimes, the best way for students to get real thinking done
+is to step away from the keyboard! Our lesson plans are tightly integrated
+with the Student Workbook, allowing for paper-and-pencil practice and
+activities that don&#8217;t require a computer.</p>
+</li>
+<li>
+<p><a href="./resources/index.shtml">Teacher-Only Resources</a>&#8201;&#8212;&#8201;We also offer several teachers-only materials, including an
+answer key to the student workbook, keys to all the exercises,
+and pre- and post-tests for teachers who are participating in our
+research study. For access to these materials, please fill out the
+<a href="https://docs.google.com/a/bootstrapworld.org/spreadsheet/viewform?formkey=dHpQc0VHV2dBU2tSN1ptMktBUmtoZWc6MQ#gid=0">password request form</a>.
+We&#8217;ll get back to you soon with the necessary login information.</p>
+</li>
+<li>
+<p><a href="https://discourse.bootstrapworld.org">Online Community (Discourse)</a>&#8201;&#8212;&#8201;Want to be kept up-to-date about Bootstrap events, workshops, and curricular
+changes? Want to ask a question or pose a lesson idea for other Bootstrap
+teachers? These forums are the place to do it.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-17 19:42:18 -0400
+</div>
+</div>
+</div>
+</body>
+</html>

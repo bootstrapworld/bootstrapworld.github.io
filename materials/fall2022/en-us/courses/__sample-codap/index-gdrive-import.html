@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Pathway P narrative</title>
+<style>
+/* Overall document font */
+* {font-family: Lato, Arial, Helvetica, sans-serif;}
+
+/* document headings */
+h1,.lesson-section-1 {color: #75328A;}
+h1{font-size: 32px; font-family: sans-serif;}
+table.section-heading *, .lesson-section-1 h2{font-size: 32px; font-weight: 100;}
+table.section-heading{width: 100%;}
+table.section-heading td:last-child{text-align: right; color: #d9d2e9;}
+
+/* preamble section */
+table.preamble td {padding: 10px;}
+table.preamble td:first-child{background: #b7d893; width: 25%;}
+table.preamble td:first-child p {font-weight: bold; margin: 5px;}
+
+/* content used throughout the body */
+table{ border-collapse: collapse; border: none; }
+table.grid-all.frame-all {border: solid 1px black;}
+table.grid-none.frame-none {border-width: 0px;}
+
+.big {font-size: 30pt;}
+.vocab{font-weight: bold; font-style: italic;}
+.right{text-align: right;}
+.acknowledgment {
+  border-top: solid 1px black; 
+  font-style: italic; 
+  font-size: 8pt;
+}
+.lesson-point {
+  border-top: solid 1px black; 
+  border-bottom: solid 1px black; 
+  color: black;
+  font-weight: bold;
+}
+
+.web-page-only, #footer { display: none; visibility: hidden; }
+
+/* Callout boxes */
+.strategy-box, .notice-box {
+  background: #efefef;
+  border: solid 5px !important;
+  margin: 15px auto;
+  width: 100%;
+}
+.strategy-box { border-color: #1a73b5 !important; }
+.notice-box   { border-color: #7747a5 !important; }
+.strategy-box td, .notice-box td{ padding: 10px; }
+.strategy-box .title, .notice-box .title{
+  width: 100%;
+  display: block;
+  font-weight: bold;
+  font-size: 24px;
+  clear: both;
+  margin: 100px;
+}
+.strategy-box p.tableblock:first-child, .notice-box p.tableblock:first-child{
+  text-align: center;
+  padding-bottom: 15px;
+}
+.strategy-box .title { color: #1a73b5; }
+.notice-box   .title { color: #7747a5; }
+.strategy-box a, .notice-box a { color: blue; text-decoration: underline; }
+
+/* "Tables" of Evaluation */
+.operator{border-bottom: solid 1px black; text-align: center;}
+.operator * {text-align: center;}
+td {padding: 0px 10px; font-size: 14px;}
+table.expression {
+    font-family:"Courier New", Monaco, monospace;
+    border:     solid 1px black;
+    font-size:  1px;
+    max-width:  400px;
+    color:      #666666;
+    display:    inline-block;
+}
+table.args {border: none; text-align: center;}
+
+.wescheme-string,     .cm-scheme-string    {color: green;}
+.wescheme-number,     .cm-scheme-number    {color: blue;}
+.wescheme-boolean,    .cm-scheme-boolean   {color: darkred;}
+.wescheme-character,  .cm-scheme-character {color: orange;}
+.wescheme-symbol,     .cm-scheme-symbol    {color: steelblue;}
+.wescheme-comment,    .cm-scheme-comment   {color: orange; }
+
+.racket, .pyret, .studentAnswerCode, .studentAnswer, .pyretkeyword, .keyword_only {
+    font-family:"Courier New", Monaco, monospace !important; 
+    color: black;
+}
+
+/* Design Recipe */
+.recipe_instructions { font-style: italic; }
+table.recipe_title {
+  color:              white;
+  background:         gray;
+  display:            block;
+  padding:            0px;
+  font-size:          1.1rem;
+  font-weight:        bold;
+}</style>
+
+    <script src="../../lib/langtable.js"></script>
+    <script src="../../dependency-graph.js"></script>
+    <script src="../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:window.location.href,
+    filename:"Pathway P narrative",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="narrativepage article narrative codap" onload="renderSaveToDrive()">
+<span id="body" onload="renderSaveToDrive()">
+<span id="header">
+<h1>Pathway P narrative</h1>
+
+  <span id="savetodrive-div"></span>
+
+</span>
+<span id="content">
+<span id="preamble_disabled" class="lessonSummary">
+<span class="sectionbody">
+<span class="paragraph logo">
+<p><span class="image-figure"><span class="image"><img src="images/Logo.png" alt="Bootstrap" title="Bootstrap"></span><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/images/Logo.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></p>
+</span>
+</span>
+</span>
+<span class="sect1">
+<h2 id="_lesson_plans">Lesson Plans</h2>
+<span class="sectionbody">
+<span id="lesson-list" class="dlist">
+<dl>
+<dt class="hdlist1"><br/><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lessons/piecewise-functions-conditionals/index.shtml?pathway=__sample-codap">Piecewise Functions and Conditionals</a> </dt>
+<dd>
+<p>Students learn how to define a function so that it behaves differently depending on the input.</p>
+</dd>
+</dl>
+</span>
+</span>
+</span>
+<span class="sect1">
+<h2 id="_ordering_student_workbooks">Ordering Student Workbooks?</h2>
+<span class="sectionbody">
+<span class="paragraph">
+<p>While we give our workbooks away as a PDF, we understand that printing them yourself can be expensive!
+You can purchase beautifully-bound copies of the student workbook from Lulu.com.
+<a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/missing-link">Click here to order</a>.</p>
+</span>
+</span>
+</span>
+<span class="sect1">
+<h2 id="_other_resources">Other Resources</h2>
+<span class="sectionbody">
+<span class="paragraph">
+<p>Of course, there&#8217;s more to a curriculum than software
+and lesson plans! We also provide a number of resources to educators,
+including standards alignment, a complete student workbook, an answer
+key for the programming exercises and a forum where they can ask
+questions and share ideas.</p>
+</span>
+<span class="ulist pathway_external_links">
+<ul>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/./pathway-glossary.shtml">Glossary</a>&#8201;&#8212;&#8201;A list of vocabulary words used in this pathway.
+We also provide a <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../lib/bilingual-glossary.html">bilingual glossary</a>,
+which defines all vocabulary words across our lessons in English and Spanish.</p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/./pathway-alignments.shtml">Standards Alignment</a>&#8201;&#8212;&#8201;Find out how our materials align with National and State
+Standards, as well as some of the most commonly used math
+ textbooks.</p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/./workbook/workbook.pdf">Workbook</a>&#8201;&#8212;&#8201;Sometimes, the best way for students to get real thinking done
+is to step away from the keyboard! Our lesson plans are tightly integrated
+with the Student Workbook, allowing for paper-and-pencil practice and
+activities that don&#8217;t require a computer.</p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/./resources/index.shtml">Teacher-Only Resources</a>&#8201;&#8212;&#8201;We also offer several teachers-only materials, including an
+answer key to the student workbook, keys to all the exercises,
+and pre- and post-tests for teachers who are participating in our
+research study. For access to these materials, please fill out the
+<a href="https://docs.google.com/a/bootstrapworld.org/spreadsheet/viewform?formkey=dHpQc0VHV2dBU2tSN1ptMktBUmtoZWc6MQ#gid=0">password request form</a>.
+We&#8217;ll get back to you soon with the necessary login information.</p>
+</li>
+<li>
+<p><a href="https://discourse.bootstrapworld.org">Online Community (Discourse)</a>&#8201;&#8212;&#8201;Want to be kept up-to-date about Bootstrap events, workshops, and curricular
+changes? Want to ask a question or pose a lesson idea for other Bootstrap
+teachers? These forums are the place to do it.</p>
+</li>
+</ul>
+</span>
+</span>
+</span>
+<span class="sect1">
+<h2 id="_pathway_pages_are_entirely_optional">Pathway pages are entirely optional!</h2>
+<span class="sectionbody">
+<span class="paragraph">
+<p>By default, the build script will create this page using all of the lessons defined in lesson-order.txt. It will also add boilerplate text from shared/langs/XYZ/defines.rkt.</p>
+</span>
+<span class="paragraph">
+<p><strong>99% of the time, you will not need a pathway page like this one</strong></p>
+</span>
+<span class="paragraph">
+<p>As of fall2022, the only time it&#8217;s used is for Physics, History and Hour of Code&#8201;&#8212;&#8201;as none of those pathways have traditional lesssons.</p>
+</span>
+</span>
+</span>
+<span class="sect1 acknowledgmentsect">
+<span class="sectionbody">
+<span class="openblock acknowledgment"><hr/>
+<span class="content">
+<span class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</span>
+</span>
+</span>
+</span>
+</span>
+</span>
+<span id="footer">
+<span id="footer-text">
+Last updated 2022-10-16 11:55:01 -0400
+</span>
+</span>
+</span>
+</body>
+</html>

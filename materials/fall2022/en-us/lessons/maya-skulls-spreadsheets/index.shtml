@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Exploring Data: Skulls from Maya Human Sacrifice</title>
+
+  <link rel="stylesheet" href="../../lib/curriculum.css" />
+    <script src="../../lib/langtable.js"></script>
+    <script src="../../lib/bootstraplesson.js"></script>
+    <script src="../../dependency-graph.js"></script>
+    <script src="../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"Exploring Data: Skulls from Maya Human Sacrifice",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="article LessonPlan spreadsheets" onload="renderSaveToDrive()">
+<!--#include virtual="/menubar.ssi"-->
+<div id="body" onload="renderSaveToDrive()">
+<div id="header">
+<h1>Exploring Data: Skulls from Maya Human Sacrifice</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<script>
+function preselect(klass) {
+  const items = document.getElementsByClassName(klass);
+  for (let i = 0; i < items.length; i++) {
+    items[i].style.display = 'none';
+  }
+  if (items.length > 0) {
+    items[0].style.display = 'block';
+  }
+}
+window.onload = function() {
+  preselect('alignedStandards');
+  preselect('alignedTextbooks');
+  preselect('alignedPractices');
+}
+function showStandardsAlignment() {
+  const selectTag = document.getElementsByClassName('standardsAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const stdTables = document.getElementsByClassName('alignedStandards');
+  //const intro = document.getElementsByClassName('alignedStandardsIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < stdTables.length; i++) {
+    const stdTable = stdTables[i];
+    stdTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optStd = opt.value;
+      for (let j = 0; j < stdTables.length; j++) {
+        const stdTable = stdTables[j];
+        if (stdTable.classList.contains(optStd)) {
+          stdTable.style.display = 'block';
+         // introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+function toggleNonPrereqDisplay() {
+  const inputTag = document.getElementsByClassName('sidebarinput')[0];
+  const checkedP = inputTag.checked;
+  const lessonTable = document.getElementsByClassName('sidebarlessons')[0];
+  const lis = lessonTable.getElementsByTagName('li');
+  for (let i = 0; i < lis.length; i++) {
+    const li = lis[i];
+    const lesson = li.getElementsByClassName('prerequisite');
+    if (lesson.length === 0) {
+      li.style.display = checkedP ? 'none' : 'block';
+    }
+  }
+}
+</script>
+<script>
+function showTextbooksAlignment() {
+  const selectTag = document.getElementsByClassName('textbooksAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const textbookTables = document.getElementsByClassName('alignedTextbooks');
+  //const intro = document.getElementsByClassName('alignedTextbooksIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < textbookTables.length; i++) {
+    const textbookTable = textbookTables[i];
+    textbookTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optTextbook = opt.value;
+      for (let j = 0; j < textbookTables.length; j++) {
+        const textbookTable = textbookTables[j];
+        if (textbookTable.classList.contains(optTextbook)) {
+          textbookTable.style.display = 'block';
+          //introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+</script>
+<script>
+function showPracticesAlignment() {
+  const selectTag = document.getElementsByClassName('practicesAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const practiceTables = document.getElementsByClassName('alignedPractices');
+  for (let i = 0; i < practiceTables.length; i++) {
+    const practiceTable = practiceTables[i];
+    practiceTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optPractice = opt.value;
+      for (let j = 0; j < practiceTables.length; j++) {
+        const practiceTable = practiceTables[j];
+        if (practiceTable.classList.contains(optPractice)) {
+          practiceTable.style.display = 'block';
+        }
+      }
+    }
+  }
+}
+</script>
+<div class="paragraph">
+<!-- </p>
+</div>
+--></div><div class="sidebar"><div id="toggle"></div><div class="paragraph"><!--
+<div class="paragraph">
+<p>
+--><div class="sidebarlessons"><strong>Lessons</strong>
+<ul></ul></div>
+<div class="sidebarstandards"><strong>Standards in this Lesson</strong>: <em>None</em></div>
+<div class="sidebarpractices"><strong>Practices in this Lesson</strong>: <em>None</em></div>
+<!-- </p>
+</div>
+--></div><!--
+<div class="paragraph">
+<p>
+-->
+</div>
+<div class="paragraph description">
+<p>In this lesson students will use human sacrifice as an entry point for learning about Maya society, but will recognize that learning about one practice of the Maya is not enough information to make a broader conclusion about who the Maya were as a people and what led to their downfall.</p>
+</div>
+<table class="tableblock frame-all grid-all stripes-none stretch left-header preamble">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Lesson Goals</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Students will be able to&#8230;&#8203;</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>explore important details about Maya human sacrifice victims by examining data from skulls.</p>
+</li>
+<li>
+<p>define and understand variable types by examining two ways to record data about skulls from Maya human sacrifice</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Student-facing Lesson Goals</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Materials</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist materials-links">
+<ul>
+<li>
+<p><span class="materialSectionPlaceholder"> </span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/maya-skulls-spreadsheets/pages/skull-exam.html" target="_blank" rel="noopener">What can we learn from Bones?</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/maya-skulls-spreadsheets/pages/skull-explore.html" target="_blank" rel="noopener">Skull Exploring and Data Collection</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/maya-skulls-spreadsheets/pages/think-like-ds.html" target="_blank" rel="noopener">Think like a Data Scientist!</a></span></p>
+</li>
+<li>
+<p><span class="OnlineExercise"><a href="https://docs.google.com/document/d/1O4lFGy3WQj1zn5KTcGzvXi_lGh58g_uIl0ycESSc_jc/edit?usp=sharing" target="_blank" rel="noopener">Do Now (Google)</a></span></p>
+</li>
+<li>
+<p><span class="OnlineExercise"><a href="https://docs.google.com/spreadsheets/d/1Kw0m4K2jMQAvAE0gb2f93_7HB52KgnxjluuCmVpamOE/edit?usp=sharing" target="_blank" rel="noopener">Skull Data table (Google)</a></span></p>
+</li>
+<li>
+<p><span class="OnlineExercise"><a href="https://docs.google.com/document/d/1O4lFGy3WQj1zn5KTcGzvXi_lGh58g_uIl0ycESSc_jc/edit?usp=sharing" target="_blank" rel="noopener">Homework Assignment (Google)</a></span></p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Preparation</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>You&#8217;ll need a measuring tape to demonstrate how to measure the circumference of a skull.</p>
+</li>
+<li>
+<p>We suggest bringing a stuffed animal or doll as a prop whose head you can measure, rather than measuring a student&#8217;s head.</p>
+</li>
+<li>
+<p>Print and cut sets of skull evidence cards for each pair of students.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Supplemental Resources</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a href="https://delval.edu/blog/hun-hunahpu-mayan-maize-god" target="_blank" rel="noopener">The story of Hun Hunahpu</a> as told by Bridget Cornog ’24, a student at Delaware Valley University</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_review_what_do_we_already_know_about_the_maya"><span class="section-link"><a href="#_review_what_do_we_already_know_about_the_maya"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Review: What do we already Know about the Maya?</h2>
+<div class="sectionbody">
+<div class="paragraph lesson-instruction">
+<p>Complete the <a href="https://docs.google.com/document/d/1O4lFGy3WQj1zn5KTcGzvXi_lGh58g_uIl0ycESSc_jc/edit?usp=sharing" target="_blank" rel="noopener">Do Now (Google)</a></p>
+</div>
+<div class="paragraph">
+<p>Ignite prior knowledge.</p>
+</div>
+<div class="paragraph">
+<p>Yesterday, we looked at background information, written accounts from Landa and de Las Casas, a recent article about artifacts found in caves, and even analyzed some of the images found in the cave!</p>
+</div>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Did you learn anything more about the Maya through discussions with family and friends?</p>
+</li>
+<li>
+<p>Do you have any new theories about:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>who the Maya sacrificed</p>
+</li>
+<li>
+<p>why their civilization collapsed</p>
+</li>
+<li>
+<p>how researchers can learn about what Maya society was like in the past</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_what_can_we_learn_from_skulls_duration_10_minutes_"><span class="section-link"><a href="#_what_can_we_learn_from_skulls_duration_10_minutes_"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>What Can We Learn from Skulls? <span class="duration">10 minutes</span></h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_overview">Overview</h3>
+
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_launch">Launch</h3>
+<div class="paragraph">
+<p>Besides books and written sources, historians and scientists can discover clues about ancient civilizations by digging up bones!</p>
+</div>
+<div class="openblock lesson-instruction">
+<div class="content">
+<div class="paragraph">
+<p>One measurement archaelogists collect is the circumference of each skull they find.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>What tool would we need? and how would we use it to find the circumference?</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Demonstrate how to measure the circumference of a skull on a stuffed animal or a student so that everyone has a clear idea of where this measurement might come from.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_investigate">Investigate</h3>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Why do you think it might be useful to know whether a skull is small or large?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>It might tell us something about the age of the person.</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Turn to your neighbor and come up with some other features we could examine about skulls to see if we can determine their sex and age.  Record your thinking in the table at the top of <a href="../../lessons/maya-skulls-spreadsheets/pages/skull-exam.html" target="_blank" rel="noopener">What can we learn from Bones?</a>.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_synthesize">Synthesize</h3>
+
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_collecting_and_sorting_data_using_google_sheets"><span class="section-link"><a href="#_collecting_and_sorting_data_using_google_sheets"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Collecting and Sorting Data Using Google Sheets</h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_overview_2">Overview</h3>
+
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_launch_2">Launch</h3>
+
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_investigate_2">Investigate</h3>
+<div class="openblock lesson-instruction">
+<div class="content">
+<div class="paragraph">
+<p>Your evidence envelope contains pictures of 20 skulls found scattered about a cave. They</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Make a copy of this <a href="https://docs.google.com/spreadsheets/d/1Kw0m4K2jMQAvAE0gb2f93_7HB52KgnxjluuCmVpamOE/edit?usp=sharing" target="_blank" rel="noopener">Skull Data table (Google)</a>.</p>
+</li>
+<li>
+<p>Turn to <a href="../../lessons/maya-skulls-spreadsheets/pages/skull-explore.html" target="_blank" rel="noopener">Skull Exploring and Data Collection</a> and follow the directions to collect and sort your data using google sheets.</p>
+</li>
+<li>
+<p>When you&#8217;re done, complete <a href="../../lessons/maya-skulls-spreadsheets/pages/think-like-ds.html" target="_blank" rel="noopener">Think like a Data Scientist!</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Students will be directed to</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Input the title of each column of your data in Row 1 of your Google Sheet. See below for column titles to include in your data table.</p>
+</li>
+<li>
+<p>Work with your partner to input the # of the skull and the skull circumference. You are just filling out Column A and Column B.</p>
+</li>
+<li>
+<p>“Sort” your data from smallest by clicking Row 1 so that the entire row is highlighted. Then go to “Data” → “Create a filter”. You should see a downward arrow in the first row of your data table.</p>
+</li>
+<li>
+<p>“Sort” your Skull Circumference from smallest to largest by clicking on the down arrow of Column B and selecting “Sort A → Z”. This will organize numbers from smallest to largest.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_synthesize_2">Synthesize</h3>
+<div class="paragraph">
+<p>What conclusion(s) can you draw about the Maya based on the skull data you analyzed today? Support your claim with evidence.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_additional_exercises"><span class="section-link"><a href="#_additional_exercises"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Additional Exercises</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://docs.google.com/document/d/1O4lFGy3WQj1zn5KTcGzvXi_lGh58g_uIl0ycESSc_jc/edit?usp=sharing" target="_blank" rel="noopener">Homework Assignment (Google)</a></p>
+</div>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-17 19:42:16 -0400
+</div>
+</div>
+</div>
+</body>
+</html>

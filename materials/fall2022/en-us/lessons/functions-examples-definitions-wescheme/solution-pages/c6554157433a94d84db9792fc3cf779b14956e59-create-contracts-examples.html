@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Creating Contracts From Examples</title>
+
+  <link rel="stylesheet" href="../../../lib/curriculum.css" />
+    <link rel="stylesheet" href="../../../lib/codemirror.css" />
+    <script src="../../../lib/codemirror.js"></script>
+    <script src="../../../lib/runmode.js"></script>
+    <script src="../../../lib/scheme2.js"></script>
+    <script src="../../../lib/pyret-mode.js"></script>
+    <script src="../../../lib/langtable.js"></script>
+    <script src="../../../lib/bootstraplesson.js"></script>
+    <script src="../../../dependency-graph.js"></script>
+    <script src="../../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"Creating Contracts From Examples",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="workbookpage article wescheme" onload="renderSaveToDrive()">
+<div id="header">
+<h1>Creating Contracts From Examples</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Write the contracts used to create each of the following collections of examples.</p>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 1ex"></span></p>
+</div>
+<div class="paragraph">
+<p><strong><span class="autonum">1</span></strong> <span class="fitb stretch"><span class="obeyspaces"><code class="racket">; big-triangle :: Number, String ‑&gt; Image</code></span></span></p>
+</div>
+<div class="paragraph">
+<p><span class="obeyspaces"><code class="racket">(EXAMPLE (big-triangle 100 "red")
+  (triangle 100 "solid" "red"))
+(EXAMPLE (big-triangle 200 "orange")
+  (triangle 200 "solid" "orange"))</code></span></p>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 2ex"></span></p>
+</div>
+<div class="paragraph">
+<p><strong><span class="autonum">2</span></strong> <span class="fitb stretch"><span class="obeyspaces"><code class="racket">; purple-square :: Number ‑&gt; Image</code></span></span></p>
+</div>
+<div class="paragraph">
+<p><span class="obeyspaces"><code class="racket">(EXAMPLE (purple-square 15)
+  (rectangle 15 15 "outline" "purple"))
+(EXAMPLE (purple-square 6)
+  (rectangle 6 6 "outline" "purple"))</code></span></p>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 2ex"></span></p>
+</div>
+<div class="paragraph">
+<p><strong><span class="autonum">3</span></strong> <span class="fitb stretch"><span class="obeyspaces"><code class="racket">; banner :: String ‑&gt; Image</code></span></span></p>
+</div>
+<div class="paragraph">
+<p><span class="obeyspaces"><code class="racket">(EXAMPLE (banner "Game Today!")
+  (text "Game Today!" 50 "red"))
+(EXAMPLE (banner "Go Team!")
+  (text "Go Team!" 50 "red"))
+(EXAMPLE (banner "Exit")
+  (text "Exit" 50 "red"))</code></span></p>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 2ex"></span></p>
+</div>
+<div class="paragraph">
+<p><strong><span class="autonum">4</span></strong> <span class="fitb stretch"><span class="obeyspaces"><code class="racket">; twinkle :: String, String ‑&gt; Image</code></span></span></p>
+</div>
+<div class="paragraph">
+<p><span class="obeyspaces"><code class="racket">(EXAMPLE (twinkle "outline" "red")
+  (star 5 "outline" "red"))
+(EXAMPLE (twinkle "solid" "pink")
+  (star 5 "solid" "pink"))
+(EXAMPLE (twinkle "outline" "grey")
+  (star 5 "outline" "grey"))</code></span></p>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 2ex"></span></p>
+</div>
+<div class="paragraph">
+<p><strong><span class="autonum">5</span></strong> <span class="fitb stretch"><span class="obeyspaces"><code class="racket">; half :: Number ‑&gt; Number</code></span></span></p>
+</div>
+<div class="paragraph">
+<p><span class="obeyspaces"><code class="racket">(EXAMPLE (half 5) (/ 5 2))
+(EXAMPLE (half 8) (/ 8 2))
+(EXAMPLE (half 900) (/ 900 2))</code></span></p>
+</div>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-18 16:15:42 -0400
+</div>
+</div>
+</body>
+</html>

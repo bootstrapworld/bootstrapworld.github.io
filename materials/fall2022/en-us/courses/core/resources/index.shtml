@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>External teacher resources for pathway P</title>
+
+  <link rel="stylesheet" href="../../../lib/curriculum.css" />
+    <script src="../../../lib/langtable.js"></script>
+    <script src="../../../lib/bootstraplesson.js"></script>
+    <script src="../../../dependency-graph.js"></script>
+    <script src="../../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"External teacher resources for pathway P",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="TeacherResources article pyret" onload="renderSaveToDrive()">
+<!--#include virtual="/menubar.ssi"-->
+<div id="body" onload="renderSaveToDrive()">
+<div id="header">
+<h1>External teacher resources for pathway P</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="../index.shtml">Click here to return to lessons</a></p>
+</div>
+<div class="paragraph">
+<p><a href="https://code.pyret.org/editor#share=1GScGyigfRPJDdCiGKGnISTXoVBm9f7aE" target="_blank" rel="noopener">Alice&#8217;s Restaurant Starter File</a></p>
+</div>
+<div class="paragraph">
+<p>Maiores id quia nihil impedit inventore. Sint possimus quasi et
+aut sit. Repellat vero id ipsum ut accusamus ea. Ut sed quisquam
+ducimus. Molestias sit ut velit nobis facere incidunt et.
+Possimus sed qui et iusto qui sapiente culpa.</p>
+</div>
+<div class="paragraph">
+<p>Most exercises are part of the <strong><a href="../workbook/workbook.pdf">Student Workbook</a></strong>,
+and we provide password-protected <strong><a href="./protected/workbook-sols.pdf.html">Workbook Solutions</a></strong> as well.</p>
+</div>
+<div class="paragraph">
+<p>You can find the 'exercise' and 'solution' versions of all supplemental materials as well, in the lists below.</p>
+</div>
+<div class="paragraph">
+<p><span class="vspace" style="height: 1ex"></span></p>
+</div>
+<div class="paragraph">
+<p><strong><a href="../../../lessons/computing-needs-all-voices/index.shtml">Computing Needs All Voices
+</a></strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Computing Needs All Voices! [ <a href="../../../lessons/computing-needs-all-voices/pages/computing-pioneers.html">exercise</a> : <a href="../../../lessons/computing-needs-all-voices/solution-pages/computing-pioneers.html">solution</a> ]</p>
+</li>
+<li>
+<p>Notice and Wonder [ <a href="../../../lessons/computing-needs-all-voices/pages/NoticeAndWonder.html">exercise</a> : <a href="../../../lessons/computing-needs-all-voices/solution-pages/NoticeAndWonder.html">solution</a> ]</p>
+</li>
+<li>
+<p>Windows and Mirrors [ <a href="../../../lessons/computing-needs-all-voices/pages/windows-mirrors.html">exercise</a> : <a href="../../../lessons/computing-needs-all-voices/solution-pages/windows-mirrors.html">solution</a> ]</p>
+</li>
+<li>
+<p>Reflection: Problem Solving Advantages of Diverse Teams [ <a href="../../../lessons/computing-needs-all-voices/pages/advantages-of-diverse-teams.html">exercise</a> : <a href="../../../lessons/computing-needs-all-voices/solution-pages/advantages-of-diverse-teams.html">solution</a> ]</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong><a href="../../../lessons/simple-data-types/index.shtml">Simple Data Types
+</a></strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Numbers and Strings [ <a href="../../../lessons/simple-data-types/pages/numbers-n-strings.html">exercise</a> : <a href="../../../lessons/simple-data-types/solution-pages/numbers-n-strings.html">solution</a> ]</p>
+</li>
+<li>
+<p>Booleans [ <a href="../../../lessons/simple-data-types/pages/booleans.html">exercise</a> : <a href="../../../lessons/simple-data-types/solution-pages/booleans.html">solution</a> ]</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong><a href="../../../lessons/contracts/index.shtml">Contracts
+</a></strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Applying Functions [ <a href="../../../lessons/contracts/pages/applying-functions.html">exercise</a> : <a href="../../../lessons/contracts/solution-pages/applying-functions.html">solution</a> ]</p>
+</li>
+<li>
+<p>Domain and Range Frayer model [ <a href="../../../lessons/contracts/pages/frayer-model.pdf">exercise</a> : <a href="../../../lessons/contracts/solution-pages/frayer-model.pdf">solution</a> ]</p>
+</li>
+<li>
+<p>Function and Variable Frayer model. [ <a href="../../../lessons/contracts/pages/frayer-model-2.pdf">exercise</a> : <a href="../../../lessons/contracts/solution-pages/frayer-model-2.pdf">solution</a> ]</p>
+</li>
+<li>
+<p>Practicing Contracts: Domain &amp; Range [ <a href="../../../lessons/contracts/pages/practicing-contracts.html">exercise</a> : <a href="../../../lessons/contracts/solution-pages/practicing-contracts.html">solution</a> ]</p>
+</li>
+<li>
+<p>Matching Expressions and Contracts [ <a href="../../../lessons/contracts/pages/matching-expressions.html">exercise</a> : <a href="../../../lessons/contracts/solution-pages/matching-expressions.html">solution</a> ]</p>
+</li>
+<li>
+<p>Contracts [ <a href="../../../lessons/contracts/pages/image-contracts.html">exercise</a> : <a href="../../../lessons/contracts/solution-pages/image-contracts.html">solution</a> ]</p>
+</li>
+<li>
+<p>Using Contracts [ <a href="../../../lessons/contracts/pages/using-contracts.html">exercise</a> : <a href="../../../lessons/contracts/solution-pages/using-contracts.html">solution</a> ]</p>
+</li>
+<li>
+<p>Using Contracts (continued) [ <a href="../../../lessons/contracts/pages/using-contracts-cont.html">exercise</a> : <a href="../../../lessons/contracts/solution-pages/using-contracts-cont.html">solution</a> ]</p>
+</li>
+<li>
+<p>Triangle Contracts [ <a href="../../../lessons/contracts/pages/triangle-contracts.html">exercise</a> : <a href="../../../lessons/contracts/solution-pages/triangle-contracts.html">solution</a> ]</p>
+</li>
+<li>
+<p>Triangle Contracts (SAS &amp; ASA) [ <a href="../../../lessons/contracts/pages/triangle-contracts-cont.html">exercise</a> : <a href="../../../lessons/contracts/solution-pages/triangle-contracts-cont.html">solution</a> ]</p>
+</li>
+<li>
+<p>Radial Star [ <a href="../../../lessons/contracts/pages/radial-star.html">exercise</a> : <a href="../../../lessons/contracts/solution-pages/radial-star.html">solution</a> ]</p>
+</li>
+<li>
+<p>Star Polygon [ <a href="../../../lessons/contracts/pages/star-polygon.html">exercise</a> : <a href="../../../lessons/contracts/solution-pages/star-polygon.html">solution</a> ]</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong><a href="../../../lessons/functions-make-life-easier/index.shtml">Functions Make Life Easier!
+</a></strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The Great gt domain debate! [ <a href="../../../lessons/functions-make-life-easier/pages/gt-domain-debate.html">exercise</a> : <a href="../../../lessons/functions-make-life-easier/solution-pages/gt-domain-debate.html">solution</a> ]</p>
+</li>
+<li>
+<p>Let&#8217;s Define Some New Functions! [ <a href="../../../lessons/functions-make-life-easier/pages/rs.html">exercise</a> : <a href="../../../lessons/functions-make-life-easier/solution-pages/rs.html">solution</a> ]</p>
+</li>
+<li>
+<p>Let&#8217;s Define Some More New Functions! [ <a href="../../../lessons/functions-make-life-easier/pages/sun.html">exercise</a> : <a href="../../../lessons/functions-make-life-easier/solution-pages/sun.html">solution</a> ]</p>
+</li>
+<li>
+<p>Describe and Define Your Own Functions! [ <a href="../../../lessons/functions-make-life-easier/pages/define-your-own.html">exercise</a> : <a href="../../../lessons/functions-make-life-easier/solution-pages/define-your-own.html">solution</a> ]</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong><a href="../../../lessons/functions-examples-definitions/index.shtml">Functions: Contracts&#x2c; Examples &amp; Definitions
+</a></strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Mapping Examples with Circles of Evaluation [ <a href="../../../lessons/functions-examples-definitions/pages/MappingExamplesWithCoE.html">exercise</a> : <a href="../../../lessons/functions-examples-definitions/solution-pages/MappingExamplesWithCoE.html">solution</a> ]</p>
+</li>
+<li>
+<p>Matching Examples and Contracts [ <a href="../../../lessons/functions-examples-definitions/pages/match-examples-contracts.html">exercise</a> : <a href="../../../lessons/functions-examples-definitions/solution-pages/match-examples-contracts.html">solution</a> ]</p>
+</li>
+<li>
+<p>Matching Examples and Function Definitions [ <a href="../../../lessons/functions-examples-definitions/pages/match-examples-definitions.html">exercise</a> : <a href="../../../lessons/functions-examples-definitions/solution-pages/match-examples-definitions.html">solution</a> ]</p>
+</li>
+<li>
+<p>Creating Contracts From Examples [ <a href="../../../lessons/functions-examples-definitions/pages/create-contracts-examples.html">exercise</a> : <a href="../../../lessons/functions-examples-definitions/solution-pages/create-contracts-examples.html">solution</a> ]</p>
+</li>
+<li>
+<p>Contracts, Examples &amp; Definitions - bc [ <a href="../../../lessons/functions-examples-definitions/pages/contracts-examples-definitions.html">exercise</a> : <a href="../../../lessons/functions-examples-definitions/solution-pages/contracts-examples-definitions.html">solution</a> ]</p>
+</li>
+<li>
+<p>Contracts, Examples &amp; Definitions - Stars [ <a href="../../../lessons/functions-examples-definitions/pages/contracts-examples-definitions-stars.html">exercise</a> : <a href="../../../lessons/functions-examples-definitions/solution-pages/contracts-examples-definitions-stars.html">solution</a> ]</p>
+</li>
+<li>
+<p>Contracts, Examples &amp; Definitions - Name [ <a href="../../../lessons/functions-examples-definitions/pages/contracts-examples-definitions-name.html">exercise</a> : <a href="../../../lessons/functions-examples-definitions/solution-pages/contracts-examples-definitions-name.html">solution</a> ]</p>
+</li>
+<li>
+<p>Do The Examples Have the Same Contracts? [ <a href="../../../lessons/functions-examples-definitions/pages/examples-same-contracts1.html">exercise</a> : <a href="../../../lessons/functions-examples-definitions/solution-pages/examples-same-contracts1.html">solution</a> ]</p>
+</li>
+<li>
+<p>Do The Examples Have the Same Contracts? (2) [ <a href="../../../lessons/functions-examples-definitions/pages/examples-same-contracts2.html">exercise</a> : <a href="../../../lessons/functions-examples-definitions/solution-pages/examples-same-contracts2.html">solution</a> ]</p>
+</li>
+<li>
+<p>Matching Contracts and Examples [ <a href="../../../lessons/functions-examples-definitions/pages/match-contracts-examples1.html">exercise</a> : <a href="../../../lessons/functions-examples-definitions/solution-pages/match-contracts-examples1.html">solution</a> ]</p>
+</li>
+<li>
+<p>Matching Contracts and Examples 2 [ <a href="../../../lessons/functions-examples-definitions/pages/match-contracts-examples2.html">exercise</a> : <a href="../../../lessons/functions-examples-definitions/solution-pages/match-contracts-examples2.html">solution</a> ]</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong><a href="../../../lessons/debugging/index.shtml">Debugging
+</a></strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Syntax Errors [ <a href="../../../lessons/debugging/pages/syntax-errors.html">exercise</a> : <a href="../../../lessons/debugging/solution-pages/syntax-errors.html">solution</a> ]</p>
+</li>
+<li>
+<p>Contract Errors [ <a href="../../../lessons/debugging/pages/contract-errors.html">exercise</a> : <a href="../../../lessons/debugging/solution-pages/contract-errors.html">solution</a> ]</p>
+</li>
+<li>
+<p>Logic Errors [ <a href="../../../lessons/debugging/pages/logic-errors.html">exercise</a> : <a href="../../../lessons/debugging/solution-pages/logic-errors.html">solution</a> ]</p>
+</li>
+<li>
+<p>Logic Errors 2 [ <a href="../../../lessons/debugging/pages/logic-errors-2.html">exercise</a> : <a href="../../../lessons/debugging/solution-pages/logic-errors-2.html">solution</a> ]</p>
+</li>
+<li>
+<p>Logic Errors 3 [ <a href="../../../lessons/debugging/pages/logic-errors-3.html">exercise</a> : <a href="../../../lessons/debugging/solution-pages/logic-errors-3.html">solution</a> ]</p>
+</li>
+<li>
+<p>What Kind of Error? [ <a href="../../../lessons/debugging/pages/what-kind-of-error.html">exercise</a> : <a href="../../../lessons/debugging/solution-pages/what-kind-of-error.html">solution</a> ]</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Illo qui sint dolor officia a eum voluptate. Dolore deserunt iure
+modi ad exercitationem. Et occaecati eos vel nesciunt ut enim a
+quod. Sed aut ipsum et cupiditate rerum id.</p>
+</div>
+<div class="paragraph">
+<p>Necessitatibus nihil sunt natus fugiat tempora eos. Officiis
+ducimus laudantium laborum ipsum ut similique quia. Illo atque
+consequatur aut aliquam qui totam.</p>
+</div>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-17 19:42:18 -0400
+</div>
+</div>
+</div>
+</body>
+</html>

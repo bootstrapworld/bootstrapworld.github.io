@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Custom Scatter Plots</title>
+
+  <link rel="stylesheet" href="../../lib/curriculum.css" />
+    <link rel="stylesheet" href="../../lib/codemirror.css" />
+    <script src="../../lib/codemirror.js"></script>
+    <script src="../../lib/runmode.js"></script>
+    <script src="../../lib/scheme2.js"></script>
+    <script src="../../lib/pyret-mode.js"></script>
+    <script src="../../lib/langtable.js"></script>
+    <script src="../../lib/bootstraplesson.js"></script>
+    <script src="../../dependency-graph.js"></script>
+    <script src="../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:(window.location.href.match(/\/$/)?(window.location.href+'index-gdrive-import.html'):(window.location.href.replace(/([^\/]+)\.([^.\/]+)$/, '$1-gdrive-import.html'))),
+    filename:"Custom Scatter Plots",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="article LessonPlan pyret" onload="renderSaveToDrive()">
+<!--#include virtual="/menubar.ssi"-->
+<div id="body" onload="renderSaveToDrive()">
+<div id="header">
+<h1>Custom Scatter Plots</h1>
+
+  <div id="savetodrive-div"></div>
+
+</div>
+<div id="content">
+<div id="preamble_disabled" class="lessonSummary">
+<div class="sectionbody">
+<script>
+function preselect(klass) {
+  const items = document.getElementsByClassName(klass);
+  for (let i = 0; i < items.length; i++) {
+    items[i].style.display = 'none';
+  }
+  if (items.length > 0) {
+    items[0].style.display = 'block';
+  }
+}
+window.onload = function() {
+  preselect('alignedStandards');
+  preselect('alignedTextbooks');
+  preselect('alignedPractices');
+}
+function showStandardsAlignment() {
+  const selectTag = document.getElementsByClassName('standardsAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const stdTables = document.getElementsByClassName('alignedStandards');
+  //const intro = document.getElementsByClassName('alignedStandardsIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < stdTables.length; i++) {
+    const stdTable = stdTables[i];
+    stdTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optStd = opt.value;
+      for (let j = 0; j < stdTables.length; j++) {
+        const stdTable = stdTables[j];
+        if (stdTable.classList.contains(optStd)) {
+          stdTable.style.display = 'block';
+         // introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+function toggleNonPrereqDisplay() {
+  const inputTag = document.getElementsByClassName('sidebarinput')[0];
+  const checkedP = inputTag.checked;
+  const lessonTable = document.getElementsByClassName('sidebarlessons')[0];
+  const lis = lessonTable.getElementsByTagName('li');
+  for (let i = 0; i < lis.length; i++) {
+    const li = lis[i];
+    const lesson = li.getElementsByClassName('prerequisite');
+    if (lesson.length === 0) {
+      li.style.display = checkedP ? 'none' : 'block';
+    }
+  }
+}
+</script>
+<script>
+function showTextbooksAlignment() {
+  const selectTag = document.getElementsByClassName('textbooksAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const textbookTables = document.getElementsByClassName('alignedTextbooks');
+  //const intro = document.getElementsByClassName('alignedTextbooksIntro')[0];
+  //let introNeeded = true;
+  for (let i = 0; i < textbookTables.length; i++) {
+    const textbookTable = textbookTables[i];
+    textbookTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optTextbook = opt.value;
+      for (let j = 0; j < textbookTables.length; j++) {
+        const textbookTable = textbookTables[j];
+        if (textbookTable.classList.contains(optTextbook)) {
+          textbookTable.style.display = 'block';
+          //introNeeded = false;
+        }
+      }
+    }
+  }
+  //intro.style.display = introNeeded ? 'block' : 'none';
+}
+</script>
+<script>
+function showPracticesAlignment() {
+  const selectTag = document.getElementsByClassName('practicesAlignmentSelect')[0];
+  const options = selectTag && selectTag.options;
+  if(!options) return;
+  const practiceTables = document.getElementsByClassName('alignedPractices');
+  for (let i = 0; i < practiceTables.length; i++) {
+    const practiceTable = practiceTables[i];
+    practiceTable.style.display = 'none';
+  }
+  for (let i = 0; i < options.length; i++) {
+    const opt = options[i];
+    if (opt.selected) {
+      const optPractice = opt.value;
+      for (let j = 0; j < practiceTables.length; j++) {
+        const practiceTable = practiceTables[j];
+        if (practiceTable.classList.contains(optPractice)) {
+          practiceTable.style.display = 'block';
+        }
+      }
+    }
+  }
+}
+</script>
+<div class="paragraph">
+<!-- </p>
+</div>
+--></div><div class="sidebar"><div id="toggle"></div><div class="paragraph"><!--
+<div class="paragraph">
+<p>
+--><div class="sidebarlessons"><strong>Lessons</strong>
+<ul></ul></div>
+</div>
+<table class="tableblock frame-all grid-all stretch sidebarstandards">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Standards in this Lesson</strong>
+<select class="standardsAlignmentSelect"  onchange="showStandardsAlignment()"><option selected="selected" value="standards-CCSS-Math">CCSS-Math</option><option value="standards-CSTA">CSTA</option><option value="standards-K12CS">K12CS</option><option value="standards-Oklahoma">Oklahoma</option></select></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist alignedStandards standards-CCSS-Math">
+<div class="title"><a href="http://corestandards.org/Math/">Common Core Math Standards</a></div>
+<dl>
+<dt class="hdlist1">HSA.SSE.A.1.B</dt>
+<dd>
+<p>Interpret complicated expressions by viewing one or more of their parts as a single entity.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-CSTA">
+<div class="title"><a href="https://csteachers.org/page/standards">CSTA Standards</a></div>
+<dl>
+<dt class="hdlist1">1B-AP-10</dt>
+<dd>
+<p>Create programs that include sequences, events, loops, and conditionals.</p>
+</dd>
+<dt class="hdlist1">1B-AP-12</dt>
+<dd>
+<p>Modify, remix, or incorporate portions of an existing program into one&#8217;s own work, to develop something new or add more advanced features.</p>
+</dd>
+<dt class="hdlist1">2-AP-11</dt>
+<dd>
+<p>Create clearly named variables that represent different data types and perform operations on their values.</p>
+</dd>
+<dt class="hdlist1">2-AP-17</dt>
+<dd>
+<p>Systematically test and refine programs using a range of test cases</p>
+</dd>
+<dt class="hdlist1">2-AP-19</dt>
+<dd>
+<p>Document programs in order to make them easier to follow, test, and debug.</p>
+</dd>
+<dt class="hdlist1">2-DA-08</dt>
+<dd>
+<p>Collect data using computational tools and transform the data to make it more useful and reliable.</p>
+</dd>
+<dt class="hdlist1">3B-AP-14</dt>
+<dd>
+<p>Construct solutions to problems using student-created components, such as procedures, modules and/or objects.</p>
+</dd>
+<dt class="hdlist1">3B-NI-05</dt>
+<dd>
+<p>Use data analysis tools and techniques to identify patterns in data representing complex systems</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-K12CS">
+<div class="title"><a href="https://k12cs.org">K-12CS Standards</a></div>
+<dl>
+<dt class="hdlist1">6-8.Data and Analysis.Inference and Models</dt>
+<dd>
+<p>People transform, generalize, simplify, and present large data sets in different ways to influence how other people interpret and understand the underlying information. Examples include visualization, aggregation, rearrangement, and application of mathematical operations.</p>
+</dd>
+<dt class="hdlist1">9-12.Algorithms and Programming.Control</dt>
+<dd>
+<p>Programmers consider tradeoffs related to implementation, readability, and program performance when selecting and combining control structures.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist alignedStandards standards-Oklahoma">
+<div class="title"><a href="https://sde.ok.gov/oklahoma-academic-standards">Oklahoma Standards</a></div>
+<dl>
+<dt class="hdlist1">OK.A1.F.1.4</dt>
+<dd>
+<p>Given a graph modeling a real-world situation, read and interpret the linear piecewise function (excluding step functions).</p>
+</dd>
+<dt class="hdlist1">OK.A2.F.1.8</dt>
+<dd>
+<p>Graph piecewise functions with no more than three branches (including linear, quadratic, or exponential branches) and analyze the function by
+identifying the domain, range, intercepts, and intervals for which it is increasing, decreasing, and constant.</p>
+</dd>
+<dt class="hdlist1">OK.L1.AP.M.01</dt>
+<dd>
+<p>Break down a solution into procedures using systematic analysis and design.</p>
+</dd>
+<dt class="hdlist1">OK.L1.AP.M.02</dt>
+<dd>
+<p>Create computational artifacts by systematically organizing, manipulating and/or processing data.</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch sidebarpractices">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Practices in this Lesson</strong>
+<select class="practicesAlignmentSelect"  onchange="showPracticesAlignment()"><option selected="selected" value="practices-CC"><a href="http://corestandards.org/Math/">Math</a></option></select></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="dlist alignedPractices practices-CC">
+<div class="title"><a href="http://corestandards.org/Math/">Math</a></div>
+<dl>
+<dt class="hdlist1">MP.7</dt>
+<dd>
+<p>Look for and make use of structure</p>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<!-- </p>
+</div>
+--></div><!--
+<div class="paragraph">
+<p>
+-->
+</div>
+<style>
+.strategy-box { width: 100%; }
+
+.comparison * { font-size: 0.75rem !important; }
+.comparison td { background: #f7f7f8; padding: 0 !important; }
+.comparison .highlight { padding: 0 !important; }
+
+#content .forceShading { background-color: #f7f7f8; }
+</style>
+<div class="paragraph description">
+<p>Custom scatter plots expose deeper insight into subgroups within a population, motivating students to define their own functions and deepen their analysis.</p>
+</div>
+<table class="tableblock frame-all grid-all stripes-none stretch left-header preamble">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Lesson Goals</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Students will be able to&#8230;&#8203;</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>make custom scatter plots using helper functions</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Student-facing Lesson Goals</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Let&#8217;s explore a new Pyret function that lets us make more interesting scatter plots.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Materials</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist materials-links">
+<ul>
+<li>
+<p><a href="https://docs.google.com/presentation/d/1FXvhh-lo2ZIXYDcBdVxaD33UfJpaY00h9kIwlk8V_QY/" target="_blank" rel="noopener">Lesson Slides</a></p>
+</li>
+<li>
+<p><span class="StarterFile"><a href="https://code.pyret.org/editor#share=1zYnONDaJ5jn3i1uY9velUGScaP4uFl7T" target="_blank" rel="noopener">Custom Scatter Plot Starter File</a></span></p>
+</li>
+<li>
+<p><span class="materialSectionPlaceholder"> </span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/custom-scatter-plots/pages/defining-row-functions.html" target="_blank" rel="noopener">Defining Row-Consuming Functions</a></span></p>
+</li>
+<li>
+<p><span class="PrintableExercise"><a href="../../lessons/custom-scatter-plots/pages/custom-scatter-plot-explore.html" target="_blank" rel="noopener">Custom Scatter Plot - Explore</a></span></p>
+</li>
+<li>
+<p><span class="StarterFile Optional"><a href="https://code.pyret.org/editor#share=1SOLAau653CYFY05x45NustZ0-ejKGQF0" target="_blank" rel="noopener">Custom Scatter Plot with Piecewise Functions Starter File</a></span></p>
+</li>
+<li>
+<p><span class="StarterFile Optional"><a href="https://code.pyret.org/editor#share=1zjYggoFxpreTalJdDvlFPnQtcQNMyJiH" target="_blank" rel="noopener">Custom Animals Starter File</a></span></p>
+</li>
+<li>
+<p><span class="StarterFile Optional"><a href="https://code.pyret.org/editor#share=1OUuVCsm320LzZtwsrS4TLTt_Gp7tQD2A" target="_blank" rel="noopener">Dots for Value Ranges Starter File</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="../../lessons/custom-scatter-plots/pages/species-dot-explore.html" target="_blank" rel="noopener">species-dot - Explore</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="../../lessons/custom-scatter-plots/pages/species-dot-dr.html" target="_blank" rel="noopener">Word Problem: species-dot</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="../../lessons/custom-scatter-plots/pages/sex-dot-dr.html" target="_blank" rel="noopener">Word Problem: sex-dot</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="../../lessons/custom-scatter-plots/pages/animal-image-explore.html" target="_blank" rel="noopener">Animal-Image - Explore</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="../../lessons/custom-scatter-plots/pages/fixed-dot-dr.html" target="_blank" rel="noopener">Word Problem: fixed-dot</a></span></p>
+</li>
+<li>
+<p><span class="Optional PrintableExercise"><a href="../../lessons/custom-scatter-plots/pages/value-range-dot-explore.html" target="_blank" rel="noopener">Dots for Value Ranges - Explore</a></span></p>
+</li>
+<li>
+<p><strong>Classroom visual:</strong> <a href="javascript:showLangTable()">Language Table</a></p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="dlist glossary">
+<div class="title">Glossary</div>
+<dl>
+<dt class="hdlist1">conditional</dt>
+<dd>
+<p>a code expression made of questions and answers</p>
+</dd>
+<dt class="hdlist1">data type</dt>
+<dd>
+<p>a way of classifying values, such as: Number, String, Image, Boolean, or any user-defined data structure</p>
+</dd>
+<dt class="hdlist1">piecewise function</dt>
+<dd>
+<p>a function that computes different expressions based on its input</p>
+</dd>
+<dt class="hdlist1">scatter plot</dt>
+<dd>
+<p>a display of the relationship between two quantitative variables, graphing each explanatory value on the x axis and the accompanying response on the y axis</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_image_scatter_plots_duration_40_minutes_"><span class="section-link"><a href="#_image_scatter_plots_duration_40_minutes_"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Image Scatter Plots <span class="duration">40 minutes</span></h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_overview">Overview</h3>
+<div class="paragraph">
+<p>Students are introduced to their first example of a <em>custom scatter plot</em>, which makes use of the <span class="obeyspaces"><code class="pyret">image-scatter-plot</code></span> function to replace each animals' dot with the name of the species. They then write code for another custom scatter plot.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_launch">Launch</h3>
+<div class="paragraph">
+<p>Not all data points are created equal! Dogs and rabbits are very different, but when viewing all the animals on the same scatter plot, these differences are hidden.</p>
+</div>
+<div class="paragraph">
+<p>This makes the displays more interesting, and helps us to dig deeper into analyzing the data.</p>
+</div>
+<div class="paragraph">
+<p><span class="center"><span class="image-figure"><span class="image"><img src="images/00d3b9edd62f032a.gif" alt="Age v. Weeks Scatter Plot" width="450" title="Age v. Weeks Scatter Plot"></span><a href="images/00d3b9edd62f032a.gif" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_investigate">Investigate</h3>
+<div class="paragraph">
+<p>Let&#8217;s start with some review, combining our knowledge of row and column lookups with our knowledge of how to define functions. <em>Note: Confirm that students' responses are correct before moving from one page to the next (below). Checking for understanding is crucial here.</em></p>
+</div>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Turn to <a href="../../lessons/custom-scatter-plots/pages/defining-row-functions.html" target="_blank" rel="noopener">Defining Row-Consuming Functions</a>, and complete numbers 1-3 at the top of the page.</p>
+</li>
+<li>
+<p>When you are confident with the code you have written - check with your teacher or a partner - complete the rest of the page to define a function <code class="pyret">species-tag</code>.</p>
+</li>
+<li>
+<p>Now, open <a href="https://code.pyret.org/editor#share=1zYnONDaJ5jn3i1uY9velUGScaP4uFl7T" target="_blank" rel="noopener">Custom Scatter Plot Starter File</a>. Does your definition of <code class="pyret">species-tag</code> match what you see here?</p>
+</li>
+<li>
+<p>What do you Notice? What do you Wonder?</p>
+</li>
+<li>
+<p>What functions do you see defined? What do they do? What Rows do you see defined?</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The contract for <code class="pyret">image-scatter-plot</code> looks pretty different from other contracts we&#8217;ve seen.</p>
+</div>
+<div class="openblock forceShading">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="pyret">image-scatter-plot :: (
+  t  :: Table,
+  xs :: String,
+  ys :: String,
+  f  :: (Row -&gt; Image)
+) -&gt; Image</code></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>The function <code class="pyret">image-scatter-plot</code> has an interesting Domain: <em>Table, String, String and&#8230;&#8203; what is that last part?&#8230;&#8203; <strong>a Function that consumes a Row and produces an Image</strong>!</em></p>
+</div>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Complete <a href="../../lessons/custom-scatter-plots/pages/custom-scatter-plot-explore.html" target="_blank" rel="noopener">Custom Scatter Plot - Explore</a>.</p>
+</li>
+<li>
+<p>As you work, consider how <code class="pyret">image-scatter-plot</code> is different from other functions we&#8217;ve seen, and how it might be useful to our data analysis.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_synthesize">Synthesize</h3>
+<div class="paragraph">
+<p>Ask students how having the dots labeled with the species changes their understanding of the data. Students should recognize that the <code class="pyret">species-tag</code> <span class="vocab">scatter plot</span> makes it clear that we may want to analyze each species separately, rather than grouping them all together. (In the Grouped Samples lesson, students will learn how to do just that!)</p>
+</div>
+<div class="paragraph">
+<p>Ensure that students understand what the various functions in the file do. The <code class="pyret">species-tag</code> function labeled dots with the species:</p>
+</div>
+<div class="paragraph">
+<p><span class="center"><span class="image-figure"><span class="image"><img src="images/b3fccec18d5e3943.png" alt="A scatter plot with species names for each animal in place of a small, uniform dot. The images are generated by the species-tag function" width="450" title="A scatter plot with species names for each animal in place of a small, uniform dot. The images are generated by the species-tag function"></span><a href="images/b3fccec18d5e3943.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></p>
+</div>
+<div class="paragraph">
+<p>The <code class="pyret">legs-tag</code> function made blue rings whose size was determined by the number of legs the animal had:</p>
+</div>
+<div class="paragraph">
+<p><span class="center"><span class="image-figure"><span class="image"><img src="images/15006ebadf6fef79.png" alt="A scatter plot with different sized blue rings for each animal in place of a small, uniform dot. The images are generated by the legs-tag function" width="422" title="A scatter plot with different sized blue rings for each animal in place of a small, uniform dot. The images are generated by the legs-tag function"></span><a href="images/15006ebadf6fef79.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></p>
+</div>
+<div class="paragraph">
+<p>And the <code class="pyret">age-tag</code> function made stars whose size was double the age of the animal:</p>
+</div>
+<div class="paragraph">
+<p><span class="center"><span class="image-figure"><span class="image"><img src="images/676390cae7e8bd36.png" alt="A scatter plot with different sized purple stars for each animal in place of a small, uniform dot. The images are generated by the age-tag function" width="410" title="A scatter plot with different sized purple stars for each animal in place of a small, uniform dot. The images are generated by the age-tag function"></span><a href="images/676390cae7e8bd36.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></p>
+</div>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>What <span class="vocab">data type</span> is <code class="pyret">species-tag</code>?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>A function that consumes a Row and produces an Image</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>How does <code class="pyret">image-scatter-plot</code> work?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>It consumes a Table, a String, a String, and a Function that consumes a Row and produces an Image. It can label each point with some text, a different sized dot, or a star.</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>What are some other ways you could use columns of the Animals Dataset to display more interesting image-scatter-plots?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Answers will vary.</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>What does an <code class="pyret">image-scatter-plot</code> expression need to have defined in order to display a scatter plot with the animals' names in place of dots?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>We would need to define a <code class="pyret">name-tag</code> helper function.</em></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>To close this segment of the lesson, invite students to consider how <code class="pyret">image-scatter-plot</code> might be useful to their <em>own</em> analysis.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 lesson-section-1">
+<h2 id="_optional_using_conditionals_duration_25_minutes_"><span class="section-link"><a href="#_optional_using_conditionals_duration_25_minutes_"" title="Direct link to this part of the lesson"><span class="section-link-symbol">&#128279;</span></a></span>Optional: Using Conditionals <span class="duration">25 minutes</span></h2>
+<div class="sectionbody">
+<div class="sect2 lesson-section-2">
+<h3 id="_overview_2">Overview</h3>
+<div class="paragraph">
+<p>Students discover how to use <span class="vocab">conditionals</span> - <span class="vocab">piecewise functions</span> in math - to change dot colors and sizes, how "dot appearance" can be used to show more data in a scatter plot, and why that would be valuable.</p>
+</div>
+<div class="paragraph">
+<p><strong>NOTE:</strong> Math teachers may want their students to confront piecewise functions more deeply, and CS teachers may want to spend more time on conditionals. While not a part of the Data Science pathway, the <a href="../../lessons/piecewise-functions-conditionals/index.shtml" target="_blank" rel="noopener">Piecewise Functions and Conditionals</a> lesson includes a lot of supporting material and practice pages for these topics, including the <a href="pages/notes-piecewise-functions.html" target="_blank" rel="noopener">student notes on piecewise functions</a>.</p>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_launch_2">Launch</h3>
+<div class="paragraph">
+<p>So far, we&#8217;ve seen that&#8230;&#8203;</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>the <code class="pyret">scatter-plot</code> function makes uniform blue dots</p>
+</li>
+<li>
+<p>the <code class="pyret">image-scatter-plot</code> function can label each point with some text, a different sized dot, or a star.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Explain to students that to get more out of the <code class="pyret">image-scatter-plot</code> function, we&#8217;ll need to use a different kind of function called a "piecewise function".</p>
+</div>
+<div class="paragraph">
+<!-- </p>
+</div>
+[.lesson-instruction] * Take a moment and make a prediction. How do you think the age of an animal impacts how long it takes to be adopted? * Which of these scatter plots best matches your prediction?
+<div class="paragraph">
+<p>
+-->
+</div>
+<div class="openblock lesson-instruction">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Open the <a href="https://code.pyret.org/editor#share=1SOLAau653CYFY05x45NustZ0-ejKGQF0" target="_blank" rel="noopener">Custom Scatter Plot with Piecewise Functions Starter File</a> and complete <a href="../../lessons/custom-scatter-plots/pages/species-dot-explore.html" target="_blank" rel="noopener">species-dot - Explore</a>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="center"><span class="image-figure"><span class="image"><img src="images/5d1526696b218db7.png" alt="Age v. Weeks Scatter Plot" width="450" title="Age v. Weeks Scatter Plot"></span><a href="images/5d1526696b218db7.png" class="gdrive-only"><span class="big">&#x1f5bc;</span>Show image</a></span></span></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>What does this new visualization (above) tell us about the relationship between age and weeks?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>In general, as an animal gets older, the weeks to adoption increase. This appears to be true for both dogs (black dots) and cats (orange dots).</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>What other analysis would be helpful here?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Sample answer: It might be interesting to look at the outliers to understand why some animals' adoptions take a longer amount of time.</em></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_investigate_2">Investigate</h3>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Open <a href="../../lessons/custom-scatter-plots/pages/species-dot-dr.html" target="_blank" rel="noopener">Word Problem: species-dot</a></p>
+</li>
+<li>
+<p>What is the contract for <code class="pyret">species-dot</code>?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>The function name is <code class="pyret">species-dot</code>, its Domain is Row, and its Range is Image.</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>What is the purpose of <code class="pyret">species-dot</code>?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>It takes in a Row from the animals table and returns a solid, 5px circle using black for dog, orange for cat, pink for rabbit, red for tarantula, green for lizard and blue for snail.</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>How many examples do we need to write?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>We need to write six examples, one for each species.</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Optional: Complete the <a href="../../lessons/custom-scatter-plots/pages/sex-dot-dr.html" target="_blank" rel="noopener">Word Problem: sex-dot</a>, to write a new helper function that will make differently-colored dots based on the animals' sex.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Make sure that students write the Contract <em>first</em> , and check in with their partner <em>and</em> the teacher before proceeding. Once they&#8217;ve got the Contract, have them come up with <code class="pyret">examples:</code> for <em>each sex</em>. Once again, have them check with a partner <em>and</em> the teacher before finishing the page.</p>
+</div>
+<div class="paragraph">
+<p>Debrief, and ask students to explain what the code does. Pay special attention to students' ability to articulate the "if/then" statements!</p>
+</div>
+<div class="ulist lesson-instruction">
+<ul>
+<li>
+<p>Turn to <a href="../../lessons/custom-scatter-plots/pages/animal-image-explore.html" target="_blank" rel="noopener">Animal-Image - Explore</a> and open the <a href="https://code.pyret.org/editor#share=1zjYggoFxpreTalJdDvlFPnQtcQNMyJiH" target="_blank" rel="noopener">Custom Animals Starter File</a> Starter File.</p>
+</li>
+<li>
+<p>How does using clipart help us to better understand the data?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>The images are cool! And they make it so easy to understand whether the species are evenly distributed or clustered.</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>What <em>risks</em> might there be to using clipart in displays?</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Sample response: Clipart of humans runs a serious risk of stereotyping or excluding populations!</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>We have seen a lot of different image scatter plots today! What ideas do you have for how <code class="pyret">image-scatter-plot</code> could be used to deepen the analysis of your dataset?</p>
+</li>
+</ul>
+</div>
+<table class="tableblock frame-all grid-none stripes-none stretch strategy-box">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="title"> Optional: When your conditional is <em>already</em> a Boolean </span>
+If you have time or students who are ready for a challenge, you can also have them make a scatter plot for dots distinguishing whether the animal is fixed or not using the directions at the end of the starter file or <a href="../../lessons/custom-scatter-plots/pages/fixed-dot-dr.html" target="_blank" rel="noopener">Word Problem: fixed-dot</a>. Students will discover that this is a little different from the other two functions they&#8217;ve seen because <code class="pyret">fixed</code> is already a Boolean column! The code will work if written in either of the following ways:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch comparison">
+<colgroup>
+<col style="width: 57.1428%;">
+<col style="width: 42.8572%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Checking the Boolean</th>
+<th class="tableblock halign-left valign-top">Using the Boolean Directly</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="pyret">fun fixed-dot(r):
+  if      (r["fixed"] == true) : circle(5, "solid", "green")
+  else if (r["fixed"] == false): circle(5, "solid", "black")
+  end
+end</code></code></pre>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="pyret">fun fixed-dot(r):
+  if r["fixed"]: circle(5, "solid", "green")
+  else: circle(5, "solid", "black")
+  end
+end</code></code></pre>
+</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>For students who are really ready for a challenge, direct them to the <a href="https://code.pyret.org/editor#share=1OUuVCsm320LzZtwsrS4TLTt_Gp7tQD2A" target="_blank" rel="noopener">Dots for Value Ranges Starter File</a> and <a href="../../lessons/custom-scatter-plots/pages/value-range-dot-explore.html" target="_blank" rel="noopener">Dots for Value Ranges - Explore</a></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2 lesson-section-2">
+<h3 id="_synthesize_2">Synthesize</h3>
+<div class="paragraph">
+<p>How do piecewise functions expand what is possible with the <code class="pyret">image-scatter-plot</code> function?</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 acknowledgmentsect">
+<div class="sectionbody">
+<div class="openblock acknowledgment">
+<div class="content">
+<div class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-17 19:42:13 -0400
+</div>
+</div>
+</div>
+</body>
+</html>

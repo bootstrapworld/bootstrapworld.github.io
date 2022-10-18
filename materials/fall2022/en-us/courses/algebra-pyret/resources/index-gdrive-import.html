@@ -1,0 +1,1282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Teacher Resources for Algebra</title>
+<style>
+/* Overall document font */
+* {font-family: Lato, Arial, Helvetica, sans-serif;}
+
+/* document headings */
+h1,.lesson-section-1 {color: #75328A;}
+h1{font-size: 32px; font-family: sans-serif;}
+table.section-heading *, .lesson-section-1 h2{font-size: 32px; font-weight: 100;}
+table.section-heading{width: 100%;}
+table.section-heading td:last-child{text-align: right; color: #d9d2e9;}
+
+/* preamble section */
+table.preamble td {padding: 10px;}
+table.preamble td:first-child{background: #b7d893; width: 25%;}
+table.preamble td:first-child p {font-weight: bold; margin: 5px;}
+
+/* content used throughout the body */
+table{ border-collapse: collapse; border: none; }
+table.grid-all.frame-all {border: solid 1px black;}
+table.grid-none.frame-none {border-width: 0px;}
+
+.big {font-size: 30pt;}
+.vocab{font-weight: bold; font-style: italic;}
+.right{text-align: right;}
+.acknowledgment {
+  border-top: solid 1px black; 
+  font-style: italic; 
+  font-size: 8pt;
+}
+.lesson-point {
+  border-top: solid 1px black; 
+  border-bottom: solid 1px black; 
+  color: black;
+  font-weight: bold;
+}
+
+.web-page-only, #footer { display: none; visibility: hidden; }
+
+/* Callout boxes */
+.strategy-box, .notice-box {
+  background: #efefef;
+  border: solid 5px !important;
+  margin: 15px auto;
+  width: 100%;
+}
+.strategy-box { border-color: #1a73b5 !important; }
+.notice-box   { border-color: #7747a5 !important; }
+.strategy-box td, .notice-box td{ padding: 10px; }
+.strategy-box .title, .notice-box .title{
+  width: 100%;
+  display: block;
+  font-weight: bold;
+  font-size: 24px;
+  clear: both;
+  margin: 100px;
+}
+.strategy-box p.tableblock:first-child, .notice-box p.tableblock:first-child{
+  text-align: center;
+  padding-bottom: 15px;
+}
+.strategy-box .title { color: #1a73b5; }
+.notice-box   .title { color: #7747a5; }
+.strategy-box a, .notice-box a { color: blue; text-decoration: underline; }
+
+/* "Tables" of Evaluation */
+.operator{border-bottom: solid 1px black; text-align: center;}
+.operator * {text-align: center;}
+td {padding: 0px 10px; font-size: 14px;}
+table.expression {
+    font-family:"Courier New", Monaco, monospace;
+    border:     solid 1px black;
+    font-size:  1px;
+    max-width:  400px;
+    color:      #666666;
+    display:    inline-block;
+}
+table.args {border: none; text-align: center;}
+
+.wescheme-string,     .cm-scheme-string    {color: green;}
+.wescheme-number,     .cm-scheme-number    {color: blue;}
+.wescheme-boolean,    .cm-scheme-boolean   {color: darkred;}
+.wescheme-character,  .cm-scheme-character {color: orange;}
+.wescheme-symbol,     .cm-scheme-symbol    {color: steelblue;}
+.wescheme-comment,    .cm-scheme-comment   {color: orange; }
+
+.racket, .pyret, .studentAnswerCode, .studentAnswer, .pyretkeyword, .keyword_only {
+    font-family:"Courier New", Monaco, monospace !important; 
+    color: black;
+}
+
+/* Design Recipe */
+.recipe_instructions { font-style: italic; }
+table.recipe_title {
+  color:              white;
+  background:         gray;
+  display:            block;
+  padding:            0px;
+  font-size:          1.1rem;
+  font-weight:        bold;
+}</style>
+
+    <script src="../../../lib/langtable.js"></script>
+    <script src="../../../dependency-graph.js"></script>
+    <script src="../../../pathway-tocs.js"></script>
+    <script>var pathway;</script>
+
+  <script>
+  window.status = window.status || 'ready_to_print';
+  window.___gcfg = {
+  parsetags: 'explicit'
+  };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>function renderSaveToDrive() {
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    gapi.savetodrive.render('savetodrive-div', {
+    src:window.location.href,
+    filename:"Teacher Resources for Algebra",
+    sitename:"Bootstrap, Brown University"
+  });
+  if(isSafari){
+    var warning = document.createElement("div");
+    warning.id = "safariWarning";
+    warning.innerHTML = "You appear to be using Safari, which interferes with Google's Save-to-Drive button. You can fix it by going to Preferences, clicking 'Privacy', and making sure that 'Prevent cross-site tracking' is <b>not</b> checked."
+    var button = document.getElementById("savetodrive-div");
+    button.parentNode.insertBefore(warning, warning.nextSibling);
+  }
+}
+</script>
+</head>
+<body class="TeacherResources article pyret" onload="renderSaveToDrive()">
+<span id="body" onload="renderSaveToDrive()">
+<span id="header">
+<h1>Teacher Resources for Algebra</h1>
+
+  <span id="savetodrive-div"></span>
+
+</span>
+<span id="content">
+<span id="preamble_disabled" class="lessonSummary">
+<span class="sectionbody">
+<span class="paragraph">
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../index.shtml">Click here to return to lessons</a></p>
+</span>
+</span>
+</span>
+<span class="sect1">
+<h2 id="_essentials">Essentials</h2>
+<span class="sectionbody">
+<span class="ulist">
+<ul>
+<li>
+<p><strong>Online Community (Discourse)</strong> [<a href="https://discourse.bootstrapworld.org" target="_blank" rel="noopener">Discourse</a>] - Talk with other Bootstrap teachers, ask questions, and share out ideas!</p>
+</li>
+<li>
+<p><strong>Collection of Bootstrap:Algebra Desmos Activities</strong> [<a href="https://teacher.desmos.com/collection/5fbecc2b40d7aa0d844956f0" target="_blank" rel="noopener">link</a>]</p>
+</li>
+<li>
+<p><strong>Contracts</strong> [<a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/solution-pages/contracts.pdf" target="_blank" rel="noopener">PDF</a>] - for teachers who want only the contracts reference from the back of the student workbook, without using the entire book.</p>
+</li>
+<li>
+<p><strong>Glossary</strong> [<a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../pathway-glossary.shtml" target="_blank" rel="noopener">link</a>] - All of the vocabulary words (and their definitions) used in this pathway.</p>
+</li>
+<li>
+<p><strong>Bilingual Glossary of Bootstrap Terms (English-Spanish)</strong> [<a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lib/bilingual-glossary.html" target="_blank" rel="noopener">PDF</a>] - For teachers with ELL/ESL students, we provide a bilingual glossary for all of the terms used across our curriculum library.</p>
+</li>
+<li>
+<p><strong>Blank Design Recipe Worksheet</strong> [<a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../back-matter/pages/blank-recipe.html" target="_blank" rel="noopener">PDF</a>] - Use alongside story problems for a function development template.</p>
+</li>
+</ul>
+</span>
+</span>
+</span>
+<span class="sect1">
+<h2 id="_starter_files">Starter Files</h2>
+<span class="sectionbody">
+<span class="paragraph">
+<p>Many of our lessons have their own starter files, linked from the materials section of each lesson plan. Below is a collated list of all the starter files from across the curriculum.</p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p><strong>Game Templates</strong></p>
+<span class="ulist">
+<ul>
+<li>
+<p><a href="https://code.pyret.org/editor#share=1VB-XBcSzgYKnObyIH8BdCmiworNRLlvM" target="_blank" rel="noopener">Ninja Cat Game</a></p>
+</li>
+<li>
+<p><a href="https://code.pyret.org/editor#share=1rNabrhxIqcfHEjdzJqKQAnA9uVWdprQu" target="_blank" rel="noopener">Blank Game Starter File</a></p>
+</li>
+<li>
+<p><a href="https://code.pyret.org/editor#share=1uUEsPwha-Siw-sMNf7Zaz_Z4gAog7Prl" target="_blank" rel="noopener">Sample Game Starter File</a></p>
+</li>
+<li>
+<p><a href="https://code.pyret.org/editor#share=1R8uAFAeYRy5L6FydesOBLHQHFtQEGxGV" target="_blank" rel="noopener">Sample Game with Distance Lines Made Visible</a></p>
+</li>
+<li>
+<p><a href="https://code.pyret.org/editor#share=1k_dn3TCwVY2ykFqxQL8BpnQHMey1IgzW" target="_blank" rel="noopener">Sample Game with 2D Motion</a></p>
+</li>
+</ul>
+</span>
+</li>
+<li>
+<p><strong>Ratio &amp; Proportion, Geometric Transformations, Coordinate Plane Geometry - <em>Flags</em></strong></p>
+<span class="ulist">
+<ul>
+<li>
+<p><a href="https://code.pyret.org/editor#share=1mjNzzf4iiQkjosPExCKtYyCaDihSs-Qr" target="_blank" rel="noopener">Flags Starter File</a></p>
+</li>
+<li>
+<p><a href="https://code.pyret.org/editor#share=1O_3WGOcqaTzR7cuZY3ZSh5TEFg3ZNPV6" target="_blank" rel="noopener">Flags of Netherland</a></p>
+</li>
+<li>
+<p><a href="https://code.pyret.org/editor#share=1f3sX5IaNDKd3l6QFFblRHvyLFKVQXYvX" target="_blank" rel="noopener">Alaskan Flag Starter File</a></p>
+</li>
+<li>
+<p><a href="https://code.pyret.org/editor#share=1H1yf0uFJgiT6NBHqW8kh_JjLKHNQRXpH" target="_blank" rel="noopener">Flag of Lebanon Starter File</a></p>
+</li>
+<li>
+<p><a href="https://code.pyret.org/editor#share=1QX4pU7j2hK4rR0zfLXGAgEarCSsLVwqD" target="_blank" rel="noopener">Flag of Puerto Rico Starter File</a></p>
+</li>
+<li>
+<p><a href="https://code.pyret.org/editor#share=1-TtjC_NYZTtT5U0T3HSdvcfBHb90bh2n" target="_blank" rel="noopener">Flag of Trinidad and Tobago Starter File</a></p>
+</li>
+<li>
+<p><a href="https://code.pyret.org/editor#share=17HZOT0Y6rHAmwv8BZNN9YIsoqI7yWmHj" target="_blank" rel="noopener">Flag of Turkey Starter File</a></p>
+</li>
+</ul>
+</span>
+</li>
+<li>
+<p><strong>Inequalities</strong></p>
+<span class="ulist">
+<ul>
+<li>
+<p><a href="https://code.pyret.org/editor#share=1Nfd30NVNwPzDu0C02dsCbmKecbMVfcQV" target="_blank" rel="noopener">Simple Inequalities Starter File</a></p>
+</li>
+<li>
+<p><a href="https://code.pyret.org/editor#share=11M7tp22-lOwYK9jJD67mM_RP836ikARd" target="_blank" rel="noopener">Compound Inequalities Starter File</a></p>
+</li>
+<li>
+<p><a href="https://code.pyret.org/editor#share=13d5j4CAfaHu1Y1DzPBvqapzO-Gpr9BrH" target="_blank" rel="noopener">Sam the Butterfly Starter File</a></p>
+</li>
+</ul>
+</span>
+</li>
+<li>
+<p><strong>Other</strong></p>
+<span class="ulist">
+<ul>
+<li>
+<p><a href="https://code.pyret.org/editor#share=1nHYxDhgOsbQ-jI7OMZLcgcTJ8HFxPWCL" target="_blank" rel="noopener">Defining Values Starter File</a></p>
+</li>
+<li>
+<p><a href="https://code.pyret.org/editor#share=1pi0API2gERKokehisGvg7717xaHHPEui" target="_blank" rel="noopener">Chinese Flag Starter File</a></p>
+</li>
+<li>
+<p><a href="https://code.pyret.org/editor#share=1Wvu39Uf0vmlA6s2HO5nOmGm-PtnTvfCf" target="_blank" rel="noopener">Rocket Height Starter File</a></p>
+</li>
+<li>
+<p><a href="https://code.pyret.org/editor#share=1JEeZjzctaJ9fD77rWXqrorqCwlZrDx9H" target="_blank" rel="noopener">Bug Hunting Starter File</a></p>
+</li>
+<li>
+<p><a href="https://code.pyret.org/editor#share=1CRRVBQ-D16b00MgOH6RA7I_OWousDUql" target="_blank" rel="noopener">Boolean Starter File</a></p>
+</li>
+<li>
+<p><a href="https://code.pyret.org/editor#share=1VmH2V3ByFOA_-Fwh-IR1dLC_9XIYGc6U" target="_blank" rel="noopener">Sally&#8217;s Lemonade Starter File</a></p>
+</li>
+<li>
+<p><a href="https://code.pyret.org/editor#share=1GScGyigfRPJDdCiGKGnISTXoVBm9f7aE" target="_blank" rel="noopener">Alice&#8217;s Restaurant Starter File</a></p>
+</li>
+<li>
+<p><a href="https://code.pyret.org/editor#share=1Y520nufSQfWas0aePgaQRVnI2oES3_86" target="_blank" rel="noopener">Surface Area of a Rectangular Prism Starter File</a></p>
+</li>
+</ul>
+</span>
+</li>
+</ul>
+</span>
+</span>
+</span>
+<span class="sect1">
+<h2 id="_projects_in_bootstrapalgebra">Projects in Bootstrap:Algebra</h2>
+<span class="sectionbody">
+<span class="paragraph">
+<p>Designing an original video game is the (optional) capstone project for Bootstrap Algebra. This project involves all of the various algebra and programming concepts covered in the lessons, providing students with a creative way to demonstrate their mastery of the material.</p>
+</span>
+<span class="paragraph">
+<p>You can find the description of this project (and the grading rubric!) at <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/project-video-game/index.shtml" target="_blank" rel="noopener">the video game Project Page</a>.</p>
+</span>
+</span>
+</span>
+<span class="sect1">
+<h2 id="_exercises_and_solutions">Exercises and Solutions</h2>
+<span class="sectionbody">
+<span class="paragraph">
+<p>Most exercises are part of the <strong><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../workbook/workbook.pdf">Student Workbook</a></strong>,
+and we provide password-protected <strong><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/./protected/workbook-sols.pdf.html">Workbook Solutions</a></strong> as well.</p>
+</span>
+<span class="paragraph">
+<p>You can find the 'exercise' and 'solution' versions of all supplemental materials as well, in the lists below.</p>
+</span>
+<span class="paragraph">
+<p><span class="vspace" style="height: 1ex"></span></p>
+</span>
+<span class="paragraph">
+<p><strong><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/computing-needs-all-voices/index.shtml">Computing Needs All Voices
+</a></strong></p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p>Computing Needs All Voices! [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/computing-needs-all-voices/pages/computing-pioneers.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/computing-needs-all-voices/solution-pages/computing-pioneers.html">solution</a> ]</p>
+</li>
+<li>
+<p>Notice and Wonder [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/computing-needs-all-voices/pages/NoticeAndWonder.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/computing-needs-all-voices/solution-pages/NoticeAndWonder.html">solution</a> ]</p>
+</li>
+<li>
+<p>Windows and Mirrors [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/computing-needs-all-voices/pages/windows-mirrors.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/computing-needs-all-voices/solution-pages/windows-mirrors.html">solution</a> ]</p>
+</li>
+<li>
+<p>Reflection: Problem Solving Advantages of Diverse Teams [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/computing-needs-all-voices/pages/advantages-of-diverse-teams.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/computing-needs-all-voices/solution-pages/advantages-of-diverse-teams.html">solution</a> ]</p>
+</li>
+</ul>
+</span>
+<span class="paragraph">
+<p><strong><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/numbers-inside-video-games/index.shtml">The Numbers Inside Video Games
+</a></strong></p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p>Notice and Wonder [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/numbers-inside-video-games/pages/NoticeAndWonder.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/numbers-inside-video-games/solution-pages/NoticeAndWonder.html">solution</a> ]</p>
+</li>
+<li>
+<p>Reverse Engineer a video game [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/numbers-inside-video-games/pages/ReverseEngineerGame.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/numbers-inside-video-games/solution-pages/ReverseEngineerGame.html">solution</a> ]</p>
+</li>
+</ul>
+</span>
+<span class="paragraph">
+<p><strong><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/coordinates/index.shtml">Coordinates and Game Design
+</a></strong></p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p>Estimating Coordinates [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/coordinates/pages/Estimation.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/coordinates/solution-pages/Estimation.html">solution</a> ]</p>
+</li>
+<li>
+<p>Brainstorm Your Own Game [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/coordinates/pages/BrainstormGame.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/coordinates/solution-pages/BrainstormGame.html">solution</a> ]</p>
+</li>
+</ul>
+</span>
+<span class="paragraph">
+<p><strong><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/order-of-operations/index.shtml">Order of Operations
+</a></strong></p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p>Translate Arithmetic to Circles of Evaluation &amp; Code (Intro) [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/order-of-operations/pages/translate-arithmetic-to-coe-and-code-1-intro-w-parenth.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/order-of-operations/solution-pages/translate-arithmetic-to-coe-and-code-1-intro-w-parenth.html">solution</a> ]</p>
+</li>
+<li>
+<p>Completing Circles of Evaluation from Arithmetic Expressions [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/order-of-operations/pages/complete-coe-from-arith.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/order-of-operations/solution-pages/complete-coe-from-arith.html">solution</a> ]</p>
+</li>
+<li>
+<p>Matching Circles of Evaluation and Arithmetic Expressions [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/order-of-operations/pages/match-arith-coe.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/order-of-operations/solution-pages/match-arith-coe.html">solution</a> ]</p>
+</li>
+<li>
+<p>Completing Partial Code from Circles of Evaluation [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/order-of-operations/pages/complete-code-from-coe.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/order-of-operations/solution-pages/complete-code-from-coe.html">solution</a> ]</p>
+</li>
+<li>
+<p>Matching Circles of Evaluation &amp; Code [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/order-of-operations/pages/match-coe-to-code.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/order-of-operations/solution-pages/match-coe-to-code.html">solution</a> ]</p>
+</li>
+<li>
+<p>Translate Arithmetic to Circles of Evaluation &amp; Code 2 [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/order-of-operations/pages/translate-arithmetic-to-coe-and-code-2-outro.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/order-of-operations/solution-pages/translate-arithmetic-to-coe-and-code-2-outro.html">solution</a> ]</p>
+</li>
+<li>
+<p>Arithmetic Expressions to Circles of Evaluation &amp; Code - Challenge [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/order-of-operations/pages/translate-arithmetic-to-circles-and-code-challenge.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/order-of-operations/solution-pages/translate-arithmetic-to-circles-and-code-challenge.html">solution</a> ]</p>
+</li>
+<li>
+<p>Matching Circles of Evaluation &amp; Code [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/order-of-operations/pages/matching-coe-exp.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/order-of-operations/solution-pages/matching-coe-exp.html">solution</a> ]</p>
+</li>
+<li>
+<p>Creating Circles of Evaluation from Arithmetic Expressions [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/order-of-operations/pages/arith-to-coe.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/order-of-operations/solution-pages/arith-to-coe.html">solution</a> ]</p>
+</li>
+<li>
+<p>Creating Circles of Evaluation from Arithmetic Expressions 2 [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/order-of-operations/pages/arith-to-coe2.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/order-of-operations/solution-pages/arith-to-coe2.html">solution</a> ]</p>
+</li>
+<li>
+<p>Creating Circles of Evaluation from Arithmetic Expressions 3 [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/order-of-operations/pages/arith-to-coe3.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/order-of-operations/solution-pages/arith-to-coe3.html">solution</a> ]</p>
+</li>
+<li>
+<p>Converting Circles of Evaluation to Arithmetic Expressions [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/order-of-operations/pages/coe-to-arith.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/order-of-operations/solution-pages/coe-to-arith.html">solution</a> ]</p>
+</li>
+<li>
+<p>Converting Circles of Evaluation to Arithmetic Expressions 2 [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/order-of-operations/pages/coe-to-arith2.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/order-of-operations/solution-pages/coe-to-arith2.html">solution</a> ]</p>
+</li>
+<li>
+<p>Evaluating Circles of Evaluation [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/order-of-operations/pages/evaluate-coe.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/order-of-operations/solution-pages/evaluate-coe.html">solution</a> ]</p>
+</li>
+<li>
+<p>Evaluating Circles of Evaluation 2 [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/order-of-operations/pages/evaluate-coe2.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/order-of-operations/solution-pages/evaluate-coe2.html">solution</a> ]</p>
+</li>
+<li>
+<p>Converting Circles of Evaluation to Code [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/order-of-operations/pages/coe-to-code.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/order-of-operations/solution-pages/coe-to-code.html">solution</a> ]</p>
+</li>
+<li>
+<p>Converting Circles of Evaluation to Code 2 [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/order-of-operations/pages/coe-to-code2.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/order-of-operations/solution-pages/coe-to-code2.html">solution</a> ]</p>
+</li>
+<li>
+<p>Translate Arithmetic Expressions to Circles of Evaluation &amp; Code 3 [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/order-of-operations/pages/translate-arithmetic-to-coe-and-code-3.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/order-of-operations/solution-pages/translate-arithmetic-to-coe-and-code-3.html">solution</a> ]</p>
+</li>
+<li>
+<p>Translate Arithmetic Expressions to Circles of Evaluation &amp; Code 4 [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/order-of-operations/pages/translate-arithmetic-to-coe-and-code-4.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/order-of-operations/solution-pages/translate-arithmetic-to-coe-and-code-4.html">solution</a> ]</p>
+</li>
+<li>
+<p>Translate Arithmetic Expressions to Circles of Evaluation &amp; Code 5 [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/order-of-operations/pages/translate-arithmetic-to-coe-and-code-w-neg-5.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/order-of-operations/solution-pages/translate-arithmetic-to-coe-and-code-w-neg-5.html">solution</a> ]</p>
+</li>
+<li>
+<p>Translate Arithmetic Expressions to Circles of Evaluation &amp; Code 6 [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/order-of-operations/pages/translate-arithmetic-to-coe-and-code-w-neg-6.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/order-of-operations/solution-pages/translate-arithmetic-to-coe-and-code-w-neg-6.html">solution</a> ]</p>
+</li>
+<li>
+<p>Translating Circles of Evaluation to Code - w/Square Roots [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/order-of-operations/pages/translate-coe-to-code-w-sqrts.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/order-of-operations/solution-pages/translate-coe-to-code-w-sqrts.html">solution</a> ]</p>
+</li>
+<li>
+<p>Arithmetic Expressions to Circles of Evaluation &amp; Code - Challenge 2 [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/order-of-operations/pages/translate-arithmetic-to-circles-and-code-challenge-2.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/order-of-operations/solution-pages/translate-arithmetic-to-circles-and-code-challenge-2.html">solution</a> ]</p>
+</li>
+<li>
+<p>Arithmetic Expressions to Circles of Evaluation &amp; Code - Challenge 3 [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/order-of-operations/pages/translate-arithmetic-to-circles-and-code-challenge-3.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/order-of-operations/solution-pages/translate-arithmetic-to-circles-and-code-challenge-3.html">solution</a> ]</p>
+</li>
+<li>
+<p>Arithmetic Expressions to Circles of Evaluation &amp; Code - Challenge 4 [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/order-of-operations/pages/translate-arithmetic-to-circles-and-code-challenge-4.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/order-of-operations/solution-pages/translate-arithmetic-to-circles-and-code-challenge-4.html">solution</a> ]</p>
+</li>
+</ul>
+</span>
+<span class="paragraph">
+<p><strong><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/simple-data-types/index.shtml">Simple Data Types
+</a></strong></p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p>Numbers and Strings [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/simple-data-types/pages/numbers-n-strings.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/simple-data-types/solution-pages/numbers-n-strings.html">solution</a> ]</p>
+</li>
+<li>
+<p>Booleans [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/simple-data-types/pages/booleans.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/simple-data-types/solution-pages/booleans.html">solution</a> ]</p>
+</li>
+</ul>
+</span>
+<span class="paragraph">
+<p><strong><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/contracts/index.shtml">Contracts
+</a></strong></p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p>Applying Functions [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/contracts/pages/applying-functions.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/contracts/solution-pages/applying-functions.html">solution</a> ]</p>
+</li>
+<li>
+<p>Domain and Range Frayer model [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/contracts/pages/frayer-model.pdf">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/contracts/solution-pages/frayer-model.pdf">solution</a> ]</p>
+</li>
+<li>
+<p>Function and Variable Frayer model. [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/contracts/pages/frayer-model-2.pdf">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/contracts/solution-pages/frayer-model-2.pdf">solution</a> ]</p>
+</li>
+<li>
+<p>Practicing Contracts: Domain &amp; Range [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/contracts/pages/practicing-contracts.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/contracts/solution-pages/practicing-contracts.html">solution</a> ]</p>
+</li>
+<li>
+<p>Matching Expressions and Contracts [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/contracts/pages/matching-expressions.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/contracts/solution-pages/matching-expressions.html">solution</a> ]</p>
+</li>
+<li>
+<p>Contracts [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/contracts/pages/image-contracts.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/contracts/solution-pages/image-contracts.html">solution</a> ]</p>
+</li>
+<li>
+<p>Using Contracts [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/contracts/pages/using-contracts.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/contracts/solution-pages/using-contracts.html">solution</a> ]</p>
+</li>
+<li>
+<p>Using Contracts (continued) [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/contracts/pages/using-contracts-cont.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/contracts/solution-pages/using-contracts-cont.html">solution</a> ]</p>
+</li>
+<li>
+<p>Triangle Contracts [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/contracts/pages/triangle-contracts.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/contracts/solution-pages/triangle-contracts.html">solution</a> ]</p>
+</li>
+<li>
+<p>Triangle Contracts (SAS &amp; ASA) [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/contracts/pages/triangle-contracts-cont.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/contracts/solution-pages/triangle-contracts-cont.html">solution</a> ]</p>
+</li>
+<li>
+<p>Radial Star [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/contracts/pages/radial-star.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/contracts/solution-pages/radial-star.html">solution</a> ]</p>
+</li>
+<li>
+<p>Star Polygon [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/contracts/pages/star-polygon.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/contracts/solution-pages/star-polygon.html">solution</a> ]</p>
+</li>
+</ul>
+</span>
+<span class="paragraph">
+<p><strong><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/function-composition/index.shtml">Function Composition
+</a></strong></p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p>Function Cards [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/function-composition/pages/function-cards.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/function-composition/solution-pages/function-cards.html">solution</a> ]</p>
+</li>
+<li>
+<p>Diagramming Function Composition [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/function-composition/pages/diagramming-function-composition.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/function-composition/solution-pages/diagramming-function-composition.html">solution</a> ]</p>
+</li>
+<li>
+<p>Function Composition&#8201;&#8212;&#8201;Green Star [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/function-composition/pages/function-composition-green-star.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/function-composition/solution-pages/function-composition-green-star.html">solution</a> ]</p>
+</li>
+<li>
+<p>Function Composition&#8201;&#8212;&#8201;Your Name [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/function-composition/pages/function-composition-your-name.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/function-composition/solution-pages/function-composition-your-name.html">solution</a> ]</p>
+</li>
+<li>
+<p>Function Composition&#8201;&#8212;&#8201;scale-xy [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/function-composition/pages/function-composition-scale-xy.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/function-composition/solution-pages/function-composition-scale-xy.html">solution</a> ]</p>
+</li>
+<li>
+<p>More than one way to Compose an Image! [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/function-composition/pages/more-than-one-way.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/function-composition/solution-pages/more-than-one-way.html">solution</a> ]</p>
+</li>
+</ul>
+</span>
+<span class="paragraph">
+<p><strong><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/defining-values/index.shtml">Defining Values
+</a></strong></p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p>Defining Values - Explore [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/defining-values/pages/defining-values-explore.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/defining-values/solution-pages/defining-values-explore.html">solution</a> ]</p>
+</li>
+<li>
+<p>Which Value(s) Would it Make Sense to Define? [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/defining-values/pages/which-value-to-define.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/defining-values/solution-pages/which-value-to-define.html">solution</a> ]</p>
+</li>
+<li>
+<p>Defining Values - Chinese Flag [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/defining-values/pages/chinese-flag.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/defining-values/solution-pages/chinese-flag.html">solution</a> ]</p>
+</li>
+<li>
+<p>Why Define Values? [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/defining-values/pages/coe-why-define-values.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/defining-values/solution-pages/coe-why-define-values.html">solution</a> ]</p>
+</li>
+<li>
+<p>Writing Code using Defined Values [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/defining-values/pages/writing-code-using-defined-values.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/defining-values/solution-pages/writing-code-using-defined-values.html">solution</a> ]</p>
+</li>
+</ul>
+</span>
+<span class="paragraph">
+<p><strong><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/flags/index.shtml">Making Flags
+</a></strong></p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p>Estimating Coordinates [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/flags/pages/japan-estimating-coordinates.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/flags/solution-pages/japan-estimating-coordinates.html">solution</a> ]</p>
+</li>
+<li>
+<p>Decomposing Flags [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/flags/pages/decomposing-flags.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/flags/solution-pages/decomposing-flags.html">solution</a> ]</p>
+</li>
+<li>
+<p>Flags of the World [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/flags/pages/flags-of-the-world-resource.pdf">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/flags/solution-pages/flags-of-the-world-resource.pdf">solution</a> ]</p>
+</li>
+</ul>
+</span>
+<span class="paragraph">
+<p><strong><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/making-game-images/index.shtml">Making Game Images
+</a></strong></p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p>Notice and Wonder [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/making-game-images/pages/NoticeAndWonder.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/making-game-images/solution-pages/NoticeAndWonder.html">solution</a> ]</p>
+</li>
+<li>
+<p>Quick Guide to Saving Images to Drive [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/making-game-images/pages/SavingImagesGuide.pdf">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/making-game-images/solution-pages/SavingImagesGuide.pdf">solution</a> ]</p>
+</li>
+</ul>
+</span>
+<span class="paragraph">
+<p><strong><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-make-life-easier/index.shtml">Functions Make Life Easier!
+</a></strong></p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p>The Great gt domain debate! [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-make-life-easier/pages/gt-domain-debate.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-make-life-easier/solution-pages/gt-domain-debate.html">solution</a> ]</p>
+</li>
+<li>
+<p>Let&#8217;s Define Some New Functions! [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-make-life-easier/pages/rs.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-make-life-easier/solution-pages/rs.html">solution</a> ]</p>
+</li>
+<li>
+<p>Let&#8217;s Define Some More New Functions! [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-make-life-easier/pages/sun.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-make-life-easier/solution-pages/sun.html">solution</a> ]</p>
+</li>
+<li>
+<p>Describe and Define Your Own Functions! [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-make-life-easier/pages/define-your-own.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-make-life-easier/solution-pages/define-your-own.html">solution</a> ]</p>
+</li>
+</ul>
+</span>
+<span class="paragraph">
+<p><strong><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-vertical-line-test/index.shtml">The Vertical Line Test
+</a></strong></p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p>Identifying Functions from Graphs [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-vertical-line-test/pages/functions-graphs.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-vertical-line-test/solution-pages/functions-graphs.html">solution</a> ]</p>
+</li>
+<li>
+<p>Identifying Functions from Graphs (continued) [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-vertical-line-test/pages/functions-graphs-2.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-vertical-line-test/solution-pages/functions-graphs-2.html">solution</a> ]</p>
+</li>
+<li>
+<p>Notice and Wonder - Functions [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-vertical-line-test/pages/notice-wonder-functions.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-vertical-line-test/solution-pages/notice-wonder-functions.html">solution</a> ]</p>
+</li>
+<li>
+<p>How Tables Fail the Vertical Line Test [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-vertical-line-test/pages/how-tables-fail-vertical-line-test.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-vertical-line-test/solution-pages/how-tables-fail-vertical-line-test.html">solution</a> ]</p>
+</li>
+<li>
+<p>Identifying Functions from Tables [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-vertical-line-test/pages/functions-tables.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-vertical-line-test/solution-pages/functions-tables.html">solution</a> ]</p>
+</li>
+<li>
+<p>Identifying Functions from Tables &amp; Graphs [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-vertical-line-test/pages/functions-tables-graphs.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-vertical-line-test/solution-pages/functions-tables-graphs.html">solution</a> ]</p>
+</li>
+</ul>
+</span>
+<span class="paragraph">
+<p><strong><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/function-notation/index.shtml">Function Notation
+</a></strong></p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p>Matching Examples and Definitions (Math) [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/function-notation/pages/match-examples-definitions-math.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/function-notation/solution-pages/match-examples-definitions-math.html">solution</a> ]</p>
+</li>
+<li>
+<p>Function Notation - Substitution [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/function-notation/pages/function-notation-substitution.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/function-notation/solution-pages/function-notation-substitution.html">solution</a> ]</p>
+</li>
+<li>
+<p>Function Notation - Graphs [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/function-notation/pages/function-notation-graphs.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/function-notation/solution-pages/function-notation-graphs.html">solution</a> ]</p>
+</li>
+<li>
+<p>Function Notation - Piecewise Graphs [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/function-notation/pages/function-notation-graphs-pw.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/function-notation/solution-pages/function-notation-graphs-pw.html">solution</a> ]</p>
+</li>
+<li>
+<p>Function Notation - Tables [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/function-notation/pages/function-notation-tables.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/function-notation/solution-pages/function-notation-tables.html">solution</a> ]</p>
+</li>
+</ul>
+</span>
+<span class="paragraph">
+<p><strong><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-examples-definitions/index.shtml">Functions: Contracts&#x2c; Examples &amp; Definitions
+</a></strong></p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p>Mapping Examples with Circles of Evaluation [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-examples-definitions/pages/MappingExamplesWithCoE.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-examples-definitions/solution-pages/MappingExamplesWithCoE.html">solution</a> ]</p>
+</li>
+<li>
+<p>Matching Examples and Contracts [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-examples-definitions/pages/match-examples-contracts.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-examples-definitions/solution-pages/match-examples-contracts.html">solution</a> ]</p>
+</li>
+<li>
+<p>Matching Examples and Function Definitions [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-examples-definitions/pages/match-examples-definitions.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-examples-definitions/solution-pages/match-examples-definitions.html">solution</a> ]</p>
+</li>
+<li>
+<p>Creating Contracts From Examples [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-examples-definitions/pages/create-contracts-examples.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-examples-definitions/solution-pages/create-contracts-examples.html">solution</a> ]</p>
+</li>
+<li>
+<p>Contracts, Examples &amp; Definitions - bc [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-examples-definitions/pages/contracts-examples-definitions.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-examples-definitions/solution-pages/contracts-examples-definitions.html">solution</a> ]</p>
+</li>
+<li>
+<p>Contracts, Examples &amp; Definitions - Stars [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-examples-definitions/pages/contracts-examples-definitions-stars.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-examples-definitions/solution-pages/contracts-examples-definitions-stars.html">solution</a> ]</p>
+</li>
+<li>
+<p>Contracts, Examples &amp; Definitions - Name [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-examples-definitions/pages/contracts-examples-definitions-name.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-examples-definitions/solution-pages/contracts-examples-definitions-name.html">solution</a> ]</p>
+</li>
+<li>
+<p>Do The Examples Have the Same Contracts? [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-examples-definitions/pages/examples-same-contracts1.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-examples-definitions/solution-pages/examples-same-contracts1.html">solution</a> ]</p>
+</li>
+<li>
+<p>Do The Examples Have the Same Contracts? (2) [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-examples-definitions/pages/examples-same-contracts2.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-examples-definitions/solution-pages/examples-same-contracts2.html">solution</a> ]</p>
+</li>
+<li>
+<p>Matching Contracts and Examples [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-examples-definitions/pages/match-contracts-examples1.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-examples-definitions/solution-pages/match-contracts-examples1.html">solution</a> ]</p>
+</li>
+<li>
+<p>Matching Contracts and Examples 2 [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-examples-definitions/pages/match-contracts-examples2.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-examples-definitions/solution-pages/match-contracts-examples2.html">solution</a> ]</p>
+</li>
+</ul>
+</span>
+<span class="paragraph">
+<p><strong><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-can-be-linear/index.shtml">Functions Can Be Linear
+</a></strong></p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p>Notice and Wonder (Linearity) [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-can-be-linear/pages/notice-wonder-linearity.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-can-be-linear/solution-pages/notice-wonder-linearity.html">solution</a> ]</p>
+</li>
+<li>
+<p>Matching Tables to Graphs [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-can-be-linear/pages/match-tables-graphs.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-can-be-linear/solution-pages/match-tables-graphs.html">solution</a> ]</p>
+</li>
+<li>
+<p>Matching Tables to Graphs (Challenge) [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-can-be-linear/pages/match-tables-graphs2.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-can-be-linear/solution-pages/match-tables-graphs2.html">solution</a> ]</p>
+</li>
+<li>
+<p>Are All Graphs Linear? [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-can-be-linear/pages/graphs-all-linear.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-can-be-linear/solution-pages/graphs-all-linear.html">solution</a> ]</p>
+</li>
+<li>
+<p>Are All Tables Linear? [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-can-be-linear/pages/tables-all-linear.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-can-be-linear/solution-pages/tables-all-linear.html">solution</a> ]</p>
+</li>
+<li>
+<p>Linear, Non-linear, or Bust? [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-can-be-linear/pages/linear-nonlinear-bust.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-can-be-linear/solution-pages/linear-nonlinear-bust.html">solution</a> ]</p>
+</li>
+<li>
+<p>Graphs: Linear, Non-linear, or Bust? [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-can-be-linear/pages/linear-nonlinear-bust-graphs.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-can-be-linear/solution-pages/linear-nonlinear-bust-graphs.html">solution</a> ]</p>
+</li>
+<li>
+<p>Graphs 2: Linear, Non-linear, or Bust? [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-can-be-linear/pages/linear-nonlinear-bust-graphs-2.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-can-be-linear/solution-pages/linear-nonlinear-bust-graphs-2.html">solution</a> ]</p>
+</li>
+<li>
+<p>Slope &amp; y-Intercept from Tables (Intro) [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-can-be-linear/pages/slope-int-tables-intro.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-can-be-linear/solution-pages/slope-int-tables-intro.html">solution</a> ]</p>
+</li>
+<li>
+<p>Slope &amp; y-Intercept from Tables (Basic Practice) [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-can-be-linear/pages/slope-int-tables-basic.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-can-be-linear/solution-pages/slope-int-tables-basic.html">solution</a> ]</p>
+</li>
+<li>
+<p>Identifying Slope in Tables [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-can-be-linear/pages/slope-and-y-tables.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-can-be-linear/solution-pages/slope-and-y-tables.html">solution</a> ]</p>
+</li>
+<li>
+<p>Identifying Slope and y-intercept in Graphs [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-can-be-linear/pages/slope-and-y-graphs.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-can-be-linear/solution-pages/slope-and-y-graphs.html">solution</a> ]</p>
+</li>
+</ul>
+</span>
+<span class="paragraph">
+<p><strong><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/function-definition-linear/index.shtml">Defining Linear Functions
+</a></strong></p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p>Identifying Slope and y-intercept in Definitions [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/function-definition-linear/pages/slope-and-y-def.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/function-definition-linear/solution-pages/slope-and-y-def.html">solution</a> ]</p>
+</li>
+<li>
+<p>Matching Tables to Function Definitions [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/function-definition-linear/pages/match-definitions-tables.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/function-definition-linear/solution-pages/match-definitions-tables.html">solution</a> ]</p>
+</li>
+<li>
+<p>Matching Graphs to Function Definitions [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/function-definition-linear/pages/match-definitions-graphs.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/function-definition-linear/solution-pages/match-definitions-graphs.html">solution</a> ]</p>
+</li>
+<li>
+<p>Summarizing Tables with Function Definitions [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/function-definition-linear/pages/definitions-from-tables.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/function-definition-linear/solution-pages/definitions-from-tables.html">solution</a> ]</p>
+</li>
+<li>
+<p>Summarizing Graphs with Function Definitions [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/function-definition-linear/pages/definitions-from-graphs.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/function-definition-linear/solution-pages/definitions-from-graphs.html">solution</a> ]</p>
+</li>
+</ul>
+</span>
+<span class="paragraph">
+<p><strong><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-dr/index.shtml">Solving Word Problems with the Design Recipe
+</a></strong></p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p>Matching Word Problems and Purpose Statements [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-dr/pages/matching-wp-purpose.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-dr/solution-pages/matching-wp-purpose.html">solution</a> ]</p>
+</li>
+<li>
+<p>Writing Examples from Purpose Statements [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-dr/pages/create-examples-contracts-purpose-1.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-dr/solution-pages/create-examples-contracts-purpose-1.html">solution</a> ]</p>
+</li>
+<li>
+<p>Writing Examples from Purpose Statements 2 [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-dr/pages/create-examples-contracts-purpose-2.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-dr/solution-pages/create-examples-contracts-purpose-2.html">solution</a> ]</p>
+</li>
+<li>
+<p>Fixing Purpose Statements [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-dr/pages/fixing-purpose.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-dr/solution-pages/fixing-purpose.html">solution</a> ]</p>
+</li>
+<li>
+<p>Word Problem: rocket-height [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-dr/pages/rocket-height.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-dr/solution-pages/rocket-height.html">solution</a> ]</p>
+</li>
+<li>
+<p>Rocket Height Challenges [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-dr/pages/rocket-challenges.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-dr/solution-pages/rocket-challenges.html">solution</a> ]</p>
+</li>
+<li>
+<p>Blank Design Recipe [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-dr/pages/dr-blank.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-dr/solution-pages/dr-blank.html">solution</a> ]</p>
+</li>
+<li>
+<p>The Design Recipe (Restaurants) [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-dr/pages/dr-restaurants.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-dr/solution-pages/dr-restaurants.html">solution</a> ]</p>
+</li>
+<li>
+<p>The Design Recipe (Direct Variation) [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-dr/pages/dr-direct-variation.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-dr/solution-pages/dr-direct-variation.html">solution</a> ]</p>
+</li>
+<li>
+<p>The Design Recipe (Slope/Intercept 1) [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-dr/pages/dr-slope-intercept-1.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-dr/solution-pages/dr-slope-intercept-1.html">solution</a> ]</p>
+</li>
+<li>
+<p>The Design Recipe (Negative Slope/Intercept) [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-dr/pages/dr-neg-slope.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-dr/solution-pages/dr-neg-slope.html">solution</a> ]</p>
+</li>
+<li>
+<p>The Design Recipe (Geometry - Rectangles) [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-dr/pages/dr-geometry-rectangles.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-dr/solution-pages/dr-geometry-rectangles.html">solution</a> ]</p>
+</li>
+<li>
+<p>The Design Recipe (Geometry - Rectangular Prisms) [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-dr/pages/dr-geometry-rect-prism.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-dr/solution-pages/dr-geometry-rect-prism.html">solution</a> ]</p>
+</li>
+<li>
+<p>The Design Recipe (Geometry - Circles) [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-dr/pages/dr-geometry-circles.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-dr/solution-pages/dr-geometry-circles.html">solution</a> ]</p>
+</li>
+<li>
+<p>The Design Recipe (Geometry - Cylinders) [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-dr/pages/dr-geometry-cylinder.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-dr/solution-pages/dr-geometry-cylinder.html">solution</a> ]</p>
+</li>
+<li>
+<p>The Design Recipe (Breaking Even) [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-dr/pages/dr-breaking-even.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-dr/solution-pages/dr-breaking-even.html">solution</a> ]</p>
+</li>
+<li>
+<p>The Design Recipe (Marquee &amp; Cubing) [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-dr/pages/dr-marquee.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-dr/solution-pages/dr-marquee.html">solution</a> ]</p>
+</li>
+</ul>
+</span>
+<span class="paragraph">
+<p><strong><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-for-character-animation/index.shtml">Functions for Character Animation
+</a></strong></p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p>Danger and Target Movement [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-for-character-animation/pages/character-animation-dr.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-for-character-animation/solution-pages/character-animation-dr.html">solution</a> ]</p>
+</li>
+</ul>
+</span>
+<span class="paragraph">
+<p><strong><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/surface-area-rect-prism/index.shtml">Surface Area of a Rectangular Prism
+</a></strong></p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p>Surface Area of a Rectangular Prism - Explore [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/surface-area-rect-prism/pages/prism-explore.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/surface-area-rect-prism/solution-pages/prism-explore.html">solution</a> ]</p>
+</li>
+</ul>
+</span>
+<span class="paragraph">
+<p><strong><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/problem-decomposition/index.shtml">Problem Decomposition
+</a></strong></p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p>Word Problems: revenue, cost [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/problem-decomposition/pages/revenue-and-cost.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/problem-decomposition/solution-pages/revenue-and-cost.html">solution</a> ]</p>
+</li>
+<li>
+<p>Word Problem: profit [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/problem-decomposition/pages/profit.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/problem-decomposition/solution-pages/profit.html">solution</a> ]</p>
+</li>
+<li>
+<p>Sally&#8217;s Bike [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/problem-decomposition/pages/sallys-bike.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/problem-decomposition/solution-pages/sallys-bike.html">solution</a> ]</p>
+</li>
+<li>
+<p>Profit - More than one Way! [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/problem-decomposition/pages/profit-discussion.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/problem-decomposition/solution-pages/profit-discussion.html">solution</a> ]</p>
+</li>
+<li>
+<p>Top Down or Bottom Up [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/problem-decomposition/pages/topdown-bottomup-discussion.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/problem-decomposition/solution-pages/topdown-bottomup-discussion.html">solution</a> ]</p>
+</li>
+</ul>
+</span>
+<span class="paragraph">
+<p><strong><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/inequalities1-simple/index.shtml">Simple Inequalities
+</a></strong></p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p>Boolean Functions [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/inequalities1-simple/pages/boolean-functions.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/inequalities1-simple/solution-pages/boolean-functions.html">solution</a> ]</p>
+</li>
+<li>
+<p>Simple Inequalities [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/inequalities1-simple/pages/simple-inequalities.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/inequalities1-simple/solution-pages/simple-inequalities.html">solution</a> ]</p>
+</li>
+<li>
+<p>Word Problem: is-hot [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/inequalities1-simple/pages/is-hot.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/inequalities1-simple/solution-pages/is-hot.html">solution</a> ]</p>
+</li>
+</ul>
+</span>
+<span class="paragraph">
+<p><strong><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/inequalities2-compound/index.shtml">Compound Inequalities: Solutions &amp; Non-Solutions
+</a></strong></p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p>Converting Circles of Evaluation to Code [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/inequalities2-compound/pages/boolean-coe-to-code1.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/inequalities2-compound/solution-pages/boolean-coe-to-code1.html">solution</a> ]</p>
+</li>
+<li>
+<p>Compound Inequalities&#8201;&#8212;&#8201;Practice [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/inequalities2-compound/pages/and-or.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/inequalities2-compound/solution-pages/and-or.html">solution</a> ]</p>
+</li>
+<li>
+<p>Compound Inequality Warmup [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/inequalities2-compound/pages/compound-warmup.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/inequalities2-compound/solution-pages/compound-warmup.html">solution</a> ]</p>
+</li>
+<li>
+<p>Exploring Compound Inequality [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/inequalities2-compound/pages/compound-explore.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/inequalities2-compound/solution-pages/compound-explore.html">solution</a> ]</p>
+</li>
+<li>
+<p>Compound Inequalities: Solutions &amp; Non-Solutions [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/inequalities2-compound/pages/compound-inequality-solutions.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/inequalities2-compound/solution-pages/compound-inequality-solutions.html">solution</a> ]</p>
+</li>
+<li>
+<p>Compound Inequality Functions [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/inequalities2-compound/pages/compound-inequality-functions.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/inequalities2-compound/solution-pages/compound-inequality-functions.html">solution</a> ]</p>
+</li>
+<li>
+<p>Converting Circles of Evaluation with Booleans to Code 2 [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/inequalities2-compound/pages/boolean-coe-to-code2.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/inequalities2-compound/solution-pages/boolean-coe-to-code2.html">solution</a> ]</p>
+</li>
+</ul>
+</span>
+<span class="paragraph">
+<p><strong><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/inequalities3-sam/index.shtml">Sam the Butterfly - Applying Inequalities
+</a></strong></p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p>Sam the Butterfly [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/inequalities3-sam/pages/sam-intro.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/inequalities3-sam/solution-pages/sam-intro.html">solution</a> ]</p>
+</li>
+<li>
+<p>Left and Right [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/inequalities3-sam/pages/left-and-right.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/inequalities3-sam/solution-pages/left-and-right.html">solution</a> ]</p>
+</li>
+<li>
+<p>Word Problem: is-onscreen [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/inequalities3-sam/pages/onscreen.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/inequalities3-sam/solution-pages/onscreen.html">solution</a> ]</p>
+</li>
+<li>
+<p>Onscreen - More than One Way [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/inequalities3-sam/pages/onscreen-discussion.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/inequalities3-sam/solution-pages/onscreen-discussion.html">solution</a> ]</p>
+</li>
+<li>
+<p>Keeping NinjaCat in the Game [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/inequalities3-sam/pages/keeping-ninjacat-in-the-game.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/inequalities3-sam/solution-pages/keeping-ninjacat-in-the-game.html">solution</a> ]</p>
+</li>
+</ul>
+</span>
+<span class="paragraph">
+<p><strong><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/piecewise-functions-conditionals/index.shtml">Piecewise Functions and Conditionals
+</a></strong></p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p>Red Shape - Explore [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/piecewise-functions-conditionals/pages/red-shape-explore.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/piecewise-functions-conditionals/solution-pages/red-shape-explore.html">solution</a> ]</p>
+</li>
+<li>
+<p>Word Problem: red-shape [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/piecewise-functions-conditionals/pages/red-shape-dr.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/piecewise-functions-conditionals/solution-pages/red-shape-dr.html">solution</a> ]</p>
+</li>
+<li>
+<p>Decide &amp; Defend - Piecewise Onto Functions [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/piecewise-functions-conditionals/pages/decide-defend-onto.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/piecewise-functions-conditionals/solution-pages/decide-defend-onto.html">solution</a> ]</p>
+</li>
+<li>
+<p>Mood Generator - Explore [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/piecewise-functions-conditionals/pages/mood-generator-explore.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/piecewise-functions-conditionals/solution-pages/mood-generator-explore.html">solution</a> ]</p>
+</li>
+<li>
+<p>Word Problem: Mood Generator [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/piecewise-functions-conditionals/pages/mood-generator-dr.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/piecewise-functions-conditionals/solution-pages/mood-generator-dr.html">solution</a> ]</p>
+</li>
+<li>
+<p>Welcome to Alice’s Restaurant! [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/piecewise-functions-conditionals/pages/restaurant-intro.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/piecewise-functions-conditionals/solution-pages/restaurant-intro.html">solution</a> ]</p>
+</li>
+<li>
+<p>Alice&#8217;s Restaurant - Explore [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/piecewise-functions-conditionals/pages/restaurant-explore.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/piecewise-functions-conditionals/solution-pages/restaurant-explore.html">solution</a> ]</p>
+</li>
+<li>
+<p>Word Problem: Alice&#8217;s Restaurant [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/piecewise-functions-conditionals/pages/restaurant-dr.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/piecewise-functions-conditionals/solution-pages/restaurant-dr.html">solution</a> ]</p>
+</li>
+</ul>
+</span>
+<span class="paragraph">
+<p><strong><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/player-animation/index.shtml">Player Animation
+</a></strong></p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p>Word Problem: update-player [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/player-animation/pages/update-player.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/player-animation/solution-pages/update-player.html">solution</a> ]</p>
+</li>
+<li>
+<p>Challenge: Character Movement in Two Dimensions [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/player-animation/pages/2d-character-movement.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/player-animation/solution-pages/2d-character-movement.html">solution</a> ]</p>
+</li>
+<li>
+<p>Challenge: Character Movement in Two Dimensions (continued) [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/player-animation/pages/2d-character-movement-cont.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/player-animation/solution-pages/2d-character-movement-cont.html">solution</a> ]</p>
+</li>
+<li>
+<p>Challenge: update-player-2 [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/player-animation/pages/update-player-2.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/player-animation/solution-pages/update-player-2.html">solution</a> ]</p>
+</li>
+<li>
+<p>Challenges for update-player [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/player-animation/pages/challenges.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/player-animation/solution-pages/challenges.html">solution</a> ]</p>
+</li>
+</ul>
+</span>
+<span class="paragraph">
+<p><strong><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/distance-formula/index.shtml">The Distance Formula
+</a></strong></p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p>Line Length Explore [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/distance-formula/pages/line-length-explore.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/distance-formula/solution-pages/line-length-explore.html">solution</a> ]</p>
+</li>
+<li>
+<p>Pythagorean Theorem Practice [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/distance-formula/pages/pythag-practice.pdf">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/distance-formula/solution-pages/pythag-practice.pdf">solution</a> ]</p>
+</li>
+<li>
+<p>Writing Code to Calculate Missing Lengths [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/distance-formula/pages/distance-write-code-from-lengths.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/distance-formula/solution-pages/distance-write-code-from-lengths.html">solution</a> ]</p>
+</li>
+<li>
+<p>Distance on the Coordinate Plane [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/distance-formula/pages/distance-on-coordinate-plane.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/distance-formula/solution-pages/distance-on-coordinate-plane.html">solution</a> ]</p>
+</li>
+<li>
+<p>Circles of Evaluation: Distance between (0, 2) and (4, 5) [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/distance-formula/pages/distance-coe.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/distance-formula/solution-pages/distance-coe.html">solution</a> ]</p>
+</li>
+<li>
+<p>Multiple Representations: Distance between two points [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/distance-formula/pages/Distance-bw-Two-Points-Multiple-Representations.pdf">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/distance-formula/solution-pages/Distance-bw-Two-Points-Multiple-Representations.pdf">solution</a> ]</p>
+</li>
+<li>
+<p>Distance From Game Coordinates [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/distance-formula/pages/distance-from-game-coordinates.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/distance-formula/solution-pages/distance-from-game-coordinates.html">solution</a> ]</p>
+</li>
+<li>
+<p>Distance From Game Coordinates 2 [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/distance-formula/pages/distance-from-game-coordinates-2.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/distance-formula/solution-pages/distance-from-game-coordinates-2.html">solution</a> ]</p>
+</li>
+<li>
+<p>Distance (px, py) to (cx, cy) [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/distance-formula/pages/distance.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/distance-formula/solution-pages/distance.html">solution</a> ]</p>
+</li>
+<li>
+<p>Comparing Code: Finding Missing Distances [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/distance-formula/pages/distance-comparing-code.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/distance-formula/solution-pages/distance-comparing-code.html">solution</a> ]</p>
+</li>
+<li>
+<p>Word Problem: line-length [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/distance-formula/pages/line-length.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/distance-formula/solution-pages/line-length.html">solution</a> ]</p>
+</li>
+</ul>
+</span>
+<span class="paragraph">
+<p><strong><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/inequalities-collision/index.shtml">Collision Detection - Distance and Inequality
+</a></strong></p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p>Top Down / Bottom Up [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/inequalities-collision/pages/top-down-bottom-up.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/inequalities-collision/solution-pages/top-down-bottom-up.html">solution</a> ]</p>
+</li>
+<li>
+<p>Word Problem: is-collision [ <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/inequalities-collision/pages/collision.html">exercise</a> : <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/inequalities-collision/solution-pages/collision.html">solution</a> ]</p>
+</li>
+</ul>
+</span>
+</span>
+</span>
+<span class="sect1">
+<h2 id="_all_lesson_notes">All Lesson Notes</h2>
+<span class="sectionbody">
+<span class="paragraph">
+<p>The student workbook includes notes for various lessons. You can access all of these notes by clicking the links below:</p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/numbers-inside-video-games/pages/notes-intro.html">The Math Inside video games</a></p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/order-of-operations/pages/notes-order-of-operations.html">Order of Operations</a></p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/simple-data-types/pages/notes-intro-to-programming.html">Introduction to Programming</a></p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/defining-values/pages/notes-defining-values.html">Defining Values</a></p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-examples-definitions/pages/notes-defining-functions.html">Defining Functions</a></p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-can-be-linear/pages/notes-tables-graphs-definitions.html">Linear Relationships</a></p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/functions-dr/pages/notes-solving-word-problems.html">Solving Word Problems</a></p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/problem-decomposition/pages/notes-problem-decomposition.html">Problem Decomposition</a></p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/inequalities1-simple/pages/notes-inequalities.html">Inequalities</a></p>
+</li>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/piecewise-functions-conditionals/pages/notes-piecewise-functions.html">Piecewise Functions</a></p>
+</li>
+</ul>
+</span>
+</span>
+</span>
+<span class="sect1">
+<h2 id="_textbook_alignment">Textbook Alignment</h2>
+<span class="sectionbody">
+<span class="paragraph">
+<p>We offer alignment guides for several popular math textbooks, which make it easy to adopt Bootstrap as part of your normal scope and sequence. These guides are available for:</p>
+</span>
+<span class="ulist">
+<ul>
+<li>
+<p>Illustrative Math (Grade 6) - [<a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/pages/IM-grade-6.html" target="_blank" rel="noopener">HTML</a>, <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/pages/IM-grade-6.pdf" target="_blank" rel="noopener">PDF</a>]</p>
+</li>
+<li>
+<p>Illustrative Math (Grade 7) - [<a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/pages/IM-grade-7.html" target="_blank" rel="noopener">HTML</a>, <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/pages/IM-grade-7.pdf" target="_blank" rel="noopener">PDF</a>]</p>
+</li>
+<li>
+<p>Illustrative Math (Grade 8) - [<a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/pages/IM-grade-8.html" target="_blank" rel="noopener">HTML</a>, <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/pages/IM-grade-8.pdf" target="_blank" rel="noopener">PDF</a>]</p>
+</li>
+<li>
+<p>Illustrative Math (HS) - [<a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/pages/IM-HS.html" target="_blank" rel="noopener">HTML</a>, <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/pages/IM-HS.pdf" target="_blank" rel="noopener">PDF</a>]</p>
+</li>
+<li>
+<p>Connected Mathematics - CMP3 (Grade 6) - [<a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/pages/cmp-grade-6.html" target="_blank" rel="noopener">HTML</a>, <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/pages/cmp-grade-6.pdf" target="_blank" rel="noopener">PDF</a>]</p>
+</li>
+<li>
+<p>Connected Mathematics - CMP3 (Grade 7) - [<a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/pages/cmp-grade-7.html" target="_blank" rel="noopener">HTML</a>, <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/pages/cmp-grade-7.pdf" target="_blank" rel="noopener">PDF</a>]</p>
+</li>
+<li>
+<p>Connected Mathematics - CMP3 (Grade 8) - [<a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/pages/cmp-grade-8.html" target="_blank" rel="noopener">HTML</a>, <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/pages/cmp-grade-8.pdf" target="_blank" rel="noopener">PDF</a>]</p>
+</li>
+</ul>
+</span>
+</span>
+</span>
+<span class="sect1">
+<h2 id="_printables_for_classroom_walls">Printables for Classroom Walls</h2>
+<span class="sectionbody">
+<span class="ulist">
+<ul>
+<li>
+<p><a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/computing-needs-all-voices/pages/computing-pioneers.html" target="_blank" rel="noopener">Pioneers in Computing and Mathematics Posters</a></p>
+</li>
+</ul>
+</span>
+</span>
+</span>
+<span class="sect1">
+<h2 id="_videos_for_teachers">Videos for Teachers</h2>
+<span class="sectionbody">
+<span class="paragraph">
+<p>Developed in partnership with <a href="https://www.code.org" target="_blank" rel="noopener">Code.org</a>. <strong>NOTE:</strong> these were developed using our earlier, 9-unit format. The content is still applicable, so we continue to provide these resources.</p>
+</span>
+<table class="tableblock frame-all grid-all stripes-none stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p><strong>Modeling and Coordinates</strong></p>
+</span>
+<span class="videoblock">
+<span class="content">
+<iframe src="https://www.youtube.com/embed/hy3SKXANmSQ?rel=0" frameborder="0" allowfullscreen></iframe>
+</span>
+</span></span></td>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p><strong>Order of Operations</strong></p>
+</span>
+<span class="videoblock">
+<span class="content">
+<iframe src="https://www.youtube.com/embed/ObJ0Aawc9s4?rel=0" frameborder="0" allowfullscreen></iframe>
+</span>
+</span></span></td>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p><strong>Domain and Range</strong></p>
+</span>
+<span class="videoblock">
+<span class="content">
+<iframe src="https://www.youtube.com/embed/yW9XLaY5i8A?rel=0" frameborder="0" allowfullscreen></iframe>
+</span>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p><strong>Defining Values</strong></p>
+</span>
+<span class="videoblock">
+<span class="content">
+<iframe src="https://www.youtube.com/embed/bOIs2DyMUv8?rel=0" frameborder="0" allowfullscreen></iframe>
+</span>
+</span></span></td>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p><strong>Introducing The Design Recipe</strong></p>
+</span>
+<span class="videoblock">
+<span class="content">
+<iframe src="https://www.youtube.com/embed/Yf5w56PpaTw?rel=0" frameborder="0" allowfullscreen></iframe>
+</span>
+</span></span></td>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p><strong>Using The Design Recipe</strong></p>
+</span>
+<span class="videoblock">
+<span class="content">
+<iframe src="https://www.youtube.com/embed/e5ORR9LpgkU?rel=0" frameborder="0" allowfullscreen></iframe>
+</span>
+</span></span></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p><strong>Boolean Logic &amp; Inequalities</strong></p>
+</span>
+<span class="videoblock">
+<span class="content">
+<iframe src="https://www.youtube.com/embed/XjT-PdWmvtE?rel=0" frameborder="0" allowfullscreen></iframe>
+</span>
+</span></span></td>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p><strong>Piecewise Functions</strong></p>
+</span>
+<span class="videoblock">
+<span class="content">
+<iframe src="https://www.youtube.com/embed/DYrd_xaTKYU?rel=0" frameborder="0" allowfullscreen></iframe>
+</span>
+</span></span></td>
+<td class="tableblock halign-left valign-top"><span class="content"><span class="paragraph">
+<p><strong>The Pythagorean Theorem</strong></p>
+</span>
+<span class="videoblock">
+<span class="content">
+<iframe src="https://www.youtube.com/embed/35UgYAPkNcc?rel=0" frameborder="0" allowfullscreen></iframe>
+</span>
+</span></span></td>
+</tr>
+</tbody>
+</table>
+</span>
+</span>
+<span class="sect1">
+<h2 id="_other_facilitation_resources">Other Facilitation Resources</h2>
+<span class="sectionbody">
+<span class="ulist">
+<ul>
+<li>
+<p><strong>Grading Rubric</strong> [<a href="https://docs.google.com/document/d/10YYUmMbE77VwC3W24yZykZe1I0ELL_jE2_NQyH473MY/edit#" target="_blank" rel="noopener">Google Doc</a>] - A simple grading rubric for Design Recipes.</p>
+</li>
+<li>
+<p><strong>Sample Homework Submission Form</strong> [<a href="https://docs.google.com/forms/d/1fyf1xHQElboxDoHy_Voq1YNRy3aRpxIS99ofek5ti8c/viewform" target="_blank" rel="noopener">Google Doc</a>]</p>
+</li>
+<li>
+<p><strong>Broadening Participation</strong> [<a href="https://docs.google.com/presentation/d/17uEl-yS2smjSuOdDLJPzMWWffeXTqBsENjAaZe_qkso/view" target="_blank" rel="noopener">Google Slides</a>] - Making computing relevant, accessible and welcoming to all students isn&#8217;t a pipe-dream. Like anything else worth doing, it takes some good practice and a desire to do it right and keep improving. We&#8217;ve put together some pointers based on best-practices from the CS-Education literature, for Bootstrap teachers or anyone looking to broaden participation in Computer Science.</p>
+</li>
+</ul>
+</span>
+</span>
+</span>
+<span class="sect1">
+<h2 id="_standalone_hour_of_code_activities_from_bootstrap">Standalone Hour of Code Activities from Bootstrap</h2>
+<span class="sectionbody">
+<span class="ulist">
+<ul>
+<li>
+<p><strong>Hour of Data</strong> [<a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/../../../lessons/hoc-data/index.shtml">link</a>] - A self-guided Desmos activity for exploring a real dataset, and using it to make sense of a real-world problem.</p>
+</li>
+<li>
+<p><strong>Snowman Puzzle</strong> [<a href="https://code.pyret.org/editor#share=1Lgax_uAdFxUJzyGKPbx2BESj9BNkTK3i&v=1904b2c" target="_blank" rel="noopener">link</a>] - This Pyret Starterfile has all the pieces your students will need to make a snowman by changing the coordinates in the code.</p>
+</li>
+</ul>
+</span>
+</span>
+</span>
+<span class="sect1 acknowledgmentsect">
+<span class="sectionbody">
+<span class="openblock acknowledgment"><hr/>
+<span class="content">
+<span class="paragraph">
+<p>These materials were developed partly through support of the National Science Foundation,
+(awards 1042210, 1535276, 1648684, and 1738598). <a href="https://www.creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener"><span class="image"><img src="../../../lib/CCbadge.png" alt="CCbadge"></span></a>
+Bootstrap by the <a href="https://bootstrapworld.org/community/index.shtml">Bootstrap Community</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons 4.0 Unported License</a>. This license does not grant permission to run training or professional development. Offering training or professional development with materials substantially derived from Bootstrap must be approved in writing by a Bootstrap Director. Permissions beyond the scope of this license, such as to run training, may be available by contacting <a href="https://www.bootstrapworld.org/materials/fall2022/en-us/courses/zample-wescheme/mailto:contact@BootstrapWorld.org">contact@BootstrapWorld.org</a>.</p>
+</span>
+</span>
+</span>
+</span>
+</span>
+</span>
+<span id="footer">
+<span id="footer-text">
+Last updated 2022-10-17 19:42:18 -0400
+</span>
+</span>
+</span>
+</body>
+</html>
