@@ -1,0 +1,11 @@
+= Curriculum-related docs
+
+- link:curriculum-build/index.html[The curriculum build spec]: 
+Implementation-agnostic requirements for the build process.
+
+- link:curriculum-build/README.html[curriculum README]:
+General instructions for curriculum authors.
+
+- link:curriculum-build/makeitso-message.html[Description of the
+actual implementation of the
+build process, using Makefile and auxiliary programs].
