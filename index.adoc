@@ -8,4 +8,5 @@ General instructions for curriculum authors.
 
 - link:curriculum-build/makeitso-message.html[Description of the
 actual implementation of the
-build process, using Makefile and auxiliary programs].
+build process, using Makefile and auxiliary programs]: Note this
+is Section 11 of the first (build spec) document.
