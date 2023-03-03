@@ -8,6 +8,7 @@
 <title>Implementing the build process using Makefile(s)</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <link rel="stylesheet" href="./asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body class="article">
 <div id="header">
@@ -22,7 +23,7 @@
 following
 <a href="https://github.com/bootstrapworld/curriculum/issues/467">Issue
 467</a>,
-has since been rewritten as a more maintainable collection of
+has been rewritten as a more maintainable collection of
 Makefiles that calls much smaller subroutine-like scripts.</p>
 </div>
 <div class="paragraph">
@@ -35,7 +36,7 @@ by calling <code>make</code>, possibly with the following options:</p>
 <p><code>BOOK=yes</code> to generate the individual and workbook PDFs</p>
 </li>
 <li>
-<p><code>GRAPH=yes</code> to generate the lesson dependency graph</p>
+<p><code>GRAPH=yes</code> to update the lesson dependency graph</p>
 </li>
 <li>
 <p><code>LINKCHECK=yes</code> to verify all the internal and external links
@@ -187,6 +188,29 @@ info for all the courses into <code>en-us/pathway-tocs.js</code>.</p>
 </ol>
 </div>
 <div class="paragraph">
+<p>After the primitive generation rule (1 above) is done,
+the process checks if
+the global lesson dependency graph <code>en-us/dependency-graph.js</code> is
+already present (from a previous build). If not, it is created.
+Even if it is already present, it is re-made if the make variable
+<code>GRAPH</code> is set. The script that assembles the graph from the
+generated info about the lesson prereqs, primitives, etc. is
+<code>make-dependency-graph.lua</code>.</p>
+</div>
+<div class="paragraph">
+<p>The dependecy graph gathers the generated info
+about the lesson primitives and prereqs.</p>
+</div>
+<div class="paragraph">
+<p>external script
+<code>make-dependency-graph.lua</code> gather</p>
+</div>
+<div class="paragraph">
+<p>gathers the generated info about
+the lesson primitives and prereqs to create a global lesson
+dependency graph in <code>en-us/dependency-graph.js</code>.</p>
+</div>
+<div class="paragraph">
 <p>After the primitive generation rule (1 above) is done, if the
 make variable <code>GRAPH</code> is set, a rule calls an external script
 <code>make-dependency-graph.lua</code> that gathers the generated info about
@@ -213,7 +237,7 @@ workbooks. The same rule then calls the Node program
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-03-02 11:29:53 -0500
+Last updated 2023-03-03 13:36:10 -0500
 </div>
 </div>
 </body>

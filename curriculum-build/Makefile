@@ -1,4 +1,4 @@
-# last modified 2023-03-02
+# last modified 2023-03-03
 
 repo_dir := ~/src/curriculum
 
@@ -17,7 +17,7 @@ index.html: $(repo_mkdoc_dir)/*.adoc $(repo_mkdoc_dir)/*.svg
 	cp -p $< .
 
 makeitso-message.html: $(repo_mkdoc_dir)/build-makefile.adoc
-	asciidoctor -a linkcss $< -o $@
+	asciidoctor -a linkcss -a icons=font $< -o $@
 
 README.html: $(repo_dir)/README.adoc
-	asciidoctor -a linkcss $< -o $@
+	asciidoctor -a linkcss -a icons=font $< -o $@

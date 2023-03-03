@@ -425,8 +425,9 @@ the documents to ensure they are valid. By default, this check isn&#8217;t
 done to save time</p>
 </li>
 <li>
-<p><code>GRAPH=yes</code>&#8201;&#8212;&#8201;creates the lesson dependency graph in
-<code>distribution/en-us/dependency-graph.js</code></p>
+<p><code>GRAPH=yes</code>&#8201;&#8212;&#8201;updates the lesson dependency graph in
+<code>distribution/en-us/dependency-graph.js</code>. (By default, this file is
+created only if doesn&#8217;t exist already)</p>
 </li>
 <li>
 <p><code>NATLANG=lang</code>&#8201;&#8212;&#8201;builds for the natural language <code>lang</code>. The default is
@@ -703,7 +704,7 @@ makes it first; otherwise uses already-built distribution</p>
 builds from scratch, scrubbing any previous <code>distribution/</code></p>
 </li>
 <li>
-<p><code>--graph</code> (aka <code>-g</code>): generates the lesson dependency graph</p>
+<p><code>--graph</code> (aka <code>-g</code>): updates the lesson dependency graph</p>
 </li>
 <li>
 <p><code>--help</code> (aka <code>-h</code>): displays help and exists</p>
@@ -1520,7 +1521,7 @@ without the brackets.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-03-02 11:10:43 -0500
+Last updated 2023-03-03 13:37:13 -0500
 </div>
 </div>
 </body>
