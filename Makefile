@@ -1,6 +1,9 @@
-# last modified 2023-03-02
+# last modified 2023-03-05
 
-all: index.html asciidoctor.css
+all: index.html asciidoctor.css subdir
 
 index.html asciidoctor.css: index.adoc
 	asciidoctor -a linkcss $<
+
+subdir:
+	$(MAKE) -C curriculum-build
