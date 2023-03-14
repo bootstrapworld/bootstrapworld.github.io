@@ -104,7 +104,7 @@ the program used to generate web pages and PDFs from the
 the various natural languages used for instruction, e.g., <code>en-us</code>
 for US English, and <code>es-mx</code> for Mexican Spanish. Inside these
 dwell centralized educational-standards dictionaries, e.g.,
-<code>csta-standards-dictionary.rkt</code> for a list of standards defined
+<code>standards-csta-dictionary.rkt</code> for a list of standards defined
 by the CSTA. Also present is a general glossary of terms used in
 the lessons: <code>glossary-terms.rkt</code>.</p>
 </div>
@@ -409,26 +409,29 @@ it can be named anything (not necessarily <code>index.adoc</code>).</p>
 to populate the <code>distribution/</code> directory with the built documentation.</p>
 </div>
 <div class="paragraph">
-<p><code>make</code> can take environment-variable settings on the command line:</p>
+<p><code>make</code> can take optional targets on the command line:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>BOOK=yes</code>&#8201;&#8212;&#8201;creates the PDF versions of the HTML files, as also the
+<p><code>book</code>&#8201;&#8212;&#8201;creates the PDF versions of the HTML files, as also the
 workbook PDFs. By default, these are not created as it is a relatively
 time-consuming process and is required only after the author is sure
 that the HTML conversions have been thoroughly debugged</p>
 </li>
 <li>
-<p><code>LINKCHECK=yes</code>&#8201;&#8212;&#8201;checks the various internal and external links in
+<p><code>linkcheck</code>&#8201;&#8212;&#8201;checks the various internal and external links in
 the documents to ensure they are valid. By default, this check isn&#8217;t
 done to save time</p>
 </li>
-<li>
-<p><code>GRAPH=yes</code>&#8201;&#8212;&#8201;updates the lesson dependency graph in
-<code>distribution/en-us/dependency-graph.js</code>. (By default, this file is
-created only if doesn&#8217;t exist already)</p>
-</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><code>make</code> can take the following environment-variable settings to guide the
+build:</p>
+</div>
+<div class="ulist">
+<ul>
 <li>
 <p><code>NATLANG=lang</code>&#8201;&#8212;&#8201;builds for the natural language <code>lang</code>. The default is
 <code>en-us</code> (US English). Currently, the only other language that has
@@ -460,7 +463,7 @@ can see them, e.g.,</p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>export GRAPH=yes</pre>
+<pre>export SEMESTER=spring YEAR=2023</pre>
 </div>
 </div>
 </td>
@@ -659,27 +662,6 @@ changed:</p>
 </tr>
 </table>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p><code>make deploy</code> actually calls the script <code>deploy-to-hostinger</code>, which may also be
-called on its own, e.g.,</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>deploy-to-hostinger
-SKIPLIB=true deploy-to-hostinger</pre>
-</div>
-</div>
-</td>
-</tr>
-</table>
-</div>
 </div>
 <div class="sect2">
 <h3 id="_the_build_wrapper">The build wrapper</h3>
@@ -702,9 +684,6 @@ makes it first; otherwise uses already-built distribution</p>
 <li>
 <p><code>--force</code> (aka <code>--superforce</code>, <code>--super-force</code>, <code>-f</code>, <code>-F</code>):
 builds from scratch, scrubbing any previous <code>distribution/</code></p>
-</li>
-<li>
-<p><code>--graph</code> (aka <code>-g</code>): updates the lesson dependency graph</p>
 </li>
 <li>
 <p><code>--help</code> (aka <code>-h</code>): displays help and exists</p>
@@ -905,14 +884,10 @@ git merge master</pre>
 <a href="https://docs.microsoft.com/en-us/windows/wsl/install">WSL2</a> to give yourself a Linux environment first (we recommend Ubuntu).</p>
 </li>
 <li>
-<p>If you&#8217;re on MacOS, your environment is close but missing some
-tools. You&#8217;ll want to install
-<a href="https://brew.sh/">Homebrew</a> first, then run the following commands to add them:</p>
+<p>If you&#8217;re on MacOS, your environment is close but missing some unix tools. You&#8217;ll want to install <a href="https://brew.sh/">Homebrew</a> first, then run the following command to add them:</p>
 <div class="literalblock">
 <div class="content">
-<pre>brew install gnu-sed
-brew install curl
-brew install make</pre>
+<pre>brew install gnu-sed curl make coreutils gnu-tar</pre>
 </div>
 </div>
 </li>
@@ -920,8 +895,11 @@ brew install make</pre>
 <p>Mac users will also need to add these unix tools to their path. In the terminal, run <code>open ~/.zshrc</code> to edit your configuration file. Add the following, then save the file and restart your terminal:</p>
 <div class="literalblock">
 <div class="content">
-<pre># use modern unix versions of commands, installed via brew
-PATH="$(brew --prefix)/opt/coreutils/libexec/gnubin:/usr/local/opt/gnu-sed/libexec/gnubin:/usr/local/opt/make/libexec/gnubin:$PATH"</pre>
+<pre># add every gnu tool we have as a prefix to the path
+if type brew &amp;&gt;/dev/null; then
+  HOMEBREW_PREFIX=$(brew --prefix)
+  for d in ${HOMEBREW_PREFIX}/opt/*/libexec/gnubin; do export PATH=$d:$PATH; done
+fi</pre>
 </div>
 </div>
 </li>
@@ -964,7 +942,7 @@ and make sure the <code>racket</code> binary is in your <code>$PATH</code>.</p>
 </div>
 </li>
 <li>
-<p>Several node packages <strong>all of which are installed by running <code>npm install</code></strong>. (Note: you will need to be running Node v14 or above!)</p>
+<p>Several node packages <strong>all of which are automatically installed by running <code>npm install</code></strong>. (Note: you will need to be running Node v14 or above!)</p>
 <div class="ulist">
 <ul>
 <li>
@@ -1521,7 +1499,7 @@ without the brackets.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-03-03 13:37:13 -0500
+Last updated 2023-03-10 11:01:05 -0500
 </div>
 </div>
 </body>

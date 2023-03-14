@@ -1368,12 +1368,12 @@ collections of them that form the various workbooks. PDF and
 workbook construction can be time-consuming and so is best
 relegated to the final run, when the author is sure that the HTML
 conversions have been thoroughly debugged. Once they are, and the
-PDFs are desired, set the variable <code>BOOK</code> at the <code>make</code> command
-line to a nonempty string, e.g.,</p>
+PDFs are desired, request the target <code>book</code> on the <code>make</code>
+command-line, i.e.,</p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>make BOOK=yes</pre>
+<pre>make book</pre>
 </div>
 </div>
 </div>
@@ -1386,12 +1386,11 @@ time-consuming process. (External-link checking is particularly
 heinous because it takes a long while for each URL probe to return.)</p>
 </div>
 <div class="paragraph">
-<p>To enable link checking, set the <code>LINKCHECK</code> variable to
-nonempty, e.g.,</p>
+<p>To enable link checking, use the target <code>linkcheck</code>:</p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>make LINKCHECK=yes</pre>
+<pre>make linkcheck</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1545,7 +1544,7 @@ version of Asciidoctor rather than the Ruby one.
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-03-03 13:36:47 -0500
+Last updated 2023-03-09 10:15:27 -0500
 </div>
 </div>
 </body>
