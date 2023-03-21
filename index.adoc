@@ -1,4 +1,8 @@
-= Curriculum-related docs
+= Bootstrap-related pages
+
+The Bootstrap home page is at https://www.bootstrapworld.org.
+
+== Curriculum-related docs
 
 - link:curriculum-build/index.html[The curriculum build spec]: 
 Implementation-agnostic requirements for the build process.
